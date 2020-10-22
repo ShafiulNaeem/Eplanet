@@ -22,9 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
+  Route::get('/home', 'Admin\HomeController@index')->name('admin.home');
   Route::get('/login', 'Admin\Auth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'Admin\Auth\LoginController@login');
   Route::post('/logout', 'Admin\Auth\LoginController@logout')->name('logout');
