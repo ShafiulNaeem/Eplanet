@@ -35,7 +35,7 @@
                 <input type="password" name="password" class="form-control" placeholder="Password" required/>
             </div>
             <div class="form-group">
-                <input type="password" name="password2" class="form-control" placeholder="Retype password" required/>
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Retype password" required/>
             </div>
         </div>
         <div class="footer">
