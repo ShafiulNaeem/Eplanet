@@ -29,7 +29,13 @@ class CreateProductsTable extends Migration
             $table->string('model')->nullable();
             $table->double('product_price');
             $table->double('tax')->nullable();
+            $table->string('manufactured_by')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
+            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('coupon_id')->references('id')->on('coupons');
         });
     }
 
