@@ -21,14 +21,14 @@ class AdminRegisterController extends Controller
 
     public function register(Request $request)
     {
-        $this->validate($request, [
+        $val = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $request['password'] = Hash::make($request->password);
-        Admin::create($request->all());
+        $val['password'] = Hash::make($request->password);
+        Admin::create($val);
 
         return redirect()->intended(route('admin.dashboard'));
     }
