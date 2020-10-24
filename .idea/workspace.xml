@@ -20,8 +20,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="">
+    <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="admin login register">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AdminRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AdminRegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/admin-register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/admin-register.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +35,7 @@
     <execution />
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="master" />
+    <option name="BRANCH" value="tushar" />
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -44,7 +46,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="rifat" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -179,7 +181,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.19.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TAREI_LIVE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -215,8 +217,10 @@
       <workItem from="1603391500778" duration="8873000" />
       <workItem from="1603448362064" duration="3118000" />
       <workItem from="1603473557622" duration="3938000" />
-      <workItem from="1603477640337" duration="2289000" />
-      <workItem from="1603896185935" duration="34000" />
+      <workItem from="1603477640337" duration="2598000" />
+      <workItem from="1603481153675" duration="348000" />
+      <workItem from="1603482514044" duration="18000" />
+      <workItem from="1603483855555" duration="323000" />
     </task>
     <task id="LOCAL-00001" summary="multi auth created">
       <created>1603357020953</created>
@@ -260,12 +264,12 @@
       <option name="project" value="LOCAL" />
       <updated>1603475407853</updated>
     </task>
-    <task id="LOCAL-00007" summary="migration updated (table created)">
-      <created>1603740682823</created>
+    <task id="LOCAL-00007" summary="admin login register">
+      <created>1603480148314</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1603740682823</updated>
+      <updated>1603480148314</updated>
     </task>
     <option name="localTasksCounter" value="8" />
     <servers />
@@ -303,7 +307,8 @@
     <MESSAGE value="change auth logic" />
     <MESSAGE value="migration updated and multi auth updated" />
     <MESSAGE value="migration updated (table created)" />
-    <option name="LAST_COMMIT_MESSAGE" value="migration updated (table created)" />
+    <MESSAGE value="admin login register" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin login register" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="248" key="#Composer" timestamp="1603355101179">
@@ -314,18 +319,18 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1603475644007" />
-    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603740681923">
+    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603481239232">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603740681923" />
+    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603481239232" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1603392149017">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1603392149017" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1603896217757">
+    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1603482531073">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603896217757" />
+    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603482531073" />
     <state x="321" y="130" key="MultipleFileMergeDialog" timestamp="1603357150770">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -338,10 +343,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="525" y="71" key="RollbackChangesDialog/0.0.1366.738@0.0.1366.738" timestamp="1603478954235" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603740685341">
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603480151640">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603740685341" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603480151640" />
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603391565763">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
