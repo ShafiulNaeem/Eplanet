@@ -20,11 +20,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="admin login register">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AdminRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AdminRegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/admin-register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/admin-register.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +42,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="rifat" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -271,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603480148314</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="rifat branch created">
+      <created>1603532714577</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603532714577</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +311,8 @@
     <MESSAGE value="migration updated and multi auth updated" />
     <MESSAGE value="migration updated (table created)" />
     <MESSAGE value="admin login register" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin login register" />
+    <MESSAGE value="rifat branch created" />
+    <option name="LAST_COMMIT_MESSAGE" value="rifat branch created" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="248" key="#Composer" timestamp="1603355101179">
@@ -319,10 +323,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1603475644007" />
-    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603481239232">
+    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603532713197">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603481239232" />
+    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603532713197" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1603392149017">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -343,10 +347,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="525" y="71" key="RollbackChangesDialog/0.0.1366.738@0.0.1366.738" timestamp="1603478954235" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603480151640">
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603532716867">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603480151640" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603532716867" />
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603391565763">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
