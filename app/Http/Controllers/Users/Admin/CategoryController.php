@@ -13,7 +13,7 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function create()
     {
@@ -36,27 +36,26 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $val = $request->validate([
             'category_name' => ['required', 'string', 'max:255']
-            
         ]);
 
-        $categorys = new Category();
-
         $admin_id = Auth::guard('admin')->user()->id;
-        $categorys->admin_id = $admin_id;
-        $categorys->category_name = $request->category_name;
-        $categorys->status = $request->status;
-        
-        $categorys->save();
+        $val['admin_id'] = $admin_id;
+        $val['category_name'] = $request->category_name;
+        $val['status'] = $request->status;
 
-        Session::flash('success','Data Inserted Successfully');
-
-        return redirect()->route('category.index');
+        if(Category::create($val)){
+            Session::flash('success','Category Inserted Successfully');
+            return redirect()->route('category.index');
+        } else {
+            Session::flash('success','Something went wrong');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -73,39 +72,36 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $categorys = Category::find($id);
-        return view('admin.category.edit',compact('categorys'));
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         $val = $request->validate([
             'category_name' => ['required', 'string', 'max:255']
-            
         ]);
 
-        $categorys = Category::find($id);
         $admin_id = Auth::guard('admin')->user()->id;
 
-        $categorys->admin_id = $admin_id;
-        $categorys->category_name = $request->category_name;
-        $categorys->status = $request->status;
-        
-        $categorys->save();
+        $val['admin_id'] = $admin_id;
+        $val['category_name'] = $request->category_name;
+        $val['status'] = $request->status;
 
-        Session::flash('success','Data Updated Successfully');
+        $category->update($val);
+
+        Session::flash('success','Category Updated Successfully');
 
         return redirect()->route('category.index');
     }
@@ -113,17 +109,14 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $categorys = Category::find($id);
-        if(!is_null($categorys)){
-
-            $categorys->delete();
-            Session::flash('error','Data Deleted Successfully');
-            return redirect()->route('brand.index');
-        }
+        $category->delete();
+        Session::flash('error','Brand Successfully Deleted');
+        return redirect()->route('brand.index');
     }
 }

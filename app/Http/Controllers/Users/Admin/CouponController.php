@@ -13,7 +13,7 @@ class CouponController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
@@ -24,7 +24,7 @@ class CouponController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function create()
     {
@@ -35,28 +35,29 @@ class CouponController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $val = $request->validate([
             'coupon_code' => ['required', 'string', 'max:255'],
             'amount' => ['required', 'string', 'max:255']
-            
         ]);
-        $congurd = Auth::guard('admin')->user()->id;
-        
-        $copons = new Coupon();
-        
-        $copons->admin_id = $congurd;
-        $copons->coupon_code = $request->coupon_code ;
-        $copons->amount = $request->amount ;
-        $copons->status = $request->status ;
 
-        $copons->save();
-        Session::flash('success','Data Inserted Successfully');
+        $val['admin_id'] = Auth::guard('admin')->user()->id;
+        $val['coupon_code'] = $request->coupon_code ;
+        $val['amount'] = $request->amount ;
+        $val['status'] = $request->status ;
 
-        return redirect()->route('copon.index');
+        if(Coupon::create($val)){
+            Session::flash('success','Data Inserted Successfully');
+
+            return redirect()->route('coupon.index');
+        } else {
+            Session::flash('error','Something went wrong');
+
+            return redirect()->back();
+        }
     }
 
     /**
@@ -73,66 +74,52 @@ class CouponController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Coupon $coupon
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Coupon $coupon)
     {
-        $copons = Coupon::find($id);
+        return view('admin.copon.edit',compact('coupon'));
 
-        if(!is_null($copons)){
-          
-            return view('admin.copon.edit',compact('copons'));
-        }
-        
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param Coupon $coupon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Coupon $coupon)
     {
         $val = $request->validate([
             'coupon_code' => ['required', 'string', 'max:255'],
             'amount' => ['required', 'string', 'max:255']
-            
         ]);
-        $congurd = Auth::guard('admin')->user()->id;
-        
-        $copons = Coupon::find($id);
-        
-        $copons->admin_id = $congurd;
-        $copons->coupon_code = $request->coupon_code ;
-        $copons->amount = $request->amount ;
-        $copons->status = $request->status ;
 
-        $copons->save();
-        Session::flash('success','Data Inserted Successfully');
+        $val['admin_id'] = Auth::guard('admin')->user()->id;
+        $val['coupon_code'] = $request->coupon_code ;
+        $val['amount'] = $request->amount ;
+        $val['status'] = $request->status ;
 
-        return redirect()->route('copon.index');
+        $coupon->update($val);
+        Session::flash('success','Coupon updated Successfully');
+
+        return redirect()->route('coupon.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Coupon $coupon
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Coupon $coupon)
     {
-        $copons = Coupon::find($id);
-        if(!is_null($copons)){
-
-            $copons->delete();
-
-            Session::flash('error','Data Deleted Successfully');
-
-        return redirect()->route('copon.index');
-        }
+        $coupon->delete();
+        Session::flash('error','Coupon Successfully Deleted');
+        return redirect()->route('coupon.index');
 
     }
 }
