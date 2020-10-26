@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Coupon;
+use Session;
+use Auth;
 
 class CouponController extends Controller
 {
@@ -14,7 +17,8 @@ class CouponController extends Controller
      */
     public function index()
     {
-        //
+        $copons = Coupon::all();
+        return view('admin.copon.manage',compact('copons'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.copon.create');
     }
 
     /**
@@ -35,7 +39,24 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $val = $request->validate([
+            'coupon_code' => ['required', 'string', 'max:255'],
+            'amount' => ['required', 'string', 'max:255']
+            
+        ]);
+        $congurd = Auth::guard('admin')->user()->id;
+        
+        $copons = new Coupon();
+        
+        $copons->admin_id = $congurd;
+        $copons->coupon_code = $request->coupon_code ;
+        $copons->amount = $request->amount ;
+        $copons->status = $request->status ;
+
+        $copons->save();
+        Session::flash('success','Data Inserted Successfully');
+
+        return redirect()->route('copon.index');
     }
 
     /**
@@ -57,7 +78,13 @@ class CouponController extends Controller
      */
     public function edit($id)
     {
-        //
+        $copons = Coupon::find($id);
+
+        if(!is_null($copons)){
+          
+            return view('admin.copon.edit',compact('copons'));
+        }
+        
     }
 
     /**
@@ -69,7 +96,24 @@ class CouponController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $val = $request->validate([
+            'coupon_code' => ['required', 'string', 'max:255'],
+            'amount' => ['required', 'string', 'max:255']
+            
+        ]);
+        $congurd = Auth::guard('admin')->user()->id;
+        
+        $copons = Coupon::find($id);
+        
+        $copons->admin_id = $congurd;
+        $copons->coupon_code = $request->coupon_code ;
+        $copons->amount = $request->amount ;
+        $copons->status = $request->status ;
+
+        $copons->save();
+        Session::flash('success','Data Inserted Successfully');
+
+        return redirect()->route('copon.index');
     }
 
     /**
@@ -80,6 +124,15 @@ class CouponController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $copons = Coupon::find($id);
+        if(!is_null($copons)){
+
+            $copons->delete();
+
+            Session::flash('error','Data Deleted Successfully');
+
+        return redirect()->route('copon.index');
+        }
+
     }
 }
