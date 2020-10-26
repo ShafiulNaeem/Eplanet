@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class AdminRegisterController extends Controller
 {
@@ -30,6 +31,8 @@ class AdminRegisterController extends Controller
         $val['password'] = Hash::make($request->password);
         Admin::create($val);
 
-        return redirect()->intended(route('admin.dashboard'));
+        Session::flash('message','Registration Successfull. You will get confirmation mail');
+
+        return view('admin.pendding');
     }
 }
