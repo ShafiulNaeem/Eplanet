@@ -14,7 +14,7 @@ class BrandController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class BrandController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function create()
     {
@@ -36,25 +36,22 @@ class BrandController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $val = $request->validate([
             'brand_name' => ['required', 'string', 'max:255']
-            
         ]);
 
         $admin_id = Auth::guard('admin')->user()->id;
 
-        $brands = new Brand();
-        
-        $brands->admin_id = $admin_id;
-        $brands->brand_name = $request->brand_name;
-        $brands->status = $request->status;;
-        $brands->save();
+        $val['admin_id'] = $admin_id;
+        $val['brand_name'] = $request->brand_name;
+        $val['status'] = $request->status;;
 
-        Session::flash('success','Data Inserted Successfully');
+        if( Brand::create($val) ) Session::flash('success','Brand Inserted Successfully');
+        else Session::flash('error','Something went wrong ');
 
         return redirect()->route('brand.index');
     }
@@ -73,54 +70,48 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Brand $brand
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Brand $brand)
     {
-        
-        $brands = Brand::find($id);
+
+        $brands = $brand;
         return view('admin.brand.edit',compact('brands'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param Brand $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Brand $brand)
     {
         $val = $request->validate([
             'brand_name' => ['required', 'string', 'max:255']
-            
         ]);
 
-        $brands = Brand::find($id);
         $admin_id = Auth::guard('admin')->user()->id;
-        $brands->admin_id = $admin_id;
-        $brands->brand_name = $request->brand_name;
-        $brands->status = $request->status;;
-        $brands->save();
-            Session::flash('success','Data Updated Successfully');
+        $val['admin_id'] = $admin_id;
+        $val['brand_name'] = $request->brand_name;
+        $val['status'] = $request->status;;
+        $brand->update($val);
+            Session::flash('success','Brand Updated Successfully');
         return redirect()->route('brand.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Brand $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        $brands = Brand::find($id);
-        if(!is_null($brands)){
-
-            $brands->delete();
-            Session::flash('error','Data Successfully Deleted');
-            return redirect()->route('brand.index');
-        }
+        $brand->delete();
+        Session::flash('error','Brand Successfully Deleted');
+        return redirect()->route('brand.index');
     }
 }
