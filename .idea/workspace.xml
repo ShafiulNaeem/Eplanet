@@ -10,6 +10,11 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select>
       <path>
@@ -20,7 +25,23 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="" />
+    <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/admin_sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/BrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CouponController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/copon/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/copon/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/copon/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/copon/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/copon/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/copon/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,9 +51,6 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="tushar" />
-  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
@@ -40,11 +58,6 @@
       </list>
     </option>
     <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="rifat" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
@@ -213,10 +226,7 @@
       <workItem from="1603391500778" duration="8873000" />
       <workItem from="1603448362064" duration="3118000" />
       <workItem from="1603473557622" duration="3938000" />
-      <workItem from="1603477640337" duration="2598000" />
-      <workItem from="1603481153675" duration="348000" />
-      <workItem from="1603482514044" duration="18000" />
-      <workItem from="1603483855555" duration="323000" />
+      <workItem from="1603477640337" duration="2289000" />
     </task>
     <task id="LOCAL-00001" summary="multi auth created">
       <created>1603357020953</created>
@@ -260,21 +270,7 @@
       <option name="project" value="LOCAL" />
       <updated>1603475407853</updated>
     </task>
-    <task id="LOCAL-00007" summary="admin login register">
-      <created>1603480148314</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1603480148314</updated>
-    </task>
-    <task id="LOCAL-00008" summary="rifat branch created">
-      <created>1603532714577</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1603532714577</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,9 +306,7 @@
     <MESSAGE value="change auth logic" />
     <MESSAGE value="migration updated and multi auth updated" />
     <MESSAGE value="migration updated (table created)" />
-    <MESSAGE value="admin login register" />
-    <MESSAGE value="rifat branch created" />
-    <option name="LAST_COMMIT_MESSAGE" value="rifat branch created" />
+    <option name="LAST_COMMIT_MESSAGE" value="migration updated (table created)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="248" key="#Composer" timestamp="1603355101179">
@@ -323,34 +317,34 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1603475644007" />
-    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603532713197">
+    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603484548067">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603532713197" />
+    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603484548067" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1603392149017">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1603392149017" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1603482531073">
+    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1603476500967">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603482531073" />
+    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603476500967" />
     <state x="321" y="130" key="MultipleFileMergeDialog" timestamp="1603357150770">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="321" y="130" key="MultipleFileMergeDialog/0.0.1366.738@0.0.1366.738" timestamp="1603357150770" />
-    <state x="517" y="292" key="NewPhpFileDialog" timestamp="1603476577176">
+    <state x="517" y="292" key="NewPhpFileDialog" timestamp="1603731019270">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1603476577176" />
+    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1603731019270" />
     <state x="525" y="71" key="RollbackChangesDialog" timestamp="1603478954235">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="525" y="71" key="RollbackChangesDialog/0.0.1366.738@0.0.1366.738" timestamp="1603478954235" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603532716867">
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603475411959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603532716867" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603475411959" />
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603391565763">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
