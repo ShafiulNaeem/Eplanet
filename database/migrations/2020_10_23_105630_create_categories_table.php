@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('admin_id');
             $table->string('category_name');
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins');
         });
