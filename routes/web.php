@@ -23,3 +23,15 @@ Route::prefix('admin')->group(function(){
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
+
+
+Route::prefix('admin')->group(function(){
+    Route::resource('category', 'Users\Admin\CategoryController');
+    Route::resource('brand', 'Users\Admin\BrandController');
+    Route::resource('product', 'Users\Admin\ProductController');
+    Route::resource('productImage', 'Users\Admin\ProductImageController');
+    Route::resource('productVideo', 'Users\Admin\ProductVideoController');
+
+    Route::resource('coupon', 'Users\Admin\CouponController');
+});
+
