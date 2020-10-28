@@ -10,11 +10,6 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select>
       <path>
@@ -47,6 +42,29 @@
       <change afterPath="$PROJECT_DIR$/public/images/1603911043.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/images/1603911339.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/images/1603911587.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/videos/1603910298.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/videos/1603910720.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/videos/1603911774.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/product/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/product/manage.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/productImage/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/productImage/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/productImage/manage.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/productVideo/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/productVideo/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/productVideo/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/eplanet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/eplanet.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductImageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductVideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductVideoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductVideo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductVideo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin_sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +84,6 @@
       </list>
     </option>
     <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
@@ -201,7 +214,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.16.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.19.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -243,6 +256,13 @@
       <workItem from="1603448362064" duration="3118000" />
       <workItem from="1603473557622" duration="3938000" />
       <workItem from="1603477640337" duration="2289000" />
+      <workItem from="1603776412454" duration="1540000" />
+      <workItem from="1603779086875" duration="4002000" />
+      <workItem from="1603804498562" duration="16301000" />
+      <workItem from="1603858588216" duration="6963000" />
+      <workItem from="1603882072545" duration="6773000" />
+      <workItem from="1603892117581" duration="2379000" />
+      <workItem from="1603899793131" duration="10207000" />
     </task>
     <task id="LOCAL-00001" summary="multi auth created">
       <created>1603357020953</created>
@@ -290,7 +310,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -322,8 +342,7 @@
     <MESSAGE value="change auth logic" />
     <MESSAGE value="migration updated and multi auth updated" />
     <MESSAGE value="migration updated (table created)" />
-    <MESSAGE value="product image" />
-    <option name="LAST_COMMIT_MESSAGE" value="product image" />
+    <option name="LAST_COMMIT_MESSAGE" value="migration updated (table created)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="248" key="#Composer" timestamp="1603355101179">
@@ -334,27 +353,32 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1603475644007" />
-    <state x="308" y="58" key="CommitChangelistDialog2" timestamp="1603913362437">
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603909316588">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1603909316588" />
+    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603484548067">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
     <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603484548067" />
-    <state x="308" y="58" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1603913362437" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1603392149017">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1603392149017" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1603476500967">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="463" y="129" key="FileChooserDialogImpl" timestamp="1603887351034">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603476500967" />
+    <state x="463" y="129" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1603887351034" />
     <state x="321" y="130" key="MultipleFileMergeDialog" timestamp="1603357150770">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="321" y="130" key="MultipleFileMergeDialog/0.0.1366.738@0.0.1366.738" timestamp="1603357150770" />
-    <state x="517" y="292" key="NewPhpFileDialog" timestamp="1603731019270">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="517" y="304" key="NewPhpFileDialog" timestamp="1603900063258">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1603731019270" />
+    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1603476577176" />
+    <state x="517" y="304" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1603900063258" />
     <state x="525" y="71" key="RollbackChangesDialog" timestamp="1603478954235">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -367,10 +391,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1603391565763" />
-    <state x="484" y="175" key="git4idea.merge.GitMergeDialog" timestamp="1603913380101">
+    <state x="339" y="172" key="run.anything.popup" timestamp="1603910246652">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="484" y="175" key="git4idea.merge.GitMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1603913380101" />
+    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1603910246652" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1603479569472">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
