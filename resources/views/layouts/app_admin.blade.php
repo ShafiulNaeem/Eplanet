@@ -344,6 +344,26 @@
         toastr.error("{{Session::get('error')}}")
         @endif
     </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $(".pultiple").click(function(){
+                console.log('clicked');
+                var html = $(".clone").html();
+                $(".increment").after(html);
+            });
+
+            $("body").on("click",".pultiple-danger",function(){
+                $(this).parents(".control-group").remove();
+            });
+
+        });
+
+    </script>
+
+
 </body>
 
 </html>

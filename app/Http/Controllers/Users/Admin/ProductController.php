@@ -51,13 +51,14 @@ class ProductController extends Controller
             'product_description' => 'required',
             'product_brand' => 'required',
             'product_category' => 'required',
-            'product_tax' => 'required',
+            'product_tax' => 'sometimes',
+            'product_coupon' => 'sometimes',
             'product_price' => 'required',
             'product_color' => 'required',
-            'product_model' => 'required',
-            'product_size' => 'required',
+            'product_model' => 'sometimes',
+            'product_size' => 'sometimes',
             'product_stock' => 'required',
-            'manufactured_by' => 'required',
+            'manufactured_by' => 'sometimes',
             'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
 
@@ -67,7 +68,7 @@ class ProductController extends Controller
         $admin_role = Auth::guard('admin')->user()->role;
 
         $products->admin_id = $admin_id;
-        $products->unique_id = Str::random(9);
+        $products->unique_id = "#".substr(str_shuffle(MD5(microtime())), 0, 10);
         $products->coupon_id = $request->product_coupon;
         $products->admin_role = $admin_role;
         $products->product_name = $request->product_name;
