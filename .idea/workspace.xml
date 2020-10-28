@@ -26,21 +26,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/admin_sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/BrandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/CouponController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand/manage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/manage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/copon/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/copon/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/copon/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/copon/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/copon/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/copon/manage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1575937927.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1575944108.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1575947077.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603816392.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603818575.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603821094.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603862540.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603863110.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603863229.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603865457.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603865516.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603865623.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603883131.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603887029.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603887294.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603894342.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603899901.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603910945.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603911043.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603911339.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1603911587.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +55,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -58,6 +66,11 @@
       </list>
     </option>
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
@@ -214,7 +227,10 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="" />
@@ -293,12 +309,12 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -306,7 +322,8 @@
     <MESSAGE value="change auth logic" />
     <MESSAGE value="migration updated and multi auth updated" />
     <MESSAGE value="migration updated (table created)" />
-    <option name="LAST_COMMIT_MESSAGE" value="migration updated (table created)" />
+    <MESSAGE value="product image" />
+    <option name="LAST_COMMIT_MESSAGE" value="product image" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="248" key="#Composer" timestamp="1603355101179">
@@ -349,6 +366,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1603391565763" />
+    <state x="484" y="175" key="git4idea.merge.GitMergeDialog" timestamp="1603913340469">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="484" y="175" key="git4idea.merge.GitMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1603913340469" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1603479569472">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
