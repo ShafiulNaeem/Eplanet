@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('coupon_id');
+            $table->unsignedBigInteger('coupon_id')->nullable();
             $table->integer('admin_role');
             $table->string('product_name');
             $table->text('product_description');

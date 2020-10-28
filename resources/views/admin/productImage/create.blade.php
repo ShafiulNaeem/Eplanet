@@ -34,10 +34,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlFile1">Product Image</label>
-                                        <input type="file" name="product_image[]" class="form-control-file" id="exampleFormControlFile1">
+                                        <label for="exampleFormControlFile1">Product Image (Upload Multiple images) </label>
+                                        <input type="file" name="product_image[]" class="form-control-file" id="exampleFormControlFile1" multiple>
                                     </div>
-
                                 </div><!-- /.box-body -->
 
                                 <div class="box-footer">
