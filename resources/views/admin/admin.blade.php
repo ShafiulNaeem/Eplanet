@@ -49,7 +49,7 @@
                         <ul class="treeview-menu">
                             <li><a href="{{route('brand.create')}}"><i class="fa fa-angle-double-right"></i>Create Brand</a></li>
                             <li><a href="{{route('brand.index')}}"><i class="fa fa-angle-double-right"></i> Manage Brand</a></li>
-                           
+
                         </ul>
                     </li>
 
@@ -62,7 +62,24 @@
                         <ul class="treeview-menu">
                             <li><a href="{{route('category.create')}}"><i class="fa fa-angle-double-right"></i>Create Category</a></li>
                             <li><a href="{{route('category.index')}}"><i class="fa fa-angle-double-right"></i> Manage Category</a></li>
-                           
+
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span>Products</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{route('product.create')}}"><i class="fa fa-angle-double-right"></i>Add Product</a></li>
+                            <li><a href="{{route('product.index')}}"><i class="fa fa-angle-double-right"></i> Manage Product</a></li>
+                            <li><a href="{{route('productImage.create')}}"><i class="fa fa-angle-double-right"></i>Add Product Image</a></li>
+                            <li><a href="{{route('productImage.index')}}"><i class="fa fa-angle-double-right"></i> Manage Product Image</a></li>
+                            <li><a href="{{route('productVideo.create')}}"><i class="fa fa-angle-double-right"></i>Add Product Video</a></li>
+                            <li><a href="{{route('productVideo.index')}}"><i class="fa fa-angle-double-right"></i> Manage Product Video</a></li>
+
                         </ul>
                     </li>
 
@@ -73,9 +90,9 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{route('copon.create')}}"><i class="fa fa-angle-double-right"></i>Create Coupon</a></li>
-                            <li><a href="{{route('copon.index')}}"><i class="fa fa-angle-double-right"></i> Manage Coupon</a></li>
-                           
+                            <li><a href="{{route('coupon.create')}}"><i class="fa fa-angle-double-right"></i>Create Coupon</a></li>
+                            <li><a href="{{route('coupon.index')}}"><i class="fa fa-angle-double-right"></i> Manage Coupon</a></li>
+
                         </ul>
                     </li>
 

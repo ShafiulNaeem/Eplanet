@@ -28,6 +28,9 @@ Route::prefix('admin')->group(function(){
 Route::prefix('admin')->group(function(){
     Route::resource('category', 'Users\Admin\CategoryController');
     Route::resource('brand', 'Users\Admin\BrandController');
+    Route::resource('product', 'Users\Admin\ProductController');
+    Route::resource('productImage', 'Users\Admin\ProductImageController');
+    Route::resource('productVideo', 'Users\Admin\ProductVideoController');
 
     Route::resource('coupon', 'Users\Admin\CouponController');
 });
