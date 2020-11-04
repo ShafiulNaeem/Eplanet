@@ -62,6 +62,8 @@
                         <ul class="treeview-menu">
                             <li><a href="{{route('category.create')}}"><i class="fa fa-angle-double-right"></i>Create Category</a></li>
                             <li><a href="{{route('category.index')}}"><i class="fa fa-angle-double-right"></i> Manage Category</a></li>
+                            <li><a href="{{route('subcategory.create')}}"><i class="fa fa-angle-double-right"></i>Create Sub Category</a></li>
+                            <li><a href="{{route('subcategory.index')}}"><i class="fa fa-angle-double-right"></i> Manage Sub Category</a></li>
 
                         </ul>
                     </li>

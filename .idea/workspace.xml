@@ -21,48 +21,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/1575937927.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1575944108.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1575947077.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603816392.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603818575.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603821094.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603862540.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603863110.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603863229.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603865457.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603865516.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603865623.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603883131.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603887029.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603887294.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603894342.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603899901.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603910945.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603911043.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603911339.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603911587.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/videos/1603910298.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/videos/1603910720.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/videos/1603911774.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/product/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/product/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/product/manage.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/productImage/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/productImage/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/productImage/manage.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/productVideo/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/productVideo/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/productVideo/manage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/eplanet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/eplanet.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/SubCategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/SubCategory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_04_174926_create_sub_categories_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1604520512.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1604520612.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1604521541118999298_2681916272074941_3539747900944907342_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/160452154171253876_738329043293988_5027724360631189504_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/videos/1604521657.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/videos/1604522187.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/subcategory/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/subcategory/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/subcategory/manage.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductImageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductVideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductVideoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductVideo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductVideo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/category/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/category/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/productImage/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/productImage/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/productVideo/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/productVideo/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin_sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -263,6 +241,9 @@
       <workItem from="1603882072545" duration="6773000" />
       <workItem from="1603892117581" duration="2379000" />
       <workItem from="1603899793131" duration="10207000" />
+      <workItem from="1604430044600" duration="1500000" />
+      <workItem from="1604482624570" duration="3286000" />
+      <workItem from="1604507122611" duration="13478000" />
     </task>
     <task id="LOCAL-00001" summary="multi auth created">
       <created>1603357020953</created>
@@ -361,10 +342,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603484548067" />
-    <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1603392149017">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="92" y="96" width="1182" height="577" key="DiffContextDialog" timestamp="1603913692084">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1603392149017" />
+    <state x="92" y="96" width="1182" height="577" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1603913692084" />
     <state x="463" y="129" key="FileChooserDialogImpl" timestamp="1603887351034">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -374,15 +356,16 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="321" y="130" key="MultipleFileMergeDialog/0.0.1366.738@0.0.1366.738" timestamp="1603357150770" />
-    <state x="517" y="304" key="NewPhpFileDialog" timestamp="1603900063258">
+    <state x="517" y="304" key="NewPhpFileDialog" timestamp="1604483064466">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1603476577176" />
-    <state x="517" y="304" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1603900063258" />
-    <state x="525" y="71" key="RollbackChangesDialog" timestamp="1603478954235">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="517" y="304" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1604483064466" />
+    <state x="525" y="74" key="RollbackChangesDialog" timestamp="1604520385814">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="525" y="71" key="RollbackChangesDialog/0.0.1366.738@0.0.1366.738" timestamp="1603478954235" />
+    <state x="525" y="74" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1604520385814" />
     <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603475411959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -395,10 +378,11 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1603910246652" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1603479569472">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="346" y="61" width="672" height="706" key="search.everywhere.popup" timestamp="1604513243152">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1603479569472" />
+    <state x="346" y="61" width="672" height="706" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1604513243152" />
     <state x="405" y="281" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603445413751">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
