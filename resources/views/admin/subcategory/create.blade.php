@@ -17,25 +17,35 @@
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header">
-                                <h3 class="box-title">Add Product Image</h3>
+                                <h3 class="box-title">Add Sub Category</h3>
                             </div><!-- /.box-header -->
                             <!-- form start -->
-                            <form role="form" action="{{route('productImage.store')}}" enctype="multipart/form-data" method="POST">
+                            <form role="form" action="{{route('subcategory.store')}}" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Sub Category Name</label>
+                                        <input type="text" name="subcategory_name" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Sub Category Name">
+                                        @error('subcategory_name')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Product Name</label>
-                                        <select name="product_name" id="" class="form-control">
-                                            @foreach($products as $product)
-                                                <option value="{{$product->id}}">{{$product->product_name}}</option>
+                                        <label for="exampleInputPassword1">Category Name</label>
+                                        <select name="category_name" id="" class="form-control">
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlFile1">Product Image</label>
-                                        <input multiple type="file" name="product_image[]" class="form-control-file" id="exampleFormControlFile1">
+                                        <label for="exampleInputPassword1">Sub Category Status</label>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="1">Active</option>
+                                            <option value="0">InActive</option>
+                                        </select>
                                     </div>
 
                                 </div><!-- /.box-body -->

@@ -43,33 +43,27 @@ class ProductImageController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->file('product_image'));
         $this->validate($request, array(
             'product_name' => 'required',
-            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-
+            'product_image' => 'required',
+            'product_image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ));
 
-        $productImages = new ProductImage();
-        $productImages->product_id = $request->product_name;
-
         if($request->hasFile('product_image')){
-            $image = request()->file('product_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->product_image->move(public_path('images'), $filename);
-            $productImages->product_image= $filename;
-            $productImages->save();
-        };
-
-
-        if($productImages->save()){
-            Session::flash('success','Product Images Inserted Successfully');
-            return redirect()->route('productImage.index');
-        } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            $files = $request->file('product_image');
+            foreach ($files as $file){
+                $productImages = new ProductImage();
+                $productImages->product_id = $request->product_name;
+                $filename = time() .  $file->getClientOriginalName() ;
+                $file->move(public_path('images'), $filename);
+                $productImages->product_image= $filename;
+                $productImages->save();
+                $productImages = null;
+            }
         }
+
+        Session::flash('success','Product Images Inserted Successfully');
+        return redirect()->route('productImage.index');
     }
 
     /**
