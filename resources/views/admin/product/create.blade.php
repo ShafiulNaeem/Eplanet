@@ -53,9 +53,9 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Product Category</label>
                                             <select name="product_category" id="" class="form-control">
-                                                @php $categorys = \App\Models\Category::orderBy('category_name','asc')->get() @endphp
-                                                @foreach($categorys as $category )
-                                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                @php $subcategory = \App\Models\SubCategory::orderBy('subcategory_name','asc')->get() @endphp
+                                                @foreach($subcategory as $category )
+                                                    <option value="{{$category->id}}">{{$category->subcategory_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

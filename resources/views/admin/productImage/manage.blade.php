@@ -37,13 +37,14 @@
                                 <td>
                                     <a href="{{route('productImage.edit',$productImage->id)}}" class="btn btn-success">Edit</a>
                                     <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$productImage->id}}">Delete</a>
+                                    <a href="" class="btn btn-info" data-toggle="modal" data-target="">Views</a>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal{{$productImage->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete This Brand</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete !!!</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
