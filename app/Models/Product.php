@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    protected $table = 'products';
+    protected $primaryKey = 'id';
+
+    protected $guarded = [];
+    public function productImages()
+    {
+        return $this->hasMany('App\ProductImage','product_id','id');
+    }
 }
