@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('admin')->group(function(){
     Route::resource('category', 'Users\Admin\CategoryController');
+    Route::resource('subcategory', 'Users\Admin\SubCategoryController');
     Route::resource('brand', 'Users\Admin\BrandController');
     Route::resource('product', 'Users\Admin\ProductController');
     Route::resource('productImage', 'Users\Admin\ProductImageController');

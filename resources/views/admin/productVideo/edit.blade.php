@@ -30,7 +30,12 @@
                                         <select name="product_name" id="" class="form-control">
                                             @php $products = \App\Models\Product::orderBy('product_name','asc')->get() @endphp
                                             @foreach($products as $product)
-                                                <option value="{{$product->id}}">{{$product->product_name}}</option>
+                                                <option
+                                                @if( $product->id == $productvideo->product_id )
+                                                    selected
+                                                @endif
+
+                                                 value="{{$product->id}}">{{$product->product_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
