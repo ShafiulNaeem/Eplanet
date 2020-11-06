@@ -80,7 +80,7 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->category_id = $request->product_category;
+        $products->subcategory_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
 
         if($request->hasFile('feature_image')){
@@ -158,7 +158,7 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->category_id = $request->product_category;
+        $products->subcategory_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
 
         if($request->hasFile('feature_image')){

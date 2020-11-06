@@ -41,7 +41,12 @@
                                         <select name="product_brand" id="" class="form-control">
                                             @php $brands = \App\Models\Brand::orderBy('brand_name','asc')->get() @endphp
                                             @foreach($brands as $brand)
-                                                <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                                <option
+
+                                                @if( $brand->id == $product->brand_id )
+                                                    selected
+                                                @endif
+                                                 value="{{$brand->id}}">{{$brand->brand_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -51,7 +56,12 @@
                                         <select name="product_category" id="" class="form-control">
                                             @php $categorys = \App\Models\Category::orderBy('category_name','asc')->get() @endphp
                                             @foreach($categorys as $category )
-                                                <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                <option
+
+                                                    @if( $category->id == $product->subcategory_id )
+                                                    selected
+                                                @endif
+                                                 value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -60,7 +70,13 @@
                                         <select name="product_coupon" id="" class="form-control">
                                             @php $coupons = \App\Models\Coupon::orderBy('coupon_code','asc')->get() @endphp
                                             @foreach($coupons as $coupon )
-                                                <option value="{{$coupon->id}}">{{$coupon->coupon_code}}</option>
+                                                <option
+
+                                                    @if( $coupon->id == $product->coupon_id )
+                                                    selected
+                                                    @endif
+
+                                                 value="{{$coupon->id}}">{{$coupon->coupon_code}}</option>
                                             @endforeach
                                         </select>
                                     </div>
