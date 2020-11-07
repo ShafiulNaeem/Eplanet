@@ -36,12 +36,12 @@
                         @foreach($products as $product)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td><img src="{{url('images',$product->feature_image)}}" alt="" width="80"></td>
+                                <td><img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
                                 <td>{{$product->product_name}}</td>
                                 <td>{{$product->product_description}}</td>
-                                <td>{{$product->stock}}</td>
+                                <td>{{$product->stock}} piece(s) </td>
                                 <td>{{$product->size}}</td>
-                                <td>{{$product->product_price}}</td>
+                                <td>BDT {{$product->product_price}}</td>
                                 <td>
                                     <a href="{{route('product.edit',$product->id)}}" class="btn btn-success">Edit</a>
                                     <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$product->id}}">Delete</a>
