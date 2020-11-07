@@ -12,8 +12,9 @@ class Product extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
+
     public function productImages()
     {
-        return $this->hasMany('App\ProductImage','product_id','id');
+        return $this->hasMany('App\Models\ProductImage','product_id','id');
     }
 }

@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/',  'WelcomeController@index');
+Route::get('/',  'WelcomeController@index')->name('home');
 
+
+//User Auth
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 // Admin routes
 Route::prefix('admin')->group(function(){

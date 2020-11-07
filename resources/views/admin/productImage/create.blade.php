@@ -34,7 +34,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlFile1">Product Image</label>
+                                        <label for="exampleFormControlFile1">Product Image (upload multiple) </label>
                                         <input multiple type="file" name="product_image[]" class="form-control-file" id="exampleFormControlFile1">
                                     </div>
 
