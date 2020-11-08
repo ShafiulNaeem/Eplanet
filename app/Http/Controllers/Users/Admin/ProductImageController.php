@@ -19,7 +19,8 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        $productImages = ProductImage::with('product')->get();
+        $productImages = Product::with('productImages')->get();
+//        dd($productImages);
         return view('admin.productImage.manage',compact('productImages'));
     }
 
@@ -60,7 +61,6 @@ class ProductImageController extends Controller
                 $productImages = null;
             }
         }
-
         Session::flash('success','Product Images Inserted Successfully');
         return redirect()->route('productImage.index');
     }
