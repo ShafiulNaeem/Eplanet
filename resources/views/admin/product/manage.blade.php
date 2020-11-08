@@ -36,12 +36,12 @@
                         @foreach($products as $product)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td><img src="{{url('images',$product->feature_image)}}" alt="" width="80"></td>
+                                <td><img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
                                 <td>{{$product->product_name}}</td>
                                 <td>{{$product->product_description}}</td>
-                                <td>{{$product->stock}}</td>
+                                <td>{{$product->stock}} piece(s) </td>
                                 <td>{{$product->size}}</td>
-                                <td>{{$product->product_price}}</td>
+                                <td>BDT {{$product->product_price}}</td>
                                 <td>
                                     <a href="{{route('product.edit',$product->id)}}" class="btn btn-success">Edit</a>
                                     <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$product->id}}">Delete</a>
@@ -51,7 +51,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete This Brand</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete !!!</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>

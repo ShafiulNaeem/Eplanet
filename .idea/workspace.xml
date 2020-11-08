@@ -26,15 +26,97 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="324685d8-a55a-4584-a5e2-6e51bdfaaf63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/1603918565.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603918565.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603919143cookie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603919143doc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603919143home-header-background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603919245.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603919307logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/1603919307start_selling.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/font.awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/ionicons.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/jquery.fancybox.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/linearicons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/magnific-popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/plugins.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/slick.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/slinky.menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/Linearicons-Free54e9.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/Linearicons-Free54e9.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/Linearicons-Free54e9.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/Linearicons-Free54e9.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/Linearicons-Free54e9.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/Linearicons-Freed41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/fontawesome-webfont3e6e.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/fontawesome-webfont3e6e.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/fontawesome-webfont3e6e.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/fontawesome-webfont3e6e.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/fontawesome-webfont3e6e.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/ionicons28b5.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/ionicons28b5.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/ionicons28b5.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/ionicons28b5.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/plaza-icon56cc.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/plaza-icon56cc.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/plaza-icon56cc.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/fonts/plaza-icon56cc.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/bkg_list.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/bkg_list_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/discover8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/owl.video.play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/papyel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/paypal1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/paypal2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/paypal3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/icon/paypal4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/logo/pnga 13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/logo/pnga 543.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/logo/pnga 553.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/img/slider/main1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/isotope.pkgd.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/jquery.countdown.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/jquery.counterup.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/jquery.elevatezoom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/jquery.fancybox.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/jquery.instagramFeed.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/jquery.magnific-popup.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/jquery.ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/map.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/slick.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/slinky.menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/vendor/jquery-3.4.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/js/vendor/modernizr-3.7.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1604741419.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1604741611countdown-1-1000x1000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1604741611countdown-4-1000x1000.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/1604741611logo_bankpangan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app_main.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/frontend_main_menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/Admin/ProductImageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/productImage/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/productImage/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/productImage/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/productImage/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +127,6 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="master" />
-  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
@@ -57,7 +136,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tushar" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -190,9 +269,9 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.16.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.19.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TAREI_LIVE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/frontend" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -203,11 +282,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Work\Laravel\eplanet\public\frontend" />
+      <recent name="F:\Work\Laravel\eplanet\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Work\Laravel\eplanet\resources\views\admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Work\Laravel\eplanet\public" />
     </key>
   </component>
   <component name="RunManager">
@@ -216,7 +296,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -232,14 +312,6 @@
       <workItem from="1603448362064" duration="3118000" />
       <workItem from="1603473557622" duration="3938000" />
       <workItem from="1603477640337" duration="2289000" />
-      <workItem from="1603776412454" duration="1540000" />
-      <workItem from="1603779086875" duration="4002000" />
-      <workItem from="1603804498562" duration="16301000" />
-      <workItem from="1603858588216" duration="6963000" />
-      <workItem from="1603882072545" duration="6773000" />
-      <workItem from="1603892117581" duration="2379000" />
-      <workItem from="1603899793131" duration="10207000" />
-      <workItem from="1603998377275" duration="37000" />
     </task>
     <task id="LOCAL-00001" summary="multi auth created">
       <created>1603357020953</created>
@@ -283,14 +355,7 @@
       <option name="project" value="LOCAL" />
       <updated>1603475407853</updated>
     </task>
-    <task id="LOCAL-00007" summary="Multiple Product Image">
-      <created>1603919639576</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1603919639576</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,9 +391,8 @@
     <MESSAGE value="change auth logic" />
     <MESSAGE value="migration updated and multi auth updated" />
     <MESSAGE value="migration updated (table created)" />
-    <MESSAGE value="Product Image" />
-    <MESSAGE value="Multiple Product Image" />
-    <option name="LAST_COMMIT_MESSAGE" value="Multiple Product Image" />
+    <MESSAGE value="product image" />
+    <option name="LAST_COMMIT_MESSAGE" value="product image" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="248" key="#Composer" timestamp="1603355101179">
@@ -339,52 +403,47 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1603475644007" />
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603909316588">
+    <state x="308" y="58" key="CommitChangelistDialog2" timestamp="1603913362437">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1603909316588" />
-    <state x="308" y="56" key="CommitChangelistDialog2" timestamp="1603919637594">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603919637594" />
+    <state x="308" y="56" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1603484548067" />
+    <state x="308" y="58" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1603913362437" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1603392149017">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1603392149017" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1603998412026">
+    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1603476500967">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603998412026" />
-    <state x="463" y="129" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1603887351034" />
+    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603476500967" />
     <state x="321" y="130" key="MultipleFileMergeDialog" timestamp="1603357150770">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="321" y="130" key="MultipleFileMergeDialog/0.0.1366.738@0.0.1366.738" timestamp="1603357150770" />
-    <state x="517" y="304" key="NewPhpFileDialog" timestamp="1603900063258">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="517" y="292" key="NewPhpFileDialog" timestamp="1604744095227">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1603476577176" />
-    <state x="517" y="304" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1603900063258" />
+    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1604744095227" />
     <state x="525" y="71" key="RollbackChangesDialog" timestamp="1603478954235">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="525" y="71" key="RollbackChangesDialog/0.0.1366.738@0.0.1366.738" timestamp="1603478954235" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603919662232">
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603475411959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603919662232" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1603475411959" />
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603391565763">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1603391565763" />
-    <state x="339" y="172" key="run.anything.popup" timestamp="1603910246652">
+    <state x="484" y="175" key="git4idea.merge.GitMergeDialog" timestamp="1603913380101">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1603910246652" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1603479569472">
+    <state x="484" y="175" key="git4idea.merge.GitMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1603913380101" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1604743410373">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1603479569472" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1604743410373" />
     <state x="405" y="281" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603445413751">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
