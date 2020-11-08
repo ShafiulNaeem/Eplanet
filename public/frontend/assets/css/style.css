@@ -1442,7 +1442,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .main_menu nav > ul {
   display: flex;
-  justify-content: center;
 }
 .main_menu nav > ul > li {
   position: relative;
