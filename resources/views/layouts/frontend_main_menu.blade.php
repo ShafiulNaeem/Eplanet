@@ -180,7 +180,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/pnga%20543.png" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/pnga 543.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -190,7 +190,7 @@
                                 <form action="#">
                                     <div class="hover_category">
                                         <select class="select_option" style="color:#000" name="select" id="categori2">
-                                            <option selected value="1" >Mega Categories</option>
+                                            <option selected value="1">Mega Categories</option>
                                             <option value="2">Accessories</option>
                                             <option value="3">Accessories & More</option>
                                             <option value="4">Butters & Eggs</option>
@@ -217,12 +217,74 @@
                             <div class="header_account_area">
                                 <div class="header_account_list register">
                                     <ul>
-                                        <li><a href="login.html">Sign In</a></li>
+                                        <li><a href="regtration.blade.php">Sign In</a></li>
                                         <li><a href="login.html">Message</a></li>
                                         <li><a href="login.html">Order</a></li>
                                         <li><a href="login.html">English</a></li>
                                     </ul>
                                 </div>
+                                <div class="header_account_list  mini_cart_wrapper">
+                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
+                                        <!--mini cart-->
+                                        <div class="mini_cart">
+                                            <div class="cart_gallery">
+                                                <div class="cart_close">
+                                                	<div class="cart_text">
+                                                		<h3>cart</h3>
+                                                	</div>
+                                                	<div class="mini_cart_close">
+                                                		<a href="javascript:void(0)"><i class="icon-x"></i></a>
+                                                	</div>
+                                                </div>
+                                                <div class="cart_item">
+                                                   <div class="cart_img">
+                                                       <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                                   </div>
+                                                    <div class="cart_info">
+                                                        <a href="#">Primis In Faucibus</a>
+                                                        <p>1 x <span> $65.00 </span></p>    
+                                                    </div>
+                                                    <div class="cart_remove">
+                                                        <a href="#"><i class="icon-x"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="cart_item">
+                                                   <div class="cart_img">
+                                                       <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
+                                                   </div>
+                                                    <div class="cart_info">
+                                                        <a href="#">Letraset Sheets</a>
+                                                        <p>1 x <span> $60.00 </span></p>    
+                                                    </div>
+                                                    <div class="cart_remove">
+                                                        <a href="#"><i class="icon-x"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mini_cart_table">
+                                                <div class="cart_table_border">
+                                                    <div class="cart_total">
+                                                        <span>Sub total:</span>
+                                                        <span class="price">$125.00</span>
+                                                    </div>
+                                                    <div class="cart_total mt-10">
+                                                        <span>total:</span>
+                                                        <span class="price">$125.00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mini_cart_footer">
+                                               <div class="cart_button">
+                                                    <a href="cart.html"><i class="fa fa-shopping-cart"></i> View cart</a>
+                                                </div>
+                                                <div class="cart_button">
+                                                    <a href="checkout.html"><i class="fa fa-sign-in"></i> Checkout</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--mini cart end-->
+                                   </div>
                             </div>
                         </div>
 
@@ -235,13 +297,18 @@
 
             <div class="container">
                 <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-2 col-2">
+                        <div class="location">
+                            <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
 
-                    <div class="col-lg-12 col-md-12 col-12">
+                    <div class="col-lg-10 col-md-10 col-10">
                         <!--main menu start-->
                         <div class="main_menu menu_position">
                             <nav>
                                 <ul class="main-ul">
-                                    <li><a class="active"  href="index.html">home<i class="fa fa-angle-down"></i></a>
+                                    <li><a class="active" href="index.html">home<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu">
                                             <li><a href="index.html">Home shop 1</a></li>
                                             <li><a href="index-2.html">Home shop 2</a></li>
@@ -267,14 +334,6 @@
                                             <li><a href="blog-sidebar.html">blog sidebar</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                        </ul>
-                                    </li>
-
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="about.html">About Us</a></li>
@@ -290,29 +349,9 @@
                                             <li><a href="blog-details.html">blog details</a></li>
                                             <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                             <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="contact.html"> Contact Us</a></li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="about.html">About Us</a></li>
