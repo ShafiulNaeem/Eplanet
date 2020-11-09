@@ -223,6 +223,7 @@
                                         <li><a href="login.html">English</a></li>
                                     </ul>
                                 </div>
+
                                 <div class="header_account_list  mini_cart_wrapper">
                                        <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
                                         <!--mini cart-->
@@ -242,7 +243,7 @@
                                                    </div>
                                                     <div class="cart_info">
                                                         <a href="#">Primis In Faucibus</a>
-                                                        <p>1 x <span> $65.00 </span></p>    
+                                                        <p>1 x <span> $65.00 </span></p>
                                                     </div>
                                                     <div class="cart_remove">
                                                         <a href="#"><i class="icon-x"></i></a>
@@ -254,7 +255,7 @@
                                                    </div>
                                                     <div class="cart_info">
                                                         <a href="#">Letraset Sheets</a>
-                                                        <p>1 x <span> $60.00 </span></p>    
+                                                        <p>1 x <span> $60.00 </span></p>
                                                     </div>
                                                     <div class="cart_remove">
                                                         <a href="#"><i class="icon-x"></i></a>
