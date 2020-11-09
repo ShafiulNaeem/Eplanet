@@ -61,7 +61,6 @@ class ProductImageController extends Controller
                 $productImages = null;
             }
         }
-
         Session::flash('success','Product Images Inserted Successfully');
         return redirect()->route('productImage.index');
     }
