@@ -54,14 +54,14 @@
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Product Category</label>
                                         <select name="product_category" id="" class="form-control">
-                                            @php $categorys = \App\Models\Category::orderBy('category_name','asc')->get() @endphp
+                                            @php $categorys = \App\Models\SubCategory::orderBy('subcategory_name','asc')->get() @endphp
                                             @foreach($categorys as $category )
                                                 <option
 
                                                     @if( $category->id == $product->subcategory_id )
                                                     selected
                                                 @endif
-                                                 value="{{$category->id}}">{{$category->category_name}}</option>
+                                                 value="{{$category->id}}">{{$category->subcategory_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
