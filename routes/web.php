@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',  'WelcomeController@index')->name('home');
+//Route::get('/',  'WelcomeController@show')->name('pages.show');
+
+Route::prefix('pages')->group(function(){
+    Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
+
+});
 
 
 //User Auth

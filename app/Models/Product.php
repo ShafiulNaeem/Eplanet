@@ -17,4 +17,12 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductImage','product_id','id');
     }
+    public function productVideos()
+    {
+        return $this->hasMany('App\Models\ProductVideo','product_id','id');
+    }
+    public function subcategory()
+    {
+        return $this->belongsTo('App\Models\SubCategory');
+    }
 }

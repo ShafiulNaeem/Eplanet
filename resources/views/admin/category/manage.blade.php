@@ -20,6 +20,7 @@
                     <thead style="background-color: #000;color:#fff">
                         <tr>
                             <th>SL</th>
+                            <th>Category Image</th>
                             <th>Category Name</th>
                             <th>Category Status</th>
                             <th>Create Date</th>
@@ -33,6 +34,9 @@
                         @foreach($categorys as $category)
                         <tr>
                             <td>{{$i}}</td>
+                            <td>
+                                <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}" class="img-rounded" width="80" />
+                            </td>
                             <td>{{$category->category_name}}</td>
                             <td>
                                 @if($category->status == 1)
