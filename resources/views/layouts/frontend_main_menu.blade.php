@@ -237,30 +237,30 @@
                                                 		<a href="javascript:void(0)"><i class="icon-x"></i></a>
                                                 	</div>
                                                 </div>
+
+                                                @php
+                                                    //print_r(Session::get('cart'));
+                                                    $addTocarts = Session::get('cart');
+                                                @endphp
+                                                @if($addTocarts != null)
+                                                @foreach($addTocarts as $addTocart)
                                                 <div class="cart_item">
                                                    <div class="cart_img">
-                                                       <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                                       <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
                                                    </div>
                                                     <div class="cart_info">
-                                                        <a href="#">Primis In Faucibus</a>
-                                                        <p>1 x <span> $65.00 </span></p>
+                                                        <a href="#">{{$addTocart['product_name']}}</a>
+                                                        <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['product_price']}} </span></p>
                                                     </div>
                                                     <div class="cart_remove">
-                                                        <a href="#"><i class="icon-x"></i></a>
+                                                        <a href="{{route('pages.destroy',$addTocart['id'])}}"><i class="icon-x"></i></a>
                                                     </div>
                                                 </div>
-                                                <div class="cart_item">
-                                                   <div class="cart_img">
-                                                       <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
-                                                   </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">Letraset Sheets</a>
-                                                        <p>1 x <span> $60.00 </span></p>
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a href="#"><i class="icon-x"></i></a>
-                                                    </div>
-                                                </div>
+                                                @endforeach
+                                                    @endif
+
+
+
                                             </div>
                                             <div class="mini_cart_table">
                                                 <div class="cart_table_border">

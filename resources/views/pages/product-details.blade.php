@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="product_d_right">
-                           <form action="#">
+
                                 <div class=" product_ratting">
                                     <ul>
                                         <li><a href="#"><i class="icon-star"></i></a></li>
@@ -108,13 +108,21 @@
                                     </ul>
                                 </div>
                                 <div class="product_variant quantity">
-                                    <label>quantity</label>
-                                    <input min="1" max="100" value="1" type="number">
-                                    @if($product->stock > 0)
-                                        <button class="button" type="submit">add to cart</button>
-                                    @else
-                                        <button class="button" disabled>Product Out of Stock</button>
-                                    @endif
+
+                                    <form role="form" action="{{route('pages.cart')}}" enctype="multipart/form-data" method="POST">
+                                        @csrf
+                                        <label>quantity</label>
+                                        <input min="1" max="100" name="quantity" value="1" type="number">
+                                        <input  name="product_id" value="{{$product->id}}" hidden>
+                                        <input  name="product_name" value="{{$product->product_name}}" hidden>
+                                        <input  name="feature_image" value="{{$product->feature_image}}" hidden>
+                                        <input  name="product_price" value="{{$product->product_price}}" hidden>
+                                        @if($product->stock > 0)
+                                            <button class="button" type="submit">add to cart</button>
+                                        @else
+                                            <button class="button" disabled>Product Out of Stock</button>
+                                        @endif
+                                    </form>
 
 
                                 </div>
@@ -127,8 +135,6 @@
                                 <div class="product_meta">
                                     <span>Category: <a href="#">Clothing</a></span>
                                 </div>
-
-                            </form>
                             <div class="priduct_social">
                                 <ul>
                                     <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
