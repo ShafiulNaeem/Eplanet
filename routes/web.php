@@ -13,6 +13,8 @@ Route::get('/',  'WelcomeController@index')->name('home');
 
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
+    Route::post('/', 'Users\CartController@store')->name('pages.cart');
+    Route::delete('/{id}', 'Users\CartController@destroy')->name('pages.destroy');
 
 });
 
