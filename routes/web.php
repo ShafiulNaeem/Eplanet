@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',  'WelcomeController@index')->name('home');
+//Route::get('/',  'WelcomeController@show')->name('pages.show');
+
+Route::prefix('pages')->group(function(){
+    Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
+    Route::post('/', 'Users\CartController@store')->name('pages.cart');
+    Route::delete('/{id}', 'Users\CartController@destroy')->name('pages.destroy');
+
+});
 
 
 //User Auth
