@@ -332,7 +332,25 @@
     <script src="{{asset('js/AdminLTE/dashboard.js')}}" type="text/javascript"></script>
 
     <script src="{{asset('js/toastr.min.js')}}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script>
+    window.onload = function () {
+        document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("invoice");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'eplanet.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+}
+    </script>
     <script>
         @if(Session::has('success'))
 
