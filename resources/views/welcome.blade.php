@@ -158,1023 +158,119 @@
     <div class="container">
         <div class="product_container">
             <div class="row">
-                <div class="col-md-12">
-                    <h2>Categories</h2>
+                <div class="col-md-12"><h2>Categories</h2></div>
+
+                <div class="col-12">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
+                            <div class="product_carousel product_column5 owl-carousel">
+                                    @foreach($categories as $category)
+                                        <div class="product_items">
+                                            <article class="single_product">
+                                                <figure>
+                                                    <div class="single_banner">
+                                                        <div class="banner_thumb">
+                                                            <a href="product-details.html">
+                                                                <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <figcaption class="product_content">
+                                                        <h4 class="product_name"><a href="product-details.html"></a></h4>
+                                                        <div class="price_box">
+                                                            <span class="current_price">{{$category->category_name}}</span>
+
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>
+                                        </div>
+                                    @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row second-product">
-                <div class="col-12">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                            <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="product-details.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
 
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <h2>Discover</h2>
-                </div>
+            <div class="row">
+                <div class="col-md-12"><h2>Best Seller</h2></div>
 
                 <div class="col-12">
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="plant1" role="tabpanel">
                             <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
+                                    @foreach($products as $product)
+                                        <div class="product_items">
+                                            <article class="single_product">
+                                                <figure>
+                                                    <div class="single_banner">
+                                                        <div class="banner_thumb">
+                                                            <a href="{{route('pages.show',$product->id)}}">
+                                                                <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <figcaption class="product_content">
+                                                        <h4 class="product_name"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h4>
+                                                        <div class="price_box">
+                                                            <span class="current_price"></span>
+                                                            <span class="current_price">$ {{$product->product_price}}</span>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>
+                                        </div>
+                                    @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-12">
-                    <h2>Best Sellers</h2>
-                </div>
+
+
+
+            </div>
+            @foreach($results as $mainRe)
+                @if(isset($mainRe['category']['products']))
+            <div class="row">
+                <div class="col-md-12"><h2>{{$mainRe['category']['category_name']}}</h2></div>
 
                 <div class="col-12">
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="plant1" role="tabpanel">
                             <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
+@foreach($mainRe['category']['products'] as $index => $ffgr)
+                                    <div class="product_items card">
+                                        <article class="single_product">
+                                            <figure>
+                                                <div class="single_banner">
+                                                    <div class="banner_thumb">
+                                                        <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
+                                                            <img src="{{url('images',$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
+                                                <figcaption class="product_content">
+                                                    <h4 class="product_name"><a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">{{$mainRe['category']['products'][$index]['product_name']}}</a></h4>
+                                                    <div class="price_box">
+                                                        <span class="current_price">$ {{$mainRe['category']['products'][$index]['product_price']}}</span>
 
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
 
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <h2>Industry Items</h2>
-                </div>
-
-                <div class="col-12">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                            <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <h2>Electronic Items</h2>
-                </div>
-
-                <div class="col-12">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                            <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <h2>Men's Items</h2>
-                </div>
-
-                <div class="col-12">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                            <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <h2>Women's Items</h2>
-                </div>
-
-                <div class="col-12">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                            <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <h2>Baby Items</h2>
-                </div>
-
-                <div class="col-12">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                            <div class="product_carousel product_column5 owl-carousel">
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$56.00</span>
-                                                    <span class="old_price">$322.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$38.00</span>
-                                                    <span class="old_price">$262.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$48.00</span>
-                                                    <span class="old_price">$257.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
-                                <div class="product_items">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="single_banner">
-                                                <div class="banner_thumb">
-                                                    <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                    <span class="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-
-                                </div>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+@endforeach
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+                @endif
+            @endforeach
+
         </div>
     </div>
 </div>

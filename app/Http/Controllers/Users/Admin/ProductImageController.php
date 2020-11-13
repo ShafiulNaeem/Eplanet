@@ -20,7 +20,8 @@ class ProductImageController extends Controller
     public function index()
     {
         $productImages = Product::with('productImages')->get();
-//        dd($productImages);
+
+       //dd($productImages);
         return view('admin.productImage.manage',compact('productImages'));
     }
 

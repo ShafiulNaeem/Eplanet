@@ -40,22 +40,34 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $val = $request->validate([
-            'category_name' => ['required', 'string', 'max:255']
-        ]);
+        $this->validate($request, array(
+            'category_name' => ['required', 'string', 'max:255'],
+            'category_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ));
+
+        $categories = new Category();
 
         $admin_id = Auth::guard('admin')->user()->id;
-        $val['admin_id'] = $admin_id;
-        $val['category_name'] = $request->category_name;
-        $val['status'] = $request->status;
+        $categories->admin_id = $admin_id;
+        $categories->category_name = $request->category_name;
+        $categories->status = $request->status;
 
-        if(Category::create($val)){
+        if($request->hasFile('category_image')){
+            $image = request()->file('category_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            request()->category_image->move(public_path('images'), $filename);
+            $categories->category_image= $filename;
+            $categories->save();
+        };
+
+        if($categories->save()){
             Session::flash('success','Category Inserted Successfully');
             return redirect()->route('category.index');
         } else {
             Session::flash('success','Something went wrong');
             return redirect()->back();
         }
+
     }
 
     /**
@@ -89,21 +101,29 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $val = $request->validate([
-            'category_name' => ['required', 'string', 'max:255']
-        ]);
+        $this->validate($request, array(
+            'category_name' => ['required', 'string', 'max:255'],
+            'category_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ));
 
-        $admin_id = Auth::guard('admin')->user()->id;
+        $category->category_name = $request->category_name;
+        $category->status = $request->status;
 
-        $val['admin_id'] = $admin_id;
-        $val['category_name'] = $request->category_name;
-        $val['status'] = $request->status;
+        if($request->hasFile('category_image')){
+            $image = request()->file('category_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            request()->category_image->move(public_path('images'), $filename);
+            $category->category_image= $filename;
+            $category->save();
+        };
 
-        $category->update($val);
-
-        Session::flash('success','Category Updated Successfully');
-
-        return redirect()->route('category.index');
+        if($category->save()){
+            Session::flash('success','Category Updated Successfully');
+            return redirect()->route('category.index');
+        } else {
+            Session::flash('success','Something went wrong');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -117,6 +137,6 @@ class CategoryController extends Controller
     {
         $category->delete();
         Session::flash('error','Brand Successfully Deleted');
-        return redirect()->route('brand.index');
+        return redirect()->route('category.index');
     }
 }

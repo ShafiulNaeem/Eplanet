@@ -30,6 +30,7 @@
                         @php $i=1; @endphp
 
                         @foreach($productImages as $productImage)
+                            @if(count($productImage->productImages) >0)
                             <tr>
                                 <td style="width: 5%">{{$i}}</td>
                                 <td style="width: 19%">{{$productImage->product_name}}</td>
@@ -69,6 +70,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endif
                             @php $i++; @endphp
                         @endforeach
                         </tbody>
