@@ -35,7 +35,9 @@
     <link href="{{asset('css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{asset('css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />
+     <!--  Toaster Css  -->
     <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet">
+    <!--  Datatable css  -->   
 </head>
 
 <body class="skin-black">
@@ -332,6 +334,8 @@
     <script src="{{asset('js/AdminLTE/dashboard.js')}}" type="text/javascript"></script>
 
     <script src="{{asset('js/toastr.min.js')}}"></script>
+  
+     <!--   Html to Pdf   -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <script>
     window.onload = function () {
@@ -350,7 +354,8 @@
             };
             html2pdf().from(invoice).set(opt).save();
         })
-}
+   }
+
     </script>
     <script>
         @if(Session::has('success'))
