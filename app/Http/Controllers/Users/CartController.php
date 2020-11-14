@@ -108,7 +108,13 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->id and $request->quantity)
+        {
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
+        }
     }
 
     /**
@@ -117,17 +123,16 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //dd($request->all());
-        if($id) {
+        if($request->id) {
             $cart = session()->get('cart');
-            if(isset($cart[$id])) {
-                unset($cart[$id]);
-                //dd($cart);
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product removed successfully');
+            //session()->flash('success', 'Product removed successfully');
+            return redirect()->back()->with('success', 'Product  removed successfully!');
         }
     }
 }
