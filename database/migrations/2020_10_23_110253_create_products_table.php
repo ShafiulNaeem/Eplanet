@@ -32,10 +32,10 @@ class CreateProductsTable extends Migration
             $table->string('manufactured_by')->nullable();
             $table->string('color')->nullable();
             $table->timestamps();
-            $table->foreign('admin_id')->references('id')->on('admins');
-            $table->foreign('brand_id')->references('id')->on('brands');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('coupon_id')->references('id')->on('coupons');
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
         });
     }
 

@@ -21,7 +21,7 @@
         <section class="content">
 
             <div class="box-body table-responsive" id="invoice">
-                <table id="example2" class="table text-center  table-bordered table-hover">
+                <table  id="example" class="table text-center display  table-bordered table-hover">
 
                     <thead style="background-color: #000;color:#fff">
                         <tr>
