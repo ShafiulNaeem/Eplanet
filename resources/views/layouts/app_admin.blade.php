@@ -337,9 +337,10 @@
     window.onload = function () {
         document.getElementById("download")
         .addEventListener("click", () => {
-            const invoice = this.document.getElementById("invoice");
+            const invoice = this.document.getElementById("example2");
             console.log(invoice);
             console.log(window);
+            // window.print();
             var opt = {
                 margin: 1,
                 filename: 'eplanet.pdf',
