@@ -241,26 +241,37 @@
                                                 @php
                                                     //print_r(Session::get('cart'));
                                                     $addTocarts = Session::get('cart');
+                                                    $total=0;
                                                 @endphp
                                                 @if($addTocarts != null)
                                                 @foreach($addTocarts as $addTocart)
+
+                                                    @php
+
+                                                       // $price= $addTocart['quantity'] * $addTocart['product_price'];
+                                                        $total += $addTocart['quantity'] * $addTocart['product_price'];
+
+                                                    @endphp
+
                                                 <div class="cart_item">
                                                    <div class="cart_img">
                                                        <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
                                                    </div>
                                                     <div class="cart_info">
                                                         <a href="#">{{$addTocart['product_name']}}</a>
-                                                        <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['product_price']}} </span></p>
+                                                        <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
                                                     </div>
                                                     <div class="cart_remove">
-                                                        <a href="{{route('pages.destroy',$addTocart['id'])}}"><i class="icon-x"></i></a>
+                                                        <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <button type="submit"><i class="icon-x"></i></button>
+                                                        </form>
+
                                                     </div>
                                                 </div>
                                                 @endforeach
                                                     @endif
-
-
-
                                             </div>
                                             <div class="mini_cart_table">
                                                 <div class="cart_table_border">
@@ -270,7 +281,7 @@
                                                     </div>
                                                     <div class="cart_total mt-10">
                                                         <span>total:</span>
-                                                        <span class="price">$125.00</span>
+                                                        <span class="price">$ {{$total}}</span>
                                                     </div>
                                                 </div>
                                             </div>
