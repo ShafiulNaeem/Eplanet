@@ -11033,6 +11033,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     font-size: 16px;
     color:gray;
 }
+.print{
+  width:100%;
+  margin-bottom:60px;
+}
 
 
 /*privacy policy css end*/

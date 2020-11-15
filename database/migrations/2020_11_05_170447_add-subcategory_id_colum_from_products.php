@@ -15,7 +15,7 @@ class AddSubcategoryIdColumFromProducts extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->unsignedBigInteger('sub_category_id');
-            $table->foreign('sub_category_id')->references('id')->on('sub_categories');
+            $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
         });
     }
 

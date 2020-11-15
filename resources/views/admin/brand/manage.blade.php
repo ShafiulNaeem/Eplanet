@@ -12,11 +12,16 @@
             <a href="{{route('brand.create')}}" class="btn btn-primary">Create Brand</a>
         </section>
 
+        <div class="col-xs-12 print">
+            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+            <button class="btn btn-primary pull-right" id="download" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+        </div>
+
         <!-- Main content -->
         <section class="content">
 
-            <div class="box-body table-responsive">
-                <table id="example2" class="table text-center  table-bordered table-hover">
+            <div class="box-body table-responsive" id="invoice">
+                <table  id="myTable" class="table text-center display  table-bordered table-hover">
 
                     <thead style="background-color: #000;color:#fff">
                         <tr>

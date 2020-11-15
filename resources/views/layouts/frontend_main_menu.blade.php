@@ -208,6 +208,7 @@
                                             <option value="16">Electronic</option>
                                         </select>
                                     </div>
+
                                     <div class="search_box">
                                         <input placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                         <button type="submit"><span class="lnr lnr-magnifier"></span></button>
