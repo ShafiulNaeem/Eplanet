@@ -35,9 +35,10 @@
     <link href="{{asset('css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{asset('css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />
-     <!--  Toaster Css  -->
+    <!--  Toaster Css  -->
     <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet">
-    <!--  Datatable css  -->   
+    <!--  Datatable css  -->
+    <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 </head>
 
 <body class="skin-black">
@@ -334,29 +335,44 @@
     <script src="{{asset('js/AdminLTE/dashboard.js')}}" type="text/javascript"></script>
 
     <script src="{{asset('js/toastr.min.js')}}"></script>
-  
-     <!--   Html to Pdf   -->
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+    <!--   Html to Pdf   -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
     <script>
-    window.onload = function () {
-        document.getElementById("download")
-        .addEventListener("click", () => {
-            const invoice = this.document.getElementById("example2");
-            console.log(invoice);
-            console.log(window);
-            // window.print();
-            var opt = {
-                margin: 1,
-                filename: 'eplanet.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf().from(invoice).set(opt).save();
-        })
-   }
+        window.onload = function() {
+            document.getElementById("download")
+                .addEventListener("click", () => {
+                    const invoice = this.document.getElementById("invoice");
+                    console.log(invoice);
+                    console.log(window);
+                    // window.print();
+                    var opt = {
+                        margin: 1,
+                        filename: 'eplanet.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 0.98
+                        },
+                        html2canvas: {
+                            scale: 2
+                        },
+                        jsPDF: {
+                            unit: 'in',
+                            format: 'letter',
+                            orientation: 'portrait'
+                        }
+                    };
+                    html2pdf().from(invoice).set(opt).save();
+                })
+        }
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
 
     </script>
+    
     <script>
         @if(Session::has('success'))
 
