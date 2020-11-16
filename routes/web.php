@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',  'WelcomeController@index')->name('home');
-//Route::DELETE('layouts/frontend_main_menu/{id}', 'Users\CartController@destroy')->name('cart.destroy');
 //Route::get('/',  'WelcomeController@show')->name('pages.show');
 
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
     Route::post('/', 'Users\CartController@store')->name('pages.cart');
-    Route::DELETE('/{id}', 'Users\CartController@destroy')->name('cart.destroy');
+    Route::DELETE('/{id}', 'Users\CartController@destroy')->name('pages.destroy');
 
 });
 
@@ -42,7 +41,6 @@ Route::prefix('admin')->group(function(){
     Route::resource('product', 'Users\Admin\ProductController');
     Route::resource('productImage', 'Users\Admin\ProductImageController');
     Route::resource('productVideo', 'Users\Admin\ProductVideoController');
-
     Route::resource('coupon', 'Users\Admin\CouponController');
 });
 
