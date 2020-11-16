@@ -218,9 +218,10 @@
                                     </ul>
                                 </div>
 
-                                <div class="header_account_list  mini_cart_wrapper">
+                                @if( Session::has('cart') )
+                                    <div class="header_account_list  mini_cart_wrapper">
                                     @php $addTocarts = Session::get('cart'); @endphp
-                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{count($addTocarts)}}</span></a>
+                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
                                         <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_gallery">
@@ -291,6 +292,7 @@
                                         </div>
                                         <!--mini cart end-->
                                    </div>
+                                @endif
                             </div>
                         </div>
 
