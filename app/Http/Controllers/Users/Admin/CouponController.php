@@ -50,7 +50,7 @@ class CouponController extends Controller
         $val['status'] = $request->status ;
 
         if(Coupon::create($val)){
-            Session::flash('success','Data Inserted Successfully');
+            Session::flash('success','Coupon Inserted Successfully');
 
             return redirect()->route('coupon.index');
         } else {

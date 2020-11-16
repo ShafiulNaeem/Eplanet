@@ -114,7 +114,11 @@ class WelcomeController extends Controller
 
         $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->get();
 
-        return view('pages.product-details',['results' => $mainRes,'products' =>$product ]);
+        $categoryName = SubCategory::with('category')
+            ->where('id', $product[0]->sub_categories_id)
+            ->get()[0]->category;
+
+        return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'categoryName'=> $categoryName ]);
        // return view('pages.product-details',compact('products'));
     }
 

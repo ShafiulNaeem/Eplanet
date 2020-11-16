@@ -27,7 +27,7 @@
                             <th>SL</th>
                             <th>Product Image</th>
                             <th>Product Name</th>
-                            <th>Product Details</th>
+                            <th>Brand</th>
                             <th>Product Stock</th>
                             <th>Product Size</th>
                             <th>Product Price</th>
@@ -42,7 +42,7 @@
                                 <td>{{$i}}</td>
                                 <td><img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
                                 <td>{{$product->product_name}}</td>
-                                <td>{{$product->product_description}}</td>
+                                <td>{{$product->brand->brand_name}}</td>
                                 <td>{{$product->stock}} piece(s) </td>
                                 <td>{{$product->size}}</td>
                                 <td>BDT {{$product->product_price}}</td>
