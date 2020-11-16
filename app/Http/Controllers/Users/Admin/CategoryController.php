@@ -136,7 +136,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        Session::flash('error','Brand Successfully Deleted');
+        Session::flash('error','Category Successfully Deleted');
         return redirect()->route('category.index');
     }
 }

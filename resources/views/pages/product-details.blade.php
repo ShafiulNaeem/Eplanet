@@ -120,7 +120,7 @@
                                         @if($product->stock > 0)
                                             <button class="button" type="submit">add to cart</button>
                                         @else
-                                            <button class="button" disabled>Product Out of Stock</button>
+                                            <button class="button btn-danger" disabled>Product Out of Stock</button>
                                         @endif
                                     </form>
 
@@ -133,7 +133,7 @@
                                    </ul>
                                 </div>
                                 <div class="product_meta">
-                                    <span>Category: <a href="#">Clothing</a></span>
+                                    <span>Category: <a href="{{$categoryName->id}}">{{$categoryName->category_name}}</a></span>
                                 </div>
                             <div class="priduct_social">
                                 <ul>

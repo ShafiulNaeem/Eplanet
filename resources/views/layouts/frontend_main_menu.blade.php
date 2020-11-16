@@ -57,14 +57,7 @@
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
                             <li class="menu-item-has-children active">
-                                <a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                    <li><a href="index-5.html">Home 5</a></li>
-                                </ul>
+                                <a href="{{url('/')}}">Home</a>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#">Shop</a>
@@ -226,7 +219,8 @@
                                 </div>
 
                                 <div class="header_account_list  mini_cart_wrapper">
-                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">2</span></a>
+                                    @php $addTocarts = Session::get('cart'); @endphp
+                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{count($addTocarts)}}</span></a>
                                         <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_gallery">
@@ -240,8 +234,7 @@
                                                 </div>
 
                                                 @php
-                                                    //print_r(Session::get('cart'));
-                                                    $addTocarts = Session::get('cart');
+                                                    //$addTocarts = Session::get('cart');
                                                     $total=0;
                                                 @endphp
                                                 @if($addTocarts != null)
@@ -276,10 +269,10 @@
                                             </div>
                                             <div class="mini_cart_table">
                                                 <div class="cart_table_border">
-                                                    <div class="cart_total">
-                                                        <span>Sub total:</span>
-                                                        <span class="price">$125.00</span>
-                                                    </div>
+{{--                                                    <div class="cart_total">--}}
+{{--                                                        <span>Sub total:</span>--}}
+{{--                                                        <span class="price">$125.00</span>--}}
+{{--                                                    </div>--}}
                                                     <div class="cart_total mt-10">
                                                         <span>total:</span>
                                                         <span class="price">$ {{$total}}</span>
@@ -321,15 +314,7 @@
                         <div class="main_menu menu_position">
                             <nav>
                                 <ul class="main-ul">
-                                    <li><a class="active" href="index.html">home<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu">
-                                            <li><a href="index.html">Home shop 1</a></li>
-                                            <li><a href="index-2.html">Home shop 2</a></li>
-                                            <li><a href="index-3.html">Home shop 3</a></li>
-                                            <li><a href="index-4.html">Home shop 4</a></li>
-                                            <li><a href="index-5.html">Home shop 5</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a class="active" href="{{url('/')}}">home</a></li>
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="about.html">About Us</a></li>
