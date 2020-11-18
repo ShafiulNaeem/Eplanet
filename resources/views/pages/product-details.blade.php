@@ -117,6 +117,7 @@
                                         <input  name="product_name" value="{{$product->product_name}}" hidden>
                                         <input  name="feature_image" value="{{$product->feature_image}}" hidden>
                                         <input  name="product_price" value="{{$product->product_price}}" hidden>
+                                        <input  name="product_tax" value="{{$product->tax}}" hidden>
                                         @if($product->stock > 0)
                                             <button class="button" type="submit">add to cart</button>
                                         @else
