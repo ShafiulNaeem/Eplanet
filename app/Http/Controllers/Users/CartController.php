@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+            //
     }
 
     /**
@@ -26,7 +26,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.cart');
     }
 
     /**
@@ -125,6 +125,7 @@ class CartController extends Controller
      */
     public function destroy(Request $request)
     {
+        //dd($request->all());
         if($request->id) {
             $cart = session()->get('cart');
             if(isset($cart[$request->id])) {
