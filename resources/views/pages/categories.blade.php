@@ -1,104 +1,228 @@
 @extends('layouts.app_main')
 
 @section('content')
+
    <!-- category area Start -->
    
    <section class="category">
    
    <div class="container">
        <div class="row">
-           <div class="col-md-2">
-               <div class="left-category">
-                     <h6><strong>Featured Categories</strong></h6>
-                     <ul class="cat-ul">
-                         <li><a href="#">Cloth</a></li>
-                         <li><a href="#">Shoes</a></li>
-                         <li><a href="#">Watches</a></li>
-                         <li><a href="#">Women's Fashion</a></li>
-                         <li><a href="#">Boys' Fashion</a></li>
-                         <li><a href="#">Accessories</a></li>
-                     </ul>
-                     <div class="left-cat-image">
-                        <a href="#"><img src="assets/img/category/banner.jpg" width="200" alt=""></a>
-                    </div>
-               </div>
-               
-           </div>
-           <div class="col-md-10">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="category-title">
-                          <h4>The Men's Shop</h4>
-                        <p>Shop Amazon Fashion including clothing, shoes, jewelry, watches, accessories and more</p>
-                      </div>
-                  </div>
-              </div>
-              <div class="right-main-cat">
+         <div class="col-md-12">
+              <div class="slider_area owl-carousel ">
+            <div class="single_slider d-flex align-items-center div_radis" data-bgimg="assets/img/slider/main1.jpg">
+                <div class="container">
                     <div class="row">
-                       <div class="col-md-12">
-                           <h4>SHOP BY CATEGORY</h4>
-                       </div>
-                   </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/cloth1.jpg" width="200" alt=""></a>
+                        <div class="col-lg-6">
+                            <div class="slider_content">
+                                <h1>Baby Products</h1>
+                                <h2>Kids Fashion</h2>
+                                <p>
+								Valid till 15 Augest
+							    </p> 
+                                <a href="shop.html">Shop Now </a>
+                            </div>
                         </div>
                     </div>
-                       <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/shoe.jpg" width="200" alt=""></a>
-                        </div>
-                    </div>
-                       <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/watche.jpg" width="200" alt=""></a>
-                        </div>
-                    </div>
-                       <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/DURM.jpg" width="200" alt=""></a>
-                        </div>
-                    </div>
-                  
                 </div>
-                   <div class="row">
-                    <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/shoe.jpg" width="200" alt=""></a>
+            </div>
+            <div class="single_slider d-flex align-items-center div_radis" data-bgimg="assets/img/slider/main1.jpg">
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="slider_content">
+                                <h1>Baby Products</h1>
+                                <h2>Kids Fashion</h2>
+                                <p>
+								Valid till 15 Augest
+							    </p> 
+                                <a href="shop.html">Shop Now </a>
+                            </div>
                         </div>
                     </div>
-                       <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/cloth1.jpg" width="200" alt=""></a>
-                        </div>
-                    </div>
-                       <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/DURM.jpg" width="200" alt=""></a>
-                        </div>
-                    </div>
-                       <div class="col-md-3">
-                        <div class="right-category">
-                            <h5>Cloths</h5>
-                            <a href="one-category.html"><img src="assets/img/category/watche.jpg" width="200" alt=""></a>
-                        </div>
-                    </div>
-                  
                 </div>
-              </div>
+            </div>
+            <div class="single_slider d-flex align-items-center div_radis" data-bgimg="assets/img/slider/main1.jpg">
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="slider_content">
+                                <h1>Baby Products</h1>
+                                <h2>Kids Fashion</h2>
+                                <p>
+								Valid till 15 Augest
+							    </p> 
+                                <a href="shop.html">Shop Now </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
            </div>
+         </div>
+         
        </div>
-   </div>
+   </div> 
+     
+ </section>
+    
+     <!-- category area End -->
+     
+<!--  Category bottom Code Start     -->
    
-   <div class="blog_pagination">
+   <section class="category_bottom">
+     <div class="container">
+        <div class="row">
+             <div class="col-md-2">
+                 <div class="category-inner">
+                     <a href="#"><img src="assets/img/icon/discover1.png" alt=""></a>
+                     <p>Lorem ipsum dolor.</p>
+                 </div>
+             </div>
+              <div class="col-md-2">
+                 <div class="category-inner">
+                     <a href="#"><img src="assets/img/icon/discover2.png" class="img-fluid" alt=""></a>
+                     <p>Lorem ipsum dolor.</p>
+                 </div>
+             </div>
+              <div class="col-md-2">
+                 <div class="category-inner">
+                     <a href="#"><img src="assets/img/icon/discover3.png" class="img-fluid" alt=""></a>
+                     <p>Lorem ipsum dolor.</p>
+                 </div>
+             </div>
+              <div class="col-md-2">
+                 <div class="category-inner">
+                     <a href="#"><img src="assets/img/icon/discover4.png"  alt=""></a>
+                     <p>Lorem ipsum dolor.</p>
+                 </div>
+             </div>
+              <div class="col-md-2">
+                 <div class="category-inner">
+                     <a href="#"><img src="assets/img/icon/discover5.png" class="img-fluid" alt=""></a>
+                     <p>Lorem ipsum dolor.</p>
+                 </div>
+             </div>
+              <div class="col-md-2">
+                 <div class="category-inner">
+                     <a href="#"><img src="assets/img/icon/discover6.png"  alt=""></a>
+                     <p>Lorem ipsum dolor.</p>
+                 </div>
+             </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- related-section area Start -->
+    
+ <section class="related-section">
+        <div class="container"> 
+           <div class="row">
+               <div class="col-md-12">
+                   <h3  class="text-dark text-center mb-20">Related Product</h3>
+               </div>
+           </div>
+              <div class="row">
+                  <div class="col-md-10">
+                      <h3>Kids</h3>
+                  </div>
+                   <div class="col-md-2">
+                      <h2><a href="#">View more</a></h2>
+                  </div>
+              </div> 
+                  <div class="row">
+                      <div class="col-md-3">
+                          <div class="related_inner">
+                              <div class="card">
+                                  <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title">Lorem ipsum.</h5>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                       <div class="col-md-3">
+                          <div class="related_inner">
+                              <div class="card">
+                                  <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title">Lorem ipsum.</h5>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                       <div class="col-md-3">
+                          <div class="related_inner">
+                              <div class="card">
+                                  <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title">Lorem ipsum.</h5>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                       <div class="col-md-3">
+                          <div class="related_inner">
+                              <div class="card">
+                                  <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title">Lorem ipsum.</h5>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                  </div> 
+                  
+               <div class="row">
+                  <div class="col-md-10">
+                      <h3>3D Virtual Home</h3>
+                  </div>
+                   <div class="col-md-2">
+                      <h2><a href="#">View more</a></h2>
+                  </div>
+              </div> 
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="related_inner">
+                              <div class="card">
+                                  <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title">Lorem ipsum.</h5>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                       <div class="col-md-4">
+                          <div class="related_inner">
+                              <div class="card">
+                                  <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title">Lorem ipsum.</h5>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                       <div class="col-md-4">
+                          <div class="related_inner">
+                              <div class="card">
+                                  <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title">Lorem ipsum.</h5>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                  </div>    
+        </div>
+
+       <div class="blog_pagination">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -115,414 +239,8 @@
             </div>
         </div>
     </div>
-    
- </section>
-    
-     <!-- category area End -->
-
-   <!-- related-section area Start -->
-    
-<section class="related-section">
-    <div class="product_area ">
-        <div class="container"> 
-           <div class="row">
-               <div class="col-md-12">
-                   <h3  class="text-dark text-center mb-20">Related Product</h3>
-               </div>
-           </div>
-            <div class="product_container"> 
-              <div class="row">
-                  <div class="col-md-12">
-                      <h2>Kids</h2>
-                  </div>
-              </div> 
-               <div class="row second-product">
-                   <div class="col-12">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                                <div class="product_carousel product_column5 owl-carousel">
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="product-details.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$26.00</span>
-                                                        <span class="old_price">$362.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                 <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$56.00</span>
-                                                        <span class="old_price">$322.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$38.00</span>
-                                                        <span class="old_price">$262.00</span>
-                                                         <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$48.00</span>
-                                                        <span class="old_price">$257.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$26.00</span>
-                                                        <span class="old_price">$362.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                      
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$26.00</span>
-                                                        <span class="old_price">$362.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <div class="row">
-                  <div class="col-md-12">
-                      <h2>Toys</h2>
-                  </div>
-                 </div> 
-                 <div class="row second-product">
-                   <div class="col-12">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="plant1" role="tabpanel">
-                                <div class="product_carousel product_column5 owl-carousel">
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="product-details.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$26.00</span>
-                                                        <span class="old_price">$362.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                      
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                 <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Etiam Gravida</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$56.00</span>
-                                                        <span class="old_price">$322.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Letraset Sheets</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$38.00</span>
-                                                        <span class="old_price">$262.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$48.00</span>
-                                                        <span class="old_price">$257.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$26.00</span>
-                                                        <span class="old_price">$362.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                      
-                                    </div>
-                                    <div class="product_items">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="single_banner">
-                                                    <div class="banner_thumb">
-                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a> 
-                                                    </div>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                    <div class="price_box"> 
-                                                        <span class="current_price">$26.00</span>
-                                                        <span class="old_price">$362.00</span>
-                                                          <div class=" product_ratting">
-                                                            <ul>
-                                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                       
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
     
       <!-- related-section area End -->
+
 @endsection
