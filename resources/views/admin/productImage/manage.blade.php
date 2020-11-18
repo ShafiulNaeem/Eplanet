@@ -14,8 +14,11 @@
 
             <!-- Main content -->
             <section class="content">
-
-                <div class="box-body table-responsive">
+            <div class="col-xs-12 print">
+                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                <button class="btn btn-primary pull-right" id="download" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+            </div>
+                <div class="box-body table-responsive" id="invoice">
                     <table id="example2" class="table text-center  table-bordered table-hover">
 
                         <thead style="background-color: #000;color:#fff">
@@ -30,6 +33,7 @@
                         @php $i=1; @endphp
 
                         @foreach($productImages as $productImage)
+                            @if(count($productImage->productImages) >0)
                             <tr>
                                 <td style="width: 5%">{{$i}}</td>
                                 <td style="width: 19%">{{$productImage->product_name}}</td>
@@ -69,6 +73,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endif
                             @php $i++; @endphp
                         @endforeach
                         </tbody>

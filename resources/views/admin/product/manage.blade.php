@@ -14,8 +14,12 @@
 
             <!-- Main content -->
             <section class="content">
+            <div class="col-xs-12 print">
+                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                <button class="btn btn-primary pull-right" id="download" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+            </div>
 
-                <div class="box-body table-responsive">
+                <div class="box-body table-responsive" id="invoice">
                     <table id="example2" class="table text-center  table-bordered table-hover">
 
                         <thead style="background-color: #000;color:#fff">
@@ -23,7 +27,7 @@
                             <th>SL</th>
                             <th>Product Image</th>
                             <th>Product Name</th>
-                            <th>Product Details</th>
+                            <th>Brand</th>
                             <th>Product Stock</th>
                             <th>Product Size</th>
                             <th>Product Price</th>
@@ -38,7 +42,7 @@
                                 <td>{{$i}}</td>
                                 <td><img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
                                 <td>{{$product->product_name}}</td>
-                                <td>{{$product->product_description}}</td>
+                                <td>{{$product->brand->brand_name}}</td>
                                 <td>{{$product->stock}} piece(s) </td>
                                 <td>{{$product->size}}</td>
                                 <td>BDT {{$product->product_price}}</td>

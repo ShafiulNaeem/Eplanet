@@ -14,12 +14,17 @@
 
         <!-- Main content -->
         <section class="content">
+        <div class="col-xs-12 print">
+                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                <button class="btn btn-primary pull-right" id="download" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+            </div>
 
-            <div class="box-body table-responsive">
+            <div class="box-body table-responsive" id="invoice">
                 <table id="example2" class="table text-center  table-bordered table-hover">
                     <thead style="background-color: #000;color:#fff">
                         <tr>
                             <th>SL</th>
+                            <th>Category Image</th>
                             <th>Category Name</th>
                             <th>Category Status</th>
                             <th>Create Date</th>
@@ -33,6 +38,9 @@
                         @foreach($categorys as $category)
                         <tr>
                             <td>{{$i}}</td>
+                            <td>
+                                <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}" class="img-rounded" width="80" />
+                            </td>
                             <td>{{$category->category_name}}</td>
                             <td>
                                 @if($category->status == 1)

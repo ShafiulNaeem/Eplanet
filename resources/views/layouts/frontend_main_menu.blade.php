@@ -57,14 +57,7 @@
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
                             <li class="menu-item-has-children active">
-                                <a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                    <li><a href="index-5.html">Home 5</a></li>
-                                </ul>
+                                <a href="{{url('/')}}">Home</a>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#">Shop</a>
@@ -180,7 +173,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/pnga%20543.png" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/pnga 543.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -190,7 +183,7 @@
                                 <form action="#">
                                     <div class="hover_category">
                                         <select class="select_option" style="color:#000" name="select" id="categori2">
-                                            <option selected value="1" >Mega Categories</option>
+                                            <option selected value="1">Mega Categories</option>
                                             <option value="2">Accessories</option>
                                             <option value="3">Accessories & More</option>
                                             <option value="4">Butters & Eggs</option>
@@ -208,6 +201,7 @@
                                             <option value="16">Electronic</option>
                                         </select>
                                     </div>
+
                                     <div class="search_box">
                                         <input placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                         <button type="submit"><span class="lnr lnr-magnifier"></span></button>
@@ -217,12 +211,88 @@
                             <div class="header_account_area">
                                 <div class="header_account_list register">
                                     <ul>
-                                        <li><a href="login.html">Sign In</a></li>
+                                        <li><a href="regtration.blade.php">Sign In</a></li>
                                         <li><a href="login.html">Message</a></li>
                                         <li><a href="login.html">Order</a></li>
                                         <li><a href="login.html">English</a></li>
                                     </ul>
                                 </div>
+
+                                @if( Session::has('cart') )
+                                    <div class="header_account_list  mini_cart_wrapper">
+                                    @php $addTocarts = Session::get('cart'); @endphp
+                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
+                                        <!--mini cart-->
+                                        <div class="mini_cart">
+                                            <div class="cart_gallery">
+                                                <div class="cart_close">
+                                                	<div class="cart_text">
+                                                		<h3>cart</h3>
+                                                	</div>
+                                                	<div class="mini_cart_close">
+                                                		<a href="javascript:void(0)"><i class="icon-x"></i></a>
+                                                	</div>
+                                                </div>
+
+                                                @php
+                                                    //$addTocarts = Session::get('cart');
+                                                    $total=0;
+                                                @endphp
+                                                @if($addTocarts != null)
+                                                @foreach($addTocarts as $addTocart)
+
+                                                    @php
+
+                                                       // $price= $addTocart['quantity'] * $addTocart['product_price'];
+                                                        $total += $addTocart['quantity'] * $addTocart['product_price'];
+
+                                                    @endphp
+
+                                                <div class="cart_item">
+                                                   <div class="cart_img">
+                                                       <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
+                                                   </div>
+                                                    <div class="cart_info">
+                                                        <a href="#">{{$addTocart['product_name']}}</a>
+                                                        <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
+                                                    </div>
+                                                    <div class="cart_remove">
+                                                        <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <button type="submit"><i class="icon-x"></i></button>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                                    @endif
+                                            </div>
+                                            <div class="mini_cart_table">
+                                                <div class="cart_table_border">
+{{--                                                    <div class="cart_total">--}}
+{{--                                                        <span>Sub total:</span>--}}
+{{--                                                        <span class="price">$125.00</span>--}}
+{{--                                                    </div>--}}
+                                                    <div class="cart_total mt-10">
+                                                        <span>total:</span>
+                                                        <span class="price">$ {{$total}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mini_cart_footer">
+                                               <div class="cart_button">
+                                                    <a href="{{route('cart.create')}}"><i class="fa fa-shopping-cart"></i> View cart</a>
+                                                </div>
+                                                <div class="cart_button">
+                                                    <a href="pages/Checkout"><i class="fa fa-sign-in"></i> Checkout</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--mini cart end-->
+                                   </div>
+                                @endif
                             </div>
                         </div>
 
@@ -235,46 +305,18 @@
 
             <div class="container">
                 <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-2 col-2">
+                        <div class="location">
+                            <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
 
-                    <div class="col-lg-12 col-md-12 col-12">
+                    <div class="col-lg-10 col-md-10 col-10">
                         <!--main menu start-->
                         <div class="main_menu menu_position">
                             <nav>
                                 <ul class="main-ul">
-                                    <li><a class="active"  href="index.html">home<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu">
-                                            <li><a href="index.html">Home shop 1</a></li>
-                                            <li><a href="index-2.html">Home shop 2</a></li>
-                                            <li><a href="index-3.html">Home shop 3</a></li>
-                                            <li><a href="index-4.html">Home shop 4</a></li>
-                                            <li><a href="index-5.html">Home shop 5</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                        </ul>
-                                    </li>
-
+                                    <li><a class="active" href="{{url('/')}}">home</a></li>
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="about.html">About Us</a></li>
@@ -300,19 +342,16 @@
                                             <li><a href="contact.html">contact</a></li>
                                             <li><a href="login.html">login</a></li>
                                             <li><a href="404.html">Error 404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub_menu pages">
+                                            <li><a href="blog-details.html">blog details</a></li>
+                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
+                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="contact.html"> Contact Us</a></li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="about.html">About Us</a></li>

@@ -21,7 +21,7 @@ class CreateShippingAddressTable extends Migration
             $table->text('address_1');
             $table->text('address_2');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

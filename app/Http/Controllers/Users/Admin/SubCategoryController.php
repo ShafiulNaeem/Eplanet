@@ -122,13 +122,12 @@ class SubCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param SubCategory $subcategory
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(SubCategory $subcategory)
     {
-//        $category = SubCategory::find($id);
-        //dd($subCategory);
         $subcategory->delete();
         return redirect()->back()->with('deleted','Deleted Successfully..');
     }

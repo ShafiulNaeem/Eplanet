@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
@@ -22,20 +23,22 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('product_name','asc')->get();
+        $products = Product::with('brand')->get();
         return view('admin.product.manage',compact('products'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function create()
     {
         $brands = Brand::orderBy('brand_name','asc')->get();
-        //$categorys = Category::orderBy('category_name','asc')->get();
-        return view('admin.product.create',compact('brands',));
+        $subcategory = SubCategory::all();
+        $coupons = Coupon::all();
+
+        return view('admin.product.create',compact('brands','subcategory', 'coupons'));
     }
 
     /**
@@ -73,7 +76,6 @@ class ProductController extends Controller
         $products->admin_role = $admin_role;
         $products->product_name = $request->product_name;
         $products->product_description = $request->product_description;
-       // $val['feature_image'] = $request->feature_image;
         $products->color = $request->product_color;
         $products->model = $request->product_model;
         $products->tax = $request->product_tax;
@@ -81,14 +83,15 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->subcategory_id = $request->product_category;
+        $products->sub_categories_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
+        $products->sold = rand(4,100);
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->feature_image->move(public_path('images'), $filename);
-            $products->feature_image= $filename;
+            $products->feature_image = $filename;
             $products->save();
         };
 
@@ -159,7 +162,7 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->subcategory_id = $request->product_category;
+        $products->sub_category_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
 
         if($request->hasFile('feature_image')){
