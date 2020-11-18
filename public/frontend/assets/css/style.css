@@ -1442,7 +1442,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .main_menu nav > ul {
   display: flex;
-  justify-content: center;
 }
 .main_menu nav > ul > li {
   position: relative;
@@ -11033,6 +11032,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .fa-camera{
     font-size: 16px;
     color:gray;
+}
+.print{
+  width:100%;
+  margin-bottom:60px;
 }
 
 

@@ -20,7 +20,7 @@
                             <h3 class="box-title">Update Category</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{route('category.update',$category->id)}}" method="POST">
+                        <form role="form" action="{{route('category.update',$category->id)}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
                         <div class="box-body">
@@ -35,6 +35,12 @@
                                         <option value="0" @if($category->status == 0 ) selected @endif>InActive</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Category Image</label>
+                                    <input type="file" name="category_image" class="form-control-file" id="exampleFormControlFile1">
+                                    <span><img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}" width="80"></span>
+                                </div>
+
                             </div><!-- /.box-body -->
 
                             <div class="box-footer">

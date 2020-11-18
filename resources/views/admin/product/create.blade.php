@@ -53,7 +53,6 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Product Category</label>
                                             <select name="product_category" id="" class="form-control">
-                                                @php $subcategory = \App\Models\SubCategory::orderBy('subcategory_name','asc')->get() @endphp
                                                 @foreach($subcategory as $category )
                                                     <option value="{{$category->id}}">{{$category->subcategory_name}}</option>
                                                 @endforeach
@@ -63,7 +62,6 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Product Coupon</label>
                                             <select name="product_coupon" id="" class="form-control">
-                                                @php $coupons = \App\Models\Coupon::orderBy('coupon_code','asc')->get() @endphp
                                                 @foreach($coupons as $coupon )
                                                     <option value="{{$coupon->id}}">{{$coupon->coupon_code}}</option>
                                                 @endforeach
