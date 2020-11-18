@@ -133,7 +133,7 @@
                                    </ul>
                                 </div>
                                 <div class="product_meta">
-                                    <span>Category: <a href="{{$categoryName->id}}">{{$categoryName->category_name}}</a></span>
+{{--                                    <span>Category: <a href="{{$categoryName->id}}">{{$categoryName->category_name}}</a></span>--}}
                                 </div>
                             <div class="priduct_social">
                                 <ul>
