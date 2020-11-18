@@ -16,6 +16,7 @@ Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
     Route::post('/', 'Users\CartController@store')->name('pages.cart');
     Route::get('/', 'Users\CartController@create')->name('cart.create');
+    Route::put('/{id}', 'Users\CartController@update')->name('cart.update');
     Route::delete('/{id}', 'Users\CartController@destroy')->name('cart.destroy');
 
 

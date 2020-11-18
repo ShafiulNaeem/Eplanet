@@ -106,14 +106,16 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        //dd($request->all());
         if($request->id and $request->quantity)
         {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
+            //session()->flash('success', 'Cart updated successfully');
+            return redirect()->back()->with('success', 'Cart  updated successfully!');
         }
     }
 
