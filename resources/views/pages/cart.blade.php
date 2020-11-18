@@ -22,16 +22,17 @@
     <!--shopping cart area start -->
     @php
         $total=0;
+        $totalTax=0;
     @endphp
     <div class="shopping_cart_area mt-70">
         <div class="container">
-            <form action="#">
                 <div class="row">
                     <div class="col-12">
                         <div class="table_desc">
                             <div class="cart_page table-responsive">
-
-                                <table>
+                                @php $addTocarts = Session::get('cart'); @endphp
+                                @if(Session::has('cart') && count( Session::get('cart') ) > 0)
+                                    <table>
                                     <thead>
                                     <tr>
                                         <th class="product_remove">Delete</th>
@@ -40,17 +41,17 @@
                                         <th class="product-price">Price</th>
                                         <th class="product_quantity">Quantity</th>
                                         <th class="product_total">Total</th>
-                                        <th class="product_total">Confirm</th>
+                                        <th class="product_total">Update</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php $addTocarts = Session::get('cart'); @endphp
-                                    @if(isset($addTocarts))
+
                                         @foreach($addTocarts as $index => $addTocart)
 
                                         <tr>
                                             @php
                                                  $total += $addTocart['quantity'] * $addTocart['product_price'];
+$totalTax += $addTocart['product_tax'];
                                             @endphp
                                             <td class="product_remove">
                                                 <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
@@ -71,22 +72,25 @@
                                                 </td>
                                                 <td class="product_total">${{$addTocart['quantity'] * $addTocart['product_price']}}</td>
                                                 <td class="product_total">
-                                                    <button type="submit" class="btn btn-success">Confirm</button>
+                                                    <button type="submit" class="btn btn-success">Update</button>
                                                 </td>
 
                                              </form>
                                         </tr>
                                             @endforeach
-                                    @endif
 
                                     </tbody>
                                 </table>
+                                @else
+                                    <h3 class="text-info text-center">Cart Empty</h3>
+                                @endif
                             </div>
 
                         </div>
                     </div>
                 </div>
                 <!--coupon code area start-->
+            @if(count( Session::get('cart') ) > 0)
                 <div class="coupon_area">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
@@ -105,17 +109,17 @@
                                 <div class="coupon_inner">
                                     <div class="cart_subtotal">
                                         <p>Subtotal</p>
-                                        <p class="cart_amount">£215.00</p>
+                                        <p class="cart_amount">BDT {{ $total }}</p>
                                     </div>
                                     <div class="cart_subtotal ">
                                         <p>Shipping</p>
-                                        <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                                        <p class="cart_amount"> BDT {{ $total + (($total/$totalTax)/100) }}</p>
                                     </div>
                                     <a href="#">Calculate shipping</a>
 
                                     <div class="cart_subtotal">
                                         <p>Total</p>
-                                        <p class="cart_amount">$ {{$total}}</p>
+                                        <p class="cart_amount">BDT {{ $total + (($total/$totalTax)/100) }}</p>
                                     </div>
                                     <div class="checkout_btn">
                                         <a href="Checkout.html">Proceed to Checkout</a>
@@ -125,8 +129,8 @@
                         </div>
                     </div>
                 </div>
+            @endif
                 <!--coupon code area end-->
-            </form>
         </div>
     </div>
     <!--shopping cart area end -->

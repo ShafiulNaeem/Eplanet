@@ -28,7 +28,7 @@ class CreateProductsTable extends Migration
             $table->string('size')->nullable();
             $table->string('model')->nullable();
             $table->double('product_price');
-            $table->double('tax')->nullable();
+            $table->double('tax')->default(0);
             $table->string('manufactured_by')->nullable();
             $table->string('color')->nullable();
             $table->timestamps();
