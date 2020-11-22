@@ -3,8 +3,8 @@
 @section('content')
 
    
-    <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
+ <!--breadcrumbs area start-->
+ <div class="breadcrumbs_area">
         <div class="container">   
             <div class="row">
                 <div class="col-12">
@@ -25,55 +25,6 @@
     <div class="Checkout_section mt-70">
        <div class="container">
             <div class="row">
-               <div class="col-12">
-                    <div class="user-actions">
-                        <h3> 
-                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                            Returning customer?
-                            <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_login" aria-expanded="true">Click here to login</a>     
-
-                        </h3>
-                         <div id="checkout_login" class="collapse" data-parent="#accordion">
-                            <div class="checkout_info">
-                                <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>  
-                                <form action="#">  
-                                    <div class="form_group">
-                                        <label>Username or email <span>*</span></label>
-                                        <input type="text">     
-                                    </div>
-                                    <div class="form_group">
-                                        <label>Password  <span>*</span></label>
-                                        <input type="text">     
-                                    </div> 
-                                    <div class="form_group group_3 ">
-                                        <button type="submit">Login</button>
-                                        <label for="remember_box">
-                                            <input id="remember_box" type="checkbox">
-                                            <span> Remember me </span>
-                                        </label>     
-                                    </div>
-                                    <a href="#">Lost your password?</a>
-                                </form>          
-                            </div>
-                        </div>    
-                    </div>
-                    <div class="user-actions">
-                        <h3> 
-                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                            Returning customer?
-                            <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_coupon" aria-expanded="true">Click here to enter your code</a>     
-
-                        </h3>
-                         <div id="checkout_coupon" class="collapse" data-parent="#accordion">
-                            <div class="checkout_info coupon_info">
-                                <form action="#">
-                                    <input placeholder="Coupon code" type="text">
-                                    <button type="submit">Apply coupon</button>
-                                </form>
-                            </div>
-                        </div>    
-                    </div>    
-               </div>
             </div>
             <div class="checkout_form">
                 <div class="row">
@@ -135,9 +86,6 @@
 
                                 </div> 
                                 <div class="col-12 mb-20">
-                                    <input id="account" type="checkbox" data-target="createp_account" />
-                                    <label for="account" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">Create an account?</label>
-
                                     <div id="collapseOne" class="collapse one" data-parent="#accordion">
                                         <div class="card-body1">
                                            <label> Account password   <span>*</span></label>
@@ -146,9 +94,6 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mb-20">
-                                    <input id="address" type="checkbox" data-target="createp_account" />
-                                    <label class="righ_0" for="address" data-toggle="collapse" data-target="#collapsetwo" aria-controls="collapseOne">Ship to a different address?</label>
-
                                     <div id="collapsetwo" class="collapse one" data-parent="#accordion">
                                        <div class="row">
                                             <div class="col-lg-6 mb-20">
@@ -264,8 +209,7 @@
                             </div>
                             <div class="payment_method">
                                <div class="panel-default">
-                                    <input id="payment" name="check_method" type="radio" data-target="createp_account" />
-                                    <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Create an account?</label>
+                                   
 
                                     <div id="method" class="collapse one" data-parent="#accordion">
                                         <div class="card-body1">
@@ -294,5 +238,6 @@
         </div>       
     </div>
     <!--Checkout page section end-->
+ 
 
 @endsection
