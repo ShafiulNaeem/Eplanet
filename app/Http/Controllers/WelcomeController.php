@@ -59,7 +59,7 @@ class WelcomeController extends Controller
         $category = Category::orderBy('category_name','asc')->get();
 
         //BestSell from Product
-        $product = Product::orderBy('sold','desc')->get();
+        $product = Product::orderBy('sold','desc')->limit(10)->get();
 
 
         //dd($mainRes);
@@ -114,12 +114,13 @@ class WelcomeController extends Controller
 
         $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->get();
 
-        $categoryName = SubCategory::with('category')
-            ->where('id', $product[0]->sub_categories_id)
-            ->get()[0]->category;
+//        $categoryName = SubCategory::with('category')
+//            ->where('id', $product[0]->sub_categories_id)
+//            ->get()[0]->category;
+        //'categoryName'=> $categoryName
 
-        return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'categoryName'=> $categoryName ]);
-       // return view('pages.product-details',compact('products'));
+        return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
+
     }
 
 }
