@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Session;
 
@@ -16,7 +15,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+            //
     }
 
     /**
@@ -26,7 +25,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.cart');
     }
 
     /**
@@ -37,9 +36,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
 
-        $cart = session()->get('cart');
+        $cart = Session::get('cart');
 
         // if cart is empty then this the first product
         if(!$cart) {
@@ -50,16 +48,17 @@ class CartController extends Controller
                     "quantity" => $request->quantity,
                     "product_price" => $request->product_price,
                     "feature_image" => $request->feature_image,
+                    "product_tax" => $request->product_tax,
                 ]
             ];
-            session()->put('cart', $cart);
+            Session::put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
         // if cart not empty then check if this product exist then increment quantity
         if(isset($cart[$request->product_id])) {
             $cart[$request->product_id]['quantity']+= $request->quantity;
-            session()->put('cart', $cart);
+            Session::put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
@@ -70,9 +69,10 @@ class CartController extends Controller
             "quantity" => $request->quantity,
             "product_price" => $request->product_price,
             "feature_image" => $request->feature_image,
+            "product_tax" => $request->product_tax,
         ];
 
-        session()->put('cart', $cart);
+        Session::put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
 
     }
@@ -85,7 +85,15 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+        if($id) {
+            $cart = Session::get('cart');
+            if(isset($cart[$id])) {
+                unset($cart[$id]);
+                Session::put('cart', $cart);
+            }
+            //session()->flash('success', 'Product removed successfully');
+            return redirect()->back()->with('success', 'Product  removed successfully!');
+        }
     }
 
     /**
@@ -106,30 +114,33 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        //dd($request->all());
         if($request->id and $request->quantity)
         {
-            $cart = session()->get('cart');
+            $cart = Session::get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
+            Session::put('cart', $cart);
+            //session()->flash('success', 'Cart updated successfully');
+            return redirect()->back()->with('success', 'Cart  updated successfully!');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
+        //dd($request->all());
         if($request->id) {
-            $cart = session()->get('cart');
+            $cart = Session::get('cart');
             if(isset($cart[$request->id])) {
                 unset($cart[$request->id]);
-                session()->put('cart', $cart);
+                Session::put('cart', $cart);
             }
             //session()->flash('success', 'Product removed successfully');
             return redirect()->back()->with('success', 'Product  removed successfully!');

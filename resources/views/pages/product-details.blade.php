@@ -117,6 +117,7 @@
                                         <input  name="product_name" value="{{$product->product_name}}" hidden>
                                         <input  name="feature_image" value="{{$product->feature_image}}" hidden>
                                         <input  name="product_price" value="{{$product->product_price}}" hidden>
+                                        <input  name="product_tax" value="{{$product->tax}}" hidden>
                                         @if($product->stock > 0)
                                             <button class="button" type="submit">add to cart</button>
                                         @else
@@ -133,7 +134,7 @@
                                    </ul>
                                 </div>
                                 <div class="product_meta">
-                                    <span>Category: <a href="{{$categoryName->id}}">{{$categoryName->category_name}}</a></span>
+{{--                                    <span>Category: <a href="{{$categoryName->id}}">{{$categoryName->category_name}}</a></span>--}}
                                 </div>
                             <div class="priduct_social">
                                 <ul>
