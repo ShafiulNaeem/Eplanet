@@ -152,8 +152,6 @@
 
 
 <!--  Section Product slider Start  -->
-
-
 <div class="product_area ">
     <div class="container">
         <div class="product_container">
@@ -170,17 +168,14 @@
                                                 <figure>
                                                     <div class="single_banner">
                                                         <div class="banner_thumb">
-                                                            <a href="product-details.html">
+                                                            <a href="{{route('cat.show',$category->id)}}">
                                                                 <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}">
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <figcaption class="product_content">
-                                                        <h4 class="product_name"><a href="product-details.html"></a></h4>
-                                                        <div class="price_box">
-                                                            <span class="current_price">{{$category->category_name}}</span>
+                                                        <h4 class="product_name"><a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}</a></h4>
 
-                                                        </div>
                                                     </figcaption>
                                                 </figure>
                                             </article>

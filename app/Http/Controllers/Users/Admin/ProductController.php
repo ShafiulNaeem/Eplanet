@@ -36,9 +36,10 @@ class ProductController extends Controller
     {
         $brands = Brand::orderBy('brand_name','asc')->get();
         $subcategory = SubCategory::all();
+        $categories = Category::all();
         $coupons = Coupon::all();
 
-        return view('admin.product.create',compact('brands','subcategory', 'coupons'));
+        return view('admin.product.create',compact('brands','subcategory', 'coupons', 'categories'));
     }
 
     /**
@@ -54,6 +55,7 @@ class ProductController extends Controller
             'product_description' => 'required',
             'product_brand' => 'required',
             'product_category' => 'required',
+            'product_sub_category' => 'required',
             'product_tax' => 'required',
             'product_price' => 'required',
             'product_color' => 'required',
@@ -67,12 +69,11 @@ class ProductController extends Controller
         $products = new Product();
 
         $admin_id = Auth::guard('admin')->user()->id;
-        $admin_role = Auth::guard('admin')->user()->role;
 
         $products->admin_id = $admin_id;
         $products->unique_id = Str::random(9);
+        $products->category_id = $request->product_category;
         $products->coupon_id = $request->product_coupon;
-        $products->admin_role = $admin_role;
         $products->product_name = $request->product_name;
         $products->product_description = $request->product_description;
         $products->color = $request->product_color;
@@ -82,7 +83,7 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->sub_categories_id = $request->product_category;
+        $products->sub_categories_id = $request->product_sub_category;
         $products->manufactured_by = $request->manufactured_by;
         $products->sold = rand(4,100);
 

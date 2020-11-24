@@ -52,6 +52,12 @@
                                             <option value="0" @if($subcategory->status == 0 ) selected @endif>InActive</option>
                                         </select>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Category Image</label>
+                                        <input type="file" name="sub_category_image" class="form-control-file" id="exampleFormControlFile1">
+                                        <span><img src="{{url('images',$subcategory->sub_category_image)}}" alt="{{$category->subcategory_name}}" width="80"></span>
+                                    </div>
                                 </div><!-- /.box-body -->
 
                                 <div class="box-footer">

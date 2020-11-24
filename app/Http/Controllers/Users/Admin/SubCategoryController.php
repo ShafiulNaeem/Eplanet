@@ -49,12 +49,21 @@ class SubCategoryController extends Controller
         $this->validate($request, array(
             'subcategory_name' => 'required',
             'category_name' => 'required',
+            'sub_category_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
 
         $SubCategory = new SubCategory();
         $SubCategory->subcategory_name = $request->subcategory_name;
         $SubCategory->category_id = $request->category_name;
         $SubCategory->status = $request->status;
+
+        if($request->hasFile('sub_category_image')){
+            $image = request()->file('sub_category_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            request()->sub_category_image->move(public_path('images'), $filename);
+            $SubCategory->sub_category_image= $filename;
+            $SubCategory->save();
+        };
 
         if($SubCategory->save()){
             Session::flash('success','Sub Category Inserted Successfully');
@@ -102,12 +111,21 @@ class SubCategoryController extends Controller
         $this->validate($request, array(
             'subcategory_name' => 'required',
             'category_name' => 'required',
+            'sub_category_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
         ));
 
         $subcategory->subcategory_name = $request->subcategory_name;
         $subcategory->category_id = $request->category_name;
         $subcategory->status = $request->status;
+
+        if($request->hasFile('sub_category_image')){
+            $image = request()->file('sub_category_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            request()->sub_category_image->move(public_path('images'), $filename);
+            $subcategory->sub_category_image= $filename;
+            $subcategory->save();
+        };
 
         if($subcategory->save()){
             Session::flash('success','Sub Category Updated Successfully');
