@@ -180,11 +180,12 @@
 
                         <div class="header_right_info">
                             <div class="search_container">
-                                <form action="{{route('pages.search')}}" method="GET" enctype="multipart/form-data">
+                                <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="hover_category">
                                         @php $categories = \App\Models\Category::orderBy('category_name','asc')->get();  @endphp
                                         <select class="select_option" style="color:#000" name="category_name" id="categori2">
-                                            <option selected value="1">Select a categories</option>
+                                            <option selected>Select a categories</option>
 
                                             @if(isset($categories))
                                                 @foreach($categories as $category)
