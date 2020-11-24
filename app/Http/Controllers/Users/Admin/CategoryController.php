@@ -55,7 +55,7 @@ class CategoryController extends Controller
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->category_image->move(public_path('images'), $filename);
+            request()->category_image->move(public_path('catego'), $filename);
             $categories->category_image= $filename;
             $categories->save();
         };
@@ -135,6 +135,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        //TODO : delete image file also
         $category->delete();
         Session::flash('error','Category Successfully Deleted');
         return redirect()->route('category.index');

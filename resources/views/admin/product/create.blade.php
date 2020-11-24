@@ -20,12 +20,12 @@
                                 <h3 class="box-title">Add Product</h3>
                             </div><!-- /.box-header -->
                             <!-- form start -->
-                            <div class="col-md-9 card">
+                            <div class="col-md-12 card">
                                 <form role="form" action="{{route('product.store')}}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     <div class="box-body">
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Name</label>
                                             <input type="text" name="product_name" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product Name">
                                             @error('product_name')
@@ -33,42 +33,49 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Product Description</label>
-                                            <textarea class="form-control" name="product_description" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            @error('product_description')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Brand</label>
                                             <select name="product_brand" id="" class="form-control">
+                                                <option value="" selected>Select Brand</option>
                                                 @foreach($brands as $brand)
                                                     <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Product Category</label>
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="exampleInputPassword1">Category</label>
                                             <select name="product_category" id="" class="form-control">
+                                                <option value="" selected>Select Category</option>
+                                                @foreach($categories as $category )
+                                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="exampleInputPassword1">Sub Category</label>
+                                            <select name="product_sub_category" id="" class="form-control">
+                                                <option value="" selected>Select Category</option>
                                                 @foreach($subcategory as $category )
                                                     <option value="{{$category->id}}">{{$category->subcategory_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Coupon</label>
                                             <select name="product_coupon" id="" class="form-control">
+                                                <option value="" selected>Select Coupon</option>
                                                 @foreach($coupons as $coupon )
                                                     <option value="{{$coupon->id}}">{{$coupon->coupon_code}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Stock</label>
                                             <input type="text" name="product_stock" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product available">
                                             @error('product_stock')
@@ -76,7 +83,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Size</label>
                                             <input type="text" name="product_size" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Enter your product size">
                                             @error('product_size')
@@ -84,7 +91,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Model</label>
                                             <input type="text" name="product_model" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Product Model">
                                             @error('product_model')
@@ -92,7 +99,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Price</label>
                                             <input type="text" name="product_price" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
                                             @error('product_price')
@@ -100,7 +107,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Tax</label>
                                             <input type="text" name="product_tax" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
                                             @error('product_tax')
@@ -108,7 +115,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Manufacture</label>
                                             <input type="text" name="manufactured_by" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
                                             @error('manufactured_by')
@@ -116,7 +123,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Color</label>
                                             <input type="text" name="product_color" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
                                             @error('product_color')
@@ -124,16 +131,24 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="exampleFormControlTextarea1">Product Description</label>
+                                            <textarea class="form-control" name="product_description" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            @error('product_description')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleFormControlFile1">Product Feature Image</label>
                                             <input type="file" name="feature_image" class="form-control-file" id="exampleFormControlFile1">
                                         </div>
 
                                     </div><!-- /.box-body -->
 
-                                    <div class="box-footer">
+{{--                                    <div class="box-footer">--}}
                                         <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
+{{--                                    </div>--}}
                                 </form>
                             </div>
                         </div><!-- /.box -->
