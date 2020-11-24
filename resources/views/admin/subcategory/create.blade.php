@@ -47,6 +47,10 @@
                                             <option value="0">InActive</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Sub Category Image</label>
+                                        <input type="file" name="sub_category_image" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
 
                                 </div><!-- /.box-body -->
 

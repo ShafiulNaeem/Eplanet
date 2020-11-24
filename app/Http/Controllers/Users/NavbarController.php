@@ -1,40 +1,67 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductImage;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class WelcomeController extends Controller
+class NavbarController extends Controller
 {
-    public function index(){
-
-        // Category wise Product
-        $mainRes = $this->productByCategory(['kids', 'men', 'women', 'electronics']);
-
-
-        //Category Query
-        $category = Category::orderBy('category_name','asc')->get();
-
-        //BestSell from Product
-        $product = Product::orderBy('sold','desc')->limit(10)->get();
-
-
-        //dd($mainRes);
-        return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product ]);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     */
+    public function store(Request $request)
+    {
+        if ($request->category_name > 0){
+            $category = SubCategory::with(['category','products'])->where('category_id',$request->category_name)->get();
+
+            return view('pages.categories',['categories' =>$category]);
+        }
+        if ($request->product_name != null ){
+            $mainRes = $this->productByCategory(['kids', 'men']);
+
+            $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->get();
+
+            return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-
-
         $catArray = ['kids', 'men'];
         $mainRes = [];
-
         foreach ($catArray as $val){
             $category_result = [];
             $subCategories = Category::with('subcategory')->where([
@@ -73,22 +100,45 @@ class WelcomeController extends Controller
             }
         }
 
-        $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->get();
+        $category = SubCategory::with('products')->where('id',$id)->get();
 
-//        $categoryName = SubCategory::with('category')
-//            ->where('id', $product[0]->sub_categories_id)
-//            ->get()[0]->category;
-        //'categoryName'=> $categoryName
-
-        return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
-
+        return view('pages.one-category',['results' => $mainRes,'categories' =>$category]);
     }
 
-    // Show Category
-    public function category($id){
-        $category = SubCategory::with(['category','products'])->where('category_id',$id)->get();
-        return view('pages.categories',['categories' =>$category]);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
 
     private function productByCategory($catArray){
         $mainRes = [];
