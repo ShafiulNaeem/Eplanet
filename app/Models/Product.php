@@ -10,6 +10,7 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
     protected $primaryKey = 'id';
+    //protected $foreignKey = 'sub_categories_id';
 
     protected $guarded = [];
 

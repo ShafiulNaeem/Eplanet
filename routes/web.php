@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',  'WelcomeController@index')->name('home');
+Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
 
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
@@ -13,6 +14,8 @@ Route::prefix('pages')->group(function(){
     Route::put('/', 'Users\CartController@update')->name('cart.update');
     Route::delete('/{id}', 'Users\CartController@destroy')->name('cart.destroy');
     Route::get('delete/{id}', 'Users\CartController@show')->name('cart.show');
+    Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
+    Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
 
 });
 
