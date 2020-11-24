@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',  'WelcomeController@index')->name('home');
 //Route::DELETE('layouts/frontend_main_menu/{id}', 'Users\CartController@destroy')->name('cart.destroy');
-//Route::get('/',  'WelcomeController@show')->name('pages.show');
+Route::get('layouts/',  'Users\NavbarController@index');
 
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
@@ -18,6 +18,7 @@ Route::prefix('pages')->group(function(){
     Route::get('/', 'Users\CartController@create')->name('cart.create');
     Route::put('/{id}', 'Users\CartController@update')->name('cart.update');
     Route::delete('/{id}', 'Users\CartController@destroy')->name('cart.destroy');
+    //Route::post('/', 'Users\NavbarController@store')->name('pages.search');
 
 
 });
