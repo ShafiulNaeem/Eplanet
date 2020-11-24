@@ -122,4 +122,11 @@ class WelcomeController extends Controller
 
     }
 
+    // Show Category
+    public function category($id){
+        $category = SubCategory::with(['category','products'])->where('category_id',$id)->get();
+        return view('pages.categories',['categories' =>$category]);
+    }
+
+
 }

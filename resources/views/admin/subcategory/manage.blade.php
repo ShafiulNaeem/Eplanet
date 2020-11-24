@@ -23,6 +23,7 @@
                         <thead style="background-color: #000;color:#fff">
                         <tr>
                             <th>SL</th>
+                            <th>Image</th>
                             <th>Category Name</th>
                             <th>Sub Category Name</th>
                             <th>Sub Category Status</th>
@@ -38,6 +39,7 @@
                             @foreach($subCategories as $subCategory)
                                 <tr>
                                     <td>{{$i}}</td>
+                                    <td>{{$subCategory->category_name}}</td>
                                     <td>{{$subCategory->category_name}}</td>
                                     <td>{{$subCategory->subcategory_name}}</td>
                                     <td>

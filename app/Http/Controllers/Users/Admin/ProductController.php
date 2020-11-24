@@ -82,7 +82,7 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->sub_categories_id = $request->product_category;
+        $products->sub_category_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
         $products->sold = rand(4,100);
 
