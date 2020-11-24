@@ -116,13 +116,11 @@ class CartController extends Controller
      */
     public function update(Request $request)
     {
-        //dd($request->all());
         if($request->id and $request->quantity)
         {
             $cart = Session::get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             Session::put('cart', $cart);
-            //session()->flash('success', 'Cart updated successfully');
             return redirect()->back()->with('success', 'Cart  updated successfully!');
         }
     }
@@ -135,7 +133,6 @@ class CartController extends Controller
      */
     public function destroy(Request $request)
     {
-        //dd($request->all());
         if($request->id) {
             $cart = Session::get('cart');
             if(isset($cart[$request->id])) {
