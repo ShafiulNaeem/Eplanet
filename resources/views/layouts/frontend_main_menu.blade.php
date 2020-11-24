@@ -180,11 +180,12 @@
 
                         <div class="header_right_info">
                             <div class="search_container">
-                                <form action="" method="post" enctype="multipart/form-data">
+                                <form action="{{route('pages.search')}}" method="GET" enctype="multipart/form-data">
                                     <div class="hover_category">
-
+                                        @php $categories = \App\Models\Category::orderBy('category_name','asc')->get();  @endphp
                                         <select class="select_option" style="color:#000" name="category_name" id="categori2">
                                             <option selected value="1">Select a categories</option>
+
                                             @if(isset($categories))
                                                 @foreach($categories as $category)
                                                         <option value="{{$category->id}}">
@@ -197,7 +198,7 @@
                                     </div>
 
                                     <div class="search_box">
-                                        <input name="category" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
+                                        <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                         <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                                     </div>
                                 </form>
@@ -264,10 +265,6 @@
                                             </div>
                                             <div class="mini_cart_table">
                                                 <div class="cart_table_border">
-{{--                                                    <div class="cart_total">--}}
-{{--                                                        <span>Sub total:</span>--}}
-{{--                                                        <span class="price">$125.00</span>--}}
-{{--                                                    </div>--}}
                                                     <div class="cart_total mt-10">
                                                         <span>total:</span>
                                                         <span class="price">$ {{$total}}</span>
