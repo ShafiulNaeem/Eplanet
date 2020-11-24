@@ -69,8 +69,7 @@ class WelcomeController extends Controller
     public function show($id)
     {
 
-        //dd($products);
-        // Category wise Product
+
         $catArray = ['kids', 'men'];
         $mainRes = [];
 
