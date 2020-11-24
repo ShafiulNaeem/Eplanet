@@ -15,8 +15,7 @@ class NavbarController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('category_name','asc')->get();
-        return view('layouts.frontend_main_menu',compact('categories'));
+
     }
 
     /**
