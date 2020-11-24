@@ -152,8 +152,6 @@
 
 
 <!--  Section Product slider Start  -->
-
-
 <div class="product_area ">
     <div class="container">
         <div class="product_container">
