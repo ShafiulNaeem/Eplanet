@@ -59,7 +59,7 @@ class WelcomeController extends Controller
         $category = Category::orderBy('category_name','asc')->get();
 
         //BestSell from Product
-        $product = Product::orderBy('sold','desc')->get();
+        $product = Product::orderBy('sold','desc')->limit(10)->get();
 
 
         //dd($mainRes);
