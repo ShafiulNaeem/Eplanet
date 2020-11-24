@@ -34,7 +34,7 @@ class NavbarController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function store(Request $request)
     {
@@ -44,45 +44,7 @@ class NavbarController extends Controller
             return view('pages.categories',['categories' =>$category]);
         }
         if ($request->product_name != null ){
-            $catArray = ['kids', 'men'];
-            $mainRes = [];
-            foreach ($catArray as $val){
-                $category_result = [];
-                $subCategories = Category::with('subcategory')->where([
-                    ['category_name' , '=', $val],
-                    ['status', '=', 1],
-                ])->get();
-
-
-                foreach ($subCategories as $sub){
-
-                    $category_result['category'] = [
-                        'category_name' => $sub->category_name,
-                        'category_image' => $sub->category_image
-                    ];
-
-                    foreach ($sub->subcategory as $subCat){
-                        $product = SubCategory::with('products')->where('id', $subCat->id)->get();
-                        if (count($product) > 0){
-                            foreach ($product as $pval) {
-                                foreach ($pval->products as $products){
-                                    $category_result['category']['products'][] = [
-                                        'id' => $products->id,
-                                        'unique_id' => $products->unique_id,
-                                        'brand_id' => $products->brand_id,
-                                        'product_name' => $products->product_name,
-                                        'feature_image' => $products->feature_image,
-                                        'stock' => $products->stock,
-                                        'product_price' => $products->product_price
-                                    ];
-
-                                }
-                            }
-                        }
-                    }
-                    $mainRes[]=$category_result;
-                }
-            }
+            $mainRes = $this->productByCategory(['kids', 'men']);
 
             $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->get();
 
@@ -175,5 +137,48 @@ class NavbarController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    private function productByCategory($catArray){
+        $mainRes = [];
+        foreach ($catArray as $val){
+            $category_result = [];
+            $subCategories = Category::with('subcategory')->where([
+                ['category_name' , '=', $val],
+                ['status', '=', 1],
+            ])->get();
+
+
+            foreach ($subCategories as $sub){
+
+                $category_result['category'] = [
+                    'category_name' => $sub->category_name,
+                    'category_image' => $sub->category_image
+                ];
+
+                foreach ($sub->subcategory as $subCat){
+                    $product = SubCategory::with('products')->where('id', $subCat->id)->get();
+                    if (count($product) > 0){
+                        foreach ($product as $pval) {
+                            foreach ($pval->products as $products){
+                                $category_result['category']['products'][] = [
+                                    'id' => $products->id,
+                                    'unique_id' => $products->unique_id,
+                                    'brand_id' => $products->brand_id,
+                                    'product_name' => $products->product_name,
+                                    'feature_image' => $products->feature_image,
+                                    'stock' => $products->stock,
+                                    'product_price' => $products->product_price
+                                ];
+
+                            }
+                        }
+                    }
+                }
+                $mainRes[]=$category_result;
+            }
+        }
+        return $mainRes;
     }
 }
