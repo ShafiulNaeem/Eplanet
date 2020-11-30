@@ -1,89 +1,87 @@
 @extends('layouts.app_admin')
 
 @section('content')
-<div class="wrapper row-offcanvas row-offcanvas-left">
-    <!-- Left side column. contains the logo and sidebar -->
-    @include('layouts.admin_sidebar')
 
-    <!-- Right side column. Contains the navbar and content of the page -->
-    <aside class="right-side">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <a href="{{route('brand.create')}}" class="btn btn-primary">Create Brand</a>
-        </section>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+@include('layouts.admin_blade_title', [
+            'title' => 'Manage Brands'
+        ])
 
-        <div class="col-xs-12 print">
-{{--            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>--}}
-            <button class="btn btn-primary pull-right" id="download" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
-        </div>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
 
-        <!-- Main content -->
-        <section class="content">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
 
-            <div class="box-body table-responsive" id="invoice">
-                <table  id="myTable" class="table text-center display  table-bordered table-hover">
+                                    <tr>
+                                        <th>SL</th>
+                                        <th>Brand Name</th>
+                                        <th>Brand Status</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
 
-                    <thead style="background-color: #000;color:#fff">
-                        <tr>
-                            <th>SL</th>
-                            <th>Brand Name</th>
-                            <th>Brand Status</th>
-                            <th>Date</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php $i=1; @endphp
+                                </thead>
+                                <tbody>
+                                @foreach($brands as $index => $brand)
+                                <tr>
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-center">{{$brand->brand_name}}</td>
+                                    <td class="text-center">
+                                        @if($brand->status == 1)
+                                            <span class="btn btn-success">Active</span>
+                                        @else
+                                            <span class="btn btn-danger">InActive</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">{{ date('Y-m-d', strtotime($brand->create_at)) }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('brand.edit', $brand->id) }}" class="btn btn-app float-left">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
 
-                        @foreach($brands as $brand)
-                        <tr>
-                            <td>{{$i}}</td>
-                            <td>{{$brand->brand_name}}</td>
-                            <td>
-                                @if($brand->status == 1)
-                                <span class="btn btn-success">Active</span>
-                                @endif
+                                        <form class="float-left" action="{{ route('brand.destroy', $brand->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-danger btn btn-app" >
+                                                <i class="fa fa-trash fa-2x"></i> DELETE
+                                            </button>
+                                        </form>
 
-                                @if($brand->status == 0)
-                                <span class="btn btn-danger">InActive</span>
-                                @endif
-                            </td>
-                            <td>{{ date('Y-m-d', strtotime($brand->create_at)) }}</td>
-                            <td>
-                                <a href="{{route('brand.edit',$brand->id)}}" class="btn btn-success">Edit</a>
-                                <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$brand->id}}">Delete</a>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal{{$brand->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete This Brand</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{route('brand.destroy',$brand->id)}}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger">Confirm</button>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        @php $i++; @endphp
-                        @endforeach
-                    </tbody>
-
-                </table>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Brand Name</th>
+                                    <th>Brand Status</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
             </div>
-
-        </section><!-- /.content -->
-    </aside><!-- /.right-side -->
-</div><!-- ./wrapper -->
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 @endsection

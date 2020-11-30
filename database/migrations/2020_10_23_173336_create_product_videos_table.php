@@ -16,7 +16,7 @@ class CreateProductVideosTable extends Migration
         Schema::create('product_videos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->string('product_image');
+            $table->string('product_video');
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
