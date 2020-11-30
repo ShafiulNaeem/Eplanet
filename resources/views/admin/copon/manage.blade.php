@@ -1,26 +1,23 @@
 @extends('layouts.app_admin')
 
 @section('content')
-<div class="wrapper row-offcanvas row-offcanvas-left">
-    <!-- Left side column. contains the logo and sidebar -->
-    @include('layouts.admin_sidebar')
-
-    <!-- Right side column. Contains the navbar and content of the page -->
-    <aside class="right-side">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <a href="{{route('coupon.create')}}" class="btn btn-primary">Create Coupon</a>
-        </section>
+    @include('layouts.admin_blade_title', [
+                'title' => 'Manage Coupon'
+            ])
 
-        <!-- Main content -->
+    <!-- Main content -->
         <section class="content">
-        <div class="col-xs-12 print">
-{{--                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>--}}
-                <button class="btn btn-primary pull-right" id="download" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
-            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
 
-            <div class="box-body table-responsive" id="invoice">
-                <table id="example2" class="table text-center  table-bordered table-hover">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
                     <thead style="background-color: #000;color:#fff">
                         <tr>
                             <th>SL</th>
@@ -33,28 +30,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php $i=1; @endphp
 
-                        @foreach($copons as $copon)
+                        @foreach($copons as $index => $copon)
                         <tr>
-                            <td>{{$i}}</td>
+                            <td>{{$index + 1}}</td>
                             <td>{{$copon->coupon_code}}</td>
-                            <td>{{$copon->amount}}</td>
+                            <td>BDT {{$copon->amount}}</td>
                             <td>{{date('Y-m-d',strtotime($copon->created_at))}}</td>
                             <td>
                                 @if($copon->status == 1)
                                 <span class="btn btn-success">Active</span>
-                                @endif
-
-                                @if($copon->status == 0)
+                                @else
                                 <span class="btn btn-danger">InActive</span>
                                 @endif
                             </td>
 
 
                             <td>
-                                <a href="{{route('coupon.edit',$copon->id)}}" class="btn btn-success">Edit</a>
-                                <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$copon->id}}">Delete</a>
+                                <a href="{{route('coupon.edit',$copon->id)}}" class="btn text-warning btn-app float-left">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a href="" class="btn btn-app text-danger float-left" data-toggle="modal" data-target="#exampleModal{{$copon->id}}">
+                                    <i class="fa fa-trash fa-2x"></i> DELETE
+                                </a>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal{{$copon->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -79,14 +77,32 @@
                                 </div>
                             </td>
                         </tr>
-                        @php $i++; @endphp
                         @endforeach
                     </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>SL</th>
+                                        <th>Coupon Code</th>
+                                        <th>Coupon  Amount</th>
+                                        <th>Coupon  Status</th>
+                                        <th>Coupon  Created</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </tfoot>
 
                 </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
             </div>
-
-        </section><!-- /.content -->
-    </aside><!-- /.right-side -->
-</div><!-- ./wrapper -->
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 @endsection

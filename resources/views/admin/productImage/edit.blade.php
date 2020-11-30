@@ -2,36 +2,37 @@
 
 @section('content')
     <div class="wrapper row-offcanvas row-offcanvas-left">
-        <!-- Left side column. contains the logo and sidebar -->
-    @include('layouts.admin_sidebar')
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+        @include('layouts.admin_blade_title', [
+                'title' => 'Edit Product Image'
+            ])
 
-    <!-- Right side column. Contains the navbar and content of the page -->
-        <aside class="right-side">
-
-
-            <!-- Main content -->
+        <!-- Main content -->
             <section class="content">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- general form elements -->
-                        <div class="box box-primary">
-                            <div class="box-header">
-                                <h3 class="box-title">Update Product Image</h3>
-                            </div><!-- /.box-header -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="card card-dark">
+                                <div class="card-header">
+                                    <h3 class="card-title">Edit Product Image</h3>
+                                </div>
+                                <!-- /.card-header -->
                             <!-- form start -->
                             <form role="form" action="{{route('productImage.update',$productImage->id)}}" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="box-body">
+                                <div class="card-body">
 
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Product Name</label>
-                                        <select name="product_name" id="" class="form-control">
-                                            @php $products = \App\Models\Product::orderBy('product_name','asc')->get() @endphp
+                                        <select name="product_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <option selected="selected">Select Product</option>
                                             @foreach($products as $product)
                                                 <option
-                                                @if( $product->id == $productImage->product_id )
+                                                @if( $product->id == $productImage->productImages[0]->product_id )
                                                     selected
                                                 @endif
 
@@ -39,26 +40,36 @@
                                             @endforeach
                                         </select>
                                     </div>
-
+                                    @foreach($productImage->productImages as $images)
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Product Image</label>
-                                        <input type="file" name="product_image" class="form-control-file" id="exampleFormControlFile1">
-                                        <span><img src="{{url('images',$productImage->product_image)}}" alt="" width="80"></span>
+                                        <div class="input-group ">
+                                            <div class="custom-file">
+                                                <input type="file" value="{{$images->product_image}}" name="product_image[]" multiple class="custom-file-input" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                        </div>
+
+                                            <input type="hidden" name="product_image_id[]" value="{{$images->id}}">
+                                            <span><img src="{{url('images',$images->product_image)}}" alt="" width="80"></span>
+
 
                                     </div>
-
+                                    @endforeach
                                 </div><!-- /.box-body -->
 
-                                <div class="box-footer">
+                                <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
-                        </div><!-- /.box -->
+                            </div>
+                            <!-- /.card -->
 
+                        </div>
+                        <!--/.col (left) -->
                     </div>
-                </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
 
-            </section><!-- /.content -->
-        </aside><!-- /.right-side -->
-    </div><!-- ./wrapper -->
+            </section>
 @endsection

@@ -38,17 +38,16 @@ class NavbarController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->category_name > 0){
-            $category = SubCategory::with(['category','products'])->where('category_id',$request->category_name)->get();
-
-            return view('pages.categories',['categories' =>$category]);
-        }
         if ($request->product_name != null ){
             $mainRes = $this->productByCategory(['kids', 'men']);
 
             $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->get();
 
             return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
+        } else {
+            $category = SubCategory::with(['category','products'])->where('category_id',$request->category_name)->get();
+
+            return view('pages.categories',['categories' =>$category]);
         }
     }
 
