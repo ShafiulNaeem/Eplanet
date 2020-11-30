@@ -94,8 +94,8 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subcategory)
     {
-//        dd($subcategory);
-        return view('admin.subcategory.edit',compact('subcategory'));
+        $categories = Category::all();
+        return view('admin.subcategory.edit',compact('subcategory', 'categories'));
     }
 
     /**
@@ -111,8 +111,6 @@ class SubCategoryController extends Controller
         $this->validate($request, array(
             'subcategory_name' => 'required',
             'category_name' => 'required',
-            'sub_category_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
         ));
 
         $subcategory->subcategory_name = $request->subcategory_name;
@@ -147,6 +145,7 @@ class SubCategoryController extends Controller
     public function destroy(SubCategory $subcategory)
     {
         $subcategory->delete();
-        return redirect()->back()->with('deleted','Deleted Successfully..');
+        Session::flash('success','Sub Category Delete Successfully');
+        return redirect()->back();
     }
 }
