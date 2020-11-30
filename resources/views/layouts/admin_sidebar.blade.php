@@ -1,161 +1,808 @@
-<aside class="left-side sidebar-offcanvas">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="img/avatar3.png" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-                <p>Hello {{Auth::guard('admin')->user()->name}}</p>
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
 
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle text-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::guard('admin')->user()->name }}
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </li>
+    </ul>
+</nav>
+<!-- /.navbar -->
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{route('admin.dashboard')}}" class="brand-link">
+        <img src="{{ asset('adminAsset/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Admin Eplanet</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+{{--            <div class="image">--}}
+{{--                <img src="{{ asset('adminAsset/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">--}}
+{{--            </div>--}}
+            <div class="info" style="margin: 0 auto">
+                <a href="{{route('admin.dashboard')}}" class="d-block text-center">{{ Auth::guard('admin')->user()->name }}</a>
             </div>
         </div>
-        <!-- search form -->
-    {{-- <form action="#" method="get" class="sidebar-form">--}}
-    {{-- <div class="input-group">--}}
-    {{-- <input type="text" name="q" class="form-control" placeholder="Search..."/>--}}
-    {{-- <span class="input-group-btn">--}}
-    {{-- <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>--}}
-    {{-- </span>--}}
-    {{-- </div>--}}
-    {{-- </form>--}}
-    <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu">
-            <li class="active">
-                <a href="{{route('admin.dashboard')}}">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
-                </a>
-            </li>
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>Brand</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('brand.create')}}"><i class="fa fa-angle-double-right"></i>Create Brand</a></li>
-                    <li><a href="{{route('brand.index')}}"><i class="fa fa-angle-double-right"></i> Manage Brand</a></li>
+        <!-- SidebarSearch Form -->
+{{--        <div class="form-inline">--}}
+{{--            <div class="input-group" data-widget="sidebar-search">--}}
+{{--                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">--}}
+{{--                <div class="input-group-append">--}}
+{{--                    <button class="btn btn-sidebar">--}}
+{{--                        <i class="fas fa-search fa-fw"></i>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
-                </ul>
-            </li>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>Category</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('category.create')}}"><i class="fa fa-angle-double-right"></i>Create Category</a></li>
-                    <li><a href="{{route('category.index')}}"><i class="fa fa-angle-double-right"></i> Manage Category</a></li>
-                    <li><a href="{{route('subcategory.create')}}"><i class="fa fa-angle-double-right"></i>Create Sub Category</a></li>
-                    <li><a href="{{route('subcategory.index')}}"><i class="fa fa-angle-double-right"></i> Manage Sub Category</a></li>
+                <li class="nav-item">
+                    <a href="{{route('admin.dashboard')}}" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+{{--                            <span class="right badge badge-danger">New</span>--}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Brand
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('brand.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Brand</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('brand.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Brand</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-                </ul>
-            </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Category
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>Products</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('product.create')}}"><i class="fa fa-angle-double-right"></i>Add Product</a></li>
-                    <li><a href="{{route('product.index')}}"><i class="fa fa-angle-double-right"></i> Manage Product</a></li>
-                    <li><a href="{{route('productImage.create')}}"><i class="fa fa-angle-double-right"></i>Add Product Image</a></li>
-                    <li><a href="{{route('productImage.index')}}"><i class="fa fa-angle-double-right"></i> Manage Product Image</a></li>
-                    <li><a href="{{route('productVideo.create')}}"><i class="fa fa-angle-double-right"></i>Add Product Video</a></li>
-                    <li><a href="{{route('productVideo.index')}}"><i class="fa fa-angle-double-right"></i> Manage Product Video</a></li>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Main Category
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('category.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Category</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('category.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Category Manage</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Sub Category
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('subcategory.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Sub Category</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('subcategory.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Sub category</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Coupon
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('coupon.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Coupon</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('coupon.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Coupon</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-                </ul>
-            </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            All Products
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>Copon</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('coupon.create')}}"><i class="fa fa-angle-double-right"></i>Create Coupon</a></li>
-                    <li><a href="{{route('coupon.index')}}"><i class="fa fa-angle-double-right"></i> Manage Coupon</a></li>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Product
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('product.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Product</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('product.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Product Manage</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-warning"></i>
+                                <p>
+                                    Product Image
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('productImage.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Upload Product Images</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('productImage.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Product Images</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-danger"></i>
+                                <p>
+                                    Product Videos
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('productVideo.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Upload Product Video</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('productVideo.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Product Video</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
 
-                </ul>
-            </li>
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-laptop"></i>
-                    <span>UI Elements</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="pages/UI/general.html"><i class="fa fa-angle-double-right"></i> General</a></li>
-                    <li><a href="pages/UI/icons.html"><i class="fa fa-angle-double-right"></i> Icons</a></li>
-                    <li><a href="pages/UI/buttons.html"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
-                    <li><a href="pages/UI/sliders.html"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
-                    <li><a href="pages/UI/timeline.html"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-edit"></i> <span>Forms</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="pages/forms/general.html"><i class="fa fa-angle-double-right"></i> General Elements</a></li>
-                    <li><a href="pages/forms/advanced.html"><i class="fa fa-angle-double-right"></i> Advanced Elements</a></li>
-                    <li><a href="pages/forms/editors.html"><i class="fa fa-angle-double-right"></i> Editors</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>Tables</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="pages/tables/simple.html"><i class="fa fa-angle-double-right"></i> Simple tables</a></li>
-                    <li><a href="pages/tables/data.html"><i class="fa fa-angle-double-right"></i> Data tables</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="pages/calendar.html">
-                    <i class="fa fa-calendar"></i> <span>Calendar</span>
-                    <small class="badge pull-right bg-red">3</small>
-                </a>
-            </li>
-            <li>
-                <a href="pages/mailbox.html">
-                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                    <small class="badge pull-right bg-yellow">12</small>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i> <span>Examples</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="pages/examples/invoice.html"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
-                    <li><a href="pages/examples/login.html"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                    <li><a href="pages/examples/register.html"><i class="fa fa-angle-double-right"></i> Register</a></li>
-                    <li><a href="pages/examples/lockscreen.html"><i class="fa fa-angle-double-right"></i> Lockscreen</a></li>
-                    <li><a href="pages/examples/404.html"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                    <li><a href="pages/examples/500.html"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>
-                    <li><a href="pages/examples/blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
-                </ul>
-            </li>
-        </ul>
-    </section>
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-chart-pie"></i>--}}
+{{--                        <p>--}}
+{{--                            Charts--}}
+{{--                            <i class="right fas fa-angle-left"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/charts/chartjs.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>ChartJS</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/charts/flot.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Flot</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/charts/inline.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Inline</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/charts/uplot.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>uPlot</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-tree"></i>--}}
+{{--                        <p>--}}
+{{--                            UI Elements--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/general.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>General</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/icons.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Icons</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/buttons.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Buttons</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/sliders.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Sliders</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/modals.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Modals & Alerts</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/navbar.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Navbar & Tabs</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/timeline.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Timeline</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/UI/ribbons.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Ribbons</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-edit"></i>--}}
+{{--                        <p>--}}
+{{--                            Forms--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/forms/general.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>General Elements</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/forms/advanced.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Advanced Elements</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/forms/editors.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Editors</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/forms/validation.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Validation</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-table"></i>--}}
+{{--                        <p>--}}
+{{--                            Tables--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/tables/simple.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Simple Tables</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/tables/data.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>DataTables</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/tables/jsgrid.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>jsGrid</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-header">EXAMPLES</li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="pages/calendar.html" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-calendar-alt"></i>--}}
+{{--                        <p>--}}
+{{--                            Calendar--}}
+{{--                            <span class="badge badge-info right">2</span>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="pages/gallery.html" class="nav-link">--}}
+{{--                        <i class="nav-icon far fa-image"></i>--}}
+{{--                        <p>--}}
+{{--                            Gallery--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="pages/kanban.html" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-columns"></i>--}}
+{{--                        <p>--}}
+{{--                            Kanban Board--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon far fa-envelope"></i>--}}
+{{--                        <p>--}}
+{{--                            Mailbox--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/mailbox/mailbox.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Inbox</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/mailbox/compose.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Compose</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/mailbox/read-mail.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Read</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-book"></i>--}}
+{{--                        <p>--}}
+{{--                            Pages--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/invoice.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Invoice</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/profile.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Profile</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/e-commerce.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>E-commerce</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/projects.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Projects</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/project-add.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Project Add</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/project-edit.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Project Edit</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/project-detail.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Project Detail</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/contacts.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Contacts</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/faq.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>FAQ</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/contact-us.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Contact us</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon far fa-plus-square"></i>--}}
+{{--                        <p>--}}
+{{--                            Extras--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="#" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>--}}
+{{--                                    Login & Register v1--}}
+{{--                                    <i class="fas fa-angle-left right"></i>--}}
+{{--                                </p>--}}
+{{--                            </a>--}}
+{{--                            <ul class="nav nav-treeview">--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/login.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Login v1</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/register.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Register v1</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/forgot-password.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Forgot Password v1</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/recover-password.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Recover Password v1</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="#" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>--}}
+{{--                                    Login & Register v2--}}
+{{--                                    <i class="fas fa-angle-left right"></i>--}}
+{{--                                </p>--}}
+{{--                            </a>--}}
+{{--                            <ul class="nav nav-treeview">--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/login-v2.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Login v2</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/register-v2.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Register v2</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/forgot-password-v2.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Forgot Password v2</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="pages/examples/recover-password-v2.html" class="nav-link">--}}
+{{--                                        <i class="far fa-circle nav-icon"></i>--}}
+{{--                                        <p>Recover Password v2</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/lockscreen.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Lockscreen</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/legacy-user-menu.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Legacy User Menu</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/language-menu.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Language Menu</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/404.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Error 404</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/500.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Error 500</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/pace.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Pace</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/examples/blank.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Blank Page</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="starter.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Starter Page</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-search"></i>--}}
+{{--                        <p>--}}
+{{--                            Search--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/search/simple.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Simple Search</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="pages/search/enhanced.html" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Enhanced</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-header">MISCELLANEOUS</li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="iframe.html" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-ellipsis-h"></i>--}}
+{{--                        <p>Tabbed IFrame Plugin</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-file"></i>--}}
+{{--                        <p>Documentation</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-header">MULTI LEVEL EXAMPLE</li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="fas fa-circle nav-icon"></i>--}}
+{{--                        <p>Level 1</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-circle"></i>--}}
+{{--                        <p>--}}
+{{--                            Level 1--}}
+{{--                            <i class="right fas fa-angle-left"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="#" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Level 2</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="#" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>--}}
+{{--                                    Level 2--}}
+{{--                                    <i class="right fas fa-angle-left"></i>--}}
+{{--                                </p>--}}
+{{--                            </a>--}}
+{{--                            <ul class="nav nav-treeview">--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="#" class="nav-link">--}}
+{{--                                        <i class="far fa-dot-circle nav-icon"></i>--}}
+{{--                                        <p>Level 3</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="#" class="nav-link">--}}
+{{--                                        <i class="far fa-dot-circle nav-icon"></i>--}}
+{{--                                        <p>Level 3</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="#" class="nav-link">--}}
+{{--                                        <i class="far fa-dot-circle nav-icon"></i>--}}
+{{--                                        <p>Level 3</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="#" class="nav-link">--}}
+{{--                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                <p>Level 2</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="fas fa-circle nav-icon"></i>--}}
+{{--                        <p>Level 1</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-header">LABELS</li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon far fa-circle text-danger"></i>--}}
+{{--                        <p class="text">Important</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon far fa-circle text-warning"></i>--}}
+{{--                        <p>Warning</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="#" class="nav-link">--}}
+{{--                        <i class="nav-icon far fa-circle text-info"></i>--}}
+{{--                        <p>Informational</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
     <!-- /.sidebar -->
 </aside>

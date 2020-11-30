@@ -119,13 +119,16 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::find($id);
-        return view('admin.product.edit',compact('product','id'));
+        $brands = Brand::orderBy('brand_name','asc')->get();
+        $subcategory = SubCategory::all();
+        $categories = Category::all();
+        $coupons = Coupon::all();
+        return view('admin.product.edit',compact('product','brands', 'coupons','subcategory', 'categories'));
     }
 
     /**
@@ -162,7 +165,7 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->sub_category_id = $request->product_category;
+        $products->sub_categories_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
 
         if($request->hasFile('feature_image')){
@@ -183,13 +186,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $products = Product::find($id);
-        $products->delete();
-        return redirect()->back()->with('deleted','Deleted Successfully..');
+        $product->delete();
+        Session::flash('success','Product Deleted Successfully');
+        return redirect()->back();
     }
 }

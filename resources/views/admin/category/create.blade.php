@@ -2,59 +2,67 @@
 
 @section('content')
 <div class="wrapper row-offcanvas row-offcanvas-left">
-    <!-- Left side column. contains the logo and sidebar -->
-    @include('layouts.admin_sidebar')
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+    @include('layouts.admin_blade_title', [
+            'title' => 'Create Category'
+        ])
 
-    <!-- Right side column. Contains the navbar and content of the page -->
-    <aside class="right-side">
-
-
-        <!-- Main content -->
+    <!-- Main content -->
         <section class="content">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- general form elements -->
-                    <div class="box box-primary">
-                        <div class="box-header">
-                            <h3 class="box-title">Create Category</h3>
-                        </div><!-- /.box-header -->
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card card-dark">
+                            <div class="card-header">
+                                <h3 class="card-title">Create Category</h3>
+                            </div>
+                            <!-- /.card-header -->
                         <!-- form start -->
                         <form role="form" action="{{route('category.store')}}" enctype="multipart/form-data" method="POST">
                             @csrf
-                            <div class="box-body">
+                            <div class="card-body">
 
-                                <div class="form-group">
+                                <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputPassword1">Category Name</label>
                                     <input type="text" name="category_name" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Category Name">
                                     @error('category_name')
-                                    <span class="text-danger">{{$message}}</span>
+                                        <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputPassword1">Category Status</label>
-                                    <select name="status" id="" class="form-control">
+                                    <select name="status" id="exampleInputPassword1" class="form-control">
                                         <option value="1">Active</option>
                                         <option value="0">InActive</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlFile1">Category Image</label>
-                                    <input type="file" name="category_image" class="form-control-file" id="exampleFormControlFile1">
+                                    <label for="exampleInputFile">Category Image</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="category_image" class="custom-file-input" id="exampleInputFile">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div><!-- /.box-body -->
 
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
                             </div>
                         </form>
-                    </div><!-- /.box -->
+                        </div>
+                        <!-- /.card -->
 
+                    </div>
+                    <!--/.col (left) -->
                 </div>
-            </div>
-
-        </section><!-- /.content -->
-    </aside><!-- /.right-side -->
-</div><!-- ./wrapper -->
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
 @endsection

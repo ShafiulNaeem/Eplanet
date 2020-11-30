@@ -21,7 +21,6 @@ class ProductImageController extends Controller
     {
         $productImages = Product::with('productImages')->get();
 
-       //dd($productImages);
         return view('admin.productImage.manage',compact('productImages'));
     }
 
@@ -81,11 +80,13 @@ class ProductImageController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param ProductImage $productImage
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit(ProductImage $productImage)
+    public function edit($id)
     {
-        return view('admin.productImage.edit',compact('productImage'));
+        $productImage = Product::with('productImages')->find($id);
+        $products = Product::all();
+        return view('admin.productImage.edit',compact('productImage', 'products'));
     }
 
     /**
@@ -96,34 +97,26 @@ class ProductImageController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, ProductImage $productImage)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, array(
-            'product_name' => 'required',
-            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        foreach ($request->product_image_id as $ind => $product_image_id){
+            if($request->hasFile('product_image.'.$ind)){
+                $file = $request->file('product_image.'.$ind);
+                $filename = time() .  $file->getClientOriginalName() ;
+                $file->move(public_path('images'), $filename);
+                ProductImage::where('id', $product_image_id)->update(['product_image' => $filename]);
+            }
+        }
 
 
-        ));
 
-//        $productImages = ProductImage::find($id);
-        $productImage->product_id = $request->product_name;
-
-        if($request->hasFile('product_image')){
-            $image = request()->file('product_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->product_image->move(public_path('images'), $filename);
-            $productImage->product_image= $filename;
-            $productImage->save();
-        };
-
-
-        if($productImage->save()){
+//        if($productImage->save()){
             Session::flash('success','Product Images Updated Successfully');
             return redirect()->route('productImage.index');
-        } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
-        }
+//        } else {
+//            Session::flash('success','Something went wrong');
+//            return redirect()->back();
+//        }
     }
 
     /**
