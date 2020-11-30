@@ -22,28 +22,21 @@
                         </ul>
                     </div>
                     <div class="header_social text-right">
-
+                        @php $categories = \App\Models\Category::orderBy('category_name','asc')->get();  @endphp
                     </div>
                     <div class="search_container">
-                        <form action="#">
+                        <form action="{{route('pages.search')}}" method="post">
+                            @csrf
                             <div class="hover_category">
-                                <select class="select_option" name="select" id="categori1">
-                                    <option selected value="1">Select a categories</option>
-                                    <option value="2">Accessories</option>
-                                    <option value="3">Accessories & More</option>
-                                    <option value="4">Butters & Eggs</option>
-                                    <option value="5">Camera & Video </option>
-                                    <option value="6">Mornitors</option>
-                                    <option value="7">Tablets</option>
-                                    <option value="8">Laptops</option>
-                                    <option value="9">Handbags</option>
-                                    <option value="10">Headphone & Speaker</option>
-                                    <option value="11">Herbs & botanicals</option>
-                                    <option value="12">Vegetables</option>
-                                    <option value="13">Shop</option>
-                                    <option value="14">Laptops & Desktops</option>
-                                    <option value="15">Watchs</option>
-                                    <option value="16">Electronic</option>
+                                <select class="select_option" name="category_name" id="categori1">
+                                    <option selected >Select a categories</option>
+                                    @if(isset($categories))
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">
+                                                {{$category->category_name}}
+                                            </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="search_box">
@@ -183,7 +176,7 @@
                                 <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="hover_category">
-                                        @php $categories = \App\Models\Category::orderBy('category_name','asc')->get();  @endphp
+
                                         <select class="select_option" style="color:#000" name="category_name" id="categori2">
                                             <option selected>Select a categories</option>
 

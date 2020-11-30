@@ -1,25 +1,23 @@
 @extends('layouts.app_admin')
 
 @section('content')
-    <div class="wrapper row-offcanvas row-offcanvas-left">
-        <!-- Left side column. contains the logo and sidebar -->
-    @include('layouts.admin_sidebar')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+    @include('layouts.admin_blade_title', [
+                'title' => 'Manage Product Images'
+            ])
 
-    <!-- Right side column. Contains the navbar and content of the page -->
-        <aside class="right-side">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <a href="{{route('productImage.create')}}" class="btn btn-primary">Add ProductImage</a>
-            </section>
+    <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
 
-            <!-- Main content -->
-            <section class="content">
-            <div class="col-xs-12 print">
-{{--                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>--}}
-                <button class="btn btn-primary pull-right" id="download" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
-            </div>
-                <div class="box-body table-responsive" id="invoice">
-                    <table id="example2" class="table text-center  table-bordered table-hover">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
 
                         <thead style="background-color: #000;color:#fff">
                         <tr>
@@ -30,12 +28,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @php $i=1; @endphp
 
-                        @foreach($productImages as $productImage)
+                        @foreach($productImages as $index => $productImage)
                             @if(count($productImage->productImages) >0)
                             <tr>
-                                <td style="width: 5%">{{$i}}</td>
+                                <td style="width: 5%">{{$index + 1}}</td>
                                 <td style="width: 19%">{{$productImage->product_name}}</td>
                                 <td style="width: 57%">
                                     @php
@@ -45,10 +42,14 @@
                                         <img src="{{url('images',$images->product_image)}}" alt="{{$productImage->product_name}}" class="img-rounded" style=" width:{{$width-1}}%" />
                                     @endforeach
                                 </td>
-                                <td style="width: 19%">
-                                    <a href="{{route('productImage.edit',$productImage->id)}}" class="btn btn-success">Edit</a>
-                                    <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$productImage->id}}">Delete</a>
-                                    <a href="" class="btn btn-info" data-toggle="modal" data-target="">Views</a>
+                                <td >
+                                    <a href="{{route('productImage.edit',$productImage->id)}}" style="margin: 0px 0px 10px 0px" class="btn text-warning btn-app float-left">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a href="" style="margin: 0px 0px 10px 0px" class="btn btn-app text-danger float-left" data-toggle="modal" data-target="#exampleModal{{$productImage->id}}">
+                                        <i class="fa fa-trash fa-2x"></i> DELETE
+                                    </a>
+
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal{{$productImage->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,14 +75,29 @@
                                 </td>
                             </tr>
                             @endif
-                            @php $i++; @endphp
                         @endforeach
                         </tbody>
-
+                        <tfoot>
+                        <tr>
+                            <th>SL</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Action</th>
+                        </tr>
+                        </tfoot>
                     </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
                 </div>
-
-            </section><!-- /.content -->
-        </aside><!-- /.right-side -->
-    </div><!-- ./wrapper -->
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 @endsection

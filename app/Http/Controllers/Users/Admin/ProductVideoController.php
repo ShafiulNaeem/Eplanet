@@ -45,19 +45,17 @@ class ProductVideoController extends Controller
     {
         $this->validate($request, array(
             'product_name' => 'required',
-            'product_image' => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required',
-
-
+            'product_video' => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required',
         ));
 
         $productVideos = new ProductVideo();
         $productVideos->product_id = $request->product_name;
 
         if($request->hasFile('product_image')){
-            $image = request()->file('product_image');
+            $image = request()->file('product_video');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->product_image->move(public_path('videos'), $filename);
-            $productVideos->product_image= $filename;
+            request()->product_video->move(public_path('videos'), $filename);
+            $productVideos->product_video = $filename;
             $productVideos->save();
         }
 
@@ -91,7 +89,8 @@ class ProductVideoController extends Controller
     public function edit($id)
     {
         $productvideo = ProductVideo::find($id);
-        return view('admin.productVideo.edit',compact('productvideo','id'));
+        $products = Product::all();
+        return view('admin.productVideo.edit',compact('productvideo','id', 'products'));
     }
 
     /**
@@ -105,19 +104,17 @@ class ProductVideoController extends Controller
     {
         $this->validate($request, array(
             'product_name' => 'required',
-            'product_image' => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required',
-
-
+            'product_video' => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required',
         ));
 
         $productVideos = ProductVideo::find($id);
         $productVideos->product_id = $request->product_name;
 
-        if($request->hasFile('product_image')){
-            $image = request()->file('product_image');
+        if($request->hasFile('product_video')){
+            $image = request()->file('product_video');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->product_image->move(public_path('videos'), $filename);
-            $productVideos->product_image= $filename;
+            request()->product_video->move(public_path('videos'), $filename);
+            $productVideos->product_video= $filename;
             $productVideos->save();
         }
 

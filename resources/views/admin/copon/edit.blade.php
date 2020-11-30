@@ -1,29 +1,30 @@
 @extends('layouts.app_admin')
 
 @section('content')
-<div class="wrapper row-offcanvas row-offcanvas-left">
-    <!-- Left side column. contains the logo and sidebar -->
-    @include('layouts.admin_sidebar')
-
-    <!-- Right side column. Contains the navbar and content of the page -->
-    <aside class="right-side">
-
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+        @include('layouts.admin_blade_title', [
+                'title' => 'Edit Coupon'
+            ])
 
         <!-- Main content -->
-        <section class="content">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- general form elements -->
-                    <div class="box box-primary">
-                        <div class="box-header">
-                            <h3 class="box-title">Update Coupon</h3>
-                        </div><!-- /.box-header -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="card card-dark">
+                                <div class="card-header">
+                                    <h3 class="card-title">Edit Coupon</h3>
+                                </div>
+                                <!-- /.card-header -->
                         <!-- form start -->
                         <form role="form" action="{{route('coupon.update',$coupon->id)}}" method="POST">
                             @csrf
                             @method('PUT')
-                            <div class="box-body">
+                            <div class="card-body">
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Coupon Code</label>
@@ -48,16 +49,18 @@
                                 </div>
                             </div><!-- /.box-body -->
 
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Save Change</button>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
                             </div>
                         </form>
-                    </div><!-- /.box -->
+                            </div>
+                            <!-- /.card -->
 
-                </div>
-            </div>
-
-        </section><!-- /.content -->
-    </aside><!-- /.right-side -->
-</div><!-- ./wrapper -->
+                        </div>
+                        <!--/.col (left) -->
+                    </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
 @endsection

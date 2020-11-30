@@ -4,61 +4,79 @@
     <meta charset="UTF-8">
     <title>AdminLTE | Log in</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- bootstrap 3.0.2 -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-    <!-- font Awesome -->
-    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('adminAsset/plugins/fontawesome-free/css/all.min.css')}}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{ asset('adminAsset/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
-    <link href="{{asset('css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('adminAsset/dist/css/adminlte.min.css') }}">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
 </head>
-<body class="bg-black">
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>Admin Login</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
 
-<div class="form-box" id="login-box">
-    <div class="header">Sign In</div>
-    <form action="{{route('admin.login.submit')}}" method="post">
-        @csrf
-        <div class="body bg-gray">
-            <div class="form-group">
-                <input type="email" required name="email" class="form-control" placeholder="Admin Email"/>
+            <form action="{{ route('admin.login') }}" method="post">
+                @csrf
+                <div class="input-group mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-outline-primary btn-block">Sign In</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+            <div class="social-auth-links text-center mb-3">
+                <p>- OR -</p>
+{{--                <a href="#" class="btn btn-block btn-primary">--}}
+{{--                    <i class="fab fa-facebook mr-2"></i> Sign in using Facebook--}}
+{{--                </a>--}}
+{{--                <a href="#" class="btn btn-block btn-danger">--}}
+{{--                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+--}}
+{{--                </a>--}}
             </div>
-            <div class="form-group">
-                <input type="password" required name="password" class="form-control" placeholder="Password"/>
-            </div>
-{{--            <div class="form-group">--}}
-{{--                <input type="checkbox" name="remember_me"/> Remember me--}}
-{{--            </div>--}}
+            <!-- /.social-auth-links -->
+
+{{--            <p class="mb-1">--}}
+{{--                <a href="forgot-password.html">I forgot my password</a>--}}
+{{--            </p>--}}
+            <p class="mb-0">
+                <a href="{{ route('admin.register') }}" class="text-center">Register a new membership</a>
+            </p>
         </div>
-        <div class="footer">
-            <button type="submit" class="btn bg-olive btn-block">Sign me in</button>
-
-            <p><a href="#">I forgot my password</a></p>
-
-            <a href="{{route('admin.register')}}" class="text-center">Register a new membership</a>
-        </div>
-    </form>
-
-    <div class="margin text-center">
-        <span>Sign in using social networks</span>
-        <br/>
-        <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
-        <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
-        <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
-
+        <!-- /.login-card-body -->
     </div>
 </div>
+<!-- /.login-box -->
 
-
-<!-- jQuery 2.0.2 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-
+<!-- jQuery -->
+<script src="{{ asset('adminAsset/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('adminAsset/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('adminAsset/dist/js/adminlte.min.js') }}"></script>
 </body>
 </html>
