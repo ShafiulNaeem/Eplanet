@@ -29,7 +29,7 @@
                             @csrf
                             <div class="hover_category">
                                 <select class="select_option" name="category_name" id="categori1">
-                                    <option selected value="1">Select a categories</option>
+                                    <option selected >Select a categories</option>
                                     @if(isset($categories))
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">
