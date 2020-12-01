@@ -64,7 +64,7 @@ class NavbarController extends Controller
 
         $category = SubCategory::with('products')->where('id',$id)->get();
 
-        return view('pages.one-category',['results' => $mainRes,'categories' =>$category]);
+        return view('pages.one_category',['results' => $mainRes,'categories' =>$category]);
     }
 
     /**
