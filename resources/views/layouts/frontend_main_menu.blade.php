@@ -200,14 +200,24 @@
                             <div class="header_account_area">
                                 <div class="header_account_list register">
                                     <ul>
-                                        <li><a href="regtration.blade.php">Sign In</a></li>
+                                        @if(! \Illuminate\Support\Facades\Auth::check())
+                                            <li><a href="{{route('register')}}">Sign In</a></li>
+                                        @else
+                                            <li><a href="{{route('logout')}}"
+                                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                                >{{ __('Logout') }}</a></li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        @endif
                                         <li><a href="login.html">Message</a></li>
                                         <li><a href="login.html">Order</a></li>
                                         <li><a href="login.html">English</a></li>
                                     </ul>
                                 </div>
 
-                                @if( Session::has('cart') )
+                                @if( Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
                                     <div class="header_account_list  mini_cart_wrapper">
                                     @php $addTocarts = Session::get('cart'); @endphp
                                        <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
