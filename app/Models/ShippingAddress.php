@@ -9,5 +9,7 @@ class ShippingAddress extends Model
 {
     use HasFactory;
 
-    protected $table = 'shipping_addresss';
+    protected $table = 'shipping_addresses';
+
+    protected $guarded = ['_token'];
 }
