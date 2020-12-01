@@ -12,7 +12,7 @@
                     <div class="breadcrumb_content">
                        <h3>Cart</h3>
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="{{ route('home') }}">home</a></li>
                             <li>Shopping Cart</li>
                         </ul>
                     </div>
@@ -111,7 +111,7 @@
                                            <p class="cart_amount">BDT {{round($subTotal)}}</p>
                                        </div>
                                        <div class="checkout_btn">
-                                           <a href="Checkout.html">Proceed to Checkout</a>
+                                           <a href="{{ route('checkout') }}">Proceed to Checkout</a>
                                        </div>
                                     </div>
                                 </div>
