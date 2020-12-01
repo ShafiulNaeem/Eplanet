@@ -2,25 +2,25 @@
 
 @section('content')
 
-   
+
  <!--breadcrumbs area start-->
  <div class="breadcrumbs_area">
-        <div class="container">   
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
                        <h3>Checkout</h3>
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="{{ route('home') }}">home</a></li>
                             <li>Checkout</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>         
+        </div>
     </div>
     <!--breadcrumbs area end-->
-    
+
     <!--Checkout page section-->
     <div class="Checkout_section mt-70">
        <div class="container">
@@ -35,61 +35,61 @@
 
                                 <div class="col-lg-6 mb-20">
                                     <label>First Name <span>*</span></label>
-                                    <input type="text">    
+                                    <input type="text">
                                 </div>
                                 <div class="col-lg-6 mb-20">
                                     <label>Last Name  <span>*</span></label>
-                                    <input type="text"> 
+                                    <input type="text">
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label>Company Name</label>
-                                    <input type="text">     
+                                    <input type="text">
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="country">country <span>*</span></label>
-                                    <select class="select_option" name="cuntry" id="country"> 
-                                        <option value="2">bangladesh</option>      
-                                        <option value="3">Algeria</option> 
-                                        <option value="4">Afghanistan</option>    
-                                        <option value="5">Ghana</option>    
-                                        <option value="6">Albania</option>    
-                                        <option value="7">Bahrain</option>    
-                                        <option value="8">Colombia</option>    
-                                        <option value="9">Dominican Republic</option>   
+                                    <select class="select_option" name="cuntry" id="country">
+                                        <option value="2">bangladesh</option>
+                                        <option value="3">Algeria</option>
+                                        <option value="4">Afghanistan</option>
+                                        <option value="5">Ghana</option>
+                                        <option value="6">Albania</option>
+                                        <option value="7">Bahrain</option>
+                                        <option value="8">Colombia</option>
+                                        <option value="9">Dominican Republic</option>
 
                                     </select>
                                 </div>
 
                                 <div class="col-12 mb-20">
                                     <label>Street address  <span>*</span></label>
-                                    <input placeholder="House number and street name" type="text">     
+                                    <input placeholder="House number and street name" type="text">
                                 </div>
                                 <div class="col-12 mb-20">
-                                    <input placeholder="Apartment, suite, unit etc. (optional)" type="text">     
+                                    <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label>Town / City <span>*</span></label>
-                                    <input  type="text">    
-                                </div> 
+                                    <input  type="text">
+                                </div>
                                  <div class="col-12 mb-20">
                                     <label>State / County <span>*</span></label>
-                                    <input type="text">    
-                                </div> 
+                                    <input type="text">
+                                </div>
                                 <div class="col-lg-6 mb-20">
                                     <label>Phone<span>*</span></label>
-                                    <input type="text"> 
+                                    <input type="text">
 
-                                </div> 
+                                </div>
                                  <div class="col-lg-6 mb-20">
                                     <label> Email Address   <span>*</span></label>
-                                      <input type="text"> 
+                                      <input type="text">
 
-                                </div> 
+                                </div>
                                 <div class="col-12 mb-20">
                                     <div id="collapseOne" class="collapse one" data-parent="#accordion">
                                         <div class="card-body1">
                                            <label> Account password   <span>*</span></label>
-                                            <input placeholder="password" type="password">  
+                                            <input placeholder="password" type="password">
                                         </div>
                                     </div>
                                 </div>
@@ -98,58 +98,58 @@
                                        <div class="row">
                                             <div class="col-lg-6 mb-20">
                                                 <label>First Name <span>*</span></label>
-                                                <input type="text">    
+                                                <input type="text">
                                             </div>
                                             <div class="col-lg-6 mb-20">
                                                 <label>Last Name  <span>*</span></label>
-                                                <input type="text"> 
+                                                <input type="text">
                                             </div>
                                             <div class="col-12 mb-20">
                                                 <label>Company Name</label>
-                                                <input type="text">     
+                                                <input type="text">
                                             </div>
                                             <div class="col-12 mb-20">
                                                 <div class="select_form_select">
                                                     <label for="countru_name">country <span>*</span></label>
-                                                    <select class="select_option" name="cuntry" id="countru_name"> 
-                                                        <option value="2">bangladesh</option>      
-                                                        <option value="3">Algeria</option> 
-                                                        <option value="4">Afghanistan</option>    
-                                                        <option value="5">Ghana</option>    
-                                                        <option value="6">Albania</option>    
-                                                        <option value="7">Bahrain</option>    
-                                                        <option value="8">Colombia</option>    
-                                                        <option value="9">Dominican Republic</option>   
+                                                    <select class="select_option" name="cuntry" id="countru_name">
+                                                        <option value="2">bangladesh</option>
+                                                        <option value="3">Algeria</option>
+                                                        <option value="4">Afghanistan</option>
+                                                        <option value="5">Ghana</option>
+                                                        <option value="6">Albania</option>
+                                                        <option value="7">Bahrain</option>
+                                                        <option value="8">Colombia</option>
+                                                        <option value="9">Dominican Republic</option>
 
                                                     </select>
-                                                </div> 
+                                                </div>
                                             </div>
 
                                             <div class="col-12 mb-20">
                                                 <label>Street address  <span>*</span></label>
-                                                <input placeholder="House number and street name" type="text">     
+                                                <input placeholder="House number and street name" type="text">
                                             </div>
                                             <div class="col-12 mb-20">
-                                                <input placeholder="Apartment, suite, unit etc. (optional)" type="text">     
+                                                <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
                                             </div>
                                             <div class="col-12 mb-20">
                                                 <label>Town / City <span>*</span></label>
-                                                <input  type="text">    
-                                            </div> 
+                                                <input  type="text">
+                                            </div>
                                              <div class="col-12 mb-20">
                                                 <label>State / County <span>*</span></label>
-                                                <input type="text">    
-                                            </div> 
+                                                <input type="text">
+                                            </div>
                                             <div class="col-lg-6 mb-20">
                                                 <label>Phone<span>*</span></label>
-                                                <input type="text"> 
+                                                <input type="text">
 
-                                            </div> 
+                                            </div>
                                              <div class="col-lg-6">
                                                 <label> Email Address   <span>*</span></label>
-                                                  <input type="text"> 
+                                                  <input type="text">
 
-                                            </div> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -157,14 +157,14 @@
                                     <div class="order-notes">
                                          <label for="order_note">Order Notes</label>
                                         <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                    </div>    
-                                </div>     	    	    	    	    	    	    
+                                    </div>
+                                </div>
                             </div>
-                        </form>    
+                        </form>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <form action="#">    
-                            <h3>Your order</h3> 
+                        <form action="#">
+                            <h3>Your order</h3>
                             <div class="order_table table-responsive">
                                 <table>
                                     <thead>
@@ -173,71 +173,71 @@
                                             <th>Total</th>
                                         </tr>
                                     </thead>
+                                    @php
+                                        $total = 0 ;
+                                        $subTotal = 0 ;
+                                        $tax = 0;
+                                    @endphp
                                     <tbody>
+                                    @foreach(Session::get('cart') as $cart)
+                                        @php
+                                            $total += ( $cart['quantity'] * $cart['product_price'] );
+                                            $subTotal += ( ($total * $cart['product_tax']) / 100 ) + $total;
+                                            $tax += $cart['product_tax'];
+                                        @endphp
                                         <tr>
-                                            <td> Handbag  fringilla <strong> × 2</strong></td>
-                                            <td> $165.00</td>
+                                            <td> {{$cart['product_name']}} <strong> × {{$cart['quantity']}}</strong></td>
+                                            <td> BDT {{$cart['quantity'] * $cart['product_price']}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>  Handbag  justo	 <strong> × 2</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>  Handbag elit	<strong> × 2</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td> Handbag Rutrum	 <strong> × 1</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
+                                    @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Cart Subtotal</th>
-                                            <td>$215.00</td>
+                                            <td>BDT {{$total}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Shipping</th>
-                                            <td><strong>$5.00</strong></td>
+                                            <th>Tax Total</th>
+                                            <td><strong>BDT {{$tax}}</strong></td>
                                         </tr>
                                         <tr class="order_total">
                                             <th>Order Total</th>
-                                            <td><strong>$220.00</strong></td>
+                                            <td><strong>BDT {{$subTotal}}</strong></td>
                                         </tr>
                                     </tfoot>
-                                </table>     
+                                </table>
                             </div>
                             <div class="payment_method">
                                <div class="panel-default">
-                                   
+
 
                                     <div id="method" class="collapse one" data-parent="#accordion">
                                         <div class="card-body1">
                                            <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                                <div class="panel-default">
                                     <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
                                     <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">PayPal <img src="assets/img/icon/papyel.png" alt=""></label>
 
                                     <div id="collapsedefult" class="collapse one" data-parent="#accordion">
                                         <div class="card-body1">
-                                           <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p> 
+                                           <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="order_button">
-                                    <button  type="submit">Proceed to PayPal</button> 
-                                </div>    
-                            </div> 
-                        </form>         
+                                    <button  type="submit">Proceed to PayPal</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div> 
-            </div> 
-        </div>       
+                </div>
+            </div>
+        </div>
     </div>
     <!--Checkout page section end-->
- 
+
 
 @endsection

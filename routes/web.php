@@ -1,19 +1,22 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
+Route::get('checkout', 'Users\CheckoutController@index')->middleware(['auth'])->name('checkout');
 
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
-    Route::post('/', 'Users\CartController@store')->name('pages.cart');
-    Route::get('/', 'Users\CartController@create')->name('cart.create');
-    Route::put('/', 'Users\CartController@update')->name('cart.update');
-    Route::delete('/{id}', 'Users\CartController@destroy')->name('cart.destroy');
-    Route::get('delete/{id}', 'Users\CartController@show')->name('cart.show');
+    Route::post('/', 'Users\CartController@store')->middleware(['auth'])->name('pages.cart');
+    Route::get('/', 'Users\CartController@create')->middleware(['auth'])->name('cart.create');
+    Route::put('/', 'Users\CartController@update')->middleware(['auth'])->name('cart.update');
+    Route::delete('/{id}', 'Users\CartController@destroy')->middleware(['auth'])->name('cart.destroy');
+    Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
     Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
     Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
 
@@ -22,6 +25,18 @@ Route::prefix('pages')->group(function(){
 
 //User Auth
 Auth::routes();
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
+
+
+Route::get('verify', 'Auth\RegisterController@verify')->name('verify.mail');
 
 
 // Admin routes
@@ -45,4 +60,3 @@ Route::prefix('admin')->group(function(){
 
     Route::resource('coupon', 'Users\Admin\CouponController');
 });
-
