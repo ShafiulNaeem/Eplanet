@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('unique_id')->unique();
+            $table->string('unique_id')->unique();
             $table->integer('quantity');
             $table->integer('shifted')->default(0);
             $table->timestamps();
