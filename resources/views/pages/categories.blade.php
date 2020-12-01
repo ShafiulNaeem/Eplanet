@@ -40,7 +40,7 @@
 
     <!--  Category bottom Code Start     -->
 
-    <section class="category_bottom">
+    <section class="category_bottom mt-4 mb-4">
         <div class="container">
             <div class="row">
                 @foreach($categories as $category)

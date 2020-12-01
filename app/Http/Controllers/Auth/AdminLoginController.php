@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,13 +30,37 @@ class AdminLoginController extends Controller
             'password' => 'required|min:8'
         ]);
 
+        $remember = ( $request->remember == "on" ) ;
+
         // Attempt to log the user in
-        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
+        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $remember))
         {
             return redirect()->intended(route('admin.dashboard'));
         }
 
         // if unsuccessful
         return redirect()->back()->withInput($request->only('email','remember'));
+    }
+
+
+    public function logout(Request $request)
+    {
+        $id = Auth::guard('admin')->user()->id;
+
+        Admin::where('id', $id)->update(['remember_token' => null]);
+
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
     }
 }
