@@ -51,7 +51,7 @@ class ProductVideoController extends Controller
         $productVideos = new ProductVideo();
         $productVideos->product_id = $request->product_name;
 
-        if($request->hasFile('product_image')){
+        if($request->hasFile('product_video')){
             $image = request()->file('product_video');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->product_video->move(public_path('videos'), $filename);
