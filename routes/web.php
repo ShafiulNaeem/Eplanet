@@ -61,4 +61,5 @@ Route::prefix('admin')->group(function(){
     Route::resource('productVideo', 'Users\Admin\ProductVideoController');
 
     Route::resource('coupon', 'Users\Admin\CouponController');
+    Route::resource('orders', 'Users\Admin\OrderController');
 });

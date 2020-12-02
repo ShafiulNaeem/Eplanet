@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,11 +37,19 @@ class CheckoutController extends Controller
             $order->unique_id = '#OR' . Str::random(10).'#';
             $order->quantity = $cart['quantity'];
             $order->save();
+
+            //order_product
+            $orderpoduct = new OrderProduct();
+            $orderpoduct->order_id = $order['id'];
+            $orderpoduct->product_id = $cart['id'];
+            $orderpoduct->user_id = Auth::user()->id;
+            //dd($orderpoducts);
+            $orderpoduct->save();
             $order = null;
         }
         Session::forget('cart');
 
-        return redirect()->route('checkout.confirm')->with(Session::flash('success','Product Inserted Successfully'));
+        return redirect()->route('checkout.confirm')->with(Session::flash('success','Your Order Confirmed Successfully'));
     }
 
 
