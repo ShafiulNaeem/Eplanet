@@ -1,10 +1,14 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-
+//Route::get('test', function (){
+//    return Product::where(['id'=> 1])
+//        ->select('admin_id')->first()->admin_id;
+//});
 
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
@@ -21,7 +25,6 @@ Route::prefix('pages')->group(function(){
     Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
     Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
     Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
-
 });
 
 
@@ -41,7 +44,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('verify', 'Auth\RegisterController@verify')->name('verify.mail');
 
 
-// Admin routes
+// Admin Auth routes
 Route::prefix('admin')->group(function(){
     Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -59,7 +62,6 @@ Route::prefix('admin')->group(function(){
     Route::resource('product', 'Users\Admin\ProductController');
     Route::resource('productImage', 'Users\Admin\ProductImageController');
     Route::resource('productVideo', 'Users\Admin\ProductVideoController');
-
     Route::resource('coupon', 'Users\Admin\CouponController');
     Route::resource('orders', 'Users\Admin\OrderController');
 });

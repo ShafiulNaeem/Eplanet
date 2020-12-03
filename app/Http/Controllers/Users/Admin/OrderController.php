@@ -4,11 +4,20 @@ namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderProduct;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth:admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,12 +25,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::guard('admin')->user()->id;
+//        $admin_id = Auth::guard('admin')->user()->id;
 
-        $orders = Order::with(['products','user'])->where([
-            'user_id' => $user_id
-        ])->get();
-       // dd($orders);
+        $orders = User::with('orderWithAdmin')->get();
+//dd($orders);
         return view('admin.orders.manage',compact('orders'));
     }
 
@@ -50,11 +57,11 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
     }
 
     /**
@@ -65,17 +72,20 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        Order::where(['id' => $id])
+            ->update(['shifted' => 1]);
+        Session::flash('success','Product mark as shifted');
+        return redirect()->back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Order $order
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
         //
     }

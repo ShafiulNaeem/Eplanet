@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,17 +33,22 @@ class CheckoutController extends Controller
 
         foreach (Session::get('cart') as $cart){
             $order = new Order();
+            $pro = Product::find($cart['id']);
             $order->product_id = $cart['id'];
             $order->user_id = Auth::user()->id;
+            $order->admin_id = self::getAdminByProduct($cart['id']);;
             $order->unique_id = '#OR' . Str::random(10).'#';
             $order->quantity = $cart['quantity'];
             $order->save();
+
+            $pro->increment('sold', $cart['quantity']);
 
             //order_product
             $orderpoduct = new OrderProduct();
             $orderpoduct->order_id = $order['id'];
             $orderpoduct->product_id = $cart['id'];
             $orderpoduct->user_id = Auth::user()->id;
+
             //dd($orderpoducts);
             $orderpoduct->save();
             $order = null;
@@ -56,5 +62,11 @@ class CheckoutController extends Controller
     public function checkoutConfirm()
     {
         return view('pages.checkout_confirm');
+    }
+
+
+    private static function getAdminByProduct($product_id){
+        return Product::where(['id'=> $product_id])
+            ->select('admin_id')->first()->admin_id;
     }
 }
