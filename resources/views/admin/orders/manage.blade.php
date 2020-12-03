@@ -32,15 +32,29 @@
                                     </thead>
                                     <tbody>
                                     @foreach($orders as $index => $order)
-                                            @if($order->orderWithAdmin->count() > 0)
+                                        @if($vendor)
+                                            @php
+                                                $ve = $order->orderWithAdmin->count();
+                                            @endphp
+                                        @else
+                                            @php
+                                                $ve = $order->orderWithOutAdmin->count();
+                                            @endphp
+                                        @endif
+                                            @if($ve > 0)
                                         <tr>
                                             <td>{{ $index+1}}</td>
                                             <td>{{$order->fname . ' ' . $order->lname}}</td>
                                             <td>{{$order->email}}</td>
                                             <td>{{$order->phone}}</td>
+                                            @if($vendor)
                                             <td> {{ date('Y/m/d', strtotime($order->orderWithAdmin[0]->created_at)) }}</td>
                                             <td class="text-danger">{{$order->orderWithAdmin->count()}}</td>
-                                            <td>
+                                            @else
+                                                <td> {{ date('Y/m/d', strtotime($order->orderWithOutAdmin[0]->created_at)) }}</td>
+                                                <td class="text-danger">{{$order->orderWithOutAdmin->count()}}</td>
+                                            @endif
+                                                <td>
                                                 <button type="button" id="submitBtn" class="btn btn-success float-left"  data-target="{{$order->id}}">
                                                     View
                                                 </button>

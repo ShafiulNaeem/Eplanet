@@ -53,4 +53,13 @@ class User extends Authenticatable
         ])
             ->orderBy('created_at', 'DESC');
     }
+
+
+    public function orderWithOutAdmin()
+    {
+        return $this->orders()
+            ->where('admin_id', '!=', Auth::guard('admin')->user()->id)
+            ->where(['shifted' => 0])
+            ->orderBy('created_at', 'DESC');
+    }
 }

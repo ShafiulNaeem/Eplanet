@@ -25,11 +25,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-//        $admin_id = Auth::guard('admin')->user()->id;
-
         $orders = User::with('orderWithAdmin')->get();
-//dd($orders);
-        return view('admin.orders.manage',compact('orders'));
+        $vendor = true;
+        return view('admin.orders.manage',compact('orders', 'vendor'));
     }
 
     /**
@@ -39,7 +37,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $orders = User::with('orderWithOutAdmin')->get();
+//        dd($orders);
+        $vendor = false;
+        return view('admin.orders.manage',compact('orders', 'vendor'));
     }
 
     /**

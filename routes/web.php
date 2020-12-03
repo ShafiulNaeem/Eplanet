@@ -64,4 +64,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('productVideo', 'Users\Admin\ProductVideoController');
     Route::resource('coupon', 'Users\Admin\CouponController');
     Route::resource('orders', 'Users\Admin\OrderController');
+
+    Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
+    Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');
 });
