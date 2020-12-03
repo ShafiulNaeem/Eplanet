@@ -280,14 +280,26 @@
                                 <p>Manage Orders</p>
                             </a>
                         </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route('brand.index') }}" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Manage Brand</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                        <li class="nav-item">
+                            <a href="{{ route('orders.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Order</p>
+                            </a>
+                        </li>
+                        @endif
                     </ul>
                 </li>
+                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                <li class="nav-item">
+                    <a href="{{route('admin.all.users')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            All Users
+                        </p>
+                    </a>
+                </li>
+                @endif
 
 
 {{--                <li class="nav-item">--}}
