@@ -91,7 +91,10 @@
 <script>
     $(function () {
         $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "ordering": true,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
@@ -124,10 +127,95 @@
     @if(Session::has('error'))
         Toast.fire({
             icon: 'error',
-            title: "{{Session::get('success')}}"
+            title: "{{Session::get('error')}}"
         });
     @endif
 </script>
+
+<script>
+    $(document).on('click', '#submitBtn', function (e) {
+        var id = (this.getAttribute('data-target'))
+        var moda = $('#exampleModal' + $('#submitBtn').attr('data-target'));
+        var modalTableBody = $("#modalTableBody");
+
+        moda.modal('show');
+        modalTableBody.empty();
+        $(".modal-dialog")[0].style = "max-width: 1000px !important";
+
+
+        $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: window.location.origin +'/admin/orders/' + id,
+                method: 'get',
+                // dataType:'json',
+                // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
+
+
+                success: function (response) {
+                    response.forEach((value, index) => {
+                        console.log(value);
+                        let tr = createElement('tr');
+                        let unique_id = createElement('td');
+                        let order_date = createElement('td');
+                        let quantity = createElement('td');
+                        let product_name = createElement('td');
+                        let product_image = createElement('td');
+                        let product_model = createElement('td');
+                        let product_total_price = createElement('td');
+                        let product_size = createElement('td');
+                        let action = createElement('td');
+                        let anchor = createElement('a');
+                        let url = window.location.origin + '/admin/orders/' + value.id + '/edit';
+                        anchor.setAttribute('href', url);
+                        action.appendChild(anchor);
+                        anchor.innerText = "Mark as Shifted";
+                        anchor.className = "btn btn-info";
+
+
+                        let image = createElement('img');
+                        let src = window.location.origin + "/images/" + value.products[0].feature_image;
+                        image.setAttribute('src', src);
+                        image.setAttribute('alt', value.products[0].product_name);
+                        image.setAttribute('width', 80);
+
+                        product_image.appendChild(image);
+
+                        unique_id.innerText = value.unique_id;
+                        order_date.innerText = value.created_at;
+                        quantity.innerText = value.quantity;
+                        product_name.innerText = value.products[0].product_name;
+                        product_model.innerText = value.products[0].model;
+                        product_total_price.innerText = parseInt(value.products[0].product_price) * parseInt(value.quantity);
+                        product_size.innerText = value.products[0].size;
+
+                        tr.appendChild(unique_id);
+                        tr.appendChild(order_date);
+                        tr.appendChild(product_name);
+                        tr.appendChild(product_image);
+                        tr.appendChild(product_model);
+                        tr.appendChild(quantity);
+                        tr.appendChild(product_total_price);
+                        tr.appendChild(product_size);
+                        tr.appendChild(action);
+                        modalTableBody.append(tr);
+                    })
+                },
+                error:function(response)
+                {
+                    console.warn(response);
+                }
+            });
+
+
+    });
+
+    function createElement(element) {
+        return document.createElement(element);
+    }
+</script>
+
 </body>
 </html>
 

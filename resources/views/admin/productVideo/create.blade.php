@@ -40,7 +40,7 @@
 {{--                                        <input type="file" name="product_image" class="form-control-file" id="exampleFormControlFile1">--}}
                                         <div class="input-group ">
                                             <div class="custom-file">
-                                                <input type="file" name="product_image"  class="custom-file-input" id="exampleInputFile">
+                                                <input type="file" name="product_video"  class="custom-file-input" id="exampleInputFile">
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                         </div>
