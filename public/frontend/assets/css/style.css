@@ -334,13 +334,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-top: 57px;
 }
 
-.mt-60 {
+/*.mt-60 {
   margin-top: 60px;
 }
 
 .mt-70 {
   margin-top: 70px;
-}
+}*/
 
 .mt-100 {
   margin-top: 100px;
@@ -885,7 +885,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .logo img {
-  max-width: 150px;
+  max-width: 80px;
 }
 @media only screen and (max-width: 767px) {
   .logo img {
@@ -999,7 +999,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .search_container {
-  margin-right: 35px;
+  margin-right: 88px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search_container {
@@ -1023,7 +1023,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	border-radius: 30px;
 	border: 1px solid #ededed;
 	background: #fff;
-	width: 700px;
+	width: 650px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search_container form {
@@ -1441,7 +1441,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .main_menu nav > ul {
-  display: flex;
+  /*display: flex;*/
 }
 .main_menu nav > ul > li {
   position: relative;
@@ -1486,7 +1486,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .main_menu nav > ul > li > a {
   display: block;
   font-size: 15px;
-  line-height: 50px;
+  line-height: 35px;
   text-transform: capitalize;
   font-weight: 500;
   position: relative;
@@ -2504,7 +2504,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .single_slider {
-    height: 386px;
+    height: 300px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -5556,7 +5556,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .breadcrumbs_area {
   background: url(../img/slider/logo-w.png) no-repeat 0 0;
   background-size: cover;
-  height: 200px;
+  height: 100px;
   display: flex;
   align-items: center;
 }
