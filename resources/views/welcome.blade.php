@@ -235,7 +235,7 @@
                         <div class="tab-pane fade show active" id="plant1" role="tabpanel">
                             <div class="product_carousel product_column5 owl-carousel">
 @foreach($mainRe['category']['products'] as $index => $ffgr)
-                                    <div class="product_items card">
+                                    <div class="product_items">
                                         <article class="single_product">
                                             <figure>
                                                 <div class="single_banner">
