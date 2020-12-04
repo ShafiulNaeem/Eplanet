@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="{{ route('home') }}">home</a></li>
                             <li>Registration</li>
                         </ul>
                     </div>
@@ -32,7 +32,7 @@
 
                             <p>
                                 <label>Firstname  <span>*</span></label>
-                                <input type="text" name="fname" placeholder="Firstname">
+                                <input type="text" name="fname" placeholder="Firstname" value="{{ old('fname') }}">
                                 @error('fname')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
@@ -40,7 +40,7 @@
 
                             <p>
                                 <label>Lastname  <span>*</span></label>
-                                <input type="text" name="lname" placeholder="Lastname">
+                                <input type="text" name="lname" placeholder="Lastname" value="{{ old('lname') }}">
                                 @error('lname')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
@@ -48,7 +48,7 @@
 
                             <p>
                                 <label>Email address  <span>*</span></label>
-                                <input type="email" name="email" placeholder="Email">
+                                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
                             @error('email')
                                 <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -56,7 +56,7 @@
 
                             <p>
                                 <label>Phone  <span>*</span></label>
-                                <input type="tel" name="phone" placeholder="Phone Number" >
+                                <input type="tel" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
                                 @error('phone')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
