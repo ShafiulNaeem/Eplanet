@@ -30,55 +30,9 @@ class WelcomeController extends Controller
 
     public function show($id)
     {
-
-
-        $catArray = ['kids', 'men'];
-        $mainRes = [];
-
-        foreach ($catArray as $val){
-            $category_result = [];
-            $subCategories = Category::with('subcategory')->where([
-                ['category_name' , '=', $val],
-                ['status', '=', 1],
-            ])->get();
-
-
-            foreach ($subCategories as $sub){
-
-                $category_result['category'] = [
-                    'category_name' => $sub->category_name,
-                    'category_image' => $sub->category_image
-                ];
-
-                foreach ($sub->subcategory as $subCat){
-                    $product = SubCategory::with('products')->where('id', $subCat->id)->get();
-                    if (count($product) > 0){
-                        foreach ($product as $pval) {
-                            foreach ($pval->products as $products){
-                                $category_result['category']['products'][] = [
-                                    'id' => $products->id,
-                                    'unique_id' => $products->unique_id,
-                                    'brand_id' => $products->brand_id,
-                                    'product_name' => $products->product_name,
-                                    'feature_image' => $products->feature_image,
-                                    'stock' => $products->stock,
-                                    'product_price' => $products->product_price
-                                ];
-
-                            }
-                        }
-                    }
-                }
-                $mainRes[]=$category_result;
-            }
-        }
+        $mainRes = $this->productByCategory(['kids', 'men']);
 
         $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->get();
-
-//        $categoryName = SubCategory::with('category')
-//            ->where('id', $product[0]->sub_categories_id)
-//            ->get()[0]->category;
-        //'categoryName'=> $categoryName
 
         return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
 
@@ -86,7 +40,7 @@ class WelcomeController extends Controller
 
     // Show Category
     public function category($id){
-        $category = SubCategory::with(['category','products'])->where('category_id',$id)->get();
+        $category = SubCategory::with(['category','products'])->where('category_id',$id)->paginate(12);
         return view('pages.categories',['categories' =>$category]);
     }
 
@@ -94,39 +48,33 @@ class WelcomeController extends Controller
         $mainRes = [];
         foreach ($catArray as $val){
             $category_result = [];
-            $subCategories = Category::with('subcategory')->where([
+            $subCategories = Category::with('products')->where([
                 ['category_name' , '=', $val],
                 ['status', '=', 1],
             ])->get();
 
+            foreach ($subCategories as $sub) {
+                if ( count($sub->products) ){
+                    $category_result['category'] = [
+                        'category_name' => $sub->category_name,
+                        'category_image' => $sub->category_image
+                    ];
 
-            foreach ($subCategories as $sub){
-
-                $category_result['category'] = [
-                    'category_name' => $sub->category_name,
-                    'category_image' => $sub->category_image
-                ];
-
-                foreach ($sub->subcategory as $subCat){
-                    $product = SubCategory::with('products')->where('id', $subCat->id)->get();
-                    if (count($product) > 0){
-                        foreach ($product as $pval) {
-                            foreach ($pval->products as $products){
-                                $category_result['category']['products'][] = [
-                                    'id' => $products->id,
-                                    'unique_id' => $products->unique_id,
-                                    'brand_id' => $products->brand_id,
-                                    'product_name' => $products->product_name,
-                                    'feature_image' => $products->feature_image,
-                                    'stock' => $products->stock,
-                                    'product_price' => $products->product_price
-                                ];
-
-                            }
-                        }
+                    foreach ($sub->products as $product){
+                        $category_result['category']['products'][] = [
+                            'id' => $product->id,
+                            'unique_id' => $product->unique_id,
+                            'brand_id' => $product->brand_id,
+                            'product_name' => $product->product_name,
+                            'feature_image' => $product->feature_image,
+                            'stock' => $product->stock,
+                            'product_price' => $product->product_price
+                        ];
                     }
+
+
+                    $mainRes[] = $category_result;
                 }
-                $mainRes[]=$category_result;
             }
         }
         return $mainRes;

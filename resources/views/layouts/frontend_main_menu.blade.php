@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="header_social text-right">
-                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('category_name','asc')->limit(10)->get();  @endphp
+                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('category_name','desc')->get();  @endphp
                     </div>
                     <div class="search_container">
                         <form action="{{route('pages.search')}}" method="post">
@@ -202,6 +202,7 @@
                                     <ul>
                                         @if(! \Illuminate\Support\Facades\Auth::check())
                                             <li><a href="{{route('register')}}">Sign In</a></li>
+                                            <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                                         @else
                                             <li><a href="{{route('logout')}}"
                                                    onclick="event.preventDefault();
@@ -211,8 +212,6 @@
                                                 @csrf
                                             </form>
                                         @endif
-                                        <li><a href="login.html">Message</a></li>
-                                        <li><a href="login.html">Order</a></li>
                                         <li><a href="login.html">English</a></li>
                                     </ul>
                                 </div>
@@ -314,17 +313,20 @@
                                     <li><a class="active" href="{{url('/')}}">home</a></li>
                                     @if(isset($categories))
                                         @foreach($categories as $category)
-                                            <li><a href="{{route('cat.show',$category->id)}}">{{$category->category_name}} <i class="fa fa-angle-down"></i></a>
-{{--                                                // When category name double words than show a its take two line --solve this  "Problem"--}}
-                                                <ul class="sub_menu pages">
-                                                    @foreach($category->subcategory as $cat)
-                                                    <li><a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
+
+                                                <li><a href="{{route('cat.show',$category->id)}}">{{$category->category_name}} @if( count($category->subcategory) >0 ) <i class="fa fa-angle-down"></i> @endif </a>
+                                                    @if( count($category->subcategory) >0 )
+                                                        <ul class="sub_menu pages">
+                                                            @foreach($category->subcategory as $cat)
+                                                            <li><a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
                                         @endforeach
                                     @endif
-                                    <li><a href=""> Blog <i class="fa fa-angle-down"></i></a>
+                                    <li><a href=""> Blog </a>
+                                    <li><a href=""> Contact Us</a>
 
                                 </ul>
                             </nav>

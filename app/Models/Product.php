@@ -10,7 +10,6 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
     protected $primaryKey = 'id';
-    //protected $foreignKey = 'sub_categories_id';
 
     protected $guarded = [];
 
@@ -35,5 +34,11 @@ class Product extends Model
     public function orders()
     {
         return $this->hasMany('App\Models\Order','product_id');
+    }
+
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
