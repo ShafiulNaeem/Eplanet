@@ -49,9 +49,9 @@
                             <p>
                                 <label>Email address  <span>*</span></label>
                                 <input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
-                                @error('email')
+                            @error('email')
                                 <span class="text-danger">{{$message}}</span>
-                                @enderror
+                            @enderror
                             </p>
 
                             <p>
