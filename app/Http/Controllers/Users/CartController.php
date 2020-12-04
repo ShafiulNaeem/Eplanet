@@ -92,7 +92,7 @@ class CartController extends Controller
                 Session::put('cart', $cart);
             }
             //session()->flash('success', 'Product removed successfully');
-            return redirect()->back()->with('success', 'Product  removed successfully!');
+            return redirect()->back()->with('success', 'Product  Showed successfully!');
         }
     }
 

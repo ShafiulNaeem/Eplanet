@@ -71,7 +71,7 @@
                     <h3>{{$category->subcategory_name}}</h3>
                 </div>
                 <div class="col-md-2">
-                    <h2><a href="#">View more</a></h2>
+                    <h2><a href="{{route('subcat.show',$category->id)}}">View more</a></h2>
                 </div>
             </div>
             <div class="row">

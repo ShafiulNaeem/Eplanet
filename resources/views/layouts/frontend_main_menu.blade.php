@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="header_social text-right">
-                        @php $categories = \App\Models\Category::orderBy('category_name','asc')->get();  @endphp
+                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('category_name','asc')->limit(10)->get();  @endphp
                     </div>
                     <div class="search_container">
                         <form action="{{route('pages.search')}}" method="post">
@@ -312,51 +312,20 @@
                             <nav>
                                 <ul class="main-ul">
                                     <li><a class="active" href="{{url('/')}}">home</a></li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html"> Contact Us</a></li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
+                                    @if(isset($categories))
+                                        @foreach($categories as $category)
+                                            <li><a href="{{route('cat.show',$category->id)}}">{{$category->category_name}} <i class="fa fa-angle-down"></i></a>
+{{--                                                // When category name double words than show a its take two line --solve this  "Problem"--}}
+                                                <ul class="sub_menu pages">
+                                                    @foreach($category->subcategory as $cat)
+                                                    <li><a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                    <li><a href=""> Blog <i class="fa fa-angle-down"></i></a>
+
                                 </ul>
                             </nav>
                         </div>
