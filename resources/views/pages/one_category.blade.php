@@ -6,24 +6,7 @@
 
    <div class="container">
        <div class="row">
-           <div class="col-md-2">
-               <div class="left-category">
-                     <h6><strong>Featured Categories</strong></h6>
-                     <ul class="cat-ul">
-                         <li><a href="#">Cloth</a></li>
-                         <li><a href="#">Shoes</a></li>
-                         <li><a href="#">Watches</a></li>
-                         <li><a href="#">Women's Fashion</a></li>
-                         <li><a href="#">Boys' Fashion</a></li>
-                         <li><a href="#">Accessories</a></li>
-                     </ul>
-                     <div class="left-cat-image">
-                        <a href="#"><img src="assets/img/category/banner.jpg" width="200" alt=""></a>
-                    </div>
-               </div>
-
-           </div>
-           <div class="col-md-10">
+           <div class="col-md-12">
               <div class="row">
                   <div class="col-md-12">
                       <div class="category-title">
@@ -32,14 +15,14 @@
                   </div>
               </div>
               <div class="right-main-cat">
-                    <div class="row">
-
-                   </div>
+                   
                   @foreach($categories as $category)
                     <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 ">
+                      <div class="sub_head">
                         <h4>All {{$category->subcategory_name}} Collection</h4>
+                      </div> 
                     </div>
 
                         @foreach($category->products as $product)
