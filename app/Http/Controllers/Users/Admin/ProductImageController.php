@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Users\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductImage;
+use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Image;
-
+use App\Helper\DeleteFile;
 
 class ProductImageController extends Controller
 {
+    use DeleteFile;
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +22,14 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        $productImages = Product::with('productImages')->get();
+        $productImages = Product::with('productImages')->AdminProduct()->get();
+        return view('admin.productImage.manage',compact('productImages'));
+    }
+
+
+    public function allProductImages()
+    {
+        $productImages = Product::with('productImages')->WithoutAdminProduct()->get();
 
         return view('admin.productImage.manage',compact('productImages'));
     }
@@ -31,7 +41,8 @@ class ProductImageController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
+        $products = Product::AdminProduct()->get();
+
         return view('admin.productImage.create',compact('products'));
     }
 
@@ -54,6 +65,7 @@ class ProductImageController extends Controller
             foreach ($files as $file){
                 $productImages = new ProductImage();
                 $productImages->product_id = $request->product_name;
+                $productImages->admin_id = Auth::guard('admin')->user()->id;
                 $filename = time() .  $file->getClientOriginalName() ;
                 $file->move(public_path('images'), $filename);
                 $productImages->product_image= $filename;
@@ -85,7 +97,7 @@ class ProductImageController extends Controller
     public function edit($id)
     {
         $productImage = Product::with('productImages')->find($id);
-        $products = Product::all();
+        $products = Product::AdminProduct()->get();
         return view('admin.productImage.edit',compact('productImage', 'products'));
     }
 
@@ -110,13 +122,8 @@ class ProductImageController extends Controller
 
 
 
-//        if($productImage->save()){
             Session::flash('success','Product Images Updated Successfully');
             return redirect()->route('productImage.index');
-//        } else {
-//            Session::flash('success','Something went wrong');
-//            return redirect()->back();
-//        }
     }
 
     /**
@@ -125,10 +132,23 @@ class ProductImageController extends Controller
      * @param ProductImage $productImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductImage $productImage)
+    public function destroy($id)
     {
-//        $productImages = ProductImage::find($id);
-        $productImage->delete();
-        return redirect()->back()->with('deleted','Deleted Successfully..');
+        $images = ProductImage::where([
+            'product_id'=> $id,
+            'admin_id'=> Auth::guard('admin')->user()->id,
+        ])->get();
+
+        foreach ($images as $image)
+            if(!self::deleteFile(public_path('images/' . $image->product_image)))
+                return redirect()->back()->with('error','Something went Wrong');
+
+
+        ProductImage::where([
+            'product_id'=> $id,
+            'admin_id'=> Auth::guard('admin')->user()->id,
+        ])->delete();
+
+        return redirect()->back()->with('success','Deleted Successfully..');
     }
 }

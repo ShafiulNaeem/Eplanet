@@ -42,7 +42,7 @@
                                             <span class="btn btn-danger">InActive</span>
                                         @endif
                                     </td>
-                                    <td class="text-center">{{ date('Y-m-d', strtotime($brand->create_at)) }}</td>
+                                    <td class="text-center">{{  \Carbon\Carbon::parse($brand->created_at)->format('M d Y') }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('brand.edit', $brand->id) }}" class="btn btn-app float-left">
                                             <i class="fas fa-edit"></i> Edit
