@@ -46,7 +46,7 @@
                                 @endif
                             </td>
 
-                            <td>{{date('Y-m-d', strtotime($category->created_at))}}</td>
+                            <td>{{\Carbon\Carbon::parse($category->created_at)->format('M d Y')}}</td>
                             <td>
                                 <a href="{{route('category.edit',$category->id)}}" class="btn text-warning btn-app float-left">
                                     <i class="fas fa-edit"></i> Edit

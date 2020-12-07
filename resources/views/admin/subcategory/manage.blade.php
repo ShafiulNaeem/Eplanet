@@ -25,6 +25,7 @@
                             <th>Category Name</th>
                             <th>Sub Category Name</th>
                             <th>Sub Category Status</th>
+                            <th>Create At</th>
                             <th>Action</th>
 
                         </tr>
@@ -48,7 +49,7 @@
                                             <span class="btn btn-danger">InActive</span>
                                         @endif
                                     </td>
-
+                                    <td>{{\Carbon\Carbon::parse($subCategory->created_at)->format('M d Y')}}</td>
                                     <td>
                                         <a href="{{route('subcategory.edit',$subCategory->id)}}" class="btn text-warning btn-app float-left">
                                             <i class="fas fa-edit"></i> Edit
@@ -90,6 +91,7 @@
                                         <th>Category Name</th>
                                         <th>Sub Category Name</th>
                                         <th>Sub Category Status</th>
+                                        <th>Create At</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>

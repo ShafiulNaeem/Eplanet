@@ -99,6 +99,13 @@
                                 <p>Manage Brand</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Vendor Brand</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -131,6 +138,13 @@
                                     <a href="{{ route('category.index') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Category Manage</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.all.category') }}" class="nav-link text-fuchsia">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>All Vendor Category</p>
                                     </a>
                                 </li>
                             </ul>
@@ -181,6 +195,13 @@
                                 <p>Manage Coupon</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.all.coupon') }}" class="nav-link text-fuchsia">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>All Vendor   Coupon</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -215,6 +236,13 @@
                                         <p>Product Manage</p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.all.product') }}" class="nav-link text-fuchsia">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>All Vendor   Products</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -236,6 +264,13 @@
                                     <a href="{{ route('productImage.index') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Manage Product Images</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.all.product.image') }}" class="nav-link text-fuchsia">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>All Vendor Category</p>
                                     </a>
                                 </li>
                             </ul>
@@ -292,13 +327,22 @@
                 </li>
                 @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
                 <li class="nav-item">
-                    <a href="{{route('admin.all.users')}}" class="nav-link ">
+                    <a href="{{route('admin.all.user.no.order')}}" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             All Users
                         </p>
                     </a>
                 </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('admin.all.users')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Users With Order
+                            </p>
+                        </a>
+                    </li>
                 @endif
 
 

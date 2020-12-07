@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,6 +27,9 @@ class SubCategoryFactory extends Factory
         return [
             'category_id' => function(){
                 return Category::all()->random();
+            },
+            'admin_id' => function(){
+                return Admin::all()->random();
             },
             'subcategory_name' => $this->faker->name,
             'sub_category_image' => $this->faker->image(public_path('images'), 640, 480,null, false)
