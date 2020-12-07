@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         Brand::factory(10)->create();
         Category::factory(7)->create();
         Coupon::factory(5)->create();
-        SubCategory::factory(21)->create();
-        Product::factory(30)->create();
+        SubCategory::factory(11)->create();
+        Product::factory(20)->create();
     }
 }
