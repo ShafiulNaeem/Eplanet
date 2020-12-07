@@ -24,6 +24,7 @@
                             <th>SL</th>
                             <th>Product Video</th>
                             <th>Product Name</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -33,13 +34,19 @@
                                 <tr>
                                     <td>{{$index + 1}}</td>
                                     <td>
-                                        <iframe width="600"  src="{{url('videos',$productvideo->product_video)}}" frameborder="0" allowfullscreen>
-                                        </iframe>
+                                        <video width="320" height="200" controls>
+                                            <source src="{{url('videos',$productvideo->product_video)}}" type="video/{{$productvideo->product_video_type}}">
+                                            Your browser does not support the video .
+                                        </video>
                                     </td>
                                     <td>{{$productvideo->product->product_name}}</td>
+                                    <td>{{\Carbon\Carbon::parse($productvideo->created_at)->format('M d Y')}}</td>
                                     <td>
-                                        <a href="{{route('productVideo.edit',$productvideo->id)}}" class="btn btn-success">Edit</a>
-                                        <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$productvideo->id}}">Delete</a>
+                                        <a href="{{route('productVideo.edit',$productvideo->id)}}" class="btn text-warning btn-app float-left">
+                                            <i class="fas fa-edit"></i> Edit</a>
+                                        <a href="" class="btn btn-app text-danger " data-toggle="modal" data-target="#exampleModal{{$productvideo->id}}">
+                                            <i class="fa fa-trash fa-2x"></i> DELETE
+                                        </a>
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal{{$productvideo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

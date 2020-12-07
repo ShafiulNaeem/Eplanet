@@ -7,11 +7,14 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductVideo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Image;
+use App\Helper\DeleteFile;
 
 class ProductVideoController extends Controller
 {
+    use DeleteFile;
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +34,7 @@ class ProductVideoController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
+        $products = Product::AdminProduct()->get();
         return view('admin.productVideo.create',compact('products'));
     }
 
@@ -50,11 +53,13 @@ class ProductVideoController extends Controller
 
         $productVideos = new ProductVideo();
         $productVideos->product_id = $request->product_name;
+        $productVideos->admin_id = Auth::guard('admin')->user()->id;
 
         if($request->hasFile('product_video')){
             $image = request()->file('product_video');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->product_video->move(public_path('videos'), $filename);
+            $productVideos->product_video_type= $image->getClientOriginalExtension();
             $productVideos->product_video = $filename;
             $productVideos->save();
         }
@@ -88,8 +93,8 @@ class ProductVideoController extends Controller
      */
     public function edit($id)
     {
-        $productvideo = ProductVideo::find($id);
-        $products = Product::all();
+        $productvideo = ProductVideo::ProductVideoWithAdminOwner()->find($id);
+        $products = Product::AdminProduct()->get();
         return view('admin.productVideo.edit',compact('productvideo','id', 'products'));
     }
 
@@ -110,11 +115,15 @@ class ProductVideoController extends Controller
         $productVideos = ProductVideo::find($id);
         $productVideos->product_id = $request->product_name;
 
+        if (! self::deleteFile(public_path('videos/' . $productVideos->product_video)) )
+            return redirect()->back()->with('error','Something went wrong');
+
         if($request->hasFile('product_video')){
             $image = request()->file('product_video');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->product_video->move(public_path('videos'), $filename);
-            $productVideos->product_video= $filename;
+            $productVideos->product_video = $filename;
+            $productVideos->product_video_type= $image->getClientOriginalExtension();
             $productVideos->save();
         }
 
@@ -123,7 +132,7 @@ class ProductVideoController extends Controller
             Session::flash('success','Product Video Updated Successfully');
             return redirect()->route('productVideo.index');
         } else {
-            Session::flash('success','Something went wrong');
+            Session::flash('error','Something went wrong');
             return redirect()->back();
         }
     }
@@ -131,13 +140,15 @@ class ProductVideoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param ProductVideo $productVideo
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductVideo $productVideo)
     {
-        $productVideos = ProductVideo::find($id);
-        $productVideos->delete();
-        return redirect()->back()->with('deleted','Deleted Successfully..');
+        if (! self::deleteFile(public_path('videos/' . $productVideo->product_video)) )
+            return redirect()->back()->with('error','Something went wrong');
+
+        $productVideo->delete();
+        return redirect()->back()->with('success','Deleted Successfully..');
     }
 }

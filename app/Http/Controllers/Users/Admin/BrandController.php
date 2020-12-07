@@ -18,8 +18,15 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::orderBy('brand_name','asc')->get();
+        $brands = Brand::orderBy('created_at','desc')->brandWithAdminOwner()->get();
        return view('admin.brand.manage',compact('brands'));
+    }
+
+
+    public function allBrand()
+    {
+        $brands = Brand::orderBy('created_at','desc')->brandWithOutAdminOwner()->get();
+        return view('admin.brand.manage',compact('brands'));
     }
 
     /**
@@ -75,7 +82,6 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-
         $brands = $brand;
         return view('admin.brand.edit',compact('brands'));
     }
@@ -111,7 +117,7 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-        Session::flash('error','Brand Successfully Deleted');
+        Session::flash('success','Brand Successfully Deleted');
         return redirect()->route('brand.index');
     }
 }

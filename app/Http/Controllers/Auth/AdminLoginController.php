@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class AdminLoginController extends Controller
 {
     use AuthenticatesUsers;
+
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
@@ -61,6 +62,6 @@ class AdminLoginController extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect('/');
+            : redirect()->route('admin.login');
     }
 }
