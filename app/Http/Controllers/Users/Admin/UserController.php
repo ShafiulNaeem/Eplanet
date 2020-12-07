@@ -18,6 +18,15 @@ class UserController extends Controller
         return view('admin.users.manage', $data);
     }
 
+    public function allUser()
+    {
+        $data = [
+            'users' => User::all()
+        ];
+
+        return view('admin.users.manage', $data);
+    }
+
 
     public function changeStatus(User $user,$currentStatus)
     {

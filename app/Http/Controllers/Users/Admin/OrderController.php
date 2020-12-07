@@ -63,7 +63,11 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
+        if( Auth::guard('admin')->user()->role != 1 )
+            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
+        else
+            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0])
+                ->where('admin_id', '!=', Auth::guard("admin")->user()->id)->get();
     }
 
     /**

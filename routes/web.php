@@ -52,6 +52,15 @@ Route::prefix('admin')->group(function(){
     Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+
+    Route::name('admin.all.')->prefix('allvendor')->group(function (){
+        Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');
+        Route::get('brand', 'Users\Admin\BrandController@allBrand')->name('brand');
+        Route::get('coupon', 'Users\Admin\CouponController@allCoupon')->name('coupon');
+        Route::get('category', 'Users\Admin\CategoryController@allCategory')->name('category');
+        Route::get('productimage', 'Users\Admin\ProductImageController@allProductImages')->name('product.image');
+        Route::get('user', 'Users\Admin\UserController@allUser')->name('user.no.order');
+    });
 });
 
 

@@ -48,10 +48,10 @@
                                             <td>{{$order->email}}</td>
                                             <td>{{$order->phone}}</td>
                                             @if($vendor)
-                                            <td> {{ date('Y/m/d', strtotime($order->orderWithAdmin[0]->created_at)) }}</td>
-                                            <td class="text-danger">{{$order->orderWithAdmin->count()}}</td>
+                                                <td>{{\Carbon\Carbon::parse($order->orderWithAdmin[0]->created_at)->format('M d Y')}} </td>
+                                                <td class="text-danger">{{$order->orderWithAdmin->count()}}</td>
                                             @else
-                                                <td> {{ date('Y/m/d', strtotime($order->orderWithOutAdmin[0]->created_at)) }}</td>
+                                                <td> {{\Carbon\Carbon::parse($order->orderWithOutAdmin[0]->created_at)->format('M d Y')}}</td>
                                                 <td class="text-danger">{{$order->orderWithOutAdmin->count()}}</td>
                                             @endif
                                                 <td>
