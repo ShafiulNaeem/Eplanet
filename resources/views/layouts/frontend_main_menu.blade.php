@@ -201,7 +201,7 @@
                                 <div class="header_account_list register">
                                     <ul>
                                         @if(! \Illuminate\Support\Facades\Auth::check())
-                                            <li><a href="{{route('register')}}">Sign In</a></li>
+                                            <li><a href="{{route('register')}}">{{ __('Sign Up') }}</a></li>
                                             <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                                         @else
                                             <li><a href="{{route('logout')}}"
