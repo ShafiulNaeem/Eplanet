@@ -51,7 +51,7 @@
                                 <a href="{{route('category.edit',$category->id)}}" class="btn text-warning btn-app float-left">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
-                                <a href="" class="btn btn-app text-danger float-left" data-toggle="modal" data-target="#exampleModal{{$category->id}}">
+                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$category->id}}">
                                     <i class="fa fa-trash fa-2x"></i> DELETE
                                 </a>
 
