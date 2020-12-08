@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Admin extends Authenticatable
 {
@@ -21,4 +22,16 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function scopeThisAdmin($query)
+    {
+        return $query->where('id', Auth::guard('admin')->user()->id);
+    }
+
+
+    public function scopeExceptThisAdmin($query)
+    {
+        return $query->where('id', '!=',Auth::guard('admin')->user()->id);
+    }
 }

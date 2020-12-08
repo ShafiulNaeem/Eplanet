@@ -296,6 +296,13 @@
                                         <p>Manage Product Video</p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.all.product.video') }}" class="nav-link text-fuchsia">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>All Vendor Product Video</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

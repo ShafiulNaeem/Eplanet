@@ -45,7 +45,7 @@
                                                         </a>
                                                     @else
                                                         <a href="{{ route('admin.all.users.change.status', [$user->id, $user->is_verified]) }}" class="btn btn-app bg-danger">
-                                                            <i class="fas fa-ban"></i> Inactive
+                                                            <i class="fas fa-user-times"></i> Inactive
                                                         </a>
                                                     @endif
                                                 </td>
