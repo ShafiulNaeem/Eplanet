@@ -79,6 +79,7 @@
                             <th>SL</th>
                             <th>Product Video</th>
                             <th>Product Name</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>

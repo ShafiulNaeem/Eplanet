@@ -22,7 +22,15 @@ class ProductVideoController extends Controller
      */
     public function index()
     {
-        $productvideos = ProductVideo::with('product')->get();
+        $productvideos = ProductVideo::with('product')->ProductVideoWithAdminOwner()->get();
+        //dd($productImages);
+        return view('admin.productVideo.manage',compact('productvideos'));
+    }
+
+
+    public function allProductVideo()
+    {
+        $productvideos = ProductVideo::with('product')->ProductVideoWithOutAdminOwner()->get();
         //dd($productImages);
         return view('admin.productVideo.manage',compact('productvideos'));
     }
