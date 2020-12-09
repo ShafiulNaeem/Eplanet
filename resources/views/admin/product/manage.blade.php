@@ -28,6 +28,7 @@
                             <th>Product Stock</th>
                             <th>Product Size</th>
                             <th>Product Price</th>
+                            <th>Product Created</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -42,6 +43,7 @@
                                 <td>{{$product->stock}} piece(s) </td>
                                 <td>{{$product->size}}</td>
                                 <td>BDT {{$product->product_price}}</td>
+                                <td>{{\Carbon\Carbon::parse($product->created_at)->format('M d Y')}}</td>
                                 <td>
                                     <a href="{{route('product.edit',$product->id)}}" class="btn text-warning btn-app float-left">
                                         <i class="fas fa-edit"></i> Edit
@@ -84,6 +86,7 @@
                                         <th>Product Stock</th>
                                         <th>Product Size</th>
                                         <th>Product Price</th>
+                                        <th>Product Created</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>

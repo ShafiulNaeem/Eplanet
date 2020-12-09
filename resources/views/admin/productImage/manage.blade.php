@@ -24,6 +24,7 @@
                             <th>SL</th>
                             <th>Product Name</th>
                             <th>Product Image</th>
+                            <th>Created at</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -34,6 +35,7 @@
                             <tr>
                                 <td style="width: 5%">{{$index + 1}}</td>
                                 <td style="width: 19%">{{$productImage->product_name}}</td>
+                                <td>{{\Carbon\Carbon::parse($productImage->created_at)->format('M d Y')}}</td>
                                 <td style="width: 57%">
                                     @php
                                         $width = 100/count($productImage->productImages);
@@ -82,6 +84,7 @@
                             <th>SL</th>
                             <th>Product Name</th>
                             <th>Product Image</th>
+                            <th>Created at</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>

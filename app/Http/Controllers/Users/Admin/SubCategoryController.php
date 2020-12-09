@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class SubCategoryController extends Controller
@@ -22,7 +23,7 @@ class SubCategoryController extends Controller
             ->join('categories', 'categories.id', '=', 'sub_categories.category_id')
             ->select('sub_categories.*', 'categories.category_name')
             ->get();
-//        dd($subCategories);
+
         return view('admin.subcategory.manage',compact('subCategories'));
 
     }
@@ -34,7 +35,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::CategoryWithAdminOwner()->get();
+
         return view('admin.subcategory.create',compact('categories'));
     }
 
@@ -56,6 +58,7 @@ class SubCategoryController extends Controller
         $SubCategory->subcategory_name = $request->subcategory_name;
         $SubCategory->category_id = $request->category_name;
         $SubCategory->status = $request->status;
+        $SubCategory->admin_id = Auth::guard('admin')->user()->id;
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');

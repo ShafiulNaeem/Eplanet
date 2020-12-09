@@ -27,7 +27,7 @@
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Product Name</label>
-                                        <select name="product_name" id="" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                        <select name="product_name"  id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                             <option selected>Select Product</option>
                                             @foreach($products as $product)
                                                 <option value="{{$product->id}}">{{$product->product_name}}</option>
@@ -37,7 +37,6 @@
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleFormControlFile1">Product Video</label>
-{{--                                        <input type="file" name="product_image" class="form-control-file" id="exampleFormControlFile1">--}}
                                         <div class="input-group ">
                                             <div class="custom-file">
                                                 <input type="file" name="product_video"  class="custom-file-input" id="exampleInputFile">

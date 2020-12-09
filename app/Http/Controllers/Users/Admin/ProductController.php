@@ -13,9 +13,11 @@ use Session;
 use Auth;
 use Image;
 use Illuminate\Support\Str;
+use App\Helper\DeleteFile;
 
 class ProductController extends Controller
 {
+    use DeleteFile;
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +25,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('brand')->get();
+        $products = Product::with('brand')->adminProduct()->get();
+
+        return view('admin.product.manage',compact('products'));
+    }
+
+    public function allProduct()
+    {
+        $products = Product::with('brand')->withoutAdminProduct()->get();
+//dd($products);
         return view('admin.product.manage',compact('products'));
     }
 
@@ -192,6 +202,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if ( ! self::deleteFile(public_path('images/' . $product->feature_image)) )
+            return redirect()->back()->with('error','Something went Wrong');
+
         $product->delete();
         Session::flash('success','Product Deleted Successfully');
         return redirect()->back();
