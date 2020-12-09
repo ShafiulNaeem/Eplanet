@@ -8,9 +8,11 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
+use App\Helper\DeleteFile;
 
 class BrandController extends Controller
 {
+    use DeleteFile;
     /**
      * Display a listing of the resource.
      *
@@ -119,5 +121,12 @@ class BrandController extends Controller
         $brand->delete();
         Session::flash('success','Brand Successfully Deleted');
         return redirect()->route('brand.index');
+    }
+
+    public function change(Request $request)
+    {
+        if( self::changeStatus($request->status, 'App\Models\Brand', $request->id) )
+            return redirect()->back()->with('success', 'Status Changes');
+        return  redirect()->back()->with('error', 'Something went wrong');
     }
 }
