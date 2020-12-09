@@ -36,11 +36,17 @@
                                     <td class="text-center">{{$index + 1}}</td>
                                     <td class="text-center">{{$brand->brand_name}}</td>
                                     <td class="text-center">
-                                        @if($brand->status == 1)
-                                            <span class="btn btn-success">Active</span>
-                                        @else
-                                            <span class="btn btn-danger">InActive</span>
-                                        @endif
+                                        <form action="{{ route('change.status') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="status" value="{{$brand->status}}">
+                                            <input type="hidden" name="id" value="{{$brand->id}}">
+
+                                            @if($brand->status == 1)
+                                                <button type="submit" class="btn btn-success">Active</button>
+                                            @else
+                                                <button type="submit" class="btn btn-danger">Inactive</button>
+                                            @endif
+                                        </form>
                                     </td>
                                     <td class="text-center">{{  \Carbon\Carbon::parse($brand->created_at)->format('M d Y') }}</td>
                                     <td class="text-center">
