@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class SubCategory extends Model
 {
@@ -19,6 +20,16 @@ class SubCategory extends Model
     public function products()
     {
         return $this->hasMany('App\Models\Product', 'sub_categories_id');
+    }
+
+    public function scopeSubCategoryWithAdminOwner($query)
+    {
+        return $query->where('admin_id', Auth::guard('admin')->user()->id);
+    }
+
+    public function scopeSubCategoryWithOutAdminOwner($query)
+    {
+        return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
 
 }

@@ -170,6 +170,12 @@
                                         <p>Manage Sub category</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.all.subcategory') }}" class="nav-link text-fuchsia">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>All Vendor SubCategory</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

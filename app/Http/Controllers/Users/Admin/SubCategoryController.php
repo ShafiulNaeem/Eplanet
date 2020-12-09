@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use App\Helper\DeleteFile;
 
 class SubCategoryController extends Controller
 {
+    use DeleteFile;
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +21,22 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subCategories = DB::table('sub_categories')
-            ->join('categories', 'categories.id', '=', 'sub_categories.category_id')
-            ->select('sub_categories.*', 'categories.category_name')
-            ->get();
+//        $subCategories = DB::table('sub_categories')
+//            ->join('categories', 'categories.id', '=', 'sub_categories.category_id')
+//            ->select('sub_categories.*', 'categories.category_name')
+//            ->get();
+        $subCategories = SubCategory::with('category')->SubCategoryWithAdminOwner()->get();
 
         return view('admin.subcategory.manage',compact('subCategories'));
 
+    }
+
+    // All vendor
+    public function allSubCategory()
+    {
+        $subCategories = SubCategory::with('category')->SubCategoryWithOutAdminOwner()->get();
+
+        return view('admin.subcategory.manage',compact('subCategories'));
     }
 
     /**
@@ -59,6 +70,7 @@ class SubCategoryController extends Controller
         $SubCategory->category_id = $request->category_name;
         $SubCategory->status = $request->status;
         $SubCategory->admin_id = Auth::guard('admin')->user()->id;
+
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
@@ -120,6 +132,9 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_name;
         $subcategory->status = $request->status;
 
+        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
+            return redirect()->back()->with('error','Something went wrong');
+
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -147,8 +162,19 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subcategory)
     {
+        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
+            return redirect()->back()->with('error','Something went wrong');
+
         $subcategory->delete();
         Session::flash('success','Sub Category Delete Successfully');
         return redirect()->back();
+    }
+
+    // Change Status
+    public function change(Request $request)
+    {
+        if( self::changeStatus($request->status, 'App\Models\SubCategory', $request->id) )
+            return redirect()->back()->with('success', 'Status Changes');
+        return  redirect()->back()->with('error', 'Something went wrong');
     }
 }
