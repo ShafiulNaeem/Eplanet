@@ -36,7 +36,7 @@
                             <td>{{$index + 1}}</td>
                             <td>{{$copon->coupon_code}}</td>
                             <td>BDT {{$copon->amount}}</td>
-                            <td>{{date('Y-m-d',strtotime($copon->created_at))}}</td>
+                            <td>{{\Carbon\Carbon::parse($copon->created_at)->format('M d Y')}}</td>
                             <td>
                                 @if($copon->status == 1)
                                 <span class="btn btn-success">Active</span>

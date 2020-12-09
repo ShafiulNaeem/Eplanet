@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Session;
 use Auth;
+use App\Helper\DeleteFile;
 
 class CategoryController extends Controller
 {
+    use DeleteFile;
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +19,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorys = Category::orderBy('category_name','asc')->get();
+        $categorys = Category::orderBy('category_name','asc')->CategoryWithAdminOwner()->get();
+
+        return view('admin.category.manage',compact('categorys'));
+    }
+
+
+    public function allCategory()
+    {
+        $categorys = Category::orderBy('category_name','asc')->CategoryWithOutAdminOwner()->get();
 
         return view('admin.category.manage',compact('categorys'));
     }
@@ -109,6 +119,9 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->status = $request->status;
 
+        if ( ! self::deleteFile( public_path('images/' . $category->category_image) ) )
+            return redirect()->back()->with('error','Something went wrong');
+
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -121,7 +134,7 @@ class CategoryController extends Controller
             Session::flash('success','Category Updated Successfully');
             return redirect()->route('category.index');
         } else {
-            Session::flash('success','Something went wrong');
+            Session::flash('error','Something went wrong');
             return redirect()->back();
         }
     }
@@ -135,7 +148,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //TODO : delete image file also
+        if ( ! self::deleteFile( public_path('images/' . $category->category_image) ) )
+            return redirect()->back()->with('error','Something went wrong');
+
         $category->delete();
         Session::flash('success','Category Successfully Deleted');
         return redirect()->route('category.index');
