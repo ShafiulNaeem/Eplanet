@@ -178,6 +178,7 @@ class ProductController extends Controller
         $products->sub_categories_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
 
+
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();

@@ -155,4 +155,12 @@ class CategoryController extends Controller
         Session::flash('success','Category Successfully Deleted');
         return redirect()->route('category.index');
     }
+
+    // Change Status
+    public function change(Request $request)
+    {
+        if( self::changeStatus($request->status, 'App\Models\Category', $request->id) )
+            return redirect()->back()->with('success', 'Status Changes');
+        return  redirect()->back()->with('error', 'Something went wrong');
+    }
 }

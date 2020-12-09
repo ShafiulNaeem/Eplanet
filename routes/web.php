@@ -53,13 +53,17 @@ Route::prefix('admin')->group(function(){
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
-    Route::post('change', 'Users\Admin\BrandController@change')->name('change.status');
+    // change Status
+    Route::post('change', 'Users\Admin\BrandController@change')->name('brand.change.status');
+    Route::post('categoryChange', 'Users\Admin\CategoryController@change')->name('category.change.status');
+    Route::post('subcategoryChange', 'Users\Admin\SubCategoryController@change')->name('subcategory.change.status');
 
     Route::name('admin.all.')->prefix('allvendor')->group(function (){
         Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');
         Route::get('brand', 'Users\Admin\BrandController@allBrand')->name('brand');
         Route::get('coupon', 'Users\Admin\CouponController@allCoupon')->name('coupon');
         Route::get('category', 'Users\Admin\CategoryController@allCategory')->name('category');
+        Route::get('subcategory', 'Users\Admin\SubCategoryController@allSubCategory')->name('subcategory');
         Route::get('productimage', 'Users\Admin\ProductImageController@allProductImages')->name('product.image');
         Route::get('productvideo', 'Users\Admin\ProductVideoController@allProductVideo')->name('product.video');
         Route::get('user', 'Users\Admin\UserController@allUser')->name('user.no.order');

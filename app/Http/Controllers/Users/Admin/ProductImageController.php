@@ -111,6 +111,7 @@ class ProductImageController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         foreach ($request->product_image_id as $ind => $product_image_id){
             if($request->hasFile('product_image.'.$ind)){
                 $file = $request->file('product_image.'.$ind);
@@ -142,7 +143,6 @@ class ProductImageController extends Controller
         foreach ($images as $image)
             if(!self::deleteFile(public_path('images/' . $image->product_image)))
                 return redirect()->back()->with('error','Something went Wrong');
-
 
         ProductImage::where([
             'product_id'=> $id,

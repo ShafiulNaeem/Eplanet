@@ -36,7 +36,7 @@
                                     <td class="text-center">{{$index + 1}}</td>
                                     <td class="text-center">{{$brand->brand_name}}</td>
                                     <td class="text-center">
-                                        <form action="{{ route('change.status') }}" method="post">
+                                        <form action="{{ route('brand.change.status') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="status" value="{{$brand->status}}">
                                             <input type="hidden" name="id" value="{{$brand->id}}">

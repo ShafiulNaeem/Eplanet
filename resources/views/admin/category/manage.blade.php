@@ -39,11 +39,17 @@
                             </td>
                             <td>{{$category->category_name}}</td>
                             <td>
-                                @if($category->status == 1)
-                                    <span class="btn btn-success">Active</span>
-                                @else
-                                    <span class="btn btn-danger">InActive</span>
-                                @endif
+                                <form action="{{ route('category.change.status') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="status" value="{{$category->status}}">
+                                    <input type="hidden" name="id" value="{{$category->id}}">
+
+                                    @if($category->status == 1)
+                                        <button type="submit" class="btn btn-success">Active</button>
+                                    @else
+                                        <button type="submit" class="btn btn-danger">Inactive</button>
+                                    @endif
+                                </form>
                             </td>
 
                             <td>{{\Carbon\Carbon::parse($category->created_at)->format('M d Y')}}</td>
