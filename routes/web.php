@@ -1,14 +1,18 @@
 <?php
 
+use App\Mail\VerificationMail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('test', function (){
-//    return Product::where(['id'=> 1])
-//        ->select('admin_id')->first()->admin_id;
-//});
+Route::get('test', function (){
+//    $data = [
+//        'name' => 'Tushar',
+//        'verification_code' => 'feefefelwhrw3rnn'
+//    ];
+//    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
+});
 
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
