@@ -49,7 +49,12 @@
                                 <input type="password" name="password" placeholder="Your Password" required>
                             </p>
                             <div class="login_submit">
-                                <a href="forgetpass.html">Lost your password?<span>/</span></a>
+{{--                                <a href="forgetpass.html">Lost your password?<span>/</span></a>--}}
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}">
+                                        {{ __('Lost Your Password?') }}
+                                    </a>
+                                @endif
                                 <a href="{{route('register')}}">Registration now</a>
                                 <label for="remember">
                                     <input id="remember" name="remember" value="true" type="checkbox">
