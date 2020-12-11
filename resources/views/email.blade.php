@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
+    <div class="card row">
         <div class="col-md-12">
             <h3 class="text-center text-info">Welcome to {{$email_data['name'] }}</h3>
             <p class="text-center">Please Click the following link to confirm email</p>
