@@ -29,9 +29,10 @@ class CreateProductsTable extends Migration
             $table->string('model')->nullable();
             $table->double('product_price');
             $table->double('tax')->default(0);
+            $table->double('status')->default(1);
             $table->string('manufactured_by')->nullable();
             $table->string('color')->nullable();
-            $table->integer('sold')->nullable();
+            $table->integer('sold')->default(0);
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');

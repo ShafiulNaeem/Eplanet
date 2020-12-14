@@ -50,7 +50,8 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $val = $request->validate([
-            'brand_name' => ['required', 'string', 'max:255']
+            'brand_name' => ['required', 'string', 'max:255'],
+            'brand_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $admin_id = Auth::guard('admin')->user()->id;
@@ -59,10 +60,16 @@ class BrandController extends Controller
         $val['brand_name'] = $request->brand_name;
         $val['status'] = $request->status;;
 
-        if( Brand::create($val) ) Session::flash('success','Brand Inserted Successfully');
-        else Session::flash('error','Something went wrong ');
+        if($request->hasFile('brand_image')){
+            $image = request()->file('brand_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            request()->brand_image->move(public_path('images'), $filename);
+            $val['brand_image'] = $filename;
+        };
 
-        return redirect()->route('brand.index');
+        if( Brand::create($val) ) return redirect()->route('brand.index')->with('success','Brand Inserted Successfully');
+
+        return redirect()->back()->with('error','Something went wrong ');
     }
 
     /**

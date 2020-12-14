@@ -95,7 +95,7 @@ class ProductController extends Controller
         $products->brand_id = $request->product_brand;
         $products->sub_categories_id = $request->product_sub_category;
         $products->manufactured_by = $request->manufactured_by;
-        $products->sold = rand(4,100);
+        $products->status = $request->status;
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
@@ -177,6 +177,7 @@ class ProductController extends Controller
         $products->brand_id = $request->product_brand;
         $products->sub_categories_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
+        $products->status = $request->status;
 
 
         if($request->hasFile('feature_image')){
@@ -209,5 +210,13 @@ class ProductController extends Controller
         $product->delete();
         Session::flash('success','Product Deleted Successfully');
         return redirect()->back();
+    }
+
+
+    public function change(Request $request)
+    {
+        if( self::changeStatus($request->status, 'App\Models\Product', $request->id) )
+            return redirect()->back()->with('success', 'Status Changes');
+        return  redirect()->back()->with('error', 'Something went wrong');
     }
 }

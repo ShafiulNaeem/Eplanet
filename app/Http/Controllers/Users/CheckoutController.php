@@ -43,6 +43,7 @@ class CheckoutController extends Controller
             $order->save();
 
             $pro->increment('sold', $cart['quantity']);
+            $pro->decrement('stock', $cart['quantity']);
 
             //order_product
             $orderpoduct = new OrderProduct();
@@ -52,7 +53,9 @@ class CheckoutController extends Controller
 
             //dd($orderpoducts);
             $orderpoduct->save();
+            $pro->save();
             $order = null;
+            $pro = null;
         }
         Session::forget('cart');
 

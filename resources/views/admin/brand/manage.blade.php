@@ -24,6 +24,7 @@
                                     <tr>
                                         <th>SL</th>
                                         <th>Brand Name</th>
+                                        <th>Brand Logo</th>
                                         <th>Brand Status</th>
                                         <th>Date</th>
                                         <th>Action</th>
@@ -35,6 +36,9 @@
                                 <tr>
                                     <td class="text-center">{{$index + 1}}</td>
                                     <td class="text-center">{{$brand->brand_name}}</td>
+                                    <td class="text-center" >
+                                        <img width="90" src="{{ url('images/' . $brand->brand_image) }}" alt="{{$brand->brand_name}}">
+                                    </td>
                                     <td class="text-center">
                                         <form action="{{ route('brand.change.status') }}" method="post">
                                             @csrf

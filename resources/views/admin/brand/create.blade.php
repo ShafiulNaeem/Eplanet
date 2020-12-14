@@ -20,7 +20,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{route('brand.store')}}" method="POST">
+                            <form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group col-md-6 float-left">
@@ -33,11 +33,23 @@
                                     </div>
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleSelectRounded0">Status</label>
-                                        <select name="status" class="custom-select rounded-0" id="exampleSelectRounded0">
+                                        <select name="status" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;" id="exampleSelectRounded0">
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
                                         </select>
                                     </div>
+
+                                    <div class="form-group ">
+                                        <label for="exampleFormControlFile1">Brand Logo</label>
+                                        {{--                                            <input type="file" name="feature_image" class="form-control-file" id="exampleFormControlFile1">--}}
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="brand_image" class="custom-file-input" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <!-- /.card-body -->
 

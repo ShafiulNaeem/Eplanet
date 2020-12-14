@@ -52,7 +52,7 @@
 
 @yield('content')
 
-
+@if( url()->full() == route('home') )
 <footer class="footer_widgets">
     <div class="footer_top">
         <div class="container">
@@ -147,6 +147,7 @@
         </div>
     </div>
 </footer>
+@endif
 <!--footer area end-->
 
 <!-- modal area start-->
@@ -305,7 +306,69 @@
 <!-- Main JS -->
 <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
+<script type="text/javascript">
 
+        $(document).on('click', '#add_to_wish_list', function (e) {
+            var id = (this.getAttribute('data-target'));
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: window.location.origin +'/addWishList/' + id,
+                method: 'get',
+
+
+                success: function (response) {
+                    console.log(response.responseText);
+                    console.log(response);
+                },
+                error:function(response)
+                {
+                    let error = JSON.parse(response.responseText);
+
+                    if( error.error == 'Unauthenticated.' ){
+                        window.location = window.location.origin + '/login';
+                    }
+                }
+            });
+
+
+        });
+
+        $(document).on('click', '#express_wish', function (e) {
+            var id = (this.getAttribute('data-target'));
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: window.location.origin +'/addExpressList/' + id,
+                method: 'get',
+
+
+                success: function (response) {
+                    console.log(response.responseText);
+                    console.log(response);
+                },
+                error:function(response)
+                {
+                    let error = JSON.parse(response.responseText);
+
+                    if( error.error == 'Unauthenticated.' ){
+                        window.location = window.location.origin + '/login';
+                    }
+                }
+            });
+
+
+        });
+
+        function createElement(element) {
+            return document.createElement(element);
+        }
+
+</script>
 
 </body>
 
