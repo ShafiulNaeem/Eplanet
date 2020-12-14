@@ -128,9 +128,14 @@
                                         <input type="text" name="product_color" class="form-control" id="exampleInputPassword1" value="{{$product->color}}">
                                     </div>
 
-                                    <div class="form-group float-left col-md-6">
-                                        <label for="exampleFormControlTextarea1">Product Description</label>
-                                        <textarea class="form-control" name="product_description" id="exampleFormControlTextarea1" rows="3">{{$product->product_description}}</textarea>
+                                    <div class="form-group col-md-6 float-left">
+                                        <label for="exampleSelectRounded0">Status</label>
+                                        <select name="status" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;" id="exampleSelectRounded0">
+                                            <option
+                                                @if( $product->status == 1 ) selected @endif
+                                                value="1">Active</option>
+                                            <option @if( $product->status == 0 ) selected @endif value="0">Inactive</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group float-left col-md-6">
@@ -142,6 +147,11 @@
                                             </div>
                                         </div>
                                         <span><img src="{{url('images',$product->feature_image)}}" alt="" width="80"></span>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="exampleFormControlTextarea1">Product Description</label>
+                                        <textarea class="form-control" name="product_description" id="exampleFormControlTextarea1" rows="3">{{$product->product_description}}</textarea>
                                     </div>
 
                                 </div>

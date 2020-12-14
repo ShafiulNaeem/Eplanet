@@ -19,7 +19,8 @@ Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
 Route::get('checkout', 'Users\CheckoutController@index')->middleware(['auth'])->name('checkout');
 Route::post('checkout', 'Users\CheckoutController@checkout')->name('checkout.final');
 Route::get('checkoutconfirm', 'Users\CheckoutController@checkoutConfirm')->name('checkout.confirm');
-
+Route::get('/addWishList/{id}', 'WelcomeController@addWishList')->name('add.wish.list')->middleware(['auth:web']);
+Route::get('/addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
     Route::post('/', 'Users\CartController@store')->middleware(['auth'])->name('pages.cart');
@@ -61,6 +62,7 @@ Route::prefix('admin')->group(function(){
     Route::post('change', 'Users\Admin\BrandController@change')->name('brand.change.status');
     Route::post('categoryChange', 'Users\Admin\CategoryController@change')->name('category.change.status');
     Route::post('subcategoryChange', 'Users\Admin\SubCategoryController@change')->name('subcategory.change.status');
+    Route::post('productChange', 'Users\Admin\ProductController@change')->name('product.change.status');
 
     Route::name('admin.all.')->prefix('allvendor')->group(function (){
         Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');

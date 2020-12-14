@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBrandsTable extends Migration
+class CreateVendorProductCertifications extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('vendor_product__certifications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
-            $table->string('brand_name');
-            $table->string('brand_image');
-            $table->integer('status')->default(1);
-            $table->timestamps();
+            $table->mediumText('name');
+            $table->text('issued_by');
+            $table->text('business_scope');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +31,6 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('vendor_product__certifications');
     }
 }

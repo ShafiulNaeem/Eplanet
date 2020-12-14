@@ -29,6 +29,7 @@
                             <th>Product Size</th>
                             <th>Product Price</th>
                             <th>Product Created</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -44,6 +45,19 @@
                                 <td>{{$product->size}}</td>
                                 <td>BDT {{$product->product_price}}</td>
                                 <td>{{\Carbon\Carbon::parse($product->created_at)->format('M d Y')}}</td>
+                                <td class="text-center">
+                                    <form action="{{ route('product.change.status') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="status" value="{{$product->status}}">
+                                        <input type="hidden" name="id" value="{{$product->id}}">
+
+                                        @if($product->status == 1)
+                                            <button type="submit" class="btn btn-success">Active</button>
+                                        @else
+                                            <button type="submit" class="btn btn-danger">Inactive</button>
+                                        @endif
+                                    </form>
+                                </td>
                                 <td>
                                     <a href="{{route('product.edit',$product->id)}}" class="btn text-warning btn-app float-left">
                                         <i class="fas fa-edit"></i> Edit

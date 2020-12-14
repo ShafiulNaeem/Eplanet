@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\SubCategory;
+use App\Models\WishList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
@@ -32,7 +35,7 @@ class WelcomeController extends Controller
     {
         $mainRes = $this->productByCategory(['kids', 'men']);
 
-        $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->get();
+        $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->getActive()->get();
 
         return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
 
@@ -71,12 +74,36 @@ class WelcomeController extends Controller
                             'product_price' => $product->product_price
                         ];
                     }
-
-
                     $mainRes[] = $category_result;
                 }
             }
         }
         return $mainRes;
+    }
+
+
+    public function addWishList($id)
+    {
+        $data['product_id'] = $id;
+        $data['user_id'] = Auth::user()->id;
+
+        return ( WishList::create($data) ) ? response([
+            'message' => 'Wishlist Created'
+        ], 200) : response([
+            'message' => 'Something went wrong'
+        ], 404);
+    }
+
+
+    public function  addExpressList($id){
+        $data['product_id'] = $id;
+        if (Auth::check())
+            $data['user_id'] = Auth::user()->id;
+
+        return ( ExpressWish::create($data) ) ? response([
+            'message' => 'Wishlist Created'
+        ], 200) : response([
+            'message' => 'Something went wrong'
+        ], 404);
     }
 }

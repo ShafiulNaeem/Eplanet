@@ -24,7 +24,8 @@
     <!--product details start-->
     <div class="product_details mt-70 mb-70">
         <div class="container">
-            @foreach($products as $product)
+            @if( count($products) > 0 )
+                @foreach($products as $product)
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="product-details-tab">
@@ -127,15 +128,21 @@
 
 
                                 </div>
-                                <div class=" product_d_action">
-                                   <ul>
-                                       <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
-                                       <li><a href="#" title="Add to wishlist">+ Compare</a></li>
-                                   </ul>
-                                </div>
+
                                 <div class="product_meta">
-{{--                                    <span>Category: <a href="{{$categoryName->id}}">{{$categoryName->category_name}}</a></span>--}}
+                                    <span>Category: <a href="{{ route('cat.show', $product->category->id) }}">{{$product->category->category_name}}</a></span>
                                 </div>
+                            <div class=" product_d_action">
+                                <ul>
+                                    @if($product->status == 1)
+                                        <li><a data-target="{{$product->id}}" id="add_to_wish_list" title="Add to wishlist">+ Add to Wishlist</a></li>
+                                    @endif
+                                    @if( $product->sold <= 0 )
+                                        <li><a data-target="{{$product->id}}" id="express_wish"  title="Express wish" >Express wish</a></li>
+                                    @endif
+                                    <li><a href="#" title="Add to wishlist">Vendor Details</a></li>
+                                </ul>
+                            </div>
                             <div class="priduct_social">
                                 <ul>
                                     <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
@@ -150,6 +157,14 @@
                     </div>
                 </div>
                 @endforeach
+            @else
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center text-danger">No Product</h2>
+                    </div>
+                </div>
+            @endif
+
         </div>
     </div>
     <!--product details end-->

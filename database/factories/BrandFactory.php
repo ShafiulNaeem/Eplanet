@@ -27,7 +27,8 @@ class BrandFactory extends Factory
             'admin_id' => function(){
                 return Admin::all()->random();
             },
-            'brand_name' => $this->faker->name
+            'brand_name' => $this->faker->name,
+            'brand_image' => $this->faker->image(public_path('images'), 640, 480,null, false)
         ];
     }
 }
