@@ -14,6 +14,10 @@ Route::get('test', function (){
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
 });
 
+Route::get('/con',function(){
+    return view('pages.shop');
+});
+
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
 Route::get('checkout', 'Users\CheckoutController@index')->middleware(['auth'])->name('checkout');

@@ -1,6 +1,6 @@
 .discover-section{
     width:100;
-    padding: 10px 0;
+    padding: 30px 0;
     background: #F7F8FA
 }
 .discover-section p{
@@ -10,6 +10,7 @@
 }
 .discover-title h3{
     text-align: center;
+    padding: 15px 0;
     color:#000000;
     font-weight: 500;
     font-size: 
@@ -19,6 +20,17 @@
 	width: 55%;
 	margin: 0 auto;
     background:rgba(250, 250, 250, 0.53)
+}
+.related-section{
+    width: 100%;
+    padding:20px 0;
+    margin:0 auto;
+}
+.related-section .card{
+    margin:8px auto;
+}
+.related-section h3{
+    margin:24px 0;
 }
 .second-product{
     padding-bottom:20px;
@@ -30,6 +42,7 @@
 .product_area{
 	background:#F7F8FA;
 	color: #FFFFFF;
+    margin:0 auto;
 }
 
 .discover-carasul:hover .owl-nav div {
@@ -58,25 +71,96 @@
   right: 0;
   left: auto;
 }
+.product_container{
+    color:#000;
+    background:
+}
 .product_container h2 {
 	color: #000;
 	padding: 7px 0px;
-	letter-spacing: -3px;
+	letter-spacing: 0px;
 }
-.product_container h2{
-    color:#000;
-    padding:7px 12px;
-    letter-spacing:1px;
+.related-section h2 {
+	font-size: 36px;
+	line-height: 36px;
+	text-align: right;
 }
-.fa-map-marker{
-  font-size: 28px;
-  color:#FFFFFF;
+.category{
+    width:100%;
+    padding: 35px 0;
 }
-.product_name a{
-  color:#000000;
+.right-main-cat{
+    width:100%;
+    padding:10px 0;
+    text-align: center
 }
-.old_price{
-  color:#000000;
+.right-main-cat h4{
+    padding-bottom:20px;
+}
+.left-cat-image{
+    margin-top: 20px;
+}
+.left-category{
+    width: 100%;
+    padding: 15px 5px;
+    border-right:1px solid rgba(128, 128, 128, 0.31);
+}
+.right-category{
+    width:100%;
+    padding: 15px 0;
+}
+.sumit button{
+    margin:0;
+}.div_radis{
+    border-radius: 10px;
+}
+..category-inner{
+    width:100%;
+    padding:12px 0;
+}
+.category-inner img {
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+}
+.category-inner:hover  p{
+    color:#FF944D;
+    transition:1s;
+}
+.category-inner p{
+    padding: 13px 0;
+    text-align: center
+}
+.slider_area{
+    padding-bottom: 20px
+}
+.category .slider_area .owl-dots .owl-dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 25px 3px;
+  transition: .3s;
+}
+.related_inner {
+    width:100%;
+}
+.related-section .card:hover p{
+       color:#FF944D;
+       transition:1s;
+}
+.related-section .card:hover h5{
+       color:#08c;
+       transition:1s;
+}
+.related-section h5{
+text-align: center
+}
+
+.related-section p{
+text-align: center
 }
 .nice-select {
 	-webkit-tap-highlight-color: transparent;
@@ -108,16 +192,135 @@
 	white-space: nowrap;
 	width: auto;
 }
-.category-title h4{
-	text-align: center;
-	padding: 20px 0 10px;
-	font-size:17px;
-}
-.sub_head h4 {
-    text-align: center;
-    font-size: 12px;
-    padding-bottom: 17px;
-}
 .main_menu ul li{
     display: inline-block;
+}
+
+.overview{
+    width;100%;
+    padding: 20px 0;
+}
+.overview .rigt_inner{
+    width:100%;
+    padding: 15px 0;
+}
+.main_product{
+    width:100%;
+    padding: 15px 0;
+
+}
+.main_product .product_area{
+    background:#FFF;
+}
+.main_product .product_area{
+    background:#FFF;
+}
+.main_product .product_area h4{
+    line-height: 4px;
+}
+.product_capasity .product_area h4{
+    line-height: 4px;
+}
+.product_capasity .product_area{
+    background:#FFF;
+}
+.table_content{
+    width:100%;
+    padding:20px 0;
+}
+
+.table_content img {
+	display: block;
+	text-align: right;
+	position: absolute;
+	top: -19px;
+	right: 0;
+}
+.capacity_table img {
+	display: block;
+	text-align: right;
+	position: absolute;
+	top: -19px;
+	right: 0;
+}
+.comany_overview{
+    width: 100%;
+    padding: 25px 0;
+    color:#FFF;
+}
+
+.company_contat{
+    width: 100%;
+    padding: 25px 0;
+    text-align: center
+}
+.slider_area .owl-dots .owl-dot {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+    transition: .3s;
+    margin-bottom: 25px;
+}
+.company_contat img{
+    width:50%;
+   margin: 10px auto;
+}
+.company_contat .card{
+    margin:15px 0;
+}
+.company_contat span{
+    padding: 8px 16px;
+    background:#EEF8FF;
+    border-radius: 4px;
+}
+.all_branch{
+    width:100%;
+    padding: 24px 0;
+}
+.all_branch h2{
+    text-align: center;
+    padding: 15px 0 30px 0;
+}
+
+.address {
+	border-radius: 3px;
+	text-align: center;
+	margin-bottom: 30px;
+	padding: 5px 10px 0;
+	position: relative;
+    background: #EEF8FF;
+}
+.address .title {
+	color: #fff;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 25px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -14px;
+	margin: 0;
+}
+.address .title span {
+	background: #060e17;
+	padding: 0 5px;
+	font-size: 12px;
+}
+
+.address .address-line {
+	line-height: 18px;
+	font-size: 12px;
+	margin-top: 10px;
+}
+.address .closed-day {
+	border-top: 1px solid #182432;
+	padding-top: 6px;
+	margin-top: 15px;
+	text-align: left;
+	font-style: italic;
+	margin-bottom: 5px;
+	font-size: 12px;
 }
