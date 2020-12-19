@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', function (){
+//Route::get('test', function (){
 //    $data = [
 //        'name' => 'Tushar',
 //        'verification_code' => 'feefefelwhrw3rnn'
 //    ];
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-});
+    //return view('pages.contact');
+//});
 
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
@@ -21,6 +22,7 @@ Route::post('checkout', 'Users\CheckoutController@checkout')->name('checkout.fin
 Route::get('checkoutconfirm', 'Users\CheckoutController@checkoutConfirm')->name('checkout.confirm');
 Route::get('/addWishList/{id}', 'WelcomeController@addWishList')->name('add.wish.list')->middleware(['auth:web']);
 Route::get('/addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
+Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
     Route::post('/', 'Users\CartController@store')->middleware(['auth'])->name('pages.cart');
@@ -30,6 +32,7 @@ Route::prefix('pages')->group(function(){
     Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
     Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
     Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
+
 });
 
 
@@ -57,12 +60,14 @@ Route::prefix('admin')->group(function(){
     Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
 
     // change Status
     Route::post('change', 'Users\Admin\BrandController@change')->name('brand.change.status');
     Route::post('categoryChange', 'Users\Admin\CategoryController@change')->name('category.change.status');
     Route::post('subcategoryChange', 'Users\Admin\SubCategoryController@change')->name('subcategory.change.status');
     Route::post('productChange', 'Users\Admin\ProductController@change')->name('product.change.status');
+    Route::post('employeeChange', 'Users\Admin\EmployeeController@change')->name('employee.change.status');
 
     Route::name('admin.all.')->prefix('allvendor')->group(function (){
         Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');
@@ -86,6 +91,9 @@ Route::prefix('admin')->group(function(){
     Route::resource('productVideo', 'Users\Admin\ProductVideoController');
     Route::resource('coupon', 'Users\Admin\CouponController');
     Route::resource('orders', 'Users\Admin\OrderController');
+    Route::resource('designation', 'Users\Admin\DesignationController');
+    Route::resource('employee', 'Users\Admin\EmployeeController');
+
 
     Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
     Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');

@@ -5,7 +5,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Orders'
+                'title' => 'Manage All Orders'
             ])
 
     <!-- Main content -->
@@ -33,7 +33,7 @@
                                     <tbody>
                                     @foreach($orders as $index => $order)
                                         @php
-                                            $ve = $order->orderWithAdmin->count();
+                                            $ve = $order->orderWithOutAdmin->count();
                                         @endphp
                                         @if($ve > 0)
                                             <tr>
@@ -41,10 +41,11 @@
                                                 <td>{{$order->fname . ' ' . $order->lname}}</td>
                                                 <td>{{$order->email}}</td>
                                                 <td>{{$order->phone}}</td>
-                                                <td>{{\Carbon\Carbon::parse($order->orderWithAdmin[0]->created_at)->format('M d Y')}} </td>
-                                                <td class="text-danger">{{$order->orderWithAdmin->count()}}</td>
+                                                <td>{{\Carbon\Carbon::parse($order->orderWithOutAdmin[0]->created_at)->format('M d Y')}} </td>
+                                                <td class="text-danger">{{$order->orderWithOutAdmin->count()}}</td>
+
                                                 <td>
-                                                    <button type="button" id="submitBtn" class="btn btn-success float-left"  data-target="{{$order->id}}">
+                                                    <button type="button" id="submitBtnn" class="btn btn-success float-left"  data-target="{{$order->id}}">
                                                         View
                                                     </button>
 
@@ -96,7 +97,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </td>
+
+{{--                                                <td>--}}
+{{--                                                    <a href="{{route('orders.allOrders',$order->id)}}" class="btn btn-success float-left">--}}
+{{--                                                        View--}}
+{{--                                                    </a>--}}
+{{--                                                </td>--}}
 
                                             </tr>
                                         @endif
