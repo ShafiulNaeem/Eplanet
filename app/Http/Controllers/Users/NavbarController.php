@@ -41,11 +41,11 @@ class NavbarController extends Controller
         if ($request->product_name != null ){
             $mainRes = $this->productByCategory(['kids', 'men']);
 
-            $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->get();
+            $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->GetActive()->get();
 
             return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
         } else {
-            $category = SubCategory::with(['category','products'])->where('category_id',$request->category_name)->get();
+            $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$request->category_name)->GetActive()->get();
 
             return view('pages.categories',['categories' =>$category]);
         }
@@ -62,7 +62,7 @@ class NavbarController extends Controller
         $catArray = ['kids', 'men'];
         $mainRes = $this->productByCategory($catArray);
 
-        $category = SubCategory::with('products')->where('id',$id)->get();
+        $category = SubCategory::with('productWithStatus')->where('id',$id)->GetActive()->get();
 
         return view('pages.one_category',['results' => $mainRes,'categories' =>$category]);
     }
@@ -106,39 +106,35 @@ class NavbarController extends Controller
         $mainRes = [];
         foreach ($catArray as $val){
             $category_result = [];
-            $subCategories = Category::with('subcategory')->where([
+            $subCategories = Category::with('products')->where([
                 ['category_name' , '=', $val],
                 ['status', '=', 1],
             ])->get();
 
+            foreach ($subCategories as $sub) {
+                if ( count($sub->products) ){
+                    $category_result['category'] = [
+                        'category_name' => $sub->category_name,
+                        'category_image' => $sub->category_image
+                    ];
 
-            foreach ($subCategories as $sub){
-
-                $category_result['category'] = [
-                    'category_name' => $sub->category_name,
-                    'category_image' => $sub->category_image
-                ];
-
-                foreach ($sub->subcategory as $subCat){
-                    $product = SubCategory::with('products')->where('id', $subCat->id)->get();
-                    if (count($product) > 0){
-                        foreach ($product as $pval) {
-                            foreach ($pval->products as $products){
-                                $category_result['category']['products'][] = [
-                                    'id' => $products->id,
-                                    'unique_id' => $products->unique_id,
-                                    'brand_id' => $products->brand_id,
-                                    'product_name' => $products->product_name,
-                                    'feature_image' => $products->feature_image,
-                                    'stock' => $products->stock,
-                                    'product_price' => $products->product_price
-                                ];
-
-                            }
+                    foreach ($sub->products as $product){
+                        //dd($product->status);
+                        if ($product->status == 1){
+                            $category_result['category']['products'][] = [
+                                'id' => $product->id,
+                                'unique_id' => $product->unique_id,
+                                'brand_id' => $product->brand_id,
+                                'product_name' => $product->product_name,
+                                'feature_image' => $product->feature_image,
+                                'stock' => $product->stock,
+                                'product_price' => $product->product_price
+                            ];
                         }
+
                     }
+                    $mainRes[] = $category_result;
                 }
-                $mainRes[]=$category_result;
             }
         }
         return $mainRes;

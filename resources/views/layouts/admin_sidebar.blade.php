@@ -313,6 +313,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
@@ -338,7 +339,84 @@
                         @endif
                     </ul>
                 </li>
+
                 @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Employee Details
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Designation
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('designation.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Designation</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('designation.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Designation Manage</p>
+                                    </a>
+                                </li>
+
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="" class="nav-link text-fuchsia">--}}
+{{--                                        <i class="far fa-dot-circle nav-icon"></i>--}}
+{{--                                        <p>All Vendor Products</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-warning"></i>
+                                <p>
+                                    Employee
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('employee.create')}}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Employee</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('employee.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Employee</p>
+                                    </a>
+                                </li>
+
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="{{ route('admin.all.product.image') }}" class="nav-link text-fuchsia">--}}
+{{--                                        <i class="far fa-dot-circle nav-icon"></i>--}}
+{{--                                        <p>All Vendor Employee</p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+{{--                @endif--}}
+
+{{--                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )--}}
                 <li class="nav-item">
                     <a href="{{route('admin.all.user.no.order')}}" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>

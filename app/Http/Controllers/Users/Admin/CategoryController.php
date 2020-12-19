@@ -119,8 +119,8 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->status = $request->status;
 
-        if ( ! self::deleteFile( public_path('images/' . $category->category_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+//        if ( ! self::deleteFile( public_path('images/' . $category->category_image) ) )
+//            return redirect()->back()->with('error','Something went wrong');
 
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');

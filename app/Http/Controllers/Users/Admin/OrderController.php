@@ -27,8 +27,8 @@ class OrderController extends Controller
     public function index()
     {
         $orders = User::with('orderWithAdmin')->get();
-        $vendor = true;
-        return view('admin.orders.manage',compact('orders', 'vendor'));
+        //$vendor = true;
+        return view('admin.orders.manage',compact('orders'));
     }
 
     /**
@@ -40,8 +40,8 @@ class OrderController extends Controller
     {
         $orders = User::with('orderWithOutAdmin')->get();
 //        dd($orders);
-        $vendor = false;
-        return view('admin.orders.manage',compact('orders', 'vendor'));
+        //$vendor = false;
+        return view('admin.orders.edit',compact('orders'));
     }
 
     /**
@@ -63,11 +63,19 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        if( Auth::guard('admin')->user()->role != 1 )
-            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
-        else
-            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0])
-                ->where('admin_id', '!=', Auth::guard("admin")->user()->id)->get();
+
+        return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
+
+//        if( Auth::guard('admin')->user()->role != 1 )
+//            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
+//        else
+//            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0])
+//                ->where('admin_id', '!=', Auth::guard("admin")->user()->id)->get();
+    }
+
+    public function allOrders($id){
+        return Order::with('products')->where(['user_id' => $id, 'shifted' => 0])
+            ->where('admin_id', '!=', Auth::guard("admin")->user()->id)->get();
     }
 
     /**

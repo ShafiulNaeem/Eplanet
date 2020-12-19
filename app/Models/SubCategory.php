@@ -32,4 +32,19 @@ class SubCategory extends Model
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
 
+    //status check
+    public function scopeGetActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function productWithStatus()
+    {
+        return $this->products()->where([
+            'status' => 1
+        ])
+            ->orderBy('created_at', 'DESC');
+    }
+
+
 }

@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach($category->products as $product)
+                @foreach($category->productWithStatus as $product)
                     <div class="col-md-3">
                         <div class="right-category">
                             <div class="card">
