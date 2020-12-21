@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('test', function (){
+Route::get('test', function (){
 //    $data = [
 //        'name' => 'Tushar',
 //        'verification_code' => 'feefefelwhrw3rnn'
 //    ];
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-    //return view('pages.contact');
-//});
+    return view('pages.company_overview');
+});
 
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
