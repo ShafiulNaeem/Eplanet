@@ -12,7 +12,7 @@ Route::get('test', function (){
 //        'verification_code' => 'feefefelwhrw3rnn'
 //    ];
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-    return view('pages.company_overview');
+    return view('admin.vendor.productCapacity.create');
 });
 
 Route::get('/',  'WelcomeController@index')->name('home');
@@ -94,7 +94,16 @@ Route::prefix('admin')->group(function(){
     Route::resource('designation', 'Users\Admin\DesignationController');
     Route::resource('employee', 'Users\Admin\EmployeeController');
 
-
     Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
     Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');
+
+    // vendor routes
+    Route::prefix('vendor')->group(function(){
+        Route::resource('productCapacity', 'Users\Vendor\ProductCapacityController');
+        Route::resource('productCertification', 'Users\Vendor\ProductCertificationController');
+        Route::resource('productQuality', 'Users\Vendor\ProductQualityController');
+        Route::resource('productRnD', 'Users\Vendor\ProductRnDController');
+        Route::resource('tradeCapacity', 'Users\Vendor\ProductTradeCapacityController');
+        Route::resource('factoryInspection', 'Users\Vendor\ProductFactoryInspectionController');
+    });
 });
