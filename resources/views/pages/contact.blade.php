@@ -2,15 +2,14 @@
 
 @section('content')
 
-
-    <!-- company overview slider and map start   -->
+ <!-- company overview slider and map start   -->
 
     <section class="comany_overview">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="slider_area owl-carousel">
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{asset('frontend/assets/img/company-overview.jpg')}}">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/company-overview.jpg">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -21,7 +20,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{asset('frontend/assets/img/company-overview.jpg')}}">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/company-overview.jpg">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -32,7 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{asset('frontend/assets/img/company-overview.jpg')}}">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/company-overview.jpg">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -45,9 +44,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-3">
                     <div class="company_map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="550" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="350" height="385" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -63,84 +65,168 @@
                 <div class="col-md-3">
                     <span>Sales Team </span>
                     <div class="card">
-                        <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <span>Technical Team </span>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <span>Logistics Team </span>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <span>Admin Team </span>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
-                         <img src="{{asset('frontend/assets/img/user.png')}}" class="image-fluid">
-                        <div class="card-body">
-                            <p class="card-text">+088 01927474087</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/img/user.png" class="image-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <p>google@gmail.com</p>
+                                    <p class="card-text">+088 01927474087</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,7 +240,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
-                    <h2>Our All Branches</h2>
+                    <div class="branch_title">
+                        <span>Our All Branches</span>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -190,5 +278,7 @@
         </div>
     </section>
 
+
+    <!-- company overview slider and map end   -->
 
 @endsection
