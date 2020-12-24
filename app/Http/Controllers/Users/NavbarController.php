@@ -62,9 +62,16 @@ class NavbarController extends Controller
         $catArray = ['kids', 'men'];
         $mainRes = $this->productByCategory($catArray);
 
-        $category = SubCategory::with('productWithStatus')->where('id',$id)->GetActive()->get();
+        //$category = SubCategory::with('productWithStatus')->where('id',$id)->GetActive()->paginate(1);
+        $category = SubCategory::where('id',$id)->GetActive()->get();
+        $product = Product::where([
+            ['sub_categories_id' , '=', $id],
+            ['status', '=', 1],
+        ])->paginate(1);
 
-        return view('pages.one_category',['results' => $mainRes,'categories' =>$category]);
+        //dd($product);
+
+        return view('pages.one_category',['results' => $mainRes,'categories' =>$category,'products' => $product]);
     }
 
     /**

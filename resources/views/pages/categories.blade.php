@@ -11,15 +11,15 @@
                 <div class="col-md-12">
                     <div class="slider_area owl-carousel ">
                         @foreach($categories as $category)
-                        <div class="single_slider d-flex align-items-center div_radis" data-bgimg="{{asset('images/'.$category->category->category_image)}}">
+                        <div class="single_slider d-flex align-items-center div_radis" data-bgimg="{{asset('images/'.$category->sub_category_image)}}">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="slider_content">
-                                            <h1>{{$category->category->category_name}}</h1>
-                                            <h2>{{$category->subcategory_name}} </h2>
-                                            <p>
-                                                Valid till 15 Augest
+                                            <h1 class="text-success">{{$category->category->category_name}}</h1>
+                                            <h2 class="text-white">{{$category->subcategory_name}} </h2>
+                                            <p class="text-white">
+                                                {{\Carbon\Carbon::parse($category->created_at)->format('M d Y')}}
                                             </p>
                                             <a href="{{route('subcat.show',$category->id)}}">Shop Now </a>
                                         </div>
@@ -47,7 +47,10 @@
                     <div class="col-md-2">
                         <div class="category-inner">
                             <a href="{{route('subcat.show',$category->id)}}"><img src="{{asset('images/'.$category->sub_category_image)}}" alt=""></a>
-                            <p>{{$category->subcategory_name}}</p>
+                            <a href="{{route('subcat.show',$category->id)}}">
+                                <p>{{$category->subcategory_name}}</p>
+                            </a>
+
                         </div>
                     </div>
                 @endforeach
@@ -103,25 +106,26 @@
             </div>
 
             @endforeach
+{{--            {{ $categories->links() }}--}}
         </div>
 
-        <div class="blog_pagination">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="pagination">
-                            <ul>
-                                <li class="current">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li class="next"><a href="#">next</a></li>
-                                <li><a href="#">&gt;&gt;</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--        <div class="blog_pagination">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-12">--}}
+{{--                        <div class="pagination">--}}
+{{--                            <ul>--}}
+{{--                                <li class="current">1</li>--}}
+{{--                                <li><a href="#">2</a></li>--}}
+{{--                                <li><a href="#">3</a></li>--}}
+{{--                                <li class="next"><a href="#">next</a></li>--}}
+{{--                                <li><a href="#">&gt;&gt;</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </section>
 
     <!-- related-section area End -->
