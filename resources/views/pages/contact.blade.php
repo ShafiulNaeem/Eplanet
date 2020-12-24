@@ -2,7 +2,8 @@
 
 @section('content')
 
- <!-- company overview slider and map start   -->
+
+    <!-- company overview slider and map start   -->
 
     <section class="comany_overview">
         <div class="container">
@@ -62,7 +63,7 @@
     <section class="company_contat">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <span>Sales Team </span>
                     <div class="card">
                         <div class="row">
@@ -104,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <span>Technical Team </span>
                     <div class="card">
                         <div class="row">
@@ -146,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <span>Logistics Team </span>
                     <div class="card">
                         <div class="row">
@@ -188,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <span>Admin Team </span>
                     <div class="card">
                         <div class="row">
@@ -280,5 +281,6 @@
 
 
     <!-- company overview slider and map end   -->
+
 
 @endsection
