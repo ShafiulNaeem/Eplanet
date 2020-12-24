@@ -229,13 +229,7 @@ text-align: center
     padding:20px 0;
 }
 
-.table_content img {
-	display: block;
-	text-align: right;
-	position: absolute;
-	top: -19px;
-	right: 0;
-}
+
 .capacity_table img {
 	display: block;
 	text-align: right;
@@ -248,25 +242,18 @@ text-align: center
     padding: 25px 0;
     color:#FFF;
 }
+.comany_overview{
+    overflow: hidden;
+}
 
 .company_contat{
     width: 100%;
     padding: 25px 0;
     text-align: center
 }
-.slider_area .owl-dots .owl-dot {
-    width: 14px;
-    height: 14px;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 3px;
-    transition: .3s;
-    margin-bottom: 25px;
-}
 .company_contat img{
-    width:50%;
-   margin: 10px auto;
+    width:100%;
+   margin: 7px auto;
 }
 .company_contat .card{
     margin:15px 0;
@@ -279,6 +266,7 @@ text-align: center
 .all_branch{
     width:100%;
     padding: 24px 0;
+    text-align: center
 }
 .all_branch h2{
     text-align: center;
@@ -323,4 +311,76 @@ text-align: center
 	font-style: italic;
 	margin-bottom: 5px;
 	font-size: 12px;
+}
+
+.future p{
+    color:#000;
+     overflow: hidden;
+}
+.company_map{
+    overflow: hidden
+}
+.branch_title{
+    width:100%;
+    padding: 50px 0;
+}
+.branch_title span {
+    font-size: 50px;
+    color:#000;
+    letter-spacing:4px;
+    font-weight: 700;
+    background:url(../img/im.png);
+    background-size: cover;
+    -webkit-text-fill-color:transparent;
+    -webkit-background-clip:text;
+            
+   
+}
+
+.quality_control{
+    width: 100%;
+    padding: 25px 0;
+    background: #FFFFFF;
+   
+}
+.quality_control .table_content{
+    background: #FFFFFF;
+}
+.rd_title h4{
+     
+    padding: 25px 0;
+   
+}
+.quality_controlls{
+    background:#F5F5F5
+}
+
+.qualiti_title h4 {
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: 700;
+	padding: 4px 10px;
+}
+
+.qualiti_title {
+    width:100%;
+	padding: 10px 0;
+	color: #FFF;
+	background: url(../img/title.webp);
+	margin: 20px 0;
+}
+
+.rd_title h4 {
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: 700;
+	padding: 4px 10px;
+}
+
+.rd_title {
+    width:100%;
+	padding: 10px 0;
+	color: #FFF;
+	background: url(../img/title.webp);
+	margin: 20px 0;
 }

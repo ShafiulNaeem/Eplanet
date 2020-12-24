@@ -6,7 +6,7 @@
     <!--slider area start-->
     <section class="slider_section">
         <div class="slider_area owl-carousel">
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{asset('frontend/assets/img/slider/main1.jpg')}}">
+            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{asset('frontend/assets/img/slider/main1.jpg')}}">
+            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-md-6 col-12 col-lg-6">
                     <div class="over_left">
-                        <img src="{{asset('frontend/assets/img/overview.webp')}}" alt="">
+                        <img src="assets/img/overview.webp" alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -74,27 +74,12 @@
                            The YZF-R15 changed the 150cc segment in the Indian market the way the CBZ did when it was launched. It was an everyday motorcycle that could genuinely be used as a trackday tool. The second version of the R15 traded practicality for more focused performance, but the advent of the KTM RC200 meant that a far better performance was available for the sportbike enthusiasts at a similar price. The R15 Version 3.0 reduces that gap significantly with technology. On the list is now a BS6 engine with a few more ccs, but featuring variable valve timing which takes the maximum power output to nearly 18.3bhp with a peak torque output of 14.1Nm. It also gets all-LED lamps and an all-digital LCD instrument cluster that displays a wealth of information, including when the Variable Valve Actuation switches to the different camshaft profile.
                         </textarea>
                     </div>
-                    <div class="rigt_inner">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="{{asset('frontend/assets/img/review2.jpg')}}" alt="">
-                            </div>
-                            <div class="col-md-4">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, ab.</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, voluptates.</p>
-                            </div>
-                        </div>
-                    </div>
+                 
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="table_content">
-                        <div class="col-md-12">
-                            <img src="{{asset('frontend/assets/img/verify.svg')}}" alt="">
-                        </div>
                         <table class="table table-bordered" style="background:#EEF8FF;">
                             <thead>
                                 <tr>
@@ -110,6 +95,7 @@
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
+                                    <td>kjvfd</td>
                                 </tr>
                                 <tr>
                                     <td>Mark</td>
@@ -129,6 +115,7 @@
                                     <td>Mark</td>
                                     <td>Otto</td>
                                 </tr>
+                               
 
                             </tbody>
                         </table>
@@ -143,7 +130,7 @@
     <!-- Main product start -->
 
     <section class="main_product">
-        <div class="container">
+        <div class="container"> 
             <div class="row">
                 <div class="col-md-12">
                     <div class="product_area ">
@@ -151,7 +138,7 @@
                             <div class="product_container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4>Main Product </h4>
+                                        <h4>MAIN PRODUCTS</h4>
                                     </div>
                                 </div>
                                 <div class="row second-product">
@@ -284,6 +271,8 @@
                 </div>
                 <!--product area end-->
             </div>
+            
+            
         </div>
     </section>
 
@@ -292,14 +281,14 @@
     <!--  PRODUCT CAPACITY start  -->
     <section class="product_capasity">
         <div class="container">
-            <row>
+            <div class="row">
                 <div class="col-md-12">
-                        <div class="product_area ">
+                    <div class="product_area ">
                         <div class="container">
                             <div class="product_container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4>PRODUCT CAPACITY </h4>
+                                        <h4>PRODUCT CAPACITY</h4>
                                     </div>
                                 </div>
                                 <div class="row second-product">
@@ -429,171 +418,286 @@
                             </div>
                         </div>
                     </div>
-                    <!--product area end-->
-
                 </div>
-                
-                    <div class="col-md-12">
-                       <div class="row">
-                           <div class="col-md-12">
-                               <div class="capasiti_headr">
-                                   <h4>Production Equipment</h4>
-                               </div>
-                           </div>
-                       </div>
-                        <div class="capacity_table">
-                            <div class="col-md-12">
-                              <img src="{{asset('frontend/assets/img/verify.svg')}}" alt="">
-                            </div>
-                            <table class="table table-bordered" style="background:#EEF8FF;">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Business Type</th>
-                                        <th scope="col">Manufacturer, Trading Company</th>
-                                        <th scope="col">Country / Region</th>
-                                        <th scope="col">Guangdong, China</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                    </tr>
+                <!--product area end-->
+            </div>
+            
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="table_content">
+                        <table class="table table-bordered" style="background:#EEF8FF;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Business Type</th>
+                                    <th scope="col">Manufacturer, Trading Company</th>
+                                    <th scope="col">Country / Region</th>
+                                    <th scope="col">Guangdong, China</th>
+                                    <th>Verify</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+                               
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-                
-            </row>
+                </div>
+            </div>
+            
         </div>
     </section>
     
     <!--  PRODUCT CAPACITY end  -->
-
-    <!--footer area start-->
-    <footer class="footer_widgets">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="widgets_container widget_menu">
-                            <h3>Information</h3>
-                            <div class="footer_menu">
-
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#"> Privacy Policy</a></li>
-                                    <li><a href="#"> Terms & Conditions</a></li>
-                                    <li><a href="contact.html"> Contact Us</a></li>
-                                    <li><a href="#"> Site Map</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="widgets_container widget_menu">
-                            <h3>Information</h3>
-                            <div class="footer_menu">
-
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#"> Privacy Policy</a></li>
-                                    <li><a href="#"> Terms & Conditions</a></li>
-                                    <li><a href="contact.html"> Contact Us</a></li>
-                                    <li><a href="#"> Site Map</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="widgets_container widget_menu">
-                            <h3>Extras</h3>
-                            <div class="footer_menu">
-                                <ul>
-                                    <li><a href="#">Brands</a></li>
-                                    <li><a href="#"> Gift Certificates</a></li>
-                                    <li><a href="#">Affiliate</a></li>
-                                    <li><a href="#">Specials</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                    <li><a href="#"> Order History</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="widgets_container widget_menu">
-                            <h3>Information</h3>
-                            <div class="footer_menu">
-
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#"> Privacy Policy</a></li>
-                                    <li><a href="#"> Terms & Conditions</a></li>
-                                    <li><a href="contact.html"> Contact Us</a></li>
-                                    <li><a href="#"> Site Map</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="footer_bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="copyright_area">
-                            <p>All Rights Reserved © 2020</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="footer_payment">
-                            <ul>
-                                <li><a href="#"><img src="assets/img/icon/paypal1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/icon/paypal4.jpg" alt=""></a></li>
-                            </ul>
-                        </div>
+    
+    
+   <!--  quality_control  start  --> 
+   
+    <section class="quality_control">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="qualiti_title">
+                        <h4>QUALITY CONTROL</h4>
                     </div>
                 </div>
             </div>
+            <div class="row">
+               <div class="col-md-3">
+                  <div class="litbox-inner">
+                      <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="https://www.jqueryscript.net/dummy/1.jpg"><img src="https://www.jqueryscript.net/dummy/1.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+                <div class="col-md-3">
+                  <div class="litbox-inner">
+                      <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/3.jpg"><img src="https://www.jqueryscript.net/dummy/3.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+                <div class="col-md-3">
+                  <div class="litbox-inner">
+                       <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/4.jpg"><img src="https://www.jqueryscript.net/dummy/4.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+                <div class="col-md-3">
+                  <div class="litbox-inner">
+                     <a class="venobox" data-gall="gall1" title="Image 2" href="https://www.jqueryscript.net/dummy/2.jpg"><img src="https://www.jqueryscript.net/dummy/2.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+            </div>
         </div>
-    </footer>
-    <!--footer area end-->
+    </section>
+    
+     <!--  quality_control  end  --> 
+     
+     
+      <!--  rd_capacity  start  --> 
+   
+    <section class="rd_capacity">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="rd_title">
+                        <h4>R&D CAPACITY</h4>
+                    </div>
+                </div>
+            </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <h4>Certification</h4>
+                  </div>
+              </div>
+            <div class="row">
+               <div class="col-md-3">
+                  <div class="litbox-inner">
+                      <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="https://www.jqueryscript.net/dummy/1.jpg"><img src="https://www.jqueryscript.net/dummy/1.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+                <div class="col-md-3">
+                  <div class="litbox-inner">
+                      <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/3.jpg"><img src="https://www.jqueryscript.net/dummy/3.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+                <div class="col-md-3">
+                  <div class="litbox-inner">
+                       <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/4.jpg"><img src="https://www.jqueryscript.net/dummy/4.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+                <div class="col-md-3">
+                  <div class="litbox-inner">
+                     <a class="venobox" data-gall="gall1" title="Image 2" href="https://www.jqueryscript.net/dummy/2.jpg"><img src="https://www.jqueryscript.net/dummy/2.jpg" width="150"></a>
+                      <div>
+                          <p class="card-text">Some quick example</p>
+                      </div>
+                  </div>
+               </div>
+            </div>
+            
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="table_content">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Picture</th>
+                                    <th scope="col">Manufacturer, Trading Company</th>
+                                    <th scope="col">Country / Region</th>
+                                    <th scope="col">Guangdong, China</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a class="venobox" data-gall="gall1" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
+                                    <td>Otto</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                </tr>
+                                <tr>
+                                     <td><a class="venobox" data-gall="gall1" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                    <td><a class="venobox" data-gall="gall1" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                                <tr>
+                                     <td><a class="venobox" data-gall="gall1" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                </tr>
+                               
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    
+          <!--  rd_capacity  end  --> 
+          
+          
+          
+     <!--  TRADE CAPABILITIES START  --> 
+   
+    <section class="trade_capabilit">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="rd_title">
+                        <h4>TRADE CAPABILITIES</h4>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table_content">
+                        <table class="table table-bordered" style="background:#EEF8FF;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Business Type</th>
+                                    <th scope="col">Manufacturer, Trading Company</th>
+                                    <th scope="col">Country / Region</th>
+                                    <th scope="col">Guangdong, China</th>
+                                    <th>Verify</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+         <!--  TRADE CAPABILITIES END  -->     
+
 
 @endsection
