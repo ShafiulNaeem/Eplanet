@@ -372,6 +372,23 @@
             return document.createElement(element);
         }
 
+
+        $('.venobox').venobox({
+        numeratio: true,
+        border: '20px'
+       });
+
+      $('.venoboxframe').venobox({
+        border: '6px',
+        overlayColor : 'rgba(255,255,255,0.85)',
+        titlePosition : 'bottom',
+        titleColor: '#333',
+        titleBackground: 'transparent',
+        closeColor: '#333',
+        closeBackground: 'transparent',
+                spinner : 'wave'
+      });
+
 </script>
 
 </body>
