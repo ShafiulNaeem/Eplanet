@@ -14,6 +14,11 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function admin()
+    {
+        return $this->belongsTo('App\Models\Admin');
+    }
+
     public function productImages()
     {
         return $this->hasMany('App\Models\ProductImage','product_id','id');
