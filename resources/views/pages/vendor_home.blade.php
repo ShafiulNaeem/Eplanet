@@ -7,7 +7,7 @@
     <!--slider area start-->
     <section class="slider_section">
         <div class="slider_area owl-carousel">
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -71,50 +71,23 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
+                @foreach($productSales as $productSale)
+                    @foreach($productSale->productsWithSold as $product)
+                        <div class="col-md-3">
+                            <div class="related_inner">
+                                <div class="card">
+                                    <a href="{{route('pages.show',$product->id)}}">
+                                        <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
+                                        <p class="card-title">{{$product->product_price}}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                         </div>
+                    @endforeach
+                @endforeach
             </div>
         </div>
 
@@ -154,94 +127,23 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
+                @foreach($productSales as $productSale)
+                    @foreach($productSale->productsWithTop as $product)
+                        <div class="col-md-3">
+                            <div class="related_inner">
+                                <div class="card">
+                                    <a href="{{route('pages.show',$product->id)}}">
+                                        <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
+                                        <p class="card-title">{{$product->product_price}}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="related_inner">
-                        <div class="card">
-                            <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title">Lorem ipsum.</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endforeach
             </div>
         </div>
 
@@ -282,7 +184,7 @@
                         <div class="col-md-12">
                             <div class="related_inner">
                                 <div class="card">
-                                    <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="#"><img src="{{ asset('frontend/assets/img/1.jpg') }}" class="card-img-top" alt="..."></a>
                                     <div class="card-body">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                         <h5 class="card-title">Lorem ipsum.</h5>
@@ -300,7 +202,7 @@
                         <div class="col-md-12">
                             <div class="related_inner">
                                 <div class="card">
-                                    <a href="#"><img src="assets/img/category/cloth1.jpg" class="card-img-top" alt="..."></a>
+                                    <a href="#"><img src="{{ asset('frontend/assets/img/1.jpg') }}" class="card-img-top" alt="..."></a>
                                     <div class="card-body">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                         <h5 class="card-title">Lorem ipsum.</h5>

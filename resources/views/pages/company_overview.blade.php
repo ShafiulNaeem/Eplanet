@@ -4,7 +4,7 @@
     <!--slider area start-->
     <section class="slider_section">
         <div class="slider_area owl-carousel">
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-md-6 col-12 col-lg-6">
                     <div class="over_left">
-                        <img src="assets/img/overview.webp" alt="">
+                        <img src="{{ asset('frontend/assets/img/1.jpg') }}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -75,7 +75,7 @@
                     <div class="rigt_inner">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="assets/img/review2.jpg" alt="">
+                                <img src="{{ asset('frontend/assets/img/1.jpg') }}" alt="">
                             </div>
                             <div class="col-md-4">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, ab.</p>
@@ -90,9 +90,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table_content">
-                        <div class="col-md-12">
-                            <img src="assets/img/verify.svg" alt="">
-                        </div>
                         <table class="table table-bordered" style="background:#EEF8FF;">
                             <thead>
                             <tr>
@@ -100,6 +97,7 @@
                                 <th scope="col">Manufacturer, Trading Company</th>
                                 <th scope="col">Country / Region</th>
                                 <th scope="col">Guangdong, China</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -162,7 +160,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="product-details.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="product-details.html"><img src="{{ asset('frontend/assets/img/1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -181,7 +179,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/2.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -200,7 +198,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -219,7 +217,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -238,7 +236,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -257,7 +255,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -310,7 +308,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="product-details.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="product-details.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -329,7 +327,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -348,7 +346,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -367,7 +365,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -386,7 +384,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
@@ -405,7 +403,7 @@
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="shop.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                                        <a href="shop.html"><img src="{{ asset('frontend/assets/img/slider/main1.jpg') }}" alt=""></a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">

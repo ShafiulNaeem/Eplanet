@@ -43,7 +43,7 @@ class WelcomeController extends Controller
 
     // Show Category
     public function category($id){
-        $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->paginate(12);
+        $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->get();
         //dd($category);
         return view('pages.categories',['categories' =>$category]);
     }

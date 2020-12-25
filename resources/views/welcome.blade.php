@@ -209,7 +209,7 @@
                                                         <h4 class="product_name"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h4>
                                                         <div class="price_box">
                                                             <span class="current_price"></span>
-                                                            <span class="current_price">$ {{$product->product_price}}</span>
+                                                            <span class="current_price">BDT: {{$product->product_price}}</span>
                                                         </div>
                                                     </figcaption>
                                                 </figure>
