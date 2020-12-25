@@ -2,7 +2,10 @@
 
 @section('content')
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> rifat
     <!-- company overview slider and map start   -->
 
     <section class="comany_overview">
@@ -10,7 +13,11 @@
             <div class="row">
                 <div class="col-md-7">
                     <div class="slider_area owl-carousel">
+<<<<<<< HEAD
                         <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/company-overview.jpg">
+=======
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
+>>>>>>> rifat
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -21,7 +28,11 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/company-overview.jpg">
+=======
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
+>>>>>>> rifat
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -32,7 +43,11 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/company-overview.jpg">
+=======
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
+>>>>>>> rifat
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -50,7 +65,11 @@
                 </div>
                 <div class="col-md-3">
                     <div class="company_map">
+<<<<<<< HEAD
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="350" height="385" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+=======
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="350" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+>>>>>>> rifat
                     </div>
                 </div>
             </div>
@@ -63,6 +82,7 @@
     <section class="company_contat">
         <div class="container">
             <div class="row">
+<<<<<<< HEAD
                 <div class="col-md-6">
                     <span>Sales Team </span>
                     <div class="card">
@@ -231,6 +251,31 @@
                         </div>
                     </div>
                 </div>
+=======
+                @if(isset($employees))
+                    @foreach($employees as $employee)
+                        <div class="col-md-3">
+                            <span>{{$employee->designation_name}} Team </span>
+                            @foreach($employee->employeeWithStatus as $employ)
+                                 <div class="card">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <img src="{{url('images/' . $employ->employee_image)}}" alt="{{$employ->name}}" class="image-fluid">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="card-body">
+                                            <p class="card-text">{{$employ->name}}</p>
+                                            <p class="card-text">{{$employ->email}}</p>
+                                            <p class="card-text">+880 {{$employ->phone}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                @endif
+>>>>>>> rifat
             </div>
         </div>
     </section>
@@ -282,5 +327,9 @@
 
     <!-- company overview slider and map end   -->
 
+<<<<<<< HEAD
 
 @endsection
+=======
+@endsection
+>>>>>>> rifat
