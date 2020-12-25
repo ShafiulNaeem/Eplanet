@@ -21,10 +21,10 @@ class WelcomeController extends Controller
 
 
         //Category Query
-        $category = Category::orderBy('category_name','asc')->get();
+        $category = Category::orderBy('category_name','asc')->GetActive()->get();
 
         //BestSell from Product
-        $product = Product::orderBy('sold','desc')->limit(10)->get();
+        $product = Product::orderBy('sold','desc')->GetActive()->limit(10)->get();
 
 
         //dd($mainRes);
@@ -35,7 +35,7 @@ class WelcomeController extends Controller
     {
         $mainRes = $this->productByCategory(['kids', 'men']);
 
-        $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->getActive()->get();
+        $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->GetActive()->get();
 
         return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
 
@@ -43,7 +43,8 @@ class WelcomeController extends Controller
 
     // Show Category
     public function category($id){
-        $category = SubCategory::with(['category','products'])->where('category_id',$id)->paginate(12);
+        $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->paginate(12);
+        //dd($category);
         return view('pages.categories',['categories' =>$category]);
     }
 
@@ -64,15 +65,19 @@ class WelcomeController extends Controller
                     ];
 
                     foreach ($sub->products as $product){
-                        $category_result['category']['products'][] = [
-                            'id' => $product->id,
-                            'unique_id' => $product->unique_id,
-                            'brand_id' => $product->brand_id,
-                            'product_name' => $product->product_name,
-                            'feature_image' => $product->feature_image,
-                            'stock' => $product->stock,
-                            'product_price' => $product->product_price
-                        ];
+                            //dd($product->status);
+                            if ($product->status == 1){
+                                $category_result['category']['products'][] = [
+                                    'id' => $product->id,
+                                    'unique_id' => $product->unique_id,
+                                    'brand_id' => $product->brand_id,
+                                    'product_name' => $product->product_name,
+                                    'feature_image' => $product->feature_image,
+                                    'stock' => $product->stock,
+                                    'product_price' => $product->product_price
+                                ];
+                            }
+
                     }
                     $mainRes[] = $category_result;
                 }

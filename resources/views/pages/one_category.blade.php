@@ -15,17 +15,17 @@
                   </div>
               </div>
               <div class="right-main-cat">
-                   
+
                   @foreach($categories as $category)
                     <div class="row">
 
                     <div class="col-md-12 ">
                       <div class="sub_head">
                         <h4>All {{$category->subcategory_name}} Collection</h4>
-                      </div> 
+                      </div>
                     </div>
 
-                        @foreach($category->products as $product)
+                        @foreach($category->productWithStatus as $product)
                             <div class="col-md-3">
                                 <div class="right-category">
                                     <div class="card">
@@ -94,7 +94,7 @@
                 @foreach($results as $mainRe)
                     @if(isset($mainRe['category']['products']))
                         <div class="row">
-                            <div class="col-md-12"><h2>{{$mainRe['category']['category_name']}}</h2></div>
+                            <div class="col-md-12"><h2 class="float-left">{{$mainRe['category']['category_name']}}</h2></div>
 
                             <div class="col-12">
                                 <div class="tab-content">

@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="header_social text-right">
-                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('category_name','desc')->get();  @endphp
+                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('category_name','desc')->GetActive()->get();  @endphp
                     </div>
                     <div class="search_container">
                         <form action="{{route('pages.search')}}" method="post">
@@ -326,7 +326,7 @@
                                         @endforeach
                                     @endif
                                     <li><a href=""> Blog </a>
-                                    <li><a href=""> Contact Us</a>
+                                    <li><a href="{{route('contact.show')}}"> Contact Us</a>
 
                                 </ul>
                             </nav>

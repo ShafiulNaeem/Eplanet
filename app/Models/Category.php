@@ -33,4 +33,9 @@ class Category extends Model
     {
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
+
+    public function scopeGetActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }
