@@ -556,7 +556,7 @@
                </div>
                 <div class="col-md-3">
                   <div class="litbox-inner">
-                      <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/3.jpg"><img src="https://www.jqueryscript.net/dummy/3.jpg" width="150"></a>
+                      <a class="venobox" data-gall="gall2" href="https://www.jqueryscript.net/dummy/3.jpg"><img src="https://www.jqueryscript.net/dummy/3.jpg" width="150"></a>
                       <div>
                           <p class="card-text">Some quick example</p>
                       </div>
@@ -564,7 +564,7 @@
                </div>
                 <div class="col-md-3">
                   <div class="litbox-inner">
-                       <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/4.jpg"><img src="https://www.jqueryscript.net/dummy/4.jpg" width="150"></a>
+                       <a class="venobox" data-gall="gall3" href="https://www.jqueryscript.net/dummy/4.jpg"><img src="https://www.jqueryscript.net/dummy/4.jpg" width="150"></a>
                       <div>
                           <p class="card-text">Some quick example</p>
                       </div>
@@ -572,7 +572,7 @@
                </div>
                 <div class="col-md-3">
                   <div class="litbox-inner">
-                     <a class="venobox" data-gall="gall1" title="Image 2" href="https://www.jqueryscript.net/dummy/2.jpg"><img src="https://www.jqueryscript.net/dummy/2.jpg" width="150"></a>
+                     <a class="venobox" data-gall="gall4" title="Image 2" href="https://www.jqueryscript.net/dummy/2.jpg"><img src="https://www.jqueryscript.net/dummy/2.jpg" width="150"></a>
                       <div>
                           <p class="card-text">Some quick example</p>
                       </div>
@@ -594,25 +594,25 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><a class="venobox" data-gall="gall1" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
+                                    <td><a class="venobox" data-gall="gall5" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
                                     <td>Otto</td>
                                     <td>Otto</td>
                                     <td>Mark</td>
                                 </tr>
                                 <tr>
-                                     <td><a class="venobox" data-gall="gall1" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
+                                     <td><a class="venobox" data-gall="gall6" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
                                 </tr>
                                 <tr>
-                                    <td><a class="venobox" data-gall="gall1" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
+                                    <td><a class="venobox" data-gall="gall7" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
                                 </tr>
                                 <tr>
-                                     <td><a class="venobox" data-gall="gall1" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
+                                     <td><a class="venobox" data-gall="gall8" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
@@ -698,6 +698,5 @@
     </section>
     
          <!--  TRADE CAPABILITIES END  -->     
-
 
 @endsection
