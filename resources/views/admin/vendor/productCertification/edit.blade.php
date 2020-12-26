@@ -44,6 +44,17 @@
                                     {{--                                    <textarea class="form-control" name="description" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>--}}
                                 </div>
 
+                                <div class="form-group">
+                                <label for="exampleInputFile">Certification Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="pdf" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                </div>
+                                <span><img src="{{asset('documents/'.$productCertification->pdf)}}" alt="{{$productCertification->name}}" width="80"></span>
+                            </div>
+
                             </div><!-- /.box-body -->
 
                             <div class="card-footer">

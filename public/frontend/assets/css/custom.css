@@ -1,14 +1,10 @@
 .discover-section{
-<<<<<<< HEAD
     width:100;
-=======
-    width:100%;
->>>>>>> rifat
     padding: 30px 0;
     background: #F7F8FA
 }
 .discover-section p{
-    text-align: center;
+   text-align: center;
     color:#000000;
     padding-bottom: 10px;
 }
@@ -17,12 +13,12 @@
     padding: 15px 0;
     color:#000000;
     font-weight: 500;
-    //font-size:
+    font-size: 
 }
 .discover-section .owl-carousel .owl-item img {
-    display: block;
-    width: 55%;
-    margin: 0 auto;
+	display: block;
+	width: 55%;
+	margin: 0 auto;
     background:rgba(250, 250, 250, 0.53)
 }
 .related-section{
@@ -44,52 +40,42 @@
 }
 
 .product_area{
-<<<<<<< HEAD
 	background:#F7F8FA;
 	color: #FFFFFF;
-=======
-    background:#F7F8FA;
-    color: #FFFFFF;
->>>>>>> rifat
     margin:0 auto;
 }
 
 .discover-carasul:hover .owl-nav div {
-    opacity: 1;
-    visibility: visible;
-    left: -20px;
+  opacity: 1;
+  visibility: visible;
+  left: -20px;
 }
 
 .discover-carasul .owl-nav div {
-    position: absolute;
-    top: 32%;
-    transform: translatey(-50%);
-    font-size: 36px;
-    left: 0;
-    transition: .3s;
-    opacity: 0;
-    visibility: hidden;
+  position: absolute;
+  top: 32%;
+  transform: translatey(-50%);
+  font-size: 36px;
+  left: 0;
+  transition: .3s;
+  opacity: 0;
+  visibility: hidden;
 }
 .discover-carasul:hover .owl-nav div.owl-next {
     right: -20px;
-}
+  }
 .discover-carasul .owl-nav.disabled {
-    display: block;
+  display: block;
 }
 .discover-carasul .owl-nav div.owl-next {
-    right: 0;
-    left: auto;
-}
-.product_container{
-    color:#000;
-    //background:
+  right: 0;
+  left: auto;
 }
 .product_container{
     color:#000;
     background:
 }
 .product_container h2 {
-<<<<<<< HEAD
 	color: #000;
 	padding: 7px 0px;
 	letter-spacing: 0px;
@@ -98,21 +84,10 @@
 	font-size: 36px;
 	line-height: 36px;
 	text-align: right;
-=======
-    color: #000;
-    padding: 7px 0px;
-    letter-spacing: 0px;
-}
-.related-section h2 {
-    font-size: 36px;
-    line-height: 36px;
-    text-align: right;
->>>>>>> rifat
 }
 .category{
     width:100%;
     padding: 35px 0;
-<<<<<<< HEAD
 }
 .right-main-cat{
     width:100%;
@@ -336,246 +311,11 @@ text-align: center
 	font-style: italic;
 	margin-bottom: 5px;
 	font-size: 12px;
-=======
-}
-.right-main-cat{
-    width:100%;
-    padding:10px 0;
-    text-align: center
-}
-.right-main-cat h4{
-    padding-bottom:20px;
-}
-.left-cat-image{
-    margin-top: 20px;
-}
-.left-category{
-    width: 100%;
-    padding: 15px 5px;
-    border-right:1px solid rgba(128, 128, 128, 0.31);
-}
-.right-category{
-    width:100%;
-    padding: 15px 0;
-}
-.sumit button{
-    margin:0;
-}.div_radis{
-     border-radius: 10px;
- }
-.category-inner{
-    width:100%;
-    padding:12px 0;
-}
-.category-inner img {
-    width: 50%;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-}
-.category-inner:hover  p{
-    color:#FF944D;
-    transition:1s;
-}
-.category-inner p{
-    padding: 13px 0;
-    text-align: center
-}
-.slider_area{
-    padding-bottom: 20px
-}
-.category .slider_area .owl-dots .owl-dot {
-    width: 14px;
-    height: 14px;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 25px 3px;
-    transition: .3s;
-}
-.related_inner {
-    width:100%;
-}
-.related-section .card:hover p{
-    color:#FF944D;
-    transition:1s;
-}
-.related-section .card:hover h5{
-    color:#08c;
-    transition:1s;
-}
-.related-section h5{
-    text-align: center
-}
-
-.related-section p{
-    text-align: center
-}
-.nice-select {
-    -webkit-tap-highlight-color: transparent;
-    background-color: #fff;
-    border-radius: 5px;
-    border: solid 1px #e8e8e8;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    clear: both;
-    cursor: pointer;
-    display: block;
-    float: left;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: normal;
-    height: 42px;
-    line-height: 40px;
-    outline: none;
-    padding-left: 18px;
-    padding-right: 30px;
-    position: relative;
-    text-align: left !important;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    white-space: nowrap;
-    width: auto;
-}
-.main_menu ul li{
-    display: inline-block;
-}
-
-.overview{
-    width:100%;
-    padding: 20px 0;
-}
-.overview .rigt_inner{
-    width:100%;
-    padding: 15px 0;
-}
-.main_product{
-    width:100%;
-    padding: 15px 0;
-
-}
-.main_product .product_area{
-    background:#FFF;
-}
-.main_product .product_area{
-    background:#FFF;
-}
-.main_product .product_area h4{
-    line-height: 4px;
-}
-.product_capasity .product_area h4{
-    line-height: 4px;
-}
-.product_capasity .product_area{
-    background:#FFF;
-}
-.table_content{
-    width:100%;
-    padding:20px 0;
-}
-
-.table_content img {
-    display: block;
-    text-align: right;
-    position: absolute;
-    top: -19px;
-    right: 0;
-}
-.capacity_table img {
-    display: block;
-    text-align: right;
-    position: absolute;
-    top: -19px;
-    right: 0;
-}
-.comany_overview{
-    width: 100%;
-    padding: 25px 0;
-    color:#FFF;
-}
-.comany_overview{
-    overflow: hidden;
-}
-
-.company_contat{
-    width: 100%;
-    padding: 25px 0;
-    text-align: center
-}
-.company_contat img{
-    width:100%;
-    margin: 7px auto;
-}
-.company_contat .card{
-    margin:15px 0;
-}
-.company_contat span{
-    padding: 8px 16px;
-    background:#EEF8FF;
-    border-radius: 4px;
-}
-.all_branch{
-    width:100%;
-    padding: 24px 0;
-    text-align: center
-}
-.all_branch h2{
-    text-align: center;
-    padding: 15px 0 30px 0;
-}
-
-.address {
-    border-radius: 3px;
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 5px 10px 0;
-    position: relative;
-    background: #EEF8FF;
-}
-.address .title {
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 25px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -14px;
-    margin: 0;
-}
-.address .title span {
-    background: #060e17;
-    padding: 0 5px;
-    font-size: 12px;
-}
-
-.address .address-line {
-    line-height: 18px;
-    font-size: 12px;
-    margin-top: 10px;
-}
-.address .closed-day {
-    border-top: 1px solid #182432;
-    padding-top: 6px;
-    margin-top: 15px;
-    text-align: left;
-    font-style: italic;
-    margin-bottom: 5px;
-    font-size: 12px;
->>>>>>> rifat
 }
 
 .future p{
     color:#000;
-<<<<<<< HEAD
      overflow: hidden;
-=======
-    overflow: hidden;
->>>>>>> rifat
 }
 .company_map{
     overflow: hidden
@@ -585,7 +325,6 @@ text-align: center
     padding: 50px 0;
 }
 .branch_title span {
-<<<<<<< HEAD
     font-size: 50px;
     color:#000;
     letter-spacing:4px;
@@ -645,12 +384,12 @@ text-align: center
 	background: url(../img/title.webp);
 	margin: 20px 0;
 }
-=======
-    font-size: 30px;
-    color: #fff;
-    background: gray;
-    padding: 10px;
-    border-radius: 22px 22px 0 0;
+.litbox-inner{
+    padding-bottom: 30px;
 }
-
->>>>>>> rifat
+.process{
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: 700;
+	padding: 10px 0;
+}

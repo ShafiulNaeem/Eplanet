@@ -2599,7 +2599,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .slider_area .owl-dots {
   position: absolute;
-  bottom: 10px;
+  bottom: 27px;
   left: 50%;
   transform: translatex(-50%);
 }
