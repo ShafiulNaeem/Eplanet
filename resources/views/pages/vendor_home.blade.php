@@ -81,7 +81,7 @@
                                     </a>
                                     <div class="card-body">
                                         <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
-                                        <p class="card-title">{{$product->product_price}}</p>
+                                        <p class="card-title">BDT: {{$product->product_price}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
             </div>
 
             <div class="row">
-                @foreach($productSales as $productSale)
+                @foreach($productTops as $productSale)
                     @foreach($productSale->productsWithTop as $product)
                         <div class="col-md-3">
                             <div class="related_inner">
@@ -137,7 +137,7 @@
                                     </a>
                                     <div class="card-body">
                                         <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
-                                        <p class="card-title">{{$product->product_price}}</p>
+                                        <p class="card-title">BDT: {{$product->product_price}}</p>
                                     </div>
                                 </div>
                             </div>
