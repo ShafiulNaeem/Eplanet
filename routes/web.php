@@ -30,6 +30,7 @@ Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.
 
 //vendor page show
 Route::get('vendor', 'Users\VendorProductsController@topSale')->name('topSale.show');
+Route::get('overview', 'Users\VendorProductsController@overview')->name('overview');
 
 //Blog page
 
