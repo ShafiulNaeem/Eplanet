@@ -5,8 +5,8 @@
 
     <!--slider area start-->
     <section class="slider_section">
-        <div class="slider_area owl-carousel">
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+        <div class="slider_area owl-carousel overviews">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/main1.jpg">
+            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-md-6 col-12 col-lg-6">
                     <div class="over_left">
-                        <img src="assets/img/overview.webp" alt="">
+                        <img src="{{asset('frontend/assets/img/overview.webp')}}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -95,7 +95,7 @@
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                    <td>kjvfd</td>
+                                   
                                 </tr>
                                 <tr>
                                     <td>Mark</td>
@@ -441,28 +441,28 @@
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
                                 </tr>
                                 <tr>
                                     <td>Mark</td>
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
                                 </tr>
                                 <tr>
                                     <td>Mark</td>
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
                                 </tr>
                                 <tr>
                                     <td>Mark</td>
                                     <td>Otto</td>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
                                 </tr>
                                
 
@@ -490,38 +490,17 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($ProductQualitys as $ProductQuality)
                <div class="col-md-3">
                   <div class="litbox-inner">
-                      <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="https://www.jqueryscript.net/dummy/1.jpg"><img src="https://www.jqueryscript.net/dummy/1.jpg" width="150"></a>
+                      <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('images',$ProductQuality->quality_image)}}"><img src="{{url('images',$ProductQuality->quality_image)}}" width="150"></a>
                       <div>
-                          <p class="card-text">Some quick example</p>
+                          <h4>{{$ProductQuality->title}}</h4>
+                          <p class="card-text">{{$ProductQuality->description}}</p>
                       </div>
                   </div>
                </div>
-                <div class="col-md-3">
-                  <div class="litbox-inner">
-                      <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/3.jpg"><img src="https://www.jqueryscript.net/dummy/3.jpg" width="150"></a>
-                      <div>
-                          <p class="card-text">Some quick example</p>
-                      </div>
-                  </div>
-               </div>
-                <div class="col-md-3">
-                  <div class="litbox-inner">
-                       <a class="venobox" data-gall="gall1" href="https://www.jqueryscript.net/dummy/4.jpg"><img src="https://www.jqueryscript.net/dummy/4.jpg" width="150"></a>
-                      <div>
-                          <p class="card-text">Some quick example</p>
-                      </div>
-                  </div>
-               </div>
-                <div class="col-md-3">
-                  <div class="litbox-inner">
-                     <a class="venobox" data-gall="gall1" title="Image 2" href="https://www.jqueryscript.net/dummy/2.jpg"><img src="https://www.jqueryscript.net/dummy/2.jpg" width="150"></a>
-                      <div>
-                          <p class="card-text">Some quick example</p>
-                      </div>
-                  </div>
-               </div>
+               @endforeach
             </div>
         </div>
     </section>
@@ -540,12 +519,11 @@
                     </div>
                 </div>
             </div>
-              <div class="row">
-                  <div class="col-md-12">
-                      <h4>Certification</h4>
-                  </div>
-              </div>
+              
             <div class="row">
+            <div class="col-md-12">
+                 <h4 class="process">R&D Process</h4>
+              </div>
                <div class="col-md-3">
                   <div class="litbox-inner">
                       <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="https://www.jqueryscript.net/dummy/1.jpg"><img src="https://www.jqueryscript.net/dummy/1.jpg" width="150"></a>
@@ -553,72 +531,36 @@
                           <p class="card-text">Some quick example</p>
                       </div>
                   </div>
-               </div>
-                <div class="col-md-3">
-                  <div class="litbox-inner">
-                      <a class="venobox" data-gall="gall2" href="https://www.jqueryscript.net/dummy/3.jpg"><img src="https://www.jqueryscript.net/dummy/3.jpg" width="150"></a>
-                      <div>
-                          <p class="card-text">Some quick example</p>
-                      </div>
-                  </div>
-               </div>
-                <div class="col-md-3">
-                  <div class="litbox-inner">
-                       <a class="venobox" data-gall="gall3" href="https://www.jqueryscript.net/dummy/4.jpg"><img src="https://www.jqueryscript.net/dummy/4.jpg" width="150"></a>
-                      <div>
-                          <p class="card-text">Some quick example</p>
-                      </div>
-                  </div>
-               </div>
-                <div class="col-md-3">
-                  <div class="litbox-inner">
-                     <a class="venobox" data-gall="gall4" title="Image 2" href="https://www.jqueryscript.net/dummy/2.jpg"><img src="https://www.jqueryscript.net/dummy/2.jpg" width="150"></a>
-                      <div>
-                          <p class="card-text">Some quick example</p>
-                      </div>
-                  </div>
-               </div>
-            </div>
+               </div>  
+              
+            </div> 
             
              <div class="row">
+             <div class="col-md-12">
+                 <h4>Certification</h4>
+              </div>
                 <div class="col-md-12">
                     <div class="table_content">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">Picture</th>
+                                    <th scope="col">Document</th>
                                     <th scope="col">Manufacturer, Trading Company</th>
                                     <th scope="col">Country / Region</th>
                                     <th scope="col">Guangdong, China</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($productcertifications as $productcertification)
                                 <tr>
-                                    <td><a class="venobox" data-gall="gall5" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
+                                <td>
+                             <embed src="{{url('documents',$productcertification->pdf)}}" alt="{{$productcertification->name}}" class="img-rounded" width="30" /> 
+                               </td>
+                                    <td>{{$productcertification->name}}</td>
+                                    <td>{{$productcertification->issued_by}}</td>
+                                    <td>{{$productcertification->business_scope}}</td>
                                 </tr>
-                                <tr>
-                                     <td><a class="venobox" data-gall="gall6" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <td><a class="venobox" data-gall="gall7" href="assets/img/cirti1.png"><img src="assets/img/cirti1.png" width="90"></a></td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                     <td><a class="venobox" data-gall="gall8" href="assets/img/cirti2.png"><img src="assets/img/cirti2.png" width="90"></a></td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                               
-
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -654,41 +596,20 @@
                                     <th scope="col">Business Type</th>
                                     <th scope="col">Manufacturer, Trading Company</th>
                                     <th scope="col">Country / Region</th>
-                                    <th scope="col">Guangdong, China</th>
+                                
                                     <th>Verify</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($ProductTradeCapacity as $ProductTradeCapacitys)
                                 <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
+                                    <td>{{$ProductTradeCapacitys->main_markets}}</td>
+                                    <td>{{$ProductTradeCapacitys->total_revenue}}</td>
+                                    <td>{{$ProductTradeCapacitys->total_revenue}}</td>
+                                   
+                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
                                 </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><img src="assets/img/right.png" width="10" alt=""></td>
-                                </tr>
-
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

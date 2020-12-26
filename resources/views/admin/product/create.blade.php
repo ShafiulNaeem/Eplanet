@@ -145,7 +145,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleFormControlFile1">Product Feature Image</label>
-{{--                                            <input type="file" name="feature_image" class="form-control-file" id="exampleFormControlFile1">--}}
+<!-- {{--                                            <input type="file" name="feature_image" class="form-control-file" id="exampleFormControlFile1">--}} -->
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" name="feature_image" class="custom-file-input" id="exampleInputFile">

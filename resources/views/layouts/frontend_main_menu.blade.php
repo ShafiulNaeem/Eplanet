@@ -313,7 +313,7 @@
                                     <li><a class="active" href="{{url('/')}}">home</a></li>
                                     <li><a class="active" href="{{route('topSale.show')}}">Company Profile</a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="">Company Overview</a></li>
+                                            <li><a href="{{route('overview')}}">Company Overview</a></li>
                                             <li><a href="">Company Capability</a></li>
                                             <li><a href="">Business Performance</a></li>
                                         </ul>

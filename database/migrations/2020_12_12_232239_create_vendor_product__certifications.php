@@ -19,6 +19,7 @@ class CreateVendorProductCertifications extends Migration
             $table->mediumText('name');
             $table->text('issued_by');
             $table->text('business_scope');
+            $table->text('pdf')->nullable();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });

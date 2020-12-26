@@ -21,6 +21,7 @@
                                     <thead >
                                         <tr class="text-center">
                                             <th>SL</th>
+                                            <th>Document</th>
                                             <th>Name</th>
                                             <th>Issued By</th>
                                             <th>Business Scope</th>
@@ -34,6 +35,9 @@
                         @foreach($productCertifications as $index => $productCertification)
                         <tr>
                             <td>{{$index + 1}}</td>
+                            <td>
+                                <embed src="{{url('documents',$productCertification->pdf)}}" alt="{{$productCertification->name}}" class="img-rounded" width="80" />
+                            </td>
                             <td>{{$productCertification->name}}</td>
                             <td>{{$productCertification->issued_by}}</td>
                             <td>{{$productCertification->business_scope}}</td>
