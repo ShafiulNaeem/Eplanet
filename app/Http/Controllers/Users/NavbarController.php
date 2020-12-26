@@ -67,7 +67,7 @@ class NavbarController extends Controller
         $product = Product::where([
             ['sub_categories_id' , '=', $id],
             ['status', '=', 1],
-        ])->paginate(1);
+        ])->paginate(16);
 
         //dd($product);
 
