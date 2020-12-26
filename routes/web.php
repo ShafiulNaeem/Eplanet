@@ -15,6 +15,10 @@ Route::get('test', function (){
     return view('pages.company_overview');
 });
 
+Route::get('/con',function(){
+    return view('pages.shop');
+});
+
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
 Route::get('checkout', 'Users\CheckoutController@index')->middleware(['auth'])->name('checkout');
