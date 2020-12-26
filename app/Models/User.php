@@ -39,10 +39,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function blogs()
+    {
+        return $this->hasMany('App\Models\Blog');
+    }
+
     public function orders()
     {
         return $this->hasMany('App\Models\Order');
     }
+
 
 
     public function orderWithAdmin()

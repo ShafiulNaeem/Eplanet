@@ -5,7 +5,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product Factory Inspection Reports'
+                'title' => 'Manage Blog'
             ])
 
     <!-- Main content -->
@@ -19,10 +19,12 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead >
-                                        <tr class="text-center">
+                                        <tr>
                                             <th>SL</th>
-                                            <th>Report</th>
-                                            <th>Report Title</th>
+                                            <th>User Name</th>
+                                            <th>Image</th>
+                                            <th>Post</th>
+                                            <th>Approved</th>
                                             <th>Create Date</th>
                                             <th>Action</th>
 
@@ -30,25 +32,37 @@
                                     </thead>
                                     <tbody>
 
-                        @foreach($factoryInspections as $index => $factoryInspection)
+                        @foreach($blogs as $index => $blog)
                         <tr>
                             <td>{{$index + 1}}</td>
+                            <td>{{$blog->user->fname}} {{$blog->user->lname}}</td>
                             <td>
-                                <embed src="{{url('documents',$factoryInspection->pdf)}}" alt="{{$factoryInspection->title}}" class="img-rounded" width="80" />
+                                <img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
                             </td>
-                            <td>{{$factoryInspection->title}}</td>
-
-                            <td>{{\Carbon\Carbon::parse($factoryInspection->created_at)->format('M d Y')}}</td>
+                            <td>{{$blog->post}}</td>
                             <td>
-                                <a href="{{route('factoryInspection.edit',$factoryInspection->id)}}" class="btn text-warning btn-app float-left">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$factoryInspection->id}}">
+{{--                            {{$blog->status}}--}}
+                                <form action="{{ route('blog.change.status') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="status" value="{{$blog->status}}">
+                                    <input type="hidden" name="id" value="{{$blog->id}}">
+
+                                    @if($blog->status == 1)
+                                        <button type="submit" class="btn btn-danger">Inactive</button>
+                                    @else
+                                        <button type="submit" class="btn btn-success">Active</button>
+                                    @endif
+                                </form>
+                            </td>
+
+                            <td>{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}}</td>
+                            <td>
+                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$blog->id}}">
                                     <i class="fa fa-trash fa-2x"></i> DELETE
                                 </a>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal{{$factoryInspection->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal{{$blog->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -58,7 +72,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{route('factoryInspection.destroy',$factoryInspection->id)}}" method="post">
+                                                <form action="{{route('blog.destroy',$blog->id)}}" method="post">
                                                     @csrf
                                                     @method("DELETE")
                                                     <button class="btn btn-danger">Confirm</button>
@@ -73,10 +87,12 @@
                         @endforeach
                     </tbody>
                                     <tfoot>
-                                    <tr class="text-center">
+                                    <tr>
                                         <th>SL</th>
-                                        <th>Report</th>
-                                        <th>Report Title</th>
+                                        <th>User Name</th>
+                                        <th>Image</th>
+                                        <th>Post</th>
+                                        <th>Approved</th>
                                         <th>Create Date</th>
                                         <th>Action</th>
                                     </tr>
