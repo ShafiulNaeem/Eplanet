@@ -12,7 +12,7 @@ Route::get('test', function (){
 //        'verification_code' => 'feefefelwhrw3rnn'
 //    ];
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-    return view('pages.company_overview');
+    return view('pages.shop');
 });
 
 Route::get('/con',function(){
@@ -30,6 +30,9 @@ Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.
 
 //vendor page show
 Route::get('vendor', 'Users\VendorProductsController@topSale')->name('topSale.show');
+
+//Blog page
+
 
 
 Route::prefix('pages')->group(function(){
@@ -79,6 +82,7 @@ Route::prefix('admin')->group(function(){
     Route::post('subcategoryChange', 'Users\Admin\SubCategoryController@change')->name('subcategory.change.status');
     Route::post('productChange', 'Users\Admin\ProductController@change')->name('product.change.status');
     Route::post('employeeChange', 'Users\Admin\EmployeeController@change')->name('employee.change.status');
+    Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
 
     Route::name('admin.all.')->prefix('allvendor')->group(function (){
         Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');
@@ -107,6 +111,11 @@ Route::prefix('admin')->group(function(){
 
     Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
     Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');
+
+    //blog manage
+    Route::get('blog', 'Users\BlogController@index')->name('admin.blog');
+    Route::delete('blog/{blog}', 'Users\BlogController@destroy')->name('blog.destroy');
+
 
     // vendor routes
     Route::prefix('vendor')->group(function(){

@@ -99,13 +99,15 @@
                                 <p>Manage Brand</p>
                             </a>
                         </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Vendor Brand</p>
+                                </a>
+                            </li>
+                        @endif
 
-                        <li class="nav-item">
-                            <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All Vendor Brand</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
 
@@ -140,13 +142,16 @@
                                         <p>Category Manage</p>
                                     </a>
                                 </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.category') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Category</p>
+                                        </a>
+                                    </li>
+                                 @endif
 
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.all.category') }}" class="nav-link text-fuchsia">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>All Vendor Category</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -170,12 +175,15 @@
                                         <p>Manage Sub category</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.all.subcategory') }}" class="nav-link text-fuchsia">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>All Vendor SubCategory</p>
-                                    </a>
-                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.subcategory') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor SubCategory</p>
+                                        </a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </li>
                     </ul>
@@ -202,12 +210,15 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{ route('admin.all.coupon') }}" class="nav-link text-fuchsia">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>All Vendor   Coupon</p>
-                            </a>
-                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.coupon') }}" class="nav-link text-fuchsia">
+                                    <i class="far fa-dot-circle nav-icon"></i>
+                                    <p>All Vendor   Coupon</p>
+                                </a>
+                            </li>
+                        @endif
+
                     </ul>
                 </li>
 
@@ -243,12 +254,15 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.all.product') }}" class="nav-link text-fuchsia">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>All Vendor   Products</p>
-                                    </a>
-                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.product') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor   Products</p>
+                                        </a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -273,12 +287,15 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.all.product.image') }}" class="nav-link text-fuchsia">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>All Vendor Category</p>
-                                    </a>
-                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.product.image') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Category</p>
+                                        </a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -303,12 +320,15 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.all.product.video') }}" class="nav-link text-fuchsia">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>All Vendor Product Video</p>
-                                    </a>
-                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.product.video') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Product Video</p>
+                                        </a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </li>
                     </ul>
@@ -431,6 +451,14 @@
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Users With Order
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.blog')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Manage Blog
                             </p>
                         </a>
                     </li>
