@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Product;
+use App\Models\ProductCapacity;
+use App\Models\ProductRnD;
 use Illuminate\Http\Request;
 use App\Models\ProductCertification;
 use App\Models\ProductQuality;
@@ -26,6 +28,16 @@ class VendorProductsController extends Controller
         $ProductTradeCapacity = ProductTradeCapacity::orderBy('id','desc')->get();
         $ProductQualitys = ProductQuality::orderBy('id','desc')->get();
         $productcertifications = ProductCertification::orderBy('id','desc')->get();
-        return view('pages.shop',compact('productcertifications','ProductQualitys','ProductTradeCapacity'));
+        $productTops = Admin::with('productsWithTop')->where('role', 2)->get();
+        $capacities = ProductCapacity::orderBy('id','desc')->get();
+        $productrnd = ProductRnD::orderBy('id','desc')->get();
+        return view('pages.shop',compact(
+            'productcertifications',
+            'ProductQualitys',
+            'ProductTradeCapacity',
+            'productTops',
+            'capacities',
+            'productrnd'
+        ));
     }
 }

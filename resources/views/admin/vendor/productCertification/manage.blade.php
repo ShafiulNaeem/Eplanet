@@ -79,6 +79,7 @@
                                     <tfoot>
                                     <tr>
                                         <th>SL</th>
+                                        <th>Document</th>
                                         <th>Name</th>
                                         <th>Issued By</th>
                                         <th>Business Scope</th>

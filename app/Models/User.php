@@ -49,8 +49,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Order');
     }
 
-
-
     public function orderWithAdmin()
     {
         return $this->orders()->where([
@@ -59,7 +57,6 @@ class User extends Authenticatable
         ])
             ->orderBy('created_at', 'DESC');
     }
-
 
     public function orderWithOutAdmin()
     {
