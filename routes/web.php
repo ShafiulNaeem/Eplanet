@@ -12,7 +12,7 @@ Route::get('test', function (){
 //        'verification_code' => 'feefefelwhrw3rnn'
 //    ];
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-   // return view('admin.vendor.productCapacity.create');
+    return view('pages.company_overview');
 });
 
 Route::get('/',  'WelcomeController@index')->name('home');
