@@ -37,7 +37,9 @@
     <!--plugins css-->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery.fancybox.min.css') }}">
-
+    <!-- Light Box -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/venobox.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/venobox.min.css') }}">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
@@ -284,7 +286,9 @@
 <!--slick min js-->
 <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
 <!--magnific popup min js-->
-<script src="{{ asset('frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
+<!-- Light Box -->
+<script src="{{ asset('frontend/assets/js/venobox.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/venobox.min.js') }}"></script>
 <!--counterup min js-->
 <script src="{{ asset('frontend/assets/js/jquery.counterup.min.js') }}"></script>
 <!--jquery countdown min js-->
@@ -367,6 +371,23 @@
         function createElement(element) {
             return document.createElement(element);
         }
+
+
+        $('.venobox').venobox({
+        numeratio: true,
+        border: '20px'
+       });
+
+      $('.venoboxframe').venobox({
+        border: '6px',
+        overlayColor : 'rgba(255,255,255,0.85)',
+        titlePosition : 'bottom',
+        titleColor: '#333',
+        titleBackground: 'transparent',
+        closeColor: '#333',
+        closeBackground: 'transparent',
+                spinner : 'wave'
+      });
 
 </script>
 
