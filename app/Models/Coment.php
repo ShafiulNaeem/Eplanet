@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Coment extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -15,9 +15,9 @@ class Blog extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function coments()
+    public function blog()
     {
-        return $this->hasMany('App\Models\Coment');
+        return $this->belongsTo('App\Models\Blog');
     }
 
     public function replies()
