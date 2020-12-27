@@ -3,6 +3,7 @@
 @section('content')
 
 
+
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
         <div class="container">   
@@ -47,8 +48,8 @@
                                 </figcaption>
                             </figure>
                         </article>
-                        <div class="comments_box">
-                            <h3>3 Comments </h3>
+                      <div class="comments_box">
+                            <h3>3 Comments	</h3>
                             <div class="comment_list">
                                 <div class="comment_thumb">
                                     <img src="assets/img/blog/comment3.png.jpg" alt="">
@@ -56,9 +57,22 @@
                                 <div class="comment_content">
                                     <div class="comment_meta">
                                         <h5><a href="#">Admin</a></h5>
-                                        <span>October 16, 2018 at 1:38 am</span>
+                                        <span>October 16, 2018 at 1:38 am</span> 
                                     </div>
-                                    <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>
+                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure</p>
+                                    <div class="comment_reply" id="reply_id">
+                                        <span class="btn btn-success">Reply</span>
+                                    </div>
+                                    <div class="reply_div" id="reply_div">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <textarea name="" id="" class="form-control" cols="5" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <buttom class="btn btn-success">submit</buttom>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
 
                             </div>
@@ -69,40 +83,28 @@
                                 <div class="comment_content">
                                     <div class="comment_meta">
                                         <h5><a href="#">Demo</a></h5>
-                                        <span>October 16, 2018 at 1:38 am</span>
+                                        <span>October 16, 2018 at 1:38 am</span> 
                                     </div>
-                                    <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>
                                 </div>
                             </div>
-                            <div class="comment_list">
-                                <div class="comment_thumb">
-                                    <img src="assets/img/blog/comment3.png.jpg" alt="">
-                                </div>
-                                <div class="comment_content">
-                                    <div class="comment_meta">
-                                        <h5><a href="#">Admin</a></h5>
-                                        <span>October 16, 2018 at 1:38 am</span>
-                                    </div>
-                                    <p>Quisque orci nibh, porta vitae sagittis sit amet, vehicula vel mauris. Aenean at</p>
-                                </div>
-                            </div>
+                           
                         </div>
-                        <div class="comments_form">
-                            <h3>Leave a Reply </h3>
+                       <div class="comments_form">
+                            <h3>Leave a Post </h3>
                             <form action="#">
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="review_comment">Comment </label>
                                         <textarea name="comment" id="review_comment"></textarea>
-                                    </div>
+                                    </div>   
                                 </div>
                                 <button class="button" type="submit">Post Comment</button>
-                            </form>
+                             </form>    
                         </div>
                         
                         
                         <div class="related_posts" style="border-top:none">
-                            <h3>Related posts</h3>
+                            <h3>User posts</h3>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <article class="single_related">
@@ -164,5 +166,7 @@
     </div>
 
     <!--   blog details end    -->
+
+
 
 @endsection
