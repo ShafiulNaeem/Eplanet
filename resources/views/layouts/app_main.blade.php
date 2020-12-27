@@ -389,6 +389,15 @@
                 spinner : 'wave'
       });
 
+
+      $(document).ready(function(){
+        $('#reply_div').hide();
+        
+        $('#reply_id').click(function(){
+           $('#reply_div').toggle(1000) 
+        });
+    })
+
 </script>
 
 </body>
