@@ -1019,11 +1019,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .search_container form {
-	display: flex;
-	border-radius: 30px;
-	border: 1px solid #ededed;
-	background: #fff;
-	width: 650px;
+  display: flex;
+  border-radius: 30px;
+  border: 1px solid #ededed;
+  background: #fff;
+  width: 650px;
+  margin-left: 128px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search_container form {
@@ -1197,6 +1198,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .header_account_list.register ul li {
   display: inline-block;
+  padding: 0 10px;
 }
 
 .header_account_list.register ul li a:hover {
@@ -1240,12 +1242,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .header_account_area {
   display: flex;
   justify-content: flex-end;
+  margin-left: 68px;
 }
 
 .header_right_info {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_right_info {
@@ -2602,7 +2604,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   bottom: 27px;
   left: 50%;
   transform: translatex(-50%);
-}
+} 
 @media only screen and (max-width: 767px) {
   .slider_area .owl-dots {
     bottom: 4px;
@@ -10486,8 +10488,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     text-align: center;
 
 }
-.main-header-inner ul li{
-    display: inline-block;
+.main-header-inner ul li {
+  display: inline-block;
+  padding: 0 10px;
 }
 
 
@@ -11038,7 +11041,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width:100%;
   margin-bottom:60px;
 }
-
+.logo{
+  float:right;
+}
 
 /*privacy policy css end*/
 

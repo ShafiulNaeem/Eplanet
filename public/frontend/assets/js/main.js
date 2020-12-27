@@ -35,7 +35,7 @@
             animateOut: 'fadeOut',
             loop: true,
             nav: false,
-            autoplay: false,
+            autoplay: true,
             autoplayTimeout: 8000,
             items: 1,
             dots:true,
@@ -49,8 +49,8 @@
             $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
             loop: true,
             nav: true,
-            autoplay: false,
-            autoplayTimeout: 8000,
+            autoplay: true,
+            autoplayTimeout: 4000,
             items: 5,
             margin: 20,
             dots:false,
@@ -76,6 +76,35 @@
               }
         });
     }
+
+
+    var $porductColumn5 =  $('.diecover_div');
+    if($porductColumn5.length > 0){
+        $porductColumn5.on('changed.owl.carousel initialized.owl.carousel', function (event) {
+            $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
+            loop: true,
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 10000,
+            items: 5,
+            margin: 20,
+            dots:false,
+            navText: ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
+            responsiveClass:true,
+            responsive:{
+                    0:{
+                    items:1,
+                  },
+                600:{
+                    items:4,
+                },
+                1000:{
+                    items:8,
+                },
+
+              }
+        });
+    }
     
     /*---product column4 activation---*/
         var $productColumn4 =  $('.product_column4');
@@ -84,7 +113,7 @@
             $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
             loop: true,
             nav: true,
-            autoplay: false,
+            autoplay: true,
             autoplayTimeout: 8000,
             items: 4,
             margin:20,
@@ -577,8 +606,8 @@
     $( "#slider-range" ).slider({
         range: true,
         min: 0,
-        max: 500,
-        values: [ 0, 500 ],
+        max: 5000,
+        values: [ 0, 5000 ],
         slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
        }
@@ -884,36 +913,27 @@
 })(jQuery);	
 
 
-$('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    arrows:true,
-    navText:false,
-    dots:false,
-    navText: ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
-    autoplay:true,
+// $('.owl-carousel').owlCarousel({
+//     loop:true,
+//     margin:10,
+//     nav:true,
+//     arrows:true,
+//     navText:false,
+//     dots:false,
+//     navText: ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
+//     autoplay:true,
     
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:8
-        }
-    }
-})
+//     responsive:{
+//         0:{
+//             items:1
+//         },
+//         600:{
+//             items:3
+//         },
+//         1000:{
+//             items:8
+//         }
+//     }
+// });
 
-// $(document).ready(function(){
-//      $('.main-slick-active').slick({
-//        infinite: true,
-//          slidesToShow:4,
-//          autoplay:true,
-//          arrows:false,
-//          duration:3000,
-//          slidesToScroll:2
-//      });
-//    });
+

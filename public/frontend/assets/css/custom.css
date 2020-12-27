@@ -132,9 +132,7 @@
     padding: 13px 0;
     text-align: center
 }
-.slider_area{
-    padding-bottom: 20px
-}
+
 .category .slider_area .owl-dots .owl-dot {
   width: 14px;
   height: 14px;
@@ -197,7 +195,7 @@ text-align: center
 }
 
 .overview{
-    width;100%;
+    width:100%;
     padding: 20px 0;
 }
 .overview .rigt_inner{
@@ -334,7 +332,6 @@ text-align: center
     -webkit-text-fill-color:transparent;
     -webkit-background-clip:text;
             
-   
 }
 
 .quality_control{
@@ -430,4 +427,8 @@ text-align: center
 	margin-top: 0;
 	margin-bottom: 0rem;
 	font-size: 12px;
+}
+.over_left img {
+    width: 100%;
+    height: 255px;
 }

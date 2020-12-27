@@ -55,100 +55,100 @@
 </section>
 <!--slider area end-->
 
-<!--  Section Discover slider Start  -->
-
-<section class="discover-section">
-    <div class="container">
-        <div class="row">
-            <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="discover-title">
-                    <h3>Discover</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class=" discover-carasul owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover1.png') }}" alt=""></a>
+   <!--  Section Discover slider Start  -->
+   
+   <section class="discover-section">
+       <div class="container">
+          <div class="row">
+              <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="discover-title">
+                      <h3>Discover</h3>
+                  </div>
+              </div>
+          </div>
+           <div class="row">
+               <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
+                   <div class=" discover-carasul diecover_div owl-carousel">
+                        <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover1.png')}}" alt=""></a> 
+                                </div>
+                              <p>Shop in 7 language</p>
                             </div>
-                            <p>Shop in 7 language</p>
+                           
                         </div>
-
-                    </div>
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover3.png') }}" alt=""></a>
+                          <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover3.png')}}" alt=""></a> 
+                                </div>
+                              <p>Shop in 60 countries</p>
                             </div>
-                            <p>Shop in 60 countries</p>
+                           
                         </div>
-
-                    </div>
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover2.png') }}" alt=""></a>
+                       <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover2.png')}}" alt=""></a> 
+                                </div>
+                              <p>Deals and promotions</p>
                             </div>
-                            <p>Deals and promotions</p>
+                           
                         </div>
-
-                    </div>
-
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover4.png') }}" alt=""></a>
+                     
+                       <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover4.png')}}" alt=""></a> 
+                                </div>
+                              <p>secure payment</p>
                             </div>
-                            <p>secure payment</p>
+                           
                         </div>
-
-                    </div>
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover5.png') }}" alt=""></a>
+                       <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover5.png')}}" alt=""></a> 
+                                </div>
+                              <p>Estimated import fees</p>
                             </div>
-                            <p>Estimated import fees</p>
+                           
                         </div>
-
-                    </div>
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover6.png') }}" alt=""></a>
+                       <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover6.png')}}" alt=""></a> 
+                                </div>
+                              <p>Estimated import fees</p>
                             </div>
-                            <p>Estimated import fees</p>
+                           
                         </div>
-
-                    </div>
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover7.png') }}" alt=""></a>
+                       <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover7.png')}}" alt=""></a> 
+                                </div>
+                              <p>Track your package</p>
                             </div>
-                            <p>Track your package</p>
+                           
                         </div>
-
-                    </div>
-                    <div class="item">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="shop.html"><img src="{{ asset('frontend/assets/img/icon/discover8.png') }}" alt=""></a>
+                        <div class="item">
+                            <div class="single_banner">
+                                <div class="banner_thumb">
+                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover8.png')}}" alt=""></a> 
+                                </div>
+                              <p>Estimated import fees</p>
                             </div>
-                            <p>Estimated import fees</p>
+                           
                         </div>
-
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section Discover slider End  -->
+               </div>
+           </div>
+       </div>
+   </section>
+   
+   <!-- Section Discover slider End  -->
 
 
 <!--  Section Product slider Start  -->
