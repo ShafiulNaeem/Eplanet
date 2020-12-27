@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="over_right">
-                        <textarea name="" id="" class="form-control" cols="30" rows="10">
+                        <textarea name=""  class="form-control" cols="32" rows="10">
                            The YZF-R15 changed the 150cc segment in the Indian market the way the CBZ did when it was launched. It was an everyday motorcycle that could genuinely be used as a trackday tool. The second version of the R15 traded practicality for more focused performance, but the advent of the KTM RC200 meant that a far better performance was available for the sportbike enthusiasts at a similar price. The R15 Version 3.0 reduces that gap significantly with technology. On the list is now a BS6 engine with a few more ccs, but featuring variable valve timing which takes the maximum power output to nearly 18.3bhp with a peak torque output of 14.1Nm. It also gets all-LED lamps and an all-digital LCD instrument cluster that displays a wealth of information, including when the Variable Valve Actuation switches to the different camshaft profile.
                         </textarea>
                     </div>
@@ -79,7 +79,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table_content">
+                    <div class="table_content text-center">
                         <table class="table table-bordered" style="background:#EEF8FF;">
                             <thead>
                                 <tr>
@@ -424,7 +424,7 @@
             
              <div class="row">
                 <div class="col-md-12">
-                    <div class="table_content">
+                    <div class="table_content text-center">
                         <table class="table table-bordered" style="background:#EEF8FF;">
                             <thead>
                                 <tr>
@@ -480,7 +480,7 @@
     
    <!--  quality_control  start  --> 
    
-    <section class="quality_control">
+    <section class="quality_control text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -510,7 +510,7 @@
      
       <!--  rd_capacity  start  --> 
    
-    <section class="rd_capacity">
+    <section class="rd_capacity text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -540,7 +540,7 @@
                  <h4>Certification</h4>
               </div>
                 <div class="col-md-12">
-                    <div class="table_content">
+                    <div class="table_content text-center">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -576,7 +576,7 @@
           
      <!--  TRADE CAPABILITIES START  --> 
    
-    <section class="trade_capabilit">
+    <section class="trade_capabilit text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -589,15 +589,13 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table_content">
+                    <div class="table_content text-center">
                         <table class="table table-bordered" style="background:#EEF8FF;">
                             <thead>
                                 <tr>
                                     <th scope="col">Business Type</th>
                                     <th scope="col">Manufacturer, Trading Company</th>
                                     <th scope="col">Country / Region</th>
-                                
-                                    <th>Verify</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -606,8 +604,6 @@
                                     <td>{{$ProductTradeCapacitys->main_markets}}</td>
                                     <td>{{$ProductTradeCapacitys->total_revenue}}</td>
                                     <td>{{$ProductTradeCapacitys->total_revenue}}</td>
-                                   
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
                                 </tr>
                                 @endforeach
                             </tbody>
