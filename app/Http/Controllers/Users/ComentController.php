@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class ComentController extends Controller
 {
@@ -33,9 +36,26 @@ class ComentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Coment $coment)
     {
-        //
+       // dd($request->all());
+        $this->validate($request, array(
+            'comment' => ['required', 'string', 'max:255'],
+        ));
+
+//        $user_id = Auth::user()->id;
+        //dd($user_id);
+        $coment->user_id = $request->user_id;
+        $coment->blog_id = $request->blog_id;
+        $coment->comment = $request->comment;
+
+        if($coment->save()){
+            Session::flash('success','Comment Created Successfully');
+            return redirect()->back();
+        } else {
+            Session::flash('success','Something went wrong');
+            return redirect()->back();
+        }
     }
 
     /**

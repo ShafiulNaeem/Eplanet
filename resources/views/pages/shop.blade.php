@@ -382,7 +382,7 @@
                                 <tr>
                                 <td class="text-center">
                                     <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('documents',$productcertification->pdf)}}">
-                                        <embed src="{{url('documents',$productcertification->pdf)}}" alt="{{$productcertification->name}}" class="img-rounded" width="150" />
+                                        <img src="{{url('documents',$productcertification->pdf)}}" alt="{{$productcertification->name}}" class="img-rounded" width="150" />
                                     </a>
 
                                </td>
