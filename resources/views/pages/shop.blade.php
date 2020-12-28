@@ -129,7 +129,7 @@
 
     <!-- Main product start -->
 
-    <section class="main_product">
+    <section class="main_product text-center">
         <div class="container"> 
             <div class="row">
                 <div class="col-md-12">
@@ -138,7 +138,9 @@
                             <div class="product_container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4>MAIN PRODUCTS</h4>
+                                        <div class="main_pro_img">
+                                           <h4>MAIN PRODUCTS</h4>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row second-product">
@@ -279,7 +281,7 @@
     <!-- Main product end -->
     
     <!--  PRODUCT CAPACITY start  -->
-    <section class="product_capasity">
+    <section class="product_capasity text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -287,9 +289,9 @@
                         <div class="container">
                             <div class="product_container">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <h4>PRODUCT CAPACITY</h4>
-                                    </div>
+                                <div class="main_pro_img">
+                                    <h4>PRODUCTS CAPACITY</h4>
+                                </div>
                                 </div>
                                 <div class="row second-product">
                                     <div class="col-12">
