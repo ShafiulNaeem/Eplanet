@@ -51,7 +51,7 @@ class BlogController extends Controller
     public function store(Request $request, Blog $blog)
     {
         $this->validate($request, array(
-            'post' => ['required', 'string', 'max:255'],
+            'post' => ['required', 'string'],
             'blog_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ));
 
@@ -87,7 +87,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $blogs = Blog::with('user','coments')->where('id',$id)->get();
-        $comments = Coment::with('user')->where('blog_id',$id)->get();
+        $comments = Coment::with('user','replies')->where('blog_id',$id)->orderBy('created_at','DESC')->get();
         //dd($comments);
 
         return view('pages.blog_details',compact(

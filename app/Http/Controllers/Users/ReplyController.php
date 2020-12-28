@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Reply;
 use Illuminate\Http\Request;
-
+use Session;
 class ReplyController extends Controller
 {
     /**
@@ -33,9 +34,27 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , Reply $reply)
     {
-        //
+         //dd($request->all());
+        $this->validate($request, array(
+            'reply' => ['required', 'string'],
+        ));
+
+//        $user_id = Auth::user()->id;
+        //dd($user_id);
+        $reply->user_id = $request->user_id;
+        $reply->blog_id = $request->blog_id;
+        $reply->comment_id = $request->comment_id;
+        $reply->reply = $request->reply;
+
+        if($reply->save()){
+            Session::flash('success','Comment Replied Successfully');
+            return redirect()->back();
+        } else {
+            Session::flash('success','Something went wrong');
+            return redirect()->back();
+        }
     }
 
     /**
