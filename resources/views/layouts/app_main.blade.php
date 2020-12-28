@@ -311,6 +311,21 @@
 <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
 <script type="text/javascript">
+    var active = false;
+    //cross
+    $(document).on('click', '#cardDiv', function (){
+        active = !active;
+        console.log(active)
+        if(active) $('.mini_cart').css('right','350px');
+        else $('.mini_cart').css('right','0px');
+    });
+
+    $(document).on('click', '#cross', function (){
+        active = !active;
+        console.log(active)
+        if(active) $('.mini_cart').css('right','350px');
+        else $('.mini_cart').css('right','0px');
+    });
 
         $(document).on('click', '#add_to_wish_list', function (e) {
             var id = (this.getAttribute('data-target'));
@@ -392,9 +407,9 @@
 
       $(document).ready(function(){
         $('#reply_div').hide();
-        
+
         $('#reply_id').click(function(){
-           $('#reply_div').toggle(1000) 
+           $('#reply_div').toggle(1000)
         });
     })
 
