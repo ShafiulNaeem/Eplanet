@@ -69,14 +69,15 @@
                                                 <textarea name="" id="" class="form-control" cols="5" rows="3"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <buttom class="btn btn-success">submit</buttom>
+                                                <buttom id="submit_reply" class="btn btn-success">submit</buttom>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
+                                
 
                             </div>
-                            <div class="comment_list list_two">
+                            <!-- <div class="comment_list list_two">
                                 <div class="comment_thumb">
                                     <img src="assets/img/blog/comment3.png.jpg" alt="">
                                 </div>
@@ -86,7 +87,7 @@
                                         <span>October 16, 2018 at 1:38 am</span> 
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                            
                         </div>
                        <div class="comments_form">
@@ -98,7 +99,7 @@
                                         <textarea name="comment" id="review_comment"></textarea>
                                     </div>   
                                 </div>
-                                <button class="button" type="submit">Post Comment</button>
+                                <button class="button"  type="submit">Post Comment</button>
                              </form>    
                         </div>
                         
