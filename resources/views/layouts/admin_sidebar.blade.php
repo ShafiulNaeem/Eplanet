@@ -464,12 +464,12 @@
                     </li>
                 @endif
 
-                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 2 )
+{{--                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 2 )--}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-circle"></i>
                             <p>
-                                Vendors
+                                Vendors Details
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -617,7 +617,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+{{--                @endif--}}
 
 
 {{--                <li class="nav-item">--}}

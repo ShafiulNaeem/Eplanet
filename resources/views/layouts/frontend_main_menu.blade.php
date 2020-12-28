@@ -311,13 +311,22 @@
                             <nav>
                                 <ul class="main-ul">
                                     <li><a class="active" href="{{url('/')}}">home</a></li>
-                                    <li><a class="active" href="{{route('topSale.show')}}">Company Profile</a>
+                                    @php
+                                        //echo url()->current();
+
+                                       $id = substr(strrchr(url()->current(), '/'), 1 )
+                                    @endphp
+                                    @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
+                                    <li><a class="active" href="{{route('topSale.show',$id)}}">Company Profile</a>
+
                                         <ul class="sub_menu pages">
-                                            <li><a id="" href="{{route('overview')}}#sec1">Company Overview</a></li>
-                                            <li><a id="" href="{{route('overview')}}#sec2">Company Capability</a></li>
-                                            <li><a id="" href="{{route('overview')}}#sec3">Business Performance</a></li>
+                                            <li><a id="" href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
+                                            <li><a id="" href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
+                                            <li><a id="" href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
                                         </ul>
                                     </li>
+                                    @endif
+
                                     @if(isset($categories))
                                         @foreach($categories as $category)
 

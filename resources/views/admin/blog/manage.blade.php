@@ -41,16 +41,15 @@
                             </td>
                             <td>{{$blog->post}}</td>
                             <td>
-{{--                            {{$blog->status}}--}}
                                 <form action="{{ route('blog.change.status') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="status" value="{{$blog->status}}">
                                     <input type="hidden" name="id" value="{{$blog->id}}">
 
                                     @if($blog->status == 1)
-                                        <button type="submit" class="btn btn-danger">Inactive</button>
-                                    @else
                                         <button type="submit" class="btn btn-success">Active</button>
+                                    @else
+                                        <button type="submit" class="btn btn-danger">Inactive</button>
                                     @endif
                                 </form>
                             </td>
