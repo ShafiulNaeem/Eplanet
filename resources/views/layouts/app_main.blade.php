@@ -396,7 +396,15 @@
         $('#reply_id').click(function(){
            $('#reply_div').toggle(1000) 
         });
-    })
+       
+    });
+
+    $(document).ready(function(){
+        
+        $('#submit_reply').click(function(){
+           $('#reply_div').hide();
+        });
+    });
 
 </script>
 
