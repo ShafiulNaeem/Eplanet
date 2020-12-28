@@ -45,7 +45,9 @@
                                                 </h4>
                                                 <div class="articles_date">
                                                     <p class="text-success">Created by {{$blog->user->fname}} {{$blog->user->lname}} </p>
-                                                    <p>{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}} | <a href="{{route('home')}}">Eplanet</a> </p>
+                                                    <p>{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}}
+                                                        | <a href="{{route('home')}}">Eplanet</a></p>
+
                                                 </div>
                                             </figcaption>
                                         </figure>

@@ -61,50 +61,52 @@
                            <div class="comments_box">
                                 <h3>{{$totalComent}} Comments</h3>
                                 <div class="comment_list">
-{{--                                    <div class="comment_thumb">--}}
-{{--                                        <img src="{{ asset('frontend/assets/img/icon/discover1.png') }}" alt="">--}}
-{{--                                    </div>--}}
                                     @foreach($comments as $index => $comment)
                                         <div class="comment_content">
 
                                             <div class="comment_meta">
                                                 <h5><a href="">{{$comment->user->fname}} {{$comment->user->lname}} </a></h5>
                                                 <span>{{\Carbon\Carbon::parse($comment->created_at)->format('M d Y')}}</span>
+                                                <p>{{$comment->comment}}</p>
                                             </div>
 
-                                            <p>{{$comment->comment}}</p>
-                                            <p>{{$index+1}}</p>
-
+{{--                                            reply area--}}
+                                            @foreach($comment->replies as  $reply)
+                                                <div class="comment_list list_two">
+                                                    <div class="comment_content">
+                                                        <div class="comment_meta">
+                                                            <h5><a href="">{{$reply->user->fname}} {{$reply->user->fname}}</a></h5>
+                                                            <span>{{$reply->reply}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                             <div class="comment_reply" id="reply_id">
-                                                <span class="btn btn-success">Reply</span>
+                                                <span href="#reply_div" class="btn btn-success">Reply</span>
                                             </div>
-
                                             <div class="reply_div" id="reply_div">
-                                                <form action="">
+
+                                                <form action="{{route('reply.store')}}" method="post">
+                                                    @csrf
                                                     <div class="form-group">
-                                                        <textarea name="" id="" class="form-control" cols="5" rows="3"></textarea>
+                                                        <textarea name="reply" id="" class="form-control" cols="5" rows="1"></textarea>
+                                                        <input type="text" name="blog_id" hidden value="{{$blog_id}}">
+                                                        <input type="text" name="comment_id" hidden value="{{$comment->id}}">
+                                                        <input type="text" name="user_id" hidden value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+
                                                     </div>
                                                     <div class="form-group">
-                                                        <buttom class="btn btn-success">submit</buttom>
+                                                        <button class="button" type="submit">Post Reply</button>
                                                     </div>
                                                 </form>
                                             </div>
 
                                         </div>
-                                    @endforeach
+
+                                     @endforeach
                                 </div>
 
-                               <div class="comment_list list_two">
-                                   <div class="comment_thumb">
-                                       <img src="assets/img/blog/comment3.png.jpg" alt="">
-                                   </div>
-                                   <div class="comment_content">
-                                       <div class="comment_meta">
-                                           <h5><a href="#">Demo</a></h5>
-                                           <span>October 16, 2018 at 1:38 am</span>
-                                       </div>
-                                   </div>
-                               </div>
+
 
                             </div>
 
@@ -114,7 +116,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="review_comment">{{$blog_id}} Comment </label>
+                                            <label for="review_comment">Comment </label>
                                             <textarea name="comment" id="review_comment"></textarea>
                                             <input type="text" name="blog_id" hidden value="{{$blog_id}}">
                                             <input type="text" name="user_id" hidden value="{{\Illuminate\Support\Facades\Auth::user()->id}}">

@@ -40,7 +40,7 @@ class ComentController extends Controller
     {
        // dd($request->all());
         $this->validate($request, array(
-            'comment' => ['required', 'string', 'max:255'],
+            'comment' => ['required', 'string'],
         ));
 
 //        $user_id = Auth::user()->id;
