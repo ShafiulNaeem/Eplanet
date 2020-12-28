@@ -219,7 +219,7 @@
                                 @if( Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
                                     <div class="header_account_list  mini_cart_wrapper">
                                     @php $addTocarts = Session::get('cart'); @endphp
-                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
+                                       <a href="#" id="cardDiv"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
                                         <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_gallery">
@@ -228,7 +228,7 @@
                                                 		<h3>cart</h3>
                                                 	</div>
                                                 	<div class="mini_cart_close">
-                                                		<a href="javascript:void(0)"><i class="icon-x"></i></a>
+                                                		<a href="javascript:void(0)" id="cross"><i class="icon-x"></i></a>
                                                 	</div>
                                                 </div>
 
