@@ -272,45 +272,45 @@
 <!--news letter popup start-->
 
 
-
-<!-- JS
+ <!-- JS
 ============================================ -->
-<!--jquery min js-->
-<script src="{{ asset('frontend/assets/js/vendor/jquery-3.4.1.min.js') }}"></script>
-<!--popper min js-->
-<script src="{{ asset('frontend/assets/js/popper.js') }}"></script>
-<!--bootstrap min js-->
-<script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-<!--owl carousel min js-->
-<script src="{{ asset('frontend/assets/js/owl.carousel.min.js') }}"></script>
-<!--slick min js-->
-<script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
-<!--magnific popup min js-->
-<!-- Light Box -->
-<script src="{{ asset('frontend/assets/js/venobox.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/venobox.min.js') }}"></script>
-<!--counterup min js-->
-<script src="{{ asset('frontend/assets/js/jquery.counterup.min.js') }}"></script>
-<!--jquery countdown min js-->
-<script src="{{ asset('frontend/assets/js/jquery.countdown.js') }}"></script>
-<!--jquery ui min js-->
-<script src="{{ asset('frontend/assets/js/jquery.ui.js') }}"></script>
-<!--jquery elevatezoom min js-->
-<script src="{{ asset('frontend/assets/js/jquery.elevatezoom.js') }}"></script>
-<!--isotope packaged min js-->
-<script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
-<!--slinky menu js-->
-<script src="{{ asset('frontend/assets/js/slinky.menu.js') }}"></script>
-<!--instagramfeed menu js-->
-<script src="{{ asset('frontend/assets/js/jquery.instagramFeed.min.js') }}"></script>
-<!-- Plugins JS -->
-<script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/jquery.fancybox.min.js') }}"></script>
+    <!--jquery min js-->
+    <script src="{{asset('frontend/assets/js/vendor/jquery-3.4.1.min.js')}}"></script>
+    <!--popper min js-->
+    <script src="{{asset('frontend/assets/js/popper.js')}}"></script>
+    <!--bootstrap min js-->
+    <script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
+    <!--owl carousel min js-->
+     <!--  Light box  -->
+     <script src="{{asset('frontend/assets/js/venobox.js')}}"></script>
+     <script src="{{asset('frontend/assets/js/venobox.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
+    <!--slick min js-->
+    <script src="{{asset('frontend/assets/js/slick.min.js')}}"></script>
+    <!--magnific popup min js-->
+    <script src="{{asset('frontend/assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <!--counterup min js-->
+    <script src="{{asset('frontend/assets/js/jquery.counterup.min.js')}}"></script>
+    <!--jquery countdown min js-->
+    <script src="{{asset('frontend/assets/js/jquery.countdown.js')}}"></script>
+    <!--jquery ui min js-->
+    <script src="{{asset('frontend/assets/js/jquery.ui.js')}}"></script>
+    <!--jquery elevatezoom min js-->
+    <script src="{{asset('frontend/assets/js/jquery.elevatezoom.js')}}"></script>
+    <!--isotope packaged min js-->
+    <script src="{{asset('frontend/assets/js/isotope.pkgd.min.js')}}"></script>
+    <!--slinky menu js-->
+    <script src="{{asset('frontend/assets/js/slinky.menu.js')}}"></script>
+    <!--instagramfeed menu js-->
+    <script src="{{asset('frontend/assets/js/jquery.instagramFeed.min.js')}}"></script>
+    <!-- Plugins JS -->
+    <script src="{{asset('frontend/assets/js/plugins.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/jquery.fancybox.min.js')}}"></script>
 
-<!-- Main JS -->
-<script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+    <!-- Main JS -->
+    <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
-<script type="text/javascript">
+   <script type="text/javascript">  
 
         $(document).on('click', '#add_to_wish_list', function (e) {
             var id = (this.getAttribute('data-target'));
