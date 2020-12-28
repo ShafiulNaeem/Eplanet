@@ -132,7 +132,7 @@
 <header>
     <div class="main_header">
         <div class="header_top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="main-header-inner">
                         <div class="col-lg-4 col-md-4">
@@ -162,7 +162,7 @@
             </div>
         </div>
         <div class="header_middle">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
