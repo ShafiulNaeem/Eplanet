@@ -140,7 +140,12 @@
                                     @if( $product->sold <= 0 )
                                         <li><a data-target="{{$product->id}}" id="express_wish"  title="Express wish" >Express wish</a></li>
                                     @endif
-                                    <li><a href="#" title="Add to wishlist">Vendor Details</a></li>
+
+{{--                                    @if($product->admin->role == 2)--}}
+                                        <li>
+                                            <a href="{{route('topSale.show',$product->admin_id)}}" title="Add to wishlist">Vendor Details</a>
+                                        </li>
+{{--                                     @endif--}}
                                 </ul>
                             </div>
                             <div class="priduct_social">

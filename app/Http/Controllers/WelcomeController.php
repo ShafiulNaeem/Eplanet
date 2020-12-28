@@ -35,7 +35,8 @@ class WelcomeController extends Controller
     {
         $mainRes = $this->productByCategory(['kids', 'men']);
 
-        $product = Product::with(['productImages', 'productVideos'])->where('id', $id)->GetActive()->get();
+        $product = Product::with(['productImages', 'productVideos','admin'])->where('id', $id)->GetActive()->get();
+        //dd($product);
 
         return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
 

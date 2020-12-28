@@ -14,23 +14,25 @@ use App\Models\ProductTradeCapacity;
 
 class VendorProductsController extends Controller
 {
-    public function topSale()
+    public function topSale($id)
     {
-        $productSales = Admin::with('productsWithSold')->where('role', 2)->get();
-        $productTops = Admin::with('productsWithTop')->where('role', 2)->get();
+        $productSales = Admin::with('productsWithSold')->where('id', $id)->get();
+       // dd($productSales);
+        $productTops = Admin::with('productsWithTop')->where('id', $id)->get();
 
         //dd($productTops);
         return view('pages.vendor_home',compact('productSales','productTops'));
     }
 
-    public function overview()
+    public function overview($id)
     {
-        $ProductTradeCapacity = ProductTradeCapacity::orderBy('id','desc')->get();
-        $ProductQualitys = ProductQuality::orderBy('id','desc')->get();
-        $productcertifications = ProductCertification::orderBy('id','desc')->get();
-        $productTops = Admin::with('productsWithTop')->where('role', 2)->get();
-        $capacities = ProductCapacity::orderBy('id','desc')->get();
-        $productrnd = ProductRnD::orderBy('id','desc')->get();
+
+        $ProductTradeCapacity = ProductTradeCapacity::where('admin_id', $id)->orderBy('id','desc')->get();
+        $ProductQualitys = ProductQuality::where('admin_id', $id)->orderBy('id','desc')->get();
+        $productcertifications = ProductCertification::where('admin_id', $id)->orderBy('id','desc')->get();
+        $productTops = Admin::with('productsWithTop')->where('id', $id)->get();
+        $capacities = ProductCapacity::where('admin_id', $id)->orderBy('id','desc')->get();
+        $productrnd = ProductRnD::where('admin_id', $id)->orderBy('id','desc')->get();
         return view('pages.shop',compact(
             'productcertifications',
             'ProductQualitys',

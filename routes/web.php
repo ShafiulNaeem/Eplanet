@@ -29,8 +29,8 @@ Route::get('/addExpressList/{id}', 'WelcomeController@addExpressList')->name('ad
 Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
 
 //vendor page show
-Route::get('vendor', 'Users\VendorProductsController@topSale')->name('topSale.show');
-Route::get('overview', 'Users\VendorProductsController@overview')->name('overview');
+Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSale.show');
+Route::get('overview/{id}', 'Users\VendorProductsController@overview')->name('overview');
 
 //Blog page
 
