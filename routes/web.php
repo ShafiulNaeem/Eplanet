@@ -12,7 +12,7 @@ Route::get('test', function (){
 //        'verification_code' => 'feefefelwhrw3rnn'
 //    ];
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-    return view('pages.shop');
+    return view('pages.allblogs');
 });
 
 Route::get('/con',function(){
@@ -33,7 +33,13 @@ Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSa
 Route::get('overview/{id}', 'Users\VendorProductsController@overview')->name('overview');
 
 //Blog page
+Route::get('blog', 'Users\BlogController@create')->name('blog.create');
+Route::post('blog', 'Users\BlogController@store')->name('blog.store');
+Route::get('blogAll', 'Users\BlogController@allBog')->name('blog.allBog');
+Route::get('blogAll/{id}', 'Users\BlogController@show')->name('blog.show');
 
+// comment route
+Route::post('blogAll/', 'Users\ComentController@store')->name('comment.store');
 
 
 Route::prefix('pages')->group(function(){

@@ -12,6 +12,6 @@ class ContactController extends Controller
     public function employeeContact(){
         $employees = Designation::with('employeeWithStatus')->get();
         //dd($employees);
-        return view('pages.contact',compact('employees'));
+        return view('pages.contact2',compact('employees'));
     }
 }

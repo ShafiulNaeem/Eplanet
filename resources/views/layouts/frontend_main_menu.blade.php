@@ -312,9 +312,7 @@
                                 <ul class="main-ul">
                                     <li><a class="active" href="{{url('/')}}">home</a></li>
                                     @php
-                                        //echo url()->current();
-
-                                       $id = substr(strrchr(url()->current(), '/'), 1 )
+                                         $id = substr(strrchr(url()->current(), '/'), 1 );
                                     @endphp
                                     @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
                                     <li><a class="active" href="{{route('topSale.show',$id)}}">Company Profile</a>
