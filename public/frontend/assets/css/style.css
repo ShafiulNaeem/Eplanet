@@ -1242,7 +1242,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .header_account_area {
   display: flex;
   justify-content: flex-end;
-  margin-left: 68px;
+  margin-left: 0px;
 }
 
 .header_right_info {
@@ -2604,7 +2604,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   bottom: 27px;
   left: 50%;
   transform: translatex(-50%);
-} 
+}
 @media only screen and (max-width: 767px) {
   .slider_area .owl-dots {
     bottom: 4px;

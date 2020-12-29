@@ -19,7 +19,7 @@ class CreateBlogsTable extends Migration
             $table->text('post');
             $table->string('blog_image')->nullable();
             $table->integer('status')->default(1);
-
+            $table->string('title');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

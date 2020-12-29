@@ -17,7 +17,7 @@ class Blog extends Model
 
     public function coments()
     {
-        return $this->hasMany('App\Models\Coment');
+        return $this->hasMany('App\Models\Comment');
     }
 
     public function replies()

@@ -31,18 +31,19 @@ Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.
 //vendor page show
 Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSale.show');
 Route::get('overview/{id}', 'Users\VendorProductsController@overview')->name('overview');
-
+Route::resource('comment', 'Users\CommentController')->middleware(['auth']);
+Route::resource('replay', 'Users\ReplyController')->middleware(['auth']);
 //Blog page
 Route::get('blog', 'Users\BlogController@create')->name('blog.create');
 Route::post('blog', 'Users\BlogController@store')->middleware(['auth'])->name('blog.store');
-Route::get('blogAll', 'Users\BlogController@allBog')->name('blog.allBog');
-Route::get('blogAll/{id}', 'Users\BlogController@show')->middleware(['auth'])->name('blog.show');
+Route::get('blogall', 'Users\BlogController@allBog')->name('blog.allBog');
+Route::get('blogall/{blog}', 'Users\BlogController@show')->middleware(['auth'])->name('blog.show');
 Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['auth'])->name('blog.destroy');
 
 // comment route
-Route::post('blogAll/', 'Users\ComentController@store')->middleware(['auth'])->name('comment.store');
+//Route::post('blogAll/', 'Users\ComentController@store')->middleware(['auth'])->name('comment.store');
 // reply route
-Route::post('/', 'Users\ReplyController@store')->middleware(['auth'])->name('reply.store');
+//Route::post('/', 'Users\ReplyController@store')->middleware(['auth'])->name('reply.store');
 
 
 Route::prefix('pages')->group(function(){
