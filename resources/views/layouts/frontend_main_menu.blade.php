@@ -339,7 +339,12 @@
                                                 </li>
                                         @endforeach
                                     @endif
-                                    <li><a href=""> Blog </a>
+                                    <li><a class="active" href="{{route('blog.allBog')}}"> BLog</a>
+
+                                        <ul class="sub_menu pages">
+                                            <li><a id="" href="{{route('blog.create')}}#sec1"> Create Blog</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="{{route('contact.show')}}"> Contact Us</a>
 
                                 </ul>
