@@ -37,7 +37,7 @@ Route::get('blog', 'Users\BlogController@create')->name('blog.create');
 Route::post('blog', 'Users\BlogController@store')->middleware(['auth'])->name('blog.store');
 Route::get('blogAll', 'Users\BlogController@allBog')->name('blog.allBog');
 Route::get('blogAll/{id}', 'Users\BlogController@show')->middleware(['auth'])->name('blog.show');
-Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['auth'])->name('blog.destroy');
+//Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['auth'])->name('blog.destroy');
 
 // comment route
 Route::post('blogAll/', 'Users\ComentController@store')->middleware(['auth'])->name('comment.store');

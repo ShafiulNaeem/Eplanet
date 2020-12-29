@@ -61,7 +61,8 @@
                            <div class="comments_box">
                                 <h3>{{$totalComent}} Comments</h3>
                                 <div class="comment_list">
-                                    @foreach($comments as $index => $comment)
+
+                                        @foreach($comments as $index => $comment)
                                         <div class="comment_content">
 
                                             <div class="comment_meta">
@@ -104,6 +105,7 @@
                                         </div>
 
                                      @endforeach
+
                                 </div>
 
 
