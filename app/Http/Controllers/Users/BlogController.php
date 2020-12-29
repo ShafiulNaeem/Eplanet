@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\Coment;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Helper\DeleteFile;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +16,7 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
@@ -45,8 +45,10 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param Blog $blog
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, Blog $blog)
     {
@@ -81,18 +83,21 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Blog $blog
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        $blogs = Blog::with('user','coments')->where('id',$id)->get();
-        $comments = Coment::with('user','replies')->where('blog_id',$id)->orderBy('created_at','DESC')->get();
-        //dd($comments);
+//        dd(Auth::id());
+        $comments = Comment::with('user','replies')->where('blog_id',$blog->id)->orderBy('created_at','DESC')->get();
+        $userPBlogs = Blog::where([['user_id', $blog->user->id], ['id', '!=', $blog->id]])
+            ->get();
+//                dd($userPBlogs);
 
         return view('pages.blog_details',compact(
-            'blogs',
-            'comments'
+            'blog',
+            'comments',
+            'userPBlogs'
         ));
     }
 

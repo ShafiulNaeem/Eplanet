@@ -18,6 +18,9 @@ class AdminLoginController extends Controller
         $this->middleware('guest:admin')->except('logout');
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function showLoginForm()
     {
         return view('auth.admin-login');
@@ -34,7 +37,12 @@ class AdminLoginController extends Controller
         $remember = ( $request->remember == "on" ) ;
 
         // Attempt to log the user in
-        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $remember))
+        if(Auth::guard('admin')->attempt(
+            [
+                'email' => $request->email,
+                'password' => $request->password
+            ]
+            , $remember))
         {
             return redirect()->intended(route('admin.dashboard'));
         }
