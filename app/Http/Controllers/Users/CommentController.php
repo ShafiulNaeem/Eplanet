@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coment;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
-class ComentController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,10 +34,12 @@ class ComentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request, Coment $coment)
+    public function store(Request $request, Comment $comment)
     {
        // dd($request->all());
         $this->validate($request, array(
@@ -45,11 +48,11 @@ class ComentController extends Controller
 
 //        $user_id = Auth::user()->id;
         //dd($user_id);
-        $coment->user_id = $request->user_id;
-        $coment->blog_id = $request->blog_id;
-        $coment->comment = $request->comment;
+        $comment->user_id = Auth::id();
+        $comment->blog_id = $request->blog_id;
+        $comment->comment = $request->comment;
 
-        if($coment->save()){
+        if($comment->save()){
             Session::flash('success','Comment Created Successfully');
             return redirect()->back();
         } else {
@@ -61,10 +64,10 @@ class ComentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comment $comment)
     {
         //
     }
@@ -72,10 +75,10 @@ class ComentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -83,11 +86,11 @@ class ComentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -95,11 +98,17 @@ class ComentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        if($comment->delete()){
+            Session::flash('success','Comment Deleted Successfully');
+            return redirect()->back();
+        } else {
+            Session::flash('success','Something went wrong');
+            return redirect()->back();
+        }
     }
 }

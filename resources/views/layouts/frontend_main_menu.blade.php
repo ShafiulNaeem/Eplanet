@@ -339,7 +339,7 @@
                                                 </li>
                                         @endforeach
                                     @endif
-                                    <li><a href=""> Blog </a>
+                                    <li><a href="{{ route('blog.allBog') }}"> Blog </a>
                                     <li><a href="{{route('contact.show')}}"> Contact Us</a>
 
                                 </ul>

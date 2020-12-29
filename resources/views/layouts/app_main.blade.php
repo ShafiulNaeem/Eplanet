@@ -310,7 +310,7 @@
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
-   <script type="text/javascript">  
+   <script type="text/javascript">
 
         $(document).on('click', '#add_to_wish_list', function (e) {
             var id = (this.getAttribute('data-target'));
@@ -389,22 +389,6 @@
                 spinner : 'wave'
       });
 
-
-      $(document).ready(function(){
-        $('#reply_div').hide();
-        
-        $('#reply_id').click(function(){
-           $('#reply_div').toggle(1000) 
-        });
-       
-    });
-
-    $(document).ready(function(){
-        
-        $('#submit_reply').click(function(){
-           $('#reply_div').hide();
-        });
-    });
 
 </script>
 

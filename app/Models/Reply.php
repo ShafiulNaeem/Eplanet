@@ -20,6 +20,6 @@ class Reply extends Model
     }
     public function coment()
     {
-        return $this->belongsTo('App\Models\Coment');
+        return $this->belongsTo('App\Models\Comment');
     }
 }
