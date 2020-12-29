@@ -132,7 +132,7 @@
 <header>
     <div class="main_header">
         <div class="header_top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="main-header-inner">
                         <div class="col-lg-4 col-md-4">
@@ -162,7 +162,7 @@
             </div>
         </div>
         <div class="header_middle">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
@@ -219,7 +219,7 @@
                                 @if( Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
                                     <div class="header_account_list  mini_cart_wrapper">
                                     @php $addTocarts = Session::get('cart'); @endphp
-                                       <a href="javascript:void(0)"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
+                                       <a href="#" id="cardDiv"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
                                         <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_gallery">
@@ -228,7 +228,7 @@
                                                 		<h3>cart</h3>
                                                 	</div>
                                                 	<div class="mini_cart_close">
-                                                		<a href="javascript:void(0)"><i class="icon-x"></i></a>
+                                                		<a href="javascript:void(0)" id="cross"><i class="icon-x"></i></a>
                                                 	</div>
                                                 </div>
 
@@ -339,12 +339,7 @@
                                                 </li>
                                         @endforeach
                                     @endif
-                                    <li><a class="active" href="{{route('blog.allBog')}}"> BLog</a>
-
-                                        <ul class="sub_menu pages">
-                                            <li><a id="" href="{{route('blog.create')}}#sec1"> Create Blog</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="{{ route('blog.allBog') }}"> Blog </a>
                                     <li><a href="{{route('contact.show')}}"> Contact Us</a>
 
                                 </ul>

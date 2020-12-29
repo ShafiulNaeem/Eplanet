@@ -10,9 +10,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-{{--                       <h3>Blog Details </h3>--}}
+                       <h3>Blog Details </h3>
                         <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
+                            <li><a href="{{url('/')}}">home</a></li>
                             <li>Blog Details</li>
                         </ul>
                     </div>
@@ -30,155 +30,140 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="blog_wrapper blog_wrapper_details">
-                        @php
-                        $blog_id = 0;
-                        $totalComent = 0;
-                        @endphp
-                            <article class="single_blog">
-                                @foreach($blogs as $index => $blog)
-                                    <figure>
-                                        <div class="post_header">
-                                            <h3 class="post_title">Aypi non habent claritatem insitam</h3>
-                                            <div class="blog_meta">
-                                                <p>Posted by : <a href="">{{$blog->user->fname}} {{$blog->user->lname}}</a> / On : <a href="">{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}}</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="blog_thumb">
-                                            <a href="#"><img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}" /></a>
-                                        </div>
-                                        <figcaption class="blog_content">
-                                            <div class="post_content">
-                                                <p>{{$blog->post}}.</p>
-                                                @php
-                                                    $blog_id = $blog->id;
-                                                    $totalComent = $blog->coments->count();
-                                                @endphp
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                 @endforeach
-                            </article>
-                           <div class="comments_box">
-                                <h3>{{$totalComent}} Comments</h3>
-                                <div class="comment_list">
 
-                                        @foreach($comments as $index => $comment)
-                                        <div class="comment_content">
-
-                                            <div class="comment_meta">
-                                                <h5><a href="">{{$comment->user->fname}} {{$comment->user->lname}} </a></h5>
-                                                <span>{{\Carbon\Carbon::parse($comment->created_at)->format('M d Y')}}</span>
-                                                <p>{{$comment->comment}}</p>
-                                            </div>
-
-{{--                                            reply area--}}
-                                            @foreach($comment->replies as  $reply)
-                                                <div class="comment_list list_two">
-                                                    <div class="comment_content">
-                                                        <div class="comment_meta">
-                                                            <h5><a href="">{{$reply->user->fname}} {{$reply->user->fname}}</a></h5>
-                                                            <span>{{$reply->reply}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                            <div class="comment_reply" id="reply_id">
-                                                <span href="#reply_div" class="btn btn-success">Reply</span>
-                                            </div>
-                                            <div class="reply_div" id="reply_div">
-
-                                                <form action="{{route('reply.store')}}" method="post">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <textarea name="reply" id="" class="form-control" cols="5" rows="1"></textarea>
-                                                        <input type="text" name="blog_id" hidden value="{{$blog_id}}">
-                                                        <input type="text" name="comment_id" hidden value="{{$comment->id}}">
-                                                        <input type="text" name="user_id" hidden value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button class="button" type="submit">Post Reply</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                        </div>
-
-                                     @endforeach
-
-                                </div>
-
-
-
-                            </div>
-
-                           <div class="comments_form">
-                                <h3>Leave a Post </h3>
-                                <form action="{{route('comment.store')}}" method="POST">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <label for="review_comment">Comment </label>
-                                            <textarea name="comment" id="review_comment"></textarea>
-                                            <input type="text" name="blog_id" hidden value="{{$blog_id}}">
-                                            <input type="text" name="user_id" hidden value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                        <article class="single_blog">
+{{--                            {{count((array)$blogs)}}--}}
+{{--                            @foreach($blogs as $index => $blog)--}}
+                                <figure>
+                                    <div class="post_header">
+                                        <h3 class="post_title">{{$blog->title}}</h3>
+                                        <div class="blog_meta">
+                                            <p>Posted by : <a href="{{route('blog.show',$blog->id)}}">{{$blog->user->fname . " " . $blog->user->lname}}</a> / On : <a href="#">{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}}</a></p>
                                         </div>
                                     </div>
-                                    <button class="button" type="submit">Post Comment</button>
-                                 </form>
+                                    <div class="blog_thumb">
+                                        <a href="#"><img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}"></a>
+                                    </div>
+                                    <figcaption class="blog_content">
+                                        <div class="post_content">
+                                            <p>{{ $blog->post }}</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+{{--                            @endforeach--}}
+                        </article>
+                      <div class="comments_box mb-3 mt-3">
+                            <h3>{{ count($comments) }} comment(s) </h3>
+                            <div class="comment_list">
+                                <div class="comment_thumb">
+{{--                                    <img src="assets/img/blog/comment3.png.jpg" alt="">--}}
+                                </div>
+                                @foreach($comments as $comment)
+                                    <div class="comment_content mb-4 mt-4">
+                                        <div class="comment_meta">
+                                            <h5><a href="#">{{$comment->user->fname . " " . $comment->user->lname}}</a></h5>
+                                            <span>{{\Carbon\Carbon::parse($comment->created_at)->format('M d Y H:m:s')}}</span>
+                                        </div>
+                                        <p>{{$comment->comment}}</p>
+                                        @if( $comment->user->id == \Illuminate\Support\Facades\Auth::id() )
+                                            <div class="comment_reply"  data-id="{{$comment->id}}"  id="reply_id{{$comment->id}}">
+                                                <form action="{{ route('comment.destroy', $comment->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                        @endif
+                                        <div class="reply_div mb-1 mt-5" id="comment_reply_div{{$comment->id}}">
+                                            <form action="{{route('replay.store')}}" method="post">
+                                                @csrf
+
+                                                <input type="hidden" name="blog_id" value="{{$blog->id}}">
+                                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+
+                                                <div class="form-group">
+                                                    <textarea name="reply" id="" class="form-control" cols="5" rows="3"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button id="submit_reply" type="submit" class="btn btn-success">comment</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @foreach($comment->replies as $replay)
+                                        <div class="comment_list list_two mb-4 mt-4">
+{{--                                            <div class="comment_thumb">--}}
+{{--                                                                                        <img src="assets/img/blog/comment3.png.jpg" alt="">--}}
+{{--                                            </div>--}}
+                                            <div class="comment_content">
+                                                <div class="comment_meta">
+                                                    <h5><a href="#">{{$replay->user->fname. " " . $replay->user->lname}}</a></h5>
+                                                    <span>{{\Carbon\Carbon::parse($replay->created_at)->format('M d Y H:m:s')}}</span>
+                                                </div>
+                                                <p>{{$replay->reply}}</p>
+
+                                                @if( $replay->user->id == \Illuminate\Support\Facades\Auth::id() )
+
+                                                    <div class="comment_reply"  data-id="{{$replay->id}}"  id="reply_id{{$comment->id}}">
+                                                        <form action="{{ route('replay.destroy', $replay->id) }}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endif
+
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+
                             </div>
+
+
+                        </div>
+                       <div class="comments_form">
+                            <h3>Leave a Post </h3>
+                            <form action="{{route('comment.store')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="review_comment">Comment </label>
+                                        <textarea name="comment" id="review_comment"></textarea>
+                                    </div>
+                                </div>
+                                <button class="button"  type="submit">Post Comment</button>
+                             </form>
+                        </div>
+
 
                         <div class="related_posts" style="border-top:none">
                             <h3>User posts</h3>
                             <div class="row">
+                                @foreach($userPBlogs as $userBlog)
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <article class="single_related">
                                         <figure>
                                             <div class="related_thumb">
-                                                <a href="blog_details.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
+                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{url('images',$userBlog->blog_image)}}" alt="{{$userBlog->title}}"></a>
                                             </div>
                                             <figcaption class="related_content">
-                                                <h4><a href="#">Post with Gallery</a></h4>
+                                                <h4><a href="#">{{$userBlog->title}}</a></h4>
                                                 <div class="blog_meta">
-                                                    <span class="author">By : <a href="#">admin</a> / </span>
-                                                    <span class="meta_date"> April 11, 2019 </span>
+                                                    <span class="author">By : <a href="{{route('blog.show',$userBlog->id)}}">{{$userBlog->user->fname . " " . $userBlog->user->lname}}</a> / </span>
+                                                    <span class="meta_date"> {{\Carbon\Carbon::parse($userBlog->created_at)->format('M d Y')}} </span>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </article>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <article class="single_related">
-                                        <figure>
-                                            <div class="related_thumb">
-                                                <a href="blog_details.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
-                                            </div>
-                                            <figcaption class="related_content">
-                                                <h4><a href="#">Post with Audio</a></h4>
-                                                <div class="blog_meta">
-                                                    <span class="author">By : <a href="#">admin</a> / </span>
-                                                    <span class="meta_date"> April 11, 2019 </span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <article class="single_related">
-                                        <figure>
-                                            <div class="related_thumb">
-                                                <a href="blog_details.html"><img src="assets/img/slider/main1.jpg" alt=""></a>
-                                            </div>
-                                            <figcaption class="related_content">
-                                                <h4><a href="#">Maecenas ultricies</a></h4>
-                                                <div class="blog_meta">
-                                                    <span class="author">By : <a href="#">admin</a> / </span>
-                                                    <span class="meta_date"> April 11, 2019 </span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 

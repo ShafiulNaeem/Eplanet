@@ -11,7 +11,7 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="{{route('home')}}">home</a></li>
-                            <li>All Blog</li>
+                            <li>All Blogs</li>
                         </ul>
                     </div>
                 </div>
@@ -40,11 +40,14 @@
                                                 </a>
                                             </div>
                                             <figcaption class="blog_content">
-                                                <h4 class="post_title">
-                                                    <a href="{{route('blog.show',$blog->id)}}">{{$blog->post}}</a>
-                                                </h4>
+                                                <h1 class="post_title">
+                                                    <a href="{{route('blog.show',$blog->id)}}">{{$blog->title}}</a>
+                                                </h1>
+                                                <p>
+                                                    {{$blog->post}}
+                                                </p>
                                                 <div class="articles_date">
-                                                    <p class="text-success">Created by {{$blog->user->fname}} {{$blog->user->lname}} </p>
+                                                    <p class="text-success">Created by {{$blog->user->fname}} : {{$blog->user->lname}} </p>
                                                     <p>{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}}
                                                         | <a href="{{route('home')}}">Eplanet</a></p>
 

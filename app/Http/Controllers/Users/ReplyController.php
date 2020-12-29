@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Reply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 class ReplyController extends Controller
 {
@@ -31,19 +32,17 @@ class ReplyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request , Reply $reply)
+    public function store(Request $request )
     {
-         //dd($request->all());
         $this->validate($request, array(
             'reply' => ['required', 'string'],
         ));
-
-//        $user_id = Auth::user()->id;
-        //dd($user_id);
-        $reply->user_id = $request->user_id;
+        $reply = new Reply();
+        $reply->user_id = Auth::id();
         $reply->blog_id = $request->blog_id;
         $reply->comment_id = $request->comment_id;
         $reply->reply = $request->reply;
@@ -94,11 +93,17 @@ class ReplyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Reply $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reply $replay)
     {
-        //
+        if($replay->delete()){
+            Session::flash('success','Replay Deleted Successfully');
+            return redirect()->back();
+        } else {
+            Session::flash('success','Something went wrong');
+            return redirect()->back();
+        }
     }
 }
