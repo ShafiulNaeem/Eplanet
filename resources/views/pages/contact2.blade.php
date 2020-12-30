@@ -75,6 +75,7 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <p>{{$employee->designation_name}}</p>
+                                                <p>ID: {{$employ->id}}</p>
                                                 <p>{{$employ->name}}</p>
                                                 <p>{{$employ->email}}</p>
                                                 <p class="card-text">+088 {{$employ->phone}}</p>

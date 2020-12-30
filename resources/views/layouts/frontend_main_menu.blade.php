@@ -341,6 +341,9 @@
                                     @endif
                                     <li><a href="{{ route('blog.allBog') }}"> Blog </a>
                                     <li><a href="{{route('contact.show')}}"> Contact Us</a>
+                                    @if( \Illuminate\Support\Facades\Auth::check())
+                                        <li><a href="{{route('profile.show')}}">Profile</a>
+                                    @endif
 
                                 </ul>
                             </nav>

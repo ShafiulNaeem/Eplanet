@@ -14,6 +14,7 @@
                         <ul>
                             <li><a href="{{url('/')}}">home</a></li>
                             <li>Blog Details</li>
+                            <li><a href="{{route('blog.create')}}">Create BLog</a></li>
                         </ul>
                     </div>
                 </div>
