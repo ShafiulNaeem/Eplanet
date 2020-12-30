@@ -12,7 +12,7 @@ Route::get('test', function (){
 //        'verification_code' => 'feefefelwhrw3rnn'
 //    ];
 //    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-    return view('pages.allblogs');
+    return view('pages.user_profile');
 });
 
 Route::get('/con',function(){
@@ -27,6 +27,7 @@ Route::get('checkoutconfirm', 'Users\CheckoutController@checkoutConfirm')->name(
 Route::get('/addWishList/{id}', 'WelcomeController@addWishList')->name('add.wish.list')->middleware(['auth:web']);
 Route::get('/addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
 Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
+Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
 
 //vendor page show
 Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSale.show');
