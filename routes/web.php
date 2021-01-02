@@ -16,7 +16,7 @@ Route::get('test', function (){
 });
 
 Route::get('/con',function(){
-    return view('pages.blog_details');
+    return view('pages.artical');
 });
 
 Route::get('/',  'WelcomeController@index')->name('home');

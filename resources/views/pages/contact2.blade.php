@@ -14,7 +14,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="slider_content">
-                                            <h1>Company Overview</h1>
+                                            <h1 style="text-align: center;">Company Overview</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -25,7 +25,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="slider_content">
-                                            <h1>Company Overview</h1>
+                                            <h1 style="text-align: center;">Company Overview</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="slider_content">
-                                            <h1>Company Overview</h1>
+                                            <h1 style="text-align: center;">Company Overview</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -69,10 +69,12 @@
                             @foreach($employee->employeeWithStatus as $employ)
                                 <div class="card">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <img src="{{url('images/' . $employ->employee_image)}}" alt="{{$employ->name}}" class="image-fluid">
+                                        <div class="col-md-4 no-gutter">
+                                           <div class="car-img">
+                                           <img src="{{url('images/' . $employ->employee_image)}}" alt="{{$employ->name}}" class="image-fluid">
+                                           </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 no-gutter">
                                             <div class="card-body">
                                                 <p>{{$employee->designation_name}}</p>
                                                 <p>{{$employ->name}}</p>
@@ -90,6 +92,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- contact section end -->
 
