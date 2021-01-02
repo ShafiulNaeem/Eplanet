@@ -436,3 +436,83 @@ text-align: center
     width: 100%;
     height: 255px;
 }
+.company_contat .card-body{
+    padding: 0;
+}
+.faq .card-header.card_accor button.btn-link {
+	border:none;
+	width: 100%;
+	text-align: left;
+	font-size: 14px;
+	font-weight: 500;
+	color: #000000;
+}
+#accordion{
+    padding-bottom:40px;
+}
+.feedback ul li{
+    display: inline-block;
+}
+
+.feedback ul li span{
+    padding: 5px;
+}
+.feedback .feedback_details{
+    padding:30px 0;
+}
+.feedback{
+    padding: 20px 0 70px 0;
+}
+
+.artical{
+    padding: 40px 0 ;
+}
+.artical_detail{
+    position: relative;
+    width: 100%;
+}
+.artical_detail{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
+    background-color: #060e17;
+}
+
+.artical .image1{
+    width:100%;
+    height: 100%;
+    position: relative;
+    transition:1s;
+}
+.artical .image1:hover .hover-div {
+    display: block;
+    transition:1s
+}
+.hover-div{
+    height:100%;
+    width:100%;
+    background:rgba(128, 128, 128, 0.53);
+    position:absolute;
+    top:0;
+    left:0;
+    display:none;
+}
+
+.hover-inner{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.hover-inner p{
+    color:#fff;
+    font-size: 15px;
+    font-weight: 600;
+}
+.image1{
+    margin-top: 10px;
+}
+.m_bttom{
+    margin-bottom: 15px;
+}
