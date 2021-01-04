@@ -113,7 +113,7 @@ class BrandController extends Controller
         $val['brand_name'] = $request->brand_name;
         $val['status'] = $request->status;;
         $brand->update($val);
-            Session::flash('success','Brand Updated Successfully');
+        Session::flash('success','Brand Updated Successfully');
         return redirect()->route('brand.index');
     }
 
