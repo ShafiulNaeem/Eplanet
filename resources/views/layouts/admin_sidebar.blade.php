@@ -113,6 +113,39 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Express Wish
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.express.wish') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Express Wish List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('brand.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Brand</p>
+                            </a>
+                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Vendor Brand</p>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
                             Category

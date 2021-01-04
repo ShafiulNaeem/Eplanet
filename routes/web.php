@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test', function (){
-//    $data = [
-//        'name' => 'Tushar',
-//        'verification_code' => 'feefefelwhrw3rnn'
-//    ];
-//    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-    return view('pages.user_profile');
+    $data = [
+        'name' => 'Tushar',
+        'verification_code' => 'feefefelwhrw3rnn'
+    ];
+    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
+//    return view('pages.user_profile');
+
 });
 
 Route::get('/con',function(){
@@ -24,8 +25,10 @@ Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
 Route::get('checkout', 'Users\CheckoutController@index')->middleware(['auth'])->name('checkout');
 Route::post('checkout', 'Users\CheckoutController@checkout')->name('checkout.final');
 Route::get('checkoutconfirm', 'Users\CheckoutController@checkoutConfirm')->name('checkout.confirm');
-Route::get('/addWishList/{id}', 'WelcomeController@addWishList')->name('add.wish.list')->middleware(['auth:web']);
-Route::get('/addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
+Route::get('addWishList/{id}', 'WelcomeController@addWishList')->name('add.wish.list')->middleware(['auth:web']);
+Route::get('wishlist', 'WelcomeController@userWishList')->name('wish.list')->middleware(['auth:web']);
+Route::delete('wishlist/{wishList}', 'WelcomeController@deleteWishList')->name('wish.delete')->middleware(['auth:web']);
+Route::get('addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
 Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
 Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
 
@@ -108,34 +111,39 @@ Route::prefix('admin')->group(function(){
     });
 });
 
+Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
+    // vendor routes
+    Route::prefix('vendor')->group(function(){
+        Route::resource('productCapacity', 'ProductCapacityController');
+        Route::resource('productCertification', 'ProductCertificationController');
+        Route::resource('productQuality', 'ProductQualityController');
+        Route::resource('productRnD', 'ProductRnDController');
+        Route::resource('tradeCapacity', 'ProductTradeCapacityController');
+        Route::resource('factoryInspection', 'ProductFactoryInspectionController');
+    });
+});
 
-Route::prefix('admin')->group(function(){
-    Route::resource('category', 'Users\Admin\CategoryController');
-    Route::resource('subcategory', 'Users\Admin\SubCategoryController');
-    Route::resource('brand', 'Users\Admin\BrandController');
-    Route::resource('product', 'Users\Admin\ProductController');
-    Route::resource('productImage', 'Users\Admin\ProductImageController');
-    Route::resource('productVideo', 'Users\Admin\ProductVideoController');
-    Route::resource('coupon', 'Users\Admin\CouponController');
-    Route::resource('orders', 'Users\Admin\OrderController');
-    Route::resource('designation', 'Users\Admin\DesignationController');
-    Route::resource('employee', 'Users\Admin\EmployeeController');
-
+Route::prefix('admin')->group(function (){
     Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
     Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');
 
     //blog manage
     Route::get('blog', 'Users\BlogController@index')->name('admin.blog');
     Route::delete('blog/{blog}', 'Users\BlogController@destroy')->name('blog.destroy');
+});
+
+Route::prefix('admin')->namespace('Users\Admin')->group(function(){
+    Route::resource('category', 'CategoryController');
+    Route::resource('subcategory', 'SubCategoryController');
+    Route::resource('brand', 'BrandController');
+    Route::resource('product', 'ProductController');
+    Route::resource('productImage', 'ProductImageController');
+    Route::resource('productVideo', 'ProductVideoController');
+    Route::resource('coupon', 'CouponController');
+    Route::resource('orders', 'OrderController');
+    Route::resource('designation', 'DesignationController');
+    Route::resource('employee', 'EmployeeController');
 
 
-    // vendor routes
-    Route::prefix('vendor')->group(function(){
-        Route::resource('productCapacity', 'Users\Vendor\ProductCapacityController');
-        Route::resource('productCertification', 'Users\Vendor\ProductCertificationController');
-        Route::resource('productQuality', 'Users\Vendor\ProductQualityController');
-        Route::resource('productRnD', 'Users\Vendor\ProductRnDController');
-        Route::resource('tradeCapacity', 'Users\Vendor\ProductTradeCapacityController');
-        Route::resource('factoryInspection', 'Users\Vendor\ProductFactoryInspectionController');
-    });
+    Route::get('expressWish', 'AdminController@expressWish')->name('admin.express.wish');
 });

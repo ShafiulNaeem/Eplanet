@@ -92,7 +92,7 @@
                                     @if($product->stock > 0)
                                         <h5>Available Product: {{$product->stock}}</h5>
                                     @else
-                                        <h5>Available Product: Product Out of Stock</h5>
+                                        <h5 class="text-danger">Available Product: Product Out of Stock</h5>
                                     @endif
                                     <label>color</label>
                                         @php
@@ -122,7 +122,11 @@
                                         @if($product->stock > 0)
                                             <button class="button" type="submit">add to cart</button>
                                         @else
-                                            <button class="button btn-danger" disabled>Product Out of Stock</button>
+                                            <button style="
+                                            color: #fff !important;
+                                            background-color: #dc3545 !important;
+                                            border-color: #dc3545 !important;"
+                                                    class="button btn-danger" disabled>Product Out of Stock</button>
                                         @endif
                                     </form>
 
@@ -137,7 +141,7 @@
                                     @if($product->status == 1)
                                         <li><a data-target="{{$product->id}}" id="add_to_wish_list" title="Add to wishlist">+ Add to Wishlist</a></li>
                                     @endif
-                                    @if( $product->sold <= 0 )
+                                    @if( $product->stock <= 0 )
                                         <li><a data-target="{{$product->id}}" id="express_wish"  title="Express wish" >Express wish</a></li>
                                     @endif
 

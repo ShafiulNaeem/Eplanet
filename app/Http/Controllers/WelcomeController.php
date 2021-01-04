@@ -93,23 +93,54 @@ class WelcomeController extends Controller
         $data['product_id'] = $id;
         $data['user_id'] = Auth::user()->id;
 
-        return ( WishList::create($data) ) ? response([
+        $check = WishList::where('product_id', $id)->first();
+
+        if( empty($check) ){
+            return ( WishList::create($data) ) ? response([
+                'message' => 'Wishlist Created'
+            ], 200) : response([
+                'message' => 'Something went wrong'
+            ], 404);
+        }
+
+        return  response([
             'message' => 'Wishlist Created'
-        ], 200) : response([
-            'message' => 'Something went wrong'
-        ], 404);
+        ]);
+    }
+
+    public function userWishList()
+    {
+        $data = [
+            'wishLists' => WishList::where('user_id', Auth::id())->with('product')->get()
+        ];
+
+        return view('pages.wishlist', $data);
+    }
+
+
+    public function deleteWishList(WishList $wishList)
+    {
+        $wishList->delete();
+        return redirect()->back();
     }
 
 
     public function  addExpressList($id){
         $data['product_id'] = $id;
-        if (Auth::check())
-            $data['user_id'] = Auth::user()->id;
+        if (Auth::check()) $data['user_id'] = Auth::user()->id;
 
-        return ( ExpressWish::create($data) ) ? response([
-            'message' => 'Wishlist Created'
-        ], 200) : response([
-            'message' => 'Something went wrong'
-        ], 404);
+        $check = ExpressWish::wher('product_id', $id)->first();
+
+        if( empty($check) ){
+            return ( ExpressWish::create($data) ) ? response([
+                'message' => 'Express wish Created'
+            ], 200) : response([
+                'message' => 'Something went wrong'
+            ], 404);
+        }
+
+        return response([
+            'message' => 'Express wish Created'
+        ], 200);
     }
 }
