@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\ExpressWish;
 use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
@@ -36,5 +37,11 @@ class AdminController extends Controller
             'usersThisMonth' => User::whereBetween('created_at', [$pastMonth, $today])->get()
         ];
         return view('admin.admin', $data);
+    }
+
+
+    public function expressWish()
+    {
+        return ExpressWish::all();
     }
 }

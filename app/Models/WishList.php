@@ -12,4 +12,9 @@ class WishList extends Model
     protected $table = 'wish_lists';
 
     protected $guarded = [];
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product', 'product_id');
+    }
 }
