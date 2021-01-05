@@ -76,8 +76,8 @@
                                            <th>Price</th>
                                            <th>Quantity</th>
                                            <th>Total</th>
-
-
+                                           <th>Order Status</th>
+                                           <th>Order Cancel</th>
                                        </tr>
                                    </thead>
                                    <tbody>
@@ -101,6 +101,46 @@
                                                @endforeach
                                                <td>{{$order->quantity}}</td>
                                                <td>BDT: {{$total_price}}</td>
+                                               <td>
+                                                   @if($order->shifted == 1)
+                                                       <button type="submit" class="btn btn-success">Shifted</button>
+                                                   @else
+                                                       <button type="submit" class="btn btn-danger">Pending</button>
+                                                   @endif
+                                               </td>
+                                               <td>
+                                                   @if($order->shifted == 1)
+                                                       <button type="submit" class="btn btn-success">Shifted</button>
+                                                   @else
+                                                       <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$order->id}}">
+                                                            Cancel
+                                                       </a>
+
+                                                       <!-- Modal -->
+                                                       <div class="modal fade" id="exampleModal{{$order->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                           <div class="modal-dialog">
+                                                               <div class="modal-content">
+                                                                   <div class="modal-header">
+                                                                       <h5 class="modal-title" id="exampleModalLabel">Do You Want to cancel your order !!!</h5>
+                                                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                           <span aria-hidden="true">&times;</span>
+                                                                       </button>
+                                                                   </div>
+                                                                   <div class="modal-body">
+                                                                       <form action="{{route('profile.order.cancel',$order->id)}}" method="post">
+                                                                           @csrf
+                                                                           @method("DELETE")
+                                                                           <button class="btn btn-danger">Confirm</button>
+                                                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                       </form>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                       </div>
+
+                                                   @endif
+
+                                               </td>
                                            </tr>
                                        @endforeach
                                    </tbody>

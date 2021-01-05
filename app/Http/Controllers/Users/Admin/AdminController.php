@@ -42,6 +42,14 @@ class AdminController extends Controller
 
     public function expressWish()
     {
-        return ExpressWish::all();
+        $expresswishes = ExpressWish::with(['user','product'])->get();
+        //dd($expresswishes);
+        return view('admin.expressWish.express',compact('expresswishes'));
+    }
+
+    public function destroy(ExpressWish $expressWish)
+    {
+        $expressWish->delete();
+        return redirect()->back();
     }
 }

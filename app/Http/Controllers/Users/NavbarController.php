@@ -50,11 +50,17 @@ class NavbarController extends Controller
 
         //dd(Auth::user()->id);
         $users = User::where('id',Auth::user()->id)->get();
-        $orders = Order::with('products')->where(['user_id' => Auth::user()->id, 'shifted' => 0])->get();
+        $orders = Order::with('products')->where(['user_id' => Auth::user()->id])->get();
         $userPBlogs = Blog::where('user_id', Auth::user()->id) ->get();
 
         //dd($orders);
         return view('pages.user_profile',compact('users','orders','userPBlogs'));
+    }
+
+    public function orderCancel(Order $order)
+    {
+        $order->delete();
+        return redirect()->back();
     }
 
     private function productByCategory($catArray){

@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test', function (){
-    $data = [
-        'name' => 'Tushar',
-        'verification_code' => 'feefefelwhrw3rnn'
-    ];
-    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-//    return view('pages.user_profile');
+//    $data = [
+//        'name' => 'Tushar',
+//        'verification_code' => 'feefefelwhrw3rnn'
+//    ];
+//    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
+   return view('pages.wishlist');
 
 });
 
@@ -31,6 +31,9 @@ Route::delete('wishlist/{wishList}', 'WelcomeController@deleteWishList')->name('
 Route::get('addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
 Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
 Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
+
+// Cancel Order
+Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->name('profile.order.cancel');
 
 //vendor page show
 Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSale.show');
@@ -146,4 +149,5 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
 
 
     Route::get('expressWish', 'AdminController@expressWish')->name('admin.express.wish');
+    Route::delete('expressWish/{expressWish}', 'AdminController@destroy')->name('expressWish.destroy');
 });

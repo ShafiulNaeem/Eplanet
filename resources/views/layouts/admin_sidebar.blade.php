@@ -126,20 +126,6 @@
                                 <p>Express Wish List</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('brand.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Brand</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
-                                <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Vendor Brand</p>
-                                </a>
-                            </li>
-                        @endif
 
                     </ul>
                 </li>
