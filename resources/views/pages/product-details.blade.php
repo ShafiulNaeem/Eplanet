@@ -142,7 +142,7 @@
                                         <li><a data-target="{{$product->id}}" id="add_to_wish_list" title="Add to wishlist">+ Add to Wishlist</a></li>
                                     @endif
                                     @if( $product->stock <= 0 )
-                                        <li><a data-target="{{$product->id}}" id="express_wish"  title="Express wish" >Express wish</a></li>
+                                        <li><a data-target="{{$product->id}}" id="express_wish"  title="Express wish" >+ Express wish</a></li>
                                     @endif
 
 {{--                                    @if($product->admin->role == 2)--}}
