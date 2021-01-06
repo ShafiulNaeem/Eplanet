@@ -516,3 +516,19 @@ text-align: center
 .m_bttom{
     margin-bottom: 15px;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .logo{
+        float:none;
+    }
+    
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+  
+    .logo{
+        float:none;
+    }
+    
+  }
