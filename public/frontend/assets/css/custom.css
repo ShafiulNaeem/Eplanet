@@ -517,6 +517,17 @@ text-align: center
     margin-bottom: 15px;
 }
 
+.all_product_titile{
+    padding: 25px 0;;
+}
+.all_pruduct{
+    width:100%;
+    padding: 10px 0;
+}
+.all_pruduct p{
+    text-align: center;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   
     .logo{
