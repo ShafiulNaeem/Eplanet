@@ -74,4 +74,5 @@ class CheckoutController extends Controller
         return Product::where(['id'=> $product_id])
             ->select('admin_id')->first()->admin_id;
     }
+
 }
