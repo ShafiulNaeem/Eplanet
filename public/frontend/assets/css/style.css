@@ -1240,16 +1240,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .header_account_area {
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 72px;
   margin-top: 9px;
 }
 
-.header_right_info {
-  display: flex;
-  align-items: center;
-}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_right_info {
     justify-content: center;
