@@ -172,122 +172,130 @@
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
 
                         <div class="header_right_info">
-                            <div class="search_container">
-                                <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="hover_category">
 
-                                        <select class="select_option" style="color:#000" name="category_name" id="categori2">
-                                            <option selected>Select a categories</option>
-
-                                            @if(isset($categories))
-                                                @foreach($categories as $category)
-                                                        <option value="{{$category->id}}">
-                                                            {{$category->category_name}}
-                                                        </option>
-                                                @endforeach
-                                            @endif
-                                        </select>
-
-                                    </div>
-
-                                    <div class="search_box">
-                                        <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
-                                        <button type="submit"><span class="lnr lnr-magnifier"></span></button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="header_account_area">
-                                <div class="header_account_list register">
-                                    <ul>
-                                        @if(! \Illuminate\Support\Facades\Auth::check())
-                                            <li><a href="{{route('register')}}">{{ __('Sign Up') }}</a></li>
-                                            <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                                        @else
-                                            <li><a href="{{route('logout')}}"
-                                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                                                >{{ __('Logout') }}</a></li>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        @endif
-                                        <li><a href="login.html">English</a></li>
-                                    </ul>
-                                </div>
-
-                                @if( Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
-                                    <div class="header_account_list  mini_cart_wrapper">
-                                    @php $addTocarts = Session::get('cart'); @endphp
-                                       <a href="#" id="cardDiv"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
-                                        <!--mini cart-->
-                                        <div class="mini_cart">
-                                            <div class="cart_gallery">
-                                                <div class="cart_close">
-                                                	<div class="cart_text">
-                                                		<h3>cart</h3>
-                                                	</div>
-                                                	<div class="mini_cart_close">
-                                                		<a href="javascript:void(0)" id="cross"><i class="icon-x"></i></a>
-                                                	</div>
-                                                </div>
-
-                                                @php
-                                                    //$addTocarts = Session::get('cart');
-                                                    $total=0;
-                                                @endphp
-                                                @if($addTocarts != null)
-                                                @foreach($addTocarts as $addTocart)
-
-                                                    @php
-
-                                                       // $price= $addTocart['quantity'] * $addTocart['product_price'];
-                                                        $total += $addTocart['quantity'] * $addTocart['product_price'];
-
-                                                    @endphp
-
-                                                <div class="cart_item">
-                                                   <div class="cart_img">
-                                                       <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
-                                                   </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">{{$addTocart['product_name']}}</a>
-                                                        <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
-                                                            @csrf
-                                                            @method("DELETE")
-                                                            <button type="submit"><i class="icon-x"></i></button>
-                                                        </form>
-
-                                                    </div>
-                                                </div>
-                                                @endforeach
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="search_container">
+                                        <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="hover_category">
+        
+                                                <select class="select_option" style="color:#000" name="category_name" id="categori2">
+                                                    <option selected>Select a categories</option>
+        
+                                                    @if(isset($categories))
+                                                        @foreach($categories as $category)
+                                                                <option value="{{$category->id}}">
+                                                                    {{$category->category_name}}
+                                                                </option>
+                                                        @endforeach
                                                     @endif
+                                                </select>
+        
                                             </div>
-                                            <div class="mini_cart_table">
-                                                <div class="cart_table_border">
-                                                    <div class="cart_total mt-10">
-                                                        <span>total:</span>
-                                                        <span class="price">$ {{$total}}</span>
+        
+                                            <div class="search_box">
+                                                <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
+                                                <button type="submit"><span class="lnr lnr-magnifier"></span></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="header_account_area">
+                                        <div class="header_account_list register">
+                                            <ul>
+                                                @if(! \Illuminate\Support\Facades\Auth::check())
+                                                    <li><a href="{{route('register')}}">{{ __('Sign Up') }}</a></li>
+                                                    <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                                                @else
+                                                    <li><a href="{{route('logout')}}"
+                                                           onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();"
+                                                        >{{ __('Logout') }}</a></li>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                @endif
+                                                <li><a href="login.html">English</a></li>
+                                            </ul>
+                                        </div>
+        
+                                        @if( Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
+                                            <div class="header_account_list  mini_cart_wrapper">
+                                            @php $addTocarts = Session::get('cart'); @endphp
+                                               <a href="#" id="cardDiv"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
+                                                <!--mini cart-->
+                                                <div class="mini_cart">
+                                                    <div class="cart_gallery">
+                                                        <div class="cart_close">
+                                                            <div class="cart_text">
+                                                                <h3>cart</h3>
+                                                            </div>
+                                                            <div class="mini_cart_close">
+                                                                <a href="javascript:void(0)" id="cross"><i class="icon-x"></i></a>
+                                                            </div>
+                                                        </div>
+        
+                                                        @php
+                                                            //$addTocarts = Session::get('cart');
+                                                            $total=0;
+                                                        @endphp
+                                                        @if($addTocarts != null)
+                                                        @foreach($addTocarts as $addTocart)
+        
+                                                            @php
+        
+                                                               // $price= $addTocart['quantity'] * $addTocart['product_price'];
+                                                                $total += $addTocart['quantity'] * $addTocart['product_price'];
+        
+                                                            @endphp
+        
+                                                        <div class="cart_item">
+                                                           <div class="cart_img">
+                                                               <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
+                                                           </div>
+                                                            <div class="cart_info">
+                                                                <a href="#">{{$addTocart['product_name']}}</a>
+                                                                <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
+                                                            </div>
+                                                            <div class="cart_remove">
+                                                                <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
+                                                                    @csrf
+                                                                    @method("DELETE")
+                                                                    <button type="submit"><i class="icon-x"></i></button>
+                                                                </form>
+        
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                            @endif
+                                                    </div>
+                                                    <div class="mini_cart_table">
+                                                        <div class="cart_table_border">
+                                                            <div class="cart_total mt-10">
+                                                                <span>total:</span>
+                                                                <span class="price">$ {{$total}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mini_cart_footer">
+                                                       <div class="cart_button">
+                                                            <a href="{{route('cart.create')}}"><i class="fa fa-shopping-cart"></i> View cart</a>
+                                                        </div>
+                                                        <div class="cart_button">
+                                                            <a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i> Checkout</a>
+                                                        </div>
+        
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="mini_cart_footer">
-                                               <div class="cart_button">
-                                                    <a href="{{route('cart.create')}}"><i class="fa fa-shopping-cart"></i> View cart</a>
-                                                </div>
-                                                <div class="cart_button">
-                                                    <a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i> Checkout</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <!--mini cart end-->
-                                   </div>
-                                @endif
+                                                <!--mini cart end-->
+                                           </div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
+                           
                         </div>
 
                     </div>
