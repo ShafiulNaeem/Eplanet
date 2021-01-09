@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="header_social text-right">
-                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('category_name','desc')->GetActive()->get();  @endphp
+                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('created_at','desc')->GetActive()->get();  @endphp
                     </div>
                     <div class="search_container">
                         <form action="{{route('pages.search')}}" method="post">
