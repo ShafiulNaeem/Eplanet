@@ -303,62 +303,54 @@
             </div>
         </div>
 
-        <div class="header_bottom sticky-header">
-
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-2 col-md-2 col-2">
-                        <div class="location">
-                            <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-                        </div>
+        <div class=" sticky-header menu_hide">
+            <div class="container-fluid">
+                <div class="row ">
+                     <div class="col-lg-2 col-md-2 col-2">
+                    <div class="location" style="text-align: center;margin-top:10px;">
+                        <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                     </div>
+                </div>
 
-                    <div class="col-lg-10 col-md-10 col-10">
+                    <div class="col-lg-10 col-md-10">
                         <!--main menu start-->
-                        <div class="main_menu menu_position">
-                            <nav>
-                                <ul class="main-ul">
-                                    <li><a class="active" href="{{url('/')}}">home</a></li>
-                                    @php
-                                         $id = substr(strrchr(url()->current(), '/'), 1 );
-                                    @endphp
-                                    @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
-                                    <li><a class="active" href="{{route('topSale.show',$id)}}">Company Profile</a>
-
-                                        <ul class="sub_menu pages">
-                                            <li><a id="" href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
-                                            <li><a id="" href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
-                                            <li><a id="" href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
-                                        </ul>
-                                    </li>
-                                    @endif
-
-                                    @if(isset($categories))
-                                        @foreach($categories as $category)
-
-                                                <li><a href="{{route('cat.show',$category->id)}}">{{$category->category_name}} @if( count($category->subcategory) >0 ) <i class="fa fa-angle-down"></i> @endif </a>
-                                                    @if( count($category->subcategory) >0 )
-                                                        <ul class="sub_menu pages">
-                                                            @foreach($category->subcategory as $cat)
-                                                            <li><a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-                                                </li>
-                                        @endforeach
-                                    @endif
-                                    <li><a href="{{ route('blog.allBog') }}"> Blog </a>
-                                    <li><a href="{{route('contact.show')}}"> Contact Us</a>
-                                    @if( \Illuminate\Support\Facades\Auth::check())
-                                        <li><a href="{{route('profile.show')}}">Profile</a>
-                                    @endif
-
-                                </ul>
-                            </nav>
-                        </div>
+                        <nav>
+                            <ul>
+                               <li>HOME</li>
+                                <li><a href="#">Web Design
+                                        <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="submenu_inner">
+                                        <li><a href="#">OthersOthersOthersgdsfg
+                                                <i class="fa fa-caret-right"></i>
+                                            </a>
+                                            <ul class="submenu_2">
+                                                <li><a href="#">Links Links Links</a></li>
+                                                <li><a href="#">Works</a></li>
+                                                <li><a href="#">Status</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Web Design
+                                        <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="submenu_inner">
+                                        <li><a href="#">Others
+                                                <i class="fa fa-caret-right"></i>
+                                            </a>
+                                            <ul class="submenu_2">
+                                                <li><a href="#">Links</a></li>
+                                                <li><a href="#">Works</a></li>
+                                                <li><a href="#">Status</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
                         <!--main menu end-->
                     </div>
-
                 </div>
             </div>
         </div>
