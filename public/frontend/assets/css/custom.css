@@ -516,3 +516,30 @@ text-align: center
 .m_bttom{
     margin-bottom: 15px;
 }
+
+.all_product_titile{
+    padding: 25px 0;;
+}
+.all_pruduct{
+    width:100%;
+    padding: 10px 0;
+}
+.all_pruduct p{
+    text-align: center;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .logo{
+        float:none;
+    }
+    
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+  
+    .logo{
+        float:none;
+    }
+    
+  }

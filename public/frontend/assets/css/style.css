@@ -27,7 +27,7 @@
     23. newsletter popup css here
     24. modal css here
 -----------------------------------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Work+Sans:100,200,300,400,500,600,700,800,900&amp;display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -999,7 +999,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .search_container {
-  margin-right: 44px;
+  /* margin-right: 88px; */
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search_container {
@@ -1024,7 +1024,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border: 1px solid #ededed;
   background: #fff;
   width: 650px;
-  margin-left: 128px;
+  margin-left:95px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search_container form {
@@ -1240,15 +1240,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .header_account_area {
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 0px;
+  margin-top: 9px;
 }
 
-.header_right_info {
-  display: flex;
-  align-items: center;
-}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_right_info {
     justify-content: center;
@@ -1487,7 +1481,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .main_menu nav > ul > li > a {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 30px;
     text-transform: capitalize;
     font-weight: 500;
@@ -1519,7 +1513,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-align: left;
 }
 .main_menu nav > ul > li ul.sub_menu li a {
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 400;
 	display: block;
 	line-height: 32px;
