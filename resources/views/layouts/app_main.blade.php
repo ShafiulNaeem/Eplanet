@@ -31,9 +31,10 @@
     <!--animate css-->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.css') }}">
     <!--jquery ui min css-->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/toastr.min.css')}}">
     <!--slinky menu css-->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slinky.menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/toastr.min.css') }}">
     <!--plugins css-->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery.fancybox.min.css') }}">
@@ -305,6 +306,7 @@
     <script src="{{asset('frontend/assets/js/jquery.instagramFeed.min.js')}}"></script>
     <!-- Plugins JS -->
     <script src="{{asset('frontend/assets/js/plugins.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/toastr.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.fancybox.min.js')}}"></script>
 
     <!-- Main JS -->
@@ -390,6 +392,18 @@
       });
 
 
+</script>
+
+<script>
+        @if(Session::has('success'))
+
+        toastr.success("{{Session::get('success')}}")
+        @endif
+
+        @if(Session::has('error'))
+
+        toastr.error("{{Session::get('error')}}")
+        @endif
 </script>
 
 </body>
