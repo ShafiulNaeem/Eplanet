@@ -473,11 +473,21 @@
                             </p>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{route('admin.blog')}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Manage Blog
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('vendor.allVendor')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                All Vendors
                             </p>
                         </a>
                     </li>

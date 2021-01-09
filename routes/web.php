@@ -53,6 +53,10 @@ Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['a
 //Route::post('/', 'Users\ReplyController@store')->middleware(['auth'])->name('reply.store');
 
 
+// comment route
+Route::post('coupon', 'Users\CartController@getCoupon')->name('coupon.code');
+
+
 Route::prefix('pages')->group(function(){
     Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
     Route::post('/', 'Users\CartController@store')->middleware(['auth'])->name('pages.cart');
@@ -94,6 +98,9 @@ Route::prefix('admin')->group(function(){
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
 
+    // vendor routes
+    Route::get('allVendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
+
     // change Status
     Route::post('change', 'Users\Admin\BrandController@change')->name('brand.change.status');
     Route::post('categoryChange', 'Users\Admin\CategoryController@change')->name('category.change.status');
@@ -101,6 +108,7 @@ Route::prefix('admin')->group(function(){
     Route::post('productChange', 'Users\Admin\ProductController@change')->name('product.change.status');
     Route::post('employeeChange', 'Users\Admin\EmployeeController@change')->name('employee.change.status');
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
+    Route::post('vendorChange', 'Users\Admin\AdminController@change')->name('vendor.change.status');
 
     Route::name('admin.all.')->prefix('allvendor')->group(function (){
         Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');
@@ -116,6 +124,8 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
     // vendor routes
+    //Route::get('vendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
+
     Route::prefix('vendor')->group(function(){
         Route::resource('productCapacity', 'ProductCapacityController');
         Route::resource('productCertification', 'ProductCertificationController');
