@@ -128,8 +128,8 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_name;
         $subcategory->status = $request->status;
 
-        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+//        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
+//            return redirect()->back()->with('error','Something went wrong');
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
