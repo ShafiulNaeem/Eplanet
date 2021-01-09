@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
+use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class CartController extends Controller
@@ -141,6 +144,18 @@ class CartController extends Controller
             }
             //session()->flash('success', 'Product removed successfully');
             return redirect()->back()->with('success', 'Product  removed successfully!');
+        }
+    }
+
+    public function getCoupon(Request $request)
+    {
+        //dd($request->all());
+        if($request->coupon_code != null)
+        {
+            $coupons = Coupon::where('coupon_code', 'LIKE','%'.$request->coupon_code.'%')->GetActive()->get();
+            $shipping =ShippingAddress::where(['user_id' => Auth::user()->id])->first();
+            //dd($coupons);
+            return view('pages.checkout',compact('coupons','shipping'));
         }
     }
 }

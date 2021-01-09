@@ -10,9 +10,11 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\exactly;
+use App\Helper\DeleteFile;
 
 class AdminController extends Controller
 {
+    use DeleteFile;
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -51,5 +53,19 @@ class AdminController extends Controller
     {
         $expressWish->delete();
         return redirect()->back();
+    }
+
+    public function allVendor(){
+        $vendors = Admin::with('orders')->get();
+      // dd($vendors);
+        return view('admin.vendor.manage',compact('vendors'));
+    }
+
+    // Vendor status
+    public function change(Request $request)
+    {
+        if( self::changeStatus($request->status, 'App\Models\Admin', $request->id) )
+            return redirect()->back()->with('success', 'Status Changes');
+        return  redirect()->back()->with('error', 'Something went wrong');
     }
 }

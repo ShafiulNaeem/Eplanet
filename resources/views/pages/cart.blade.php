@@ -87,8 +87,12 @@
                                     <h3>Coupon</h3>
                                     <div class="coupon_inner">
                                         <p>Enter your coupon code if you have one.</p>
-                                        <input placeholder="Coupon code" type="text">
-                                        <button type="submit">Apply coupon</button>
+                                        <form action="{{route('coupon.code')}}" method="post">
+                                            @csrf
+                                            <input name="coupon_code" placeholder="Coupon code" type="text">
+                                            <button type="submit">Apply coupon</button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -105,11 +109,10 @@
                                            <p class="cart_amount"> BDT {{round($subTotal)}}</p>
                                        </div>
                                        <a href="#">Calculate shipping</a>
-
-                                       <div class="cart_subtotal">
-                                           <p>Total</p>
-                                           <p class="cart_amount">BDT {{round($subTotal)}}</p>
-                                       </div>
+                                        <div class="cart_subtotal">
+                                            <p>Total</p>
+                                            <p class="cart_amount">BDT {{round($subTotal)}}</p>
+                                        </div>
                                        <div class="checkout_btn">
                                            <a href="{{ route('checkout') }}">Proceed to Checkout</a>
                                        </div>

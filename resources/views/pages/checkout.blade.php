@@ -375,8 +375,23 @@
                                        <td><strong>BDT {{round($tax)}}</strong></td>
                                    </tr>
                                    <tr class="order_total">
+                                       @php
+                                        $coupon = 0;
+                                       @endphp
+
+                                       @if(isset($coupons))
+                                           <th>Coupon</th>
+                                           @foreach($coupons as $coupon)
+                                               <td><strong>BDT {{round($coupon->amount)}}</strong></td>
+                                               @php
+                                                   $coupon = $coupon->amount;
+                                               @endphp
+                                           @endforeach
+                                       @endif
+                                   </tr>
+                                   <tr class="order_total">
                                        <th>Order Total</th>
-                                       <td><strong>BDT {{round($subTotal)}}</strong></td>
+                                       <td><strong>BDT {{round($subTotal - $coupon)}}</strong></td>
                                    </tr>
                                    </tfoot>
                                </table>

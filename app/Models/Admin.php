@@ -54,4 +54,9 @@ class Admin extends Authenticatable
     {
         return $query->where('id', '!=',Auth::guard('admin')->user()->id);
     }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
 }
