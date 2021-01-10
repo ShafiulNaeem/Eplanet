@@ -179,10 +179,10 @@
                                         <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="hover_category">
-        
+
                                                 <select class="select_option" style="color:#000" name="category_name" id="categori2">
                                                     <option selected>Select a categories</option>
-        
+
                                                     @if(isset($categories))
                                                         @foreach($categories as $category)
                                                                 <option value="{{$category->id}}">
@@ -191,9 +191,9 @@
                                                         @endforeach
                                                     @endif
                                                 </select>
-        
+
                                             </div>
-        
+
                                             <div class="search_box">
                                                 <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
@@ -220,7 +220,7 @@
                                                 <li><a href="login.html">English</a></li>
                                             </ul>
                                         </div>
-        
+
                                         @if( Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
                                             <div class="header_account_list  mini_cart_wrapper">
                                             @php $addTocarts = Session::get('cart'); @endphp
@@ -236,21 +236,21 @@
                                                                 <a href="javascript:void(0)" id="cross"><i class="icon-x"></i></a>
                                                             </div>
                                                         </div>
-        
+
                                                         @php
                                                             //$addTocarts = Session::get('cart');
                                                             $total=0;
                                                         @endphp
                                                         @if($addTocarts != null)
                                                         @foreach($addTocarts as $addTocart)
-        
+
                                                             @php
-        
+
                                                                // $price= $addTocart['quantity'] * $addTocart['product_price'];
                                                                 $total += $addTocart['quantity'] * $addTocart['product_price'];
-        
+
                                                             @endphp
-        
+
                                                         <div class="cart_item">
                                                            <div class="cart_img">
                                                                <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
@@ -265,7 +265,7 @@
                                                                     @method("DELETE")
                                                                     <button type="submit"><i class="icon-x"></i></button>
                                                                 </form>
-        
+
                                                             </div>
                                                         </div>
                                                         @endforeach
@@ -286,7 +286,7 @@
                                                         <div class="cart_button">
                                                             <a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i> Checkout</a>
                                                         </div>
-        
+
                                                     </div>
                                                 </div>
                                                 <!--mini cart end-->
@@ -295,7 +295,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
 
                     </div>
@@ -303,26 +303,25 @@
             </div>
         </div>
 
-        <div class="header_bottom sticky-header">
 
-            <div class="container">
-                <div class="row align-items-center">
+        <div class=" sticky-header menu_hide">
+            <div class="container-fluid">
+                <div class="row ">
                     <div class="col-lg-2 col-md-2 col-2">
-                        <div class="location">
+                        <div class="location" style="text-align: center;margin-top:10px;">
                             <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
-                    <div class="col-lg-10 col-md-10 col-10">
+                    <div class="col-lg-9 col-md-9">
                         <!--main menu start-->
-                        <div class="main_menu menu_position">
-                            <nav>
-                                <ul class="main-ul">
-                                    <li><a class="active" href="{{url('/')}}">home</a></li>
-                                    @php
-                                         $id = substr(strrchr(url()->current(), '/'), 1 );
-                                    @endphp
-                                    @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
+                        <nav>
+                            <ul>
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                @php
+                                    $id = substr(strrchr(url()->current(), '/'), 1 );
+                                @endphp
+                                @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
                                     <li><a class="active" href="{{route('topSale.show',$id)}}">Company Profile</a>
 
                                         <ul class="sub_menu pages">
@@ -331,36 +330,65 @@
                                             <li><a id="" href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
                                         </ul>
                                     </li>
-                                    @endif
+                                @endif
 
-                                    @if(isset($categories))
-                                        @foreach($categories as $category)
-
-                                                <li><a href="{{route('cat.show',$category->id)}}">{{$category->category_name}} @if( count($category->subcategory) >0 ) <i class="fa fa-angle-down"></i> @endif </a>
-                                                    @if( count($category->subcategory) >0 )
-                                                        <ul class="sub_menu pages">
-                                                            @foreach($category->subcategory as $cat)
-                                                            <li><a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-                                                </li>
-                                        @endforeach
-                                    @endif
-                                    <li><a href="{{ route('blog.allBog') }}"> Blog </a>
-                                    <li><a href="{{route('contact.show')}}"> Contact Us</a>
-                                    @if( \Illuminate\Support\Facades\Auth::check())
-                                        <li><a href="{{route('profile.show')}}">Profile</a>
-                                    @endif
-
-                                </ul>
-                            </nav>
-                        </div>
+                                @if(isset($categories))
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}
+                                                @if( count($category->subcategory) >0 )
+                                                    <i class="fa fa-caret-down"></i>
+                                                @endif
+                                            </a>
+                                            @if( count($category->subcategory) >0 )
+                                                <ul class="submenu_inner">
+                                                    @foreach($category->subcategory as $cat)
+                                                        <li>
+                                                            <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}
+                                                                <i class="fa fa-caret-right"></i>
+                                                            </a>
+    {{--                                                        <ul class="submenu_2">--}}
+    {{--                                                            <li><a href="#">Links Links Links</a></li>--}}
+    {{--                                                            <li><a href="#">Works</a></li>--}}
+    {{--                                                            <li><a href="#">Status</a></li>--}}
+    {{--                                                        </ul>--}}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                @endif
+                                <li><a href="{{ route('blog.allBog') }}"> Blog </a>
+                                <li><a href="{{route('contact.show')}}"> Contact Us</a>
+                                @if( \Illuminate\Support\Facades\Auth::check())
+                                    <li><a href="{{route('profile.show')}}">Profile</a>
+                                @endif
+{{--                                <li><a href="#">Web Design--}}
+{{--                                        <i class="fa fa-caret-down"></i>--}}
+{{--                                    </a>--}}
+{{--                                    <ul class="submenu_inner">--}}
+{{--                                        <li><a href="#">Others--}}
+{{--                                                <i class="fa fa-caret-right"></i>--}}
+{{--                                            </a>--}}
+{{--                                            <ul class="submenu_2">--}}
+{{--                                                <li><a href="#">Links</a></li>--}}
+{{--                                                <li><a href="#">Works</a></li>--}}
+{{--                                                <li><a href="#">Status</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+                            </ul>
+                        </nav>
                         <!--main menu end-->
                     </div>
 
+                    <div class="col-md-1 col-lg-1"></div>
                 </div>
             </div>
         </div>
+
+
     </div>
 </header>
