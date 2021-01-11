@@ -158,6 +158,6 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('employee', 'EmployeeController');
 
 
-    Route::get('expressWish', 'AdminController@expressWish')->name('admin.express.wish');
+    Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
     Route::delete('expressWish/{expressWish}', 'AdminController@destroy')->name('expressWish.destroy');
 });

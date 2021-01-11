@@ -52,18 +52,18 @@
                             <li class="menu-item-has-children active">
                                 <a href="{{url('/')}}">Home</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Shop</a>
+
+                            @php
+                                $id = substr(strrchr(url()->current(), '/'), 1 );
+                            @endphp
+                            @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
+                                <li class="menu-item-has-children">
+                                <a href="{{route('topSale.show',$id)}}">Company Profile</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item-has-children">
                                         <a href="#">Shop Layouts</a>
                                         <ul class="sub-menu">
-                                            <li><a href="shop.html">shop</a></li>
-                                            <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                            <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                            <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                            <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                            <li><a href="shop-list.html">List View</a></li>
+
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children">
@@ -87,36 +87,49 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="blog-details.html">blog details</a></li>
-                                    <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                    <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                </ul>
+                            @endif
 
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">pages </a>
-                                <ul class="sub-menu">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="services.html">services</a></li>
-                                    <li><a href="faq.html">Frequently Questions</a></li>
-                                    <li><a href="contact.html">contact</a></li>
-                                    <li><a href="login.html">login</a></li>
-                                    <li><a href="404.html">Error 404</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="my-account.html">my account</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="about.html">about Us</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="contact.html"> Contact Us</a>
-                            </li>
+                            @php
+                                $id = substr(strrchr(url()->current(), '/'), 1 );
+                            @endphp
+                            @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('topSale.show',$id)}}">Company Profile</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
+                                        <li><a href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
+                                        <li><a href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
+                                    </ul>
+
+                                </li>
+                            @endif
+
+                            <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Blog </a>
+                            <li class="menu-item-has-children "><a href="{{route('contact.show')}}"> Contact Us</a>
+                            @if( \Illuminate\Support\Facades\Auth::check())
+                                <li class="menu-item-has-children "><a href="{{route('profile.show')}}">Profile</a>
+                            @endif
+{{--                            <li class="menu-item-has-children">--}}
+{{--                                <a href="#">pages </a>--}}
+{{--                                <ul class="sub-menu">--}}
+{{--                                    <li><a href="about.html">About Us</a></li>--}}
+{{--                                    <li><a href="services.html">services</a></li>--}}
+{{--                                    <li><a href="faq.html">Frequently Questions</a></li>--}}
+{{--                                    <li><a href="contact.html">contact</a></li>--}}
+{{--                                    <li><a href="login.html">login</a></li>--}}
+{{--                                    <li><a href="404.html">Error 404</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+
+{{--                                <li class="menu-item-has-children">--}}
+{{--                                    <a href="my-account.html">my account</a>--}}
+{{--                                </li>--}}
+{{--                            <li class="menu-item-has-children">--}}
+{{--                                <a href="about.html">about Us</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="menu-item-has-children">--}}
+{{--                                <a href="contact.html"> Contact Us</a>--}}
+{{--                            </li>--}}
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
@@ -322,9 +335,9 @@
                                     $id = substr(strrchr(url()->current(), '/'), 1 );
                                 @endphp
                                 @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
-                                    <li><a class="active" href="{{route('topSale.show',$id)}}">Company Profile</a>
+                                    <li><a href="{{route('topSale.show',$id)}}">Company Profile</a>
 
-                                        <ul class="sub_menu pages">
+                                        <ul class="submenu_inner">
                                             <li><a id="" href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
                                             <li><a id="" href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
                                             <li><a id="" href="{{route('overview',$id)}}#sec3">Business Performance</a></li>

@@ -28,7 +28,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Name</label>
-                                            <input type="text" name="product_name" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product Name">
+                                            <input type="text" name="product_name" value="{{old('product_name')}}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product Name">
                                             @error('product_name')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -80,7 +80,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Stock</label>
-                                            <input type="text" name="product_stock" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product available">
+                                            <input type="text" name="product_stock" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product available">
                                             @error('product_stock')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -88,7 +88,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Size</label>
-                                            <input type="text" name="product_size" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Enter your product size">
+                                            <input type="text" name="product_size" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Enter your product size">
                                             @error('product_size')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -96,7 +96,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Model</label>
-                                            <input type="text" name="product_model" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Product Model">
+                                            <input type="text" name="product_model" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Product Model">
                                             @error('product_model')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -104,15 +104,15 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Price</label>
-                                            <input type="text" name="product_price" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
+                                            <input type="text" name="product_price" required autocomplete="off" class="form-control" id="exampleInputPassword1">
                                             @error('product_price')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group col-md-6 float-left">
-                                            <label for="exampleInputPassword1">Product Tax</label>
-                                            <input type="text" name="product_tax" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
+                                            <label for="exampleInputPassword1">Product Tax (%) </label>
+                                            <input type="text" name="product_tax" required autocomplete="off" class="form-control" id="exampleInputPassword1">
                                             @error('product_tax')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror

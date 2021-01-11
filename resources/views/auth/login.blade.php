@@ -42,7 +42,7 @@
                             @csrf
                             <p>
                                 <label>Username or email <span>*</span></label>
-                                <input type="email" name="email" placeholder="Your Email" required>
+                                <input type="email" name="email" value="{{old('email')}}" placeholder="Your Email" required>
                             </p>
                             <p>
                                 <label>Passwords <span>*</span></label>
