@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> 
 <!--slider area end-->
 
    <!--  Section Discover slider Start  -->
