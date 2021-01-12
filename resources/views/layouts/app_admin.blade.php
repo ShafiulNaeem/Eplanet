@@ -21,7 +21,7 @@
 
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('adminasset/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/toastr.min.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -34,7 +34,7 @@
 
 @yield('content')
 
-    <!-- Main Footer -->
+<!-- Main Footer -->
     <footer class="main-footer">
         <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
         All rights reserved.
@@ -79,7 +79,7 @@
 <!-- Select2 -->
 <script src="{{ asset('adminAsset/plugins/select2/js/select2.full.min.js') }}"></script>
 
-<script src="{{ asset('adminAsset/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{asset('frontend/assets/js/toastr.min.js')}}"></script>
 
 <!-- ChartJS -->
 <script src="{{ asset('adminAsset/plugins/chart.js/Chart.min.js') }}"></script>
@@ -88,6 +88,39 @@
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>
+
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    @if(Session::has('success'))
+    toastr.success("{{Session::get('success')}}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.error("{{Session::get('error')}}");
+    @endif
+
+    @if(Session::has('info'))
+    toastr.info("{{Session::get('info')}}");
+    @endif
+</script>
+
 <script>
     $(function () {
         $("#example1").DataTable({
@@ -109,28 +142,6 @@
     });
     $('.select2').select2()
 </script>
-<script>
-    var Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000
-    });
-
-    @if(Session::has('success'))
-        Toast.fire({
-            icon: 'success',
-            title: "{{Session::get('success')}}"
-        });
-    @endif
-
-    @if(Session::has('error'))
-        Toast.fire({
-            icon: 'error',
-            title: "{{Session::get('error')}}"
-        });
-    @endif
-</script>
 
 <script>
     // Manage Orders
@@ -145,69 +156,69 @@
 
 
         $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: window.location.origin +'/admin/orders/' + id,
-                method: 'get',
-                // dataType:'json',
-                // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: window.location.origin +'/admin/orders/' + id,
+            method: 'get',
+            // dataType:'json',
+            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
 
 
-                success: function (response) {
-                    response.forEach((value, index) => {
-                        console.log(value);
-                        let tr = createElement('tr');
-                        let unique_id = createElement('td');
-                        let order_date = createElement('td');
-                        let quantity = createElement('td');
-                        let product_name = createElement('td');
-                        let product_image = createElement('td');
-                        let product_model = createElement('td');
-                        let product_total_price = createElement('td');
-                        let product_size = createElement('td');
-                        let action = createElement('td');
-                        let anchor = createElement('a');
-                        let url = window.location.origin + '/admin/orders/' + value.id + '/edit';
-                        anchor.setAttribute('href', url);
-                        action.appendChild(anchor);
-                        anchor.innerText = "Mark as Shifted";
-                        anchor.className = "btn btn-info";
+            success: function (response) {
+                response.forEach((value, index) => {
+                    console.log(value);
+                    let tr = createElement('tr');
+                    let unique_id = createElement('td');
+                    let order_date = createElement('td');
+                    let quantity = createElement('td');
+                    let product_name = createElement('td');
+                    let product_image = createElement('td');
+                    let product_model = createElement('td');
+                    let product_total_price = createElement('td');
+                    let product_size = createElement('td');
+                    let action = createElement('td');
+                    let anchor = createElement('a');
+                    let url = window.location.origin + '/admin/orders/' + value.id + '/edit';
+                    anchor.setAttribute('href', url);
+                    action.appendChild(anchor);
+                    anchor.innerText = "Mark as Shifted";
+                    anchor.className = "btn btn-info";
 
 
-                        let image = createElement('img');
-                        let src = window.location.origin + "/images/" + value.products[0].feature_image;
-                        image.setAttribute('src', src);
-                        image.setAttribute('alt', value.products[0].product_name);
-                        image.setAttribute('width', 80);
+                    let image = createElement('img');
+                    let src = window.location.origin + "/images/" + value.products[0].feature_image;
+                    image.setAttribute('src', src);
+                    image.setAttribute('alt', value.products[0].product_name);
+                    image.setAttribute('width', 80);
 
-                        product_image.appendChild(image);
+                    product_image.appendChild(image);
 
-                        unique_id.innerText = value.unique_id;
-                        order_date.innerText = value.created_at;
-                        quantity.innerText = value.quantity;
-                        product_name.innerText = value.products[0].product_name;
-                        product_model.innerText = value.products[0].model;
-                        product_total_price.innerText = parseInt(value.products[0].product_price) * parseInt(value.quantity);
-                        product_size.innerText = value.products[0].size;
+                    unique_id.innerText = value.unique_id;
+                    order_date.innerText = value.created_at;
+                    quantity.innerText = value.quantity;
+                    product_name.innerText = value.products[0].product_name;
+                    product_model.innerText = value.products[0].model;
+                    product_total_price.innerText = parseInt(value.products[0].product_price) * parseInt(value.quantity);
+                    product_size.innerText = value.products[0].size;
 
-                        tr.appendChild(unique_id);
-                        tr.appendChild(order_date);
-                        tr.appendChild(product_name);
-                        tr.appendChild(product_image);
-                        tr.appendChild(product_model);
-                        tr.appendChild(quantity);
-                        tr.appendChild(product_total_price);
-                        tr.appendChild(product_size);
-                        tr.appendChild(action);
-                        modalTableBody.append(tr);
-                    })
-                },
-                error:function(response)
-                {
-                    console.warn(response);
-                }
-            });
+                    tr.appendChild(unique_id);
+                    tr.appendChild(order_date);
+                    tr.appendChild(product_name);
+                    tr.appendChild(product_image);
+                    tr.appendChild(product_model);
+                    tr.appendChild(quantity);
+                    tr.appendChild(product_total_price);
+                    tr.appendChild(product_size);
+                    tr.appendChild(action);
+                    modalTableBody.append(tr);
+                })
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
 
 
     });
