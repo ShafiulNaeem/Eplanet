@@ -548,6 +548,11 @@ text-align: center
       font-size: 15px;
       color:#FFF
   }
+  .fa-chevron-right{
+     position: absolute;
+     right: 6px;
+     top:6px; 
+  }
 
 
   header .main-header, header .main-nav {
