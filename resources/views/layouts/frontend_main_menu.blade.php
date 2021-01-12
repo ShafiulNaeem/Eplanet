@@ -341,7 +341,7 @@
                                     <a href="#">Laptop</a>
                                     <ul class="drop-down drop-menu-1">
                                         <li class="has-child">
-                                            <a href="#">Premium Ultrabook</a>
+                                            <a href="#">PremiUltrabooksgfusadgiushfsdh <i class="fa fa-chevron-right"></i></a>
                                             <ul class="drop-down drop-menu-2">
                                                 <li><a href="#">Asus</a></li>
                                                 <li><a href="#">Acer</a></li>
@@ -349,7 +349,7 @@
                                             </ul>
                                         </li>
                                         <li class="has-child">
-                                            <a href="#">Laptop Bag</a>
+                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
                                             <ul class="drop-down drop-menu-2">
                                                 <li><a href="#">Dell</a></li>
                                                 <li><a href="#">Lenovo</a></li>
@@ -361,7 +361,7 @@
                                     <a href="#">Electronics</a>
                                     <ul class="drop-down drop-menu-1">
                                         <li class="has-child">
-                                            <a href="#">Premium Ultrabook</a>
+                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
                                             <ul class="drop-down drop-menu-2">
                                                 <li><a href="#">Asus</a></li>
                                                 <li><a href="#">Acer</a></li>
@@ -369,7 +369,7 @@
                                             </ul>
                                         </li>
                                         <li class="has-child">
-                                            <a href="#">Laptop Bag</a>
+                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
                                             <ul class="drop-down drop-menu-2">
                                                 <li><a href="#">Dell</a></li>
                                                 <li><a href="#">Lenovo</a></li>
@@ -381,7 +381,7 @@
                                     <a href="#">Men</a>
                                     <ul class="drop-down drop-menu-1">
                                         <li class="has-child">
-                                            <a href="#">Premium Ultrabook</a>
+                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
                                             <ul class="drop-down drop-menu-2">
                                                 <li><a href="#">Asus</a></li>
                                                 <li><a href="#">Acer</a></li>
@@ -389,7 +389,7 @@
                                             </ul>
                                         </li>
                                         <li class="has-child">
-                                            <a href="#">Laptop Bag</a>
+                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
                                             <ul class="drop-down drop-menu-2">
                                                 <li><a href="#">Dell</a></li>
                                                 <li><a href="#">Lenovo</a></li>
