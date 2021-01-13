@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -39,6 +40,9 @@ class ProductFactory extends Factory
             },
             'sub_categories_id' => function(){
                 return SubCategory::all()->random();
+            },
+            'secondary_sub_categories_id' => function(){
+                return SecondarySubCategory::all()->random();
             },
             'product_name' => $this->faker->name,
             'product_description' => $this->faker->text(200),

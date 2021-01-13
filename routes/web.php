@@ -6,15 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', function (){
-//    $data = [
-//        'name' => 'Tushar',
-//        'verification_code' => 'feefefelwhrw3rnn'
-//    ];
-//    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-   return view('pages.wishlist');
-
-});
+Route::get('test', 'Users\Admin\AdminController@adminMonthlySell');
 
 Route::get('/con',function(){
     return view('pages.shop2');
@@ -97,6 +89,8 @@ Route::prefix('admin')->group(function(){
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
+    Route::get('sellreport', 'Users\Admin\AdminController@adminMonthlySell')->name('sell.report');
+    Route::post('sellreport', 'Users\Admin\AdminController@adminMonthlySellPost')->name('sell.report.post');
 
     // vendor routes
     Route::get('allVendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
@@ -158,6 +152,6 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('employee', 'EmployeeController');
 
 
-    Route::get('expressWish', 'AdminController@expressWish')->name('admin.express.wish');
+    Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
     Route::delete('expressWish/{expressWish}', 'AdminController@destroy')->name('expressWish.destroy');
 });
