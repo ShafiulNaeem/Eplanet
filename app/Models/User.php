@@ -64,7 +64,7 @@ class User extends Authenticatable
     public function orderWithAdmin()
     {
         return $this->orders()->where([
-            'admin_id' => Auth::guard('admin')->user()->id,
+            'admin_id' => Auth::guard('admin')->id(),
             'shifted' => 0
         ])
             ->orderBy('created_at', 'DESC');

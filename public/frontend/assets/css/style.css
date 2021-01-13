@@ -1024,7 +1024,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border: 1px solid #ededed;
   background: #fff;
   width: 650px;
-  margin-left:95px;
+  margin-left:11px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search_container form {
@@ -7279,7 +7279,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .table_desc {
   border: 1px solid #ededed;
-  margin-bottom: 70px;
+  margin-bottom: 62px;
   margin-top: 2px;
 }
 @media only screen and (max-width: 767px) {

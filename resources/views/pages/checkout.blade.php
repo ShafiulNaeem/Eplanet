@@ -339,7 +339,7 @@
                        <div class="col-lg-6 col-md-6">
                            {{--                        <form action="#">--}}
                            <h3>Your order</h3>
-                           <div class="order_table table-responsive">
+                           <div class="order_table ">
                                <table>
                                    <thead>
                                    <tr>
@@ -361,7 +361,7 @@
                                        @endphp
                                        <tr>
                                            <td> {{$cart['product_name']}} <strong> × {{$cart['quantity']}}</strong></td>
-                                           <td> BDT {{$cart['quantity'] * $cart['product_price']}}</td>
+                                           <td> BDT {{round($cart['quantity'] * $cart['product_price'])}}</td>
                                        </tr>
                                    @endforeach
                                    </tbody>
@@ -372,7 +372,12 @@
                                    </tr>
                                    <tr>
                                        <th>Tax Total</th>
-                                       <td><strong>BDT {{round($tax)}}</strong></td>
+                                       <td><strong> {{round($tax)}} %</strong></td>
+                                   </tr>
+
+                                   <tr>
+                                       <th>Total (with tax)</th>
+                                       <td><strong>BDT {{round(( ($total * $tax) / 100 ) + $total)}}</strong></td>
                                    </tr>
                                    <tr class="order_total">
                                        @php
@@ -381,17 +386,18 @@
 
                                        @if(isset($coupons))
                                            <th>Coupon</th>
-                                           @foreach($coupons as $coupon)
-                                               <td><strong>BDT {{round($coupon->amount)}}</strong></td>
-                                               @php
-                                                   $coupon = $coupon->amount;
-                                               @endphp
-                                           @endforeach
+
+                                           <td><strong>BDT {{round($coupons->amount)}}</strong></td>
+
                                        @endif
                                    </tr>
                                    <tr class="order_total">
                                        <th>Order Total</th>
-                                       <td><strong>BDT {{round($subTotal - $coupon)}}</strong></td>
+                                       @if(isset($coupons))
+                                            <td><strong>BDT {{round((( ($total * $tax) / 100 ) + $total) - $coupons->amount)}}</strong></td>
+                                       @else
+                                            <td><strong>BDT {{round( ( ($total * $tax) / 100 ) + $total )}}</strong></td>
+                                       @endif
                                    </tr>
                                    </tfoot>
                                </table>

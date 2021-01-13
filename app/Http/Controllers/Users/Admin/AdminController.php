@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\ExpressWish;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\exactly;
 use App\Helper\DeleteFile;
 
@@ -67,5 +69,31 @@ class AdminController extends Controller
         if( self::changeStatus($request->status, 'App\Models\Admin', $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
+    }
+
+
+    public function adminMonthlySellPost(Request $request){
+        if ( empty($request->filterDate) ) return redirect()->back();
+
+
+        $date = explode('-', $request->filterDate);
+        $from = date('Y-m-d', strtotime($date[0]));
+        $to = date('Y-m-d', strtotime($date[1]));
+
+        $orders = OrderProduct::with([
+            'order', 'product', 'order.admin', 'product.category', 'product.brand', 'user'
+        ])->whereHas('order', function ($query) {
+            $query->where('admin_id',Auth::guard('admin')->id());
+        })->whereBetween('created_at', [$from, $to])->get();
+
+        return view('admin.sellReport', [
+            'orders' => $orders
+        ]);
+    }
+
+
+    public function adminMonthlySell()
+    {
+        return view('admin.sellReport');
     }
 }

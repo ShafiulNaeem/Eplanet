@@ -11,8 +11,7 @@
                     </div>
                     <div class="language_currency">
                         <ul>
-                            <li class="language"><a href="#" style="color:#999999">(+880 123456789) 6.00 am - 10.00
-                                    pm</a>
+                            <li class="language"><a href="#" style="color:#999999">(+880 123456789) 6.00 am - 10.00 pm</a>
 
                             </li>
                             <li><a href="#">Sell</a></li>
@@ -23,28 +22,25 @@
                         </ul>
                     </div>
                     <div class="header_social text-right">
-                        @php $categories =
-                        \App\Models\Category::with('subcategory')->orderBy('created_at','desc')->GetActive()->get();
-                        @endphp
+                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('created_at','desc')->GetActive()->get();  @endphp
                     </div>
                     <div class="search_container">
-                        <form action="{{ route('pages.search') }}" method="post">
+                        <form action="{{route('pages.search')}}" method="post">
                             @csrf
                             <div class="hover_category">
                                 <select class="select_option" name="category_name" id="categori1">
-                                    <option selected>Select a categories</option>
-                                    @if (isset($categories))
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">
-                                                {{ $category->category_name }}
+                                    <option selected >Select a categories</option>
+                                    @if(isset($categories))
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">
+                                                {{$category->category_name}}
                                             </option>
                                         @endforeach
                                     @endif
                                 </select>
                             </div>
                             <div class="search_box">
-                                <input placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera"
-                                        aria-hidden="true"></i></a>
+                                <input placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                             </div>
                         </form>
@@ -54,7 +50,7 @@
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
                             <li class="menu-item-has-children active">
-                                <a href="{{ url('/') }}">Home</a>
+                                <a href="{{url('/')}}">Home</a>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#">Shop</a>
@@ -170,8 +166,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{ route('home') }}"><img
-                                    src="{{ asset('frontend/assets/img/logo/pnga 543.png') }}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/pnga 543.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -181,20 +176,18 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="search_container">
-                                        <form action="{{ route('pages.search') }}" method="post"
-                                            enctype="multipart/form-data">
+                                        <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="hover_category">
 
-                                                <select class="select_option" style="color:#000" name="category_name"
-                                                    id="categori2">
+                                                <select class="select_option" style="color:#000" name="category_name" id="categori2">
                                                     <option selected>Select a categories</option>
 
-                                                    @if (isset($categories))
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">
-                                                                {{ $category->category_name }}
-                                                            </option>
+                                                    @if(isset($categories))
+                                                        @foreach($categories as $category)
+                                                                <option value="{{$category->id}}">
+                                                                    {{$category->category_name}}
+                                                                </option>
                                                         @endforeach
                                                     @endif
                                                 </select>
@@ -202,9 +195,7 @@
                                             </div>
 
                                             <div class="search_box">
-                                                <input name="product_name" placeholder="Search product..."
-                                                    type="text"><a href=""><i class="fa fa-camera"
-                                                        aria-hidden="true"></i></a>
+                                                <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                                             </div>
                                         </form>
@@ -214,15 +205,15 @@
                                     <div class="header_account_area">
                                         <div class="header_account_list register">
                                             <ul>
-                                                @if (!\Illuminate\Support\Facades\Auth::check())
-                                                    <li><a href="{{ route('register') }}">{{ __('Sign Up') }}</a></li>
+                                                @if(! \Illuminate\Support\Facades\Auth::check())
+                                                    <li><a href="{{route('register')}}">{{ __('Sign Up') }}</a></li>
                                                     <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                                                 @else
-                                                    <li><a href="{{ route('logout') }}"
-                                                            onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                        class="d-none">
+                                                    <li><a href="{{route('logout')}}"
+                                                           onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();"
+                                                        >{{ __('Logout') }}</a></li>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                         @csrf
                                                     </form>
                                                 @endif
@@ -230,11 +221,10 @@
                                             </ul>
                                         </div>
 
-                                        @if (Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
+                                        @if( Session::has('cart') && \Illuminate\Support\Facades\Auth::check())
                                             <div class="header_account_list  mini_cart_wrapper">
-                                                @php $addTocarts = Session::get('cart'); @endphp
-                                                <a href="#" id="cardDiv"><span class="lnr lnr-cart"></span><span
-                                                        class="item_count">{{ count($addTocarts) }}</span></a>
+                                            @php $addTocarts = Session::get('cart'); @endphp
+                                               <a href="#" id="cardDiv"><span class="lnr lnr-cart"></span><span class="item_count">{{ count($addTocarts) }}</span></a>
                                                 <!--mini cart-->
                                                 <div class="mini_cart">
                                                     <div class="cart_gallery">
@@ -243,76 +233,64 @@
                                                                 <h3>cart</h3>
                                                             </div>
                                                             <div class="mini_cart_close">
-                                                                <a href="javascript:void(0)" id="cross"><i
-                                                                        class="icon-x"></i></a>
+                                                                <a href="javascript:void(0)" id="cross"><i class="icon-x"></i></a>
                                                             </div>
                                                         </div>
 
                                                         @php
-                                                        //$addTocarts = Session::get('cart');
-                                                        $total=0;
+                                                            //$addTocarts = Session::get('cart');
+                                                            $total=0;
                                                         @endphp
-                                                        @if ($addTocarts != null)
-                                                            @foreach ($addTocarts as $addTocart)
+                                                        @if($addTocarts != null)
+                                                        @foreach($addTocarts as $addTocart)
 
-                                                                @php
+                                                            @php
 
-                                                                // $price= $addTocart['quantity'] *
-                                                                $addTocart['product_price'];
-                                                                $total += $addTocart['quantity'] *
-                                                                $addTocart['product_price'];
+                                                               // $price= $addTocart['quantity'] * $addTocart['product_price'];
+                                                                $total += $addTocart['quantity'] * $addTocart['product_price'];
 
-                                                                @endphp
+                                                            @endphp
 
-                                                                <div class="cart_item">
-                                                                    <div class="cart_img">
-                                                                        <a href="#"><img
-                                                                                src="{{ asset('images/' . $addTocart['feature_image']) }}"
-                                                                                alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart_info">
-                                                                        <a href="#">{{ $addTocart['product_name'] }}</a>
-                                                                        <p>{{ $addTocart['quantity'] }} x <span>
-                                                                                ${{ $addTocart['quantity'] * $addTocart['product_price'] }}
-                                                                            </span></p>
-                                                                    </div>
-                                                                    <div class="cart_remove">
-                                                                        <form
-                                                                            action="{{ route('cart.destroy', $addTocart['id']) }}"
-                                                                            method="post">
-                                                                            @csrf
-                                                                            @method("DELETE")
-                                                                            <button type="submit"><i
-                                                                                    class="icon-x"></i></button>
-                                                                        </form>
+                                                        <div class="cart_item">
+                                                           <div class="cart_img">
+                                                               <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
+                                                           </div>
+                                                            <div class="cart_info">
+                                                                <a href="#">{{$addTocart['product_name']}}</a>
+                                                                <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
+                                                            </div>
+                                                            <div class="cart_remove">
+                                                                <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
+                                                                    @csrf
+                                                                    @method("DELETE")
+                                                                    <button type="submit"><i class="icon-x"></i></button>
+                                                                </form>
 
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        @endif
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                            @endif
                                                     </div>
                                                     <div class="mini_cart_table">
                                                         <div class="cart_table_border">
                                                             <div class="cart_total mt-10">
                                                                 <span>total:</span>
-                                                                <span class="price">$ {{ $total }}</span>
+                                                                <span class="price">$ {{$total}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="mini_cart_footer">
-                                                        <div class="cart_button">
-                                                            <a href="{{ route('cart.create') }}"><i
-                                                                    class="fa fa-shopping-cart"></i> View cart</a>
+                                                       <div class="cart_button">
+                                                            <a href="{{route('cart.create')}}"><i class="fa fa-shopping-cart"></i> View cart</a>
                                                         </div>
                                                         <div class="cart_button">
-                                                            <a href="{{ route('checkout') }}"><i
-                                                                    class="fa fa-sign-in"></i> Checkout</a>
+                                                            <a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i> Checkout</a>
                                                         </div>
 
                                                     </div>
                                                 </div>
                                                 <!--mini cart end-->
-                                            </div>
+                                           </div>
                                         @endif
                                     </div>
                                 </div>
@@ -325,83 +303,55 @@
             </div>
         </div>
 
-
-        <div class="main-nav sticky-header ">
+        <div class=" sticky-header menu_hide">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-2">
-                        <div class="location" style="text-align: center;margin-top:10px;">
-                            <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-                        </div>
+                <div class="row ">
+                     <div class="col-lg-2 col-md-2 col-2">
+                    <div class="location" style="text-align: center;margin-top:10px;">
+                        <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                     </div>
-                    <div class="col-md-10 col-lg-2 col-2">
-                        <nav class="nav" id="main-nav">
-                            <ul class="responsive-menu">
-                                <li class="has-child c-1">
-                                    <a href="#">Laptop</a>
-                                    <ul class="drop-down drop-menu-1">
-                                        <li class="has-child">
-                                            <a href="#">PremiUltrabooksgfusadgiushfsdh <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Asus</a></li>
-                                                <li><a href="#">Acer</a></li>
-                                                <li><a href="#">Microsoft</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-child">
-                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Dell</a></li>
-                                                <li><a href="#">Lenovo</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-child c-1">
-                                    <a href="#">Electronics</a>
-                                    <ul class="drop-down drop-menu-1">
-                                        <li class="has-child">
-                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Asus</a></li>
-                                                <li><a href="#">Acer</a></li>
-                                                <li><a href="#">Microsoft</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-child">
-                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Dell</a></li>
-                                                <li><a href="#">Lenovo</a></li>
+                </div>
+
+                    <div class="col-lg-10 col-md-10">
+                        <!--main menu start-->
+                        <nav>
+                            <ul>
+                               <li>HOME</li>
+                                <li><a href="#">Web Design
+                                        <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="submenu_inner">
+                                        <li><a href="#">OthersOthersOthersgdsfg
+                                                <i class="fa fa-caret-right"></i>
+                                            </a>
+                                            <ul class="submenu_2">
+                                                <li><a href="#">Links Links Links</a></li>
+                                                <li><a href="#">Works</a></li>
+                                                <li><a href="#">Status</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="has-child c-1">
-                                    <a href="#">Men</a>
-                                    <ul class="drop-down drop-menu-1">
-                                        <li class="has-child">
-                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Asus</a></li>
-                                                <li><a href="#">Acer</a></li>
-                                                <li><a href="#">Microsoft</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-child">
-                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Dell</a></li>
-                                                <li><a href="#">Lenovo</a></li>
+                                <li><a href="#">Web Design
+                                        <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="submenu_inner">
+                                        <li><a href="#">Others
+                                                <i class="fa fa-caret-right"></i>
+                                            </a>
+                                            <ul class="submenu_2">
+                                                <li><a href="#">Links</a></li>
+                                                <li><a href="#">Works</a></li>
+                                                <li><a href="#">Status</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
+                        <!--main menu end-->
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

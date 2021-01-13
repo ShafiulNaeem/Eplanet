@@ -38,7 +38,7 @@ class CheckoutController extends Controller
             $order->product_id = $cart['id'];
             $order->user_id = Auth::user()->id;
             $order->admin_id = self::getAdminByProduct($cart['id']);;
-            $order->unique_id = '#OR' . Str::random(10).'#';
+            $order->unique_id = '#OR' . Str::random(2) . time() . Str::random(2) .'#';
             $order->quantity = $cart['quantity'];
             $order->save();
 
