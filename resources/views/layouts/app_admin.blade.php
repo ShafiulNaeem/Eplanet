@@ -19,6 +19,9 @@
     <!-- Select css -->
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/select2/css/select2.min.css') }}">
 
+    <!-- Date range -->
+    <link rel="stylesheet" href="{{ asset('adminAsset/plugins/daterangepicker/daterangepicker.css') }}">
+
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('adminasset/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/toastr.min.css')}}">
@@ -54,7 +57,8 @@
 <script src="{{ asset('adminAsset/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminAsset/dist/js/adminlte.js') }}"></script>
-
+<script src="{{ asset('adminAsset/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('adminAsset/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
 <script src="{{ asset('adminAsset/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
@@ -87,7 +91,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>
+
 
 <script>
     toastr.options = {
@@ -305,6 +309,19 @@
     function createElement(element) {
         return document.createElement(element);
     }
+</script>
+
+
+<script>
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY hh:mm A'
+        }
+    })
 </script>
 
 </body>
