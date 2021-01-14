@@ -303,55 +303,82 @@
             </div>
         </div>
 
-        <div class=" sticky-header menu_hide">
+        <div class="main-nav sticky-header ">
             <div class="container-fluid">
-                <div class="row ">
-                     <div class="col-lg-2 col-md-2 col-2">
-                    <div class="location" style="text-align: center;margin-top:10px;">
-                        <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-2">
+                        <div class="location" style="text-align: center;margin-top:10px;">
+                            <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                        </div>
                     </div>
-                </div>
-
-                    <div class="col-lg-10 col-md-10">
-                        <!--main menu start-->
-                        <nav>
-                            <ul>
-                               <li>HOME</li>
-                                <li><a href="#">Web Design
-                                        <i class="fa fa-caret-down"></i>
-                                    </a>
-                                    <ul class="submenu_inner">
-                                        <li><a href="#">OthersOthersOthersgdsfg
-                                                <i class="fa fa-caret-right"></i>
-                                            </a>
-                                            <ul class="submenu_2">
-                                                <li><a href="#">Links Links Links</a></li>
-                                                <li><a href="#">Works</a></li>
-                                                <li><a href="#">Status</a></li>
+                    <div class="col-md-10 col-lg-2 col-2">
+                        <nav class="nav" id="main-nav">
+                            <ul class="responsive-menu">
+                                <li class="has-child c-1">
+                                    <a href="#">Laptop</a>
+                                    <ul class="drop-down drop-menu-1">
+                                        <li class="has-child">
+                                            <a href="#">PremiUltrabooksgfusadgiushfsdh <i class="fa fa-chevron-right"></i></a>
+                                            <ul class="drop-down drop-menu-2">
+                                                <li><a href="#">Asus</a></li>
+                                                <li><a href="#">Acer</a></li>
+                                                <li><a href="#">Microsoft</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-child">
+                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
+                                            <ul class="drop-down drop-menu-2">
+                                                <li><a href="#">Dell</a></li>
+                                                <li><a href="#">Lenovo</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Web Design
-                                        <i class="fa fa-caret-down"></i>
-                                    </a>
-                                    <ul class="submenu_inner">
-                                        <li><a href="#">Others
-                                                <i class="fa fa-caret-right"></i>
-                                            </a>
-                                            <ul class="submenu_2">
-                                                <li><a href="#">Links</a></li>
-                                                <li><a href="#">Works</a></li>
-                                                <li><a href="#">Status</a></li>
+                                <li class="has-child c-1">
+                                    <a href="#">Electronics</a>
+                                    <ul class="drop-down drop-menu-1">
+                                        <li class="has-child">
+                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
+                                            <ul class="drop-down drop-menu-2">
+                                                <li><a href="#">Asus</a></li>
+                                                <li><a href="#">Acer</a></li>
+                                                <li><a href="#">Microsoft</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-child">
+                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
+                                            <ul class="drop-down drop-menu-2">
+                                                <li><a href="#">Dell</a></li>
+                                                <li><a href="#">Lenovo</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has-child c-1">
+                                    <a href="#">Men</a>
+                                    <ul class="drop-down drop-menu-1">
+                                        <li class="has-child">
+                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
+                                            <ul class="drop-down drop-menu-2">
+                                                <li><a href="#">Asus</a></li>
+                                                <li><a href="#">Acer</a></li>
+                                                <li><a href="#">Microsoft</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-child">
+                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
+                                            <ul class="drop-down drop-menu-2">
+                                                <li><a href="#">Dell</a></li>
+                                                <li><a href="#">Lenovo</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
-                        <!--main menu end-->
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
