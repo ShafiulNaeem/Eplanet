@@ -317,88 +317,86 @@
         </div>
 
 
-        <div class=" sticky-header menu_hide">
+        <div class="main-nav sticky-header ">
             <div class="container-fluid">
-                <div class="row ">
+                <div class="row">
                     <div class="col-lg-2 col-md-2 col-2">
                         <div class="location" style="text-align: center;margin-top:10px;">
                             <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                         </div>
                     </div>
+                    <div class="col-md-10 col-lg-10 col-10">
+                        <nav class="nav" id="main-nav">
+                            <ul class="responsive-menu">
 
-                    <div class="col-lg-9 col-md-9">
-                        <!--main menu start-->
-                        <nav>
-                            <ul>
-                                <li><a href="{{ route('home') }}">Home</a></li>
+                                <li class="has-child c-1">
+                                    <a href="{{ route('home') }}">{{__('Home')}}</a>
+                                </li>
                                 @php
                                     $id = substr(strrchr(url()->current(), '/'), 1 );
                                 @endphp
                                 @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
-                                    <li><a href="{{route('topSale.show',$id)}}">Company Profile</a>
-
-                                        <ul class="submenu_inner">
-                                            <li><a id="" href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
-                                            <li><a id="" href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
-                                            <li><a id="" href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
-                                        </ul>
-                                    </li>
+                                <li class="has-child c-1">
+                                    <a href="{{route('topSale.show',$id)}}">{{__('Company Profile')}}</a>
+                                    <ul class="drop-down drop-menu-1">
+                                        <li><a id="" href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
+                                        <li><a id="" href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
+                                        <li><a id="" href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
+                                    </ul>
+                                </li>
                                 @endif
-
                                 @if(isset($categories))
                                     @foreach($categories as $category)
-                                        <li>
+                                        <li class="has-child c-1">
                                             <a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}
                                                 @if( count($category->subcategory) >0 )
                                                     <i class="fa fa-caret-down"></i>
                                                 @endif
                                             </a>
                                             @if( count($category->subcategory) >0 )
-                                                <ul class="submenu_inner">
-                                                    @foreach($category->subcategory as $cat)
-                                                        <li>
-                                                            <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}
-                                                                <i class="fa fa-caret-right"></i>
-                                                            </a>
-    {{--                                                        <ul class="submenu_2">--}}
-    {{--                                                            <li><a href="#">Links Links Links</a></li>--}}
-    {{--                                                            <li><a href="#">Works</a></li>--}}
-    {{--                                                            <li><a href="#">Status</a></li>--}}
-    {{--                                                        </ul>--}}
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            @endif
+                                            <ul class="drop-down drop-menu-1">
+                                                @foreach($category->subcategory as $cat)
+                                                <li class="has-child">
+                                                    <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                                @endif
                                         </li>
                                     @endforeach
                                 @endif
-                                <li><a href="{{ route('blog.allBog') }}"> Blog </a>
-                                <li><a href="{{route('contact.show')}}"> Contact Us</a>
+
+                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Blog </a> </li>
+                                <li class="has-child c-1"><a href="{{route('contact.show')}}"> Contact Us</a> </li>
                                 @if( \Illuminate\Support\Facades\Auth::check())
-                                    <li><a href="{{route('profile.show')}}">Profile</a>
+                                    <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
                                 @endif
-{{--                                <li><a href="#">Web Design--}}
-{{--                                        <i class="fa fa-caret-down"></i>--}}
-{{--                                    </a>--}}
-{{--                                    <ul class="submenu_inner">--}}
-{{--                                        <li><a href="#">Others--}}
-{{--                                                <i class="fa fa-caret-right"></i>--}}
-{{--                                            </a>--}}
-{{--                                            <ul class="submenu_2">--}}
-{{--                                                <li><a href="#">Links</a></li>--}}
-{{--                                                <li><a href="#">Works</a></li>--}}
-{{--                                                <li><a href="#">Status</a></li>--}}
+
+{{--                                <li class="has-child c-1">--}}
+{{--                                    <a href="#">Men</a>--}}
+{{--                                    <ul class="drop-down drop-menu-1">--}}
+{{--                                        <li class="has-child">--}}
+{{--                                            <a href="#">Premium Ultrabook</a>--}}
+{{--                                            <ul class="drop-down drop-menu-2">--}}
+{{--                                                <li><a href="#">Asus</a></li>--}}
+{{--                                                <li><a href="#">Acer</a></li>--}}
+{{--                                                <li><a href="#">Microsoft</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="has-child">--}}
+{{--                                            <a href="#">Laptop Bag</a>--}}
+{{--                                            <ul class="drop-down drop-menu-2">--}}
+{{--                                                <li><a href="#">Dell</a></li>--}}
+{{--                                                <li><a href="#">Lenovo</a></li>--}}
 {{--                                            </ul>--}}
 {{--                                        </li>--}}
 {{--                                    </ul>--}}
 {{--                                </li>--}}
                             </ul>
                         </nav>
-                        <!--main menu end-->
                     </div>
-
-                    <div class="col-md-1 col-lg-1"></div>
                 </div>
+
             </div>
         </div>
 
