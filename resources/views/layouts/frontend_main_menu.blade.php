@@ -52,18 +52,18 @@
                             <li class="menu-item-has-children active">
                                 <a href="{{url('/')}}">Home</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Shop</a>
+
+                            @php
+                                $id = substr(strrchr(url()->current(), '/'), 1 );
+                            @endphp
+                            @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
+                                <li class="menu-item-has-children">
+                                <a href="{{route('topSale.show',$id)}}">Company Profile</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item-has-children">
                                         <a href="#">Shop Layouts</a>
                                         <ul class="sub-menu">
-                                            <li><a href="shop.html">shop</a></li>
-                                            <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                            <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                            <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                            <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                            <li><a href="shop-list.html">List View</a></li>
+
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children">
@@ -87,36 +87,49 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="blog-details.html">blog details</a></li>
-                                    <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                    <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                </ul>
+                            @endif
 
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">pages </a>
-                                <ul class="sub-menu">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="services.html">services</a></li>
-                                    <li><a href="faq.html">Frequently Questions</a></li>
-                                    <li><a href="contact.html">contact</a></li>
-                                    <li><a href="login.html">login</a></li>
-                                    <li><a href="404.html">Error 404</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="my-account.html">my account</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="about.html">about Us</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="contact.html"> Contact Us</a>
-                            </li>
+                            @php
+                                $id = substr(strrchr(url()->current(), '/'), 1 );
+                            @endphp
+                            @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('topSale.show',$id)}}">Company Profile</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
+                                        <li><a href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
+                                        <li><a href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
+                                    </ul>
+
+                                </li>
+                            @endif
+
+                            <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Blog </a>
+                            <li class="menu-item-has-children "><a href="{{route('contact.show')}}"> Contact Us</a>
+                            @if( \Illuminate\Support\Facades\Auth::check())
+                                <li class="menu-item-has-children "><a href="{{route('profile.show')}}">Profile</a>
+                            @endif
+{{--                            <li class="menu-item-has-children">--}}
+{{--                                <a href="#">pages </a>--}}
+{{--                                <ul class="sub-menu">--}}
+{{--                                    <li><a href="about.html">About Us</a></li>--}}
+{{--                                    <li><a href="services.html">services</a></li>--}}
+{{--                                    <li><a href="faq.html">Frequently Questions</a></li>--}}
+{{--                                    <li><a href="contact.html">contact</a></li>--}}
+{{--                                    <li><a href="login.html">login</a></li>--}}
+{{--                                    <li><a href="404.html">Error 404</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+
+{{--                                <li class="menu-item-has-children">--}}
+{{--                                    <a href="my-account.html">my account</a>--}}
+{{--                                </li>--}}
+{{--                            <li class="menu-item-has-children">--}}
+{{--                                <a href="about.html">about Us</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="menu-item-has-children">--}}
+{{--                                <a href="contact.html"> Contact Us</a>--}}
+{{--                            </li>--}}
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
@@ -303,6 +316,7 @@
             </div>
         </div>
 
+
         <div class="main-nav sticky-header ">
             <div class="container-fluid">
                 <div class="row">
@@ -311,69 +325,73 @@
                             <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                         </div>
                     </div>
-                    <div class="col-md-10 col-lg-2 col-2">
+                    <div class="col-md-10 col-lg-10 col-10">
                         <nav class="nav" id="main-nav">
                             <ul class="responsive-menu">
+
                                 <li class="has-child c-1">
-                                    <a href="#">Laptop</a>
+                                    <a href="{{ route('home') }}">{{__('Home')}}</a>
+                                </li>
+                                @php
+                                    $id = substr(strrchr(url()->current(), '/'), 1 );
+                                @endphp
+                                @if(route('topSale.show',$id) == url()->current() || route('overview',$id) == url()->current())
+                                <li class="has-child c-1">
+                                    <a href="{{route('topSale.show',$id)}}">{{__('Company Profile')}}</a>
                                     <ul class="drop-down drop-menu-1">
-                                        <li class="has-child">
-                                            <a href="#">PremiUltrabooksgfusadgiushfsdh <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Asus</a></li>
-                                                <li><a href="#">Acer</a></li>
-                                                <li><a href="#">Microsoft</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-child">
-                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Dell</a></li>
-                                                <li><a href="#">Lenovo</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a id="" href="{{route('overview',$id)}}#sec1">Company Overview</a></li>
+                                        <li><a id="" href="{{route('overview',$id)}}#sec2">Company Capability</a></li>
+                                        <li><a id="" href="{{route('overview',$id)}}#sec3">Business Performance</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-child c-1">
-                                    <a href="#">Electronics</a>
-                                    <ul class="drop-down drop-menu-1">
-                                        <li class="has-child">
-                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Asus</a></li>
-                                                <li><a href="#">Acer</a></li>
-                                                <li><a href="#">Microsoft</a></li>
+                                @endif
+                                @if(isset($categories))
+                                    @foreach($categories as $category)
+                                        <li class="has-child c-1">
+                                            <a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}
+                                                @if( count($category->subcategory) >0 )
+                                                    <i class="fa fa-caret-down"></i>
+                                                @endif
+                                            </a>
+                                            @if( count($category->subcategory) >0 )
+                                            <ul class="drop-down drop-menu-1">
+                                                @foreach($category->subcategory as $cat)
+                                                <li class="has-child">
+                                                    <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a>
+                                                </li>
+                                                @endforeach
                                             </ul>
+                                                @endif
                                         </li>
-                                        <li class="has-child">
-                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Dell</a></li>
-                                                <li><a href="#">Lenovo</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-child c-1">
-                                    <a href="#">Men</a>
-                                    <ul class="drop-down drop-menu-1">
-                                        <li class="has-child">
-                                            <a href="#">Premium Ultrabook <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Asus</a></li>
-                                                <li><a href="#">Acer</a></li>
-                                                <li><a href="#">Microsoft</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-child">
-                                            <a href="#">Laptop Bag <i class="fa fa-chevron-right"></i></a>
-                                            <ul class="drop-down drop-menu-2">
-                                                <li><a href="#">Dell</a></li>
-                                                <li><a href="#">Lenovo</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
+                                    @endforeach
+                                @endif
+
+                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Blog </a> </li>
+                                <li class="has-child c-1"><a href="{{route('contact.show')}}"> Contact Us</a> </li>
+                                @if( \Illuminate\Support\Facades\Auth::check())
+                                    <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
+                                @endif
+
+{{--                                <li class="has-child c-1">--}}
+{{--                                    <a href="#">Men</a>--}}
+{{--                                    <ul class="drop-down drop-menu-1">--}}
+{{--                                        <li class="has-child">--}}
+{{--                                            <a href="#">Premium Ultrabook</a>--}}
+{{--                                            <ul class="drop-down drop-menu-2">--}}
+{{--                                                <li><a href="#">Asus</a></li>--}}
+{{--                                                <li><a href="#">Acer</a></li>--}}
+{{--                                                <li><a href="#">Microsoft</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="has-child">--}}
+{{--                                            <a href="#">Laptop Bag</a>--}}
+{{--                                            <ul class="drop-down drop-menu-2">--}}
+{{--                                                <li><a href="#">Dell</a></li>--}}
+{{--                                                <li><a href="#">Lenovo</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -381,5 +399,7 @@
 
             </div>
         </div>
+
+
     </div>
 </header>
