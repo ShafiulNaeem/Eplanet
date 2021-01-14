@@ -13,7 +13,6 @@
     padding: 15px 0;
     color:#000000;
     font-weight: 500;
-    font-size:
 }
 .discover-section .owl-carousel .owl-item img {
 	display: block;
@@ -544,15 +543,12 @@ text-align: center
 
   }
 
+
 .fa-map-marker{
     font-size: 15px;
     color:#FFF
 }
-.fa-chevron-right{
-    position: absolute;
-    right: 6px;
-    top:6px;
-}
+
 
 header .main-header, header .main-nav {
     background: #081621;
