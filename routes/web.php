@@ -143,30 +143,33 @@ Route::prefix('admin')->group(function(){
     // vendor routes
     Route::get('allVendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
 
-    // change Status
-    Route::post('change', 'Users\Admin\BrandController@change')->name('brand.change.status');
-    Route::post('categoryChange', 'Users\Admin\CategoryController@change')->name('category.change.status');
-    Route::post('subcategoryChange', 'Users\Admin\SubCategoryController@change')->name('subcategory.change.status');
-    Route::post('productChange', 'Users\Admin\ProductController@change')->name('product.change.status');
-    Route::post('employeeChange', 'Users\Admin\EmployeeController@change')->name('employee.change.status');
-    Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
-    Route::post('vendorChange', 'Users\Admin\AdminController@change')->name('vendor.change.status');
+    Route::namespace('Users\Admin')->group(function (){
+        Route::post('change', 'BrandController@change')->name('brand.change.status');
+        Route::post('categoryChange', 'CategoryController@change')->name('category.change.status');
+        Route::post('subcategoryChange', 'SubCategoryController@change')->name('subcategory.change.status');
+        Route::post('secondsubchange', 'SecondarySubCategoryController@change')->name('secondsub.change.status');
+        Route::post('productChange', 'ProductController@change')->name('product.change.status');
+        Route::post('employeeChange', 'EmployeeController@change')->name('employee.change.status');
 
-    Route::name('admin.all.')->prefix('allvendor')->group(function (){
-        Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');
-        Route::get('brand', 'Users\Admin\BrandController@allBrand')->name('brand');
-        Route::get('coupon', 'Users\Admin\CouponController@allCoupon')->name('coupon');
-        Route::get('category', 'Users\Admin\CategoryController@allCategory')->name('category');
-        Route::get('subcategory', 'Users\Admin\SubCategoryController@allSubCategory')->name('subcategory');
-        Route::get('productimage', 'Users\Admin\ProductImageController@allProductImages')->name('product.image');
-        Route::get('productvideo', 'Users\Admin\ProductVideoController@allProductVideo')->name('product.video');
-        Route::get('user', 'Users\Admin\UserController@allUser')->name('user.no.order');
+        Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
+
+        Route::name('admin.all.')->prefix('allvendor')->group(function (){
+            Route::get('product', 'ProductController@allProduct')->name('product');
+            Route::get('brand', 'BrandController@allBrand')->name('brand');
+            Route::get('coupon', 'CouponController@allCoupon')->name('coupon');
+            Route::get('category', 'CategoryController@allCategory')->name('category');
+            Route::get('subcategory', 'SubCategoryController@allSubCategory')->name('subcategory');
+            Route::get('productimage', 'ProductImageController@allProductImages')->name('product.image');
+            Route::get('productvideo', 'ProductVideoController@allProductVideo')->name('product.video');
+            Route::get('user', 'UserController@allUser')->name('user.no.order');
+        });
     });
+    Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
+    // change Status
+
 });
 
 Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
-    // vendor routes
-    //Route::get('vendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
 
     Route::prefix('vendor')->group(function(){
         Route::resource('productCapacity', 'ProductCapacityController');
@@ -198,6 +201,7 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('orders', 'OrderController');
     Route::resource('designation', 'DesignationController');
     Route::resource('employee', 'EmployeeController');
+    Route::resource('secondsub', 'SecondarySubCategoryController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
