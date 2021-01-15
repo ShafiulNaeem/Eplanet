@@ -39,11 +39,11 @@
 
 <!-- Main Footer -->
     <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+        <strong>Copyright &copy; {{date('Y')}} <a href="{{route('home')}}">Eplanet</a>.</strong>
         All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.1.0-rc
-        </div>
+{{--        <div class="float-right d-none d-sm-inline-block">--}}
+{{--            <b>Version</b> 3.1.0-rc--}}
+{{--        </div>--}}
     </footer>
 </div>
 <!-- ./wrapper -->
@@ -90,8 +90,150 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+{{--<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>--}}
+@php
+    function getRandomColor($num) {
+      $hash = md5('color' . $num);
+        return array(hexdec(substr($hash, 0, 2)), hexdec(substr($hash, 2, 2)), hexdec(substr($hash, 4, 2)));
+    }
+@endphp
+<script>
+    var data = [];
+    var mainDatas = [];
+@php
+    $from = date('Y') . '-01-01';
+    $to = date('Y') . '-12-31';
+    $pro = \App\Models\Product::where('admin_id', \Illuminate\Support\Facades\Auth::guard('admin')->id())->orderBy('sold', 'desc')->limit(5)->get();
+    $monthlySell = [];
 
+    foreach ($pro as $prIndex => $product){
+        $res= \App\Models\OrderProduct::with('order')
+            ->where('product_id', $product->id)
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->groupBy(function($val) {
+                return \Carbon\Carbon::parse($val->created_at)->format('m');
+        });
+
+        $monthlySell[$prIndex]['label'] = $product->product_name;
+        $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['borderColor'] = getRandomColor(2);
+        $monthlySell[$prIndex]['pointRadius'] = true;
+        $monthlySell[$prIndex]['pointColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointStrokeColor'] = getRandomColor(6);
+        $monthlySell[$prIndex]['pointHighlightFill'] = '#ffffff';
+        $monthlySell[$prIndex]['pointHighlightStroke'] = getRandomColor(3);
+
+        if( ! count($res) ){
+            for ($i = 1; $i <= 12; ++$i){
+                @endphp
+
+                mainDatas.push(0);
+            @php
+            }
+        }
+        else {
+            foreach ($res as $index => $value){
+                @endphp
+                mainDatas.push( {{ $value[0]->order->quantity }} );
+
+                @php
+                //$monthlySell[$prIndex]['data'][] = $value[0]->order->quantity;
+            }
+
+            $len = count($res) ;
+
+            if( $len < 12 ){
+                for ($i = $len+1; $i <= 12; ++$i){
+                    @endphp
+                mainDatas.push(0);
+                    @php
+                }
+            }
+        }
+
+@endphp
+data.push({
+    label : '{{$product->product_name}}',
+    backgroundColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    borderColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    pointRadius : true,
+    pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    pointStrokeColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    pointHighlightFill : '#ffffff',
+    pointHighlightStroke : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    data: mainDatas
+});
+
+    mainDatas = [];
+    @php
+
+    }
+@endphp
+
+    console.log(data);
+
+    var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
+
+    var salesChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        // datasets: [
+        //     {
+        //         label: 'Digital Goods',
+        //         backgroundColor: 'rgba(60,141,188,0.9)',
+        //         borderColor: 'rgba(60,141,188,0.8)',
+        //         pointRadius: true,
+        //         pointColor: '#3b8bba',
+        //         pointStrokeColor: 'rgba(60,141,188,1)',
+        //         pointHighlightFill: '#fff',
+        //         pointHighlightStroke: 'rgba(60,141,188,1)',
+        //         data: [28, 48, 40, 19, 86, 27, 90,28, 48, 40, 19, 86]
+        //     },
+        //     {
+        //         label: 'Electronics',
+        //         backgroundColor: 'rgba(210, 214, 222, 1)',
+        //         borderColor: 'rgba(210, 214, 222, 1)',
+        //         pointRadius: true,
+        //         pointColor: 'rgba(210, 214, 222, 1)',
+        //         pointStrokeColor: '#c1c7d1',
+        //         pointHighlightFill: '#fff',
+        //         pointHighlightStroke: 'rgba(220,220,220,1)',
+        //         data: [65, 59, 80, 81, 56, 55, 40,28, 48, 40, 19, 86]
+        //     }
+        // ]
+
+        datasets : data
+    }
+
+    var salesChartOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    display: true
+                }
+            }],
+            yAxes: [{
+                gridLines: {
+                    display: true
+                }
+            }]
+        }
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    // eslint-disable-next-line no-unused-vars
+    var salesChart = new Chart(salesChartCanvas, {
+            type: 'line',
+            data: salesChartData,
+            options: salesChartOptions
+        }
+    )
+</script>
 
 <script>
     toastr.options = {

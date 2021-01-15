@@ -35,7 +35,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('admin.dashboard')}}" class="brand-link">
-        <img src="{{ asset('adminAsset/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ asset('frontend/assets/img/logo/pnga 543.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Admin Eplanet</span>
     </a>
 
@@ -78,6 +78,176 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item ">
+                    <a href="{{ route('admin.express.wish') }}" class="nav-link @if(
+                                    url()->current() == route('admin.express.wish')
+    ) active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Express Wish</p>
+                    </a>
+                </li>
+
+                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                    <li class="nav-item">
+                        <a href="{{route('admin.all.user.no.order')}}" class="nav-link @if(
+                                        url()->current() == route('admin.all.user.no.order')
+        ) active @endif ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                All Users
+                            </p>
+                        </a>
+                    </li>
+
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{route('admin.all.users')}}" class="nav-link @if(--}}
+{{--                                    url()->current() == route('admin.all.users')--}}
+{{--    ) active @endif">--}}
+{{--                            <i class="nav-icon fas fa-tachometer-alt"></i>--}}
+{{--                            <p>--}}
+{{--                                Users With Order--}}
+{{--                            </p>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+                    <li class="nav-item">
+                        <a href="{{route('admin.blog')}}" class="nav-link @if(
+                                    url()->current() == route('admin.blog')
+    ) active @endif ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Manage Blog
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('vendor.allVendor')}}" class="nav-link @if(
+                                    url()->current() == route('vendor.allVendor')
+    ) active @endif ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                All Vendors
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
+                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                    <li class="nav-item @if(
+                                    url()->current() == route('employee.index') ||
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('employee.create')
+    ) menu-is-opening menu-open @endif ">
+                        <a href="#" class="nav-link @if(
+                                    url()->current() == route('employee.index') ||
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('employee.create')
+    ) active @endif ">
+                            <i class="nav-icon fas fa-circle"></i>
+                            <p>
+                                Employee Details
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview " @if(
+                                    url()->current() == route('employee.index') ||
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('employee.create')
+    ) style="display: block" @endif >
+                            <li class="nav-item @if(
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('designation.create')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>
+                                        Designation
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('designation.create')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{ route('designation.create') }}" class="nav-link @if(
+                                    url()->current() == route('designation.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Designation</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('designation.index') }}" class="nav-link @if(
+                                    url()->current() == route('designation.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Designation Manage</p>
+                                        </a>
+                                    </li>
+
+                                    {{--                                <li class="nav-item">--}}
+                                    {{--                                    <a href="" class="nav-link text-fuchsia">--}}
+                                    {{--                                        <i class="far fa-dot-circle nav-icon"></i>--}}
+                                    {{--                                        <p>All Vendor Products</p>--}}
+                                    {{--                                    </a>--}}
+                                    {{--                                </li>--}}
+                                </ul>
+                            </li>
+
+
+
+                            <li class="nav-item @if(
+                                    url()->current() == route('employee.create') ||
+                                    url()->current() == route('employee.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('employee.create') ||
+                                    url()->current() == route('employee.index')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-warning"></i>
+                                    <p>
+                                        Employee
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('employee.create') ||
+                                    url()->current() == route('employee.index')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{route('employee.create')}}" class="nav-link @if(
+                                    url()->current() == route('employee.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Employee</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('employee.index') }}" class="nav-link @if(
+                                    url()->current() == route('employee.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Manage Employee</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                @endif
+
                 <li class="nav-item @if(
                                     url()->current() == route('brand.create') ||
                                     url()->current() == route('admin.all.brand') ||
@@ -123,14 +293,6 @@
                     </ul>
                 </li>
 
-                <li class="nav-item ">
-                            <a href="{{ route('admin.express.wish') }}" class="nav-link @if(
-                                    url()->current() == route('admin.express.wish')
-    ) active @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Express Wish</p>
-                            </a>
-                </li>
 
                 <li class="nav-item @if(
                                     url()->current() == route('category.create') ||
@@ -467,165 +629,6 @@
                     </ul>
                 </li>
 
-                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                <li class="nav-item @if(
-                                    url()->current() == route('employee.index') ||
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('employee.create')
-    ) menu-is-opening menu-open @endif ">
-                    <a href="#" class="nav-link @if(
-                                    url()->current() == route('employee.index') ||
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('employee.create')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-circle"></i>
-                        <p>
-                            Employee Details
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview " @if(
-                                    url()->current() == route('employee.index') ||
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('employee.create')
-    ) style="display: block" @endif >
-                        <li class="nav-item @if(
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index')
-    ) menu-is-opening menu-open @endif ">
-                            <a href="#" class="nav-link @if(
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('designation.create')
-    ) active @endif ">
-                                <i class="far fa-circle nav-icon text-primary"></i>
-                                <p>
-                                    Designation
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('designation.create')
-    ) style="display: block" @endif >
-                                <li class="nav-item">
-                                    <a href="{{ route('designation.create') }}" class="nav-link @if(
-                                    url()->current() == route('designation.create')
-    ) active @endif ">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Create Designation</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('designation.index') }}" class="nav-link @if(
-                                    url()->current() == route('designation.index')
-    ) active @endif ">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Designation Manage</p>
-                                    </a>
-                                </li>
-
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="" class="nav-link text-fuchsia">--}}
-{{--                                        <i class="far fa-dot-circle nav-icon"></i>--}}
-{{--                                        <p>All Vendor Products</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-                            </ul>
-                        </li>
-
-
-
-                        <li class="nav-item @if(
-                                    url()->current() == route('employee.create') ||
-                                    url()->current() == route('employee.index')
-    ) menu-is-opening menu-open @endif ">
-                            <a href="#" class="nav-link @if(
-                                    url()->current() == route('employee.create') ||
-                                    url()->current() == route('employee.index')
-    ) active @endif ">
-                                <i class="far fa-circle nav-icon text-warning"></i>
-                                <p>
-                                    Employee
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('employee.create') ||
-                                    url()->current() == route('employee.index')
-    ) style="display: block" @endif >
-                                <li class="nav-item">
-                                    <a href="{{route('employee.create')}}" class="nav-link @if(
-                                    url()->current() == route('employee.create')
-    ) active @endif ">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Create Employee</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('employee.index') }}" class="nav-link @if(
-                                    url()->current() == route('employee.index')
-    ) active @endif ">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Manage Employee</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                    </ul>
-                </li>
-{{--                @endif--}}
-
-{{--                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )--}}
-                <li class="nav-item">
-                    <a href="{{route('admin.all.user.no.order')}}" class="nav-link @if(
-                                    url()->current() == route('admin.all.user.no.order')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            All Users
-                        </p>
-                    </a>
-                </li>
-
-                    <li class="nav-item">
-                        <a href="{{route('admin.all.users')}}" class="nav-link @if(
-                                    url()->current() == route('admin.all.users')
-    ) active @endif">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Users With Order
-                            </p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{route('admin.blog')}}" class="nav-link @if(
-                                    url()->current() == route('admin.blog')
-    ) active @endif ">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Manage Blog
-                            </p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{route('vendor.allVendor')}}" class="nav-link @if(
-                                    url()->current() == route('vendor.allVendor')
-    ) active @endif ">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                All Vendors
-                            </p>
-                        </a>
-                    </li>
-                @endif
 
 {{--                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 2 )--}}
                     <li class="nav-item @if(

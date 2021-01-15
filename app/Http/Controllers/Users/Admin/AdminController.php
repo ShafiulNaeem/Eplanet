@@ -11,7 +11,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use function PHPUnit\Framework\exactly;
 use App\Helper\DeleteFile;
 
 class AdminController extends Controller
@@ -96,4 +95,5 @@ class AdminController extends Controller
     {
         return view('admin.sellReport');
     }
+
 }
