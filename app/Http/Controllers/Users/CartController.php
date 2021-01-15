@@ -41,6 +41,11 @@ class CartController extends Controller
     public function store(Request $request)
     {
 
+        $checkStock = Product::where('id', $request->product_id)->first();
+
+        if( $checkStock->stock <= $request->quantity )
+            return redirect()->back()->with(['info' => 'Maximum limit reached, choose another']);
+
         $cart = Session::get('cart');
 
         // if cart is empty then this the first product
@@ -61,11 +66,6 @@ class CartController extends Controller
 
         // if cart not empty then check if this product exist then increment quantity
         if(isset($cart[$request->product_id])) {
-
-            $checkStock = Product::where('id', $request->product_id)->first();
-
-            if( $checkStock->stock >= $cart[$request->product_id]['quantity'] )
-                return redirect()->back()->with(['info' => 'Maximum limit reached, choose another']);
 
             $cart[$request->product_id]['quantity']+= $request->quantity;
             Session::put('cart', $cart);
