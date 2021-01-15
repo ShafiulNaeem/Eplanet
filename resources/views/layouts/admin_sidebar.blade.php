@@ -794,116 +794,116 @@
                                 </ul>
                             </li>
 
-{{--                            <li class="nav-item @if(--}}
-{{--                                    url()->current() == route('productRnD.create') ||--}}
-{{--                                    url()->current() == route('productRnD.index')--}}
-{{--    ) menu-is-opening menu-open @endif ">--}}
-{{--                                <a href="#" class="nav-link @if(--}}
-{{--                                    url()->current() == route('productRnD.create') ||--}}
-{{--                                    url()->current() == route('productRnD.index')--}}
-{{--    ) active @endif  ">--}}
-{{--                                    <i class="far fa-circle nav-icon text-primary"></i>--}}
-{{--                                    <p>--}}
-{{--                                        Product RnD--}}
-{{--                                        <i class="right fas fa-angle-left"></i>--}}
-{{--                                    </p>--}}
-{{--                                </a>--}}
-{{--                                <ul class="nav nav-treeview" @if(--}}
-{{--                                    url()->current() == route('productRnD.create') ||--}}
-{{--                                    url()->current() == route('productRnD.index')--}}
-{{--    ) style="display: block" @endif >--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('productRnD.create') }}" class="nav-link @if(--}}
-{{--                                    url()->current() == route('productRnD.create')--}}
-{{--    ) active @endif ">--}}
-{{--                                            <i class="far fa-dot-circle nav-icon"></i>--}}
-{{--                                            <p>Create RnD</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('productRnD.index') }}" class="nav-link @if(--}}
-{{--                                    url()->current() == route('productRnD.index')--}}
-{{--    ) active @endif ">--}}
-{{--                                            <i class="far fa-dot-circle nav-icon"></i>--}}
-{{--                                            <p>Manage RnD</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
+                            <li class="nav-item @if(
+                                    url()->current() == route('productRnD.create') ||
+                                    url()->current() == route('productRnD.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('productRnD.create') ||
+                                    url()->current() == route('productRnD.index')
+    ) active @endif  ">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>
+                                        Product RnD
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('productRnD.create') ||
+                                    url()->current() == route('productRnD.index')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{ route('productRnD.create') }}" class="nav-link @if(
+                                    url()->current() == route('productRnD.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create RnD</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('productRnD.index') }}" class="nav-link @if(
+                                    url()->current() == route('productRnD.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Manage RnD</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-{{--                            <li class="nav-item @if(--}}
-{{--                                    url()->current() == route('tradeCapacity.create') ||--}}
-{{--                                    url()->current() == route('tradeCapacity.index')--}}
-{{--    ) menu-is-opening menu-open @endif ">--}}
-{{--                                <a href="#" class="nav-link @if(--}}
-{{--                                    url()->current() == route('tradeCapacity.create') ||--}}
-{{--                                    url()->current() == route('tradeCapacity.index')--}}
-{{--    ) active @endif ">--}}
-{{--                                    <i class="far fa-circle nav-icon text-primary"></i>--}}
-{{--                                    <p>--}}
-{{--                                        Trade Capacity--}}
-{{--                                        <i class="right fas fa-angle-left"></i>--}}
-{{--                                    </p>--}}
-{{--                                </a>--}}
-{{--                                <ul class="nav nav-treeview" @if(--}}
-{{--                                    url()->current() == route('tradeCapacity.create') ||--}}
-{{--                                    url()->current() == route('tradeCapacity.index')--}}
-{{--    ) style="display: block" @endif >--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('tradeCapacity.create') }}" class="nav-link @if(--}}
-{{--                                    url()->current() == route('tradeCapacity.create')--}}
-{{--    ) active @endif ">--}}
-{{--                                            <i class="far fa-dot-circle nav-icon"></i>--}}
-{{--                                            <p>Create Trade</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('tradeCapacity.index') }}" class="nav-link @if(--}}
-{{--                                    url()->current() == route('tradeCapacity.index')--}}
-{{--    ) active @endif ">--}}
-{{--                                            <i class="far fa-dot-circle nav-icon"></i>--}}
-{{--                                            <p>Manage Trade</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
+                            <li class="nav-item @if(
+                                    url()->current() == route('tradeCapacity.create') ||
+                                    url()->current() == route('tradeCapacity.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('tradeCapacity.create') ||
+                                    url()->current() == route('tradeCapacity.index')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>
+                                        Trade Capacity
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('tradeCapacity.create') ||
+                                    url()->current() == route('tradeCapacity.index')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{ route('tradeCapacity.create') }}" class="nav-link @if(
+                                    url()->current() == route('tradeCapacity.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Trade</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('tradeCapacity.index') }}" class="nav-link @if(
+                                    url()->current() == route('tradeCapacity.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Manage Trade</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-{{--                            <li class="nav-item @if(--}}
-{{--                                    url()->current() == route('factoryInspection.create') ||--}}
-{{--                                    url()->current() == route('factoryInspection.index')--}}
-{{--    ) menu-is-opening menu-open @endif ">--}}
-{{--                                <a href="#" class="nav-link @if(--}}
-{{--                                    url()->current() == route('factoryInspection.create') ||--}}
-{{--                                    url()->current() == route('factoryInspection.index')--}}
-{{--    ) active @endif ">--}}
-{{--                                    <i class="far fa-circle nav-icon text-primary"></i>--}}
-{{--                                    <p>--}}
-{{--                                        Inspection Reports--}}
-{{--                                        <i class="right fas fa-angle-left"></i>--}}
-{{--                                    </p>--}}
-{{--                                </a>--}}
-{{--                                <ul class="nav nav-treeview" @if(--}}
-{{--                                    url()->current() == route('factoryInspection.create') ||--}}
-{{--                                    url()->current() == route('factoryInspection.index')--}}
-{{--    ) style="display: block" @endif >--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('factoryInspection.create') }}" class="nav-link @if(--}}
-{{--                                    url()->current() == route('factoryInspection.create')--}}
-{{--    ) active @endif ">--}}
-{{--                                            <i class="far fa-dot-circle nav-icon"></i>--}}
-{{--                                            <p>Create Reports</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('factoryInspection.index') }}" class="nav-link @if(--}}
-{{--                                    url()->current() == route('factoryInspection.index')--}}
-{{--    ) active @endif ">--}}
-{{--                                            <i class="far fa-dot-circle nav-icon"></i>--}}
-{{--                                            <p>Manage Reports</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
+                            <li class="nav-item @if(
+                                    url()->current() == route('factoryInspection.create') ||
+                                    url()->current() == route('factoryInspection.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('factoryInspection.create') ||
+                                    url()->current() == route('factoryInspection.index')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>
+                                        Inspection Reports
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('factoryInspection.create') ||
+                                    url()->current() == route('factoryInspection.index')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{ route('factoryInspection.create') }}" class="nav-link @if(
+                                    url()->current() == route('factoryInspection.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Reports</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('factoryInspection.index') }}" class="nav-link @if(
+                                    url()->current() == route('factoryInspection.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Manage Reports</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
                         </ul>
                     </li>

@@ -27,7 +27,7 @@
 
                                 <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputPassword1">Category Name</label>
-                                    <input type="text" name="category_name" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Category Name">
+                                    <input type="text" name="category_name" value="{{ old('category_name') }}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Category Name">
                                     @error('category_name')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror

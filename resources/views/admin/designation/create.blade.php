@@ -25,7 +25,7 @@
                                 <div class="card-body">
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputEmail1">Designation Name</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" name="designation_name" placeholder="Enter Designation Name" required />
+                                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ old('designation_name') }}" name="designation_name" placeholder="Enter Designation Name" required />
 
                                         @error('designation_name')
                                             <span class="text-danger">{{$message}}</span>

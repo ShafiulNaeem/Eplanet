@@ -33,6 +33,9 @@
                                                 <option value="{{$product->id}}">{{$product->product_name}}</option>
                                             @endforeach
                                         </select>
+                                        @error('product_name')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group col-md-6 float-left">
