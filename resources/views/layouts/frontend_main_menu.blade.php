@@ -14,7 +14,7 @@
                             <li class="language"><a href="#" style="color:#999999">(+880 123456789) 6.00 am - 10.00 pm</a>
 
                             </li>
-                            <li><a href="#">Sell</a></li>
+                            <li><a href="{{ route('admin.register') }}">Sell</a></li>
                             <li><a href="#">EMI</a></li>
                             <li><a href="#">Gift Card</a></li>
                             <li><a href="#">Customer Care</a></li>
@@ -133,7 +133,7 @@
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
-                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <span><a href="#"><i class="fa fa-envelope-o"></i> tabrickhan112@gmail.com</a></span>
                     </div>
                 </div>
             </div>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <ul>
-                                <li><a href="#">Sell</a></li>
+                                <li><a href="{{route('admin.register')}}">Sell</a></li>
                                 <li><a href="#">EMI</a></li>
                                 <li><a href="#">Gift Card</a></li>
                                 <li><a href="#">Customer Care</a></li>
