@@ -3,10 +3,61 @@
 use App\Mail\VerificationMail;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', 'Users\Admin\AdminController@adminMonthlySell');
+Route::get('test', function (){
+    $pro = Product::where('admin_id', 1)->orderBy('sold', 'desc')->limit(5)->get();
+
+    $from = date('Y') . '-01-01';
+    $to = date('Y') . '-12-31';
+dd($from, $to
+);
+    $monthlySell = [];
+
+    foreach ($pro as $prIndex => $product){
+        $res= \App\Models\OrderProduct::with('order')
+            ->where('product_id', $product->id)
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->groupBy(function($val) {
+                return Carbon::parse($val->created_at)->format('m');
+        });
+
+        $monthlySell[$prIndex]['label'] = $product->product_name;
+        $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['borderColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointRadius'] = true;
+        $monthlySell[$prIndex]['pointColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointStrokeColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointHighlightFill'] = '#ffffff';
+        $monthlySell[$prIndex]['pointHighlightStroke'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+
+
+        if( ! count($res) ){
+            for ($i = 1; $i <= 12; ++$i){
+                $monthlySell[$prIndex]['data'][] = 0;
+            }
+        }
+        else {
+            foreach ($res as $index => $value){
+                $monthlySell[$prIndex]['data'][] = $value[0]->order->quantity;
+            }
+
+            $len = count($res) ;
+
+            if( $len < 12 ){
+                for ($i = $len+1; $i <= 12; ++$i){
+                    $monthlySell[$prIndex]['data'][] = 0;
+                }
+            }
+        }
+    }
+dd($monthlySell);
+    return json_encode($monthlySell, true);
+});
 
 Route::get('/con',function(){
     return view('pages.shop2');
@@ -58,9 +109,6 @@ Route::prefix('pages')->group(function(){
     Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
     Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
     Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
-
-
-
 });
 
 

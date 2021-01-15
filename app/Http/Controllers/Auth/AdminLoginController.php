@@ -26,6 +26,11 @@ class AdminLoginController extends Controller
         return view('auth.admin-login');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(Request $request)
     {
         // Validate form data
@@ -40,7 +45,8 @@ class AdminLoginController extends Controller
         if(Auth::guard('admin')->attempt(
             [
                 'email' => $request->email,
-                'password' => $request->password
+                'password' => $request->password,
+                'status' => 1
             ]
             , $remember))
         {
@@ -52,6 +58,10 @@ class AdminLoginController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return JsonResponse|\Illuminate\Http\RedirectResponse|mixed
+     */
     public function logout(Request $request)
     {
         $id = Auth::guard('admin')->user()->id;
