@@ -69,7 +69,7 @@
                                            <option value="Azerbaijan">Azerbaijan</option>
                                            <option value="Bahamas">Bahamas</option>
                                            <option value="Bahrain">Bahrain</option>
-                                           <option value="Bangladesh">Bangladesh</option>
+                                           <option value="Bangladesh" selected>Bangladesh</option>
                                            <option value="Barbados">Barbados</option>
                                            <option value="Belarus">Belarus</option>
                                            <option value="Belgium">Belgium</option>
@@ -414,16 +414,16 @@
                                </div>
                                <div class="panel-default">
                                    <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
-                                   <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">PayPal <img src="assets/img/icon/papyel.png" alt=""></label>
+                                   <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Cash on delivery <img src="assets/img/icon/papyel.png" alt=""></label>
 
-                                   <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                                       <div class="card-body1">
-                                           <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                       </div>
-                                   </div>
+{{--                                   <div id="collapsedefult" class="collapse one" data-parent="#accordion">--}}
+{{--                                       <div class="card-body1">--}}
+{{--                                           <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>--}}
+{{--                                       </div>--}}
+{{--                                   </div>--}}
                                </div>
                                <div class="order_button">
-                                   <button  type="submit">Proceed to PayPal</button>
+                                   <button  type="submit">Proceed </button>
                                </div>
                            </div>
                            {{--                        </form>--}}

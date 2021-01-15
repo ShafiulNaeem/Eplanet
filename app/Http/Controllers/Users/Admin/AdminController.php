@@ -76,15 +76,19 @@ class AdminController extends Controller
 
 
         $date = explode('-', $request->filterDate);
-        $from = date('Y-m-d', strtotime($date[0]));
-        $to = date('Y-m-d', strtotime($date[1]));
-
+        $from = date('Y-m-d H:i:s', strtotime($date[0]));
+        $to = date('Y-m-d H:i:s', strtotime($date[1]));
+//dd($from, $to);
         $orders = OrderProduct::with([
             'order', 'product', 'order.admin', 'product.category', 'product.brand', 'user'
         ])->whereHas('order', function ($query) {
-            $query->where('admin_id',Auth::guard('admin')->id());
-        })->whereBetween('created_at', [$from, $to])->get();
-
+            $query->where([
+                'admin_id' => Auth::guard('admin')->id(),
+                'shifted' => 1
+            ]);
+        })
+            ->whereBetween('created_at', [$from, $to])->get();
+//dd($orders);
         return view('admin.sellReport', [
             'orders' => $orders
         ]);
