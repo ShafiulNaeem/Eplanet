@@ -19,9 +19,12 @@
     <!-- Select css -->
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/select2/css/select2.min.css') }}">
 
+    <!-- Date range -->
+    <link rel="stylesheet" href="{{ asset('adminAsset/plugins/daterangepicker/daterangepicker.css') }}">
+
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('adminasset/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/toastr.min.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -34,13 +37,13 @@
 
 @yield('content')
 
-    <!-- Main Footer -->
+<!-- Main Footer -->
     <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+        <strong>Copyright &copy; {{date('Y')}} <a href="{{route('home')}}">Eplanet</a>.</strong>
         All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.1.0-rc
-        </div>
+{{--        <div class="float-right d-none d-sm-inline-block">--}}
+{{--            <b>Version</b> 3.1.0-rc--}}
+{{--        </div>--}}
     </footer>
 </div>
 <!-- ./wrapper -->
@@ -54,7 +57,8 @@
 <script src="{{ asset('adminAsset/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminAsset/dist/js/adminlte.js') }}"></script>
-
+<script src="{{ asset('adminAsset/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('adminAsset/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
 <script src="{{ asset('adminAsset/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
@@ -79,15 +83,190 @@
 <!-- Select2 -->
 <script src="{{ asset('adminAsset/plugins/select2/js/select2.full.min.js') }}"></script>
 
-<script src="{{ asset('adminAsset/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{asset('frontend/assets/js/toastr.min.js')}}"></script>
 
 <!-- ChartJS -->
 <script src="{{ asset('adminAsset/plugins/chart.js/Chart.min.js') }}"></script>
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>
+{{--<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>--}}
+@php
+    function getRandomColor($num) {
+      $hash = md5('color' . $num);
+        return array(hexdec(substr($hash, 0, 2)), hexdec(substr($hash, 2, 2)), hexdec(substr($hash, 4, 2)));
+    }
+@endphp
+<script>
+    var data = [];
+    var mainDatas = [];
+@php
+    $from = date('Y') . '-01-01';
+    $to = date('Y') . '-12-31';
+    $pro = \App\Models\Product::where('admin_id', \Illuminate\Support\Facades\Auth::guard('admin')->id())->orderBy('sold', 'desc')->limit(5)->get();
+    $monthlySell = [];
+
+    foreach ($pro as $prIndex => $product){
+        $res= \App\Models\OrderProduct::with('order')
+            ->where('product_id', $product->id)
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->groupBy(function($val) {
+                return \Carbon\Carbon::parse($val->created_at)->format('m');
+        });
+
+        $monthlySell[$prIndex]['label'] = $product->product_name;
+        $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['borderColor'] = getRandomColor(2);
+        $monthlySell[$prIndex]['pointRadius'] = true;
+        $monthlySell[$prIndex]['pointColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointStrokeColor'] = getRandomColor(6);
+        $monthlySell[$prIndex]['pointHighlightFill'] = '#ffffff';
+        $monthlySell[$prIndex]['pointHighlightStroke'] = getRandomColor(3);
+
+        if( ! count($res) ){
+            for ($i = 1; $i <= 12; ++$i){
+                @endphp
+
+                mainDatas.push(0);
+            @php
+            }
+        }
+        else {
+            foreach ($res as $index => $value){
+                @endphp
+                mainDatas.push( {{ $value[0]->order->quantity }} );
+
+                @php
+                //$monthlySell[$prIndex]['data'][] = $value[0]->order->quantity;
+            }
+
+            $len = count($res) ;
+
+            if( $len < 12 ){
+                for ($i = $len+1; $i <= 12; ++$i){
+                    @endphp
+                mainDatas.push(0);
+                    @php
+                }
+            }
+        }
+
+@endphp
+data.push({
+    label : '{{$product->product_name}}',
+    backgroundColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    borderColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    pointRadius : true,
+    pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    pointStrokeColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    pointHighlightFill : '#ffffff',
+    pointHighlightStroke : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    data: mainDatas
+});
+
+    mainDatas = [];
+    @php
+
+    }
+@endphp
+
+    console.log(data);
+
+    var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
+
+    var salesChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        // datasets: [
+        //     {
+        //         label: 'Digital Goods',
+        //         backgroundColor: 'rgba(60,141,188,0.9)',
+        //         borderColor: 'rgba(60,141,188,0.8)',
+        //         pointRadius: true,
+        //         pointColor: '#3b8bba',
+        //         pointStrokeColor: 'rgba(60,141,188,1)',
+        //         pointHighlightFill: '#fff',
+        //         pointHighlightStroke: 'rgba(60,141,188,1)',
+        //         data: [28, 48, 40, 19, 86, 27, 90,28, 48, 40, 19, 86]
+        //     },
+        //     {
+        //         label: 'Electronics',
+        //         backgroundColor: 'rgba(210, 214, 222, 1)',
+        //         borderColor: 'rgba(210, 214, 222, 1)',
+        //         pointRadius: true,
+        //         pointColor: 'rgba(210, 214, 222, 1)',
+        //         pointStrokeColor: '#c1c7d1',
+        //         pointHighlightFill: '#fff',
+        //         pointHighlightStroke: 'rgba(220,220,220,1)',
+        //         data: [65, 59, 80, 81, 56, 55, 40,28, 48, 40, 19, 86]
+        //     }
+        // ]
+
+        datasets : data
+    }
+
+    var salesChartOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    display: true
+                }
+            }],
+            yAxes: [{
+                gridLines: {
+                    display: true
+                }
+            }]
+        }
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    // eslint-disable-next-line no-unused-vars
+    var salesChart = new Chart(salesChartCanvas, {
+            type: 'line',
+            data: salesChartData,
+            options: salesChartOptions
+        }
+    )
+</script>
+
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    @if(Session::has('success'))
+    toastr.success("{{Session::get('success')}}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.error("{{Session::get('error')}}");
+    @endif
+
+    @if(Session::has('info'))
+    toastr.info("{{Session::get('info')}}");
+    @endif
+</script>
+
 <script>
     $(function () {
         $("#example1").DataTable({
@@ -109,28 +288,6 @@
     });
     $('.select2').select2()
 </script>
-<script>
-    var Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000
-    });
-
-    @if(Session::has('success'))
-        Toast.fire({
-            icon: 'success',
-            title: "{{Session::get('success')}}"
-        });
-    @endif
-
-    @if(Session::has('error'))
-        Toast.fire({
-            icon: 'error',
-            title: "{{Session::get('error')}}"
-        });
-    @endif
-</script>
 
 <script>
     // Manage Orders
@@ -145,69 +302,69 @@
 
 
         $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: window.location.origin +'/admin/orders/' + id,
-                method: 'get',
-                // dataType:'json',
-                // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: window.location.origin +'/admin/orders/' + id,
+            method: 'get',
+            // dataType:'json',
+            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
 
 
-                success: function (response) {
-                    response.forEach((value, index) => {
-                        console.log(value);
-                        let tr = createElement('tr');
-                        let unique_id = createElement('td');
-                        let order_date = createElement('td');
-                        let quantity = createElement('td');
-                        let product_name = createElement('td');
-                        let product_image = createElement('td');
-                        let product_model = createElement('td');
-                        let product_total_price = createElement('td');
-                        let product_size = createElement('td');
-                        let action = createElement('td');
-                        let anchor = createElement('a');
-                        let url = window.location.origin + '/admin/orders/' + value.id + '/edit';
-                        anchor.setAttribute('href', url);
-                        action.appendChild(anchor);
-                        anchor.innerText = "Mark as Shifted";
-                        anchor.className = "btn btn-info";
+            success: function (response) {
+                response.forEach((value, index) => {
+                    console.log(value);
+                    let tr = createElement('tr');
+                    let unique_id = createElement('td');
+                    let order_date = createElement('td');
+                    let quantity = createElement('td');
+                    let product_name = createElement('td');
+                    let product_image = createElement('td');
+                    let product_model = createElement('td');
+                    let product_total_price = createElement('td');
+                    let product_size = createElement('td');
+                    let action = createElement('td');
+                    let anchor = createElement('a');
+                    let url = window.location.origin + '/admin/orders/' + value.id + '/edit';
+                    anchor.setAttribute('href', url);
+                    action.appendChild(anchor);
+                    anchor.innerText = "Mark as Shifted";
+                    anchor.className = "btn btn-info";
 
 
-                        let image = createElement('img');
-                        let src = window.location.origin + "/images/" + value.products[0].feature_image;
-                        image.setAttribute('src', src);
-                        image.setAttribute('alt', value.products[0].product_name);
-                        image.setAttribute('width', 80);
+                    let image = createElement('img');
+                    let src = window.location.origin + "/images/" + value.products[0].feature_image;
+                    image.setAttribute('src', src);
+                    image.setAttribute('alt', value.products[0].product_name);
+                    image.setAttribute('width', 80);
 
-                        product_image.appendChild(image);
+                    product_image.appendChild(image);
 
-                        unique_id.innerText = value.unique_id;
-                        order_date.innerText = value.created_at;
-                        quantity.innerText = value.quantity;
-                        product_name.innerText = value.products[0].product_name;
-                        product_model.innerText = value.products[0].model;
-                        product_total_price.innerText = parseInt(value.products[0].product_price) * parseInt(value.quantity);
-                        product_size.innerText = value.products[0].size;
+                    unique_id.innerText = value.unique_id;
+                    order_date.innerText = value.created_at;
+                    quantity.innerText = value.quantity;
+                    product_name.innerText = value.products[0].product_name;
+                    product_model.innerText = value.products[0].model;
+                    product_total_price.innerText = parseInt(value.products[0].product_price) * parseInt(value.quantity);
+                    product_size.innerText = value.products[0].size;
 
-                        tr.appendChild(unique_id);
-                        tr.appendChild(order_date);
-                        tr.appendChild(product_name);
-                        tr.appendChild(product_image);
-                        tr.appendChild(product_model);
-                        tr.appendChild(quantity);
-                        tr.appendChild(product_total_price);
-                        tr.appendChild(product_size);
-                        tr.appendChild(action);
-                        modalTableBody.append(tr);
-                    })
-                },
-                error:function(response)
-                {
-                    console.warn(response);
-                }
-            });
+                    tr.appendChild(unique_id);
+                    tr.appendChild(order_date);
+                    tr.appendChild(product_name);
+                    tr.appendChild(product_image);
+                    tr.appendChild(product_model);
+                    tr.appendChild(quantity);
+                    tr.appendChild(product_total_price);
+                    tr.appendChild(product_size);
+                    tr.appendChild(action);
+                    modalTableBody.append(tr);
+                })
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
 
 
     });
@@ -294,6 +451,19 @@
     function createElement(element) {
         return document.createElement(element);
     }
+</script>
+
+
+<script>
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY hh:mm A'
+        }
+    })
 </script>
 
 </body>

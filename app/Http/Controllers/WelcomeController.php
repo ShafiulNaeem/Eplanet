@@ -17,7 +17,7 @@ class WelcomeController extends Controller
     public function index(){
 
         // Category wise Product
-        $mainRes = $this->productByCategory(['kids', 'men', 'women', 'electronics']);
+        $mainRes = $this->productByCategory(['Electronic Gadget', 'Gadget Accessories', 'Industrial items', 'Mens Fashion', 'women']);
 
 
         //Category Query
@@ -53,10 +53,9 @@ class WelcomeController extends Controller
         $mainRes = [];
         foreach ($catArray as $val){
             $category_result = [];
-            $subCategories = Category::with('products')->where([
-                ['category_name' , '=', $val],
-                ['status', '=', 1],
-            ])->get();
+            $subCategories = Category::with('products')->where(
+                'category_name' , '=', $val
+            )->GetActive()->get();
 
             foreach ($subCategories as $sub) {
                 if ( count($sub->products) ){

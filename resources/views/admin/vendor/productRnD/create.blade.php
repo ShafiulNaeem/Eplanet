@@ -27,7 +27,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Product RnD Title</label>
-                                    <input type="text" name="title" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product RnD Title">
+                                    <input type="text" name="title" required value="{{ old('title') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product RnD Title">
                                     @error('title')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -35,9 +35,9 @@
 
                                 <div class="form-group ">
                                     <label for="exampleFormControlTextarea1">Product RnD Description</label>
-                                    <textarea class="form-control" name="description" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="description" required  id="exampleFormControlTextarea1" rows="3">{{ old('description') }}</textarea>
                                     @error('description')
-                                    <span class="text-danger">{{$message}}</span>
+                                        <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
 
@@ -49,6 +49,9 @@
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>
+                                    @error('rnd_image')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
 
                             </div><!-- /.box-body -->

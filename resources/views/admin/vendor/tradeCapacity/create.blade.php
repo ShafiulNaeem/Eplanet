@@ -27,7 +27,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Main Markets</label>
-                                    <input type="text" name="main_markets" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Main Market">
+                                    <input type="text" name="main_markets" required value="{{ old('main_markets') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Main Market">
                                     @error('main_markets')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -35,7 +35,7 @@
 
                                 <div class="form-group ">
                                     <label for="exampleFormControlTextarea1">Total Revenue</label>
-                                    <input type="text" name="total_revenue" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="">
+                                    <input type="text" name="total_revenue" required value="{{ old('total_revenue') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="">
 {{--                                    <textarea class="form-control" name="issued_by" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>--}}
                                     @error('total_revenue')
                                     <span class="text-danger">{{$message}}</span>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group ">
                                     <label for="exampleFormControlTextarea1">Main Product</label>
-                                    <input type="text" name="main_product" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
+                                    <input type="text" name="main_product" required value="{{ old('main_product') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">
 {{--                                    <textarea class="form-control" name="description" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>--}}
                                     @error('main_product')
                                     <span class="text-danger">{{$message}}</span>

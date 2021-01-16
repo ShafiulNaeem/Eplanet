@@ -32,8 +32,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    @foreach($expresswishes as $index => $expressWish)
+                                    @if( isset($expresswishes) )
+                                        @foreach($expresswishes as $index => $expressWish)
                                         <tr>
                                             <td>{{$index + 1}}</td>
                                             <td>{{$expressWish->user->fname .' '.$expressWish->user->lname}}</td>
@@ -71,6 +71,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @endif
                                     </tbody>
                                     <tfoot>
                                     <tr>

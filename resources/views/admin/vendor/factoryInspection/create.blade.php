@@ -27,7 +27,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Report Title</label>
-                                    <input type="text" name="title" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Rreport Title">
+                                    <input type="text" name="title" required value="{{ old('title') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Rreport Title">
                                     @error('title')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -42,6 +42,9 @@
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>
+                                    @error('pdf')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
 
                             </div><!-- /.box-body -->

@@ -47,8 +47,8 @@ class EmployeeController extends Controller
     {
         $this->validate($request, array(
             'name' => 'required',
-            'phone' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
             'address' => 'required',
             'designation_name' => 'required',
             'employee_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',

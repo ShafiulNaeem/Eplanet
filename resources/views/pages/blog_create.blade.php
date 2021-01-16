@@ -29,6 +29,12 @@
                     <h2>Create Blog</h2>
                     <form action="{{route('blog.store')}}" enctype="multipart/form-data" method="POST">
                         @csrf
+
+                        <div class="form-group">
+                            <label for="">Title</label>
+                            <input name="title" id="" cols="10" class="form-control" rows="5"></input>
+                        </div>
+
                         <div class="form-group">
                             <label for="">Description</label>
                             <textarea name="post" id="" cols="10" class="form-control" rows="5"></textarea>

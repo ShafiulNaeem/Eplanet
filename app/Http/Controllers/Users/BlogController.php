@@ -27,7 +27,7 @@ class BlogController extends Controller
 
     public function allBog()
     {
-        $blogs = Blog::with('user')->where('status',1)->orderBy('created_at','DESC')->get();
+        $blogs = Blog::with('user')->where('status',1)->orderBy('created_at','DESC')->limit(20)->get();
         //dd($blogs);
         return view('pages.all_blogs',compact('blogs'));
     }
@@ -62,6 +62,7 @@ class BlogController extends Controller
         //dd($user_id);
         $blog->user_id = $user_id;
         $blog->post = $request->post;
+        $blog->title = $request->title;
 
         if($request->hasFile('blog_image')){
             $image = request()->file('blog_image');

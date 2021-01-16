@@ -17,15 +17,16 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-bordered table-striped table-responsive">
                                     <thead >
                                     <tr>
-                                        <th>SL</th>
+                                        <th>sl</th>
                                         <th>Product Image</th>
                                         <th>Product Name</th>
                                         <th>Brand</th>
                                         <th>Product Stock</th>
                                         <th>Product Size</th>
+                                        <th>Product Tax</th>
                                         <th>Product Price</th>
                                         <th>Product Created</th>
                                         <th>Status</th>
@@ -43,6 +44,7 @@
                                             <td>{{$product->brand->brand_name}}</td>
                                             <td>{{$product->stock}} piece(s) </td>
                                             <td>{{$product->size}}</td>
+                                            <td>{{$product->tax}}%</td>
                                             <td>BDT {{$product->product_price}}</td>
                                             <td>{{\Carbon\Carbon::parse($product->created_at)->format('M d Y')}}</td>
                                             <td class="text-center">
@@ -93,12 +95,13 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
+                                        <th>sl</th>
                                         <th>Product Image</th>
                                         <th>Product Name</th>
                                         <th>Brand</th>
                                         <th>Product Stock</th>
                                         <th>Product Size</th>
+                                        <th>Product Tax</th>
                                         <th>Product Price</th>
                                         <th>Product Created</th>
                                         <th>Status</th>

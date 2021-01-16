@@ -36,6 +36,7 @@
                                                 <th class="product_remove">Delete</th>
                                                 <th class="product_thumb">Image</th>
                                                 <th class="product_name">Product</th>
+                                                <th class="">Tax</th>
                                                 <th class="product-price">Price</th>
                                                 <th class="product_quantity">Quantity</th>
                                                 <th class="product_total">Total</th>
@@ -45,17 +46,20 @@
                                             @php
                                                 $total = 0 ;
                                                 $subTotal = 0 ;
+                                                $totalTax = 0;
                                             @endphp
                                             @foreach(Session::get('cart') as $cart)
                                                 @php
                                                     $total += ( $cart['quantity'] * $cart['product_price'] );
-                                                    $subTotal += ( ($total * $cart['product_tax']) / 100 ) + $total;
+                                                    $totalTax += $cart['product_tax'];
+                                                    //$subTotal += ( ($total * $cart['product_tax']) / 100 ) + $total;
                                                 @endphp
                                                 <tr>
                                                    <td class="product_remove"><a href="{{route('cart.show', $cart['id'])}}"><i class="fa fa-trash-o"></i></a></td>
-                                                    <td class="product_thumb"><a href="#"><img src="{{url('images/' . $cart['feature_image'])}}" alt=""></a></td>
+                                                    <td class="product_thumb"><a href="#"><img src="{{asset('images/' . $cart['feature_image'])}}" alt=""></a></td>
                                                     <td class="product_name"><a href="#">{{$cart['product_name']}}</a></td>
-                                                    <td class="product-price">BDT {{ $cart['product_price'] }}</td>
+                                                    <td>{{  $cart['product_tax']  }}%</td>
+                                                    <td class="product-price">BDT {{ round($cart['product_price']) }}</td>
                                                     <td class="product_quantity">
                                                         <form action="{{route('cart.update' )}}" method="post">
                                                             @csrf
@@ -65,7 +69,7 @@
                                                             <input type="submit" value="Update" class="btn btn-success">
                                                         </form>
                                                     </td>
-                                                    <td class="product_total">BDT {{ $cart['product_price'] * $cart['quantity'] }}</td>
+                                                    <td class="product_total">BDT {{ round(((( $cart['quantity'] * $cart['product_price'] ) * $cart['product_tax']) / 100 ) + ( $cart['quantity'] * $cart['product_price'] )) }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -104,14 +108,14 @@
                                            <p>Subtotal</p>
                                            <p class="cart_amount">BDT {{round($total)}}</p>
                                        </div>
-                                       <div class="cart_subtotal ">
-                                           <p>Shipping</p>
-                                           <p class="cart_amount"> BDT {{round($subTotal)}}</p>
-                                       </div>
-                                       <a href="#">Calculate shipping</a>
+{{--                                       <div class="cart_subtotal ">--}}
+{{--                                           <p>Shipping</p>--}}
+{{--                                           <p class="cart_amount"> BDT {{round($subTotal)}}</p>--}}
+{{--                                       </div>--}}
+{{--                                       <a href="#">Calculate shipping</a>--}}
                                         <div class="cart_subtotal">
-                                            <p>Total</p>
-                                            <p class="cart_amount">BDT {{round($subTotal)}}</p>
+                                            <p>Total (with tax)</p>
+                                            <p class="cart_amount">BDT {{round(( ($total * $totalTax) / 100 ) + $total)}}</p>
                                         </div>
                                        <div class="checkout_btn">
                                            <a href="{{ route('checkout') }}">Proceed to Checkout</a>

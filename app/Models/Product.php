@@ -15,6 +15,9 @@ class Product extends Model
     protected $guarded = [];
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function wishlists()
     {
         return $this->hasMany('App\Models\WishList');

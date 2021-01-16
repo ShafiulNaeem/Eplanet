@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\ExpressWish;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\exactly;
+use Illuminate\Support\Facades\Auth;
 use App\Helper\DeleteFile;
 
 class AdminController extends Controller
@@ -69,21 +70,34 @@ class AdminController extends Controller
         return  redirect()->back()->with('error', 'Something went wrong');
     }
 
-    // salesReport
-//    public function sales()
-//    {
-//        return view('admin.sales.sales');
-//    }
-//
-//    public function salesReport(Request $request)
-//    {
-//        //dd($request->all());
-//        $request->to_date = date('Y-m-d');
-//        $request->from_date = date('Y-m-d');
-//        $allOrders = Order::with('products')->whereBetween('created_at', [$request->to_date, $request->from_date])
-//            //->where('created_at', 'LIKE','%'.$request->to_date.'%')
-//            ->count();
-//
-//        dd($allOrders);
-//    }
+
+    public function adminMonthlySellPost(Request $request){
+        if ( empty($request->filterDate) ) return redirect()->back();
+
+
+        $date = explode('-', $request->filterDate);
+        $from = date('Y-m-d H:i:s', strtotime($date[0]));
+        $to = date('Y-m-d H:i:s', strtotime($date[1]));
+//dd($from, $to);
+        $orders = OrderProduct::with([
+            'order', 'product', 'order.admin', 'product.category', 'product.brand', 'user'
+        ])->whereHas('order', function ($query) {
+            $query->where([
+                'admin_id' => Auth::guard('admin')->id(),
+                'shifted' => 1
+            ]);
+        })
+            ->whereBetween('created_at', [$from, $to])->get();
+//dd($orders);
+        return view('admin.sellReport', [
+            'orders' => $orders
+        ]);
+    }
+
+
+    public function adminMonthlySell()
+    {
+        return view('admin.sellReport');
+    }
+
 }

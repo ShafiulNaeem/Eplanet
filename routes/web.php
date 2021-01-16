@@ -3,21 +3,64 @@
 use App\Mail\VerificationMail;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test', function (){
-//    $data = [
-//        'name' => 'Tushar',
-//        'verification_code' => 'feefefelwhrw3rnn'
-//    ];
-//    Mail::to('tushar.khan0122@gmail.com')->send(new VerificationMail($data));
-   return view('pages.wishlist');
+    $pro = Product::where('admin_id', 1)->orderBy('sold', 'desc')->limit(5)->get();
 
+    $from = date('Y') . '-01-01';
+    $to = date('Y') . '-12-31';
+dd($from, $to
+);
+    $monthlySell = [];
+
+    foreach ($pro as $prIndex => $product){
+        $res= \App\Models\OrderProduct::with('order')
+            ->where('product_id', $product->id)
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->groupBy(function($val) {
+                return Carbon::parse($val->created_at)->format('m');
+        });
+
+        $monthlySell[$prIndex]['label'] = $product->product_name;
+        $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['borderColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointRadius'] = true;
+        $monthlySell[$prIndex]['pointColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointStrokeColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+        $monthlySell[$prIndex]['pointHighlightFill'] = '#ffffff';
+        $monthlySell[$prIndex]['pointHighlightStroke'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+
+
+        if( ! count($res) ){
+            for ($i = 1; $i <= 12; ++$i){
+                $monthlySell[$prIndex]['data'][] = 0;
+            }
+        }
+        else {
+            foreach ($res as $index => $value){
+                $monthlySell[$prIndex]['data'][] = $value[0]->order->quantity;
+            }
+
+            $len = count($res) ;
+
+            if( $len < 12 ){
+                for ($i = $len+1; $i <= 12; ++$i){
+                    $monthlySell[$prIndex]['data'][] = 0;
+                }
+            }
+        }
+    }
+dd($monthlySell);
+    return json_encode($monthlySell, true);
 });
 
 Route::get('/con',function(){
-    return view('pages.artical');
+    return view('pages.shop2');
 });
 
 Route::get('/',  'WelcomeController@index')->name('home');
@@ -66,9 +109,6 @@ Route::prefix('pages')->group(function(){
     Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
     Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
     Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
-
-
-
 });
 
 
@@ -97,34 +137,39 @@ Route::prefix('admin')->group(function(){
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
+    Route::get('sellreport', 'Users\Admin\AdminController@adminMonthlySell')->name('sell.report');
+    Route::post('sellreport', 'Users\Admin\AdminController@adminMonthlySellPost')->name('sell.report.post');
 
     // vendor routes
     Route::get('allVendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
 
-    // change Status
-    Route::post('change', 'Users\Admin\BrandController@change')->name('brand.change.status');
-    Route::post('categoryChange', 'Users\Admin\CategoryController@change')->name('category.change.status');
-    Route::post('subcategoryChange', 'Users\Admin\SubCategoryController@change')->name('subcategory.change.status');
-    Route::post('productChange', 'Users\Admin\ProductController@change')->name('product.change.status');
-    Route::post('employeeChange', 'Users\Admin\EmployeeController@change')->name('employee.change.status');
-    Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
-    Route::post('vendorChange', 'Users\Admin\AdminController@change')->name('vendor.change.status');
+    Route::namespace('Users\Admin')->group(function (){
+        Route::post('change', 'BrandController@change')->name('brand.change.status');
+        Route::post('categoryChange', 'CategoryController@change')->name('category.change.status');
+        Route::post('subcategoryChange', 'SubCategoryController@change')->name('subcategory.change.status');
+        Route::post('secondsubchange', 'SecondarySubCategoryController@change')->name('secondsub.change.status');
+        Route::post('productChange', 'ProductController@change')->name('product.change.status');
+        Route::post('employeeChange', 'EmployeeController@change')->name('employee.change.status');
 
-    Route::name('admin.all.')->prefix('allvendor')->group(function (){
-        Route::get('product', 'Users\Admin\ProductController@allProduct')->name('product');
-        Route::get('brand', 'Users\Admin\BrandController@allBrand')->name('brand');
-        Route::get('coupon', 'Users\Admin\CouponController@allCoupon')->name('coupon');
-        Route::get('category', 'Users\Admin\CategoryController@allCategory')->name('category');
-        Route::get('subcategory', 'Users\Admin\SubCategoryController@allSubCategory')->name('subcategory');
-        Route::get('productimage', 'Users\Admin\ProductImageController@allProductImages')->name('product.image');
-        Route::get('productvideo', 'Users\Admin\ProductVideoController@allProductVideo')->name('product.video');
-        Route::get('user', 'Users\Admin\UserController@allUser')->name('user.no.order');
+        Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
+
+        Route::name('admin.all.')->prefix('allvendor')->group(function (){
+            Route::get('product', 'ProductController@allProduct')->name('product');
+            Route::get('brand', 'BrandController@allBrand')->name('brand');
+            Route::get('coupon', 'CouponController@allCoupon')->name('coupon');
+            Route::get('category', 'CategoryController@allCategory')->name('category');
+            Route::get('subcategory', 'SubCategoryController@allSubCategory')->name('subcategory');
+            Route::get('productimage', 'ProductImageController@allProductImages')->name('product.image');
+            Route::get('productvideo', 'ProductVideoController@allProductVideo')->name('product.video');
+            Route::get('user', 'UserController@allUser')->name('user.no.order');
+        });
     });
+    Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
+    // change Status
+
 });
 
 Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
-    // vendor routes
-    //Route::get('vendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
 
     Route::prefix('vendor')->group(function(){
         Route::resource('productCapacity', 'ProductCapacityController');
@@ -143,10 +188,6 @@ Route::prefix('admin')->group(function (){
     //blog manage
     Route::get('blog', 'Users\BlogController@index')->name('admin.blog');
     Route::delete('blog/{blog}', 'Users\BlogController@destroy')->name('blog.destroy');
-
-    //sales report
-    //Route::get('sales', 'Users\Admin\AdminController@sales')->name('sales');
-    //Route::post('sales', 'Users\Admin\AdminController@salesReport')->name('sales.report');
 });
 
 Route::prefix('admin')->namespace('Users\Admin')->group(function(){
@@ -160,9 +201,9 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('orders', 'OrderController');
     Route::resource('designation', 'DesignationController');
     Route::resource('employee', 'EmployeeController');
-    //Route::resource('sales', 'AdminController');
+    Route::resource('secondsub', 'SecondarySubCategoryController');
 
 
-    Route::get('expressWish', 'AdminController@expressWish')->name('admin.express.wish');
+    Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
     Route::delete('expressWish/{expressWish}', 'AdminController@destroy')->name('expressWish.destroy');
 });
