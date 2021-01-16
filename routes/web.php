@@ -143,6 +143,10 @@ Route::prefix('admin')->group(function (){
     //blog manage
     Route::get('blog', 'Users\BlogController@index')->name('admin.blog');
     Route::delete('blog/{blog}', 'Users\BlogController@destroy')->name('blog.destroy');
+
+    //sales report
+    //Route::get('sales', 'Users\Admin\AdminController@sales')->name('sales');
+    //Route::post('sales', 'Users\Admin\AdminController@salesReport')->name('sales.report');
 });
 
 Route::prefix('admin')->namespace('Users\Admin')->group(function(){
@@ -156,6 +160,7 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('orders', 'OrderController');
     Route::resource('designation', 'DesignationController');
     Route::resource('employee', 'EmployeeController');
+    //Route::resource('sales', 'AdminController');
 
 
     Route::get('expressWish', 'AdminController@expressWish')->name('admin.express.wish');

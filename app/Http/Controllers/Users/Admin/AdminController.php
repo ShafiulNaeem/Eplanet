@@ -68,4 +68,22 @@ class AdminController extends Controller
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
     }
+
+    // salesReport
+//    public function sales()
+//    {
+//        return view('admin.sales.sales');
+//    }
+//
+//    public function salesReport(Request $request)
+//    {
+//        //dd($request->all());
+//        $request->to_date = date('Y-m-d');
+//        $request->from_date = date('Y-m-d');
+//        $allOrders = Order::with('products')->whereBetween('created_at', [$request->to_date, $request->from_date])
+//            //->where('created_at', 'LIKE','%'.$request->to_date.'%')
+//            ->count();
+//
+//        dd($allOrders);
+//    }
 }
