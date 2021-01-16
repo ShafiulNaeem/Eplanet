@@ -26,33 +26,33 @@
                                 <div class="card-body">
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Employee Name</label>
-                                        <input type="text" name="name" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Name">
+                                        <input type="text" name="name" value="{{ old('name') }}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Name">
                                         @error('name')
-                                        <span class="text-danger">{{$message}}</span>
+                                            <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Employee Email</label>
-                                        <input type="email" name="email" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Email">
+                                        <input type="email" name="email" required value="{{ old('email') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Email">
                                         @error('email')
-                                        <span class="text-danger">{{$message}}</span>
+                                            <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Employee Contact</label>
-                                        <input type="tel" name="phone" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Phone">
+                                        <input type="tel" name="phone" required value="{{ old('phone') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Phone">
                                         @error('phone')
-                                        <span class="text-danger">{{$message}}</span>
+                                            <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Employee Address</label>
-                                        <input type="text" name="address" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Address">
+                                        <input type="text" name="address" required value="{{ old('address') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Employee Address">
                                         @error('address')
-                                        <span class="text-danger">{{$message}}</span>
+                                            <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
 
@@ -64,15 +64,22 @@
                                                 <option value="{{$designation->id}}">{{$designation->designation_name}}</option>
                                             @endforeach
                                         </select>
+
+                                        @error('designation_name')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Employee Status</label>
                                         <select name="status" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-
                                             <option value="1">Active</option>
                                             <option value="0">InActive</option>
                                         </select>
+
+                                        @error('status')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleFormControlFile1">Employee Image</label>
@@ -83,6 +90,9 @@
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                         </div>
+                                        @error('employee_image')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
 
                                 </div><!-- /.box-body -->

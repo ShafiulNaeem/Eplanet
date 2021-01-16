@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
+use App\Models\Product;
 use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,10 +36,15 @@ class CartController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
+
+        $checkStock = Product::where('id', $request->product_id)->first();
+
+        if( $checkStock->stock <= $request->quantity )
+            return redirect()->back()->with(['info' => 'Maximum limit reached, choose another']);
 
         $cart = Session::get('cart');
 
@@ -60,12 +66,14 @@ class CartController extends Controller
 
         // if cart not empty then check if this product exist then increment quantity
         if(isset($cart[$request->product_id])) {
+
             $cart[$request->product_id]['quantity']+= $request->quantity;
             Session::put('cart', $cart);
+
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
-        // if item not exist in cart then add to cart with quantity = 1
+        // if item not exist in cart then add to cart with quantity
         $cart[$request->product_id] = [
             "id" => $request->product_id,
             "product_name" => $request->product_name,
@@ -152,9 +160,12 @@ class CartController extends Controller
         //dd($request->all());
         if($request->coupon_code != null)
         {
-            $coupons = Coupon::where('coupon_code', 'LIKE','%'.$request->coupon_code.'%')->GetActive()->get();
+            $coupons = Coupon::where('coupon_code', $request->coupon_code)->GetActive()->first();
+
+            if( empty($coupons) ) return redirect()->back()->with(['info' => 'No coupon Code found']);
+
             $shipping =ShippingAddress::where(['user_id' => Auth::user()->id])->first();
-            //dd($coupons);
+
             return view('pages.checkout',compact('coupons','shipping'));
         }
     }

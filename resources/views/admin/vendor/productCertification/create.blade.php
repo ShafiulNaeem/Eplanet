@@ -27,7 +27,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Name</label>
-                                    <input type="text" name="name" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product Certification Name">
+                                    <input type="text" value="{{old('name')}}" name="name" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product Certification Name">
                                     @error('name')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -35,24 +35,24 @@
 
                                 <div class="form-group ">
                                     <label for="exampleFormControlTextarea1">Issued By  </label>
-                                    <input type="text" name="issued_by" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="">
+                                    <input type="text" name="issued_by" required value="{{ old('issued_by') }}" autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="">
 {{--                                    <textarea class="form-control" name="issued_by" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>--}}
                                     @error('issued_by')
-                                    <span class="text-danger">{{$message}}</span>
+                                        <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group ">
                                     <label for="exampleFormControlTextarea1">Business scope</label>
-                                    <input type="text" name="business_scope" require="require" autocomplete="off" class="form-control" id="exampleInputPassword1">
+                                    <input type="text" name="business_scope" required value="{{ old('business_scope') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">
 {{--                                    <textarea class="form-control" name="description" require ="require" id="exampleFormControlTextarea1" rows="3"></textarea>--}}
                                     @error('business_scope')
-                                    <span class="text-danger">{{$message}}</span>
+                                        <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
 
                                 <div class="form-group col-md-12 float-left">
                                         <label for="exampleFormControlFile1">Certificate</label>
-<!-- {{--                                        <input type="file" name="pdf" class="form-control-file" id="exampleFormControlFile1"> -->
+<!--                                        <input type="file" name="pdf" class="form-control-file" id="exampleFormControlFile1"> -->
                                         <div class="input-group ">
                                             <div class="custom-file">
                                                 <input type="file" name="pdf"  class="custom-file-input" id="exampleInputFile">

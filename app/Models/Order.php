@@ -20,4 +20,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }

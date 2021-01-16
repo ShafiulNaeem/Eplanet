@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_categories_id');
+            $table->unsignedBigInteger('secondary_sub_categories_id');
             $table->unsignedBigInteger('coupon_id')->nullable();
             $table->string('product_name');
             $table->text('product_description');
@@ -39,6 +40,7 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
             $table->foreign('sub_categories_id')->references('id')->on('sub_categories')->onDelete('cascade');
+            $table->foreign('secondary_sub_categories_id')->references('id')->on('secondary_sub_categories')->onDelete('cascade');
         });
     }
 

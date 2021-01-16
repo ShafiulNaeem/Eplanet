@@ -128,8 +128,8 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_name;
         $subcategory->status = $request->status;
 
-        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+//        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
+//            return redirect()->back()->with('error','Something went wrong');
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
@@ -153,7 +153,7 @@ class SubCategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param SubCategory $subcategory
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
     public function destroy(SubCategory $subcategory)
@@ -162,8 +162,7 @@ class SubCategoryController extends Controller
             return redirect()->back()->with('error','Something went wrong');
 
         $subcategory->delete();
-        Session::flash('success','Sub Category Delete Successfully');
-        return redirect()->back();
+        return redirect()->back()->with('info', 'Sub Category Delete Successfully');
     }
 
     // Change Status

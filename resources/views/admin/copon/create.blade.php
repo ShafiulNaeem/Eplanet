@@ -27,14 +27,14 @@
 
                                 <div class="form-group float-left col-md-6">
                                     <label for="exampleInputPassword1">Coupon Code</label>
-                                    <input type="text" name="coupon_code" required autocomplete="off" class="form-control"  placeholder="Coupon Code">
+                                    <input type="text" name="coupon_code" value="{{ old('coupon_code') }}" required autocomplete="off" class="form-control"  placeholder="Coupon Code">
                                     @error('coupon_code')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group float-left col-md-6">
                                     <label >Coupon Amount</label>
-                                    <input type="text" name="amount" required autocomplete="off" class="form-control"  placeholder="Coupon Amount">
+                                    <input type="text" name="amount" value="{{ old('amount') }}" required autocomplete="off" class="form-control"  placeholder="Coupon Amount">
                                     @error('amount')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
