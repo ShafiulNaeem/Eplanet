@@ -34,7 +34,7 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function productImages()
+    public function productImages(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('App\Models\ProductImage','product_id','id');
     }
@@ -82,6 +82,12 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+
+    public function secondsub()
+    {
+        return $this->belongsTo(SecondarySubCategory::class);
     }
 
 

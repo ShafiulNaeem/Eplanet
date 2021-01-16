@@ -15,7 +15,7 @@ class Coupon extends Model
 
     public function scopeCouponWithAdminOwner($query)
     {
-        return $query->where('admin_id', Auth::guard('admin')->user()->id);
+        return $query->where('admin_id', Auth::guard('admin')->id());
     }
 
 

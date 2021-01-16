@@ -94,10 +94,6 @@ Route::get('blogall', 'Users\BlogController@allBog')->name('blog.allBog');
 Route::get('blogall/{blog}', 'Users\BlogController@show')->middleware(['auth'])->name('blog.show');
 Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['auth'])->name('blog.destroy');
 
-// comment route
-//Route::post('blogAll/', 'Users\ComentController@store')->middleware(['auth'])->name('comment.store');
-// reply route
-//Route::post('/', 'Users\ReplyController@store')->middleware(['auth'])->name('reply.store');
 
 
 // comment route

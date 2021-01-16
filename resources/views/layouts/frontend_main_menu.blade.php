@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="header_social text-right">
-                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('created_at','desc')->GetActive()->get();  @endphp
+                        @php $categories = \App\Models\Category::with(['subcategory', 'subcategory.secondary_sub_categories'])->orderBy('created_at','desc')->GetActive()->get();  @endphp
                     </div>
                     <div class="search_container">
                         <form action="{{route('pages.search')}}" method="post">
@@ -66,25 +66,25 @@
 
                                         </ul>
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">other Pages</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="cart.html">cart</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="my-account.html">my account</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Product Types</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="product-details.html">product details</a></li>
-                                            <li><a href="product-sidebar.html">product sidebar</a></li>
-                                            <li><a href="product-grouped.html">product grouped</a></li>
-                                            <li><a href="variable-product.html">product variable</a></li>
-                                        </ul>
-                                    </li>
+{{--                                    <li class="menu-item-has-children">--}}
+{{--                                        <a href="#">other Pages</a>--}}
+{{--                                        <ul class="sub-menu">--}}
+{{--                                            <li><a href="cart.html">cart</a></li>--}}
+{{--                                            <li><a href="wishlist.html">Wishlist</a></li>--}}
+{{--                                            <li><a href="checkout.html">Checkout</a></li>--}}
+{{--                                            <li><a href="my-account.html">my account</a></li>--}}
+{{--                                            <li><a href="404.html">Error 404</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="menu-item-has-children">--}}
+{{--                                        <a href="#">Product Types</a>--}}
+{{--                                        <ul class="sub-menu">--}}
+{{--                                            <li><a href="product-details.html">product details</a></li>--}}
+{{--                                            <li><a href="product-sidebar.html">product sidebar</a></li>--}}
+{{--                                            <li><a href="product-grouped.html">product grouped</a></li>--}}
+{{--                                            <li><a href="variable-product.html">product variable</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
                                 </ul>
                             </li>
                             @endif
@@ -270,7 +270,7 @@
                                                            </div>
                                                             <div class="cart_info">
                                                                 <a href="#">{{$addTocart['product_name']}}</a>
-                                                                <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
+                                                                <p>{{$addTocart['quantity']}} x <span> BDT{{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
                                                             </div>
                                                             <div class="cart_remove">
                                                                 <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
@@ -288,7 +288,7 @@
                                                         <div class="cart_table_border">
                                                             <div class="cart_total mt-10">
                                                                 <span>total:</span>
-                                                                <span class="price">$ {{$total}}</span>
+                                                                <span class="price">BDT {{$total}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -322,7 +322,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-2">
                         <div class="location" style="text-align: center;margin-top:10px;">
-                            <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                            <a href="{{ route('contact.show') }}"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="col-md-10 col-lg-10 col-10">
@@ -358,6 +358,13 @@
                                                 @foreach($category->subcategory as $cat)
                                                 <li class="has-child">
                                                     <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a>
+                                                    @if( count($cat->secondary_sub_categories) > 0 )
+                                                        <ul class="drop-down drop-menu-2">
+                                                            @foreach($cat->secondary_sub_categories as $secondary_sub )
+                                                                <li><a href="#">{{$secondary_sub->secondary_subcategory_name}}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
                                                 </li>
                                                 @endforeach
                                             </ul>
