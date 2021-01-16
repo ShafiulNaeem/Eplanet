@@ -23,9 +23,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        $from = date('Y-m-d', strtotime('-7 days'));
-        $pastMonth = date('Y-m-d', strtotime('-30 days'));
-        $today = date('Y-m-d');
+        $from = date('Y-m-d H:i:s', strtotime('-7 days'));
+        $pastMonth = date('Y-m-d H:i:s', strtotime('-30 days'));
+        $today = date('Y-m-d H:i:s');
         $allOrders = Order::with('products')->whereBetween('created_at', [$from, $today])->get();
 
         $totalSale = 0;
@@ -39,6 +39,7 @@ class AdminController extends Controller
             'totalWeekSale' => $totalSale,
             'usersThisMonth' => User::whereBetween('created_at', [$pastMonth, $today])->get()
         ];
+
         return view('admin.admin', $data);
     }
 
