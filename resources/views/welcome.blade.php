@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="slider_content">
-                            <h1>Baby hhbhhbhb</h1>
+                            <h1>Baby Product</h1>
                             <h2>Kids Fashion</h2>
                             <p>
                                 Valid till 15 Augest
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
 <!--slider area end-->
 
    <!--  Section Discover slider Start  -->

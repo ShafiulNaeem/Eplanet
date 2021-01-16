@@ -15,14 +15,14 @@
 
                             </li>
                             <li><a href="{{ route('admin.register') }}">Sell</a></li>
-{{--                            <li><a href="#">EMI</a></li>--}}
-{{--                            <li><a href="#">Gift Card</a></li>--}}
-{{--                            <li><a href="#">Customer Care</a></li>--}}
-{{--                            <li><a href="#"></a></li>--}}
+                            <li><a href="#">EMI</a></li>
+                            <li><a href="#">Gift Card</a></li>
+                            <li><a href="#">Customer Care</a></li>
+                            <li><a href="#"></a></li>
                         </ul>
                     </div>
                     <div class="header_social text-right">
-                        @php $categories = \App\Models\Category::with('subcategory')->orderBy('created_at','desc')->GetActive()->get();  @endphp
+                        @php $categories = \App\Models\Category::with(['subcategory', 'subcategory.secondary_sub_categories'])->orderBy('created_at','desc')->GetActive()->get();  @endphp
                     </div>
                     <div class="search_container">
                         <form action="{{route('pages.search')}}" method="post">
@@ -66,25 +66,25 @@
 
                                         </ul>
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">other Pages</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="cart.html">cart</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="my-account.html">my account</a></li>
-                                            <li><a href="404.html">Error 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Product Types</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="product-details.html">product details</a></li>
-                                            <li><a href="product-sidebar.html">product sidebar</a></li>
-                                            <li><a href="product-grouped.html">product grouped</a></li>
-                                            <li><a href="variable-product.html">product variable</a></li>
-                                        </ul>
-                                    </li>
+{{--                                    <li class="menu-item-has-children">--}}
+{{--                                        <a href="#">other Pages</a>--}}
+{{--                                        <ul class="sub-menu">--}}
+{{--                                            <li><a href="cart.html">cart</a></li>--}}
+{{--                                            <li><a href="wishlist.html">Wishlist</a></li>--}}
+{{--                                            <li><a href="checkout.html">Checkout</a></li>--}}
+{{--                                            <li><a href="my-account.html">my account</a></li>--}}
+{{--                                            <li><a href="404.html">Error 404</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="menu-item-has-children">--}}
+{{--                                        <a href="#">Product Types</a>--}}
+{{--                                        <ul class="sub-menu">--}}
+{{--                                            <li><a href="product-details.html">product details</a></li>--}}
+{{--                                            <li><a href="product-sidebar.html">product sidebar</a></li>--}}
+{{--                                            <li><a href="product-grouped.html">product grouped</a></li>--}}
+{{--                                            <li><a href="variable-product.html">product variable</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
                                 </ul>
                             </li>
                             @endif
@@ -162,10 +162,10 @@
                         <div class="col-lg-4 col-md-4">
                             <ul>
                                 <li><a href="{{route('admin.register')}}">Sell</a></li>
-{{--                                <li><a href="#">EMI</a></li>--}}
-{{--                                <li><a href="#">Gift Card</a></li>--}}
-{{--                                <li><a href="#">Customer Care</a></li>--}}
-{{--                                <li><a href="#"></a></li>--}}
+                                <li><a href="#">EMI</a></li>
+                                <li><a href="#">Gift Card</a></li>
+                                <li><a href="#">Customer Care</a></li>
+                                <li><a href="#"></a></li>
                             </ul>
                         </div>
 
@@ -179,7 +179,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/new_logo.png')}}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/pnga 543.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -358,6 +358,13 @@
                                                 @foreach($category->subcategory as $cat)
                                                 <li class="has-child">
                                                     <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a>
+                                                    @if( count($cat->secondary_sub_categories) > 0 )
+                                                        <ul class="drop-down drop-menu-2">
+                                                            @foreach($cat->secondary_sub_categories as $secondary_sub )
+                                                                <li><a href="#">{{$secondary_sub->secondary_subcategory_name}}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
                                                 </li>
                                                 @endforeach
                                             </ul>

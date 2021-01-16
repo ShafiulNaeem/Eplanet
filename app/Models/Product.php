@@ -85,6 +85,12 @@ class Product extends Model
     }
 
 
+    public function secondsub()
+    {
+        return $this->belongsTo(SecondarySubCategory::class);
+    }
+
+
     /**
      * @param $query
      * @return mixed

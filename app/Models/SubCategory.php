@@ -13,13 +13,27 @@ class SubCategory extends Model
 
     protected $table = 'sub_categories';
 
-    public function category()
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('App\Models\Category');
     }
-    public function products()
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('App\Models\Product', 'sub_categories_id');
+    }
+
+    public function secondary_sub_categories()
+    {
+        return $this->hasMany(SecondarySubCategory::class);
     }
 
     public function scopeSubCategoryWithAdminOwner($query)
