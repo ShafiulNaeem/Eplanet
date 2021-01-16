@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Session;
@@ -48,15 +49,16 @@ class ProductController extends Controller
         $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
+        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
 
-        return view('admin.product.create',compact('brands','subcategory', 'coupons', 'categories'));
+        return view('admin.product.create',compact('brands','subcategory', 'coupons', 'categories', 'secondary_sub'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -97,6 +99,9 @@ class ProductController extends Controller
         $products->manufactured_by = $request->manufactured_by;
         $products->status = $request->status;
 
+        if( isset($request->secondary_sub_categories_id) )
+            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
+
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -105,14 +110,9 @@ class ProductController extends Controller
             $products->save();
         };
 
-        if($products->save()){
-            Session::flash('success','Product Inserted Successfully');
-            return redirect()->route('product.index');
-        } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
-        }
-
+        if($products->save())
+            return redirect()->route('product.index')->with('success','Product Inserted Successfully');
+        return redirect()->back()->with('error','Something went wrong');
     }
 
     /**
@@ -130,15 +130,17 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Product $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Product $product)
     {
-        $brands = Brand::orderBy('brand_name','asc')->get();
-        $subcategory = SubCategory::all();
-        $categories = Category::all();
-        $coupons = Coupon::all();
-        return view('admin.product.edit',compact('product','brands', 'coupons','subcategory', 'categories'));
+        $brands = Brand::orderBy('brand_name','asc')->BrandWithAdminOwner()->get();
+        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
+        $categories = Category::CategoryWithAdminOwner()->get();
+        $coupons = Coupon::CouponWithAdminOwner()->get();
+        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+
+        return view('admin.product.edit',compact('product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));
     }
 
     /**
@@ -178,6 +180,9 @@ class ProductController extends Controller
         $products->sub_categories_id = $request->product_category;
         $products->manufactured_by = $request->manufactured_by;
         $products->status = $request->status;
+
+        if( isset($request->secondary_sub_categories_id) )
+            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
 
         if($request->hasFile('feature_image')){
