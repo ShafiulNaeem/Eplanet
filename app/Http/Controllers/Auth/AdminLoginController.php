@@ -39,6 +39,7 @@ class AdminLoginController extends Controller
         // Attempt to log the user in
         if(Auth::guard('admin')->attempt(
             [
+                //'status'=>1,
                 'email' => $request->email,
                 'password' => $request->password
             ]
