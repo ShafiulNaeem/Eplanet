@@ -5,7 +5,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Canvas') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -39,7 +39,7 @@
 
 <!-- Main Footer -->
     <footer class="main-footer">
-        <strong>Copyright &copy; {{date('Y')}} <a href="{{route('home')}}">Eplanet</a>.</strong>
+        <strong>Copyright &copy; {{date('Y')}} <a href="{{route('home')}}">Canvas</a>.</strong>
         All rights reserved.
 {{--        <div class="float-right d-none d-sm-inline-block">--}}
 {{--            <b>Version</b> 3.1.0-rc--}}

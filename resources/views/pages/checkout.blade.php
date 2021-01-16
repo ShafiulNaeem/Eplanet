@@ -413,7 +413,7 @@
                                    </div>
                                </div>
                                <div class="panel-default">
-                                   <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
+                                   <input id="payment_defult"  type="radio" data-target="createp_account" />
                                    <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Cash on delivery <img src="assets/img/icon/papyel.png" alt=""></label>
 
 {{--                                   <div id="collapsedefult" class="collapse one" data-parent="#accordion">--}}
