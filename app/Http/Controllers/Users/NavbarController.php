@@ -57,6 +57,25 @@ class NavbarController extends Controller
         return view('pages.user_profile',compact('users','orders','userPBlogs'));
     }
 
+    public function profileEdit(User $user)
+    {
+        //dd($user);
+        return view('pages.profile_update',compact('user'));
+    }
+
+    public function profileUpdate(Request $request,User $user)
+    {
+        $validate = $request->validate([
+            'fname'=> 'required',
+            'lname' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+        ]);
+        return ( $user->update($validate) )?
+            redirect()->route('profile.show')->with('success', 'Your Information Updated Successfully'):
+            redirect()->route('profile.edit')->with('error', 'Something went wrong') ;
+    }
+
     public function orderCancel(Order $order)
     {
         $order->delete();
