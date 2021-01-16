@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="{{'home'}}">home</a></li>
+                            <li><a href="{{route('home')}}">home</a></li>
                             <li>My account</li>
                         </ul>
                     </div>
@@ -21,20 +21,26 @@
 <!--breadcrumbs area end-->
 
 <!--  User information start  -->
-
+    @foreach($users as $user)
     <section class="user_info">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="user_info_title">
-                        <h2>User Information</h2>
+
+                    </div>
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><h4>User Information</h4></li>
+                            <li><a href="{{route('profile.edit',$user->id)}}">Update Your Information</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="user_info_inner">
-                        @foreach($users as $user)
+
                         <div class="user_name">
                             <h4>Name: {{$user->fname." ".$user->lname}}</h4>
                         </div>
@@ -44,12 +50,12 @@
                         <div class="user_name">
                             <p>Email: {{$user->email}}</p>
                         </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endforeach
 
 <!--  User information end  -->
 

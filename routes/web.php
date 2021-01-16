@@ -73,7 +73,11 @@ Route::get('wishlist', 'WelcomeController@userWishList')->name('wish.list')->mid
 Route::delete('wishlist/{wishList}', 'WelcomeController@deleteWishList')->name('wish.delete')->middleware(['auth:web']);
 Route::get('addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
 Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
+
+//user profile
 Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
+Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->name('profile.edit');
+Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->name('profile.update');
 
 // Cancel Order
 Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->name('profile.order.cancel');
