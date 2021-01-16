@@ -15,10 +15,10 @@
 
                             </li>
                             <li><a href="{{ route('admin.register') }}">Sell</a></li>
-                            <li><a href="#">EMI</a></li>
-                            <li><a href="#">Gift Card</a></li>
-                            <li><a href="#">Customer Care</a></li>
-                            <li><a href="#"></a></li>
+{{--                            <li><a href="#">EMI</a></li>--}}
+{{--                            <li><a href="#">Gift Card</a></li>--}}
+{{--                            <li><a href="#">Customer Care</a></li>--}}
+{{--                            <li><a href="#"></a></li>--}}
                         </ul>
                     </div>
                     <div class="header_social text-right">
@@ -162,10 +162,10 @@
                         <div class="col-lg-4 col-md-4">
                             <ul>
                                 <li><a href="{{route('admin.register')}}">Sell</a></li>
-                                <li><a href="#">EMI</a></li>
-                                <li><a href="#">Gift Card</a></li>
-                                <li><a href="#">Customer Care</a></li>
-                                <li><a href="#"></a></li>
+{{--                                <li><a href="#">EMI</a></li>--}}
+{{--                                <li><a href="#">Gift Card</a></li>--}}
+{{--                                <li><a href="#">Customer Care</a></li>--}}
+{{--                                <li><a href="#"></a></li>--}}
                             </ul>
                         </div>
 
@@ -179,7 +179,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/pnga 543.png')}}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/new_logo.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -270,7 +270,7 @@
                                                            </div>
                                                             <div class="cart_info">
                                                                 <a href="#">{{$addTocart['product_name']}}</a>
-                                                                <p>{{$addTocart['quantity']}} x <span> ${{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
+                                                                <p>{{$addTocart['quantity']}} x <span> BDT{{$addTocart['quantity'] * $addTocart['product_price']}} </span></p>
                                                             </div>
                                                             <div class="cart_remove">
                                                                 <form action="{{route('cart.destroy',$addTocart['id'])}}" method="post">
@@ -288,7 +288,7 @@
                                                         <div class="cart_table_border">
                                                             <div class="cart_total mt-10">
                                                                 <span>total:</span>
-                                                                <span class="price">$ {{$total}}</span>
+                                                                <span class="price">BDT {{$total}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -322,7 +322,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-2">
                         <div class="location" style="text-align: center;margin-top:10px;">
-                            <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                            <a href="{{ route('contact.show') }}"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="col-md-10 col-lg-10 col-10">

@@ -44,10 +44,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brands = Brand::orderBy('brand_name','asc')->get();
-        $subcategory = SubCategory::all();
-        $categories = Category::all();
-        $coupons = Coupon::all();
+        $brands = Brand::orderBy('brand_name','asc')->BrandWithAdminOwner()->get();
+        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
+        $categories = Category::CategoryWithAdminOwner()->get();
+        $coupons = Coupon::CouponWithAdminOwner()->get();
 
         return view('admin.product.create',compact('brands','subcategory', 'coupons', 'categories'));
     }

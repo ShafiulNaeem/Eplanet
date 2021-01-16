@@ -885,7 +885,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .logo img {
-  max-width: 80px;
+  /*max-width: 80px;*/
+    width: 100%;
 }
 @media only screen and (max-width: 767px) {
   .logo img {
@@ -11037,6 +11038,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .logo{
   float:right;
+    width: 50%;
 }
 
 /*privacy policy css end*/
