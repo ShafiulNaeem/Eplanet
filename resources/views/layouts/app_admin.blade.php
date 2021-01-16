@@ -5,7 +5,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Canvas') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -92,8 +92,8 @@
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
 {{--<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>--}}
 @php
-    function getRandomColor($num) {
-      $hash = md5('color' . $num);
+    function getRandomColor($string, $num) {
+      $hash = md5($string . $num);
         return array(hexdec(substr($hash, 0, 2)), hexdec(substr($hash, 2, 2)), hexdec(substr($hash, 4, 2)));
     }
 @endphp
@@ -117,12 +117,12 @@
 
         $monthlySell[$prIndex]['label'] = $product->product_name;
         $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
-        $monthlySell[$prIndex]['borderColor'] = getRandomColor(2);
+        $monthlySell[$prIndex]['borderColor'] = getRandomColor('two',2);
         $monthlySell[$prIndex]['pointRadius'] = true;
-        $monthlySell[$prIndex]['pointColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
-        $monthlySell[$prIndex]['pointStrokeColor'] = getRandomColor(6);
+        $monthlySell[$prIndex]['pointColor'] = getRandomColor('five',5);
+        $monthlySell[$prIndex]['pointStrokeColor'] = getRandomColor('six',6);
         $monthlySell[$prIndex]['pointHighlightFill'] = '#ffffff';
-        $monthlySell[$prIndex]['pointHighlightStroke'] = getRandomColor(3);
+        $monthlySell[$prIndex]['pointHighlightStroke'] = getRandomColor('three',3);
 
         if( ! count($res) ){
             for ($i = 1; $i <= 12; ++$i){

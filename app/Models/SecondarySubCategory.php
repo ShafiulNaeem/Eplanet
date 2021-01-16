@@ -13,12 +13,26 @@ class SecondarySubCategory extends Model
     protected $guarded = [];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Product::class, 'secondary_sub_categories_id');
+    }
+
+    /**
      * @param $query
      * @return mixed
      */
-    public function scopeSecondarySubCategoryWithAdminOwner($query)
+    public function scopeSecondarySubCategoryWithAdminOwner($query): mixed
     {
         return $query->where('admin_id', Auth::guard('admin')->id());
+    }
+
+
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class, 'sub_category_id');
     }
 
 
@@ -26,7 +40,7 @@ class SecondarySubCategory extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeSecondarySubCategoryWithOutAdminOwner($query)
+    public function scopeSecondarySubCategoryWithOutAdminOwner($query): mixed
     {
         return $query->where('admin_id','!=' ,Auth::guard('admin')->id());
     }

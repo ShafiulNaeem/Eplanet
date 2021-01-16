@@ -78,6 +78,18 @@
                                         </div>
 
                                         <div class="form-group col-md-6 float-left">
+                                            <label for="">Second Sub Category</label>
+
+                                            <select name="secondary_sub_categories_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                                <option selected="selected">Select Second Sub Category</option>
+                                                @foreach($secondary_sub as $category )
+                                                    <option value="{{$category->id}}">{{$category->secondary_subcategory_name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Coupon</label>
                                             <select name="product_coupon" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                                 <option value="" selected>Select Coupon</option>
@@ -168,7 +180,7 @@
                                         </div>
 
 
-                                        <div class="form-group ">
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleFormControlTextarea1">Product Description</label>
                                             <textarea class="form-control" name="product_description" required id="exampleFormControlTextarea1" rows="3">{{ old('product_description') }}</textarea>
                                             @error('product_description')
