@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,6 +30,8 @@ class NavbarController extends Controller
         }
     }
 
+
+    //subcategory
     public function show($id)
     {
         $catArray = ['kids', 'men'];
@@ -38,6 +41,24 @@ class NavbarController extends Controller
         $category = SubCategory::where('id',$id)->GetActive()->get();
         $product = Product::where([
             ['sub_categories_id' , '=', $id],
+            ['status', '=', 1],
+        ])->paginate(16);
+
+        //dd($product);
+
+        return view('pages.one_category',['results' => $mainRes,'categories' =>$category,'products' => $product]);
+    }
+
+    // 2nd subcategory
+    public function secondary_subcategory($id)
+    {
+        $catArray = ['kids', 'men'];
+        $mainRes = $this->productByCategory($catArray);
+
+        //$category = SubCategory::with('productWithStatus')->where('id',$id)->GetActive()->paginate(1);
+        $category = SecondarySubCategory::where('id',$id)->GetActive()->get();
+        $product = Product::where([
+            ['secondary_sub_categories_id' , '=', $id],
             ['status', '=', 1],
         ])->paginate(16);
 
