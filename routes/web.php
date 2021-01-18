@@ -108,6 +108,7 @@ Route::prefix('pages')->group(function(){
     Route::delete('/{id}', 'Users\CartController@destroy')->middleware(['auth'])->name('cart.destroy');
     Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
     Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
+    Route::get('secondary_sub/{id}', 'Users\NavbarController@secondary_subcategory')->name('secondary_sub.show');
     Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
 });
 

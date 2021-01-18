@@ -15,6 +15,11 @@ class SecondarySubCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    //status check
+    public function scopeGetActive($query)
+    {
+        return $query->where('status', 1);
+    }
     public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Product::class, 'secondary_sub_categories_id');

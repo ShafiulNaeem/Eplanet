@@ -361,7 +361,7 @@
                                                     @if( count($cat->secondary_sub_categories) > 0 )
                                                         <ul class="drop-down drop-menu-2">
                                                             @foreach($cat->secondary_sub_categories as $secondary_sub )
-                                                                <li><a href="#">{{$secondary_sub->secondary_subcategory_name}}</a></li>
+                                                                <li><a href="{{route('secondary_sub.show',$secondary_sub->id)}}">{{$secondary_sub->secondary_subcategory_name}}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     @endif
