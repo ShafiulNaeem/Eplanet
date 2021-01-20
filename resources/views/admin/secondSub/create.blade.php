@@ -33,8 +33,8 @@
                                     </div>
 
                                     <div class="form-group col-md-6 float-left">
-                                        <label for="exampleInputPassword1">Category Name</label>
-                                        <select name="category_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                        <label for="category_id">Category Name</label>
+                                        <select name="category_id" id="category_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                             <option selected>Select Category</option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}">{{$category->category_name}}</option>
@@ -47,11 +47,11 @@
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Sub Category Name</label>
-                                        <select name="sub_category_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                        <select name="sub_category_id" id="sub_category_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                             <option selected>Select Category</option>
-                                            @foreach($sub_categories as $category)
-                                                <option value="{{$category->id}}">{{$category->subcategory_name}}</option>
-                                            @endforeach
+{{--                                            @foreach($sub_categories as $category)--}}
+{{--                                                <option value="{{$category->id}}">{{$category->subcategory_name}}</option>--}}
+{{--                                            @endforeach--}}
                                         </select>
                                         @error('sub_category_id')
                                         <span class="text-danger">{{$message}}</span>

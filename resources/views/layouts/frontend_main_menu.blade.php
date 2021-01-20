@@ -323,7 +323,10 @@
                 <div class="row">
                     <div class="col-lg-1 col-md-1 col-1">
                         <div class="location" style="text-align: center;margin-top:10px;">
-                            <a href="{{ route('contact.show') }}"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                            <a href="{{ route('contact.show') }}">
+                                <i class="fa fa-map-marker " aria-hidden="true"></i> <br>
+                                <span class="text-white">Dhaka, Bangladesh</span>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-10 col-lg-10 col-10">
