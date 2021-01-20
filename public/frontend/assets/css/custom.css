@@ -545,7 +545,7 @@ text-align: center
 
 
 .fa-map-marker{
-    font-size: 15px;
+    font-size: 25px;
     color:#FFF
 }
 
@@ -631,7 +631,7 @@ header .main-header, header .main-nav {
     padding: 0 0 0 15px;
 }
 .main-nav .nav li a {
-    color: #cfcfcf;
+    color: #ffffff;
     font-size: 12px;
 }
 .main-nav .nav .drop-menu-2 {
@@ -641,7 +641,7 @@ header .main-header, header .main-nav {
 }
 .main-nav .nav .drop-menu-2 li {
     position: relative;
-    background: #031d2c;
+    background: #11032c;
     border-bottom: 1px solid #082a43;
     font-size: 11px;
 }

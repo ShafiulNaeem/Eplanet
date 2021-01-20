@@ -153,6 +153,8 @@ Route::prefix('admin')->group(function(){
         Route::post('employeeChange', 'EmployeeController@change')->name('employee.change.status');
 
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
+        Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
+        Route::post('secondsubcatbysubcat/{subcategory}', 'SubCategoryController@secondarySubBySubCategory')->name('second.sub.cat.by.sub.cat');
 
         Route::name('admin.all.')->prefix('allvendor')->group(function (){
             Route::get('product', 'ProductController@allProduct')->name('product');

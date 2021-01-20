@@ -448,6 +448,75 @@ data.push({
 
     });
 
+
+    $('#category_id').on('change',function (e) {
+        let selectedValue = $(this).children("option:selected").val();
+        let subCat = $('#sub_category_id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('admin/subcatbycat') }}/" + selectedValue,
+            method: 'post',
+            // dataType:'json',
+            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
+
+
+            success: function (response) {
+                console.log(response);
+                response.forEach((value, index) => {
+                    console.log(value, index);
+                    let option = createElement('option');
+                    option.setAttribute('value', value.id);
+                    option.innerText = value.subcategory_name;
+                    subCat[0].append(option);
+                });
+                console.log(subCat)
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+
+
+    });
+
+    $('#sub_category_id').on('change',function (e) {
+        let selectedValue = $(this).children("option:selected").val();
+        let subCat = $('#secondary_sub_categories_id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('admin/secondsubcatbysubcat') }}/" + selectedValue,
+            method: 'post',
+            // dataType:'json',
+            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
+
+
+            success: function (response) {
+                console.log(response);
+                response.forEach((value, index) => {
+                    console.log(value, index);
+                    let option = createElement('option');
+                    option.setAttribute('value', value.id);
+                    option.innerText = value.secondary_subcategory_name;
+                    subCat[0].append(option);
+                });
+                console.log(subCat)
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+
+
+    });
+
     function createElement(element) {
         return document.createElement(element);
     }
