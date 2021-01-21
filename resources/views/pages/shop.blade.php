@@ -78,49 +78,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="table_content text-center">
-                        <table class="table table-bordered" style="background:#EEF8FF;">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Business Type</th>
-                                    <th scope="col">Manufacturer, Trading Company</th>
-                                    <th scope="col">Country / Region</th>
-                                    <th scope="col">Guangdong, China</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="table_content text-center">--}}
+{{--                        <table class="table table-bordered" style="background:#EEF8FF;">--}}
+{{--                            <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th scope="col">Business Type</th>--}}
+{{--                                    <th scope="col">Manufacturer, Trading Company</th>--}}
+{{--                                    <th scope="col">Country / Region</th>--}}
+{{--                                    <th scope="col">Guangdong, China</th>--}}
+{{--                                </tr>--}}
+{{--                            </thead>--}}
+{{--                            <tbody>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
 
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                </tr>--}}
 
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+{{--                            </tbody>--}}
+{{--                        </table>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>
@@ -240,53 +240,53 @@
                 <!--product area end-->
             </div>
 
-             <div class="row">
-                 <div class="main_pro_img">
-                     <h4>Production Equipment</h4>
-                 </div>
-                <div class="col-md-12">
-                    <div class="table_content text-center">
-                        <table class="table table-bordered" style="background:#EEF8FF;">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Quantity</th>
-                                    <th>Verify</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
+{{--             <div class="row">--}}
+{{--                 <div class="main_pro_img">--}}
+{{--                     <h4>Production Equipment</h4>--}}
+{{--                 </div>--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="table_content text-center">--}}
+{{--                        <table class="table table-bordered" style="background:#EEF8FF;">--}}
+{{--                            <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th scope="col">Name</th>--}}
+{{--                                    <th scope="col">No</th>--}}
+{{--                                    <th scope="col">Quantity</th>--}}
+{{--                                    <th>Verify</th>--}}
+{{--                                </tr>--}}
+{{--                            </thead>--}}
+{{--                            <tbody>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td>Mark</td>--}}
+{{--                                    <td>Otto</td>--}}
+{{--                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>--}}
+{{--                                </tr>--}}
 
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+{{--                            </tbody>--}}
+{{--                        </table>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
         </div>
     </section>

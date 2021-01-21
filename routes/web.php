@@ -181,6 +181,8 @@ Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
         Route::resource('productRnD', 'ProductRnDController');
         Route::resource('tradeCapacity', 'ProductTradeCapacityController');
         Route::resource('factoryInspection', 'ProductFactoryInspectionController');
+        Route::resource('factoryView', 'FactoryViewController');
+        Route::resource('showView', 'ShowViewController');
     });
 });
 

@@ -531,6 +531,7 @@
                     </ul>
                 </li>
 
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle"></i>
@@ -643,6 +644,7 @@
                     </ul>
                 </li>
 
+
                 <li class="nav-item @if(
                                     url()->current() == route('orders.index') ||
                                     url()->current() == route('orders.create')
@@ -693,7 +695,11 @@
                                     url()->current() == route('tradeCapacity.create') ||
                                     url()->current() == route('tradeCapacity.index') ||
                                     url()->current() == route('factoryInspection.create') ||
-                                    url()->current() == route('factoryInspection.index')
+                                    url()->current() == route('factoryInspection.index') ||
+                                    url()->current() == route('factoryView.create') ||
+                                    url()->current() == route('factoryView.index') ||
+                                    url()->current() == route('showView.create') ||
+                                    url()->current() == route('showView.index')
     ) menu-is-opening menu-open @endif ">
                         <a href="#" class="nav-link @if(
                                     url()->current() == route('productCapacity.create') ||
@@ -707,7 +713,11 @@
                                     url()->current() == route('tradeCapacity.create') ||
                                     url()->current() == route('tradeCapacity.index') ||
                                     url()->current() == route('factoryInspection.create') ||
-                                    url()->current() == route('factoryInspection.index')
+                                    url()->current() == route('factoryInspection.index') ||
+                                    url()->current() == route('factoryView.create') ||
+                                    url()->current() == route('factoryView.index') ||
+                                    url()->current() == route('showView.create') ||
+                                    url()->current() == route('showView.index')
     ) active @endif ">
                             <i class="nav-icon fas fa-circle"></i>
                             <p>
@@ -727,7 +737,11 @@
                                     url()->current() == route('tradeCapacity.create') ||
                                     url()->current() == route('tradeCapacity.index') ||
                                     url()->current() == route('factoryInspection.create') ||
-                                    url()->current() == route('factoryInspection.index')
+                                    url()->current() == route('factoryInspection.index') ||
+                                    url()->current() == route('factoryView.create') ||
+                                    url()->current() == route('factoryView.index') ||
+                                    url()->current() == route('showView.create') ||
+                                    url()->current() == route('showView.index')
     ) style="display: block" @endif >
                             <li class="nav-item @if(
                                     url()->current() == route('productCapacity.create') ||
@@ -952,6 +966,82 @@
                                     </li>
                                 </ul>
                             </li>
+
+{{--                            factory view && Show--}}
+                            <li class="nav-item @if(
+                                    url()->current() == route('factoryView.create') ||
+                                    url()->current() == route('factoryView.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('factoryView.create') ||
+                                    url()->current() == route('factoryView.index')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>
+                                        Factory View
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('factoryView.create') ||
+                                    url()->current() == route('factoryView.index')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{ route('factoryView.create') }}" class="nav-link @if(
+                                    url()->current() == route('factoryView.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Factory View</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('factoryView.index') }}" class="nav-link @if(
+                                    url()->current() == route('factoryView.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Manage Factory View</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item @if(
+                                    url()->current() == route('showView.create') ||
+                                    url()->current() == route('showView.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('showView.create') ||
+                                    url()->current() == route('showView.index')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>
+                                        Show View
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('showView.create') ||
+                                    url()->current() == route('showView.index')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{ route('showView.create') }}" class="nav-link @if(
+                                    url()->current() == route('showView.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Show View</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('showView.index') }}" class="nav-link @if(
+                                    url()->current() == route('showView.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Manage Show View</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
 
                         </ul>
                     </li>
