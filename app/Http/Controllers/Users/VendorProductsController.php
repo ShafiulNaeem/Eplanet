@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\FactoryView;
 use App\Models\Product;
 use App\Models\ProductCapacity;
 use App\Models\ProductRnD;
+use App\Models\ShowView;
 use Illuminate\Http\Request;
 use App\Models\ProductCertification;
 use App\Models\ProductQuality;
@@ -20,8 +22,11 @@ class VendorProductsController extends Controller
        // dd($productSales);
         $productTops = Admin::with('productsWithTop')->where('id', $id)->get();
 
-        //dd($productTops);
-        return view('pages.vendor_home',compact('productSales','productTops'));
+        $showViews = ShowView::where('admin_id', $id)->get();
+        $factoryViews = FactoryView::where('admin_id', $id)->get();
+
+        //dd($showViews);
+        return view('pages.vendor_home',compact('productSales','productTops','showViews','factoryViews'));
     }
 
     public function overview($id)
