@@ -24,7 +24,7 @@
                         <form role="form" action="{{route('factoryView.store')}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="card-body">
-                                <div class="form-group ">
+                                <div class="form-group col-md-6 float-left">
                                     <label for="exampleFormControlTextarea1">Factory View Description</label>
                                     <textarea class="form-control" name="description" required  id="exampleFormControlTextarea1" rows="3">{{ old('description') }}</textarea>
                                     @error('description')
@@ -32,7 +32,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputFile">Factory View Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
