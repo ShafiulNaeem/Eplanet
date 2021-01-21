@@ -102,14 +102,15 @@
     var data = [];
     var mainDatas = [];
 @php
-    $from = date('Y') . '-01-01';
-    $to = date('Y') . '-12-31';
+    $from = date('Y') . '-01-01 ' . date('H:i:s');
+    $to = date('Y') . '-12-31 ' . date('H:i:s');
     $pro = \App\Models\Product::where('admin_id', \Illuminate\Support\Facades\Auth::guard('admin')->id())->orderBy('sold', 'desc')->limit(5)->get();
     $monthlySell = [];
 
     foreach ($pro as $prIndex => $product){
         $res= \App\Models\OrderProduct::with('order')
             ->where('product_id', $product->id)
+            ->whereHas('order', function ($query){ $query->where('shifted', 1); })
             ->whereBetween('created_at', [$from, $to])
             ->get()
             ->groupBy(function($val) {
