@@ -108,7 +108,7 @@ class ProductRnDController extends Controller
         $this->validate($request, array(
             'title' => 'required',
             'description' => 'required',
-            'rnd_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'rnd_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ));
 
         //$productCapacities = new ProductCapacity();

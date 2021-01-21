@@ -197,6 +197,38 @@
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    @if(Session::has('success'))
+    toastr.success("{{Session::get('success')}}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.error("{{Session::get('error')}}");
+    @endif
+
+    @if(Session::has('info'))
+    toastr.info("{{Session::get('info')}}");
+    @endif
+</script>
+
    <script type="text/javascript">
 
         $(document).on('click', '#add_to_wish_list', function (e) {
@@ -212,6 +244,7 @@
 
                 success: function (response) {
                     console.log(response.responseText);
+                    toastr.success(response.message);
                     console.log(response);
                 },
                 error:function(response)
@@ -240,6 +273,7 @@
 
                 success: function (response) {
                     console.log(response.responseText);
+                    toastr.success(response.message);
                     console.log(response);
                 },
                 error:function(response)
@@ -277,38 +311,6 @@
       });
 
 
-</script>
-
-<script>
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    };
-
-        @if(Session::has('success'))
-            toastr.success("{{Session::get('success')}}");
-        @endif
-
-        @if(Session::has('error'))
-            toastr.error("{{Session::get('error')}}");
-        @endif
-
-        @if(Session::has('info'))
-            toastr.info("{{Session::get('info')}}");
-        @endif
 </script>
 
 </body>

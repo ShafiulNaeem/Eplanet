@@ -26,13 +26,13 @@
                             @method('PUT')
                         <div class="card-body">
 
-                            <div class="form-group ">
+                            <div class="form-group col-md-6 float-left ">
                                 <label for="exampleFormControlTextarea1">Description</label>
                                 <textarea class="form-control" name="description" require ="require" id="exampleFormControlTextarea1" rows="3">{{$showView->description}}</textarea>
 
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group col-md-6 float-left">
                                 <label for="exampleInputFile">Image</label>
                                 <div class="input-group">
                                     <div class="custom-file">

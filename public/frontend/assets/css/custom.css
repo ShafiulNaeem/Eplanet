@@ -652,6 +652,10 @@ header .main-header, header .main-nav {
     padding: 0 0 0 15px;
 }
 
+.card > a > img{
+    width: 100%;
+}
+
 
 
 .main-nav ul .c-1:hover >.drop-down , .main-nav li:hover >.drop-down {

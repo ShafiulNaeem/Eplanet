@@ -91,25 +91,6 @@
             </div>
         </div>
 
-        <!--
-             <div class="blog_pagination">
-                 <div class="container-fluid">
-                     <div class="row">
-                         <div class="col-12">
-                             <div class="pagination">
-                                 <ul>
-                                     <li class="current">1</li>
-                                     <li><a href="#">2</a></li>
-                                     <li><a href="#">3</a></li>
-                                     <li class="next"><a href="#">next</a></li>
-                                     <li><a href="#">&gt;&gt;</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        -->
     </section>
 
     <!-- Top Sales area End -->
@@ -147,25 +128,6 @@
             </div>
         </div>
 
-        <!--
-             <div class="blog_pagination">
-                 <div class="container-fluid">
-                     <div class="row">
-                         <div class="col-12">
-                             <div class="pagination">
-                                 <ul>
-                                     <li class="current">1</li>
-                                     <li><a href="#">2</a></li>
-                                     <li><a href="#">3</a></li>
-                                     <li class="next"><a href="#">next</a></li>
-                                     <li><a href="#">&gt;&gt;</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        -->
     </section>
 
     <!-- Top Product area End -->
@@ -183,15 +145,15 @@
                         </div>
                         <div class="col-md-12">
                             <div class="related_inner">
-                                <div class="card">
-                                    @foreach($showViews as $showView)
-                                        <a href="#"><img src="{{url('images',$showView->image)}}" alt="{{$showView->description}}"></a>
+                                @foreach($showViews as $showView)
+                                    <div class="card">
+                                        <a href="#"><img src="{{url('images',$showView->image)}}" /></a>
                                         <div class="card-body">
                                             <p class="card-text">{{$showView->description}}</p>
 
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -203,15 +165,15 @@
                         </div>
                         <div class="col-md-12">
                             <div class="related_inner">
-                                <div class="card">
-                                    @foreach($factoryViews as $factoryView)
-                                        <a href="#"><img src="{{url('images',$factoryView->image)}}" alt="{{$factoryView->description}}"></a>
+                                @foreach($factoryViews as $factoryView)
+                                    <div class="card">
+                                        <a href="#"><img src="{{url('images',$factoryView->image)}}" /></a>
                                         <div class="card-body">
                                             <p class="card-text">{{$factoryView->description}}</p>
 
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

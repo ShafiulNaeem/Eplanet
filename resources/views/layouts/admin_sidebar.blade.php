@@ -255,47 +255,47 @@
                 @endif
 
 
-                <li class="nav-item @if(
-                                    url()->current() == route('secondsub.create') ||
-                                    url()->current() == route('secondsub.index')
-    ) menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if(
-                                    url()->current() == route('secondsub.create') ||
-                                    url()->current() == route('secondsub.index')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Second SubCategory
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('secondsub.create') ||
-                                    url()->current() == route('secondsub.index')
-    ) style="display: block" @endif >
-                        <li class="nav-item">
-                            <a href="{{ route('secondsub.create') }}" class="nav-link @if( url()->current() == route('secondsub.create' ) )active @endif ">
+{{--                <li class="nav-item @if(--}}
+{{--                                    url()->current() == route('secondsub.create') ||--}}
+{{--                                    url()->current() == route('secondsub.index')--}}
+{{--    ) menu-is-opening menu-open @endif">--}}
+{{--                    <a href="#" class="nav-link @if(--}}
+{{--                                    url()->current() == route('secondsub.create') ||--}}
+{{--                                    url()->current() == route('secondsub.index')--}}
+{{--    ) active @endif ">--}}
+{{--                        <i class="nav-icon fas fa-copy"></i>--}}
+{{--                        <p>--}}
+{{--                            Second SubCategory--}}
+{{--                            <i class="fas fa-angle-left right"></i>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav nav-treeview" @if(--}}
+{{--                                    url()->current() == route('secondsub.create') ||--}}
+{{--                                    url()->current() == route('secondsub.index')--}}
+{{--    ) style="display: block" @endif >--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('secondsub.create') }}" class="nav-link @if( url()->current() == route('secondsub.create' ) )active @endif ">--}}
 {{--                                <i class="far fa-circle nav-icon"></i>--}}
-                                <p>{{__('Second SubCategory Create')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('secondsub.index') }}" class="nav-link @if( url()->current() == route('secondsub.index' ) )active @endif ">
+{{--                                <p>{{__('Second SubCategory Create')}}</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('secondsub.index') }}" class="nav-link @if( url()->current() == route('secondsub.index' ) )active @endif ">--}}
 {{--                                <i class="far fa-circle nav-icon"></i>--}}
-                                <p>{{__('Second SubCategory Manage')}}</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
+{{--                                <p>{{__('Second SubCategory Manage')}}</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )--}}
+{{--                            <li class="nav-item">--}}
 {{--                                <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.brand' ) )active @endif ">--}}
 {{--                                    <i class="far fa-circle nav-icon"></i>--}}
 {{--                                    <p>All Vendor Brand</p>--}}
 {{--                                </a>--}}
-                            </li>
-                        @endif
+{{--                            </li>--}}
+{{--                        @endif--}}
 
-                    </ul>
-                </li>
+{{--                    </ul>--}}
+{{--                </li>--}}
 
 
                 <li class="nav-item @if(
@@ -350,7 +350,9 @@
                                     url()->current() == route('category.index') ||
                                     url()->current() == route('subcategory.index') ||
                                     url()->current() == route('subcategory.create') ||
-                                    url()->current() == route('admin.all.subcategory')
+                                    url()->current() == route('admin.all.subcategory') ||
+                                    url()->current() == route('secondsub.create') ||
+                                    url()->current() == route('secondsub.index')
     ) menu-is-opening menu-open @endif ">
                     <a href="#" class="nav-link @if(
                                     url()->current() == route('category.create') ||
@@ -358,7 +360,9 @@
                                     url()->current() == route('category.index') ||
                                     url()->current() == route('subcategory.index') ||
                                     url()->current() == route('subcategory.create') ||
-                                    url()->current() == route('admin.all.subcategory')
+                                    url()->current() == route('admin.all.subcategory') ||
+                                    url()->current() == route('secondsub.create') ||
+                                    url()->current() == route('secondsub.index')
     ) active @endif ">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
@@ -477,10 +481,59 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item @if(
+                                    url()->current() == route('secondsub.create') ||
+                                    url()->current() == route('secondsub.index')
+    ) menu-is-opening menu-open @endif ">
+                            <a href="#" class="nav-link @if(
+                                    url()->current() == route('secondsub.create') ||
+                                    url()->current() == route('secondsub.index')
+    ) active @endif ">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Second Sub Category
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('secondsub.create') ||
+                                    url()->current() == route('secondsub.index')
+    ) style="display: block" @else style="display: none" @endif  >
+                                <li class="nav-item">
+                                    <a href="{{ route('secondsub.create') }}" class="nav-link @if(
+                                    url()->current() == route('secondsub.create')
+    ) active @endif  ">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Second Sub Category</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('secondsub.index') }}" class="nav-link @if(
+                                    url()->current() == route('secondsub.index')
+    ) active @endif   ">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Second Sub category</p>
+                                    </a>
+                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('admin.all.subcategory') }}" class="nav-link text-fuchsia @if(--}}
+{{--                                    url()->current() == route('admin.all.subcategory')--}}
+{{--    ) active @endif   ">--}}
+{{--                                            <i class="far fa-dot-circle nav-icon"></i>--}}
+{{--                                            <p>All Vendor SubCategory</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+                                @endif
+
+                            </ul>
+                        </li>
+
 
 
                     </ul>
                 </li>
+
 
 
                 <li class="nav-item @if(
