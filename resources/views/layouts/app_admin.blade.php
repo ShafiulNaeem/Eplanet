@@ -92,13 +92,12 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
 {{--<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>--}}
-@php
-    function getRandomColor($string, $num) {
-      $hash = md5($string . $num);
-        return array(hexdec(substr($hash, 0, 2)), hexdec(substr($hash, 2, 2)), hexdec(substr($hash, 4, 2)));
-    }
-@endphp
+
 <script>
+    function random_rgba() {
+        var o = Math.round, r = Math.random, s = 255;
+        return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    }
     var data = [];
     var mainDatas = [];
 @php
@@ -117,14 +116,6 @@
                 return \Carbon\Carbon::parse($val->created_at)->format('m');
         });
 
-        $monthlySell[$prIndex]['label'] = $product->product_name;
-        $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
-        $monthlySell[$prIndex]['borderColor'] = getRandomColor('two',2);
-        $monthlySell[$prIndex]['pointRadius'] = true;
-        $monthlySell[$prIndex]['pointColor'] = getRandomColor('five',5);
-        $monthlySell[$prIndex]['pointStrokeColor'] = getRandomColor('six',6);
-        $monthlySell[$prIndex]['pointHighlightFill'] = '#ffffff';
-        $monthlySell[$prIndex]['pointHighlightStroke'] = getRandomColor('three',3);
 
         if( ! count($res) ){
             for ($i = 1; $i <= 12; ++$i){
@@ -157,13 +148,13 @@
 @endphp
 data.push({
     label : '{{$product->product_name}}',
-    backgroundColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    borderColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    pointRadius : true,
-    pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    pointStrokeColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    pointHighlightFill : '#ffffff',
-    pointHighlightStroke : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    backgroundColor : random_rgba(),
+    borderColor : random_rgba(),
+    {{--pointRadius : true,--}}
+    {{--pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',--}}
+    pointStrokeColor : random_rgba(),
+    pointHighlightFill : random_rgba(),
+    pointHighlightStroke : random_rgba(),
     data: mainDatas
 });
 
