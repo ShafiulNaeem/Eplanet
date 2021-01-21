@@ -34,10 +34,10 @@ class AdminController extends Controller
         }
 
         $data = [
-            'allUsers' => User::all(),
+            'allUsers' => User::where('is_verified', 1)->get(),
             'allVendors' => Admin::all(),
             'totalWeekSale' => $totalSale,
-            'usersThisMonth' => User::whereBetween('created_at', [$pastMonth, $today])->get()
+            'usersThisMonth' => User::whereBetween('created_at', [$pastMonth, $today])->where('is_verified', 0)->get()
         ];
 
         return view('admin.admin', $data);
