@@ -1,58 +1,22 @@
 @extends('layouts.app_main')
 @section('content')
 <!--slider area start-->
-<section class="slider_section">
-    <div class="slider_area owl-carousel">
-        <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="slider_content">
-                            <h1>Baby Product</h1>
-                            <h2>Kids Fashion</h2>
-                            <p>
-                                Valid till 15 Augest
-                            </p>
-                            <a href="shop.html">Shop Now </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="slider_content">
-                            <h1>Baby Products</h1>
-                            <h2>Kids Fashion</h2>
-                            <p>
-                                Valid till 15 Augest
-                            </p>
-                            <a href="shop.html">Shop Now </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="slider_content">
-                            <h1>Baby Products</h1>
-                            <h2>Kids Fashion</h2>
-                            <p>
-                                Valid till 15 Augest
-                            </p>
-                            <a href="shop.html">Shop Now </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="image_video">
+    <div class="bo-slider">
+
+      <li data-url="{{ asset('frontend/assets/img/main1.jpg') }}" data-type="image">
+      </li>
+
+      <li data-url="{{ asset('frontend/assets/img/1.jpg') }}" data-type="image"></li>
+
+      <li data-url="{{ asset('frontend/assets/img/2.jpg') }}" data-type="image"></li>
+
+      <li data-url="{{ asset('frontend/v2.mp4') }}" data-type="video">
+
+      <li data-url="{{ asset('frontend/assets/img/slider/main1.jpg') }}" data-type="image"></li>
+
     </div>
-</section>
+</div>
 <!--slider area end-->
 
    <!--  Section Discover slider Start  -->

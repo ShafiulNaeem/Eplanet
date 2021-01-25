@@ -16,6 +16,7 @@
     ========================= -->
     <!--bootstrap min css-->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.min.css') }}">
     <!--owl carousel min css-->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.min.css') }}">
     <!--slick min css-->
@@ -196,6 +197,8 @@
 
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/script.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/script.min.js')}}"></script>
 
    <script type="text/javascript">
 
@@ -310,6 +313,20 @@
             toastr.info("{{Session::get('info')}}");
         @endif
 </script>
+
+<script>
+    
+    
+	$(function(){
+
+	  $('.bo-slider').boSlider({
+            slideShow: true,
+            interval: 5000
+        });
+
+	});
+        
+    </script>
 
 </body>
 
