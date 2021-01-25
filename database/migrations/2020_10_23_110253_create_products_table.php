@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_categories_id');
-            $table->unsignedBigInteger('secondary_sub_categories_id');
+            $table->unsignedBigInteger('secondary_sub_categories_id')->nullable();
             $table->unsignedBigInteger('coupon_id')->nullable();
             $table->string('product_name');
             $table->text('product_description');

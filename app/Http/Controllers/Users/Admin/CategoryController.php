@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Session;
@@ -162,5 +163,11 @@ class CategoryController extends Controller
         if( self::changeStatus($request->status, 'App\Models\Category', $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
+    }
+
+
+    public function subCategoryByCategory(Category $category)
+    {
+        return SubCategory::where('category_id', $category->id)->get();
     }
 }

@@ -17,6 +17,7 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        if( empty(Session::get('cart')) ) return redirect()->route('home');
         $shipping_data = ['shipping' => ShippingAddress::where(['user_id' => Auth::user()->id])->first()];
         return view('pages.checkout', $shipping_data);
     }
@@ -49,7 +50,7 @@ class CheckoutController extends Controller
             $orderpoduct = new OrderProduct();
             $orderpoduct->order_id = $order['id'];
             $orderpoduct->product_id = $cart['id'];
-            $orderpoduct->user_id = Auth::user()->id;
+            $orderpoduct->user_id = Auth::guard('web')->id();
 
             //dd($orderpoducts);
             $orderpoduct->save();

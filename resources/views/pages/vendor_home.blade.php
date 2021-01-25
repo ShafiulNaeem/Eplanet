@@ -91,25 +91,6 @@
             </div>
         </div>
 
-        <!--
-             <div class="blog_pagination">
-                 <div class="container-fluid">
-                     <div class="row">
-                         <div class="col-12">
-                             <div class="pagination">
-                                 <ul>
-                                     <li class="current">1</li>
-                                     <li><a href="#">2</a></li>
-                                     <li><a href="#">3</a></li>
-                                     <li class="next"><a href="#">next</a></li>
-                                     <li><a href="#">&gt;&gt;</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        -->
     </section>
 
     <!-- Top Sales area End -->
@@ -147,25 +128,6 @@
             </div>
         </div>
 
-        <!--
-             <div class="blog_pagination">
-                 <div class="container-fluid">
-                     <div class="row">
-                         <div class="col-12">
-                             <div class="pagination">
-                                 <ul>
-                                     <li class="current">1</li>
-                                     <li><a href="#">2</a></li>
-                                     <li><a href="#">3</a></li>
-                                     <li class="next"><a href="#">next</a></li>
-                                     <li><a href="#">&gt;&gt;</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        -->
     </section>
 
     <!-- Top Product area End -->
@@ -174,7 +136,7 @@
     <!-- Business area Start -->
 
     <section class="related-section">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
@@ -183,13 +145,15 @@
                         </div>
                         <div class="col-md-12">
                             <div class="related_inner">
-                                <div class="card">
-                                    <a href="#"><img src="{{ asset('frontend/assets/img/1.jpg') }}" class="card-img-top" alt="..."></a>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <h5 class="card-title">Lorem ipsum.</h5>
+                                @foreach($showViews as $showView)
+                                    <div class="card">
+                                        <a href="#"><img src="{{url('images',$showView->image)}}" /></a>
+                                        <div class="card-body">
+                                            <p class="card-text">{{$showView->description}}</p>
+
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -201,13 +165,15 @@
                         </div>
                         <div class="col-md-12">
                             <div class="related_inner">
-                                <div class="card">
-                                    <a href="#"><img src="{{ asset('frontend/assets/img/1.jpg') }}" class="card-img-top" alt="..."></a>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <h5 class="card-title">Lorem ipsum.</h5>
+                                @foreach($factoryViews as $factoryView)
+                                    <div class="card">
+                                        <a href="#"><img src="{{url('images',$factoryView->image)}}" /></a>
+                                        <div class="card-body">
+                                            <p class="card-text">{{$factoryView->description}}</p>
+
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -215,11 +181,11 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="related_inner">
-                        <!--                    <a href="#"><img src="assets/img/slider/main1.jpg" class="card-img-top" alt="..."></a>-->
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maiores mollitia atque obcaecati placeat harum temporibus tempore esse eos ducimus quisquam alias possimus ea accusamus laborum assumenda aspernatur, earum quae asperiores corporis optio, minus illo tempora sequi. Laboriosam, nam, ipsam. Maiores iure, rerum harum ratione commodi mollitia molestias sit sequi iste iusto. Totam, asperiores magnam commodi illo natus facere ducimus est ad aliquam minus illum ipsum aliquid modi perspiciatis vitae alias pariatur quod nulla similique aperiam eius eveniet accusantium fugit. Sit dolor aliquid consequatur error iure rem reiciendis quod ullam necessitatibus, modi facilis in dicta consectetur nemo voluptatibus aspernatur voluptates esse aliquam ea eius maiores quidem minima soluta ad, laboriosam. Praesentium quae fugiat deserunt molestias nam repellat eos. Officia, saepe. Incidunt quidem necessitatibus ipsum, veniam eos aperiam. Quasi dicta impedit nemo fugiat, amet optio dolorum cumque, nulla accusamus iste quisquam eveniet minus, sapiente consequuntur magni quis excepturi provident. Nesciunt unde blanditiis ullam perspiciatis iste qui similique ipsam nisi totam ut, deserunt molestiae doloremque dicta enim facilis sint atque possimus, repudiandae, temporibus quam asperiores quibusdam optio! Perspiciatis assumenda ex, accusamus nihil delectus vero non sapiente alias eaque eius amet, quia voluptatum molestiae rem quam reprehenderit quibusdam deserunt! At, explicabo amet tempore.
+{{--                    <div class="related_inner">--}}
+{{--                        <!--                    <a href="#"><img src="assets/img/slider/main1.jpg" class="card-img-top" alt="..."></a>-->--}}
+{{--                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio maiores mollitia atque obcaecati placeat harum temporibus tempore esse eos ducimus quisquam alias possimus ea accusamus laborum assumenda aspernatur, earum quae asperiores corporis optio, minus illo tempora sequi. Laboriosam, nam, ipsam. Maiores iure, rerum harum ratione commodi mollitia molestias sit sequi iste iusto. Totam, asperiores magnam commodi illo natus facere ducimus est ad aliquam minus illum ipsum aliquid modi perspiciatis vitae alias pariatur quod nulla similique aperiam eius eveniet accusantium fugit. Sit dolor aliquid consequatur error iure rem reiciendis quod ullam necessitatibus, modi facilis in dicta consectetur nemo voluptatibus aspernatur voluptates esse aliquam ea eius maiores quidem minima soluta ad, laboriosam. Praesentium quae fugiat deserunt molestias nam repellat eos. Officia, saepe. Incidunt quidem necessitatibus ipsum, veniam eos aperiam. Quasi dicta impedit nemo fugiat, amet optio dolorum cumque, nulla accusamus iste quisquam eveniet minus, sapiente consequuntur magni quis excepturi provident. Nesciunt unde blanditiis ullam perspiciatis iste qui similique ipsam nisi totam ut, deserunt molestiae doloremque dicta enim facilis sint atque possimus, repudiandae, temporibus quam asperiores quibusdam optio! Perspiciatis assumenda ex, accusamus nihil delectus vero non sapiente alias eaque eius amet, quia voluptatum molestiae rem quam reprehenderit quibusdam deserunt! At, explicabo amet tempore.--}}
 
-                    </div>
+{{--                    </div>--}}
                 </div>
             </div>
 

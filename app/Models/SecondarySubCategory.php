@@ -15,6 +15,11 @@ class SecondarySubCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    //status check
+    public function scopeGetActive($query)
+    {
+        return $query->where('status', 1);
+    }
     public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Product::class, 'secondary_sub_categories_id');
@@ -24,7 +29,7 @@ class SecondarySubCategory extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeSecondarySubCategoryWithAdminOwner($query): mixed
+    public function scopeSecondarySubCategoryWithAdminOwner($query)
     {
         return $query->where('admin_id', Auth::guard('admin')->id());
     }
@@ -40,7 +45,7 @@ class SecondarySubCategory extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeSecondarySubCategoryWithOutAdminOwner($query): mixed
+    public function scopeSecondarySubCategoryWithOutAdminOwner($query)
     {
         return $query->where('admin_id','!=' ,Auth::guard('admin')->id());
     }

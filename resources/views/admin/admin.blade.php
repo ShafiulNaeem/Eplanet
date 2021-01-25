@@ -78,7 +78,7 @@
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">{{ __('New Members') }}</span>
+                            <span class="info-box-text">{{ __('New Member Request') }}</span>
                             <span class="info-box-number">{{ $usersThisMonth->count() }}</span>
                         </div>
                         <!-- /.info-box-content -->

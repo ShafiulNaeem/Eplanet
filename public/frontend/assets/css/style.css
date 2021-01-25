@@ -166,7 +166,7 @@ figure {
   max-width: 1170px;
 }
 header{
-    background: #031D2C;
+    background: #031d2ce8;
 }
 header li {
     color:#999999
@@ -1023,7 +1023,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 30px;
   border: 1px solid #ededed;
   background: #fff;
-  width: 650px;
+  width: 100%;
   margin-left:11px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

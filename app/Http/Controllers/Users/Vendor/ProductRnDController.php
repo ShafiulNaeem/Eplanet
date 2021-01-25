@@ -46,7 +46,7 @@ class ProductRnDController extends Controller
         $this->validate($request, array(
             'title' => 'required',
             'description' => 'required',
-            'rnd_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'rnd_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ));
 
         //$productCapacities = new ProductCapacity();
@@ -108,13 +108,13 @@ class ProductRnDController extends Controller
         $this->validate($request, array(
             'title' => 'required',
             'description' => 'required',
-            'rnd_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'rnd_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ));
 
         //$productCapacities = new ProductCapacity();
 
-        $admin_id = Auth::guard('admin')->user()->id;
-        $productRnD->admin_id = $admin_id;
+//        $admin_id = Auth::guard('admin')->user()->id;
+//        $productRnD->admin_id = $admin_id;
         $productRnD->title = $request->title;
         $productRnD->description = $request->description;
 

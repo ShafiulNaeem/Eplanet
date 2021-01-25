@@ -49,7 +49,7 @@
 
                                     <div class="form-group float-left col-md-6">
                                         <label for="exampleInputPassword1">Product Category</label>
-                                        <select name="product_category" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                        <select name="product_category" id="category_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                             <option selected="selected">Select Category</option>
                                             @foreach($categories as $category )
                                                 <option

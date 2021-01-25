@@ -104,10 +104,11 @@
                                 </li>
                             @endif
 
-                            <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Blog </a>
+                            <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Vblog </a>
                             <li class="menu-item-has-children "><a href="{{route('contact.show')}}"> Contact Us</a>
                             @if( \Illuminate\Support\Facades\Auth::check())
                                 <li class="menu-item-has-children "><a href="{{route('profile.show')}}">Profile</a>
+                                <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                             @endif
 {{--                            <li class="menu-item-has-children">--}}
 {{--                                <a href="#">pages </a>--}}
@@ -320,9 +321,12 @@
         <div class="main-nav sticky-header ">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-2">
+                    <div class="col-lg-1 col-md-1 col-1">
                         <div class="location" style="text-align: center;margin-top:10px;">
-                            <a href="{{ route('contact.show') }}"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                            <a href="{{ route('contact.show') }}">
+                                <i class="fa fa-map-marker " aria-hidden="true"></i> <br>
+                                <span class="text-white">Dhaka, Bangladesh</span>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-10 col-lg-10 col-10">
@@ -361,7 +365,7 @@
                                                     @if( count($cat->secondary_sub_categories) > 0 )
                                                         <ul class="drop-down drop-menu-2">
                                                             @foreach($cat->secondary_sub_categories as $secondary_sub )
-                                                                <li><a href="#">{{$secondary_sub->secondary_subcategory_name}}</a></li>
+                                                                <li><a href="{{route('secondary_sub.show',$secondary_sub->id)}}">{{$secondary_sub->secondary_subcategory_name}}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     @endif
@@ -373,10 +377,11 @@
                                     @endforeach
                                 @endif
 
-                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Blog </a> </li>
+                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Vblog </a> </li>
                                 <li class="has-child c-1"><a href="{{route('contact.show')}}"> Contact Us</a> </li>
                                 @if( \Illuminate\Support\Facades\Auth::check())
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
+                                    <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                                 @endif
 
 {{--                                <li class="has-child c-1">--}}
@@ -402,6 +407,7 @@
                             </ul>
                         </nav>
                     </div>
+{{--                    <div class="col-md-1"></div>--}}
                 </div>
 
             </div>
