@@ -19,18 +19,17 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>SL</th>
-                                        <th>Image</th>
-                                        <th>Employee Name</th>
-                                        <th>Employee Email</th>
-                                        <th>Employee Phone</th>
-                                        <th>Designation</th>
-                                        <th>Status</th>
-                                        <th>Create At</th>
-                                        <th>Action</th>
-
-                                    </tr>
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Image</th>
+                                            <th>Employee Name</th>
+                                            <th>Employee Email</th>
+                                            <th>Employee Phone</th>
+                                            <th>Designation</th>
+                                            <th>Status</th>
+                                            <th>Create At</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @if( ! empty($employees) )
@@ -57,23 +56,9 @@
                                                         @endif
                                                     </form>
 
-
-{{--                                                    @if($employee->status == 1)--}}
-{{--                                                        <span class="btn btn-success">Active</span>--}}
-{{--                                                    @endif--}}
-
-{{--                                                    @if($employee->status == 0)--}}
-{{--                                                        <span class="btn btn-danger">InActive</span>--}}
-{{--                                                    @endif--}}
                                                 </td>
                                                 <td>{{\Carbon\Carbon::parse($employee->created_at)->format('M d Y')}}</td>
                                                 <td>
-            {{--                                        <a href="{{route('subcategory.edit',$subCategory->id)}}" class="btn text-warning btn-app float-left">--}}
-            {{--                                            <i class="fas fa-edit"></i> Edit--}}
-            {{--                                        </a>--}}
-            {{--                                        <a href="" class="btn btn-app text-danger float-left" data-toggle="modal" data-target="#exampleModal{{$subCategory->id}}">--}}
-            {{--                                            <i class="fa fa-trash fa-2x"></i> DELETE--}}
-            {{--                                        </a>--}}
                                                     <a href="{{route('employee.edit',$employee->id)}}" class="btn text-warning btn-app float-left">
                                                         <i class="fas fa-edit"></i> Edit
                                                     </a>
@@ -108,19 +93,19 @@
                                         @endif
                                     </tbody>
                                     <tfoot>
-                                    <tr>
-                                        <th>SL</th>
-                                        <th>Image</th>
-                                        <th>Employee Name</th>
-                                        <th>Employee Email</th>
-                                        <th>Employee Phone</th>
-                                        <th>Designation</th>
-                                        <th>Status</th>
-                                        <th>Create At</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Image</th>
+                                            <th>Employee Name</th>
+                                            <th>Employee Email</th>
+                                            <th>Employee Phone</th>
+                                            <th>Designation</th>
+                                            <th>Status</th>
+                                            <th>Create At</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </tfoot>
-                    </table>
+                                </table>
                             </div>
                             <!-- /.card-body -->
                         </div>

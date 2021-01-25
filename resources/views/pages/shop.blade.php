@@ -77,51 +77,6 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table_content text-center">
-                        <table class="table table-bordered" style="background:#EEF8FF;">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Business Type</th>
-                                    <th scope="col">Manufacturer, Trading Company</th>
-                                    <th scope="col">Country / Region</th>
-                                    <th scope="col">Guangdong, China</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -207,27 +162,27 @@
                                         <div class="tab-content">
                                             <div class="tab-pane fade show active" id="plant1" role="tabpanel">
                                                 <div class="product_carousel product_column5 owl-carousel">
-                                                        @foreach($capacities as $capacity)
-                                                            <div class="product_items">
-                                                                <article class="single_product">
-                                                                    <figure>
-                                                                        <div class="single_banner">
-                                                                            <div class="banner_thumb">
-{{--                                                                                <a href="{{route('pages.show',$product->id)}}">--}}
-                                                                                    <img src="{{url('images',$capacity->capacity_image	)}}" alt="{{$capacity->title}}">
-{{--                                                                                </a>--}}
-                                                                            </div>
+                                                    @foreach($capacities as $capacity)
+                                                        <div class="product_items">
+                                                            <article class="single_product">
+                                                                <figure>
+                                                                    <div class="single_banner">
+                                                                        <div class="banner_thumb">
+    {{--                                                                                <a href="{{route('pages.show',$product->id)}}">--}}
+                                                                                <img src="{{url('images',$capacity->capacity_image	)}}" alt="{{$capacity->title}}">
+    {{--                                                                                </a>--}}
                                                                         </div>
-                                                                        <figcaption class="product_content">
-                                                                            <h4 class="product_name text-success">{{$capacity->title}}</h4>
-                                                                            <div class="price_box">
-                                                                                <span class="">{{$capacity->description}}</span>
-                                                                            </div>
-                                                                        </figcaption>
-                                                                    </figure>
-                                                                </article>
-                                                            </div>
-                                                        @endforeach
+                                                                    </div>
+                                                                    <figcaption class="product_content">
+                                                                        <h4 class="product_name text-success">{{$capacity->title}}</h4>
+                                                                        <div class="price_box">
+                                                                            <span class="">{{$capacity->description}}</span>
+                                                                        </div>
+                                                                    </figcaption>
+                                                                </figure>
+                                                            </article>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -238,54 +193,6 @@
                     </div>
                 </div>
                 <!--product area end-->
-            </div>
-
-             <div class="row">
-                 <div class="main_pro_img">
-                     <h4>Production Equipment</h4>
-                 </div>
-                <div class="col-md-12">
-                    <div class="table_content text-center">
-                        <table class="table table-bordered" style="background:#EEF8FF;">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Quantity</th>
-                                    <th>Verify</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Otto</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><img src="{{asset('frontend/assets/img/right.png')}}" width="10" alt=""></td>
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
 
         </div>

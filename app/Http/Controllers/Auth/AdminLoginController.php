@@ -83,4 +83,13 @@ class AdminLoginController extends Controller
             ? new JsonResponse([], 204)
             : redirect()->route('admin.login');
     }
+
+
+    /**
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
 }

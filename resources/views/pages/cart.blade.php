@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-6" style="margin-bottom: 20px">
                                 <div class="coupon_code right">
                                     <h3>Cart Totals</h3>
                                     <div class="coupon_inner">

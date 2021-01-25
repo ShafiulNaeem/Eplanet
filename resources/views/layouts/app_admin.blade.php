@@ -5,7 +5,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Canvas') }}</title>
+    <title>{{ config('app.name', 'Eplanet') }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/pnga%20553.png') }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -91,38 +92,30 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
 {{--<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>--}}
-@php
-    function getRandomColor($string, $num) {
-      $hash = md5($string . $num);
-        return array(hexdec(substr($hash, 0, 2)), hexdec(substr($hash, 2, 2)), hexdec(substr($hash, 4, 2)));
-    }
-@endphp
+
 <script>
+    function random_rgba() {
+        var o = Math.round, r = Math.random, s = 255;
+        return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    }
     var data = [];
     var mainDatas = [];
 @php
-    $from = date('Y') . '-01-01';
-    $to = date('Y') . '-12-31';
+    $from = date('Y') . '-01-01 ' . date('H:i:s');
+    $to = date('Y') . '-12-31 ' . date('H:i:s');
     $pro = \App\Models\Product::where('admin_id', \Illuminate\Support\Facades\Auth::guard('admin')->id())->orderBy('sold', 'desc')->limit(5)->get();
     $monthlySell = [];
 
     foreach ($pro as $prIndex => $product){
         $res= \App\Models\OrderProduct::with('order')
             ->where('product_id', $product->id)
+            ->whereHas('order', function ($query){ $query->where('shifted', 1); })
             ->whereBetween('created_at', [$from, $to])
             ->get()
             ->groupBy(function($val) {
                 return \Carbon\Carbon::parse($val->created_at)->format('m');
         });
 
-        $monthlySell[$prIndex]['label'] = $product->product_name;
-        $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
-        $monthlySell[$prIndex]['borderColor'] = getRandomColor('two',2);
-        $monthlySell[$prIndex]['pointRadius'] = true;
-        $monthlySell[$prIndex]['pointColor'] = getRandomColor('five',5);
-        $monthlySell[$prIndex]['pointStrokeColor'] = getRandomColor('six',6);
-        $monthlySell[$prIndex]['pointHighlightFill'] = '#ffffff';
-        $monthlySell[$prIndex]['pointHighlightStroke'] = getRandomColor('three',3);
 
         if( ! count($res) ){
             for ($i = 1; $i <= 12; ++$i){
@@ -155,13 +148,13 @@
 @endphp
 data.push({
     label : '{{$product->product_name}}',
-    backgroundColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    borderColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    pointRadius : true,
-    pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    pointStrokeColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
-    pointHighlightFill : '#ffffff',
-    pointHighlightStroke : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',
+    backgroundColor : random_rgba(),
+    borderColor : random_rgba(),
+    {{--pointRadius : true,--}}
+    {{--pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',--}}
+    pointStrokeColor : random_rgba(),
+    pointHighlightFill : random_rgba(),
+    pointHighlightStroke : random_rgba(),
     data: mainDatas
 });
 
@@ -438,6 +431,75 @@ data.push({
                     tr.appendChild(action);
                     modalTableBody.append(tr);
                 })
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+
+
+    });
+
+
+    $('#category_id').on('change',function (e) {
+        let selectedValue = $(this).children("option:selected").val();
+        let subCat = $('#sub_category_id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('admin/subcatbycat') }}/" + selectedValue,
+            method: 'post',
+            // dataType:'json',
+            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
+
+
+            success: function (response) {
+                console.log(response);
+                response.forEach((value, index) => {
+                    console.log(value, index);
+                    let option = createElement('option');
+                    option.setAttribute('value', value.id);
+                    option.innerText = value.subcategory_name;
+                    subCat[0].append(option);
+                });
+                console.log(subCat)
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+
+
+    });
+
+    $('#sub_category_id').on('change',function (e) {
+        let selectedValue = $(this).children("option:selected").val();
+        let subCat = $('#secondary_sub_categories_id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('admin/secondsubcatbysubcat') }}/" + selectedValue,
+            method: 'post',
+            // dataType:'json',
+            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
+
+
+            success: function (response) {
+                console.log(response);
+                response.forEach((value, index) => {
+                    console.log(value, index);
+                    let option = createElement('option');
+                    option.setAttribute('value', value.id);
+                    option.innerText = value.secondary_subcategory_name;
+                    subCat[0].append(option);
+                });
+                console.log(subCat)
             },
             error:function(response)
             {

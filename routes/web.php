@@ -108,6 +108,7 @@ Route::prefix('pages')->group(function(){
     Route::delete('/{id}', 'Users\CartController@destroy')->middleware(['auth'])->name('cart.destroy');
     Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
     Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
+    Route::get('secondary_sub/{id}', 'Users\NavbarController@secondary_subcategory')->name('secondary_sub.show');
     Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
 });
 
@@ -152,6 +153,8 @@ Route::prefix('admin')->group(function(){
         Route::post('employeeChange', 'EmployeeController@change')->name('employee.change.status');
 
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
+        Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
+        Route::post('secondsubcatbysubcat/{subcategory}', 'SubCategoryController@secondarySubBySubCategory')->name('second.sub.cat.by.sub.cat');
 
         Route::name('admin.all.')->prefix('allvendor')->group(function (){
             Route::get('product', 'ProductController@allProduct')->name('product');
@@ -178,6 +181,8 @@ Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
         Route::resource('productRnD', 'ProductRnDController');
         Route::resource('tradeCapacity', 'ProductTradeCapacityController');
         Route::resource('factoryInspection', 'ProductFactoryInspectionController');
+        Route::resource('factoryView', 'FactoryViewController');
+        Route::resource('showView', 'ShowViewController');
     });
 });
 

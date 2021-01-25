@@ -200,6 +200,38 @@
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.min.js')}}"></script>
 
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    @if(Session::has('success'))
+    toastr.success("{{Session::get('success')}}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.error("{{Session::get('error')}}");
+    @endif
+
+    @if(Session::has('info'))
+    toastr.info("{{Session::get('info')}}");
+    @endif
+</script>
+
    <script type="text/javascript">
 
         $(document).on('click', '#add_to_wish_list', function (e) {
@@ -215,6 +247,7 @@
 
                 success: function (response) {
                     console.log(response.responseText);
+                    toastr.success(response.message);
                     console.log(response);
                 },
                 error:function(response)
@@ -243,6 +276,7 @@
 
                 success: function (response) {
                     console.log(response.responseText);
+                    toastr.success(response.message);
                     console.log(response);
                 },
                 error:function(response)
@@ -282,6 +316,7 @@
 
 </script>
 
+<<<<<<< HEAD
 <script>
     toastr.options = {
         "closeButton": true,
@@ -328,6 +363,8 @@
         
     </script>
 
+=======
+>>>>>>> 75938db460ebee7e3b2a2ef25fee14ec63ce9984
 </body>
 
 </html>

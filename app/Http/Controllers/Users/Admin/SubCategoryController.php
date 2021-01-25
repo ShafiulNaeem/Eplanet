@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use DB;
@@ -171,5 +172,11 @@ class SubCategoryController extends Controller
         if( self::changeStatus($request->status, 'App\Models\SubCategory', $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
+    }
+
+
+    public function secondarySubBySubCategory(SubCategory $subcategory)
+    {
+        return SecondarySubCategory::where('sub_category_id', $subcategory->id)->get();
     }
 }
