@@ -44,6 +44,7 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider.css') }}">
 
     <!--modernizr min js here-->
     <script src="{{ asset('frontend/assets/js/vendor/modernizr-3.7.1.min.js') }}"></script>
@@ -196,7 +197,21 @@
 
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/slider.js')}}"></script>
+<script>
 
+
+    var timeID = document.getElementById('time');
+    var timeID2 = document.getElementById('time2');
+    setInterval(() => {
+        var time = new Date();
+        timeID.innerHTML = ' ';
+        timeID.innerHTML = time.toLocaleTimeString();
+
+        timeID2.innerHTML = ' ';
+        timeID2.innerHTML = time.toLocaleTimeString();
+    }, 1000);
+</script>
 <script>
     toastr.options = {
         "closeButton": true,
@@ -312,6 +327,7 @@
 
 
 </script>
+
 
 </body>
 

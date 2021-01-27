@@ -17,10 +17,10 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="example2" class="table table-bordered table-striped table-responsive">
                                     <thead>
-                                        <tr>
-                                            <th>SL</th>
+                                        <tr class="">
+                                            <th>Employee Id</th>
                                             <th>Image</th>
                                             <th>Employee Name</th>
                                             <th>Employee Email</th>
@@ -35,7 +35,7 @@
                                     @if( ! empty($employees) )
                                         @foreach($employees as $index => $employee)
                                             <tr>
-                                                <td>{{$index + 1}}</td>
+                                                <td class="">{{$employee['employee_unique_id']}}</td>
                                                 <td>
                                                     <img src="{{url('images/' . $employee->employee_image)}}" alt="{{$employee->name}}" class="img-rounded" width="80">
                                                 </td>
@@ -94,7 +94,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>SL</th>
+                                            <th class="">Employee Id</th>
                                             <th>Image</th>
                                             <th>Employee Name</th>
                                             <th>Employee Email</th>

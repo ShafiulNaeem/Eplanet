@@ -32,12 +32,17 @@
                                         @enderror
                                     </div>
 
+                                    <div class="form-group col-md-6 float-left">
+                                        <label for=""></label>
+                                        <button type="submit" class="btn btn-outline-dark btn-block mt-2">Submit</button>
+                                    </div>
+
                                 </div>
                                 <!-- /.card-body -->
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                                </div>
+{{--                                <div class="card-footer">--}}
+{{--                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
+{{--                                </div>--}}
                             </form>
                         </div>
                         <!-- /.card -->

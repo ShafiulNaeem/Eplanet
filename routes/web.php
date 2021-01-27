@@ -207,6 +207,7 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('designation', 'DesignationController');
     Route::resource('employee', 'EmployeeController');
     Route::resource('secondsub', 'SecondarySubCategoryController');
+    Route::resource('contactusslider', 'ContactUsSliderController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
