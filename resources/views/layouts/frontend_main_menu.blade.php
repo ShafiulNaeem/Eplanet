@@ -151,11 +151,9 @@
                         <div class="col-lg-4 col-md-4">
                             <div class="language_currency">
 
-<<<<<<< HEAD
                                 <a href="#">(+880 123456789) 6.00 am - 10.00 pm</a>
-=======
                                 <a href="#" style="color:#999999" id="time2"></a>
->>>>>>> aacf62e431095a8e85040c9ba6e87a4760b09669
+
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
