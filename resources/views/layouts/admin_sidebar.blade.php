@@ -345,6 +345,41 @@
 
 
                 <li class="nav-item @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('contactusslider.index')
+    ) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('contactusslider.index')
+    ) active @endif ">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Contact Slider
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('contactusslider.index')
+    ) style="display: block" @endif >
+                        <li class="nav-item">
+                            <a href="{{ route('contactusslider.create') }}" class="nav-link @if( url()->current() == route('contactusslider.create' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Upload Slider</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('contactusslider.index') }}" class="nav-link @if( url()->current() == route('contactusslider.index' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Slider</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item @if(
                                     url()->current() == route('category.create') ||
                                     url()->current() == route('admin.all.category') ||
                                     url()->current() == route('category.index') ||

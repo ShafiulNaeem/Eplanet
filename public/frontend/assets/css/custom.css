@@ -249,8 +249,8 @@ text-align: center
     text-align: center
 }
 .company_contat img{
-    width:100%;
-   margin: 7px auto;
+    /*width:100% !important;*/
+   /*margin: 7px auto;*/
 }
 .company_contat .card{
     margin:15px 0;

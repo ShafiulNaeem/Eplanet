@@ -11,14 +11,13 @@
                     </div>
                     <div class="language_currency">
                         <ul>
-                            <li class="language"><a href="#" style="color:#999999">(+880 123456789) 6.00 am - 10.00 pm</a>
+                            <li class="language"><a href="#" style="color:#999999" id="time"></a>
 
                             </li>
                             <li><a href="{{ route('admin.register') }}">Sell</a></li>
                             <li><a href="#">EMI</a></li>
                             <li><a href="#">Gift Card</a></li>
-                            <li><a href="#">Customer Care</a></li>
-                            <li><a href="#"></a></li>
+                            <li><a href="{{ route('contact.show') }}">Customer Care</a></li>
                         </ul>
                     </div>
                     <div class="header_social text-right">
@@ -152,7 +151,11 @@
                         <div class="col-lg-4 col-md-4">
                             <div class="language_currency">
 
+<<<<<<< HEAD
                                 <a href="#">(+880 123456789) 6.00 am - 10.00 pm</a>
+=======
+                                <a href="#" style="color:#999999" id="time2"></a>
+>>>>>>> aacf62e431095a8e85040c9ba6e87a4760b09669
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
@@ -166,8 +169,7 @@
                                 <li><a href="{{route('admin.register')}}">Sell</a></li>
                                 <li><a href="#">EMI</a></li>
                                 <li><a href="#">Gift Card</a></li>
-                                <li><a href="#">Customer Care</a></li>
-                                <li><a href="#"></a></li>
+                                <li><a href="{{ route('contact.show') }}">Customer Care</a></li>
                             </ul>
                            </div>
                         </div>
@@ -233,7 +235,7 @@
                                                         @csrf
                                                     </form>
                                                 @endif
-                                                <li><a href="login.html">English</a></li>
+                                                <li><a href="#">English</a></li>
                                             </ul>
                                         </div>
 
@@ -356,7 +358,7 @@
                                         <li class="has-child c-1">
                                             <a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}
                                                 @if( count($category->subcategory) >0 )
-                                                    <i class="fa fa-caret-down"></i>
+{{--                                                    <i class="fa fa-caret-down"></i>--}}
                                                 @endif
                                             </a>
                                             @if( count($category->subcategory) >0 )

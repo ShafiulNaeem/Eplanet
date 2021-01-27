@@ -17,6 +17,7 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('designation_id');
+            $table->string('employee_unique_id')->unique()->comment('Employee Unique Id');
             $table->string('name');
             $table->string('phone');
             $table->string('email')->unique();
