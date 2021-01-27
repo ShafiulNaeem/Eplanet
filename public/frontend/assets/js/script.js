@@ -125,7 +125,7 @@
 			if (this.active < 0) {this.active = this.slides.length-1};
 			for (i = 0; i < this.slides.length; i++) {
 				if (this.slides[i]['data-type'] == "video") {
-					$(this.slides[i]['ref']).find("video")[0].play();
+					$(this.slides[i]['ref']).find("video")[0].autoPlay();
 					$(this.slides[i]['ref']).find("video")[0].currentTime = 0;
 					$(this.slides[i]['ref']).find(".play-button").css("display", "block");
 				}

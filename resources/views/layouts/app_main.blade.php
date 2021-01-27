@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/pnga%20553.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/logo2.png') }}">
 
     <!-- CSS
     ========================= -->
@@ -198,10 +198,10 @@
 
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
-<<<<<<< HEAD
+
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.min.js')}}"></script>
-=======
+
     <script src="{{asset('frontend/assets/js/slider.js')}}"></script>
 <script>
 
@@ -212,7 +212,7 @@
         var time = new Date();
         timeID.innerHTML = ' ';
         timeID.innerHTML = time.toLocaleTimeString();
->>>>>>> aacf62e431095a8e85040c9ba6e87a4760b09669
+
 
         timeID2.innerHTML = ' ';
         timeID2.innerHTML = time.toLocaleTimeString();
@@ -335,7 +335,6 @@
 </script>
 
 
-<<<<<<< HEAD
 <script>
     toastr.options = {
         "closeButton": true,
@@ -382,9 +381,6 @@
         
     </script>
 
-
-=======
->>>>>>> aacf62e431095a8e85040c9ba6e87a4760b09669
 </body>
 
 </html>
