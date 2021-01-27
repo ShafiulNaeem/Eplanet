@@ -263,7 +263,7 @@ data.push({
 <script>
     $(function () {
         $("#example1").DataTable({
-            "responsive": true,
+            "responsive": false,
             "lengthChange": false,
             "autoWidth": false,
             "ordering": true,
@@ -272,12 +272,13 @@ data.push({
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+            "autoWidth": true,
+            "responsive": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
     });
     $('.select2').select2()
 </script>
