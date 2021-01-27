@@ -417,7 +417,7 @@
                                    <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Cash on delivery <img src="assets/img/icon/papyel.png" alt=""></label>
 
                                  <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                                      <div class="card-body1">--}}
+                                      <div class="card-body1">
                                           <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                       </div>
                                   </div>
@@ -426,7 +426,6 @@
                                    <button  type="submit">Proceed </button>
                                </div>
                            </div>
-                           {{--                        </form>
                        </div>
                    </div>
                </div>
