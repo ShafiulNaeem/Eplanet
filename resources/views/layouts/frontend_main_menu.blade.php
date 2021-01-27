@@ -152,15 +152,16 @@
                         <div class="col-lg-4 col-md-4">
                             <div class="language_currency">
 
-                                <a href="#" style="color:#999999">(+880 123456789) 6.00 am - 10.00 pm</a>
+                                <a href="#">(+880 123456789) 6.00 am - 10.00 pm</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <div class="language_currency">
-                                <a href="" style="color:#999999">GET Apps</a>
+                            <div class="language_currencys">
+                                <a href="">GET Apps</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
+                           <div class="top_last">
                             <ul>
                                 <li><a href="{{route('admin.register')}}">Sell</a></li>
                                 <li><a href="#">EMI</a></li>
@@ -168,6 +169,7 @@
                                 <li><a href="#">Customer Care</a></li>
                                 <li><a href="#"></a></li>
                             </ul>
+                           </div>
                         </div>
 
                     </div>
@@ -180,7 +182,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/pnga 543.png')}}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/logo2.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
