@@ -60,7 +60,7 @@ class CheckoutController extends Controller
         }
         Session::forget('cart');
 
-        return redirect()->route('checkout.confirm')->with(Session::flash('success','Your Order Confirmed Successfully'));
+        return redirect()->route('checkout.confirm')->with('success','Your Order Confirmed Successfully');
 
     }
 
