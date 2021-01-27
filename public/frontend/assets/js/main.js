@@ -85,7 +85,7 @@
             loop: true,
             nav: true,
             autoplay: true,
-            autoplayTimeout: 10000,
+            autoplayTimeout: 2000,
             items: 5,
             margin: 20,
             dots:false,

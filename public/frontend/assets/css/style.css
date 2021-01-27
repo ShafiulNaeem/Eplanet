@@ -165,15 +165,15 @@ figure {
 .container {
   max-width: 1170px;
 }
-header{
+/* header{
     background: #031d2ce8;
-}
+} */
 header li {
     color:#999999
 }
-.header_middle{
+/* .header_middle{
     background:#232F3E
-}
+} */
 .header_bottom{
      background:#232F3E
 }
@@ -618,7 +618,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   z-index: 99;
   width: 100%;
   top: 0;
-  background: #232F3E;
+  background: #004D67;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -868,7 +868,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #000;
 }
 
-.header_middle {
+.header_middle { 
 	padding: 10px 0px 10px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -885,7 +885,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .logo img {
-  max-width: 80px;
+  max-width: 200px;
 }
 @media only screen and (max-width: 767px) {
   .logo img {
@@ -1128,7 +1128,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	border-radius: 0 30px 30px 0;
 	-webkit-transition: 0.3s;
 	transition: 0.3s;
-	background: #F3A847;
+	background: #74B81F;
 	color: #fff;
 }
 .search_box button:hover {
@@ -5468,7 +5468,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .footer_bottom {
   padding: 29px 0;
-  background: #40A944;
+  /* background: #40A944; */
 }
 @media only screen and (max-width: 767px) {
   .footer_bottom {
@@ -10473,13 +10473,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .main-header-inner{
   width:100%;
-   padding: 10px 0;
+   /* padding: 10px 0; */
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    text-align: center;
 
 }
 .main-header-inner ul li {
@@ -11019,12 +11018,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	color: #FFF;
 }
 .footer_top{
-    background:#031D2C;
+  
     color:#FFF;
     padding: 20px 0
 }
 .footer_bottom{
-    background:#220E17;
     color:#FFF;
 }
 .fa-camera{

@@ -128,7 +128,7 @@
             </div>
         </div>
     </div>
-
+<hr style="border:1px solid #FFF">
     <div class="footer_bottom">
         <div class="container">
             <div class="row align-items-center">
@@ -316,7 +316,7 @@
 
 </script>
 
-<<<<<<< HEAD
+
 <script>
     toastr.options = {
         "closeButton": true,
@@ -363,8 +363,7 @@
         
     </script>
 
-=======
->>>>>>> 75938db460ebee7e3b2a2ef25fee14ec63ce9984
+
 </body>
 
 </html>

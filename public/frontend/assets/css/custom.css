@@ -1,6 +1,6 @@
 .discover-section{
     width:100;
-    padding: 30px 0;
+    padding: 10px 0;
     background: #F7F8FA
 }
 .discover-section p{
@@ -10,7 +10,7 @@
 }
 .discover-title h3{
     text-align: center;
-    padding: 15px 0;
+    padding: 7px 0;
     color:#000000;
     font-weight: 500;
 }
@@ -551,7 +551,7 @@ text-align: center
 
 
 header .main-header, header .main-nav {
-    background: #081621;
+    /* background: #081621; */
     position: relative;
 }
 .main-nav .nav {
@@ -573,7 +573,7 @@ header .main-header, header .main-nav {
     list-style: none;
     font-size: 13px;
     color: #cfcfcf;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
     line-height: 40px;
     margin-right: 10px;
@@ -612,7 +612,7 @@ header .main-header, header .main-nav {
     font-weight: 400;
     text-transform: capitalize;
     line-height: 26px;
-    background: #082a43;
+    background: #004D67;;
     text-align: left;
     margin: 0;
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
@@ -641,12 +641,11 @@ header .main-header, header .main-nav {
 }
 .main-nav .nav .drop-menu-2 li {
     position: relative;
-    background: #11032c;
+    background: #004D67;;
     border-bottom: 1px solid #082a43;
     font-size: 11px;
 }
-.main-nav .nav .drop-menu-1 li {
-}
+
 .main-nav .nav .drop-menu-1 a {
     display: block;
     padding: 0 0 0 15px;
@@ -671,6 +670,17 @@ header .main-header, header .main-nav {
         background: #fff
     }
 
+    .language_currency{
+        text-align:center;
+    }
+    .language_currencys {
+        text-align: center;
+    }
+    
+    .top_last{
+        text-align: center;
+    }
+
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -686,10 +696,39 @@ header .main-header, header .main-nav {
     .main-nav{
         display: none;
     }
+    
 
 }
 
+@media (min-width:790px ) and (max-width: 1024px) {
 
+    .header_account_area {
+        margin-top: 9px;
+        position: absolute;
+        right: 50px;
+    }
+}
+
+.main_header{
+    
+    background: #00322B;
+    background: #799E3A;
+}
+.main-header-inner a{
+    color: #FFF;
+}
+
+/* .header_middle{
+    background: url(../../image2.jpg);
+    background: cover;
+}
+.header_account_area li a{
+    color: #FFF;
+}
+
+.sticky-header{
+    background: url(../../botom.png);
+} */
 
 
 
@@ -975,4 +1014,27 @@ Fading
 
 .image_video{
     width:100%;
+}
+.header_account_area li a{
+    color:#FFF
+}
+
+.footer_widgets{
+    background: #003542;
+}
+.language_currency{
+    text-align:left;
+}
+.language_currencys {
+    text-align: center;
+}
+
+.top_last{
+    text-align: right;
+}
+
+.header_account_area {
+    margin-top: 9px;
+    position: absolute;
+    right: 128px;
 }
