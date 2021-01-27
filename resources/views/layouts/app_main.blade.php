@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/logo2.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/pnga%20553.png') }}">
 
     <!-- CSS
     ========================= -->
@@ -198,10 +198,8 @@
 
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
-
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.min.js')}}"></script>
-
     <script src="{{asset('frontend/assets/js/slider.js')}}"></script>
 <script>
 
@@ -212,7 +210,6 @@
         var time = new Date();
         timeID.innerHTML = ' ';
         timeID.innerHTML = time.toLocaleTimeString();
-
 
         timeID2.innerHTML = ' ';
         timeID2.innerHTML = time.toLocaleTimeString();
@@ -368,17 +365,15 @@
 </script>
 
 <script>
-    
-    
 	$(function(){
-
-	  $('.bo-slider').boSlider({
+        $('.bo-slider').boSlider({
             slideShow: true,
-            interval: 5000
+            interval: 5000,
+            playing : true,
+            video : true
         });
-
 	});
-        
+
     </script>
 
 </body>
