@@ -48,7 +48,7 @@ class EmployeeController extends Controller
         $this->validate($request, array(
             'name' => 'required',
             'phone' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:employees',
             'address' => 'required',
             'designation_name' => 'required',
             'employee_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -61,6 +61,7 @@ class EmployeeController extends Controller
         $employee->address = $request->address;
         $employee->designation_id = $request->designation_name;
         $employee->status = $request->status;
+        $employee->employee_unique_id = 'ED'.time();
         $employee->admin_id = Auth::guard('admin')->user()->id;
 
 
@@ -114,15 +115,6 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $this->validate($request, array(
-            'name' => 'required',
-            'phone' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'address' => 'required',
-            'designation_name' => 'required',
-            'employee_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ));
-
         $employee->name = $request->name;
         $employee->phone = $request->phone;
         $employee->email = $request->email;
@@ -131,8 +123,8 @@ class EmployeeController extends Controller
         $employee->status = $request->status;
 
 
-        if ( ! self::deleteFile( public_path('images/' . $employee->employee_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+//        if ( ! self::deleteFile( public_path('images/' . $employee->employee_image) ) )
+//            return redirect()->back()->with('error','Something went wrong');
 
         if($request->hasFile('employee_image')){
             $image = request()->file('employee_image');
