@@ -3,19 +3,6 @@
 <!--slider area start-->
 <div class="image_video">
     <div class="bo-slider">
-
-
-      <li data-url="{{ asset('frontend/assets/img/main1.jpg') }}" data-type="image">
-      </li>
-
-      <li data-url="{{ asset('frontend/assets/img/1.jpg') }}" data-type="image"></li>
-
-      <li data-url="{{ asset('frontend/assets/img/2.jpg') }}" data-type="image"></li>
-
-      <li data-url="{{ asset('frontend/v2.mp4') }}" autoplay="true" loop data-type="video">
-
-      <li data-url="{{ asset('frontend/assets/img/slider/main1.jpg') }}" data-type="image"></li>
-
     @if( isset($sliders) )
         @php $i = 0; @endphp
         @foreach($sliders as $index => $slider)
