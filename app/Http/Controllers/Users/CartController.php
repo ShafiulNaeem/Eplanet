@@ -61,7 +61,7 @@ class CartController extends Controller
                 ]
             ];
             Session::put('cart', $cart);
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Added to cart');
         }
 
         // if cart not empty then check if this product exist then increment quantity
@@ -70,7 +70,7 @@ class CartController extends Controller
             $cart[$request->product_id]['quantity']+= $request->quantity;
             Session::put('cart', $cart);
 
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Cart updated');
         }
 
         // if item not exist in cart then add to cart with quantity
@@ -84,7 +84,7 @@ class CartController extends Controller
         ];
 
         Session::put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Added to cart');
 
     }
 
@@ -103,7 +103,7 @@ class CartController extends Controller
                 Session::put('cart', $cart);
             }
             //session()->flash('success', 'Product removed successfully');
-            return redirect()->back()->with('success', 'Product  Showed successfully!');
+            return redirect()->back()->with('success', 'Product removed');
         }
     }
 
@@ -132,7 +132,7 @@ class CartController extends Controller
             $cart = Session::get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             Session::put('cart', $cart);
-            return redirect()->back()->with('success', 'Cart  updated successfully!');
+            return redirect()->back()->with('success', 'Cart updated ');
         }
     }
 
@@ -151,7 +151,7 @@ class CartController extends Controller
                 Session::put('cart', $cart);
             }
             //session()->flash('success', 'Product removed successfully');
-            return redirect()->back()->with('success', 'Product  removed successfully!');
+            return redirect()->back()->with('success', 'Product removed');
         }
     }
 
