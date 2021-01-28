@@ -338,7 +338,6 @@
         $('.bo-slider').boSlider({
             slideShow: true,
             interval: 5000,
-            animation:false
 
             playing : true,
             video : true
