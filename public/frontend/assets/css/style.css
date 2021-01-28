@@ -618,7 +618,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   z-index: 99;
   width: 100%;
   top: 0;
-  background: #004D67;
+  background: #181A1A;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -1119,7 +1119,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	top: 0;
 	height: 100%;
 	line-height: 48px;
-	width: 60px;
+	width: 107px;
 	padding: 0;
 	text-align: center;
 	right: 0;
@@ -1179,7 +1179,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   align-items: center;
 }
 .header_account_list > a:hover {
-  color: #40A944;
+  color: gray;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_account_list > a {
@@ -1202,7 +1202,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .header_account_list.register ul li a:hover {
-  color: #000;
+  color: #40A944;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_account_list.register ul li a {
@@ -2186,7 +2186,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #fff;
 }
 .header_middle2 .header_account_list.register ul li a:hover {
-  color: #222222;
+  color: gray;
 }
 .header_middle2 .header_account_list.register ul li span {
   color: #fff;
@@ -2195,7 +2195,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #fff;
 }
 .header_middle2 .header_account_list > a:hover {
-  color: #222222;
+  color: gray;
 }
 .header_middle2 .cart_img:hover {
   border-color: #80B82D;

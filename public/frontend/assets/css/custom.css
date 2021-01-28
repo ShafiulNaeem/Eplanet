@@ -682,12 +682,18 @@ header .main-header, header .main-nav {
     .top_last{
         text-align: center;
     }
+    .lnr-magnifier{
+        display: none;
+    }
 
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
 
     .main-nav{
+        display: none;
+    }
+    .lnr-magnifier{
         display: none;
     }
 
@@ -714,7 +720,7 @@ header .main-header, header .main-nav {
 .main_header{
 
     background: #00322B;
-    background: #799E3A;
+    background: #181A1A;
 }
 .main-header-inner a{
     color: #FFF;
@@ -1020,9 +1026,12 @@ Fading
 .header_account_area li a{
     color:#FFF
 }
+@media only screen and (min-width:320px) and (max-width: px) {
+
+}
 
 .footer_widgets{
-    background: #003542;
+    background: #181A1A;
 }
 .language_currency{
     text-align:left;
@@ -1038,5 +1047,7 @@ Fading
 .header_account_area {
     margin-top: 9px;
     position: absolute;
-    right: 128px;
+    right: 104px;
 }
+
+
