@@ -702,9 +702,7 @@ header .main-header, header .main-nav {
     .lnr-magnifier{
         display: none;
     }
-    .logo{
-        float:unset;
-    }
+   
 
 }
 
@@ -713,9 +711,7 @@ header .main-header, header .main-nav {
     .main-nav{
         display: none;
     }
-    .logo{
-        float: none;
-    }
+  
 
 
 }
@@ -731,27 +727,11 @@ header .main-header, header .main-nav {
 
 .main_header{
 
-    background: #00322B;
     background: #181A1A;
 }
 .main-header-inner a{
     color: #FFF;
 }
-
-/* .header_middle{
-    background: url(../../image2.jpg);
-    background: cover;
-}
-.header_account_area li a{
-    color: #FFF;
-}
-
-.sticky-header{
-    background: url(../../botom.png);
-} */
-
-
-
 
 
 
