@@ -30,7 +30,7 @@ class WelcomeController extends Controller
         $sliders = ContactUsSlider::GetActive()->where('for', 1)->get();
 
 
-        return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product, 'sliders' => $sliders, 'totalVideo' => $totalVideo ]);
+        return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product, 'sliders' => $sliders ]);
     }
 
     public function show($id)

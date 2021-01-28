@@ -55,7 +55,7 @@
                     elements += "</div>\n";
                 } else if (slides[i]['data-type'] == "video") { // Template for videos
                     elements += "<div class='bo-slide "+ options.animation + " " + active +"'>\n";
-                    elements += "<video width='100%' height='500px' autoplay >\n";
+                    elements += "<video width='100%' height='290px' autoplay >\n";
                     elements += "<source src='" + slides[i]['data-url'] + "'>\n"
                     elements += "</video>\n";
                     //elements += "<span class='play-button'>&#9654;</span>";
