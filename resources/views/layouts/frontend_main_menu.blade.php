@@ -103,7 +103,7 @@
                                 </li>
                             @endif
 
-                            <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Vblog </a>
+                            <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Vlog </a>
                             <li class="menu-item-has-children "><a href="{{route('contact.show')}}"> Contact Us</a>
                             @if( \Illuminate\Support\Facades\Auth::check())
                                 <li class="menu-item-has-children "><a href="{{route('profile.show')}}">Profile</a>
@@ -378,7 +378,7 @@
                                     @endforeach
                                 @endif
 
-                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Vblog </a> </li>
+                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Vlog </a> </li>
                                 <li class="has-child c-1"><a href="{{route('contact.show')}}"> Contact Us</a> </li>
                                 @if( \Illuminate\Support\Facades\Auth::check())
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>

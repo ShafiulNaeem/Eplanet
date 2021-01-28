@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="company_map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="350" height="355" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="350" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
             </div>
