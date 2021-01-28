@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\ContactUsSlider;
 use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -26,9 +27,13 @@ class WelcomeController extends Controller
         //BestSell from Product
         $product = Product::orderBy('sold','desc')->GetActive()->limit(10)->get();
 
+        $sliders = ContactUsSlider::GetActive()->where('for', 1)->get();
+        $totalVideo = ContactUsSlider::GetActive()->where([
+            'for'=> 1,
+            'type' => 'video'
+        ])->count();
 
-        //dd($mainRes);
-        return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product ]);
+        return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product, 'sliders' => $sliders, 'totalVideo' => $totalVideo ]);
     }
 
     public function show($id)
@@ -44,7 +49,7 @@ class WelcomeController extends Controller
 
     // Show Category
     public function category($id){
-        $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->get();
+        $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->paginate(20);
         //dd($category);
         return view('pages.categories',['categories' =>$category]);
     }

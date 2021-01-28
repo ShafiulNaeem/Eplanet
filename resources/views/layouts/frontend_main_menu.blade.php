@@ -151,9 +151,8 @@
                         <div class="col-lg-4 col-md-4">
                             <div class="language_currency">
 
-                                <a href="#">(+880 123456789) 6.00 am - 10.00 pm</a>
-                                <a href="#" style="color:#999999" id="time2"></a>
-
+                                <a href="#" id="time"></a>
+                                <a href="#" id="time2"></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">

@@ -10,18 +10,16 @@
                 <div class="col-md-7">
                     <div class="image_video">
                         <div class="bo-slider">
-                    
-                          <li data-url="{{ asset('frontend/assets/img/main1.jpg') }}" data-type="image">
-                          </li>
-                    
-                          <li data-url="{{ asset('frontend/assets/img/1.jpg') }}" data-type="image"></li>
-                    
-                          <li data-url="{{ asset('frontend/assets/img/2.jpg') }}" data-type="image"></li>
-                    
-                          <li data-url="{{ asset('frontend/v2.mp4') }}" data-type="video">
-                    
-                          <li data-url="{{ asset('frontend/assets/img/slider/main1.jpg') }}" data-type="image"></li>
-                    
+                            @if( isset($sliders) )
+                                @php $i = 0; @endphp
+                                @foreach($sliders as $index => $slider)
+                                    @if( strcmp($slider->type, 'video') )
+                                        <li data-url="{{ url('images/' . $slider->slider_media) }}" data-type="image"></li>
+                                    @else
+                                        <li data-url="{{ url('videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -30,7 +28,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="company_map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="350" height="520" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d58375.29717983309!2d90.418934!3d23.873441099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1608043011219!5m2!1sen!2sbd" width="350" height="355" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
             </div>

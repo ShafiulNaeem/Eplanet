@@ -6,7 +6,7 @@
 
 	var defaultOpt = {
 		slideShow: false,
-		interval: 4000,
+		interval: 5000,
 		animation: "slide"
 	}
 
@@ -55,10 +55,14 @@
 					elements += "</div>\n";
 				} else if (slides[i]['data-type'] == "video") { // Template for videos
 					elements += "<div class='bo-slide "+ options.animation + " " + active +"'>\n";
+
 					elements += "<video width='100%' height='350px'>\n";
+
+					elements += "<video width='100%' height='500px' autoplay >\n";
+
 					elements += "<source src='" + slides[i]['data-url'] + "'>\n"
 					elements += "</video>\n";
-					elements += "<span class='play-button'>&#9654;</span>";
+					//elements += "<span class='play-button'>&#9654;</span>";
 					elements += "</div>\n";
 				}
 			}
@@ -101,11 +105,11 @@
 			slider.showSlide();
 		});
 		slider.slides.forEach(function (value, index) {
-			if (value['data-type'] == 'video') {
-				$($(value['ref']).find(".play-button")[0]).click(function () {
-					slider.resumeVideo(index);
-				});
-			}
+			// if (value['data-type'] == 'video') {
+			// 	$($(value['ref']).find(".play-button")[0]).click(function () {
+			// 		slider.resumeVideo(index);
+			// 	});
+			// }
 		});
 	}
 
@@ -114,20 +118,20 @@
 		this.active = 0;
 		this.options = options;
 		this.slides = slides;
-		this.playing = false;
+		this.playing = true;
 
 		this.showSlide = function () {
 			var i;
 			var dots = $('.bo-dots').children();
 			if (this.active > this.slides.length-1) {
 				this.active = 0;
-			}; 
+			};
 			if (this.active < 0) {this.active = this.slides.length-1};
 			for (i = 0; i < this.slides.length; i++) {
 				if (this.slides[i]['data-type'] == "video") {
 					$(this.slides[i]['ref']).find("video")[0].autoPlay();
 					$(this.slides[i]['ref']).find("video")[0].currentTime = 0;
-					$(this.slides[i]['ref']).find(".play-button").css("display", "block");
+					//$(this.slides[i]['ref']).find(".play-button").css("display", "block");
 				}
 				$(this.slides[i]['ref']).removeClass("active");
 			}
@@ -135,7 +139,7 @@
 				$(value).removeClass("selected");
 			});
 
-			$(this.slides[this.active]['ref']).addClass('active'); 
+			$(this.slides[this.active]['ref']).addClass('active');
 			$(dots[this.active]).addClass('selected');
 		}
 
@@ -172,5 +176,5 @@
 	}
 
 // End of the closure.
- 
+
 })( jQuery );
