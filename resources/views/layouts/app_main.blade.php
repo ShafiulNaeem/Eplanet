@@ -12,8 +12,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/logo3.jpg') }}">
 
-    <!-- CSS
-    ========================= -->
+    <!-- CSS========================= -->
     <!--bootstrap min css-->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.min.css') }}">
