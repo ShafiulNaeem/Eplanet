@@ -55,7 +55,7 @@
 					elements += "</div>\n";
 				} else if (slides[i]['data-type'] == "video") { // Template for videos
 					elements += "<div class='bo-slide "+ options.animation + " " + active +"'>\n";
-					elements += "<video width='100%' height='500px'>\n";
+					elements += "<video width='100%' height='350px'>\n";
 					elements += "<source src='" + slides[i]['data-url'] + "'>\n"
 					elements += "</video>\n";
 					elements += "<span class='play-button'>&#9654;</span>";
@@ -140,7 +140,7 @@
 		}
 
 		this.autoPlay = function () {
-			if (this.options.slideShow == true && this.playing == false) {
+			if (this.options.slideShow == true && this.playing == true) {
 				this.active++;
 				this.showSlide();
 				setTimeout(this.autoPlay.bind(this), this.options.interval);
@@ -165,7 +165,7 @@
 				video.currentTime = 0;
 				button.css("display", "block");
 				$(video).unbind("ended");
-				that.playing = false;
+				that.playing = true;
 				setTimeout(that.autoPlay.bind(that), options.interval);
 			});
 		}

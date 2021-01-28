@@ -374,7 +374,8 @@
 
 	  $('.bo-slider').boSlider({
             slideShow: true,
-            interval: 5000
+            interval: 5000,
+            animation:false
         });
 
 	});

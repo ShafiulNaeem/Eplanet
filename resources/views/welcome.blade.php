@@ -11,7 +11,7 @@
 
       <li data-url="{{ asset('frontend/assets/img/2.jpg') }}" data-type="image"></li>
 
-      <li data-url="{{ asset('frontend/v2.mp4') }}" data-type="video">
+      <li data-url="{{ asset('frontend/v2.mp4') }}" autoplay="true" loop data-type="video">
 
       <li data-url="{{ asset('frontend/assets/img/slider/main1.jpg') }}" data-type="image"></li>
 
