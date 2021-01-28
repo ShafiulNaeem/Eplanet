@@ -14,6 +14,19 @@
                             <li class="language"><a href="#" style="color:#999999" id="time"></a>
 
                             </li>
+                            @if(! \Illuminate\Support\Facades\Auth::check())
+                            <li><a href="{{route('register')}}">{{ __('Sign Up') }}</a></li>
+                            <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                        @else
+                            <li><a href="{{route('logout')}}"
+                                   onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();"
+                                >{{ __('Logout') }}</a></li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endif
+                        <li><a href="#">English</a></li>
                             <li><a href="{{ route('admin.register') }}">Sell</a></li>
                             <li><a href="#">EMI</a></li>
                             <li><a href="#">Gift Card</a></li>
