@@ -28,10 +28,7 @@ class WelcomeController extends Controller
         $product = Product::orderBy('sold','desc')->GetActive()->limit(10)->get();
 
         $sliders = ContactUsSlider::GetActive()->where('for', 1)->get();
-        $totalVideo = ContactUsSlider::GetActive()->where([
-            'for'=> 1,
-            'type' => 'video'
-        ])->count();
+
 
         return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product, 'sliders' => $sliders, 'totalVideo' => $totalVideo ]);
     }
