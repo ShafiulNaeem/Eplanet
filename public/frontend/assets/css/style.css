@@ -868,7 +868,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #000;
 }
 
-.header_middle { 
+.header_middle {
 	padding: 10px 0px 10px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -999,7 +999,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .search_container {
-  /* margin-right: 88px; */
+    width: 90%;
+    margin-left: 30px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search_container {
@@ -11018,7 +11019,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	color: #FFF;
 }
 .footer_top{
-  
+
     color:#FFF;
     padding: 20px 0
 }
