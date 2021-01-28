@@ -100,8 +100,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6" style="margin-bottom: 20px">
-                                <div class="coupon_code right">
+                            <div class="col-lg-6 col-md-6 ">
+                                <div class="coupon_code right @if( count(Session::get('cart')) == 1 ) mb-55 @endif ">
                                     <h3>Cart Totals</h3>
                                     <div class="coupon_inner">
                                        <div class="cart_subtotal">
