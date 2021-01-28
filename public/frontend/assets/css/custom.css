@@ -526,7 +526,9 @@ text-align: center
 .all_pruduct p{
     text-align: center;
 }
-
+.language_currency a{
+    color: #fff;
+}
 @media (min-width: 320px) and (max-width: 480px) {
 
     .logo{
@@ -676,7 +678,7 @@ header .main-header, header .main-nav {
     .language_currencys {
         text-align: center;
     }
-    
+
     .top_last{
         text-align: center;
     }
@@ -696,7 +698,7 @@ header .main-header, header .main-nav {
     .main-nav{
         display: none;
     }
-    
+
 
 }
 
@@ -710,7 +712,7 @@ header .main-header, header .main-nav {
 }
 
 .main_header{
-    
+
     background: #00322B;
     background: #799E3A;
 }
@@ -784,7 +786,7 @@ ul.bo-slider {
 	}
 
 }
- 
+
 @media (min-width: 768px){
 	.bo-slider .bo-slide img {
 		height: 350px;
@@ -794,7 +796,7 @@ ul.bo-slider {
 		height: 450px;
 	}
 }
- 
+
 @media (min-width: 1024px){
 	.bo-slider .bo-slide img {
 		height: 500px;
@@ -804,7 +806,7 @@ ul.bo-slider {
 		height: 500px;
 	}
 }
- 
+
 @media (min-width: 1200px){
 	.bo-slider .bo-slide img {
 		height: 450px;
@@ -881,7 +883,7 @@ ul.bo-slider {
 	margin-top: -20px;
 	text-align: center;
      display: none;
-  
+
 }
 
 .bo-dot {
@@ -901,7 +903,7 @@ ul.bo-slider {
 
 
  Animations
-Fading 
+Fading
 
 .fade {
   -webkit-animation-name: fade;
@@ -917,27 +919,27 @@ Fading
 }
 
 @-webkit-keyframes fade {
-  from {opacity: 1} 
+  from {opacity: 1}
   to {opacity: 1}
 }
 
 @-moz-keyframes fade {
-  from {opacity: 1} 
+  from {opacity: 1}
   to {opacity: 1}
 }
 
 @-ms-keyframes fade {
-  from {opacity: 1} 
+  from {opacity: 1}
   to {opacity: 1}
 }
 
 @-o-keyframes fade {
-  from {opacity: 1} 
+  from {opacity: 1}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: 1} 
+  from {opacity: 1}
   to {opacity: 1}
 }
 
@@ -961,7 +963,7 @@ Fading
   from {
   	opacity: .4;
   	margin-left: 100%;
-  } 
+  }
   to {
   	opacity: 1;
   	margin: 0;
@@ -972,7 +974,7 @@ Fading
   from {
   	opacity: .4;
   	margin-left: 100%;
-  } 
+  }
   to {
   	opacity: 1;
   	margin: 0;
@@ -983,7 +985,7 @@ Fading
   from {
   	opacity: .4;
   	margin-left: 100%;
-  } 
+  }
   to {
   	opacity: 1;
   	margin: 0;
@@ -994,7 +996,7 @@ Fading
   from {
   	opacity: .4;
   	margin-left: 100%;
-  } 
+  }
   to {
   	opacity: 1;
   	margin: 0;
@@ -1005,7 +1007,7 @@ Fading
   from {
   	opacity: .4;
   	margin-left: 100%;
-  } 
+  }
   to {
   	opacity: 1;
   	margin: 0;
