@@ -74,11 +74,9 @@ class ProductVideoController extends Controller
 
 
         if($productVideos->save()){
-            Session::flash('success','Product Video Inserted Successfully');
-            return redirect()->route('productVideo.index');
+            return redirect()->route('productVideo.index')->with('success','Product Video Inserted Successfully');
         } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('erro','Something went wrong');
         }
     }
 
@@ -137,11 +135,9 @@ class ProductVideoController extends Controller
 
 
         if($productVideos->save()){
-            Session::flash('success','Product Video Updated Successfully');
-            return redirect()->route('productVideo.index');
+            return redirect()->route('productVideo.index')->with('success','Product Video Updated Successfully');
         } else {
-            Session::flash('error','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('erro','Something went wrong');
         }
     }
 
@@ -153,8 +149,8 @@ class ProductVideoController extends Controller
      */
     public function destroy(ProductVideo $productVideo)
     {
-        if (! self::deleteFile(public_path('videos/' . $productVideo->product_video)) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile(public_path('videos/' . $productVideo->product_video));
+        //return redirect()->back()->with('error','Something went wrong');
 
         $productVideo->delete();
         return redirect()->back()->with('success','Deleted Successfully..');

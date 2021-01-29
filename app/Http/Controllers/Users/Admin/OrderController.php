@@ -65,12 +65,6 @@ class OrderController extends Controller
     {
 
         return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
-
-//        if( Auth::guard('admin')->user()->role != 1 )
-//            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0, 'admin_id' => Auth::guard("admin")->user()->id])->get();
-//        else
-//            return Order::with('products')->where(['user_id' => $id, 'shifted' => 0])
-//                ->where('admin_id', '!=', Auth::guard("admin")->user()->id)->get();
     }
 
     public function allOrders($id){
@@ -88,8 +82,7 @@ class OrderController extends Controller
     {
         Order::where(['id' => $id])
             ->update(['shifted' => 1]);
-        Session::flash('success','Product mark as shifted');
-        return redirect()->back();
+        return redirect()->back()->with('success','Product mark as shifted');
     }
 
     /**

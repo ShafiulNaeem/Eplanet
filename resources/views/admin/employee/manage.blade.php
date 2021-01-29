@@ -17,19 +17,19 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-striped table-responsive">
+                                <table id="#example1" class="table table-bordered table-striped table-responsive">
                                     <thead>
-                                        <tr class="">
-                                            <th>Employee Id</th>
-                                            <th>Image</th>
-                                            <th>Employee Name</th>
-                                            <th>Employee Email</th>
-                                            <th>Employee Phone</th>
-                                            <th>Designation</th>
-                                            <th>Status</th>
-                                            <th>Create At</th>
-                                            <th>Action</th>
-                                        </tr>
+                                    <tr class="">
+                                        <th>Employee Id</th>
+                                        <th>Image</th>
+                                        <th>Employee Name</th>
+                                        <th>Employee Email</th>
+                                        <th>Employee Phone</th>
+                                        <th>Designation</th>
+                                        <th>Status</th>
+                                        <th>Create At</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
                                     @if( ! empty($employees) )
@@ -37,7 +37,7 @@
                                             <tr>
                                                 <td class="">{{$employee['employee_unique_id']}}</td>
                                                 <td>
-                                                    <img src="{{url('images/' . $employee->employee_image)}}" alt="{{$employee->name}}" class="img-rounded" width="80">
+                                                    <img src="{{url('public/images/' . $employee->employee_image)}}" alt="{{$employee->name}}" class="img-rounded" width="80">
                                                 </td>
                                                 <td>{{$employee->name}}</td>
                                                 <td>{{$employee->email}}</td>
@@ -62,48 +62,30 @@
                                                     <a href="{{route('employee.edit',$employee->id)}}" class="btn text-warning btn-app float-left">
                                                         <i class="fas fa-edit"></i> Edit
                                                     </a>
-                                                    <a href="" class="btn btn-app text-danger float-left" data-toggle="modal" data-target="#exampleModal{{$employee->id}}">
-                                                        <i class="fa fa-trash fa-2x"></i> DELETE
-                                                    </a>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal{{$employee->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete !!!</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action="{{route('employee.destroy',$employee->id)}}" method="post">
-                                                                        @csrf
-                                                                        @method("DELETE")
-                                                                        <button class="btn btn-danger">Confirm</button>
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <form action="{{route('employee.destroy',$employee->id)}}" method="post">
+                                                        @csrf
+                                                        @method("DELETE")
+                                                        <button class="btn btn-app text-danger float-left" type="submit">
+                                                            <i class="fa fa-trash fa-2x"></i> DELETE
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        @endif
+                                    @endif
                                     </tbody>
                                     <tfoot>
-                                        <tr>
-                                            <th class="">Employee Id</th>
-                                            <th>Image</th>
-                                            <th>Employee Name</th>
-                                            <th>Employee Email</th>
-                                            <th>Employee Phone</th>
-                                            <th>Designation</th>
-                                            <th>Status</th>
-                                            <th>Create At</th>
-                                            <th>Action</th>
-                                        </tr>
+                                    <tr>
+                                        <th class="">Employee Id</th>
+                                        <th>Image</th>
+                                        <th>Employee Name</th>
+                                        <th>Employee Email</th>
+                                        <th>Employee Phone</th>
+                                        <th>Designation</th>
+                                        <th>Status</th>
+                                        <th>Create At</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </tfoot>
                                 </table>
                             </div>
