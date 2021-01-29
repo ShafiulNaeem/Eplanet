@@ -126,8 +126,7 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-        Session::flash('success','Brand Successfully Deleted');
-        return redirect()->route('brand.index');
+        return redirect()->route('brand.index')->with('info','Brand Successfully Deleted');
     }
 
     public function change(Request $request)
