@@ -78,11 +78,9 @@ class SubCategoryController extends Controller
         };
 
         if($SubCategory->save()){
-            Session::flash('success','Sub Category Inserted Successfully');
-            return redirect()->route('subcategory.index');
+            return redirect()->route('subcategory.index')->with('success','Sub Category Inserted Successfully');
         } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('error','Something went wrong');
         }
 
     }
@@ -141,12 +139,9 @@ class SubCategoryController extends Controller
         };
 
         if($subcategory->save()){
-            Session::flash('success','Sub Category Updated Successfully');
-            return redirect()->route('subcategory.index');
-        }
-        else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->route('subcategory.index')->with('success','Sub Category Updated Successfully');
+        } else {
+            return redirect()->back()->with('error','Something went wrong');
         }
     }
 
@@ -159,8 +154,8 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subcategory)
     {
-        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+        //dd($subcategory);
+        self::deleteFile( public_path('images/' . $subcategory->sub_category_image) );
 
         $subcategory->delete();
         return redirect()->back()->with('info', 'Sub Category Delete Successfully');

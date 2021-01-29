@@ -13,10 +13,7 @@ trait DeleteFile
      */
     public static function deleteFile($path): bool
     {
-        if(File::exists($path)) {
-            return File::delete($path);
-        }
-        return false;
+        File::delete($path);
     }
 
     /**

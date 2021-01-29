@@ -209,12 +209,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if ( ! self::deleteFile(public_path('images/' . $product->feature_image)) )
-            return redirect()->back()->with('error','Something went Wrong');
+        self::deleteFile(public_path('images/' . $product->feature_image));
+        //return redirect()->back()->with('error','Something went Wrong');
 
         $product->delete();
-        Session::flash('success','Product Deleted Successfully');
-        return redirect()->back();
+        return redirect()->back()->with('info','Product Deleted Successfully');
     }
 
 

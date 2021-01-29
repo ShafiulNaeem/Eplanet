@@ -149,12 +149,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if ( ! self::deleteFile( public_path('images/' . $category->category_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( public_path('images/' . $category->category_image) ) ;
+        //return redirect()->back()->with('error','Something went wrong');
 
         $category->delete();
-        Session::flash('success','Category Successfully Deleted');
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('info','Category Deleted Successfully');
     }
 
     // Change Status

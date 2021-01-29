@@ -94,8 +94,7 @@ class DesignationController extends Controller
         $val['admin_id'] = $admin_id;
         $val['designation_name'] = $request->designation_name;
         $designation->update($val);
-        Session::flash('success','Designation Updated Successfully');
-        return redirect()->route('designation.index');
+        return redirect()->route('designation.index')->with('success','Designation Updated Successfully');
     }
 
     /**
@@ -107,7 +106,6 @@ class DesignationController extends Controller
     public function destroy(Designation $designation)
     {
         $designation->delete();
-        Session::flash('success','Designation Deleted Successfully');
-        return redirect()->route('designation.index');
+        return redirect()->route('designation.index')->with('info','Designation Deleted Successfully');
     }
 }

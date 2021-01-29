@@ -73,8 +73,8 @@ class ProductImageController extends Controller
                 $productImages = null;
             }
         }
-        Session::flash('success','Product Images Inserted Successfully');
-        return redirect()->route('productImage.index');
+
+        return redirect()->route('productImage.index')->with('success','Product Images Inserted Successfully');
     }
 
     /**
@@ -122,9 +122,7 @@ class ProductImageController extends Controller
         }
 
 
-
-            Session::flash('success','Product Images Updated Successfully');
-            return redirect()->route('productImage.index');
+        return redirect()->route('productImage.index')->with('success','Product Images Updated Successfully');
     }
 
     /**
@@ -141,14 +139,13 @@ class ProductImageController extends Controller
         ])->get();
 
         foreach ($images as $image)
-            if(!self::deleteFile(public_path('images/' . $image->product_image)))
-                return redirect()->back()->with('error','Something went Wrong');
+            self::deleteFile(public_path('images/' . $image->product_image));
 
         ProductImage::where([
             'product_id'=> $id,
             'admin_id'=> Auth::guard('admin')->user()->id,
         ])->delete();
 
-        return redirect()->back()->with('success','Deleted Successfully..');
+        return redirect()->back()->with('info','Deleted Successfully..');
     }
 }

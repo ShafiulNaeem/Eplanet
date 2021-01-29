@@ -152,12 +152,10 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        if ( ! self::deleteFile( public_path('images/' . $employee->employee_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( public_path('public/images/' . $employee->employee_image) );
 
         $employee->delete();
-        Session::flash('success','Employee Delete Successfully');
-        return redirect()->back();
+        return redirect()->back()->with('info','Employee Delete Successfully');
     }
 
     // change status
