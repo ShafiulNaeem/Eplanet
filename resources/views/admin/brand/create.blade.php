@@ -33,13 +33,13 @@
                                     </div>
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleSelectRounded0">Status</label>
-                                        <select name="status" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;" id="exampleSelectRounded0">
+                                        <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;" >
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group ">
+                                    <div class="form-group col-md-6 float-left">
                                         <label for="exampleFormControlFile1">Brand Logo</label>
                                         {{--                                            <input type="file" name="feature_image" class="form-control-file" id="exampleFormControlFile1">--}}
                                         <div class="input-group">
@@ -50,12 +50,15 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                    <div class="form-group col-md-6 float-left mt-2">
+                                        <label for="exampleFormControlFile1"> </label>
+                                        <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+                                    </div>
                                 <!-- /.card-body -->
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                                </div>
+{{--                                <div class="card-footer">--}}
+{{--                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
+{{--                                </div>--}}
                             </form>
                         </div>
                         <!-- /.card -->

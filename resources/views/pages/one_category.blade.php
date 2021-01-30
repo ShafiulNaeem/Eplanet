@@ -16,44 +16,6 @@
                     </div>
                     <div class="right-main-cat">
 
-                        {{--                  @foreach($categories as $category)--}}
-                        {{--                    <div class="row">--}}
-
-                        {{--                    <div class="col-md-12 ">--}}
-                        {{--                      <div class="sub_head">--}}
-                        {{--                        <h4>All {{$category->subcategory_name}} Collection</h4>--}}
-                        {{--                      </div>--}}
-                        {{--                    </div>--}}
-
-                        {{--                        @foreach($category->productWithStatus as $product)--}}
-                        {{--                            <div class="col-md-3">--}}
-                        {{--                                <div class="right-category">--}}
-                        {{--                                    <div class="card">--}}
-                        {{--                                      <a href="{{route('pages.show',$product->id)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>--}}
-                        {{--                                      <div class="card-body">--}}
-                        {{--                                       <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_description}}</p></a>--}}
-                        {{--                                         <div class="price_box">--}}
-                        {{--                                            <div class=" product_ratting">--}}
-                        {{--                                                <ul>--}}
-                        {{--                                                    <li><a href="#"><i class="icon-star"></i></a></li>--}}
-                        {{--                                                   <li><a href="#"><i class="icon-star"></i></a></li>--}}
-                        {{--                                                   <li><a href="#"><i class="icon-star"></i></a></li>--}}
-                        {{--                                                   <li><a href="#"><i class="icon-star"></i></a></li>--}}
-                        {{--                                                   <li><a href="#"><i class="icon-star"></i></a></li>--}}
-                        {{--                                                    <li class="review"><a href="#"> (customer review )</a></li>--}}
-                        {{--                                                </ul>--}}
-                        {{--                                            </div>--}}
-                        {{--                                                  <span class="current_price">BDT {{$product->product_price}}</span>--}}
-                        {{--                                            </div>--}}
-                        {{--                                      </div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        @endforeach--}}
-
-                        {{--                </div>--}}
-                        {{--                  @endforeach--}}
-
                         <div class="row">
 
                             <div class="col-md-12 ">
@@ -71,17 +33,21 @@
                                             <a href="{{route('pages.show',$product->id)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             <div class="card-body">
                                                 <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_name}}</p></a>
-                                                <div class="price_box">
-                                                    <div class=" product_ratting">
-                                                        <ul>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li class="review"><a href="#"> (customer review )</a></li>
-                                                        </ul>
-                                                    </div>
+                                                <a href="{{route('pages.show',$product->id)}}">
+                                                    <p>Size : {{ $product->size }}</p>
+                                                </a>
+                                                <div class="price_box text-center">
+
+{{--                                                    <div class=" product_ratting">--}}
+{{--                                                        <ul>--}}
+{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                            <li class="review"><a href="#"> (customer review )</a></li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
                                                     <span class="current_price">BDT {{$product->product_price}}</span>
                                                 </div>
                                             </div>

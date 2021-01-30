@@ -211,7 +211,7 @@
                                                 <figcaption class="product_content">
                                                     <h4 class="product_name"><a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">{{$mainRe['category']['products'][$index]['product_name']}}</a></h4>
                                                     <div class="price_box">
-                                                        <span class="current_price">$ {{$mainRe['category']['products'][$index]['product_price']}}</span>
+                                                        <span class="current_price">BDT {{$mainRe['category']['products'][$index]['product_price']}}</span>
 
 
                                                     </div>

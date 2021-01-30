@@ -22,7 +22,7 @@
 
 
     <!--product details start-->
-    <div class="product_details mt-70 mb-70">
+    <div class="product_details mb-70">
         <div class="container">
             @if( count($products) > 0 )
                 @foreach($products as $product)
@@ -56,9 +56,9 @@
                                 </ul>
                             </div>
                             <div class="">
-                                <h3>Customer Video Reviews</h3>
+                                <h3>Promo Video </h3>
                                 @foreach($product->productVideos as $video)
-                                <iframe width="400"  src="{{url('videos/'.$video->product_image)}}" frameborder="0" allowfullscreen>
+                                <iframe width="400"  src="{{url('public/videos/'.$video->product_image)}}" frameborder="0" allowfullscreen>
                                 </iframe>
                                 @endforeach
                             </div>
@@ -66,20 +66,20 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="product_d_right">
+                            <h4> Name:{{$product->product_name}}</h4>
+{{--                                <div class=" product_ratting">--}}
+{{--                                    <ul>--}}
+{{--                                        <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                       <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                       <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                       <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                       <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                        <li class="review"><a href="#"> (customer review ) </a></li>--}}
+{{--                                    </ul>--}}
 
-                                <div class=" product_ratting">
-                                    <ul>
-                                        <li><a href="#"><i class="icon-star"></i></a></li>
-                                       <li><a href="#"><i class="icon-star"></i></a></li>
-                                       <li><a href="#"><i class="icon-star"></i></a></li>
-                                       <li><a href="#"><i class="icon-star"></i></a></li>
-                                       <li><a href="#"><i class="icon-star"></i></a></li>
-                                        <li class="review"><a href="#"> (customer review ) </a></li>
-                                    </ul>
-
-                                </div>
+{{--                                </div>--}}
                                 <div class="price_box">
-                                    <span class="current_price">BDT: {{$product->product_price}}</span>
+                                    <span class="current_price">BDT {{$product->product_price}}</span>
 
 
                                 </div>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="product_variant color">
 
-                                    <h3>Product Name:{{$product->product_name}}</h3>
+
                                     @if($product->stock > 0)
                                         <h5>Available Product: {{$product->stock}}</h5>
                                     @else

@@ -58,7 +58,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Designation</label>
-                                            <select name="designation_name" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <select name="designation_name" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option selected>Select Designation</option>
                                                 @foreach($designations as $designation)
                                                     <option value="{{$designation->id}}">{{$designation->designation_name}}</option>
@@ -72,7 +72,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Employee Status</label>
-                                            <select name="status" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <select name="status" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option value="1">Active</option>
                                                 <option value="0">InActive</option>
                                             </select>

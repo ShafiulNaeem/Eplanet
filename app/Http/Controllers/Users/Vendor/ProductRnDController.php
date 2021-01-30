@@ -62,7 +62,6 @@ class ProductRnDController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->rnd_image->move(public_path('images'), $filename);
             $productRnD->rnd_image= $filename;
-            $productRnD->save();
         };
 
         if($productRnD->save()){
@@ -118,15 +117,13 @@ class ProductRnDController extends Controller
         $productRnD->title = $request->title;
         $productRnD->description = $request->description;
 
-        if ( ! self::deleteFile( public_path('images/' . $productRnD->rnd_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+         self::deleteFile( public_path('images/' . $productRnD->rnd_image) ) ;
 
         if($request->hasFile('rnd_image')){
             $image = request()->file('rnd_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->rnd_image->move(public_path('images'), $filename);
             $productRnD->rnd_image= $filename;
-            $productRnD->save();
         };
 
         if($productRnD->save()){
@@ -147,11 +144,10 @@ class ProductRnDController extends Controller
      */
     public function destroy(ProductRnD $productRnD)
     {
-        if ( ! self::deleteFile( public_path('images/' . $productRnD->rnd_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( public_path('images/' . $productRnD->rnd_image) ) ;
 
         $productRnD->delete();
-        Session::flash('success','Product RnD Deleted Successfully');
+        Session::flash('info','Product RnD Deleted Successfully');
         return redirect()->back();
     }
 }

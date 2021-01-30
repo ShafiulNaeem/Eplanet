@@ -27,6 +27,7 @@ class CreateProductsTable extends Migration
             $table->string('feature_image');
             $table->integer('stock');
             $table->string('size')->nullable();
+            $table->integer('is_new')->nullable();
             $table->string('model')->nullable();
             $table->double('product_price');
             $table->double('tax')->default(0);

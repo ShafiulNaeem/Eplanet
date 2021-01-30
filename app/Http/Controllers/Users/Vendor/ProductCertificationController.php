@@ -61,16 +61,13 @@ class ProductCertificationController extends Controller
             $filename = time() . '.' . $pdfs->getClientOriginalExtension();
             request()->pdf->move(public_path('documents'), $filename);
             $productCertification->pdf= $filename;
-            $productCertification->save();
-        };
+        }
 
 
         if($productCertification->save()){
-            Session::flash('success','Product Certification Inserted Successfully');
-            return redirect()->route('productCertification.index');
+            return redirect()->route('productCertification.index')->with('success','Product Certification Inserted Successfully');
         } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('success','Something went wrong');
         }
     }
 
@@ -99,9 +96,10 @@ class ProductCertificationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param ProductCertification $productCertification
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, ProductCertification $productCertification)
     {
@@ -116,25 +114,21 @@ class ProductCertificationController extends Controller
         $productCertification->issued_by = $request->issued_by;
         $productCertification->business_scope = $request->business_scope;
 
-        if ( ! self::deleteFile( public_path('documents/' . $productCertification->pdf) ) )
-        return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( public_path('documents/' . $productCertification->pdf) ) ;
 
         if($request->hasFile('pdf')){
             $pdfs = request()->file('pdf');
             $filename = time() . '.' . $pdfs->getClientOriginalExtension();
             request()->pdf->move(public_path('documents'), $filename);
             $productCertification->pdf= $filename;
-            $productCertification->save();
         };
 
 
-        
+
         if($productCertification->save()){
-            Session::flash('success','Product Certification Updated Successfully');
-            return redirect()->route('productCertification.index');
+            return redirect()->route('productCertification.index')->with('success','Product Certification Updated Successfully');
         } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('success','Something went wrong');
         }
     }
 
@@ -146,11 +140,9 @@ class ProductCertificationController extends Controller
      */
     public function destroy(ProductCertification $productCertification)
     {
-        if ( ! self::deleteFile( public_path('documents/' . $productCertification->pdf) ) )
-        return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( public_path('documents/' . $productCertification->pdf) ) ;
 
         $productCertification->delete();
-        Session::flash('success','Product Certification Deleted Successfully');
-        return redirect()->back();
+        return redirect()->back()->with('info','Product Certification Deleted Successfully');
     }
 }

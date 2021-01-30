@@ -31,9 +31,9 @@
                                 </div>
                                 <div class="form-group float-left col-md-6">
                                     <label for="exampleInputPassword1">Category Status</label>
-                                    <select name="status" id="" class="form-control">
+                                    <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                     <option value="1" @if($category->status == 1 ) selected @endif>Active</option>
-                                        <option value="0" @if($category->status == 0 ) selected @endif>InActive</option>
+                                        <option value="0" @if($category->status == 0 ) selected @endif>Inactive</option>
                                     </select>
                                 </div>
                                 <div class="form-group float-left col-md-6">
@@ -49,11 +49,17 @@
                                     <span><img src="{{asset('images/'.$category->category_image)}}" alt="{{$category->category_name}}" width="80"></span>
                                 </div>
 
-                            </div><!-- /.box-body -->
-
-                            <div class="card-footer">
+                            <div class="form-group float-left col-md-6 mt-2">
+                                <label for="exampleInputPassword1"></label>
                                 <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
                             </div>
+
+                            </div>
+                            <!-- /.box-body -->
+
+{{--                            <div class="card-footer">--}}
+{{--                                <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>--}}
+{{--                            </div>--}}
                         </form>
                             </div>
                             <!-- /.card -->

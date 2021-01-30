@@ -104,7 +104,7 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subcategory)
     {
-        $categories = Category::all();
+        $categories = Category::CategoryWithAdminOwner()->get();
         return view('admin.subcategory.edit',compact('subcategory', 'categories'));
     }
 
@@ -172,6 +172,6 @@ class SubCategoryController extends Controller
 
     public function secondarySubBySubCategory(SubCategory $subcategory)
     {
-        return SecondarySubCategory::where('sub_category_id', $subcategory->id)->get();
+        return SecondarySubCategory::where('sub_category_id', $subcategory->id)->SecondarySubCategoryWithAdminOwner()->get();
     }
 }

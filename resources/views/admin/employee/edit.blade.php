@@ -47,7 +47,7 @@
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Designation</label>
-                                        <select name="designation_name" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                        <select name="designation_name" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                             @foreach($designations as $designation)
                                                 <option
 
@@ -62,7 +62,7 @@
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Employee Status</label>
-                                        <select name="status" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                        <select name="status" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                             <option value="1" @if($employee->status == 1 ) selected @endif>Active</option>
                                             <option value="0" @if($employee->status == 0 ) selected @endif>InActive</option>
                                         </select>
@@ -79,11 +79,16 @@
                                         </div>
                                         <span><img src="{{url('images',$employee->employee_image)}}" alt="{{$employee->name}}" width="80"></span>
                                     </div>
+
+                                    <div class="form-group mt-2 col-md-6 float-left">
+                                        <label > </label>
+                                        <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
+                                    </div>
                                 </div><!-- /.box-body -->
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
-                                </div>
+{{--                                <div class="card-footer">--}}
+{{--                                    <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>--}}
+{{--                                </div>--}}
                             </form>
                             </div>
                             <!-- /.card -->

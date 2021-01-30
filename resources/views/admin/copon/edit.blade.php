@@ -26,32 +26,38 @@
                             @method('PUT')
                             <div class="card-body">
 
-                                <div class="form-group">
+                                <div class="form-group float-left col-md-6">
                                     <label for="exampleInputPassword1">Coupon Code</label>
                                     <input type="text" name="coupon_code" require="require" autocomplete="off" value="{{$coupon->coupon_code}}" class="form-control"  placeholder="Coupon Code">
                                     @error('coupon_code')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group float-left col-md-6">
                                     <label >Coupon Amount</label>
                                     <input type="text" name="amount" require="require" autocomplete="off" class="form-control" value="{{$coupon->amount}}" placeholder="Coupon Amount">
                                     @error('amount')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+
+                                <div class="form-group float-left col-md-6">
                                     <label for="exampleInputPassword1">Coupon Status</label>
-                                    <select name="status"  class="form-control">
+                                    <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                         <option value="1" @if($coupon->status == 1) selected @endif>Active</option>
-                                        <option value="0" @if($coupon->status == 0) selected @endif>InActive</option>
+                                        <option value="0" @if($coupon->status == 0) selected @endif>Inactive</option>
                                     </select>
+                                </div>
+
+                                <div class="form-group float-left col-md-6 mt-2">
+                                    <label for=""> </label>
+                                    <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
                                 </div>
                             </div><!-- /.box-body -->
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
-                            </div>
+{{--                            <div class="card-footer">--}}
+{{--                                <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>--}}
+{{--                            </div>--}}
                         </form>
                             </div>
                             <!-- /.card -->

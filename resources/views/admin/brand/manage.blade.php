@@ -58,13 +58,30 @@
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
 
-                                        <form class="float-left" action="{{ route('brand.destroy', $brand->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-danger btn btn-app" >
-                                                <i class="fa fa-trash fa-2x"></i> DELETE
-                                            </button>
-                                        </form>
+                                        <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$brand->id}}">
+                                            <i class="fa fa-trash fa-2x"></i> DELETE
+                                        </a>
+
+                                        <div class="modal fade" id="exampleModal{{$brand->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete this !!!</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{route('brand.destroy',$brand->id)}}" method="post">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <button class="btn btn-danger">Confirm</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </td>
                                 </tr>

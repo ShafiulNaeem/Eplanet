@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users\Admin;
 
+use App\Helper\DeleteFile;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Coupon;
@@ -10,6 +11,7 @@ use Auth;
 
 class CouponController extends Controller
 {
+    use DeleteFile;
     /**
      * Display a listing of the resource.
      *
@@ -57,13 +59,9 @@ class CouponController extends Controller
         $val['status'] = $request->status ;
 
         if(Coupon::create($val)){
-            Session::flash('success','Coupon Inserted Successfully');
-
-            return redirect()->route('coupon.index');
+            return redirect()->route('coupon.index')->with('success','Coupon Inserted Successfully');
         } else {
-            Session::flash('error','Something went wrong');
-
-            return redirect()->back();
+            return redirect()->back()->with('error','Something went wrong');
         }
     }
 
@@ -110,9 +108,8 @@ class CouponController extends Controller
         $val['status'] = $request->status ;
 
         $coupon->update($val);
-        Session::flash('success','Coupon updated Successfully');
 
-        return redirect()->route('coupon.index');
+        return redirect()->route('coupon.index')->with('success','Coupon updated Successfully');
     }
 
     /**
@@ -125,8 +122,14 @@ class CouponController extends Controller
     public function destroy(Coupon $coupon)
     {
         $coupon->delete();
-        Session::flash('success','Coupon Successfully Deleted');
-        return redirect()->route('coupon.index');
+        return redirect()->route('coupon.index')->with('info','Coupon Deleted Successfully');
+    }
 
+
+    public function change(Request $request)
+    {
+        if( self::changeStatus($request->status, 'App\Models\Coupon', $request->id) )
+            return redirect()->back()->with('success', 'Status Changes');
+        return  redirect()->back()->with('error', 'Something went wrong');
     }
 }

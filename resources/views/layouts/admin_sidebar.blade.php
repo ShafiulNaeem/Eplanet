@@ -35,7 +35,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('admin.dashboard')}}" class="brand-link">
-        <img src="{{ asset('frontend/assets/img/logo/pnga 543.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ asset('frontend/assets/img/logo/logo3.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
             <span class="brand-text font-weight-light">Admin Eplanet</span>
         @else

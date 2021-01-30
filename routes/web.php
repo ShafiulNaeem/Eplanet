@@ -140,7 +140,7 @@ Route::prefix('admin')->group(function(){
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
     Route::get('sellreport', 'Users\Admin\AdminController@adminMonthlySell')->name('sell.report');
     Route::post('sellreport', 'Users\Admin\AdminController@adminMonthlySellPost')->name('sell.report.post');
-
+    Route::post('coupon/changestatus', 'Users\Admin\CouponController@change')->name('coupon.change.status');
     // vendor routes
     Route::get('allVendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
 

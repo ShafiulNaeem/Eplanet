@@ -38,11 +38,17 @@
                             <td>BDT {{$copon->amount}}</td>
                             <td>{{\Carbon\Carbon::parse($copon->created_at)->format('M d Y')}}</td>
                             <td>
-                                @if($copon->status == 1)
-                                <span class="btn btn-success">Active</span>
-                                @else
-                                <span class="btn btn-danger">InActive</span>
-                                @endif
+                                <form action="{{ route('coupon.change.status') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="status" value="{{$copon->status}}">
+                                    <input type="hidden" name="id" value="{{$copon->id}}">
+
+                                    @if($copon->status == 1)
+                                        <button type="submit" class="btn btn-success">Active</button>
+                                    @else
+                                        <button type="submit" class="btn btn-danger">Inactive</button>
+                                    @endif
+                                </form>
                             </td>
 
 
