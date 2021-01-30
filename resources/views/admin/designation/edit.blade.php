@@ -31,11 +31,16 @@
                                 <input type="text" name="designation_name" class="form-control" value="{{$designations->designation_name}}" placeholder="Designation Name">
                             </div>
 
-                    </div><!-- /.box-body -->
-
-                        <div class="card-footer">
+                        <div class="form-group col-md-6 float-left mt-2">
+                            <label for=""> </label>
                             <button type="submit" class="btn btn-block btn-outline-dark">Save Change</button>
                         </div>
+
+                    </div><!-- /.box-body -->
+
+{{--                        <div class="card-footer">--}}
+{{--                            <button type="submit" class="btn btn-block btn-outline-dark">Save Change</button>--}}
+{{--                        </div>--}}
                     </form>
                         </div>
                         <!-- /.card -->

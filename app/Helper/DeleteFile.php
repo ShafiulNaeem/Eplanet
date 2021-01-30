@@ -9,9 +9,8 @@ trait DeleteFile
 {
     /**
      * @param $path
-     * @return bool
      */
-    public static function deleteFile($path): bool
+    public static function deleteFile($path)
     {
         File::delete($path);
     }

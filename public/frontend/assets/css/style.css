@@ -5551,9 +5551,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .breadcrumbs_area {
-  background: url(../img/slider/logo-w.png) no-repeat 0 0;
   background-size: cover;
-  height: 100px;
+  height: 45px;
   display: flex;
   align-items: center;
 }
@@ -6377,7 +6376,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product_d_right .product_desc {
   margin-bottom: 19px;
-  padding-bottom: 24px;
   border-bottom: 1px solid #ededed;
 }
 @media only screen and (max-width: 767px) {
@@ -6573,7 +6571,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: #3E444A;
 }
 .product_variant.color {
-  margin-bottom: 26px;
+  /*margin-bottom: 26px;*/
 }
 @media only screen and (max-width: 767px) {
   .product_variant.color {
@@ -6655,7 +6653,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .product_meta {
-  margin-bottom: 24px;
+  /*margin-bottom: 24px;*/
 }
 @media only screen and (max-width: 767px) {
   .product_meta {

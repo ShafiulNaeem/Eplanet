@@ -85,17 +85,21 @@
                                 <a href="{{route('pages.show',$product->id)}}"><img src="{{asset('images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                 <div class="card-body">
                                     <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_name}}</p></a>
-                                    <div class="price_box">
-                                        <div class=" product_ratting">
-                                            <ul>
-                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                                <li class="review"><a href="#"> (customer review )</a></li>
-                                            </ul>
-                                        </div>
+                                    <a href="{{route('pages.show',$product->id)}}">
+                                        <p>Size : {{ $product->size }}</p>
+                                    </a>
+                                    <div class="price_box text-center">
+
+{{--                                        <div class=" product_ratting">--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
+{{--                                                <li class="review"><a href="#"> (customer review )</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
                                         <span class="current_price">BDT {{$product->product_price}}</span>
                                     </div>
                                 </div>

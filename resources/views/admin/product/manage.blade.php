@@ -20,7 +20,7 @@
                                 <table id="example1" class="table table-bordered table-striped table-responsive">
                                     <thead >
                                     <tr>
-                                        <th>sl</th>
+                                        <th>ID</th>
                                         <th>Product Image</th>
                                         <th>Product Name</th>
                                         <th>Brand</th>
@@ -38,7 +38,7 @@
 
                                     @foreach($products as $index => $product)
                                         <tr>
-                                            <td>{{$index + 1}}</td>
+                                            <td>{{$product->unique_id}}</td>
                                             <td><img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
                                             <td>{{$product->product_name}}</td>
                                             <td>{{$product->brand->brand_name}}</td>
@@ -95,7 +95,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>sl</th>
+                                        <th>ID</th>
                                         <th>Product Image</th>
                                         <th>Product Name</th>
                                         <th>Brand</th>

@@ -66,7 +66,7 @@ class ProductImageController extends Controller
                 $productImages = new ProductImage();
                 $productImages->product_id = $request->product_name;
                 $productImages->admin_id = Auth::guard('admin')->user()->id;
-                $filename = time() .  $file->getClientOriginalName() ;
+                $filename = time() .  str_replace(' ', '', $file->getClientOriginalName()) ;
                 $file->move(public_path('images'), $filename);
                 $productImages->product_image= $filename;
                 $productImages->save();
@@ -115,7 +115,7 @@ class ProductImageController extends Controller
         foreach ($request->product_image_id as $ind => $product_image_id){
             if($request->hasFile('product_image.'.$ind)){
                 $file = $request->file('product_image.'.$ind);
-                $filename = time() .  $file->getClientOriginalName() ;
+                $filename = time() .  str_replace(' ', '', $file->getClientOriginalName()) ;
                 $file->move(public_path('images'), $filename);
                 ProductImage::where('id', $product_image_id)->update(['product_image' => $filename]);
             }

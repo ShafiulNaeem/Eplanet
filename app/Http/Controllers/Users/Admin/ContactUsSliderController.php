@@ -50,7 +50,7 @@ class ContactUsSliderController extends Controller
             $files = $request->file('slider_media');
             foreach ($files as $file){
                 $productImages = new ContactUsSlider();
-                $filename = time() .  $file->getClientOriginalName() ;
+                $filename = time() . '.' .  $file->clientExtension() ;
                 $fileType = strstr($file->getMimeType(), '/', true);
                 $type = strstr($file->getMimeType(), '/');
                 ( strcmp($fileType, 'video') )  ?

@@ -113,8 +113,7 @@ class ProductCapacityController extends Controller
         $productCapacity->title = $request->title;
         $productCapacity->description = $request->description;
 
-        if ( ! self::deleteFile( public_path('images/' . $productCapacity->capacity_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+         self::deleteFile( public_path('images/' . $productCapacity->capacity_image) ) ;
 
         if($request->hasFile('capacity_image')){
             $image = request()->file('capacity_image');
@@ -141,11 +140,9 @@ class ProductCapacityController extends Controller
      */
     public function destroy(ProductCapacity $productCapacity)
     {
-        if ( ! self::deleteFile( public_path('images/' . $productCapacity->capacity_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+         self::deleteFile( public_path('images/' . $productCapacity->capacity_image) );
 
         $productCapacity->delete();
-        Session::flash('success','Product Capacity Deleted Successfully');
-        return redirect()->back();
+        return redirect()->back()->with('info','Product Capacity Deleted Successfully');
     }
 }

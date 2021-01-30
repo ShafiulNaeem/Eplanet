@@ -120,8 +120,7 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->status = $request->status;
 
-        if ( ! self::deleteFile( public_path('images/' . $category->category_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+         self::deleteFile( public_path('images/' . $category->category_image) ) ;
 
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');
@@ -167,6 +166,6 @@ class CategoryController extends Controller
 
     public function subCategoryByCategory(Category $category)
     {
-        return SubCategory::where('category_id', $category->id)->get();
+        return SubCategory::where('category_id', $category->id)->SubCategoryWithAdminOwner()->get();
     }
 }

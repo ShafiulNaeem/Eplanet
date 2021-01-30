@@ -56,7 +56,8 @@ class ProductFactory extends Factory
             'tax' => $this->faker->numberBetween(1, 40),
             'manufactured_by' => $this->faker->name,
             'color' => $this->faker->colorName,
-            'sold' => $this->faker->numberBetween(2, 30)
+            'sold' => $this->faker->numberBetween(2, 30),
+            'is_new' => $this->faker->numberBetween(1, 2)
         ];
     }
 }

@@ -27,6 +27,15 @@
 
                                 <div class="card-body">
 
+                                    <div class="form-group col-md-6 float-left">
+                                        <label for="productIs">Product Status</label>
+                                        <select name="is_new" class="form-control select2 select2-primary" data-dropdown-css-class="select2-primary" style="width: 100%;" >
+                                            <option>Select</option>
+                                            <option @if( $product->is_new == 1 ) selected @endif value="1">Brand New</option>
+                                            <option @if( $product->is_new == 2 ) selected @endif value="2">Used</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group float-left col-md-6">
                                         <label for="exampleInputPassword1">Product Name</label>
                                         <input type="text" name="product_name" class="form-control" id="exampleInputPassword1" value="{{$product->product_name}}">
@@ -170,11 +179,17 @@
                                         <textarea class="form-control" name="product_description" id="exampleFormControlTextarea1" rows="3">{{$product->product_description}}</textarea>
                                     </div>
 
+                                    <div class="form-group col-md-6 float-left mt-2">
+                                        <label for=""> </label>
+                                        <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
+                                    </div>
+
+
                                 </div>
 
-                                <div class="box-footer">
-                                    <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>
-                                </div>
+{{--                                <div class="box-footer">--}}
+{{--                                    <button type="submit" class="btn btn-outline-dark btn-block">Save Change</button>--}}
+{{--                                </div>--}}
                             </form>
                             </div>
                             <!-- /.card -->

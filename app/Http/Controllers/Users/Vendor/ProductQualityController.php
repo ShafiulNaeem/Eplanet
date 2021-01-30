@@ -61,8 +61,7 @@ class ProductQualityController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->quality_image->move(public_path('images'), $filename);
             $productQuality->quality_image= $filename;
-            $productQuality->save();
-        };
+        }
 
         if($productQuality->save()){
             Session::flash('success','Product Quality Inserted Successfully');
@@ -98,9 +97,10 @@ class ProductQualityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param ProductQuality $productQuality
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, ProductQuality $productQuality)
     {
@@ -113,15 +113,13 @@ class ProductQualityController extends Controller
         $productQuality->title = $request->title;
         $productQuality->description = $request->description;
 
-        if ( ! self::deleteFile( public_path('images/' . $productQuality->quality_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( public_path('images/' . $productQuality->quality_image) ) ;
 
         if($request->hasFile('quality_image')){
             $image = request()->file('quality_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             request()->quality_image->move(public_path('images'), $filename);
             $productQuality->quality_image= $filename;
-            $productQuality->save();
         };
 
         if($productQuality->save()){
@@ -136,13 +134,13 @@ class ProductQualityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param ProductQuality $productQuality
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(ProductQuality $productQuality)
     {
-        if ( ! self::deleteFile( public_path('images/' . $productQuality->quality_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+         self::deleteFile( public_path('images/' . $productQuality->quality_image) );
 
         $productQuality->delete();
         Session::flash('success','Product Quality Deleted Successfully');

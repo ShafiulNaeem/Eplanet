@@ -121,8 +121,7 @@ class ProductVideoController extends Controller
         $productVideos = ProductVideo::find($id);
         $productVideos->product_id = $request->product_name;
 
-        if (! self::deleteFile(public_path('videos/' . $productVideos->product_video)) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile(public_path('videos/' . $productVideos->product_video));
 
         if($request->hasFile('product_video')){
             $image = request()->file('product_video');

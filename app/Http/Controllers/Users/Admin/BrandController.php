@@ -105,16 +105,24 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $val = $request->validate([
-            'brand_name' => ['required', 'string', 'max:255']
+            'brand_name' => 'required|string|max:255',
+            'brand_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $admin_id = Auth::guard('admin')->user()->id;
         $val['admin_id'] = $admin_id;
         $val['brand_name'] = $request->brand_name;
-        $val['status'] = $request->status;;
+        $val['status'] = $request->status;
+
+        if($request->hasFile('brand_image')){
+            $image = $request->file('brand_image');
+            $filename = time() . '.' . $image->clientExtension();
+            request()->brand_image->move(public_path('images'), $filename);
+            $val['brand_image'] = $filename;
+        };
+
         $brand->update($val);
-        Session::flash('success','Brand Updated Successfully');
-        return redirect()->route('brand.index');
+        return redirect()->route('brand.index')->with('success','Brand Updated Successfully');
     }
 
     /**
@@ -125,6 +133,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
+        self::deleteFile(public_path('images/' . $brand->brand_image));
         $brand->delete();
         return redirect()->route('brand.index')->with('info','Brand Successfully Deleted');
     }

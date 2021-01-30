@@ -39,18 +39,25 @@
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group float-left col-md-6">
-                                    <label for="exampleInputPassword1">Coupon Status</label>
-                                    <select name="status"  class="form-control">
+
+                                <div class="form-group col-md-6 float-left">
+                                    <label for="exampleSelectRounded0">Status</label>
+                                    <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;" >
                                         <option value="1">Active</option>
-                                        <option value="0">InActive</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
+
+                                <div class="form-group col-md-6 float-left mt-2">
+                                    <label for=""> </label>
+                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+                                </div>
+
                             </div><!-- /.box-body -->
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                            </div>
+{{--                            <div class="card-footer">--}}
+{{--                                <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
+{{--                            </div>--}}
                         </form>
                     </div>
                     <!-- /.card -->

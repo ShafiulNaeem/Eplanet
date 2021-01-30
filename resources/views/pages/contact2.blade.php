@@ -59,7 +59,7 @@
                                                 <p>ID: {{$employ->id}}</p>
                                                 <p>{{$employ->name}}</p>
                                                 <p>{{$employ->email}}</p>
-                                                <p class="card-text">+088 {{$employ->phone}}</p>
+                                                <p class="card-text"> {{$employ->phone}}</p>
                                             </div>
                                         </div>
                                     </div>
