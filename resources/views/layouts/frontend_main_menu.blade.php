@@ -194,7 +194,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/logo3.png')}}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/logo3.png')}}" width="250px" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -202,7 +202,7 @@
                         <div class="header_right_info">
 
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-10">
                                     <div class="search_container">
                                         <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
                                             @csrf
@@ -229,7 +229,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="header_account_area">
                                         <div class="header_account_list register">
                                             <ul>
@@ -365,7 +365,7 @@
                                 @endif
                                 @if(isset($categories))
                                     @foreach($categories as $category)
-                                        <li class="has-child c-1">
+                                        <li class="has-child c-2">
                                             <a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}
                                                 @if( count($category->subcategory) >0 )
 {{--                                                    <i class="fa fa-caret-down"></i>--}}
@@ -374,7 +374,7 @@
                                             @if( count($category->subcategory) >0 )
                                             <ul class="drop-down drop-menu-1">
                                                 @foreach($category->subcategory as $cat)
-                                                <li class="has-child">
+                                                <li class="has-child ">
                                                     <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a>
                                                     @if( count($cat->secondary_sub_categories) > 0 )
                                                         <ul class="drop-down drop-menu-2">

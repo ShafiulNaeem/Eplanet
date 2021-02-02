@@ -177,7 +177,9 @@
                                     <article class="single_related">
                                         <figure>
                                             <div class="related_thumb">
+                                                <div class="zoom-In">
                                                 <a href="{{route('blog.show',$userBlog)}}"><img src="{{url('images',$userBlog->blog_image)}}" alt="{{$userBlog->title}}"></a>
+                                                </div>
                                             </div>
                                             <figcaption class="related_content">
                                                 <h4><a href="#">{{$userBlog->title}}</a></h4>
