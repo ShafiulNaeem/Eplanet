@@ -168,9 +168,11 @@
                                                                 <figure>
                                                                     <div class="single_banner">
                                                                         <div class="banner_thumb">
+                                                                            <div class="zoom-In">
     {{--                                                                                <a href="{{route('pages.show',$product->id)}}">--}}
                                                                                 <img src="{{url('images',$capacity->capacity_image	)}}" alt="{{$capacity->title}}">
     {{--                                                                                </a>--}}
+    </div>
                                                                         </div>
                                                                     </div>
                                                                     <figcaption class="product_content">

@@ -243,7 +243,9 @@
                                  <div class="card">
                                 <div class="row">
                                     <div class="col-md-5">
+                                        <div class="zoom-In">
                                         <img src="{{url('images/' . $employ->employee_image)}}" alt="{{$employ->name}}" class="image-fluid">
+                                        </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="card-body">

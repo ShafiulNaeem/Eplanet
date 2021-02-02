@@ -131,9 +131,12 @@
                                                 <figure>
                                                     <div class="single_banner">
                                                         <div class="banner_thumb">
+                                                          <div class="zoom-In">
+                                                            
                                                             <a href="{{route('cat.show',$category->id)}}">
                                                                 <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}">
                                                             </a>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                     <figcaption class="product_content">
@@ -163,9 +166,11 @@
                                                 <figure>
                                                     <div class="single_banner">
                                                         <div class="banner_thumb">
+                                                         <div class="zoom-In">
                                                             <a href="{{route('pages.show',$product->id)}}">
                                                                 <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
                                                             </a>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                     <figcaption class="product_content">
@@ -203,9 +208,11 @@
                                             <figure>
                                                 <div class="single_banner">
                                                     <div class="banner_thumb">
+                                                        <div class="zoom-In">
                                                         <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
                                                             <img src="{{url('images',$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
                                                         </a>
+                                                    </div>
                                                     </div>
                                                 </div>
                                                 <figcaption class="product_content">
