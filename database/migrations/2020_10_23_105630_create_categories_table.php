@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('category_name');
             $table->string('category_image');
             $table->integer('status')->default(1);
+            $table->integer('featured')->default(0);
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
         });

@@ -62,6 +62,7 @@ class CategoryController extends Controller
         $categories->admin_id = $admin_id;
         $categories->category_name = $request->category_name;
         $categories->status = $request->status;
+        $categories->featured = $request->featured;
 
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');
@@ -119,6 +120,7 @@ class CategoryController extends Controller
 
         $category->category_name = $request->category_name;
         $category->status = $request->status;
+        $category->featured = $request->featured;
 
          self::deleteFile( public_path('images/' . $category->category_image) ) ;
 

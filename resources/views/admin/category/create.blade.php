@@ -34,12 +34,12 @@
                                 </div>
                                 <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputPassword1">Category Status</label>
-                                    <select name="status" id="exampleInputPassword1" class="form-control">
+                                    <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                         <option value="1">Active</option>
                                         <option value="0">InActive</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputFile">Category Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
@@ -47,6 +47,14 @@
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="form-group col-md-6 float-left">
+                                    <label for="exampleInputPassword1">Is Featured ?</label>
+                                    <select name="featured" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                        <option value="1">Featured</option>
+                                        <option value="0">Non featured</option>
+                                    </select>
                                 </div>
 
                             </div><!-- /.box-body -->
