@@ -27,9 +27,9 @@
                             </form>
                         @endif
                         <li><a href="#">English</a></li>
-                            <li><a href="{{ route('admin.register') }}">Sell</a></li>
-                            <li><a href="#">EMI</a></li>
-                            <li><a href="#">Gift Card</a></li>
+{{--                            <li><a href="{{ route('admin.register') }}">Sell</a></li>--}}
+{{--                            <li><a href="#">EMI</a></li>--}}
+{{--                            <li><a href="#">Gift Card</a></li>--}}
                             <li><a href="{{ route('contact.show') }}">Customer Care</a></li>
                         </ul>
                     </div>
@@ -63,6 +63,15 @@
                         <ul class="offcanvas_main_menu">
                             <li class="menu-item-has-children active">
                                 <a href="{{url('/')}}">Home</a>
+                            </li>
+
+                            <li class="has-child c-1">
+                                <a href="#">other Pages</a>
+                                <ul class="drop-down drop-menu-1">
+                                    <li><a href="cart.html">Brand</a></li>
+                                    <li><a href="wishlist.html">Shop</a></li>
+                                    <li><a href="checkout.html">Vendor</a></li>
+                                </ul>
                             </li>
 
                             @php
@@ -176,9 +185,9 @@
                         <div class="col-lg-4 col-md-4">
                            <div class="top_last">
                             <ul>
-                                <li><a href="{{route('admin.register')}}">Sell</a></li>
-                                <li><a href="#">EMI</a></li>
-                                <li><a href="#">Gift Card</a></li>
+{{--                                <li><a href="{{route('admin.register')}}">Sell</a></li>--}}
+{{--                                <li><a href="#">EMI</a></li>--}}
+{{--                                <li><a href="#">Gift Card</a></li>--}}
                                 <li><a href="{{ route('contact.show') }}">Customer Care</a></li>
                             </ul>
                            </div>
@@ -339,7 +348,7 @@
                         <div class="location" style="text-align: center;margin-top:10px;">
                             <a href="{{ route('contact.show') }}">
                                 <i class="fa fa-map-marker " aria-hidden="true"></i> <br>
-                                <span class="text-white">Dhaka, Bangladesh</span>
+                                <span class="text-white">Dhaka</span>
                             </a>
                         </div>
                     </div>
@@ -347,9 +356,19 @@
                         <nav class="nav" id="main-nav">
                             <ul class="responsive-menu">
 
+{{--                                <li class="has-child c-1">--}}
+{{--                                    <a href="{{ route('home') }}">{{__('Home')}}</a>--}}
+{{--                                </li>--}}
+
                                 <li class="has-child c-1">
-                                    <a href="{{ route('home') }}">{{__('Home')}}</a>
+                                    <a href="#">other Pages</a>
+                                    <ul class="drop-down drop-menu-1">
+                                        <li><a href="cart.html">Brand</a></li>
+                                        <li><a href="wishlist.html">Shop</a></li>
+                                        <li><a href="checkout.html">Vendor</a></li>
+                                    </ul>
                                 </li>
+
                                 @php
                                     $id = substr(strrchr(url()->current(), '/'), 1 );
                                 @endphp
@@ -398,26 +417,6 @@
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                                 @endif
 
-{{--                                <li class="has-child c-1">--}}
-{{--                                    <a href="#">Men</a>--}}
-{{--                                    <ul class="drop-down drop-menu-1">--}}
-{{--                                        <li class="has-child">--}}
-{{--                                            <a href="#">Premium Ultrabook</a>--}}
-{{--                                            <ul class="drop-down drop-menu-2">--}}
-{{--                                                <li><a href="#">Asus</a></li>--}}
-{{--                                                <li><a href="#">Acer</a></li>--}}
-{{--                                                <li><a href="#">Microsoft</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="has-child">--}}
-{{--                                            <a href="#">Laptop Bag</a>--}}
-{{--                                            <ul class="drop-down drop-menu-2">--}}
-{{--                                                <li><a href="#">Dell</a></li>--}}
-{{--                                                <li><a href="#">Lenovo</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
                             </ul>
                         </nav>
                     </div>

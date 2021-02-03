@@ -61,69 +61,105 @@
     <div class="footer_top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <div class="widgets_container widget_menu">
-                        <h3>Information</h3>
-                        <div class="footer_menu">
 
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#"> Privacy Policy</a></li>
-                                <li><a href="#"> Terms & Conditions</a></li>
-                                <li><a href="contact.html"> Contact Us</a></li>
-                                <li><a href="#"> Site Map</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <div class="widgets_container widget_menu">
-                        <h3>Information</h3>
-                        <div class="footer_menu">
+                <div class="col-md-6 col-lg-6 col-sm-12 float-left">
+                    <div class="col-lg-6 col-md-6 col-sm-12 float-left">
+                        <div class="widgets_container widget_menu">
+                            <h3>Information</h3>
+                            <div class="footer_menu">
 
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#"> Privacy Policy</a></li>
-                                <li><a href="#"> Terms & Conditions</a></li>
-                                <li><a href="contact.html"> Contact Us</a></li>
-                                <li><a href="#"> Site Map</a></li>
-                            </ul>
+                                <ul>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#"> Privacy Policy</a></li>
+                                    <li><a href="#"> Terms & Conditions</a></li>
+                                    <li><a href="contact.html"> Contact Us</a></li>
+                                    <li><a href="#"> Site Map</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 float-left">
+                        <div class="widgets_container widget_menu">
+                            <h3>Extras</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="#">Brands</a></li>
+                                    <li><a href="#">  Gift Certificates</a></li>
+                                    <li><a href="#">Affiliate</a></li>
+                                    <li><a href="#">Specials</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#"> Order History</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <div class="widgets_container widget_menu">
-                        <h3>Extras</h3>
-                        <div class="footer_menu">
-                            <ul>
-                                <li><a href="#">Brands</a></li>
-                                <li><a href="#">  Gift Certificates</a></li>
-                                <li><a href="#">Affiliate</a></li>
-                                <li><a href="#">Specials</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#"> Order History</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <div class="widgets_container widget_menu">
-                        <h3>Information</h3>
-                        <div class="footer_menu">
+                <div class="col-md-6 col-lg-6 col-sm-12 float-left"></div>
 
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#"> Privacy Policy</a></li>
-                                <li><a href="#"> Terms & Conditions</a></li>
-                                <li><a href="contact.html"> Contact Us</a></li>
-                                <li><a href="#"> Site Map</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
+{{--                    <div class="widgets_container widget_menu">--}}
+{{--                        <h3>Information</h3>--}}
+{{--                        <div class="footer_menu">--}}
+
+{{--                            <ul>--}}
+{{--                                <li><a href="about.html">About Us</a></li>--}}
+{{--                                <li><a href="#">Delivery Information</a></li>--}}
+{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
+{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
+{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
+{{--                                <li><a href="#"> Site Map</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
+{{--                    <div class="widgets_container widget_menu">--}}
+{{--                        <h3>Information</h3>--}}
+{{--                        <div class="footer_menu">--}}
+
+{{--                            <ul>--}}
+{{--                                <li><a href="about.html">About Us</a></li>--}}
+{{--                                <li><a href="#">Delivery Information</a></li>--}}
+{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
+{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
+{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
+{{--                                <li><a href="#"> Site Map</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
+{{--                    <div class="widgets_container widget_menu">--}}
+{{--                        <h3>Extras</h3>--}}
+{{--                        <div class="footer_menu">--}}
+{{--                            <ul>--}}
+{{--                                <li><a href="#">Brands</a></li>--}}
+{{--                                <li><a href="#">  Gift Certificates</a></li>--}}
+{{--                                <li><a href="#">Affiliate</a></li>--}}
+{{--                                <li><a href="#">Specials</a></li>--}}
+{{--                                <li><a href="#">Returns</a></li>--}}
+{{--                                <li><a href="#"> Order History</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
+{{--                    <div class="widgets_container widget_menu">--}}
+{{--                        <h3>Information</h3>--}}
+{{--                        <div class="footer_menu">--}}
+
+{{--                            <ul>--}}
+{{--                                <li><a href="about.html">About Us</a></li>--}}
+{{--                                <li><a href="#">Delivery Information</a></li>--}}
+{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
+{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
+{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
+{{--                                <li><a href="#"> Site Map</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
             </div>
         </div>

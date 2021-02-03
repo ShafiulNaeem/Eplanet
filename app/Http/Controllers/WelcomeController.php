@@ -18,8 +18,7 @@ class WelcomeController extends Controller
     public function index(){
 
         // Category wise Product
-        $mainRes = $this->productByCategory(['Electronic Gadget', 'Gadget Accessories', 'Industrial items', 'Mens Fashion', 'women']);
-
+        $mainRes = Category::with('products')->where('featured', 1)->GetActive()->get();
 
         //Category Query
         $category = Category::orderBy('category_name','asc')->GetActive()->get();
