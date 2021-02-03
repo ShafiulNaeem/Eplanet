@@ -610,7 +610,7 @@ header .main-header, header .main-nav {
     border-top: 1px solid #f58220;
 }
 .main-nav .nav .drop-menu-1 {
-    top: 39px;
+    top: 31px;
     left: 0;
 }
 
@@ -644,7 +644,7 @@ header .main-header, header .main-nav {
     font-size: 12px;
 }
 .main-nav .nav .drop-menu-2 {
-    top: 8px;
+    top: 0px;
     border-left: 1px solid #f58220;
     left: 160px;
 }
