@@ -74,6 +74,10 @@ Route::delete('wishlist/{wishList}', 'WelcomeController@deleteWishList')->name('
 Route::get('addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
 Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
 
+//brand
+Route::get('brands', 'Users\ContactController@brandShow')->name('brands.show');
+Route::get('brands/{id}', 'Users\NavbarController@brandProduct')->name('brandProduct.show');
+
 //user profile
 Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
 Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->name('profile.edit');
@@ -146,6 +150,7 @@ Route::prefix('admin')->group(function(){
 
     Route::namespace('Users\Admin')->group(function (){
         Route::post('change', 'BrandController@change')->name('brand.change.status');
+        Route::post('levelChange', 'BrandController@levelChange')->name('brand.change.level');
         Route::post('categoryChange', 'CategoryController@change')->name('category.change.status');
         Route::post('subcategoryChange', 'SubCategoryController@change')->name('subcategory.change.status');
         Route::post('secondsubchange', 'SecondarySubCategoryController@change')->name('secondsub.change.status');

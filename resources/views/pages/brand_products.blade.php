@@ -9,19 +9,8 @@
                     <div class="breadcrumb_content text-left" >
                         <ul style="color: #cfcfcf; font-weight: 600;">
                             <li><a href="{{ route('home') }}">home</a></li>
-                            @foreach($categories as $category)
-                                @if($category->category_id != null)
-                                    <li><a href="{{ route('cat.show',$category->category_id) }}">{{$category->category->category_name}}</a></li>
-                                @endif
-                                @if($category->sub_category_id != null)
-                                    <li><a href="{{ route('subcat.show',$category->sub_category_id) }}">{{$category->subcategory->subcategory_name}}</a></li>
-                                    @else
-                                        <li> {{$category->subcategory_name}}</li>
-                                @endif
-                                @if($category->sub_category_id != null)
-                                    <li>{{$category->secondary_subcategory_name}}</li>
-                                @endif
-
+                            @foreach($brands as $brand)
+                                <li>{{$brand->brand_name}}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -35,11 +24,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="right-main-cat">
+
                         <div class="row">
+
                             <div class="col-md-12 ">
                                 <div class="sub_head">
-                                    @foreach($categories as $category)
-                                        <h4>All {{$category->subcategory_name}} {{$category->secondary_subcategory_name}} Collection</h4>
+                                    @foreach($brands as $brand)
+                                        <h4>All {{$brand->brand_name}} Collection</h4>
                                     @endforeach
                                 </div>
                             </div>
@@ -49,7 +40,7 @@
                                     <div class="right-category">
                                         <div class="card">
                                             <div class="zoom-In">
-                                            <a href="{{route('pages.show',$product->id)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                                <a href="{{route('pages.show',$product->id)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             </div>
                                             <div class="card-body">
                                                 <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_name}}</p></a>
@@ -58,16 +49,16 @@
                                                 </a>
                                                 <div class="price_box text-center">
 
-{{--                                                    <div class=" product_ratting">--}}
-{{--                                                        <ul>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li class="review"><a href="#"> (customer review )</a></li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
+                                                    {{--                                                    <div class=" product_ratting">--}}
+                                                    {{--                                                        <ul>--}}
+                                                    {{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+                                                    {{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+                                                    {{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+                                                    {{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+                                                    {{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
+                                                    {{--                                                            <li class="review"><a href="#"> (customer review )</a></li>--}}
+                                                    {{--                                                        </ul>--}}
+                                                    {{--                                                    </div>--}}
                                                     <span class="current_price">BDT {{$product->product_price}}</span>
                                                 </div>
                                             </div>

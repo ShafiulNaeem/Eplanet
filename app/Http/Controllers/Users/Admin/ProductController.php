@@ -62,6 +62,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $this->validation($request);
 
         $products = new Product();

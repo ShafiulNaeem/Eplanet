@@ -19,6 +19,7 @@ class CreateBrandsTable extends Migration
             $table->string('brand_name');
             $table->string('brand_image');
             $table->integer('status')->default(1);
+            $table->integer('level');
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
         });

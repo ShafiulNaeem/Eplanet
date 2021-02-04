@@ -361,9 +361,9 @@
 {{--                                </li>--}}
 
                                 <li class="has-child c-1">
-                                    <a href="#">other Pages</a>
+                                    <a href="">other Pages</a>
                                     <ul class="drop-down drop-menu-1">
-                                        <li><a href="cart.html">Brand</a></li>
+                                        <li><a href="{{route('brands.show')}}">Brand</a></li>
                                         <li><a href="wishlist.html">Shop</a></li>
                                         <li><a href="checkout.html">Vendor</a></li>
                                     </ul>
