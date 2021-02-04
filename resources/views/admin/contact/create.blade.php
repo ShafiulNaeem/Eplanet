@@ -39,7 +39,7 @@
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleSelectRounded0">Status</label>
-                                        <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;" id="exampleSelectRounded1">
+                                        <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
                                         </select>
@@ -47,7 +47,7 @@
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleSelectRounded0">Slider for</label>
-                                        <select name="for" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;" id="exampleSelectRounded0">
+                                        <select name="for" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;" >
                                             <option value="1">Home</option>
                                             <option value="0">Contact</option>
                                         </select>

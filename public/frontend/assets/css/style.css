@@ -649,6 +649,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     padding: 0;
     background: inherit;
     opacity: inherit;
+    display: none;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -661,6 +662,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     padding: 0;
     background: inherit;
     opacity: inherit;
+    display: none;
   }
 }
 .sticky-header.sticky .search_widget {
@@ -1199,7 +1201,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .header_account_list.register ul li {
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 1px;
 }
 
 .header_account_list.register ul li a:hover {
@@ -1499,7 +1501,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   min-width: 220px;
   padding: 0 20px;
   background: #FFF;
-  box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1); */
   max-height: 0;
   -webkit-transform-origin: 0 0 0;
   transform-origin: 0 0 0;
@@ -1532,7 +1534,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   min-width: 100%;
   padding: 0 30px 0 30px;
   background: #ffffff;
-  box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1); */
   max-height: 0;
   -webkit-transform-origin: 0 0 0;
   transform-origin: 0 0 0;
@@ -2946,7 +2948,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   transition: all 900ms linear;
 }
 .banner_thumb::before {
-  background: rgba(0, 128, 255, 0.47);
+  /* background: rgba(0, 128, 255, 0.47); */
   bottom: 0;
   content: "";
   left: 50%;
@@ -2957,7 +2959,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   pointer-events: none;
 }
 .banner_thumb::after {
-  background: rgba(255, 255, 255, 0.47);
+  /* background: rgba(255, 255, 255, 0.47); */
   bottom: 50%;
   content: "";
   left: 0;
@@ -6014,12 +6016,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: inherit;
 }
 .shop_toolbar_btn > button.btn-grid-3 {
-  background: url(../img/icon/bkg_grid.png) no-repeat scroll center center;
   width: 20px;
   height: 20px;
 }
 .shop_toolbar_btn > button.btn-grid-3.active {
-  background: url(../img/icon/bkg_grid_hover.png) no-repeat scroll center center !important;
+  
 }
 .shop_toolbar_btn > button.btn-grid-4 {
   background: url(../img/icon/bkg_grid4.png) no-repeat scroll center center;
@@ -6040,12 +6041,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: url(../img/icon/bkg_grid4_hover.png) no-repeat scroll center center !important;
 }
 .shop_toolbar_btn > button.btn-list {
-  background: url(../img/icon/bkg_list.png) no-repeat scroll center center;
+ 
   width: 20px;
   height: 20px;
 }
 .shop_toolbar_btn > button.btn-list.active {
-  background: url(../img/icon/bkg_list_hover.png) no-repeat scroll center center !important;
+ 
 }
 
 .product_content.list_content {

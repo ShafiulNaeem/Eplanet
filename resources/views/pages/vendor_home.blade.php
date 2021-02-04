@@ -76,9 +76,11 @@
                         <div class="col-md-3">
                             <div class="related_inner">
                                 <div class="card">
+                                    <div class="zoom-In">
                                     <a href="{{route('pages.show',$product->id)}}">
                                         <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
                                     </a>
+                                </div>
                                     <div class="card-body">
                                         <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
                                         <p class="card-title">BDT: {{$product->product_price}}</p>
@@ -113,9 +115,11 @@
                         <div class="col-md-3">
                             <div class="related_inner">
                                 <div class="card">
+                                    <div class="zoom-In">
                                     <a href="{{route('pages.show',$product->id)}}">
                                         <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
                                     </a>
+                                </div>
                                     <div class="card-body">
                                         <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
                                         <p class="card-title">BDT: {{$product->product_price}}</p>
@@ -147,7 +151,9 @@
                             <div class="related_inner">
                                 @foreach($showViews as $showView)
                                     <div class="card">
+                                        <div class="zoom-In">
                                         <a href="#"><img src="{{url('images',$showView->image)}}" /></a>
+                                        </div>
                                         <div class="card-body">
                                             <p class="card-text">{{$showView->description}}</p>
 
@@ -167,7 +173,9 @@
                             <div class="related_inner">
                                 @foreach($factoryViews as $factoryView)
                                     <div class="card">
+                                        <div class="zoom-In">
                                         <a href="#"><img src="{{url('images',$factoryView->image)}}" /></a>
+                                        </div>
                                         <div class="card-body">
                                             <p class="card-text">{{$factoryView->description}}</p>
 

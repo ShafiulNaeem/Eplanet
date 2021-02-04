@@ -82,7 +82,9 @@
                     <div class="col-md-3">
                         <div class="right-category">
                             <div class="card">
-                                <a href="{{route('pages.show',$product->id)}}"><img src="{{asset('images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                <div class="zoom-In">
+                                        <a href="{{route('pages.show',$product->id)}}"><img src="{{asset('images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                </div>
                                 <div class="card-body">
                                     <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_name}}</p></a>
                                     <a href="{{route('pages.show',$product->id)}}">
