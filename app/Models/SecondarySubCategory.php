@@ -34,6 +34,10 @@ class SecondarySubCategory extends Model
         return $query->where('admin_id', Auth::guard('admin')->id());
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function subcategory()
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
@@ -65,6 +66,23 @@ class NavbarController extends Controller
         //dd($product);
 
         return view('pages.one_category',['results' => $mainRes,'categories' =>$category,'products' => $product]);
+    }
+
+    // BrandProducts
+    public function brandProduct($id)
+    {
+        $catArray = ['kids', 'men'];
+        $mainRes = $this->productByCategory($catArray);
+
+        $brand = Brand::where('id',$id)->GetActive()->get();
+        $product = Product::where([
+            ['brand_id' , '=', $id],
+            ['status', '=', 1],
+        ])->paginate(16);
+
+        //dd($product);
+
+        return view('pages.brand_products',['results' => $mainRes,'brands' =>$brand,'products' => $product]);
     }
 
     public  function profile(){

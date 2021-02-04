@@ -75,7 +75,7 @@
                                             <label for="">Sub Category</label>
 
                                             <select required name="product_sub_category" id="sub_category_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-                                                <option selected="selected">Select Sub Category</option>
+                                                <option selected value="NULL">Select Sub Category</option>
 {{--                                                @foreach($subcategory as $category )--}}
 {{--                                                    <option value="{{$category->id}}">{{$category->subcategory_name}}</option>--}}
 {{--                                                @endforeach--}}
@@ -89,7 +89,7 @@
                                             <label for="secondary_sub_categories_id">Second Sub Category</label>
 
                                             <select name="secondary_sub_categories_id" id="secondary_sub_categories_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-                                                <option selected="selected">Select Second Sub Category</option>
+{{--                                                <option>Select Second Sub Category</option>--}}
 {{--                                                @foreach($secondary_sub as $category )--}}
 {{--                                                    <option value="{{$category->id}}">{{$category->secondary_subcategory_name}}</option>--}}
 {{--                                                @endforeach--}}

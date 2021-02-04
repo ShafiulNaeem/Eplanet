@@ -40,6 +40,15 @@
                             </div>
 
                         <div class="form-group col-md-6 float-left">
+                            <label for="exampleInputPassword1">Brand Level</label>
+                            <select name="level" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                <option value="1" @if($brands->level == 1 ) selected @endif>Top</option>
+                                <option value="2" @if($brands->level == 2 ) selected @endif>Mid</option>
+                                <option value="3" @if($brands->level == 3 ) selected @endif>Low</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6 float-left">
                             <label for="exampleFormControlFile1">Brand Logo</label>
                             {{--                                            <input type="file" name="feature_image" class="form-control-file" id="exampleFormControlFile1">--}}
                             <div class="input-group">
