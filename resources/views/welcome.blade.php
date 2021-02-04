@@ -131,9 +131,12 @@
                                                 <figure>
                                                     <div class="single_banner">
                                                         <div class="banner_thumb">
+                                                          <div class="zoom-In">
+
                                                             <a href="{{route('cat.show',$category->id)}}">
                                                                 <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}">
                                                             </a>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                     <figcaption class="product_content">
@@ -163,9 +166,11 @@
                                                 <figure>
                                                     <div class="single_banner">
                                                         <div class="banner_thumb">
+                                                         <div class="zoom-In">
                                                             <a href="{{route('pages.show',$product->id)}}">
                                                                 <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
                                                             </a>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                     <figcaption class="product_content">
@@ -189,29 +194,31 @@
 
             </div>
             @foreach($results as $mainRe)
-                @if(isset($mainRe['category']['products']))
-            <div class="row">
-                <div class="col-md-12"><h2>{{$mainRe['category']['category_name']}}</h2></div>
-
+                @if(count($mainRe->products) > 0)
+                    <div class="row">
+                <div class="col-md-12"><h2>{{$mainRe->category_name}}</h2></div>
+{{--@php  print_r($mainRe->products); @endphp--}}
                 <div class="col-12">
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="plant1" role="tabpanel">
                             <div class="product_carousel product_column5 owl-carousel">
-@foreach($mainRe['category']['products'] as $index => $ffgr)
+@foreach($mainRe->products as $index => $pro)
                                     <div class="product_items">
                                         <article class="single_product">
                                             <figure>
                                                 <div class="single_banner">
                                                     <div class="banner_thumb">
-                                                        <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
-                                                            <img src="{{url('images',$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
+                                                        <div class="zoom-In">
+                                                        <a href="{{route('pages.show',$pro->id)}}">
+                                                            <img src="{{url('images',$pro->feature_image)}}" alt="{{$pro->product_name}}">
                                                         </a>
+                                                    </div>
                                                     </div>
                                                 </div>
                                                 <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">{{$mainRe['category']['products'][$index]['product_name']}}</a></h4>
+                                                    <h4 class="product_name"><a href="{{route('pages.show', $pro->id)}}">{{$pro->product_name}}</a></h4>
                                                     <div class="price_box">
-                                                        <span class="current_price">BDT {{$mainRe['category']['products'][$index]['product_price']}}</span>
+                                                        <span class="current_price">BDT {{$pro->product_price}}</span>
 
 
                                                     </div>

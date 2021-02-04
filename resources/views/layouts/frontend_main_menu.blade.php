@@ -27,9 +27,9 @@
                             </form>
                         @endif
                         <li><a href="#">English</a></li>
-                            <li><a href="{{ route('admin.register') }}">Sell</a></li>
-                            <li><a href="#">EMI</a></li>
-                            <li><a href="#">Gift Card</a></li>
+{{--                            <li><a href="{{ route('admin.register') }}">Sell</a></li>--}}
+{{--                            <li><a href="#">EMI</a></li>--}}
+{{--                            <li><a href="#">Gift Card</a></li>--}}
                             <li><a href="{{ route('contact.show') }}">Customer Care</a></li>
                         </ul>
                     </div>
@@ -63,6 +63,15 @@
                         <ul class="offcanvas_main_menu">
                             <li class="menu-item-has-children active">
                                 <a href="{{url('/')}}">Home</a>
+                            </li>
+
+                            <li class="has-child c-1">
+                                <a href="#">other Pages</a>
+                                <ul class="drop-down drop-menu-1">
+                                    <li><a href="cart.html">Brand</a></li>
+                                    <li><a href="wishlist.html">Shop</a></li>
+                                    <li><a href="checkout.html">Vendor</a></li>
+                                </ul>
                             </li>
 
                             @php
@@ -176,9 +185,9 @@
                         <div class="col-lg-4 col-md-4">
                            <div class="top_last">
                             <ul>
-                                <li><a href="{{route('admin.register')}}">Sell</a></li>
-                                <li><a href="#">EMI</a></li>
-                                <li><a href="#">Gift Card</a></li>
+{{--                                <li><a href="{{route('admin.register')}}">Sell</a></li>--}}
+{{--                                <li><a href="#">EMI</a></li>--}}
+{{--                                <li><a href="#">Gift Card</a></li>--}}
                                 <li><a href="{{ route('contact.show') }}">Customer Care</a></li>
                             </ul>
                            </div>
@@ -194,7 +203,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/logo3.png')}}" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/logo3.png')}}" width="250px" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -202,7 +211,7 @@
                         <div class="header_right_info">
 
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-10">
                                     <div class="search_container">
                                         <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
                                             @csrf
@@ -229,7 +238,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="header_account_area">
                                         <div class="header_account_list register">
                                             <ul>
@@ -347,9 +356,19 @@
                         <nav class="nav" id="main-nav">
                             <ul class="responsive-menu">
 
+{{--                                <li class="has-child c-1">--}}
+{{--                                    <a href="{{ route('home') }}">{{__('Home')}}</a>--}}
+{{--                                </li>--}}
+
                                 <li class="has-child c-1">
-                                    <a href="{{ route('home') }}">{{__('Home')}}</a>
+                                    <a href="#">other Pages</a>
+                                    <ul class="drop-down drop-menu-1">
+                                        <li><a href="cart.html">Brand</a></li>
+                                        <li><a href="wishlist.html">Shop</a></li>
+                                        <li><a href="checkout.html">Vendor</a></li>
+                                    </ul>
                                 </li>
+
                                 @php
                                     $id = substr(strrchr(url()->current(), '/'), 1 );
                                 @endphp
@@ -365,7 +384,7 @@
                                 @endif
                                 @if(isset($categories))
                                     @foreach($categories as $category)
-                                        <li class="has-child c-1">
+                                        <li class="has-child c-2">
                                             <a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}
                                                 @if( count($category->subcategory) >0 )
 {{--                                                    <i class="fa fa-caret-down"></i>--}}
@@ -374,7 +393,7 @@
                                             @if( count($category->subcategory) >0 )
                                             <ul class="drop-down drop-menu-1">
                                                 @foreach($category->subcategory as $cat)
-                                                <li class="has-child">
+                                                <li class="has-child ">
                                                     <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a>
                                                     @if( count($cat->secondary_sub_categories) > 0 )
                                                         <ul class="drop-down drop-menu-2">
@@ -398,26 +417,6 @@
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                                 @endif
 
-{{--                                <li class="has-child c-1">--}}
-{{--                                    <a href="#">Men</a>--}}
-{{--                                    <ul class="drop-down drop-menu-1">--}}
-{{--                                        <li class="has-child">--}}
-{{--                                            <a href="#">Premium Ultrabook</a>--}}
-{{--                                            <ul class="drop-down drop-menu-2">--}}
-{{--                                                <li><a href="#">Asus</a></li>--}}
-{{--                                                <li><a href="#">Acer</a></li>--}}
-{{--                                                <li><a href="#">Microsoft</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="has-child">--}}
-{{--                                            <a href="#">Laptop Bag</a>--}}
-{{--                                            <ul class="drop-down drop-menu-2">--}}
-{{--                                                <li><a href="#">Dell</a></li>--}}
-{{--                                                <li><a href="#">Lenovo</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
                             </ul>
                         </nav>
                     </div>

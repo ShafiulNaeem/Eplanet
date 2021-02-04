@@ -60,7 +60,7 @@ dd($monthlySell);
 });
 
 Route::get('/con',function(){
-    return view('pages.shop2');
+    return view('pages.brand');
 });
 
 Route::get('/',  'WelcomeController@index')->name('home');
@@ -213,3 +213,4 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
     Route::delete('expressWish/{expressWish}', 'AdminController@destroy')->name('expressWish.destroy');
 });
+
