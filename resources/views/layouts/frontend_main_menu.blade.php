@@ -339,7 +339,7 @@
                         <div class="location" style="text-align: center;margin-top:10px;">
                             <a href="{{ route('contact.show') }}">
                                 <i class="fa fa-map-marker " aria-hidden="true"></i> <br>
-                                <span class="text-white">Dhaka, Bangladesh</span>
+                                <span class="text-white">Dhaka</span>
                             </a>
                         </div>
                     </div>
