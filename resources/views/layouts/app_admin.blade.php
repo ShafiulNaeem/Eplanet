@@ -528,6 +528,11 @@ data.push({
         }
     })
 </script>
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace( 'product_description' );
+ </script>
 
 </body>
 </html>
