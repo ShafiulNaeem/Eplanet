@@ -6518,7 +6518,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-bottom: 0;
 }
 .product_variant.quantity input {
-  width: 130px;
+  width: 80px;
   border: 1px solid #ebebeb;
   background: none;
   height: 42px;
@@ -6550,7 +6550,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 42px;
   line-height: 42px;
   text-transform: capitalize;
-  min-width: 270px;
+  min-width: 130px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .product_variant.quantity button {

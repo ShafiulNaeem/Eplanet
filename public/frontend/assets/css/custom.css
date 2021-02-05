@@ -1121,20 +1121,16 @@ Fading
     text-align: center;
 }
 
-@media (min-width: 768px){
-    .main-nav .nav .has-child.c-1 .drop-menu-1 {
-        left: auto;
-        right: 0;
 
-}
-
-@media (min-width: 768px){
 .main-nav .nav .has-child.c-2 .drop-menu-2 {
     left: auto;
-    right: 100%;
+    right: 116%;
     border-left: none;
-    border-right: 1px solid #f58220;
+   
    }
+
+.related_pro{
+    display: flex;
+    border: 1px solid #ededed;
+    margin:5px 0;
 }
-
-
