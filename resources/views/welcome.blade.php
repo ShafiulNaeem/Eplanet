@@ -141,7 +141,6 @@
                                                     </div>
                                                     <figcaption class="product_content">
                                                         <h4 class="product_name"><a href="{{route('cat.show',$category->category_slug)}}">{{$category->category_name}}</a></h4>
-
                                                     </figcaption>
                                                 </figure>
                                             </article>
