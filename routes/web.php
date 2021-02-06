@@ -188,6 +188,7 @@ Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
         Route::resource('factoryInspection', 'ProductFactoryInspectionController');
         Route::resource('factoryView', 'FactoryViewController');
         Route::resource('showView', 'ShowViewController');
+        //Route::resource('overView', 'VendorOverViewController');
     });
 });
 

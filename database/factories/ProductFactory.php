@@ -10,9 +10,11 @@ use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Helper\DeleteFile;
 
 class ProductFactory extends Factory
 {
+    use DeleteFile;
     /**
      * The name of the factory's corresponding model.
      *
@@ -52,6 +54,7 @@ class ProductFactory extends Factory
                 'M', 'S', 'XL', 'XXL'
             ]),
             'model'=> $this->faker->hexColor,
+            'product_slug' => $this->createSlug($this->model, $this->faker->name, "product_slug"),
             'product_price' => $this->faker->randomFloat(1, 40, 500),
             'tax' => $this->faker->numberBetween(1, 40),
             'manufactured_by' => $this->faker->name,
