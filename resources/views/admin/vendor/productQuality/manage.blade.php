@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product Quality'
+                'title' => 'Manage Product Quality',
+                'link' => route('productQuality.create'),
+                'text' => 'Create Product Quality'
             ])
 
     <!-- Main content -->

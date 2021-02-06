@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Helper\DeleteFile;
 use App\Models\Admin;
 use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -9,6 +10,7 @@ use Illuminate\Support\Str;
 
 class BrandFactory extends Factory
 {
+    use DeleteFile;
     /**
      * The name of the factory's corresponding model.
      *
@@ -27,6 +29,7 @@ class BrandFactory extends Factory
             'admin_id' => function(){
                 return Admin::all()->random();
             },
+            'brand_slug' => $this->createSlug($this->model, $this->faker->name, "brand_slug"),
             'brand_name' => $this->faker->name,
             'level' => $this->faker->numberBetween(1, 3),
             'brand_image' => $this->faker->image(public_path('images'), 640, 480,null, false)

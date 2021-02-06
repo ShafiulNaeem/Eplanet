@@ -5,8 +5,10 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Category'
-            ])
+        'title' => 'Manage Category',
+        'link' => route('category.create'),
+        'text' => 'Create Category',
+    ])
 
     <!-- Main content -->
         <section class="content">

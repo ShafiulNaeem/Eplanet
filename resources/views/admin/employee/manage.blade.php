@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Employee'
+                'title' => 'Manage Employee',
+                'link' => route('employee.create'),
+                'text' => "Create Employee"
             ])
 
     <!-- Main content -->

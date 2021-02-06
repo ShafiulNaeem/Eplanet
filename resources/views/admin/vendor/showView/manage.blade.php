@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Show View'
+                'title' => 'Manage Show View',
+                'link' => route('showView.create'),
+                'text' => 'Create Show View'
             ])
 
     <!-- Main content -->

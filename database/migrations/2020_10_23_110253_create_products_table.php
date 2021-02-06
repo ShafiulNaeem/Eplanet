@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('sub_categories_id');
             $table->unsignedBigInteger('secondary_sub_categories_id')->nullable();
             $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->string('product_slug');
             $table->string('product_name');
             $table->text('product_description');
             $table->string('feature_image');

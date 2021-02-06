@@ -10,10 +10,6 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                        <h3>Checkout</h3>
-                        <ul>
-                            <li><a href="{{ route('home') }}">home</a></li>
-                            <li>Checkout</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -22,7 +18,7 @@
     <!--breadcrumbs area end-->
 
     <!--Checkout page section-->
-    <div class="Checkout_section mt-70">
+    <div class="Checkout_section " style="margin-top: 20px">
        <div class="container">
             <div class="row">
 

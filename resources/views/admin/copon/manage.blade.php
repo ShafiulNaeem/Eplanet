@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Coupon'
+                'title' => 'Manage Coupon',
+                'link' => route('coupon.create'),
+                'text' => "Create Coupon"
             ])
 
     <!-- Main content -->

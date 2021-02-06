@@ -5567,6 +5567,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .breadcrumb_content {
   text-align: center;
+    margin-top: 32px;
 }
 .breadcrumb_content h3 {
   font-size: 42px;
@@ -5580,7 +5581,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-bottom: 7px;
   }
 }
-.breadcrumb_content ul li {
+.breadcrumb_content_new ul li {
   display: inline-block;
   text-transform: capitalize;
   font-size: 14px;
@@ -5588,20 +5589,20 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding-right: 13px;
   position: relative;
 }
-.breadcrumb_content ul li::before {
+.breadcrumb_content_new ul li::before {
   position: absolute;
   content: "/";
   right: 0;
   top: 50%;
   transform: translatey(-50%);
 }
-.breadcrumb_content ul li:last-child {
+.breadcrumb_content_new ul li:last-child {
   margin-right: 0;
 }
-.breadcrumb_content ul li:last-child::before {
+.breadcrumb_content_new ul li:last-child::before {
   display: none;
 }
-.breadcrumb_content ul li a:hover {
+.breadcrumb_content_new ul li a:hover {
   color: #40A944;
 }
 
@@ -6020,7 +6021,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 20px;
 }
 .shop_toolbar_btn > button.btn-grid-3.active {
-  
+
 }
 .shop_toolbar_btn > button.btn-grid-4 {
   background: url(../img/icon/bkg_grid4.png) no-repeat scroll center center;
@@ -6041,12 +6042,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: url(../img/icon/bkg_grid4_hover.png) no-repeat scroll center center !important;
 }
 .shop_toolbar_btn > button.btn-list {
- 
+
   width: 20px;
   height: 20px;
 }
 .shop_toolbar_btn > button.btn-list.active {
- 
+
 }
 
 .product_content.list_content {
@@ -9911,7 +9912,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .blog_details {
   margin-bottom: 70px;
-  margin-top: 64px;
+  margin-top: 60px;
 }
 @media only screen and (max-width: 767px) {
   .blog_details {

@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Second Sub Category'
+                'title' => 'Manage Second Sub Category',
+                'link' => route('secondsub.create'),
+                'text' => "Create Second Sub Category"
             ])
 
     <!-- Main content -->

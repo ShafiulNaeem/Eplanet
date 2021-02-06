@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\Reply;
 use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
