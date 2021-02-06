@@ -6332,11 +6332,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #40A944;
 }
 .product_d_right .product_ratting {
-  margin-bottom: 17px;
+  /* margin-bottom: 17px; */
 }
 @media only screen and (max-width: 767px) {
   .product_d_right .product_ratting {
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
   }
 }
 .product_d_right .product_ratting ul li a {
@@ -6378,7 +6378,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product_d_right .product_desc {
   margin-bottom: 19px;
-  border-bottom: 1px solid #ededed;
+  /* border-bottom: 1px solid #ededed; */
 }
 @media only screen and (max-width: 767px) {
   .product_d_right .product_desc {
