@@ -37,8 +37,10 @@
                                             <td>
                                                 @if( $slider->for == 1 )
                                                     {{__('Home')}}
-                                                @else
-                                                    {{__('Contact Us')}}
+                                                @elseif($slider->for == 2)
+                                                    {{__('Vendor')}}
+                                                 @else
+                                                        {{__('Contact Us')}}
                                                 @endif
                                             </td>
                                             <td>
