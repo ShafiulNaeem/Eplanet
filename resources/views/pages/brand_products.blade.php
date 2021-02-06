@@ -40,11 +40,11 @@
                                     <div class="right-category">
                                         <div class="card">
                                             <div class="zoom-In">
-                                                <a href="{{route('pages.show',$product->id)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                                <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             </div>
                                             <div class="card-body">
-                                                <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_name}}</p></a>
-                                                <a href="{{route('pages.show',$product->id)}}">
+                                                <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                                <a href="{{route('pages.show',$product->product_slug)}}">
                                                     <p>Size : {{ $product->size }}</p>
                                                 </a>
                                                 <div class="price_box text-center">

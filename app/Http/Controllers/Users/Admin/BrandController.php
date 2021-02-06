@@ -58,6 +58,7 @@ class BrandController extends Controller
         $admin_id = Auth::guard('admin')->user()->id;
 
         $val['admin_id'] = $admin_id;
+        $val['brand_slug'] = $this->createSlug(Brand::class, $request->brand_name, "brand_slug");
         $val['brand_name'] = $request->brand_name;
         $val['status'] = $request->status;
         $val['level'] = $request->level;

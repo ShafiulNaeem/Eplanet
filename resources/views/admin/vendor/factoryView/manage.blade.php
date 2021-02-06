@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Factory View'
+                'title' => 'Manage Factory View',
+                'link' => route('factoryView.create'),
+                'text' => 'Create Factory View'
             ])
 
     <!-- Main content -->

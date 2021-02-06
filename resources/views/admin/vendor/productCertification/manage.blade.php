@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product Certification'
+                'title' => 'Manage Product Certification',
+                'link' => route('productCertification.create'),
+                'text' => 'Create Product Certification'
             ])
 
     <!-- Main content -->

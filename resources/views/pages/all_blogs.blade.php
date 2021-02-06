@@ -36,13 +36,13 @@
                                     <article class="single_blog">
                                         <figure>
                                             <div class="blog_thumb">
-                                                <a href="{{route('blog.show',$blog->id)}}">
+                                                <a href="{{route('blog.show',$blog->blog_slug)}}">
                                                     <img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}" />
                                                 </a>
                                             </div>
                                             <figcaption class="blog_content">
                                                 <h1 class="post_title">
-                                                    <a href="{{route('blog.show',$blog->id)}}">{{$blog->title}}</a>
+                                                    <a href="{{route('blog.show',$blog->blog_slug)}}">{{$blog->title}}</a>
                                                 </h1>
                                                 <p>
                                                     {{$blog->post}}

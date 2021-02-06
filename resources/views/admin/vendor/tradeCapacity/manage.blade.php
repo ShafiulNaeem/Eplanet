@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product Trade Capacity'
+                'title' => 'Manage Product Trade Capacity',
+                'link' => route('tradeCapacity.create'),
+                'text' => 'Create Trade Capacity'
             ])
 
     <!-- Main content -->

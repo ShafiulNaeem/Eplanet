@@ -21,7 +21,7 @@
                                             <p class="text-white">
                                                 {{\Carbon\Carbon::parse($category->created_at)->format('M d Y')}}
                                             </p>
-                                            <a href="{{route('subcat.show',$category->id)}}">Shop Now </a>
+                                            <a href="{{route('subcat.show',$category->subcategory_slug)}}">Shop Now </a>
                                         </div>
                                     </div>
                                 </div>
@@ -46,11 +46,10 @@
                 @foreach($categories as $category)
                     <div class="col-md-2">
                         <div class="category-inner">
-                            <a href="{{route('subcat.show',$category->id)}}"><img src="{{asset('images/'.$category->sub_category_image)}}" alt=""></a>
-                            <a href="{{route('subcat.show',$category->id)}}">
+                            <a href="{{route('subcat.show',$category->subcategory_slug)}}"><img src="{{asset('images/'.$category->sub_category_image)}}" alt=""></a>
+                            <a href="{{route('subcat.show',$category->subcategory_slug)}}">
                                 <p>{{$category->subcategory_name}}</p>
                             </a>
-
                         </div>
                     </div>
                 @endforeach
@@ -74,7 +73,7 @@
                     <h3>{{$category->subcategory_name}}</h3>
                 </div>
                 <div class="col-md-2">
-                    <h2><a href="{{route('subcat.show',$category->id)}}">View more</a></h2>
+                    <h2><a href="{{route('subcat.show',$category->subcategory_slug)}}">View more</a></h2>
                 </div>
             </div>
             <div class="row">
@@ -83,13 +82,10 @@
                         <div class="right-category">
                             <div class="card">
                                 <div class="zoom-In">
-                                        <a href="{{route('pages.show',$product->id)}}"><img src="{{asset('images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                        <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{asset('images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                 </div>
                                 <div class="card-body">
-                                    <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_name}}</p></a>
-                                    <a href="{{route('pages.show',$product->id)}}">
-                                        <p>Size : {{ $product->size }}</p>
-                                    </a>
+                                    <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
                                     <div class="price_box text-center">
 
 {{--                                        <div class=" product_ratting">--}}
@@ -102,7 +98,10 @@
 {{--                                                <li class="review"><a href="#"> (customer review )</a></li>--}}
 {{--                                            </ul>--}}
 {{--                                        </div>--}}
-                                        <span class="current_price">BDT {{$product->product_price}}</span>
+                                        <a href="{{route('pages.show',$product->product_slug)}}" class="float-right">
+                                            <p>Size : {{ $product->size }}</p>
+                                        </a>
+                                        <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
                                     </div>
                                 </div>
                             </div>

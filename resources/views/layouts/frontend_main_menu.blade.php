@@ -68,7 +68,7 @@
                             <li class="has-child c-1">
                                 <a href="#">other Pages</a>
                                 <ul class="drop-down drop-menu-1">
-                                    <li><a href="cart.html">Brand</a></li>
+                                    <li><a href="{{ route('brands.show') }}">Brand</a></li>
                                     <li><a href="wishlist.html">Shop</a></li>
                                     <li><a href="checkout.html">Vendor</a></li>
                                 </ul>
@@ -126,7 +126,7 @@
                             @endif
 
                             <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Vlog </a>
-                            <li class="menu-item-has-children "><a href="{{route('contact.show')}}"> Contact Us</a>
+{{--                            <li class="menu-item-has-children "><a href="{{route('contact.show')}}"> Contact Us</a>--}}
                             @if( \Illuminate\Support\Facades\Auth::check())
                                 <li class="menu-item-has-children "><a href="{{route('profile.show')}}">Profile</a>
                                 <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
@@ -385,7 +385,7 @@
                                 @if(isset($categories))
                                     @foreach($categories as $category)
                                         <li class="has-child c-2">
-                                            <a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}
+                                            <a href="{{route('cat.show',$category->category_slug)}}">{{$category->category_name}}
                                                 @if( count($category->subcategory) >0 )
 {{--                                                    <i class="fa fa-caret-down"></i>--}}
                                                 @endif
@@ -394,11 +394,11 @@
                                             <ul class="drop-down drop-menu-1">
                                                 @foreach($category->subcategory as $cat)
                                                 <li class="has-child ">
-                                                    <a href="{{route('subcat.show',$cat->id)}}">{{$cat->subcategory_name}}</a>
+                                                    <a href="{{route('subcat.show',$cat->subcategory_slug)}}">{{$cat->subcategory_name}}</a>
                                                     @if( count($cat->secondary_sub_categories) > 0 )
                                                         <ul class="drop-down drop-menu-2">
                                                             @foreach($cat->secondary_sub_categories as $secondary_sub )
-                                                                <li><a href="{{route('secondary_sub.show',$secondary_sub->id)}}">{{$secondary_sub->secondary_subcategory_name}}</a></li>
+                                                                <li><a href="{{route('secondary_sub.show',$secondary_sub->secondary_subcategory_slug)}}">{{$secondary_sub->secondary_subcategory_name}}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     @endif
@@ -411,7 +411,7 @@
                                 @endif
 
                                 <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Vlog </a> </li>
-                                <li class="has-child c-1"><a href="{{route('contact.show')}}"> Contact Us</a> </li>
+{{--                                <li class="has-child c-1"><a href="{{route('contact.show')}}"> Contact Us</a> </li>--}}
                                 @if( \Illuminate\Support\Facades\Auth::check())
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>

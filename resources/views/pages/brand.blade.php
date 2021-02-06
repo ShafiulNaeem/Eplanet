@@ -60,8 +60,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->id)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->id)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">Sale</span>
                                             <span class="label_new">New</span>
@@ -69,7 +69,7 @@
 
                                     </div>
                                     <div class="product_content grid_content">
-                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->id)}}">{{$brand->brand_name}}</a></h4>
+                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->brand_slug)}}">{{$brand->brand_name}}</a></h4>
                                         {{--                                <p><a href="#">{{$brand->level}}</a></p>--}}
                                         {{--                                <div class="price_box">--}}
                                         {{--                                    <span class="current_price">$26.00</span>--}}
@@ -77,7 +77,7 @@
                                         {{--                                </div>--}}
                                     </div>
                                     <div class="product_content list_content">
-                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->id)}}">{{$brand->brand_name}}</a></h4>
+                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->brand_slug)}}">{{$brand->brand_name}}</a></h4>
                                         {{--                                <p><a href="#">{{$brand->level}}</a></p>--}}
                                         {{--                                <div class="price_box">--}}
                                         {{--                                    <span class="current_price">$26.00</span>--}}
@@ -101,8 +101,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->id)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->id)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">Sale</span>
                                             <span class="label_new">New</span>
@@ -110,7 +110,7 @@
 
                                     </div>
                                     <div class="product_content grid_content">
-                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->id)}}">{{$brand->brand_name}}</a></h4>
+                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->brand_slug)}}">{{$brand->brand_name}}</a></h4>
                                         {{--                                <p><a href="#">{{$brand->level}}</a></p>--}}
                                         {{--                                <div class="price_box">--}}
                                         {{--                                    <span class="current_price">$26.00</span>--}}
@@ -118,7 +118,7 @@
                                         {{--                                </div>--}}
                                     </div>
                                     <div class="product_content list_content">
-                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->id)}}">{{$brand->brand_name}}</a></h4>
+                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->brand_slug)}}">{{$brand->brand_name}}</a></h4>
                                         {{--                                <p><a href="#">{{$brand->level}}</a></p>--}}
                                         {{--                                <div class="price_box">--}}
                                         {{--                                    <span class="current_price">$26.00</span>--}}
@@ -142,8 +142,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->id)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->id)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">Sale</span>
                                             <span class="label_new">New</span>
@@ -151,7 +151,7 @@
 
                                     </div>
                                     <div class="product_content grid_content">
-                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->id)}}">{{$brand->brand_name}}</a></h4>
+                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->brand_slug)}}">{{$brand->brand_name}}</a></h4>
                                         {{--                                <p><a href="#">{{$brand->level}}</a></p>--}}
                                         {{--                                <div class="price_box">--}}
                                         {{--                                    <span class="current_price">$26.00</span>--}}
@@ -159,7 +159,7 @@
                                         {{--                                </div>--}}
                                     </div>
                                     <div class="product_content list_content">
-                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->id)}}">{{$brand->brand_name}}</a></h4>
+                                        <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->brand_slug)}}">{{$brand->brand_name}}</a></h4>
                                         {{--                                <p><a href="#">{{$brand->level}}</a></p>--}}
                                         {{--                                <div class="price_box">--}}
                                         {{--                                    <span class="current_price">$26.00</span>--}}

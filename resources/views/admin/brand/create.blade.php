@@ -58,16 +58,16 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group col-md-6 float-left mt-2">
-                                        <label for="exampleFormControlFile1"> </label>
-                                        <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                                    </div>
+                                </div>
+{{--                                    <div class="form-group col-md-6 float-left mt-2">--}}
+{{--                                        <label for="exampleFormControlFile1"> </label>--}}
+{{--                                        <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
+{{--                                    </div>--}}
                                 <!-- /.card-body -->
 
-{{--                                <div class="card-footer">--}}
-{{--                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
-{{--                                </div>--}}
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+                                </div>
                             </form>
                         </div>
                         <!-- /.card -->

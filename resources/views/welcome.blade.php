@@ -133,14 +133,14 @@
                                                         <div class="banner_thumb">
                                                           <div class="zoom-In">
 
-                                                            <a href="{{route('cat.show',$category->id)}}">
+                                                            <a href="{{route('cat.show',$category->category_slug)}}">
                                                                 <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}">
                                                             </a>
                                                         </div>
                                                         </div>
                                                     </div>
                                                     <figcaption class="product_content">
-                                                        <h4 class="product_name"><a href="{{route('cat.show',$category->id)}}">{{$category->category_name}}</a></h4>
+                                                        <h4 class="product_name"><a href="{{route('cat.show',$category->category_slug)}}">{{$category->category_name}}</a></h4>
 
                                                     </figcaption>
                                                 </figure>
@@ -167,14 +167,14 @@
                                                     <div class="single_banner">
                                                         <div class="banner_thumb">
                                                          <div class="zoom-In">
-                                                            <a href="{{route('pages.show',$product->id)}}">
+                                                            <a href="{{route('pages.show',$product->product_slug)}}">
                                                                 <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
                                                             </a>
                                                         </div>
                                                         </div>
                                                     </div>
                                                     <figcaption class="product_content">
-                                                        <h4 class="product_name"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h4>
+                                                        <h4 class="product_name"><a href="{{route('pages.show',$product->product_slug)}}">{{$product->product_name}}</a></h4>
                                                         <div class="price_box">
                                                             <span class="current_price"></span>
                                                             <span class="current_price">BDT: {{$product->product_price}}</span>
@@ -209,14 +209,14 @@
                                                 <div class="single_banner">
                                                     <div class="banner_thumb">
                                                         <div class="zoom-In">
-                                                        <a href="{{route('pages.show',$pro->id)}}">
+                                                        <a href="{{route('pages.show',$pro->product_slug)}}">
                                                             <img src="{{url('images',$pro->feature_image)}}" alt="{{$pro->product_name}}">
                                                         </a>
                                                     </div>
                                                     </div>
                                                 </div>
                                                 <figcaption class="product_content">
-                                                    <h4 class="product_name"><a href="{{route('pages.show', $pro->id)}}">{{$pro->product_name}}</a></h4>
+                                                    <h4 class="product_name"><a href="{{route('pages.show', $pro->product_slug)}}">{{$pro->product_name}}</a></h4>
                                                     <div class="price_box">
                                                         <span class="current_price">BDT {{$pro->product_price}}</span>
 

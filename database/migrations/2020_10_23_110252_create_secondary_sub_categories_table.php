@@ -18,8 +18,8 @@ class CreateSecondarySubCategoriesTable extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_category_id');
+            $table->string('secondary_subcategory_slug');
             $table->string('secondary_subcategory_name');
-//            $table->string('sub_category_image');
             $table->integer('status')->default(1);
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');

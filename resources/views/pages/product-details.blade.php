@@ -24,21 +24,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-12" >
-                    <div class="breadcrumb_content text-left" >
+                    <div class="breadcrumb_content_new  text-left" >
                         <ul style="color: #cfcfcf; font-weight: 600;">
                             <li><a href="{{ route('home') }}">home</a></li>
                             @foreach($products as $product)
                                 @if($product->brand_id != null)
-                                    <li><a href="{{ route('brands.show') }}">{{$product->brand->brand_name}}</a></li>
+                                    <li><a href="{{ route('brandProduct.show', $product->brand->brand_slug) }}">{{$product->brand->brand_name}}</a></li>
                                 @endif
                                 @if($product->category_id != null)
-                                        <li><a href="{{ route('cat.show',$product->category_id) }}">{{$product->category->category_name}}</a></li>
+                                        <li><a href="{{ route('cat.show',$product->category->category_slug) }}">{{$product->category->category_name}}</a></li>
                                     @endif
                                 @if($product->sub_categories_id != null)
-                                        <li><a href="{{ route('subcat.show',$product->sub_categories_id) }}">{{$product->subcategory->subcategory_name}}</a></li>
+                                        <li><a href="{{ route('subcat.show',$product->subcategory->subcategory_slug) }}">{{$product->subcategory->subcategory_name}}</a></li>
                                     @endif
                                 @if($product->secondary_sub_categories_id != null)
-                                        <li><a href="{{ route('secondary_sub.show',$product->secondary_sub_categories_id) }}">{{$product->secondsub->secondary_subcategory_name}}</a></li>
+                                        <li><a href="{{ route('secondary_sub.show',$product->secondsub->secondary_subcategory_slug) }}">{{$product->secondsub->secondary_subcategory_name}}</a></li>
                                     @endif
                                 <li>{{$product->product_name}}</li>
                             @endforeach

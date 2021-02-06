@@ -60,16 +60,16 @@
                             <span><img src="{{url('images',$brands->brand_image)}}" alt="{{$brands->brand_name}}" width="80"></span>
                         </div>
 
-                        <div class="form-group col-md-6 float-left mt-2">
-                            <label for="exampleFormControlFile1"> </label>
-                            <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                        </div>
+{{--                        <div class="form-group col-md-6 float-left mt-2">--}}
+{{--                            <label for="exampleFormControlFile1"> </label>--}}
+{{--                            <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
+{{--                        </div>--}}
 
                     </div><!-- /.box-body -->
 
-{{--                        <div class="card-footer">--}}
-{{--                            <button type="submit" class="btn btn-block btn-outline-dark">Save Change</button>--}}
-{{--                        </div>--}}
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-block btn-outline-dark">Save Change</button>
+                        </div>
                     </form>
                         </div>
                         <!-- /.card -->

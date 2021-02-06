@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product Images'
+                'title' => 'Manage Product Images',
+                'link' => route('productImage.create'),
+                'text' => "Upload Product Images"
             ])
 
     <!-- Main content -->

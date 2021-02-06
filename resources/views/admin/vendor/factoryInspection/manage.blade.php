@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product Factory Inspection Reports'
+                'title' => 'Manage Product Factory Inspection Reports',
+                'link' => route('factoryInspection.create'),
+                'text' => "Create Factory Inspection"
             ])
 
     <!-- Main content -->
