@@ -51,14 +51,17 @@ class BrandController extends Controller
     {
         $val = $request->validate([
             'brand_name' => ['required', 'string', 'max:255'],
+            'level' => 'required',
             'brand_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $admin_id = Auth::guard('admin')->user()->id;
 
         $val['admin_id'] = $admin_id;
+        $val['brand_slug'] = $this->createSlug(Brand::class, $request->brand_name, "brand_slug");
         $val['brand_name'] = $request->brand_name;
-        $val['status'] = $request->status;;
+        $val['status'] = $request->status;
+        $val['level'] = $request->level;
 
         if($request->hasFile('brand_image')){
             $image = request()->file('brand_image');
@@ -106,6 +109,7 @@ class BrandController extends Controller
     {
         $val = $request->validate([
             'brand_name' => 'required|string|max:255',
+            'level' => 'required',
             'brand_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -113,6 +117,7 @@ class BrandController extends Controller
         $val['admin_id'] = $admin_id;
         $val['brand_name'] = $request->brand_name;
         $val['status'] = $request->status;
+        $val['level'] = $request->level;
 
         if($request->hasFile('brand_image')){
             $image = $request->file('brand_image');
@@ -143,5 +148,17 @@ class BrandController extends Controller
         if( self::changeStatus($request->status, 'App\Models\Brand', $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
+    }
+
+    // levelChange
+    public function levelChange(Request $request)
+    {
+        $validate = $request->validate([
+            'level' => 'required',
+        ]);
+        //dd($request->all());
+        return ( Brand::where('id',$request->id)->update($validate) )?
+            redirect()->route('brand.index')->with('success', 'Edit Success'):
+            redirect()->route('brand.index')->with('error', 'Something went wrong') ;
     }
 }

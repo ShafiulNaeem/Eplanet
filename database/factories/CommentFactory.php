@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Helper\DeleteFile;
 use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\User;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
 {
+    use DeleteFile;
     /**
      * The name of the factory's corresponding model.
      *
@@ -30,7 +32,7 @@ class CommentFactory extends Factory
             'blog_id' => function(){
                 return Blog::all()->random();
             },
-            'comment' => $this->faker->text,
+            'comment' => $this->faker->randomElement($this->fakerShortText()),
         ];
     }
 }

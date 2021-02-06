@@ -60,6 +60,7 @@ class CategoryController extends Controller
 
         $admin_id = Auth::guard('admin')->user()->id;
         $categories->admin_id = $admin_id;
+        $categories->category_slug = $this->createSlug(Category::class, $request->category_name, "category_slug");
         $categories->category_name = $request->category_name;
         $categories->status = $request->status;
         $categories->featured = $request->featured;

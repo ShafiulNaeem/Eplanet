@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product'
+                'title' => 'Manage Product',
+                'link' => route('product.create'),
+                'text' => "Product Create"
             ])
 
     <!-- Main content -->

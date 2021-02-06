@@ -5,7 +5,7 @@
 
 
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
+    <div class="breadcrumbs_area" style="margin-top: 20px;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -13,7 +13,6 @@
                        <h3>Blog Details </h3>
                         <ul>
                             <li><a href="{{url('/')}}">home</a></li>
-                            <li>Blog Details</li>
                             <li><a href="{{route('blog.create')}}">Create BLog</a></li>
                         </ul>
                     </div>
@@ -43,7 +42,7 @@
                                         </div>
                                     </div>
                                     <div class="blog_thumb">
-                                        <a href="#"><img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}"></a>
+                                        <a href="#"><img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->title}}"></a>
                                     </div>
                                     <figcaption class="blog_content">
                                         <div class="post_content">

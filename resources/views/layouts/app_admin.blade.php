@@ -5,7 +5,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Admin | Eplanet') }}</title>
+    <title>{{ __('Admin | Eplanet') }}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo/logo3.png') }}">
 
     <!-- Google Font: Source Sans Pro -->
@@ -458,7 +458,8 @@ data.push({
 
 
             success: function (response) {
-                console.log(response);
+                subCat[0].innerHTML = " ";
+                // console.log(subCat[0]);
                 response.forEach((value, index) => {
                     console.log(value, index);
                     let option = createElement('option');
@@ -466,7 +467,7 @@ data.push({
                     option.innerText = value.subcategory_name;
                     subCat[0].append(option);
                 });
-                console.log(subCat)
+                // console.log(subCat)
             },
             error:function(response)
             {
@@ -492,6 +493,7 @@ data.push({
 
 
             success: function (response) {
+                subCat[0].innerHTML = " ";
                 console.log(response);
                 response.forEach((value, index) => {
                     console.log(value, index);
@@ -500,7 +502,7 @@ data.push({
                     option.innerText = value.secondary_subcategory_name;
                     subCat[0].append(option);
                 });
-                console.log(subCat)
+                // console.log(subCat)
             },
             error:function(response)
             {

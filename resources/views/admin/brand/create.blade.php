@@ -32,10 +32,19 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-6 float-left">
-                                        <label for="exampleSelectRounded0">Status</label>
+                                        <label for="exampleSelectRounded0">Brand Status</label>
                                         <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;" >
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6 float-left">
+                                        <label for="exampleSelectRounded0">Brand Level</label>
+                                        <select name="level" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;" >
+                                            <option value="1">Top</option>
+                                            <option value="2">Mid</option>
+                                            <option value="3">Low</option>
                                         </select>
                                     </div>
 
@@ -49,16 +58,16 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group col-md-6 float-left mt-2">
-                                        <label for="exampleFormControlFile1"> </label>
-                                        <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                                    </div>
+                                </div>
+{{--                                    <div class="form-group col-md-6 float-left mt-2">--}}
+{{--                                        <label for="exampleFormControlFile1"> </label>--}}
+{{--                                        <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
+{{--                                    </div>--}}
                                 <!-- /.card-body -->
 
-{{--                                <div class="card-footer">--}}
-{{--                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
-{{--                                </div>--}}
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+                                </div>
                             </form>
                         </div>
                         <!-- /.card -->

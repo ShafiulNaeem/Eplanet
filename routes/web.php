@@ -74,6 +74,10 @@ Route::delete('wishlist/{wishList}', 'WelcomeController@deleteWishList')->name('
 Route::get('addExpressList/{id}', 'WelcomeController@addExpressList')->name('add.express.list');
 Route::get('contact', 'Users\ContactController@employeeContact')->name('contact.show');
 
+//brand
+Route::get('brands', 'Users\ContactController@brandShow')->name('brands.show');
+Route::get('brands/{slug}', 'Users\NavbarController@brandProduct')->name('brandProduct.show');
+
 //user profile
 Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
 Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->name('profile.edit');
@@ -91,7 +95,7 @@ Route::resource('replay', 'Users\ReplyController')->middleware(['auth']);
 Route::get('blog', 'Users\BlogController@create')->name('blog.create');
 Route::post('blog', 'Users\BlogController@store')->middleware(['auth'])->name('blog.store');
 Route::get('blogall', 'Users\BlogController@allBog')->name('blog.allBog');
-Route::get('blogall/{blog}', 'Users\BlogController@show')->middleware(['auth'])->name('blog.show');
+Route::get('blogall/{slug}', 'Users\BlogController@show')->middleware(['auth'])->name('blog.show');
 Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['auth'])->name('blog.destroy');
 
 
@@ -101,15 +105,15 @@ Route::post('coupon', 'Users\CartController@getCoupon')->name('coupon.code');
 
 
 Route::prefix('pages')->group(function(){
-    Route::get('/{product}', 'WelcomeController@show')->name('pages.show');
+    Route::get('/{slug}', 'WelcomeController@show')->name('pages.show');
     Route::post('/', 'Users\CartController@store')->middleware(['auth'])->name('pages.cart');
     Route::get('/', 'Users\CartController@create')->middleware(['auth'])->name('cart.create');
     Route::put('/', 'Users\CartController@update')->middleware(['auth'])->name('cart.update');
     Route::delete('/{id}', 'Users\CartController@destroy')->middleware(['auth'])->name('cart.destroy');
     Route::get('delete/{id}', 'Users\CartController@show')->middleware(['auth'])->name('cart.show');
-    Route::get('subcategory/{id}', 'Users\NavbarController@show')->name('subcat.show');
-    Route::get('secondary_sub/{id}', 'Users\NavbarController@secondary_subcategory')->name('secondary_sub.show');
-    Route::get('category/{id}', 'WelcomeController@category')->name('cat.show');
+    Route::get('subcategory/{slug}', 'Users\NavbarController@show')->name('subcat.show');
+    Route::get('secondarysub/{slug}', 'Users\NavbarController@secondary_subcategory')->name('secondary_sub.show');
+    Route::get('category/{slug}', 'WelcomeController@category')->name('cat.show');
 });
 
 
@@ -146,6 +150,7 @@ Route::prefix('admin')->group(function(){
 
     Route::namespace('Users\Admin')->group(function (){
         Route::post('change', 'BrandController@change')->name('brand.change.status');
+        Route::post('levelChange', 'BrandController@levelChange')->name('brand.change.level');
         Route::post('categoryChange', 'CategoryController@change')->name('category.change.status');
         Route::post('subcategoryChange', 'SubCategoryController@change')->name('subcategory.change.status');
         Route::post('secondsubchange', 'SecondarySubCategoryController@change')->name('secondsub.change.status');
