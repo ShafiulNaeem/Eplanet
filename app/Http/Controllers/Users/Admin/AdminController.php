@@ -26,8 +26,11 @@ class AdminController extends Controller
         $from = date('Y-m-d H:i:s', strtotime('-7 days'));
         $pastMonth = date('Y-m-d H:i:s', strtotime('-30 days'));
         $today = date('Y-m-d H:i:s');
-        $allOrders = Order::with('products')->whereBetween('created_at', [$from, $today])->get();
-
+        $allOrders = Order::with('products')
+            ->where('shifted', 1)
+            ->whereBetween('created_at', [$from, $today])
+            ->get();
+//dd($allOrders);
         $totalSale = 0;
         foreach ($allOrders as $allOrder){
             $totalSale += $allOrder->quantity * $allOrder->products[0]->product_price;

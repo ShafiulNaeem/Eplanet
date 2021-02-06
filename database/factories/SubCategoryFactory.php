@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Helper\DeleteFile;
 use App\Models\Admin;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -10,6 +11,7 @@ use Illuminate\Support\Str;
 
 class SubCategoryFactory extends Factory
 {
+    use DeleteFile;
     /**
      * The name of the factory's corresponding model.
      *
@@ -31,6 +33,7 @@ class SubCategoryFactory extends Factory
             'admin_id' => function(){
                 return Admin::all()->random();
             },
+            'subcategory_slug' => $this->createSlug($this->model, $this->faker->name, "subcategory_slug"),
             'subcategory_name' => $this->faker->name,
             'sub_category_image' => $this->faker->image(public_path('images'), 640, 480,null, false)
         ];

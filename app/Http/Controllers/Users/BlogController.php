@@ -84,16 +84,15 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Blog $blog
+     * @param $slug
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($slug)
     {
-//        dd(Auth::id());
+        $blog = Blog::where('blog_slug', $slug)->first();
         $comments = Comment::with('user','replies')->where('blog_id',$blog->id)->orderBy('created_at','DESC')->get();
         $userPBlogs = Blog::where([['user_id', $blog->user->id], ['id', '!=', $blog->id]])
             ->get();
-//                dd($userPBlogs);
 
         return view('pages.blog_details',compact(
             'blog',

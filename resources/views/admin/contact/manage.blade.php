@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Slider'
+                'title' => 'Manage Slider',
+                'link' => route("contactusslider.create"),
+                'text' => "Create Slider"
             ])
 
     <!-- Main content -->

@@ -32,19 +32,20 @@ class WelcomeController extends Controller
         return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product, 'sliders' => $sliders ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
         $mainRes = $this->productByCategory(['kids', 'men']);
 
-        $product = Product::with(['productImages', 'productVideos','admin'])->where('id', $id)->GetActive()->get();
-        //dd($product);
+        $product = Product::with(['productImages', 'productVideos','admin', 'category', 'subcategory', 'brand', 'secondsub'])->where('product_slug', $slug)->GetActive()->get();
+//        dd($product);
 
         return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
 
     }
 
     // Show Category
-    public function category($id){
+    public function category($slug){
+        $id = Category::where('category_slug', $slug)->first()->id;
         $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->paginate(20);
         //dd($category);
         return view('pages.categories',['categories' =>$category]);
@@ -143,4 +144,5 @@ class WelcomeController extends Controller
             'message' => 'Express wish Created'
         ], 200);
     }
+
 }

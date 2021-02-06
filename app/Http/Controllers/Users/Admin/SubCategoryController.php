@@ -64,6 +64,7 @@ class SubCategoryController extends Controller
 
         $SubCategory = new SubCategory();
         $SubCategory->subcategory_name = $request->subcategory_name;
+        $SubCategory->subcategory_slug = $this->createSlug(SubCategory::class, $request->subcategory_name, "subcategory_slug");
         $SubCategory->category_id = $request->category_name;
         $SubCategory->status = $request->status;
         $SubCategory->admin_id = Auth::guard('admin')->user()->id;

@@ -7,9 +7,11 @@ use App\Models\Category;
 use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Helper\DeleteFile;
 
 class SecondarySubCategoryFactory extends Factory
 {
+    use DeleteFile;
     /**
      * The name of the factory's corresponding model.
      *
@@ -34,7 +36,8 @@ class SecondarySubCategoryFactory extends Factory
             'sub_category_id' => function(){
                 return SubCategory::all()->random();
             },
-            'secondary_subcategory_name' => $this->faker->name
+            'secondary_subcategory_name' => $this->faker->name,
+            'secondary_subcategory_slug' => $this->createSlug($this->model, $this->faker->name, "secondary_subcategory_slug")
         ];
     }
 }

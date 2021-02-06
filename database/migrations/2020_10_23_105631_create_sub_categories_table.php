@@ -17,6 +17,7 @@ class CreateSubCategoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('admin_id');
+            $table->string('subcategory_slug');
             $table->string('subcategory_name');
             $table->string('sub_category_image');
             $table->integer('status')->default(1);

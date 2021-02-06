@@ -62,6 +62,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $this->validation($request);
 
         $products = new Product();
@@ -72,6 +73,7 @@ class ProductController extends Controller
         $products->unique_id = Str::random(9);
         $products->category_id = $request->product_category;
         $products->coupon_id = $request->product_coupon;
+        $products->product_slug = $this->createSlug(Product::class, $request->product_name, "product_slug");
         $products->product_name = $request->product_name;
         $products->product_description = $request->product_description;
         $products->color = $request->product_color;

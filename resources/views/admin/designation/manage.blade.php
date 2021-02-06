@@ -6,7 +6,9 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 @include('layouts.admin_blade_title', [
-            'title' => 'Manage Designations'
+            'title' => 'Manage Designations',
+            'link'=> route('designation.create'),
+            'text' => "Create Designation"
         ])
 
     <!-- Main content -->

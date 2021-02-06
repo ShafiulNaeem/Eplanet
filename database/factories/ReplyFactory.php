@@ -34,7 +34,7 @@ class ReplyFactory extends Factory
             'comment_id' => function(){
                 return Comment::all()->random();
             },
-            'reply' => $this->faker->text
+            'reply' => $this->faker->word
         ];
     }
 }

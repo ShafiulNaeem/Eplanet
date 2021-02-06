@@ -5,7 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Product Videos'
+                'title' => 'Manage Product Videos',
+                'link' => route('productVideo.create'),
+                'text' => "Upload Product Video"
             ])
 
     <!-- Main content -->

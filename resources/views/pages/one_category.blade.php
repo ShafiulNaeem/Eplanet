@@ -1,27 +1,45 @@
 @extends('layouts.app_main')
 
 @section('content')
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area" style="background-color: darkslategray">
+        <div class="container">
+            <div class="row">
+                <div class="col-12" >
+                    <div class="breadcrumb_content_new text-left" >
+                        <ul style="color: #cfcfcf; font-weight: 600;">
+                            <li><a href="{{ route('home') }}">home</a></li>
+                            @foreach($categories as $category)
+                                @if($category->category_id != null)
+                                    <li><a href="{{ route('cat.show',$category->category->category_slug) }}">{{$category->category->category_name}}</a></li>
+                                @endif
+                                @if($category->sub_category_id != null)
+                                    <li><a href="{{ route('subcat.show',$category->subcategory->subcategory_slug) }}">{{$category->subcategory->subcategory_name}}</a></li>
+                                    @else
+                                        <li> {{$category->subcategory_name}}</li>
+                                @endif
+                                @if($category->sub_category_id != null)
+                                    <li>{{$category->secondary_subcategory_name}}</li>
+                                @endif
 
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
     <section class="category">
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="category-title">
-                                <h4>Price and other details may vary based on size</h4>
-                            </div>
-                        </div>
-                    </div>
                     <div class="right-main-cat">
-
                         <div class="row">
-
                             <div class="col-md-12 ">
                                 <div class="sub_head">
                                     @foreach($categories as $category)
-                                        <h4>All {{$category->subcategory_name}} Collection</h4>
+                                        <h4>All {{$category->subcategory_name}} > {{$category->secondary_subcategory_name}} Collection</h4>
                                     @endforeach
                                 </div>
                             </div>
@@ -31,13 +49,11 @@
                                     <div class="right-category">
                                         <div class="card">
                                             <div class="zoom-In">
-                                            <a href="{{route('pages.show',$product->id)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                            <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             </div>
                                             <div class="card-body">
-                                                <a href="{{route('pages.show',$product->id)}}"><p>{{$product->product_name}}</p></a>
-                                                <a href="{{route('pages.show',$product->id)}}">
-                                                    <p>Size : {{ $product->size }}</p>
-                                                </a>
+                                                <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+
                                                 <div class="price_box text-center">
 
 {{--                                                    <div class=" product_ratting">--}}
@@ -50,7 +66,10 @@
 {{--                                                            <li class="review"><a href="#"> (customer review )</a></li>--}}
 {{--                                                        </ul>--}}
 {{--                                                    </div>--}}
-                                                    <span class="current_price">BDT {{$product->product_price}}</span>
+                                                    <a class="float-right" href="{{route('pages.show',$product->product_slug)}}">
+                                                        <p>Size : {{ $product->size }}</p>
+                                                    </a>
+                                                    <span class="current_price float-left">BDT {{$product->product_price}}</span>
                                                 </div>
                                             </div>
                                         </div>

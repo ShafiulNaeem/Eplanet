@@ -6,7 +6,9 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 @include('layouts.admin_blade_title', [
-            'title' => 'Manage Brands'
+            'title' => 'Manage Brands',
+            'link' => route('brand.create'),
+            'text' => 'Create Brand',
         ])
 
     <!-- Main content -->
@@ -25,6 +27,7 @@
                                         <th>SL</th>
                                         <th>Brand Name</th>
                                         <th>Brand Logo</th>
+                                        <th>Brand Level</th>
                                         <th>Brand Status</th>
                                         <th>Date</th>
                                         <th>Action</th>
@@ -38,6 +41,22 @@
                                     <td class="text-center">{{$brand->brand_name}}</td>
                                     <td class="text-center" >
                                         <img width="90" src="{{ url('images/' . $brand->brand_image) }}" alt="{{$brand->brand_name}}">
+                                    </td>
+                                    <td class="text-center">
+                                        <form action="{{route('brand.change.level')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$brand->id}}">
+                                            <div class="form-group">
+                                                <select name="level" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                                    <option value="1" @if($brand->level == 1 ) selected @endif>Top</option>
+                                                    <option value="2" @if($brand->level == 2 ) selected @endif>Mid</option>
+                                                    <option value="3" @if($brand->level == 3 ) selected @endif>Low</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="Update" class="btn btn-success">
+                                            </div>
+                                        </form>
                                     </td>
                                     <td class="text-center">
                                         <form action="{{ route('brand.change.status') }}" method="post">
@@ -91,6 +110,8 @@
                                 <tr>
                                     <th>SL</th>
                                     <th>Brand Name</th>
+                                    <th>Brand Logo</th>
+                                    <th>Brand Level</th>
                                     <th>Brand Status</th>
                                     <th>Date</th>
                                     <th>Action</th>

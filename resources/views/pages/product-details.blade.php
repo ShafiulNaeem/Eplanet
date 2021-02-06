@@ -4,14 +4,44 @@
 
 
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
+{{--    <div class="breadcrumbs_area">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="breadcrumb_content">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="{{route('home')}}">home</a></li>--}}
+{{--                            <li>product details</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+    <!--breadcrumbs area end-->
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area" style="background-color: darkslategray">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                        <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
-                            <li>product details</li>
+                <div class="col-12" >
+                    <div class="breadcrumb_content_new  text-left" >
+                        <ul style="color: #cfcfcf; font-weight: 600;">
+                            <li><a href="{{ route('home') }}">home</a></li>
+                            @foreach($products as $product)
+                                @if($product->brand_id != null)
+                                    <li><a href="{{ route('brandProduct.show', $product->brand->brand_slug) }}">{{$product->brand->brand_name}}</a></li>
+                                @endif
+                                @if($product->category_id != null)
+                                        <li><a href="{{ route('cat.show',$product->category->category_slug) }}">{{$product->category->category_name}}</a></li>
+                                    @endif
+                                @if($product->sub_categories_id != null)
+                                        <li><a href="{{ route('subcat.show',$product->subcategory->subcategory_slug) }}">{{$product->subcategory->subcategory_name}}</a></li>
+                                    @endif
+                                @if($product->secondary_sub_categories_id != null)
+                                        <li><a href="{{ route('secondary_sub.show',$product->secondsub->secondary_subcategory_slug) }}">{{$product->secondsub->secondary_subcategory_name}}</a></li>
+                                    @endif
+                                <li>{{$product->product_name}}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -19,7 +49,6 @@
         </div>
     </div>
     <!--breadcrumbs area end-->
-
 
     <!--product details start-->
     <div class="product_details mb-70">

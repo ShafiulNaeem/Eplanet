@@ -73,7 +73,7 @@
                                     <li><a href="#">Delivery Information</a></li>
                                     <li><a href="#"> Privacy Policy</a></li>
                                     <li><a href="#"> Terms & Conditions</a></li>
-                                    <li><a href="contact.html"> Contact Us</a></li>
+                                    <li><a href="{{route('contact.show')}}"> Contact Us</a></li>
                                     <li><a href="#"> Site Map</a></li>
                                 </ul>
                             </div>

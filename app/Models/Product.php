@@ -54,7 +54,7 @@ class Product extends Model
      */
     public function subcategory()
     {
-        return $this->belongsTo('App\Models\SubCategory');
+        return $this->belongsTo('App\Models\SubCategory','sub_categories_id');
     }
 
 
@@ -87,7 +87,7 @@ class Product extends Model
 
     public function secondsub()
     {
-        return $this->belongsTo(SecondarySubCategory::class);
+        return $this->belongsTo(SecondarySubCategory::class,'secondary_sub_categories_id');
     }
 
 
