@@ -1121,20 +1121,40 @@ Fading
     text-align: center;
 }
 
-@media (min-width: 768px){
-    .main-nav .nav .has-child.c-1 .drop-menu-1 {
-        left: auto;
-        right: 0;
 
-}
-
-@media (min-width: 768px){
 .main-nav .nav .has-child.c-2 .drop-menu-2 {
     left: auto;
-    right: 100%;
+    right: 116%;
     border-left: none;
-    border-right: 1px solid #f58220;
+   
    }
+
+.related_pro{
+    display: flex;
+    border: 1px solid #ededed;
+    margin:5px 0;
 }
 
+.product_d_right{
+    font-weight: 400
+}
 
+.product_desc p{
+    margin:0;
+}
+.product_recive{
+    border:1px solid #ededed;
+    padding: 20px 15px;
+    margin-bottom:15px;
+}
+.product_recive ul li{
+    display: inline-block;
+    padding:5px 0;
+}
+.area h4{
+    font-weight: 500;
+    color:#000;
+}
+.product_desc{
+    border-bottom:none;
+}
