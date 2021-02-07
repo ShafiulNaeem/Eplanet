@@ -60,7 +60,7 @@ dd($monthlySell);
 });
 
 Route::get('/con',function(){
-    return view('pages.brand');
+    return view('pages.vandor');
 });
 
 Route::get('/',  'WelcomeController@index')->name('home');
@@ -87,11 +87,13 @@ Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->name('prof
 Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->name('profile.order.cancel');
 
 //vendor page show
+Route::get('vendor', 'Users\VendorProductsController@allVendor')->name('allVendor.show');
 Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSale.show');
 Route::get('overview/{id}', 'Users\VendorProductsController@overview')->name('overview');
+
+//Blog page
 Route::resource('comment', 'Users\CommentController')->middleware(['auth']);
 Route::resource('replay', 'Users\ReplyController')->middleware(['auth']);
-//Blog page
 Route::get('blog', 'Users\BlogController@create')->name('blog.create');
 Route::post('blog', 'Users\BlogController@store')->middleware(['auth'])->name('blog.store');
 Route::get('blogall', 'Users\BlogController@allBog')->name('blog.allBog');
@@ -150,7 +152,6 @@ Route::prefix('admin')->group(function(){
 
     Route::namespace('Users\Admin')->group(function (){
         Route::post('change', 'BrandController@change')->name('brand.change.status');
-        Route::post('emichange', 'EMIController@change')->name('emi.change.status');
         Route::post('levelChange', 'BrandController@levelChange')->name('brand.change.level');
         Route::post('categoryChange', 'CategoryController@change')->name('category.change.status');
         Route::post('subcategoryChange', 'SubCategoryController@change')->name('subcategory.change.status');
@@ -171,7 +172,8 @@ Route::prefix('admin')->group(function(){
             Route::get('productimage', 'ProductImageController@allProductImages')->name('product.image');
             Route::get('productvideo', 'ProductVideoController@allProductVideo')->name('product.video');
             Route::get('user', 'UserController@allUser')->name('user.no.order');
-            Route::get('emi', 'EMIController@withoutAdmin')->name('emi');
+
+            Route::get('contactusslider', 'ContactUsSliderController@allSlider')->name('slider');
         });
     });
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
@@ -216,7 +218,6 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('employee', 'EmployeeController');
     Route::resource('secondsub', 'SecondarySubCategoryController');
     Route::resource('contactusslider', 'ContactUsSliderController');
-    Route::resource('emi', 'EMIController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
