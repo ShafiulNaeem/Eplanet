@@ -1126,13 +1126,14 @@ Fading
     left: auto;
     right: 116%;
     border-left: none;
-   
+
    }
 
 .related_pro{
+    width: 90%;
     display: flex;
-    border: 1px solid #ededed;
-    margin:5px 0;
+    border: 2px solid #ededed;
+    margin:5px auto;
 }
 
 .product_d_right{

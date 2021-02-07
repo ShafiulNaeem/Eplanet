@@ -111,6 +111,16 @@
                                             @enderror
                                         </div>
 
+
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="">Select Bank Names (multiple)</label>
+                                            <select name="emi_id[]" class="form-control select2 select2-success" multiple="multiple" data-placeholder="Select Bank Names" style="width: 100%;">
+                                                @foreach($emis as $emi)
+                                                    <option value="{{$emi->id}}">{{$emi->bank_name}} ({{$emi->duration}})</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Stock</label>
                                             <input type="text" name="product_stock" value="{{ old('product_stock') }}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product available">
@@ -196,16 +206,16 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group col-md-6 float-left mt-2">
-                                            <label for=""> </label>
-                                            <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                                        </div>
+{{--                                        <div class="form-group col-md-6 float-left mt-2">--}}
+{{--                                            <label for=""> </label>--}}
+{{--                                            <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
+{{--                                        </div>--}}
 
                                     </div><!-- /.box-body -->
 
-{{--                                    <div class="card-footer">--}}
-{{--                                        <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
-{{--                                    </div>--}}
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+                                    </div>
                                 </form>
                             </div>
                                 <!-- /.card -->
