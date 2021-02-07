@@ -15,11 +15,13 @@ class CreateContactUsSlidersTable extends Migration
     {
         Schema::create('contact_us_sliders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('admin_id');
             $table->string('slider_media');
             $table->integer('for');
             $table->string('file_type', 10);
             $table->string('type', 10);
             $table->integer('status');
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });
     }
