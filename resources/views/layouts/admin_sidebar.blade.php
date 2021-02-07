@@ -346,10 +346,12 @@
 
                 <li class="nav-item @if(
                                     url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
                                     url()->current() == route('contactusslider.index')
     ) menu-is-opening menu-open @endif">
                     <a href="#" class="nav-link @if(
                                     url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
                                     url()->current() == route('contactusslider.index')
     ) active @endif ">
                         <i class="nav-icon fas fa-copy"></i>
@@ -360,6 +362,7 @@
                     </a>
                     <ul class="nav nav-treeview" @if(
                                     url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
                                     url()->current() == route('contactusslider.index')
     ) style="display: block" @endif >
                         <li class="nav-item">
@@ -374,6 +377,14 @@
                                 <p>Manage Slider</p>
                             </a>
                         </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.slider') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.brand' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Slider</p>
+                                </a>
+                            </li>
+                        @endif
 
                     </ul>
                 </li>

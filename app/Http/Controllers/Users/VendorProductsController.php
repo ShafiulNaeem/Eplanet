@@ -25,7 +25,7 @@ class VendorProductsController extends Controller
 
         $showViews = ShowView::where('admin_id', $id)->get();
         $factoryViews = FactoryView::where('admin_id', $id)->get();
-        $sliders = ContactUsSlider::GetActive()->where('for', 2)->get();
+        $sliders = ContactUsSlider::GetActive()->where('admin_id', $id)->get();
 
         //dd($showViews);
         return view('pages.vendor_home',compact('productSales','productTops','showViews','factoryViews','sliders'));
@@ -33,7 +33,7 @@ class VendorProductsController extends Controller
 
     public function overview($id)
     {
-        $sliders = ContactUsSlider::GetActive()->where('for', 2)->get();
+        $sliders = ContactUsSlider::GetActive()->where('admin_id', $id)->get();
         $factoryViews = FactoryView::where('admin_id', $id)->get();
         $ProductTradeCapacity = ProductTradeCapacity::where('admin_id', $id)->orderBy('id','desc')->get();
         $ProductQualitys = ProductQuality::where('admin_id', $id)->orderBy('id','desc')->get();
@@ -51,5 +51,12 @@ class VendorProductsController extends Controller
             'factoryViews',
             'sliders'
         ));
+    }
+
+    // All Vendor Show
+    public function allVendor()
+    {
+        $factoryViews = FactoryView::orderBy('id','desc')->get();
+        return view('pages.vandor',compact('factoryViews'));
     }
 }

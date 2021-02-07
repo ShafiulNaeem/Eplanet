@@ -6,6 +6,7 @@ use App\Models\ContactUsSlider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helper\DeleteFile;
+use Illuminate\Support\Facades\Auth;
 
 class ContactUsSliderController extends Controller
 {
@@ -18,7 +19,14 @@ class ContactUsSliderController extends Controller
     public function index()
     {
         return view('admin.contact.manage', [
-            'sliders' => ContactUsSlider::all()
+            'sliders' => ContactUsSlider::SliderWithAdminOwner()->get()
+        ]);
+    }
+
+    public function allSlider()
+    {
+        return view('admin.contact.manage', [
+            'sliders' => ContactUsSlider::SliderWithOutAdminOwner()->get()
         ]);
     }
 
@@ -56,6 +64,7 @@ class ContactUsSliderController extends Controller
                 ( strcmp($fileType, 'video') )  ?
                 $file->move(public_path('images'), $filename) : $file->move(public_path('videos'), $filename);
 
+                $productImages->admin_id = Auth::guard('admin')->user()->id;
                 $productImages->slider_media = $filename;
                 $productImages->for = $request->input('for');
                 $productImages->status = $request->input('status');
