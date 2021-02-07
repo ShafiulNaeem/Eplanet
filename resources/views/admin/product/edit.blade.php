@@ -44,7 +44,7 @@
                                     <div class="form-group float-left col-md-6">
                                         <label for="exampleInputPassword1">Product Brand</label>
                                         <select name="product_brand" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                            <option selected="selected">Select Brand</option>
+                                            <option value="0">Select Brand</option>
                                             @foreach($brands as $brand)
                                                 <option
 
@@ -58,8 +58,8 @@
 
                                     <div class="form-group float-left col-md-6">
                                         <label for="exampleInputPassword1">Product Category</label>
-                                        <select name="product_category" id="category_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                            <option selected="selected">Select Category</option>
+                                        <select name="product_category" id="category_id"  class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <option value="0">Select </option>
                                             @foreach($categories as $category )
                                                 <option
 
@@ -74,8 +74,8 @@
                                     <div class="form-group col-md-6 float-left">
                                         <label for="">Sub Category</label>
 
-                                        <select name="product_sub_category" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                            <option selected="selected">Select Sub Category</option>
+                                        <select name="product_sub_category" id="sub_category_id" data-subcat="{{ $product->sub_categories_id }}" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <option value="0">Select </option>
                                             @foreach($subcategory as $category )
                                                 <option
                                                     @if( $category->id == $product->sub_categories_id )
@@ -91,8 +91,8 @@
                                     <div class="form-group col-md-6 float-left">
                                         <label for="">Second Sub Category</label>
 
-                                        <select name="secondary_sub_categories_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                            <option value="0">Select Second Sub Category</option>
+                                        <select name="secondary_sub_categories_id" id="secondary_sub_categories_id" data-secondsub="{{$product->secondary_sub_categories_id}}" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <option value="0">Select </option>
                                             @foreach($secondary_sub as $category )
                                                 <option @if( $category->id == $product->secondary_sub_categories_id )
                                                         selected
@@ -106,6 +106,7 @@
                                     <div class="form-group float-left col-md-6">
                                         <label for="exampleInputPassword1">Product Coupon</label>
                                         <select name="product_coupon" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <option value="" >Select</option>
                                             @foreach($coupons as $coupon )
                                                 <option
 

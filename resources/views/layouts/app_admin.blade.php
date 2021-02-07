@@ -42,9 +42,6 @@
     <footer class="main-footer">
         <strong>Copyright &copy; {{date('Y')}} <a href="{{route('home')}}">Eplanet</a>.</strong>
         All rights reserved.
-{{--        <div class="float-right d-none d-sm-inline-block">--}}
-{{--            <b>Version</b> 3.1.0-rc--}}
-{{--        </div>--}}
     </footer>
 </div>
 <!-- ./wrapper -->
@@ -271,7 +268,7 @@ data.push({
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
-            "lengthChange": false,
+                "lengthChange": false,
             "searching": true,
             "ordering": true,
             "info": true,
@@ -446,28 +443,24 @@ data.push({
     $('#category_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let subCat = $('#sub_category_id');
-
+        let subCatId = subCat.attr("data-subcat");
+        //console.log(subCatId)
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: "{{ url('admin/subcatbycat') }}/" + selectedValue,
             method: 'post',
-            // dataType:'json',
-            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
 
 
             success: function (response) {
                 subCat[0].innerHTML = " ";
-                // console.log(subCat[0]);
+                console.log(response);
                 response.forEach((value, index) => {
-                    console.log(value, index);
-                    let option = createElement('option');
-                    option.setAttribute('value', value.id);
-                    option.innerText = value.subcategory_name;
+                    console.log(value, index, subCatId);
+                    let option = returnOption(value, index, subCatId);
                     subCat[0].append(option);
                 });
-                // console.log(subCat)
             },
             error:function(response)
             {
@@ -481,7 +474,8 @@ data.push({
     $('#sub_category_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let subCat = $('#secondary_sub_categories_id');
-
+        let subCatId = subCat.attr("data-secondsub");
+        console.log(subCatId)
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -497,9 +491,9 @@ data.push({
                 console.log(response);
                 response.forEach((value, index) => {
                     console.log(value, index);
-                    let option = createElement('option');
-                    option.setAttribute('value', value.id);
-                    option.innerText = value.secondary_subcategory_name;
+
+                    let option = returnOption(value, index, subCatId, 2);
+
                     subCat[0].append(option);
                 });
                 // console.log(subCat)
@@ -509,12 +503,27 @@ data.push({
                 console.warn(response);
             }
         });
-
-
     });
 
     function createElement(element) {
         return document.createElement(element);
+    }
+
+
+    function returnOption(value, index, subCatId, second = null){
+        let option = createElement('option');
+        if(index == 0){
+            option.setAttribute('value', " ");
+            option.innerText = "Select";
+        } else {
+            option.setAttribute('value', value.id);
+            if(second == null) option.innerText = value.subcategory_name;
+            else option.innerText = value.secondary_subcategory_name;
+        }
+
+        if( value.id == subCatId ) option.selected = true;
+
+        return option;
     }
 </script>
 
@@ -535,6 +544,22 @@ data.push({
 <script>
     CKEDITOR.replace( 'product_description' );
  </script>
+
+
+<script>
+    $('#add_button').click(() => {
+        $( "#copy" ).clone().appendTo( "#others" );
+    });
+
+
+    $("#delete_button").click(() => {
+        let len = $('#others').children().length;
+
+        if( len > 0 ){
+            $('#others').children().last().remove();
+        }
+    });
+</script>
 
 </body>
 </html>

@@ -150,6 +150,7 @@ Route::prefix('admin')->group(function(){
 
     Route::namespace('Users\Admin')->group(function (){
         Route::post('change', 'BrandController@change')->name('brand.change.status');
+        Route::post('emichange', 'EMIController@change')->name('emi.change.status');
         Route::post('levelChange', 'BrandController@levelChange')->name('brand.change.level');
         Route::post('categoryChange', 'CategoryController@change')->name('category.change.status');
         Route::post('subcategoryChange', 'SubCategoryController@change')->name('subcategory.change.status');
@@ -170,6 +171,7 @@ Route::prefix('admin')->group(function(){
             Route::get('productimage', 'ProductImageController@allProductImages')->name('product.image');
             Route::get('productvideo', 'ProductVideoController@allProductVideo')->name('product.video');
             Route::get('user', 'UserController@allUser')->name('user.no.order');
+            Route::get('emi', 'EMIController@withoutAdmin')->name('emi');
         });
     });
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
@@ -214,6 +216,7 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('employee', 'EmployeeController');
     Route::resource('secondsub', 'SecondarySubCategoryController');
     Route::resource('contactusslider', 'ContactUsSliderController');
+    Route::resource('emi', 'EMIController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');

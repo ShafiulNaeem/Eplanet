@@ -85,9 +85,20 @@ class Product extends Model
     }
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function secondsub()
     {
         return $this->belongsTo(SecondarySubCategory::class,'secondary_sub_categories_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
     }
 
 
