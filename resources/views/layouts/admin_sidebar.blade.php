@@ -698,6 +698,39 @@
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon text-warning"></i>
                                 <p>
+                                    Delivery Area
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('area.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Upload Delivery Area</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('area.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Delivery Area</p>
+                                    </a>
+                                </li>
+
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.allArea') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Area</p>
+                                        </a>
+                                    </li>
+                                @endif
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-warning"></i>
+                                <p>
                                     Product Image
                                     <i class="right fas fa-angle-left"></i>
                                 </p>

@@ -174,6 +174,7 @@ Route::prefix('admin')->group(function(){
             Route::get('user', 'UserController@allUser')->name('user.no.order');
 
             Route::get('contactusslider', 'ContactUsSliderController@allSlider')->name('slider');
+            Route::get('area', 'AreaController@allArea')->name('allArea');
         });
     });
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
@@ -218,6 +219,7 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('employee', 'EmployeeController');
     Route::resource('secondsub', 'SecondarySubCategoryController');
     Route::resource('contactusslider', 'ContactUsSliderController');
+    Route::resource('area', 'AreaController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
