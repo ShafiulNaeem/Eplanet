@@ -76,6 +76,12 @@ class Product extends Model
     }
 
 
+    public function areas()
+    {
+        return $this->hasMany('App\Models\Area','product_id');
+    }
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
