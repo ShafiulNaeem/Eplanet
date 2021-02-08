@@ -145,7 +145,7 @@ class BrandController extends Controller
 
     public function change(Request $request)
     {
-        if( self::changeStatus($request->status, 'App\Models\Brand', $request->id) )
+        if( self::changeStatus($request->status, Brand::class, $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
     }

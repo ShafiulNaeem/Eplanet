@@ -39,8 +39,8 @@ trait DeleteFile
      */
     public function createSlug($model, $slug, $column) {
         $slugsFound = static::getSlugs($model,$slug, $column);
-        $counter = 1;
-        $counter += (int)$slugsFound;
+        if( $slugsFound == 0 ) $counter = 0;
+        else    $counter = (int)$slugsFound + 1;
 
         $slug = strtolower(str_replace(" ", "", $slug));
 

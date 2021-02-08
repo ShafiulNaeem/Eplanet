@@ -284,35 +284,12 @@
                     <div class="tab-content">
 
                         <div class="tab-pane fade active" id="sheet" role="tabpanel">
-                            <div class="product_d_table">
-                               <form action="#">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td class="first_child">Compositions</td>
-                                                <td>Polyester</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="first_child">Styles</td>
-                                                <td>Girly</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="first_child">Properties</td>
-                                                <td>Short Dress</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
-                            <div class="product_info_content">
-                                <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
-                            </div>
+                            {!! $products[0]->specification !!}
                         </div>
 
                         <div class="tab-pane fade show " id="info" role="tabpanel">
                             <div class="product_info_content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
+                                {!! $products[0]->extra_description !!}
                             </div>
                         </div>
 
@@ -323,11 +300,11 @@
 
             <div class="col-lg-3 col-md-3">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="area">
-                            <h4>Product Receiving Area: <span>Dhaka</span></h4>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-12">--}}
+{{--                        <div class="area">--}}
+{{--                            <h4>Product Receiving Area: <span>Dhaka</span></h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="col-md-12">
                         <div class=" product_recive">
                           <div class="recive_inner">
@@ -346,8 +323,16 @@
                                 <li>Home Delivary Charge </li>
                                 <li>
                                     <select name="" id="" class="form-control" >
-                                        <option value="">50/100</option>
-                                        <option value="">No</option>
+                                        @php
+                                            $areas = \App\Models\Area::where('product_id', $products[0]->id)->get()
+                                        @endphp
+                                        @if( ! empty($areas) )
+                                            @foreach($areas as $area)
+                                                <option value="{{$area->id}}">{{$area->area_name}} (BDT{{$area->price}}) </option>
+                                            @endforeach
+                                        @else
+                                            <option value="">No</option>
+                                        @endif
                                     </select>
                                 </li>
                             </ul>

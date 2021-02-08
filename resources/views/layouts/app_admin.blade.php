@@ -455,10 +455,14 @@ data.push({
 
             success: function (response) {
                 subCat[0].innerHTML = " ";
-                console.log(response);
+                let option = createElement("option");
+
+                option.setAttribute('value', " ");
+                option.innerText = "Select";
+                subCat[0].append(option);
+
                 response.forEach((value, index) => {
-                    console.log(value, index, subCatId);
-                    let option = returnOption(value, index, subCatId);
+                    let option = returnOption(value, subCatId);
                     subCat[0].append(option);
                 });
             },
@@ -475,7 +479,7 @@ data.push({
         let selectedValue = $(this).children("option:selected").val();
         let subCat = $('#secondary_sub_categories_id');
         let subCatId = subCat.attr("data-secondsub");
-        console.log(subCatId)
+        //console.log(subCatId)
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -488,15 +492,19 @@ data.push({
 
             success: function (response) {
                 subCat[0].innerHTML = " ";
-                console.log(response);
+                let option = createElement("option");
+
+                option.setAttribute('value', " ");
+                option.innerText = "Select";
+                subCat[0].append(option);
+
                 response.forEach((value, index) => {
                     console.log(value, index);
 
-                    let option = returnOption(value, index, subCatId, 2);
-
+                    let option = returnOption(value, subCatId, 2);
+                    // console.log(option)
                     subCat[0].append(option);
                 });
-                // console.log(subCat)
             },
             error:function(response)
             {
@@ -510,16 +518,11 @@ data.push({
     }
 
 
-    function returnOption(value, index, subCatId, second = null){
+    function returnOption(value, subCatId, second = null){
         let option = createElement('option');
-        if(index == 0){
-            option.setAttribute('value', " ");
-            option.innerText = "Select";
-        } else {
-            option.setAttribute('value', value.id);
-            if(second == null) option.innerText = value.subcategory_name;
-            else option.innerText = value.secondary_subcategory_name;
-        }
+        option.setAttribute('value', value.id);
+        if(second == 2) option.innerText = value.secondary_subcategory_name;
+        else option.innerText = value.subcategory_name;
 
         if( value.id == subCatId ) option.selected = true;
 
@@ -543,6 +546,8 @@ data.push({
 
 <script>
     CKEDITOR.replace( 'product_description' );
+    CKEDITOR.replace( 'extra_description' );
+    CKEDITOR.replace( 'specification' );
  </script>
 
 

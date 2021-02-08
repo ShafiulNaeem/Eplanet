@@ -10,9 +10,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
                             <li>All Blogs</li>
-                            <li><a href="{{route('blog.create')}}">Create BLog</a></li>
                         </ul>
                     </div>
                 </div>

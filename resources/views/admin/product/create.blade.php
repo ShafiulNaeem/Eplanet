@@ -46,7 +46,7 @@
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Product Brand</label>
                                             <select required name="product_brand" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-                                                <option value="" selected>Select Brand</option>
+                                                <option value="" >Select Brand</option>
                                                 @foreach($brands as $brand)
                                                     <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
                                                 @endforeach
@@ -60,7 +60,7 @@
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Category</label>
                                             <select required name="product_category" id="category_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                                <option value="" selected>Select Category</option>
+                                                <option value="" >Select Category</option>
                                                 @foreach($categories as $category )
                                                     <option value="{{$category->id}}">{{$category->category_name}}</option>
                                                 @endforeach
@@ -75,7 +75,7 @@
                                             <label for="">Sub Category</label>
 
                                             <select required name="product_sub_category" id="sub_category_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-                                                <option selected value="NULL">Select Sub Category</option>
+                                                <option  value="">Select Sub Category</option>
 {{--                                                @foreach($subcategory as $category )--}}
 {{--                                                    <option value="{{$category->id}}">{{$category->subcategory_name}}</option>--}}
 {{--                                                @endforeach--}}
@@ -89,7 +89,7 @@
                                             <label for="secondary_sub_categories_id">Second Sub Category</label>
 
                                             <select name="secondary_sub_categories_id" id="secondary_sub_categories_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-{{--                                                <option>Select Second Sub Category</option>--}}
+                                                <option value="">Select Second Sub Category</option>
 {{--                                                @foreach($secondary_sub as $category )--}}
 {{--                                                    <option value="{{$category->id}}">{{$category->secondary_subcategory_name}}</option>--}}
 {{--                                                @endforeach--}}
@@ -204,6 +204,16 @@
                                             @error('product_description')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
+                                        </div>
+
+                                        <div class="form-group col-md-6 float-left">
+                                            <label>Product Other Description</label>
+                                            <textarea class="form-control" name="extra_description"  id="exampleFormControlTextarea1" rows="3">{{ old('product_description') }}</textarea>
+                                        </div>
+
+                                        <div class="form-group col-md-6 float-left">
+                                            <label>Product Specification</label>
+                                            <textarea class="form-control" name="specification"  id="exampleFormControlTextarea1" rows="3">{{ old('product_description') }}</textarea>
                                         </div>
 
 {{--                                        <div class="form-group col-md-6 float-left mt-2">--}}
