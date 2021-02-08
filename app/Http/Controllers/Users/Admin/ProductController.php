@@ -47,13 +47,13 @@ class ProductController extends Controller
     public function create()
     {
         $brands = Brand::orderBy('brand_name','asc')->BrandWithAdminOwner()->get();
-        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
+//        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
-        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+//        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
         $emis = Emi::withAdminOwner()->get();
 
-        return view('admin.product.create',compact('brands','emis','subcategory', 'coupons', 'categories', 'secondary_sub'));
+        return view('admin.product.create',compact('brands','emis', 'coupons', 'categories'));
     }
 
     /**
@@ -92,7 +92,8 @@ class ProductController extends Controller
         $products->status = $request->status;
         if( ! empty($request->emi_id) )
         $products->emi_id = implode(',', $request->emi_id);
-
+        $products->extra_description = $request->extra_description;
+        $products->specification = $request->specification;
 
 //        if( isset($request->secondary_sub_categories_id) )
 //            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
@@ -134,8 +135,9 @@ class ProductController extends Controller
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
         $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+        $emis = Emi::withAdminOwner()->get();
 
-        return view('admin.product.edit',compact('product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));
+        return view('admin.product.edit',compact('emis','product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));
     }
 
     /**
@@ -166,7 +168,11 @@ class ProductController extends Controller
         $products->manufactured_by = $request->manufactured_by;
         $products->is_new = $request->is_new;
         $products->status = $request->status;
+        $products->extra_description = $request->extra_description;
+        $products->specification = $request->specification;
 
+        if( ! empty($request->emi_id) )
+            $products->emi_id = implode(',', $request->emi_id);
         if( isset($request->secondary_sub_categories_id) )
             $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
