@@ -25,12 +25,12 @@ class ProductImageFactory extends Factory
     {
         return [
             "product_id" => function(){
-                return Product::all()->random();
+                return Product::GetActive()->get()->random();
             },
             "admin_id" => function(){
-                return Admin::all()->random();
+                return Admin::GetActive()->get()->random();
             },
-            "product_image" => $this->faker->image(public_path('images'), 640, 480,null, false)
+            "product_image" => $this->faker->image(storage_path('app/public/images'), 840, 680,null, false)
         ];
     }
 }

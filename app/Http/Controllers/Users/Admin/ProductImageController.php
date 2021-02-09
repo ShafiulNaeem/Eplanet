@@ -18,7 +18,7 @@ class ProductImageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
@@ -37,7 +37,7 @@ class ProductImageController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -50,7 +50,7 @@ class ProductImageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -66,9 +66,7 @@ class ProductImageController extends Controller
                 $productImages = new ProductImage();
                 $productImages->product_id = $request->product_name;
                 $productImages->admin_id = Auth::guard('admin')->user()->id;
-                $filename = time() .  str_replace(' ', '', $file->getClientOriginalName()) ;
-                $file->move(public_path('images'), $filename);
-                $productImages->product_image= $filename;
+                $productImages->product_image= $this->uploadImage($file, 'images');
                 $productImages->save();
                 $productImages = null;
             }
@@ -106,18 +104,17 @@ class ProductImageController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param ProductImage $productImage
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, $id)
     {
-
         foreach ($request->product_image_id as $ind => $product_image_id){
             if($request->hasFile('product_image.'.$ind)){
                 $file = $request->file('product_image.'.$ind);
-                $filename = time() .  str_replace(' ', '', $file->getClientOriginalName()) ;
-                $file->move(public_path('images'), $filename);
-                ProductImage::where('id', $product_image_id)->update(['product_image' => $filename]);
+                $proImg = ProductImage::find($product_image_id);
+                static::deleteFile(storage_path().'/app/public/images/' . $proImg->product_image);
+                $proImg->update(['product_image' => $this->uploadImage($file, 'images')]);
             }
         }
 
@@ -129,7 +126,7 @@ class ProductImageController extends Controller
      * Remove the specified resource from storage.
      *
      * @param ProductImage $productImage
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -139,7 +136,7 @@ class ProductImageController extends Controller
         ])->get();
 
         foreach ($images as $image)
-            self::deleteFile(public_path('images/' . $image->product_image));
+            self::deleteFile(storage_path().'/app/public/images/' . $image->product_image);
 
         ProductImage::where([
             'product_id'=> $id,

@@ -35,7 +35,7 @@
                                         <figure>
                                             <div class="blog_thumb">
                                                 <a href="{{route('blog.show',$blog->blog_slug)}}">
-                                                    <img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}" />
+                                                    <img src="{{asset('storage/images/'.$blog->blog_image)}}" alt="{{$blog->post}}" />
                                                 </a>
                                             </div>
                                             <figcaption class="blog_content">

@@ -22,7 +22,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead >
                                         <tr class="text-center">
-                                            <th>SL</th>
                                             <th>Capacity Image</th>
                                             <th>Capacity Title</th>
                                             <th>Create Date</th>
@@ -34,9 +33,8 @@
 
                         @foreach($productCapacities as $index => $productCapacity)
                         <tr>
-                            <td>{{$index + 1}}</td>
                             <td>
-                                <img src="{{url('images',$productCapacity->capacity_image)}}" alt="{{$productCapacity->title}}" class="img-rounded" width="80" />
+                                <img src="{{asset('storage/images/'.$productCapacity->capacity_image)}}" alt="{{$productCapacity->title}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$productCapacity->title}}</td>
 
@@ -76,7 +74,6 @@
                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
                                         <th>Capacity Image</th>
                                         <th>Capacity Title</th>
                                         <th>Create Date</th>

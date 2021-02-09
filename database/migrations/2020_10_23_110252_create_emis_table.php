@@ -18,7 +18,7 @@ class CreateEmisTable extends Migration
             $table->string("bank_name");
             $table->string("duration");
             $table->unsignedBigInteger('admin_id');
-            $table->integer('status');
+            $table->integer('status' )->default(1);
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
         });

@@ -60,8 +60,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">Sale</span>
                                             <span class="label_new">New</span>
@@ -101,8 +101,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">Sale</span>
                                             <span class="label_new">New</span>
@@ -142,8 +142,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
                                         <div class="label_product">
                                             <span class="label_sale">Sale</span>
                                             <span class="label_new">New</span>

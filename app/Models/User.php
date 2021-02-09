@@ -96,8 +96,12 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeGetActive($query)
     {
-        return $query->where('status', 1);
+        return $query->where('is_verified', 1);
     }
 }

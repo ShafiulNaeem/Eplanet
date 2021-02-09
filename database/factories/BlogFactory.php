@@ -26,10 +26,10 @@ class BlogFactory extends Factory
     {
         return [
             'user_id' => function(){
-                return User::all()->random();
+                return User::GetActive()->get()->random();
             },
-            'post' => $this->faker->randomElement($this->fakerText()),
-            'blog_image' => $this->faker->image(public_path('images'), 640, 480,null, false),
+            'post' => $this->faker->text(200),
+            'blog_image' => $this->faker->image(storage_path('app/public/images'), 640, 480,null, false),
             'title' => $this->faker->name,
             'blog_slug' => $this->createSlug($this->model, $this->faker->name, 'blog_slug')
         ];

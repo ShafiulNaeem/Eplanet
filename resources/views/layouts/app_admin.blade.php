@@ -324,7 +324,7 @@ data.push({
 
 
                     let image = createElement('img');
-                    let src = window.location.origin + "/images/" + value.products[0].feature_image;
+                    let src = window.location.origin + "/storage/images/" + value.products[0].feature_image;
                     image.setAttribute('src', src);
                     image.setAttribute('alt', value.products[0].product_name);
                     image.setAttribute('width', 80);

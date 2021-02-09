@@ -28,13 +28,13 @@ class SecondarySubCategoryFactory extends Factory
     {
         return [
             'admin_id' => function(){
-                return Admin::all()->random();
+                return Admin::GetActive()->get()->random();
             },
             'category_id' => function(){
-                return Category::all()->random();
+                return Category::GetActive()->get()->random();
             },
             'sub_category_id' => function(){
-                return SubCategory::all()->random();
+                return SubCategory::GetActive()->get()->random();
             },
             'secondary_subcategory_name' => $this->faker->name,
             'secondary_subcategory_slug' => $this->createSlug($this->model, $this->faker->name, "secondary_subcategory_slug")

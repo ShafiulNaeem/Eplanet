@@ -15,7 +15,7 @@ class ProductCapacityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
@@ -27,7 +27,7 @@ class ProductCapacityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -58,9 +58,9 @@ class ProductCapacityController extends Controller
 
         if($request->hasFile('capacity_image')){
             $image = request()->file('capacity_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->capacity_image->move(public_path('images'), $filename);
-            $productCapacity->capacity_image= $filename;
+//            $filename = time() . '.' . $image->getClientOriginalExtension();
+//            request()->capacity_image->move(public_path('images'), $filename);
+            $productCapacity->capacity_image= $this->uploadImage($image, 'images');
             $productCapacity->save();
         };
 
@@ -113,13 +113,13 @@ class ProductCapacityController extends Controller
         $productCapacity->title = $request->title;
         $productCapacity->description = $request->description;
 
-         self::deleteFile( public_path('images/' . $productCapacity->capacity_image) ) ;
+         self::deleteFile( storage_path('app/public/images/' . $productCapacity->capacity_image) ) ;
 
         if($request->hasFile('capacity_image')){
             $image = request()->file('capacity_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->capacity_image->move(public_path('images'), $filename);
-            $productCapacity->capacity_image= $filename;
+//            $filename = time() . '.' . $image->getClientOriginalExtension();
+//            request()->capacity_image->move(public_path('images'), $filename);
+            $productCapacity->capacity_image= $this->uploadImage($image, 'images');
             $productCapacity->save();
         };
 
@@ -140,7 +140,7 @@ class ProductCapacityController extends Controller
      */
     public function destroy(ProductCapacity $productCapacity)
     {
-         self::deleteFile( public_path('images/' . $productCapacity->capacity_image) );
+         self::deleteFile( storage_path('app/public/images/' . $productCapacity->capacity_image) );
 
         $productCapacity->delete();
         return redirect()->back()->with('info','Product Capacity Deleted Successfully');
