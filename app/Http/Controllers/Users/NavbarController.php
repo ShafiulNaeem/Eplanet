@@ -19,10 +19,10 @@ class NavbarController extends Controller
     public function store(Request $request)
     {
         if ($request->product_name != null ){
-//            $mainRes = $this->productByCategory(['kids', 'men']);
-            $mainRes = [];
-
             $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->GetActive()->get();
+            $mainRes = $mainRes = Category::with('products')
+                ->where('id', $product[0]->category_id)
+                ->first();
 
             return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
         } else {
