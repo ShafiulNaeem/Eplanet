@@ -11,10 +11,6 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                        <h3>Blog Details </h3>
-                        <ul>
-                            <li><a href="{{url('/')}}">home</a></li>
-                            <li><a href="{{route('blog.create')}}">Create BLog</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
