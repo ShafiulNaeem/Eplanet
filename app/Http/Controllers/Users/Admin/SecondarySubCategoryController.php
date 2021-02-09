@@ -51,7 +51,7 @@ class SecondarySubCategoryController extends Controller
         ]);
 
         $validate['admin_id'] = Auth::guard('admin')->id();
-        $validate['secondary_subcategory_slug'] = $this->createSlug(SecondarySubCategory::class, $request->secondary_subcategory_name, "secondary_subcategory_slug");;
+        $validate['secondary_subcategory_slug'] = $this->createSlug(SecondarySubCategory::class, $request->secondary_subcategory_name, "secondary_subcategory_slug");
 
         if( SecondarySubCategory::create($validate) ) return redirect(route('secondsub.index'))->with('success', 'Second Sub Category created');
         return redirect()->back()->with('error', 'Something went wrong, please try again');

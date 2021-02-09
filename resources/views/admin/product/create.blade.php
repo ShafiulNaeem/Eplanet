@@ -38,7 +38,7 @@
                                             <label for="exampleInputPassword1">Product Name</label>
                                             <input type="text" name="product_name" value="{{old('product_name')}}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product Name">
                                             @error('product_name')
-                                                <span class="text-danger">{{$message}}</span>
+                                            <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
 
