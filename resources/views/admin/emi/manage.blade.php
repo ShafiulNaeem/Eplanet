@@ -1,13 +1,14 @@
 @extends('layouts.app_admin')
 
 @section('content')
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Slider',
-                'link' => route("contactusslider.create"),
-                'text' => "Create Slider"
+                'title' => 'Manage EMI',
+                'link' => route('emi.create'),
+                'text' => 'Create EMI',
             ])
 
     <!-- Main content -->
@@ -20,67 +21,46 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
-                                    <thead >
-                                    <tr>
-                                        <th>Slider For</th>
-                                        <th>File</th>
-                                        <th>Status</th>
-                                        <th>Create Date</th>
-                                        <th>Action</th>
+                                    <thead>
 
+                                    <tr>
+                                        <th>Bank Name</th>
+                                        <th>Duration</th>
+                                        <th> Status</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
                                     </tr>
+
                                     </thead>
                                     <tbody>
-
-                                    @foreach($sliders as $index => $slider)
+                                    @foreach($emis as $emi)
                                         <tr>
-                                            <td>
-                                                @if( $slider->for == 1 )
-                                                    {{__('Home')}}
-                                                @elseif($slider->for == 2)
-                                                    {{__('Vendor')}}
-                                                 @else
-                                                        {{__('Contact Us')}}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($slider->type != 'video')
-                                                    <img src="{{url('images',$slider->slider_media)}}" alt="" class="img-rounded" width="80" />
-                                                @else
-                                                    <div class="embed-responsive embed-responsive-16by9">
-                                                        <iframe class="embed-responsive-item" src="{{url('videos',$slider->slider_media)}}" allowfullscreen></iframe>
-                                                    </div>
-{{--                                                    <video width="320" height="200" controls>--}}
-{{--                                                        <source src="{{url('videos',$slider->slider_media)}}" type="video/{{$slider->file_type}}">--}}
-{{--                                                        Your browser does not support the video .--}}
-{{--                                                    </video>--}}
-{{--                                                    <video src="{{url('videos',$slider->slider_media)}}"></video>--}}
-                                                @endif
-                                            </td>
-
-                                            <td>
-                                                <form action="{{ route('contactusslider.update', $slider->id) }}" method="post">
+                                            <td class="text-center">{{$emi->bank_name}}</td>
+                                            <td class="text-center">{{$emi->duration}}</td>
+                                            <td class="text-center">
+                                                <form action="{{ route('emi.change.status') }}" method="post">
                                                     @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="status" value="{{$slider->status}}">
-                                                    <input type="hidden" name="id" value="{{$slider->id}}">
+                                                    <input type="hidden" name="status" value="{{$emi->status}}">
+                                                    <input type="hidden" name="id" value="{{$emi->id}}">
 
-                                                    @if($slider->status == 1)
+                                                    @if($emi->status == 1)
                                                         <button type="submit" class="btn btn-success">Active</button>
                                                     @else
                                                         <button type="submit" class="btn btn-danger">Inactive</button>
                                                     @endif
                                                 </form>
                                             </td>
+                                            <td class="text-center">{{  \Carbon\Carbon::parse($emi->created_at)->format('M d Y') }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ route('emi.edit', $emi->id) }}" class="btn btn-app float-left">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
 
-                                            <td>{{\Carbon\Carbon::parse($slider->created_at)->format('M d Y')}}</td>
-                                            <td>
-                                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$slider->id}}">
+                                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$emi->id}}">
                                                     <i class="fa fa-trash fa-2x"></i> DELETE
                                                 </a>
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal{{$slider->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="exampleModal{{$emi->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -90,7 +70,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{route('contactusslider.destroy',$slider->id)}}" method="post">
+                                                                <form action="{{route('emi.destroy',$emi->id)}}" method="post">
                                                                     @csrf
                                                                     @method("DELETE")
                                                                     <button class="btn btn-danger">Confirm</button>
@@ -100,20 +80,20 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Slider For</th>
-                                        <th>File</th>
-                                        <th>Status</th>
-                                        <th>Create Date</th>
+                                        <th>Bank Name</th>
+                                        <th>Duration</th>
+                                        <th> Status</th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
-
                                 </table>
                             </div>
                             <!-- /.card-body -->

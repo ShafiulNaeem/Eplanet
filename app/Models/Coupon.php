@@ -12,18 +12,38 @@ class Coupon extends Model
 
     protected $guarded = [];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
+
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeCouponWithAdminOwner($query)
     {
         return $query->where('admin_id', Auth::guard('admin')->id());
     }
 
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeCouponWithOutAdminOwner($query)
     {
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeGetActive($query)
     {
         return $query->where('status', 1);

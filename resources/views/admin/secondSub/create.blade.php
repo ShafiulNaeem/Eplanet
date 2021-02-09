@@ -48,7 +48,7 @@
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Sub Category Name</label>
                                         <select name="sub_category_id" id="sub_category_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-                                            <option selected>Select Category</option>
+                                            <option selected>Select Sub Category</option>
 {{--                                            @foreach($sub_categories as $category)--}}
 {{--                                                <option value="{{$category->id}}">{{$category->subcategory_name}}</option>--}}
 {{--                                            @endforeach--}}

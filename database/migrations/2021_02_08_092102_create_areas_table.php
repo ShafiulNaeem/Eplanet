@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactUsSlidersTable extends Migration
+class CreateAreasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateContactUsSlidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_us_sliders', function (Blueprint $table) {
+        Schema::create('areas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('admin_id');
-            $table->string('slider_media');
-            $table->integer('for');
-            $table->string('file_type', 10);
-            $table->string('type', 10);
-            $table->integer('status');
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->string('area_name');
+            $table->double('price');
             $table->timestamps();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
         });
     }
 
@@ -33,6 +32,6 @@ class CreateContactUsSlidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_us_sliders');
+        Schema::dropIfExists('areas');
     }
 }
