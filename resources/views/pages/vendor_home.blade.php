@@ -2,63 +2,23 @@
 
 @section('content')
 
-
-
     <!--slider area start-->
-    <section class="slider_section">
-        <div class="slider_area owl-carousel">
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider_content">
-                                <h1>Baby Products</h1>
-                                <h2>Kids Fashion</h2>
-                                <p>
-                                    Valid till 15 Augest
-                                </p>
-                                <a href="shop.html">Shop Now </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider_content">
-                                <h1>Baby Products</h1>
-                                <h2>Kids Fashion</h2>
-                                <p>
-                                    Valid till 15 Augest
-                                </p>
-                                <a href="shop.html">Shop Now </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider_content">
-                                <h1>Baby Products</h1>
-                                <h2>Kids Fashion</h2>
-                                <p>
-                                    Valid till 15 Augest
-                                </p>
-                                <a href="shop.html">Shop Now </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--slider area end-->
+    <div class="image_video">
+        <div class="bo-slider">
+            @if( isset($sliders) )
+                @php $i = 0; @endphp
+                @foreach($sliders as $index => $slider)
+                    @if( strcmp($slider->type, 'video') )
+                        <li data-url="{{ url('images/' . $slider->slider_media) }}" data-type="image"></li>
+                    @else
+                        <li data-url="{{ url('videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                    @endif
+                @endforeach
+            @endif
 
+        </div>
+    </div>
+    <!--slider area end-->
 
     <!-- Top Sales area Start -->
 
@@ -152,7 +112,7 @@
                                 @foreach($showViews as $showView)
                                     <div class="card">
                                         <div class="zoom-In">
-                                        <a href="#"><img src="{{url('images',$showView->image)}}" /></a>
+                                        <a href="#"><img src="{{url('images',$showView->image)}}"/></a>
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">{{$showView->description}}</p>

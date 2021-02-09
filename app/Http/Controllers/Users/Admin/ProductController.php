@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Emi;
 use App\Models\Product;
 use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
@@ -22,7 +23,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -46,12 +47,13 @@ class ProductController extends Controller
     public function create()
     {
         $brands = Brand::orderBy('brand_name','asc')->BrandWithAdminOwner()->get();
-        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
+//        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
-        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+//        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+        $emis = Emi::withAdminOwner()->get();
 
-        return view('admin.product.create',compact('brands','subcategory', 'coupons', 'categories', 'secondary_sub'));
+        return view('admin.product.create',compact('brands','emis', 'coupons', 'categories'));
     }
 
     /**
@@ -62,7 +64,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+//        dd($request->all());
         $this->validation($request);
 
         $products = new Product();
@@ -88,9 +90,13 @@ class ProductController extends Controller
         $products->is_new = $request->is_new;
         $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
         $products->status = $request->status;
+        if( ! empty($request->emi_id) )
+        $products->emi_id = implode(',', $request->emi_id);
+        $products->extra_description = $request->extra_description;
+        $products->specification = $request->specification;
 
-        if( isset($request->secondary_sub_categories_id) )
-            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
+//        if( isset($request->secondary_sub_categories_id) )
+//            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
@@ -129,8 +135,9 @@ class ProductController extends Controller
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
         $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+        $emis = Emi::withAdminOwner()->get();
 
-        return view('admin.product.edit',compact('product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));
+        return view('admin.product.edit',compact('emis','product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));
     }
 
     /**
@@ -161,7 +168,11 @@ class ProductController extends Controller
         $products->manufactured_by = $request->manufactured_by;
         $products->is_new = $request->is_new;
         $products->status = $request->status;
+        $products->extra_description = $request->extra_description;
+        $products->specification = $request->specification;
 
+        if( ! empty($request->emi_id) )
+            $products->emi_id = implode(',', $request->emi_id);
         if( isset($request->secondary_sub_categories_id) )
             $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 

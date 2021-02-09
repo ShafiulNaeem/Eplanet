@@ -6332,11 +6332,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #40A944;
 }
 .product_d_right .product_ratting {
-  margin-bottom: 17px;
+  /* margin-bottom: 17px; */
 }
 @media only screen and (max-width: 767px) {
   .product_d_right .product_ratting {
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
   }
 }
 .product_d_right .product_ratting ul li a {
@@ -6378,7 +6378,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product_d_right .product_desc {
   margin-bottom: 19px;
-  border-bottom: 1px solid #ededed;
+  /* border-bottom: 1px solid #ededed; */
 }
 @media only screen and (max-width: 767px) {
   .product_d_right .product_desc {
@@ -6519,7 +6519,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-bottom: 0;
 }
 .product_variant.quantity input {
-  width: 130px;
+  width: 80px;
   border: 1px solid #ebebeb;
   background: none;
   height: 42px;
@@ -6551,7 +6551,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 42px;
   line-height: 42px;
   text-transform: capitalize;
-  min-width: 270px;
+  min-width: 130px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .product_variant.quantity button {

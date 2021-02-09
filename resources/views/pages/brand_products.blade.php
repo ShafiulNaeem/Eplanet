@@ -6,11 +6,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-12" >
-                    <div class="breadcrumb_content text-left" >
+                    <div class="breadcrumb_content_new text-left" >
                         <ul style="color: #cfcfcf; font-weight: 600;">
                             <li><a href="{{ route('home') }}">home</a></li>
                             @foreach($brands as $brand)
-                                <li>{{$brand->brand_name}}</li>
+                                    <li><a href="{{route('brands.show')}}">All Brand</a></li>
+                                    <li>{{$brand->brand_name}}</li>
                             @endforeach
                         </ul>
                     </div>
