@@ -22,7 +22,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead >
                                         <tr class="text-center">
-                                            <th>SL</th>
                                             <th>Report</th>
                                             <th>Report Title</th>
                                             <th>Create Date</th>
@@ -34,9 +33,8 @@
 
                         @foreach($factoryInspections as $index => $factoryInspection)
                         <tr>
-                            <td>{{$index + 1}}</td>
                             <td>
-                                <embed src="{{url('documents',$factoryInspection->pdf)}}" alt="{{$factoryInspection->title}}" class="img-rounded" width="80" />
+                                <embed src="{{asset('storage/documents',$factoryInspection->pdf)}}" alt="{{$factoryInspection->title}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$factoryInspection->title}}</td>
 

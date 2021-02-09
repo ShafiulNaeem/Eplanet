@@ -21,7 +21,6 @@
 
                                     <thead style="background-color: #000;color:#fff">
                                     <tr>
-                                        <th>SL</th>
                                         <th>User Name</th>
                                         <th>User Email</th>
                                         <th>User Phone</th>
@@ -37,7 +36,6 @@
                                         @endphp
                                         @if($ve > 0)
                                             <tr>
-                                                <td>{{ $index+1}}</td>
                                                 <td>{{$order->fname . ' ' . $order->lname}}</td>
                                                 <td>{{$order->email}}</td>
                                                 <td>{{$order->phone}}</td>
@@ -104,7 +102,6 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
                                         <th>User Name</th>
                                         <th>User Email</th>
                                         <th>User Phone</th>

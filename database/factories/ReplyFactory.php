@@ -26,10 +26,10 @@ class ReplyFactory extends Factory
     {
         return [
             'user_id' => function(){
-                return User::all()->random();
+                return User::GetActive()->get()->random();
             },
             'blog_id' => function(){
-                return Blog::all()->random();
+                return Blog::GetActive()->get()->random();
             },
             'comment_id' => function(){
                 return Comment::all()->random();

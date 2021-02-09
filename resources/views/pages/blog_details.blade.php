@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                     <div class="blog_thumb">
-                                        <a href="#"><img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->title}}"></a>
+                                        <a href="#"><img src="{{asset('storage/images/'.$blog->blog_image)}}" alt="{{$blog->title}}"></a>
                                     </div>
                                     <figcaption class="blog_content">
                                         <div class="post_content">
@@ -147,7 +147,7 @@
                                     <article class="single_related">
                                         <figure>
                                             <div class="related_thumb">
-                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{url('images',$userBlog->blog_image)}}" alt="{{$userBlog->title}}"></a>
+                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{asset('storage/images/'.$userBlog->blog_image)}}" alt="{{$userBlog->title}}"></a>
                                             </div>
                                             <figcaption class="related_content">
                                                 <h4><a href="#">{{$userBlog->title}}</a></h4>

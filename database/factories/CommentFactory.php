@@ -27,12 +27,12 @@ class CommentFactory extends Factory
     {
         return [
             'user_id' => function(){
-                return User::all()->random();
+                return User::GetActive()->get()->random();
             },
             'blog_id' => function(){
-                return Blog::all()->random();
+                return Blog::GetActive()->get()->random();
             },
-            'comment' => $this->faker->randomElement($this->fakerShortText()),
+            'comment' => $this->faker->text(20),
         ];
     }
 }

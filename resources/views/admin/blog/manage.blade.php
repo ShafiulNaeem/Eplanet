@@ -20,7 +20,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead >
                                         <tr>
-                                            <th>SL</th>
                                             <th>User Name</th>
                                             <th>Image</th>
                                             <th>Post</th>
@@ -34,10 +33,9 @@
 
                         @foreach($blogs as $index => $blog)
                         <tr>
-                            <td>{{$index + 1}}</td>
                             <td>{{$blog->user->fname}} {{$blog->user->lname}}</td>
                             <td>
-                                <img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
+                                <img src="{{asset('storage/images/'.$blog->blog_image)}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$blog->post}}</td>
                             <td>
@@ -87,7 +85,6 @@
                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
                                         <th>User Name</th>
                                         <th>Image</th>
                                         <th>Post</th>

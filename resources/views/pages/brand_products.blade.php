@@ -41,7 +41,7 @@
                                     <div class="right-category">
                                         <div class="card">
                                             <div class="zoom-In">
-                                                <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{url('public/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                                <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{asset('storage/images/'.$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             </div>
                                             <div class="card-body">
                                                 <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
@@ -127,7 +127,7 @@
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
                                                                         <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
-                                                                            <img src="{{url('public/images',$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
+                                                                            <img src="{{asset('storage/images/'.$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
                                                                         </a>
                                                                     </div>
                                                                 </div>

@@ -10,6 +10,9 @@ class ContactUsSlider extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array
+     */
     protected $guarded = [];
 
     /**
@@ -23,11 +26,19 @@ class ContactUsSlider extends Model
     }
 
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeSliderWithOutAdminOwner($query)
     {
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeGetActive($query)
     {
         return $query->where('status', 1);

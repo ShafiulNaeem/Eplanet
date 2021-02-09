@@ -4,6 +4,9 @@
 namespace App\Helper;
 
 use File;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 trait DeleteFile
 {
@@ -90,5 +93,20 @@ trait DeleteFile
             "natus error sit voluptatem accusantium doloremque",
             "looked up one of the more obscure Latin words"
         ];
+    }
+
+
+    /**
+     * @param UploadedFile $uploadedFile
+     * @param null $folder
+     * @param string $disk
+     * @param null $filename
+     * @return string
+     */
+    public function uploadImage(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    {
+        $name = !is_null($filename) ? $filename : Str::random(10) . time() . Str::random(10);
+
+        return ltrim(strstr($uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk), '/'), '/');
     }
 }

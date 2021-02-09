@@ -54,9 +54,7 @@ class ShowViewController extends Controller
 
         if($request->hasFile('image')){
             $image = request()->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->image->move(public_path('images'), $filename);
-            $showView->image= $filename;
+            $showView->image= $this->uploadImage($image, 'images');
         };
 
         if($showView->save()){
@@ -106,13 +104,11 @@ class ShowViewController extends Controller
 
         $showView->description = $request->description;
 
-        self::deleteFile( public_path('images/' . $showView->image) );
+        self::deleteFile( storage_path('app/public/images/' . $showView->image) );
 
         if($request->hasFile('image')){
             $image = request()->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->image->move(public_path('images'), $filename);
-            $showView->image= $filename;
+            $showView->image= $this->uploadImage($image, 'images');
         };
 
         if($showView->save()){
@@ -132,7 +128,7 @@ class ShowViewController extends Controller
      */
     public function destroy(ShowView $showView)
     {
-        self::deleteFile( public_path('images/' . $showView->image) ) ;
+        self::deleteFile( storage_path('app/public/images/' . $showView->image) ) ;
 
         $showView->delete();
         Session::flash('success','Data Deleted Successfully');

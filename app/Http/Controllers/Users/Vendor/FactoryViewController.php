@@ -54,9 +54,7 @@ class FactoryViewController extends Controller
 
         if($request->hasFile('image')){
             $image = request()->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->image->move(public_path('images'), $filename);
-            $factoryView->image= $filename;
+            $factoryView->image= $this->uploadImage($image, 'images');
             $factoryView->save();
         };
 
@@ -107,14 +105,13 @@ class FactoryViewController extends Controller
 
         $factoryView->description = $request->description;
 
-        if ( ! self::deleteFile( public_path('images/' . $factoryView->image) ) )
-        return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( storage_path('app/public/images/' . $factoryView->image) ) ;
 
         if($request->hasFile('image')){
             $image = request()->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->image->move(public_path('images'), $filename);
-            $factoryView->image= $filename;
+//            $filename = time() . '.' . $image->getClientOriginalExtension();
+//            request()->image->move(public_path('images'), $filename);
+            $factoryView->image= $this->uploadImage($image, 'images');
             $factoryView->save();
         };
 
@@ -135,8 +132,7 @@ class FactoryViewController extends Controller
      */
     public function destroy(FactoryView $factoryView)
     {
-        if ( ! self::deleteFile( public_path('images/' . $factoryView->image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( storage_path('app/public/images/' . $factoryView->image) );
 
         $factoryView->delete();
         Session::flash('success','Data Deleted Successfully');

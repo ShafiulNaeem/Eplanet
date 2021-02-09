@@ -27,12 +27,12 @@ class BrandFactory extends Factory
     {
         return [
             'admin_id' => function(){
-                return Admin::all()->random();
+                return Admin::GetActive()->get()->random();
             },
             'brand_slug' => $this->createSlug($this->model, $this->faker->name, "brand_slug"),
             'brand_name' => $this->faker->name,
             'level' => $this->faker->numberBetween(1, 3),
-            'brand_image' => $this->faker->image(public_path('images'), 640, 480,null, false)
+            'brand_image' => $this->faker->image(storage_path('app/public/images'), 640, 480,null, false)
         ];
     }
 }

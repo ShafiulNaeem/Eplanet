@@ -23,7 +23,6 @@
 
                         <thead style="background-color: #000;color:#fff">
                         <tr>
-                            <th>SL</th>
                             <th>Product Name</th>
                             <th>Product Image</th>
                             <th>Created at</th>
@@ -35,7 +34,6 @@
                         @foreach($productImages as $index => $productImage)
                             @if(count($productImage->productImages) >0)
                             <tr>
-                                <td style="width: 5%">{{$index + 1}}</td>
                                 <td style="width: 19%">{{$productImage->product_name}}</td>
                                 <td>{{\Carbon\Carbon::parse($productImage->created_at)->format('M d Y')}}</td>
                                 <td style="width: 57%">
@@ -43,7 +41,7 @@
                                         $width = 100/count($productImage->productImages);
                                     @endphp
                                     @foreach($productImage->productImages as $images)
-                                        <img src="{{url('images',$images->product_image)}}" alt="{{$productImage->product_name}}" class="img-rounded" style=" width:{{$width-1}}%" />
+                                        <img src="{{asset('storage/images/'.$images->product_image)}}" alt="{{$productImage->product_name}}" class="img-rounded" style=" width:{{$width-1}}%" />
                                     @endforeach
                                 </td>
                                 <td >
@@ -83,7 +81,6 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>SL</th>
                             <th>Product Name</th>
                             <th>Product Image</th>
                             <th>Created at</th>
