@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmisTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateEmisTable extends Migration
      */
     public function up()
     {
-        Schema::create('emis', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string("bank_name");
-            $table->string("duration");
             $table->unsignedBigInteger('admin_id');
+            $table->string('event_name');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('event_image')->nullable();
+            $table->float('discount')->default(0);
             $table->integer('status')->default(1);
-            $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +34,6 @@ class CreateEmisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emis');
+        Schema::dropIfExists('events');
     }
 }
