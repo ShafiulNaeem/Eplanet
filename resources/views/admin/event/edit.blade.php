@@ -67,7 +67,7 @@
                                                 </div>
                                             </div>
                                             <span>
-                                                <img src="{{url('images',$event->event_image)}}" alt="{{$event->event_name}}" class="img-rounded" width="80" />
+                                                <img src="{{url('storage/images',$event->event_image)}}" alt="{{$event->event_name}}" class="img-rounded" width="80" />
                                             </span>
                                         </div>
 

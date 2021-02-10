@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-            'title' => 'Create Event Product'
+            'title' => 'Edit Event Product'
         ])
 
     <!-- Main content -->
@@ -16,26 +16,29 @@
                         <!-- general form elements -->
                         <div class="card card-dark">
                             <div class="card-header">
-                                <h3 class="card-title">Create Event Product</h3>
+                                <h3 class="card-title">Edit Event Product</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{route('eventProduct.store')}}" method="POST">
+                            <form action="{{route('eventProduct.update',$eventProduct->id)}}" method="POST">
                                 @csrf
+                                @method('PUT')
                                 <div class="card-body">
 
                                     <div id="copy">
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputEmail1">Product Name</label>
-                                            <select  name="product_id" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-                                                <option selected>Select Product</option>
+                                            <select name="product_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                                <option selected="selected">Select Product</option>
                                                 @foreach($products as $product)
-                                                    <option value="{{$product->id}}">{{$product->product_name}}</option>
+                                                    <option
+                                                        @if( $product->id == $eventProduct->product_id )
+                                                        selected
+                                                        @endif
+
+                                                        value="{{$product->id}}">{{$product->product_name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('product_id')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
                                         </div>
 
                                         <div class="form-group col-md-6 float-left">
@@ -43,12 +46,14 @@
                                             <select  name="event_id" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option selected>Select Event</option>
                                                 @foreach($events as $event)
-                                                    <option value="{{$event->id}}">{{$event->event_name}}</option>
+                                                    <option
+                                                        @if( $event->id == $eventProduct->event_id )
+                                                        selected
+                                                        @endif
+
+                                                        value="{{$event->id}}">{{$event->event_name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('event_id')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
                                         </div>
 
                                     </div>
@@ -67,7 +72,7 @@
 
                                 </div>
 
-                            <!-- /.card-body -->
+                                <!-- /.card-body -->
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>

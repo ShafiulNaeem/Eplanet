@@ -50,7 +50,7 @@ class ProductFactory extends Factory
             'product_description' => $this->faker->text(200),
             'extra_description' => $this->faker->text(200),
             'specification' => $this->faker->text(200),
-            'feature_image' => $this->faker->image(storage_path('app/public/images'), 840, 680,null, false),
+            'feature_image' => $this->faker->image(storage_path('app\public\images'), 840, 680,null, false),
             'stock' => $this->faker->numberBetween(10, 400),
             'size' => $this->faker->randomElement([
                 'M', 'S', 'XL', 'XXL'

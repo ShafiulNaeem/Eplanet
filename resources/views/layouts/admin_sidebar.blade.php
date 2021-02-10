@@ -318,6 +318,96 @@
                     </ul>
                 </li>
 
+                <li class="nav-item @if(
+                                    url()->current() == route('event.create') ||
+                                    url()->current() == route('admin.all.event') ||
+                                    url()->current() == route('event.index')
+    ) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(
+                                    url()->current() == route('event.create') ||
+                                    url()->current() == route('admin.all.event') ||
+                                    url()->current() == route('event.index')
+    ) active @endif ">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Event
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('event.create') ||
+                                    url()->current() == route('admin.all.event') ||
+                                    url()->current() == route('event.index')
+    ) style="display: block" @endif >
+                        <li class="nav-item">
+                            <a href="{{ route('event.create') }}" class="nav-link @if( url()->current() == route('event.create' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Event</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('event.index') }}" class="nav-link @if( url()->current() == route('event.index' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Event</p>
+                            </a>
+                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.event') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.event' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Vendor Event</p>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+
+                <li class="nav-item @if(
+                                    url()->current() == route('eventProduct.create') ||
+                                    url()->current() == route('admin.all.eventProduct') ||
+                                    url()->current() == route('eventProduct.index')
+    ) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(
+                                    url()->current() == route('eventProduct.create') ||
+                                    url()->current() == route('admin.all.eventProduct') ||
+                                    url()->current() == route('eventProduct.index')
+    ) active @endif ">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Event Product
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('eventProduct.create') ||
+                                    url()->current() == route('admin.all.eventProduct') ||
+                                    url()->current() == route('eventProduct.index')
+    ) style="display: block" @endif >
+                        <li class="nav-item">
+                            <a href="{{ route('eventProduct.create') }}" class="nav-link @if( url()->current() == route('eventProduct.create' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Event Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('eventProduct.index') }}" class="nav-link @if( url()->current() == route('eventProduct.index' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Event Product</p>
+                            </a>
+                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.eventProduct') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.eventProduct' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Vendor Event Product</p>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+
 
                 <li class="nav-item @if(
                                     url()->current() == route('emi.create') ||

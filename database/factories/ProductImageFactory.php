@@ -30,7 +30,7 @@ class ProductImageFactory extends Factory
             "admin_id" => function(){
                 return Admin::GetActive()->get()->random();
             },
-            "product_image" => $this->faker->image(storage_path('app/public/images'), 840, 680,null, false)
+            "product_image" => $this->faker->image(storage_path('app\public\images'), 840, 680,null, false)
         ];
     }
 }
