@@ -159,6 +159,7 @@ Route::prefix('admin')->group(function(){
         Route::post('productChange', 'ProductController@change')->name('product.change.status');
         Route::post('employeeChange', 'EmployeeController@change')->name('employee.change.status');
         Route::post('emiChange', 'EMIController@change')->name('emi.change.status');
+        Route::post('eventChange', 'EventController@change')->name('event.change.status');
 
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
         Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
@@ -177,6 +178,8 @@ Route::prefix('admin')->group(function(){
             Route::get('contactusslider', 'ContactUsSliderController@allSlider')->name('slider');
             Route::get('area', 'AreaController@allArea')->name('allArea');
             Route::get('emi', 'EMIController@withoutAdmin')->name('emi');
+            Route::get('event', 'EventController@allEvent')->name('event');
+            Route::get('eventProduct', 'EventProductController@allEventProduct')->name('eventProduct');
         });
     });
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
@@ -223,6 +226,8 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('contactusslider', 'ContactUsSliderController');
     Route::resource('area', 'AreaController');
     Route::resource('emi', 'EMIController');
+    Route::resource('event', 'EventController');
+    Route::resource('eventProduct', 'EventProductController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');

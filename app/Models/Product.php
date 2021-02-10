@@ -136,4 +136,9 @@ class Product extends Model
     {
         return $query->where('status', 1);
     }
+
+    public function eventProducts()
+    {
+        return $this->hasMany(EventProduct::class);
+    }
 }

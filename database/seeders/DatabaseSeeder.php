@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Emi;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Reply;
@@ -38,5 +39,6 @@ class DatabaseSeeder extends Seeder
         Blog::factory(5)->create();
         Comment::factory(15)->create();
         Reply::factory(15)->create();
+        Emi::factory(15)->create();
     }
 }
