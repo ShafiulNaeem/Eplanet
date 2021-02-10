@@ -52,9 +52,7 @@ class ProductFactoryInspectionController extends Controller
 
         if($request->hasFile('pdf')){
             $pdf = request()->file('pdf');
-            $filename = time() . '.' . $pdf->getClientOriginalExtension();
-            request()->pdf->move(public_path('documents'), $filename);
-            $factoryInspection->pdf= $filename;
+            $factoryInspection->pdf= $this->uploadImage($pdf, 'documents');
         };
 
         if($factoryInspection->save()){
@@ -104,13 +102,11 @@ class ProductFactoryInspectionController extends Controller
 
         $factoryInspection->title = $request->title;
 
-        self::deleteFile( public_path('documents/' . $factoryInspection->pdf) ) ;
+        self::deleteFile( storage_path('app/public/documents/' . $factoryInspection->pdf) ) ;
 
         if($request->hasFile('pdf')){
             $pdf = request()->file('pdf');
-            $filename = time() . '.' . $pdf->getClientOriginalExtension();
-            request()->pdf->move(public_path('documents'), $filename);
-            $factoryInspection->pdf= $filename;
+            $factoryInspection->pdf= $this->uploadImage($pdf, 'documents');
         };
 
         if($factoryInspection->save()){
@@ -130,7 +126,7 @@ class ProductFactoryInspectionController extends Controller
      */
     public function destroy(ProductFactoryInspection $factoryInspection)
     {
-        self::deleteFile( public_path('documents/' . $factoryInspection->pdf) ) ;
+        self::deleteFile( storage_path('app/public/documents/' . $factoryInspection->pdf) ) ;
 
         $factoryInspection->delete();
         Session::flash('info','Product Factory Inspection Reports Deleted Successfully');

@@ -58,9 +58,7 @@ class ProductQualityController extends Controller
 
         if($request->hasFile('quality_image')){
             $image = request()->file('quality_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->quality_image->move(public_path('images'), $filename);
-            $productQuality->quality_image= $filename;
+            $productQuality->quality_image= $this->uploadImage($image, 'images');
         }
 
         if($productQuality->save()){
@@ -113,7 +111,7 @@ class ProductQualityController extends Controller
         $productQuality->title = $request->title;
         $productQuality->description = $request->description;
 
-        self::deleteFile( public_path('images/' . $productQuality->quality_image) ) ;
+        self::deleteFile( storage_path('app/public/images/' . $productQuality->quality_image) ) ;
 
         if($request->hasFile('quality_image')){
             $image = request()->file('quality_image');
@@ -140,7 +138,7 @@ class ProductQualityController extends Controller
      */
     public function destroy(ProductQuality $productQuality)
     {
-         self::deleteFile( public_path('images/' . $productQuality->quality_image) );
+         self::deleteFile( storage_path('app/public/images/' . $productQuality->quality_image) );
 
         $productQuality->delete();
         Session::flash('success','Product Quality Deleted Successfully');

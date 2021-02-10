@@ -60,8 +60,13 @@ dd($monthlySell);
 });
 
 Route::get('/con',function(){
-    return view('pages.vandor');
+    return view('pages.artical');
 });
+
+
+Route::get('/faq',function(){
+    return view('pages.faq');
+})->name('faq');
 
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');

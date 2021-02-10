@@ -50,7 +50,7 @@
                                     <div class="row">
                                         <div class="col-md-4 no-gutter">
                                            <div class="car-img">
-                                           <img src="{{url('images/' . $employ->employee_image)}}" alt="{{$employ->name}}" class="image-fluid">
+                                           <img src="{{asset('storage/images/' . $employ->employee_image)}}" alt="{{$employ->name}}" class="image-fluid">
                                            </div>
                                         </div>
                                         <div class="col-md-8 no-gutter">

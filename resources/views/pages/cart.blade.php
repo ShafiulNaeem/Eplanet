@@ -56,7 +56,7 @@
                                                 @endphp
                                                 <tr>
                                                    <td class="product_remove"><a href="{{route('cart.show', $cart['id'])}}"><i class="fa fa-trash-o"></i></a></td>
-                                                    <td class="product_thumb"><a href="#"><img src="{{asset('images/' . $cart['feature_image'])}}" alt=""></a></td>
+                                                    <td class="product_thumb"><a href="#"><img src="{{asset('storage/images/' . $cart['feature_image'])}}" alt=""></a></td>
                                                     <td class="product_name"><a href="#">{{$cart['product_name']}}</a></td>
                                                     <td>{{  $cart['product_tax']  }}%</td>
                                                     <td class="product-price">BDT {{ round($cart['product_price']) }}</td>

@@ -31,4 +31,14 @@ class Emi extends Model
     {
         return $query->where('admin_id', '!=',Auth::guard('admin')->id());
     }
+
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeGetActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }

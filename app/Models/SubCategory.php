@@ -17,7 +17,7 @@ class SubCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function category()
     {
         return $this->belongsTo('App\Models\Category');
     }
@@ -26,16 +26,23 @@ class SubCategory extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function products()
     {
         return $this->hasMany('App\Models\Product', 'sub_categories_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function secondary_sub_categories()
     {
         return $this->hasMany(SecondarySubCategory::class);
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeSubCategoryWithAdminOwner($query)
     {
         return $query->where('admin_id', Auth::guard('admin')->user()->id);
@@ -46,12 +53,20 @@ class SubCategory extends Model
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
 
-    //status check
+
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeGetActive($query)
     {
         return $query->where('status', 1);
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function productWithStatus()
     {
         return $this->products()->where([
@@ -59,6 +74,4 @@ class SubCategory extends Model
         ])
             ->orderBy('created_at', 'DESC');
     }
-
-
 }

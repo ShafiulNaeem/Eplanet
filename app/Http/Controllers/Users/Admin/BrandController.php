@@ -25,6 +25,9 @@ class BrandController extends Controller
     }
 
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function allBrand()
     {
         $brands = Brand::orderBy('created_at','desc')->brandWithOutAdminOwner()->get();
@@ -65,9 +68,7 @@ class BrandController extends Controller
 
         if($request->hasFile('brand_image')){
             $image = request()->file('brand_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->brand_image->move(public_path('images'), $filename);
-            $val['brand_image'] = $filename;
+            $val['brand_image'] = $this->uploadImage($image, 'images');
         };
 
         if( Brand::create($val) ) return redirect()->route('brand.index')->with('success','Brand Inserted Successfully');
@@ -103,7 +104,7 @@ class BrandController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param Brand $brand
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Brand $brand)
     {
@@ -113,6 +114,8 @@ class BrandController extends Controller
             'brand_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        static::deleteFile(storage_path().'/app/public/images/' . $brand->brand_image);
+
         $admin_id = Auth::guard('admin')->user()->id;
         $val['admin_id'] = $admin_id;
         $val['brand_name'] = $request->brand_name;
@@ -121,9 +124,7 @@ class BrandController extends Controller
 
         if($request->hasFile('brand_image')){
             $image = $request->file('brand_image');
-            $filename = time() . '.' . $image->clientExtension();
-            request()->brand_image->move(public_path('images'), $filename);
-            $val['brand_image'] = $filename;
+            $val['brand_image'] = $this->uploadImage($image, 'images');
         };
 
         $brand->update($val);
@@ -134,11 +135,12 @@ class BrandController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Brand $brand
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Brand $brand)
     {
-        self::deleteFile(public_path('images/' . $brand->brand_image));
+        static::deleteFile(storage_path().'/app/public/images/' . $brand->brand_image);
+
         $brand->delete();
         return redirect()->route('brand.index')->with('info','Brand Successfully Deleted');
     }
