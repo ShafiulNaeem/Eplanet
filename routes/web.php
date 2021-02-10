@@ -60,7 +60,7 @@ dd($monthlySell);
 });
 
 Route::get('/con',function(){
-    return view('pages.brand');
+    return view('pages.newpage');
 });
 
 Route::get('/',  'WelcomeController@index')->name('home');
