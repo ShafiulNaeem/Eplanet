@@ -74,9 +74,7 @@ class EventController extends Controller
 
         if($request->hasFile('event_image')){
             $image = request()->file('event_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->event_image->move(public_path('images'), $filename);
-            $val['event_image'] = $filename;
+            $val['event_image'] = $this->uploadImage($image, 'images');
         }
 
         if( Event::create($val) ) return redirect()->route('event.index')->with('success','Event Inserted Successfully');
@@ -135,9 +133,7 @@ class EventController extends Controller
 
         if($request->hasFile('event_image')){
             $image = request()->file('event_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->event_image->move(public_path('images'), $filename);
-            $val['event_image'] = $filename;
+            $val['event_image'] = $this->uploadImage($image, 'images');
         }
         return ( $event->update($val) )?
             redirect()->route('event.index')->with('success', 'Edit Success'):

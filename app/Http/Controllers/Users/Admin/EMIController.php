@@ -110,7 +110,7 @@ class EMIController extends Controller
      */
     public function destroy(EMI $emi)
     {
-        if( $emi->delete() ) return redirect()->back()->with('info', 'Status Changes');
+        if( $emi->delete() ) return redirect()->back()->with('info', 'Delete Successfully');
         return redirect()->back()->with('error', 'Something went wrong');
     }
 

@@ -39,7 +39,7 @@
                         <tr>
                             <td>{{$index + 1}}</td>
                             <td>
-                                <img src="{{url('images',$event->event_image)}}" alt="{{$event->event_name}}" class="img-rounded" width="80" />
+                                <img src="{{url('storage\images',$event->event_image)}}" alt="{{$event->event_name}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$event->event_name}}</td>
                             <td>{{\Carbon\Carbon::parse($event->start_date)->format('M d Y')}}</td>
