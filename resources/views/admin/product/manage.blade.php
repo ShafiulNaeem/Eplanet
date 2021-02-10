@@ -41,7 +41,7 @@
                                     @foreach($products as $index => $product)
                                         <tr>
                                             <td>{{$product->unique_id}}</td>
-                                            <td><img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
+                                            <td><img src="{{asset('storage/images/'.$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
                                             <td>{{$product->product_name}}</td>
                                             <td>{{$product->brand->brand_name}}</td>
                                             <td>{{$product->stock}} piece(s) </td>

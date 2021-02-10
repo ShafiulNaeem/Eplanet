@@ -57,7 +57,7 @@
                                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                 </div>
                             </div>
-                            <span><img src="{{url('images',$brands->brand_image)}}" alt="{{$brands->brand_name}}" width="80"></span>
+                            <span><img src="{{asset('storage/images/'.$brands->brand_image)}}" alt="{{$brands->brand_name}}" width="80"></span>
                         </div>
 
 {{--                        <div class="form-group col-md-6 float-left mt-2">--}}

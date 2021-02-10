@@ -58,14 +58,13 @@ class ContactUsSliderController extends Controller
             $files = $request->file('slider_media');
             foreach ($files as $file){
                 $productImages = new ContactUsSlider();
-                $filename = time() . '.' .  $file->clientExtension() ;
                 $fileType = strstr($file->getMimeType(), '/', true);
                 $type = strstr($file->getMimeType(), '/');
-                ( strcmp($fileType, 'video') )  ?
-                $file->move(public_path('images'), $filename) : $file->move(public_path('videos'), $filename);
 
                 $productImages->admin_id = Auth::guard('admin')->user()->id;
-                $productImages->slider_media = $filename;
+                $productImages->slider_media = ( strcmp($fileType, 'video') )  ?
+                    $this->uploadImage($file, 'images') : $this->uploadImage($file, 'videos');
+
                 $productImages->for = $request->input('for');
                 $productImages->status = $request->input('status');
                 $productImages->type = $fileType;
@@ -123,8 +122,8 @@ class ContactUsSliderController extends Controller
     public function destroy(ContactUsSlider $contactusslider)
     {
         ( strcmp('video', $contactusslider->type) )?
-        self::deleteFile(public_path('images') . $contactusslider->slider_media) :
-        self::deleteFile(public_path('videoss') . $contactusslider->slider_media) ;
+        self::deleteFile(storage_path().'/app/public/images/'  . $contactusslider->slider_media) :
+        self::deleteFile(storage_path().'/app/public/videos/' .  $contactusslider->slider_media) ;
 
         return ($contactusslider->delete())? redirect()->route('contactusslider.index')->with('info', 'Slider Deleted') :
             redirect()->route('contactusslider.index')->with('error', 'Something went wrong');

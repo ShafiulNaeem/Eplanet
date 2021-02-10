@@ -7,9 +7,9 @@
         @php $i = 0; @endphp
         @foreach($sliders as $index => $slider)
                 @if( strcmp($slider->type, 'video') )
-                    <li data-url="{{ url('images/' . $slider->slider_media) }}" data-type="image"></li>
+                    <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" data-type="image"></li>
                 @else
-                    <li data-url="{{ url('videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                    <li data-url="{{ asset('storage/videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
                 @endif
         @endforeach
     @endif
@@ -134,7 +134,7 @@
                                                           <div class="zoom-In">
 
                                                             <a href="{{route('cat.show',$category->category_slug)}}">
-                                                                <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}">
+                                                                <img src="{{asset('storage/images/' . $category->category_image)}}" alt="{{$category->category_name}}">
                                                             </a>
                                                         </div>
                                                         </div>
@@ -167,7 +167,7 @@
                                                         <div class="banner_thumb">
                                                          <div class="zoom-In">
                                                             <a href="{{route('pages.show',$product->product_slug)}}">
-                                                                <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
+                                                                <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
                                                             </a>
                                                         </div>
                                                         </div>
@@ -176,7 +176,7 @@
                                                         <h4 class="product_name"><a href="{{route('pages.show',$product->product_slug)}}">{{$product->product_name}}</a></h4>
                                                         <div class="price_box">
                                                             <span class="current_price"></span>
-                                                            <span class="current_price">BDT: {{$product->product_price}}</span>
+                                                            <span class="current_price">BDT: {{ round($product->product_price) }}</span>
                                                         </div>
                                                     </figcaption>
                                                 </figure>
@@ -209,7 +209,7 @@
                                                     <div class="banner_thumb">
                                                         <div class="zoom-In">
                                                         <a href="{{route('pages.show',$pro->product_slug)}}">
-                                                            <img src="{{url('images',$pro->feature_image)}}" alt="{{$pro->product_name}}">
+                                                            <img src="{{asset('storage/images/' .$pro->feature_image)}}" alt="{{$pro->product_name}}">
                                                         </a>
                                                     </div>
                                                     </div>
@@ -217,7 +217,7 @@
                                                 <figcaption class="product_content">
                                                     <h4 class="product_name"><a href="{{route('pages.show', $pro->product_slug)}}">{{$pro->product_name}}</a></h4>
                                                     <div class="price_box">
-                                                        <span class="current_price">BDT {{$pro->product_price}}</span>
+                                                        <span class="current_price">BDT {{ round($pro->product_price) }}</span>
 
 
                                                     </div>

@@ -24,12 +24,13 @@ class EmiFactory extends Factory
     {
         return [
             "admin_id" => function(){
-                return Admin::where('status', 1)->get()->random();
+                return Admin::GetActive()->get()->random();
             },
             "bank_name" => $this->faker->name,
             "duration" => $this->faker->randomElement([
                 '01/03 months', '03/07 months', '02/05 months', '05/09 months', '03 months'
-            ])
+            ]),
+            'status' => $this->faker->numberBetween(0, 1)
         ];
     }
 }

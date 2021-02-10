@@ -22,7 +22,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead >
                                         <tr class="text-center">
-                                            <th>SL</th>
                                             <th>Document</th>
                                             <th>Name</th>
                                             <th>Issued By</th>
@@ -36,9 +35,8 @@
 
                         @foreach($productCertifications as $index => $productCertification)
                         <tr>
-                            <td>{{$index + 1}}</td>
                             <td>
-                                <embed src="{{url('documents',$productCertification->pdf)}}" alt="{{$productCertification->name}}" class="img-rounded" width="80" />
+                                <embed src="{{asset('storage/documents/'.$productCertification->pdf)}}" alt="{{$productCertification->name}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$productCertification->name}}</td>
                             <td>{{$productCertification->issued_by}}</td>
@@ -80,7 +78,6 @@
                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
                                         <th>Document</th>
                                         <th>Name</th>
                                         <th>Issued By</th>

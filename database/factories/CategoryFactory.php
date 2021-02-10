@@ -27,12 +27,12 @@ class CategoryFactory extends Factory
     {
         return [
             'admin_id' => function(){
-                return Admin::all()->random();
+                return Admin::GetActive()->get()->random();
             },
             'category_slug' => $this->createSlug($this->model, $this->faker->name, "category_slug"),
             'category_name' => $this->faker->name,
             'featured' => $this->faker->numberBetween(0, 1),
-            'category_image' => $this->faker->image(public_path('images'), 640, 480,null, false)
+            'category_image' => $this->faker->image(storage_path('app/public/images'), 640, 480,null, false)
         ];
     }
 }

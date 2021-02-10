@@ -9,9 +9,9 @@
                 @php $i = 0; @endphp
                 @foreach($sliders as $index => $slider)
                     @if( strcmp($slider->type, 'video') )
-                        <li data-url="{{ url('images/' . $slider->slider_media) }}" data-type="image"></li>
+                        <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" data-type="image"></li>
                     @else
-                        <li data-url="{{ url('videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                        <li data-url="{{ asset('storage/videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
                     @endif
                 @endforeach
             @endif
@@ -29,7 +29,7 @@
                 @foreach($factoryViews as $factoryView)
                     <div class="col-md-6 col-12 col-lg-6">
                         <div class="over_left">
-                            <img src="{{url('images',$factoryView->image)}}" alt="{{$factoryView->description}}">
+                            <img src="{{asset('storage/images/' .$factoryView->image)}}" alt="{{$factoryView->description}}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -76,7 +76,7 @@
                                                                         <div class="single_banner">
                                                                             <div class="banner_thumb">
                                                                                 <a href="{{route('pages.show',$product->id)}}">
-                                                                                    <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
+                                                                                    <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
                                                                                 </a>
                                                                             </div>
                                                                         </div>
@@ -135,7 +135,7 @@
                                                                         <div class="banner_thumb">
                                                                             <div class="zoom-In">
     {{--                                                                                <a href="{{route('pages.show',$product->id)}}">--}}
-                                                                                <img src="{{url('images',$capacity->capacity_image	)}}" alt="{{$capacity->title}}">
+                                                                                <img src="{{asset('storage/images/' .$capacity->capacity_image	)}}" alt="{{$capacity->title}}">
     {{--                                                                                </a>--}}
     </div>
                                                                         </div>
@@ -183,7 +183,7 @@
                 @foreach($ProductQualitys as $ProductQuality)
                    <div class="col-md-3">
                       <div class="litbox-inner">
-                          <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('images',$ProductQuality->quality_image)}}"><img src="{{url('images',$ProductQuality->quality_image)}}" width="150"></a>
+                          <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('images',$ProductQuality->quality_image)}}"><img src="{{asset('storage/images/' . $ProductQuality->quality_image)}}" width="150"></a>
                           <div>
                               <h4>{{$ProductQuality->title}}</h4>
                               <p class="card-text">{{$ProductQuality->description}}</p>
@@ -218,7 +218,7 @@
                     <div class="col-md-3">
                         <div class="litbox-inner">
                             <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('images',$rnd->rnd_image)}}">
-                                <img src="{{url('images',$rnd->rnd_image)}}" width="150"></a>
+                                <img src="{{asset('storage/images/' .$rnd->rnd_image)}}" width="150"></a>
                             <div>
                                 <h4>{{$rnd->title}}</h4>
                                 <p class="card-text">{{$rnd->description}}</p>

@@ -13,21 +13,31 @@ class Admin extends Authenticatable
     use Notifiable;
     use HasFactory;
 
-    protected $guard = 'admin';
-
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'name', 'email', 'password', 'role'
     ];
 
+    /**
+     * @var string[]
+     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function products()
     {
         return $this->hasMany('App\Models\Product');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function productsWithSold()
     {
         return $this->products()->where([
@@ -36,6 +46,10 @@ class Admin extends Authenticatable
             ->orderBy('sold', 'DESC')->limit(8);
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function productsWithTop()
     {
         return $this->products()->where([
@@ -44,19 +58,41 @@ class Admin extends Authenticatable
             ->orderBy('updated_at', 'DESC')->limit(8);
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeThisAdmin($query)
     {
         return $query->where('id', Auth::guard('admin')->user()->id);
     }
 
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeExceptThisAdmin($query)
     {
         return $query->where('id', '!=',Auth::guard('admin')->user()->id);
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orders()
     {
         return $this->hasMany('App\Models\Order');
+    }
+
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeGetActive($query)
+    {
+        return $query->where('status', 1);
     }
 }

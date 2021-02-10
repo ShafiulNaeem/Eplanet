@@ -22,7 +22,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead >
                                         <tr class="text-center">
-                                            <th>SL</th>
                                             <th>Image</th>
                                             <th>Description</th>
                                             <th>Create Date</th>
@@ -34,9 +33,8 @@
 
                         @foreach($showViews as $index => $showView)
                         <tr>
-                            <td>{{$index + 1}}</td>
                             <td>
-                                <img src="{{url('images',$showView->image)}}" alt="{{$showView->description}}" class="img-rounded" width="80" />
+                                <img src="{{asset('storage/images/'.$showView->image)}}" alt="{{$showView->description}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$showView->description}}</td>
 
@@ -76,7 +74,6 @@
                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
                                         <th>Image</th>
                                         <th>Description</th>
                                         <th>Create Date</th>
