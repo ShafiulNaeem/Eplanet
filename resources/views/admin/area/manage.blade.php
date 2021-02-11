@@ -23,8 +23,6 @@
 
                         <thead style="background-color: #000;color:#fff">
                         <tr>
-                            <th>SL</th>
-                            <th>Product Name</th>
                             <th>Area</th>
                             <th>Delivery Charge</th>
                             <th>Created at</th>
@@ -36,8 +34,6 @@
                         @foreach($areas as $index => $area)
 
                             <tr>
-                                <td style="width: 5%">{{$index + 1}}</td>
-                                <td style="width: 19%">{{$area->product->product_name}}</td>
                                 <td style="width: 19%">{{$area->area_name}}</td>
                                 <td style="width: 19%">BDT: {{$area->price}}</td>
                                 <td>{{\Carbon\Carbon::parse($area->created_at)->format('M d Y')}}</td>
@@ -78,8 +74,6 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th>SL</th>
-                            <th>Product Name</th>
                             <th>Area</th>
                             <th>Delivery Charge</th>
                             <th>Created at</th>

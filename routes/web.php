@@ -149,6 +149,7 @@ Route::prefix('admin')->group(function(){
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
+    Route::get('allevent/{id}', 'Users\Admin\EventProductController@allEventProducts')->name('event.allEvents');
     Route::get('sellreport', 'Users\Admin\AdminController@adminMonthlySell')->name('sell.report');
     Route::post('sellreport', 'Users\Admin\AdminController@adminMonthlySellPost')->name('sell.report.post');
     Route::post('coupon/changestatus', 'Users\Admin\CouponController@change')->name('coupon.change.status');

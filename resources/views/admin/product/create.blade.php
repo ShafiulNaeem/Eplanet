@@ -116,7 +116,7 @@
                                             <label for="">Select Bank Names (multiple)</label>
                                             <select name="emi_id[]" class="form-control select2 select2-success" multiple="multiple" data-placeholder="Select Bank Names" style="width: 100%;">
                                                 @foreach($emis as $emi)
-                                                    <option value="{{$emi->id}}">{{$emi->bank_name}} ({{$emi->duration}})</option>
+                                                    <option value="{{$emi->id}}" selected>{{$emi->bank_name}} ({{$emi->duration}})</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -26,20 +26,20 @@
                                 @method('PUT')
                                 <div class="card-body">
 
-                                    <div class="form-group col-md-6 float-left">
-                                        <label for="exampleInputPassword1">Product Name</label>
-                                        <select name="product_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                            <option selected="selected">Select Product</option>
-                                            @foreach($products as $product)
-                                                <option
-                                                @if( $product->id == $area->product_id )
-                                                    selected
-                                                @endif
+{{--                                    <div class="form-group col-md-6 float-left">--}}
+{{--                                        <label for="exampleInputPassword1">Product Name</label>--}}
+{{--                                        <select name="product_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">--}}
+{{--                                            <option selected="selected">Select Product</option>--}}
+{{--                                            @foreach($products as $product)--}}
+{{--                                                <option--}}
+{{--                                                @if( $product->id == $area->product_id )--}}
+{{--                                                    selected--}}
+{{--                                                @endif--}}
 
-                                                 value="{{$product->id}}">{{$product->product_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+{{--                                                 value="{{$product->id}}">{{$product->product_name}}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
 
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Area</label>

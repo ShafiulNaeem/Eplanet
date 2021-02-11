@@ -266,21 +266,50 @@ data.push({
             "ordering": true,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
         $('#example2').DataTable({
             "paging": true,
                 "lengthChange": false,
             "searching": true,
             "ordering": true,
-            "info": true,
-            "autoWidth": true,
-            "responsive": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
     });
+
     $('.select2').select2()
 </script>
 
 <script>
+
+    // Manage Events
+    $(document).on('click', '#eventProducts', function (e) {
+        var id = (this.getAttribute('data-target'));
+        id = id.slice(9, id.length);
+        var modalTableBody = $("#modalTableBodyEvent"+id);
+        console.log(modalTableBody);
+        modalTableBody.empty();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: window.location.origin +'/admin/allevent/' + id,
+            method: 'get',
+
+            success: function (response) {
+                let parentNode = modalTableBody[0].parentNode;
+                $(parentNode).attr('id', 'example2');
+                modalTableBody.append(response);
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+        console.log(modalTableBody[0]);
+
+    });
+
     // Manage Orders
     $(document).on('click', '#submitBtn', function (e) {
         var id = (this.getAttribute('data-target'))
@@ -298,8 +327,6 @@ data.push({
             },
             url: window.location.origin +'/admin/orders/' + id,
             method: 'get',
-            // dataType:'json',
-            // data: $('#submitBtn').attr('data-target'),// full data for the campain to be created
 
 
             success: function (response) {

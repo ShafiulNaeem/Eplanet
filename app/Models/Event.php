@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class Event extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     public function scopeEventWithAdminOwner($query)
@@ -29,6 +30,6 @@ class Event extends Model
 
     public function eventProducts()
     {
-        return $this->hasMany(EventProduct::class);
+        return $this->hasMany(EventProduct::class, 'event_id');
     }
 }

@@ -21,12 +21,16 @@ class EventProduct extends Model
     {
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
-    public function event()
+
+
+    public function events()
     {
         return $this->belongsTo(Event::class);
     }
-    public function product()
+
+
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

@@ -24,12 +24,11 @@
                                     <thead>
 
                                     <tr>
-                                        <th>Product Image</th>
-                                        <th>Product Name</th>
                                         <th>Event</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
                                         <th>Date</th>
+                                        <th>View Products</th>
                                         <th>Action</th>
                                     </tr>
 
@@ -37,38 +36,107 @@
                                     <tbody>
                                     @foreach($eventProducts as $eventProduct)
                                         <tr>
-                                            <td class="text-center" >
-                                                <img width="90" src="{{ asset('storage/images/' . $eventProduct->product->feature_image) }}" alt=">{{$eventProduct->product->product_name}}">
-                                            </td>
-                                            <td class="text-center">{{$eventProduct->product->product_name}}</td>
-                                            <td class="text-center">{{$eventProduct->event->event_name}}</td>
-                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->event->start_date)->format('M d Y') }}</td>
-                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->event->end_date)->format('M d Y') }}</td>
+                                            <td class="text-center">{{$eventProduct->event_name}}</td>
+                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->start_date)->format('M d Y') }}</td>
+                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->end_date)->format('M d Y') }}</td>
                                             <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->created_at)->format('M d Y') }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('eventProduct.edit', $eventProduct->id) }}" class="btn btn-app float-left">
-                                                    <i class="fas fa-edit"></i> Edit
-                                                </a>
+                                                <button type="button" data-toggle="modal" id="eventProducts"
+                                                        data-target="#modal-xl{{$eventProduct->id}}"
+                                                        class="btn btn-success">View Products
+                                                </button>
 
-                                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$eventProduct->id}}">
-                                                    <i class="fa fa-trash fa-2x"></i> DELETE
-                                                </a>
+                                                <!-- Modal -->
 
-                                                <div class="modal fade" id="exampleModal{{$eventProduct->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
+                                                <div class="modal fade" id="modal-xl{{$eventProduct->id}}">
+                                                    <div class="modal-dialog modal-xl">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Do You Want to Delete this !!!</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <h4 class="modal-title">{{$eventProduct->event_name}}
+                                                                    event Products </h4>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{route('eventProduct.destroy',$eventProduct->id)}}" method="post">
+                                                                <table  class="table table-bordered table-striped">
+
+                                                                    <thead style="background-color: #000;color:#fff">
+                                                                    <tr>
+                                                                        <th>Product</th>
+                                                                        <th>Image</th>
+                                                                        <th>Stock</th>
+                                                                        <th>Price</th>
+                                                                        <th>Category</th>
+                                                                        <th>SubCategory</th>
+                                                                        <th>SecondSubCategory</th>
+                                                                        <th>Brand</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody id="modalTableBodyEvent{{$eventProduct->id}}">
+                                                                    </tbody>
+                                                                    <tfoot>
+                                                                    <tr>
+                                                                        <th>Product</th>
+                                                                        <th>Image</th>
+                                                                        <th>Stock</th>
+                                                                        <th>Price</th>
+                                                                        <th>Category</th>
+                                                                        <th>SubCategory</th>
+                                                                        <th>SecondSubCategory</th>
+                                                                        <th>Brand</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer justify-content-between">
+                                                                <button type="button" class="btn btn-info"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="{{ route('eventProduct.edit', $eventProduct->id) }}"
+                                                   class="btn btn-app float-left">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+
+                                                <a href="" class="btn btn-app text-danger" data-toggle="modal"
+                                                   data-target="#exampleModal{{$eventProduct->id}}">
+                                                    <i class="fa fa-trash fa-2x"></i> DELETE
+                                                </a>
+
+                                                <div class="modal fade" id="exampleModal{{$eventProduct->id}}"
+                                                     tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Do You
+                                                                    Want to Delete this !!!</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form
+                                                                    action="{{route('event.destroy',$eventProduct->id)}}"
+                                                                    method="post">
                                                                     @csrf
                                                                     @method("DELETE")
                                                                     <button class="btn btn-danger">Confirm</button>
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Close
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -81,12 +149,11 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Product Image</th>
-                                        <th>Product Name</th>
                                         <th>Event</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
                                         <th>Date</th>
+                                        <th>View Products</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
