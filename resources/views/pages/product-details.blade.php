@@ -119,7 +119,7 @@
 
                                     <div class=" product_ratting">
                                         <ul>
-                                            <li>EMI Availabe:</li>
+                                            <li style="color:#28a745">EMI Availabe:</li>
                                             <li>
                                                 @if( ! empty( $product->emi_id ) ) Yes @else No @endif
                                             </li>
@@ -156,7 +156,60 @@
                                             <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
                                         </div>
                                     @endif
+                                    <a href="#sheet" id="click_change3">View more info</a>
                                 </div>
+                                <div class="row">
+                                    {{--                    <div class="col-md-12">--}}
+                                    {{--                        <div class="area">--}}
+                                    {{--                            <h4>Product Receiving Area: <span>Dhaka</span></h4>--}}
+                                    {{--                        </div>--}}
+                                    {{--                    </div>--}}
+                                                        <div class="col-md-12">
+                                                            <div class=" product_recive">
+                                                              <div class="recive_inner">
+                                                                <ul>
+                                                                    <li>Cash On Delivary: </li>
+                                                                    <li>
+                                                                        <select name="" id="" class="form-control" >
+                                                                            <option value="">Yes</option>
+                                                                            <option value="">No</option>
+                                                                        </select>
+                                                                    </li>
+                                                                </ul>
+                                                              </div>
+                                                              <div class="recive_inner">
+                                                                <ul>
+                                                                    <li>Home Delivary Charge </li>
+                                                                    <li>
+                                                                        <select name="" id="" class="form-control" >
+                                                                            @php
+                                                                                $areas = \App\Models\Area::where('product_id', $products[0]->id)->get()
+                                                                            @endphp
+                                                                            @if( ! empty($areas) )
+                                                                                @foreach($areas as $area)
+                                                                                    <option value="{{$area->id}}">{{$area->area_name}} (BDT{{$area->price}}) </option>
+                                                                                @endforeach
+                                                                            @else
+                                                                                <option value="">No</option>
+                                                                            @endif
+                                                                        </select>
+                                                                    </li>
+                                                                </ul>
+                                                              </div>
+                                                              <div class="recive_inner">
+                                                                <ul>
+                                                                    <li>Product return policy </li>
+                                                                    <li>
+                                                                        <select name="" id="" class="form-control" >
+                                                                            <option value="">15days</option>
+                                                                            <option value="">No</option>
+                                                                        </select>
+                                                                    </li>
+                                                                </ul>
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="product_d_right" >
@@ -273,10 +326,10 @@
                     <div class="product_info_button">
                         <ul class="nav" role="tablist">
                             <li>
-                                <a class="active" data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
+                                <a class="active text" data-toggle="tab" id="click_change"  href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
                            </li>
                             <li>
-                                <a data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Description</a>
+                                <a data-toggle="tab" href="#info" role="tab" id="click_change2" aria-controls="info" aria-selected="false">Description</a>
                             </li>
 
                         </ul>
@@ -305,7 +358,7 @@
 {{--                            <h4>Product Receiving Area: <span>Dhaka</span></h4>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <div class=" product_recive">
                           <div class="recive_inner">
                             <ul>
@@ -349,7 +402,7 @@
                             </ul>
                           </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col-md-12 no-gutter">

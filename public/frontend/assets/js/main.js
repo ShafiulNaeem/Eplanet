@@ -77,6 +77,43 @@
         });
     }
 
+    /*---Discover ---*/
+
+    var $porductColumn5 =  $('.product_columns');
+    if($porductColumn5.length > 0){
+        $porductColumn5.on('changed.owl.carousel initialized.owl.carousel', function (event) {
+            $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
+            loop: true,
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            items: 5,
+            margin: 20,
+            dots:false,
+            navText: ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
+            responsiveClass:true,
+            responsive:{
+                    0:{
+                    items:1,
+                },
+                576:{
+                    items:2,
+                },
+                768:{
+                    items:3,
+                },
+                992:{
+                    items:4,
+                },
+                1200:{
+                    items:4,
+                },
+
+              }
+        });
+    }
+
+     /*---Discover end ---*/
 
     var $porductColumn5 =  $('.diecover_div');
     if($porductColumn5.length > 0){
@@ -913,27 +950,22 @@
 })(jQuery);	
 
 
-// $('.owl-carousel').owlCarousel({
-//     loop:true,
-//     margin:10,
-//     nav:true,
-//     arrows:true,
-//     navText:false,
-//     dots:false,
-//     navText: ['<i class="ion-ios-arrow-left"></i>','<i class="ion-ios-arrow-right"></i>'],
-//     autoplay:true,
-    
-//     responsive:{
-//         0:{
-//             items:1
-//         },
-//         600:{
-//             items:3
-//         },
-//         1000:{
-//             items:8
-//         }
-//     }
-// });
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+
 
 
