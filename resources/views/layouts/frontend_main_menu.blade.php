@@ -203,7 +203,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/logo3.png')}}" width="250px" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/eplanet.png')}}" width="250px" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">

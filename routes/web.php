@@ -60,7 +60,12 @@ dd($monthlySell);
 });
 
 Route::get('/con',function(){
-    return view('pages.artical');
+
+    
+    return view('pages.discover');
+
+    // return view('pages.artical');
+
 });
 
 
