@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Emi;
 use App\Models\Product;
 use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
@@ -22,7 +23,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -46,12 +47,11 @@ class ProductController extends Controller
     public function create()
     {
         $brands = Brand::orderBy('brand_name','asc')->BrandWithAdminOwner()->get();
-        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
-        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+        $emis = Emi::withAdminOwner()->get();
 
-        return view('admin.product.create',compact('brands','subcategory', 'coupons', 'categories', 'secondary_sub'));
+        return view('admin.product.create',compact('brands','emis', 'coupons', 'categories'));
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+//        dd($request->all());
         $this->validation($request);
 
         $products = new Product();
@@ -88,15 +88,19 @@ class ProductController extends Controller
         $products->is_new = $request->is_new;
         $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
         $products->status = $request->status;
+        if( ! empty($request->emi_id) )
+        $products->emi_id = implode(',', $request->emi_id);
+        $products->extra_description = $request->extra_description;
+        $products->specification = $request->specification;
 
-        if( isset($request->secondary_sub_categories_id) )
-            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
+//        if( isset($request->secondary_sub_categories_id) )
+//            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->feature_image->move(public_path('images'), $filename);
-            $products->feature_image = $filename;
+//            $filename = time() . '.' . $image->getClientOriginalExtension();
+//            request()->feature_image->move(public_path('images'), $filename);
+            $products->feature_image = $this->uploadImage($image, 'images');
             $products->save();
         };
 
@@ -129,8 +133,9 @@ class ProductController extends Controller
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
         $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+        $emis = Emi::withAdminOwner()->get();
 
-        return view('admin.product.edit',compact('product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));
+        return view('admin.product.edit',compact('emis','product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));
     }
 
     /**
@@ -138,7 +143,7 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -161,19 +166,21 @@ class ProductController extends Controller
         $products->manufactured_by = $request->manufactured_by;
         $products->is_new = $request->is_new;
         $products->status = $request->status;
+        $products->extra_description = $request->extra_description;
+        $products->specification = $request->specification;
 
+        if( ! empty($request->emi_id) )
+            $products->emi_id = implode(',', $request->emi_id);
         if( isset($request->secondary_sub_categories_id) )
             $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
+        static::deleteFile(storage_path().'/app/public/images/' . $products->feature_image);
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->feature_image->move(public_path('images'), $filename);
-            $products->feature_image= $filename;
+            $products->feature_image= $this->uploadImage($image, 'images');
             $products->save();
         } else $products->save();
-
 
         return redirect()->route('product.index')->with('success','Product Updated Successfully');
     }
@@ -182,13 +189,12 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Product $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
     public function destroy(Product $product)
     {
-        self::deleteFile(public_path('images/' . $product->feature_image));
-        //return redirect()->back()->with('error','Something went Wrong');
+        static::deleteFile(storage_path().'/app/public/images/' . $product->feature_image);
 
         $product->delete();
         return redirect()->back()->with('info','Product Deleted Successfully');

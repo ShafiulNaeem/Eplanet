@@ -39,28 +39,42 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function blogs()
     {
         return $this->hasMany('App\Models\Blog');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function coments()
     {
         return $this->hasMany('App\Models\Coment');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function replies()
     {
         return $this->hasMany('App\Models\Reply');
     }
 
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orders()
     {
         return $this->hasMany('App\Models\Order');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orderWithAdmin()
     {
         return $this->orders()->where([
@@ -70,11 +84,24 @@ class User extends Authenticatable
             ->orderBy('created_at', 'DESC');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orderWithOutAdmin()
     {
         return $this->orders()
             ->where('admin_id', '!=', Auth::guard('admin')->user()->id)
             ->where(['shifted' => 0])
             ->orderBy('created_at', 'DESC');
+    }
+
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeGetActive($query)
+    {
+        return $query->where('is_verified', 1);
     }
 }

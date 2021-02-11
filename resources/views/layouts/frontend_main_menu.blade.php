@@ -66,11 +66,11 @@
                             </li>
 
                             <li class="has-child c-1">
-                                <a href="#">other Pages</a>
+                                <a href="#">E-CAMP</a>
                                 <ul class="drop-down drop-menu-1">
                                     <li><a href="{{ route('brands.show') }}">Brand</a></li>
-                                    <li><a href="wishlist.html">Shop</a></li>
-                                    <li><a href="checkout.html">Vendor</a></li>
+                                    <li><a href="{{ route('allVendor.show') }}">Shop</a></li>
+
                                 </ul>
                             </li>
 
@@ -203,7 +203,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/img/logo/logo3.png')}}" width="250px" alt=""></a>
+                            <a href="{{route('home')}}"><img src="{{asset('frontend/assets/eplanet.png')}}" width="250px" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -290,7 +290,7 @@
 
                                                         <div class="cart_item">
                                                            <div class="cart_img">
-                                                               <a href="#"><img src="{{asset('images/'.$addTocart['feature_image'])}}" alt=""></a>
+                                                               <a href="#"><img src="{{asset('storage/images/'.$addTocart['feature_image'])}}" alt=""></a>
                                                            </div>
                                                             <div class="cart_info">
                                                                 <a href="#">{{$addTocart['product_name']}}</a>
@@ -361,11 +361,10 @@
 {{--                                </li>--}}
 
                                 <li class="has-child c-1">
-                                    <a href="">other Pages</a>
+                                    <a href="">E-CAMP</a>
                                     <ul class="drop-down drop-menu-1">
                                         <li><a href="{{route('brands.show')}}">Brand</a></li>
-                                        <li><a href="wishlist.html">Shop</a></li>
-                                        <li><a href="checkout.html">Vendor</a></li>
+                                        <li><a href="{{route('allVendor.show')}}">Shop</a></li>
                                     </ul>
                                 </li>
 

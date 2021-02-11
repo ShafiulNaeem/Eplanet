@@ -67,18 +67,14 @@ class CategoryController extends Controller
 
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->category_image->move(public_path('images'), $filename);
-            $categories->category_image= $filename;
+            $categories->category_image= $this->uploadImage($image, 'images');
             $categories->save();
         };
 
         if($categories->save()){
-            Session::flash('success','Category Inserted Successfully');
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with('success','Category Inserted Successfully');
         } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('success','Something went wrong');
         }
 
     }
@@ -123,22 +119,18 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->featured = $request->featured;
 
-         self::deleteFile( public_path('images/' . $category->category_image) ) ;
+         self::deleteFile( storage_path().'/app/public/images/' . $category->category_image ) ;
 
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->category_image->move(public_path('images'), $filename);
-            $category->category_image= $filename;
+            $category->category_image= $this->uploadImage($image, 'images');
             $category->save();
         };
 
         if($category->save()){
-            Session::flash('success','Category Updated Successfully');
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with('success','Category Updated Successfully');
         } else {
-            Session::flash('error','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('error','Something went wrong');
         }
     }
 
@@ -151,8 +143,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        self::deleteFile( public_path('images/' . $category->category_image) ) ;
-        //return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( storage_path().'/app/public/images/' . $category->category_image ) ;
 
         $category->delete();
         return redirect()->route('category.index')->with('info','Category Deleted Successfully');

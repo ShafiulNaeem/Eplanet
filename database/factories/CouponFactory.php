@@ -25,7 +25,7 @@ class CouponFactory extends Factory
     {
         return [
             'admin_id' => function(){
-                return Admin::all()->random();
+                return Admin::GetActive()->get()->random();
             },
             'coupon_code' => Str::random(10),
             'amount' => $this->faker->numberBetween(50, 300)

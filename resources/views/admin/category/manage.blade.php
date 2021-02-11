@@ -22,7 +22,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead >
                                         <tr>
-                                            <th>SL</th>
                                             <th>Category Image</th>
                                             <th>Category Name</th>
                                             <th>Category Status</th>
@@ -35,9 +34,8 @@
 
                         @foreach($categorys as $index => $category)
                         <tr>
-                            <td>{{$index + 1}}</td>
                             <td>
-                                <img src="{{url('images',$category->category_image)}}" alt="{{$category->category_name}}" class="img-rounded" width="80" />
+                                <img src="{{asset('storage/images/'.$category->category_image)}}" alt="{{$category->category_name}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$category->category_name}}</td>
                             <td>
@@ -90,7 +88,6 @@
                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
                                         <th>Category Image</th>
                                         <th>Category Name</th>
                                         <th>Category Status</th>

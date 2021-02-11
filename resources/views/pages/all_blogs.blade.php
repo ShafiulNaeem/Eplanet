@@ -10,9 +10,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
                             <li>All Blogs</li>
-                            <li><a href="{{route('blog.create')}}">Create BLog</a></li>
                         </ul>
                     </div>
                 </div>
@@ -37,7 +35,7 @@
                                         <figure>
                                             <div class="blog_thumb">
                                                 <a href="{{route('blog.show',$blog->blog_slug)}}">
-                                                    <img src="{{url('images',$blog->blog_image)}}" alt="{{$blog->post}}" />
+                                                    <img src="{{asset('storage/images/'.$blog->blog_image)}}" alt="{{$blog->post}}" />
                                                 </a>
                                             </div>
                                             <figcaption class="blog_content">
