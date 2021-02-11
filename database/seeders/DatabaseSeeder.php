@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Emi;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Reply;
@@ -26,17 +27,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Admin::factory(3)->create();
-        Brand::factory(10)->create();
-        Category::factory(7)->create();
+        Admin::factory(7)->create();
+        Brand::factory(20)->create();
+        Category::factory(10)->create();
         Coupon::factory(5)->create();
-        SubCategory::factory(10)->create();
-        SecondarySubCategory::factory(20)->create();
-        Product::factory(10)->create();
-        User::factory(4)->create();
-
-        Blog::factory(5)->create();
+        SubCategory::factory(20)->create();
+        SecondarySubCategory::factory(30)->create();
+        Product::factory(30)->create();
+        User::factory(10)->create();
+        ProductImage::factory(50)->create();
+        Blog::factory(10)->create();
         Comment::factory(15)->create();
         Reply::factory(15)->create();
+        Emi::factory(10)->create();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\ContactUsSlider;
 use App\Models\FactoryView;
 use App\Models\Product;
 use App\Models\ProductCapacity;
@@ -24,14 +25,16 @@ class VendorProductsController extends Controller
 
         $showViews = ShowView::where('admin_id', $id)->get();
         $factoryViews = FactoryView::where('admin_id', $id)->get();
+        $sliders = ContactUsSlider::GetActive()->where('admin_id', $id)->get();
 
         //dd($showViews);
-        return view('pages.vendor_home',compact('productSales','productTops','showViews','factoryViews'));
+        return view('pages.vendor_home',compact('productSales','productTops','showViews','factoryViews','sliders'));
     }
 
     public function overview($id)
     {
-
+        $sliders = ContactUsSlider::GetActive()->where('admin_id', $id)->get();
+        $factoryViews = FactoryView::where('admin_id', $id)->get();
         $ProductTradeCapacity = ProductTradeCapacity::where('admin_id', $id)->orderBy('id','desc')->get();
         $ProductQualitys = ProductQuality::where('admin_id', $id)->orderBy('id','desc')->get();
         $productcertifications = ProductCertification::where('admin_id', $id)->orderBy('id','desc')->get();
@@ -44,7 +47,16 @@ class VendorProductsController extends Controller
             'ProductTradeCapacity',
             'productTops',
             'capacities',
-            'productrnd'
+            'productrnd',
+            'factoryViews',
+            'sliders'
         ));
+    }
+
+    // All Vendor Show
+    public function allVendor()
+    {
+        $factoryViews = FactoryView::orderBy('id','desc')->get();
+        return view('pages.vandor',compact('factoryViews'));
     }
 }

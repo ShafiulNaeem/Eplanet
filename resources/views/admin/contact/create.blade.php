@@ -48,8 +48,11 @@
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleSelectRounded0">Slider for</label>
                                         <select name="for" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;" >
-                                            <option value="1">Home</option>
-                                            <option value="0">Contact</option>
+                                            @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                                <option value="1">Home</option>
+                                                <option value="0">Contact</option>
+                                            @endif
+                                            <option value="2">Vendor</option>
                                         </select>
                                     </div>
 

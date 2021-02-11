@@ -37,16 +37,18 @@
                                             <td>
                                                 @if( $slider->for == 1 )
                                                     {{__('Home')}}
-                                                @else
-                                                    {{__('Contact Us')}}
+                                                @elseif($slider->for == 2)
+                                                    {{__('Vendor')}}
+                                                 @else
+                                                        {{__('Contact Us')}}
                                                 @endif
                                             </td>
                                             <td>
                                                 @if($slider->type != 'video')
-                                                    <img src="{{url('images',$slider->slider_media)}}" alt="" class="img-rounded" width="80" />
+                                                    <img src="{{asset('storage/images/'.$slider->slider_media)}}" alt="" class="img-rounded" width="80" />
                                                 @else
                                                     <div class="embed-responsive embed-responsive-16by9">
-                                                        <iframe class="embed-responsive-item" src="{{url('videos',$slider->slider_media)}}" allowfullscreen></iframe>
+                                                        <iframe class="embed-responsive-item" src="{{asset('storage/videos/'.$slider->slider_media)}}" allowfullscreen></iframe>
                                                     </div>
 {{--                                                    <video width="320" height="200" controls>--}}
 {{--                                                        <source src="{{url('videos',$slider->slider_media)}}" type="video/{{$slider->file_type}}">--}}

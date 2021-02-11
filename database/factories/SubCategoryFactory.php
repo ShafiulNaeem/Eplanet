@@ -28,14 +28,14 @@ class SubCategoryFactory extends Factory
     {
         return [
             'category_id' => function(){
-                return Category::all()->random();
+                return Category::GetActive()->get()->random();
             },
             'admin_id' => function(){
-                return Admin::all()->random();
+                return Admin::GetActive()->get()->random();
             },
             'subcategory_slug' => $this->createSlug($this->model, $this->faker->name, "subcategory_slug"),
             'subcategory_name' => $this->faker->name,
-            'sub_category_image' => $this->faker->image(public_path('images'), 640, 480,null, false)
+            'sub_category_image' => $this->faker->image(storage_path('app/public/images'), 640, 480,null, false)
         ];
     }
 }

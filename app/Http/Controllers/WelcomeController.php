@@ -34,11 +34,11 @@ class WelcomeController extends Controller
 
     public function show($slug)
     {
-        $mainRes = $this->productByCategory(['kids', 'men']);
-
-        $product = Product::with(['productImages', 'productVideos','admin', 'category', 'subcategory', 'brand', 'secondsub'])->where('product_slug', $slug)->GetActive()->get();
-//        dd($product);
-
+        $product = Product::with(['productImages', 'productVideos','admin', 'category', 'subcategory', 'brand', 'secondsub', 'coupon'])->where('product_slug', $slug)->GetActive()->get();
+        $mainRes = Category::with('products')
+            ->where('id', $product[0]->category_id)
+            ->first();
+//dd($mainRes);
         return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
 
     }

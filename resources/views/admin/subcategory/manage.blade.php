@@ -22,7 +22,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>SL</th>
                                         <th>Image</th>
                                         <th>Category Name</th>
                                         <th>Sub Category Name</th>
@@ -36,9 +35,8 @@
                                     @if( ! empty($subCategories) )
                                         @foreach($subCategories as $index => $subCategory)
                                             <tr>
-                                                <td>{{$index + 1}}</td>
                                                 <td>
-                                                    <img src="{{url('images/' . $subCategory->sub_category_image)}}" alt="{{$subCategory->subcategory_name}}" class="img-rounded" width="80">
+                                                    <img src="{{asset('storage/images/' . $subCategory->sub_category_image)}}" alt="{{$subCategory->subcategory_name}}" class="img-rounded" width="80">
                                                 </td>
                                                 <td>{{$subCategory->category->category_name}}</td>
                                                 <td>{{$subCategory->subcategory_name}}</td>
@@ -105,7 +103,6 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>SL</th>
                                         <th>Image</th>
                                         <th>Category Name</th>
                                         <th>Sub Category Name</th>

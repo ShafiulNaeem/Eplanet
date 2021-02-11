@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
 
-                                    <span><img src="{{asset('images/'.$category->category_image)}}" alt="{{$category->category_name}}" width="80"></span>
+                                    <span><img src="{{asset('storage/images/'.$category->category_image)}}" alt="{{$category->category_name}}" width="80"></span>
                                 </div>
 
 

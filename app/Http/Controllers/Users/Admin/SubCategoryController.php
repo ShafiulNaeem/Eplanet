@@ -18,7 +18,7 @@ class SubCategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
@@ -39,7 +39,7 @@ class SubCategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -52,7 +52,7 @@ class SubCategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -72,9 +72,9 @@ class SubCategoryController extends Controller
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->sub_category_image->move(public_path('images'), $filename);
-            $SubCategory->sub_category_image= $filename;
+//            $filename = time() . '.' . $image->getClientOriginalExtension();
+//            request()->sub_category_image->move(public_path('images'), $filename);
+            $SubCategory->sub_category_image = $this->uploadImage($image, 'images');
             $SubCategory->save();
         };
 
@@ -101,7 +101,7 @@ class SubCategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param SubCategory $subcategory
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit(SubCategory $subcategory)
     {
@@ -114,7 +114,7 @@ class SubCategoryController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param SubCategory $subcategory
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, SubCategory $subcategory)
@@ -128,14 +128,14 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_name;
         $subcategory->status = $request->status;
 
-//        if ( ! self::deleteFile( public_path('images/' . $subcategory->sub_category_image) ) )
+        self::deleteFile( storage_path().'/app/public/images/'  . $subcategory->sub_category_image);
 //            return redirect()->back()->with('error','Something went wrong');
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->sub_category_image->move(public_path('images'), $filename);
-            $subcategory->sub_category_image= $filename;
+//            $filename = time() . '.' . $image->getClientOriginalExtension();
+//            request()->sub_category_image->move(public_path('images'), $filename);
+            $subcategory->sub_category_image= $this->uploadImage($image, 'images');
             $subcategory->save();
         };
 
@@ -156,7 +156,7 @@ class SubCategoryController extends Controller
     public function destroy(SubCategory $subcategory)
     {
         //dd($subcategory);
-        self::deleteFile( public_path('images/' . $subcategory->sub_category_image) );
+        self::deleteFile( storage_path().'/app/public/images/' . $subcategory->sub_category_image );
 
         $subcategory->delete();
         return redirect()->back()->with('info', 'Sub Category Delete Successfully');
@@ -165,7 +165,7 @@ class SubCategoryController extends Controller
     // Change Status
     public function change(Request $request)
     {
-        if( self::changeStatus($request->status, 'App\Models\SubCategory', $request->id) )
+        if( self::changeStatus($request->status, SubCategory::class, $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
     }

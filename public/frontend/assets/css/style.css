@@ -3599,7 +3599,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .product_carousel:hover .owl-nav div.owl-next {
-  right: -0px;
+  right: -24px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1300px) {
   .product_carousel:hover .owl-nav div.owl-next {
@@ -3626,10 +3626,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product_carousel .owl-nav div {
   position: absolute;
-  top: 32%;
+  top: 38%;
   transform: translatey(-50%);
   font-size: 36px;
-  left: 0;
+  left: 0px;
   transition: .3s;
   opacity: 0;
   visibility: hidden;
@@ -6758,7 +6758,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .product_d_inner {
   padding: 20px 30px 27px;
-  border: 1px solid #ededed;
+  border: 1px solid #33333391;
 }
 @media only screen and (max-width: 767px) {
   .product_d_inner {

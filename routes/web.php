@@ -60,8 +60,18 @@ dd($monthlySell);
 });
 
 Route::get('/con',function(){
-    return view('pages.newpage');
+
+    
+    return view('pages.discover');
+
+    // return view('pages.artical');
+
 });
+
+
+Route::get('/faq',function(){
+    return view('pages.faq');
+})->name('faq');
 
 Route::get('/',  'WelcomeController@index')->name('home');
 Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
@@ -87,11 +97,13 @@ Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->name('prof
 Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->name('profile.order.cancel');
 
 //vendor page show
+Route::get('vendor', 'Users\VendorProductsController@allVendor')->name('allVendor.show');
 Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSale.show');
 Route::get('overview/{id}', 'Users\VendorProductsController@overview')->name('overview');
+
+//Blog page
 Route::resource('comment', 'Users\CommentController')->middleware(['auth']);
 Route::resource('replay', 'Users\ReplyController')->middleware(['auth']);
-//Blog page
 Route::get('blog', 'Users\BlogController@create')->name('blog.create');
 Route::post('blog', 'Users\BlogController@store')->middleware(['auth'])->name('blog.store');
 Route::get('blogall', 'Users\BlogController@allBog')->name('blog.allBog');
@@ -156,6 +168,7 @@ Route::prefix('admin')->group(function(){
         Route::post('secondsubchange', 'SecondarySubCategoryController@change')->name('secondsub.change.status');
         Route::post('productChange', 'ProductController@change')->name('product.change.status');
         Route::post('employeeChange', 'EmployeeController@change')->name('employee.change.status');
+        Route::post('emiChange', 'EMIController@change')->name('emi.change.status');
 
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
         Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
@@ -170,6 +183,10 @@ Route::prefix('admin')->group(function(){
             Route::get('productimage', 'ProductImageController@allProductImages')->name('product.image');
             Route::get('productvideo', 'ProductVideoController@allProductVideo')->name('product.video');
             Route::get('user', 'UserController@allUser')->name('user.no.order');
+
+            Route::get('contactusslider', 'ContactUsSliderController@allSlider')->name('slider');
+            Route::get('area', 'AreaController@allArea')->name('allArea');
+            Route::get('emi', 'EMIController@withoutAdmin')->name('emi');
         });
     });
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
@@ -188,6 +205,7 @@ Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
         Route::resource('factoryInspection', 'ProductFactoryInspectionController');
         Route::resource('factoryView', 'FactoryViewController');
         Route::resource('showView', 'ShowViewController');
+        //Route::resource('overView', 'VendorOverViewController');
     });
 });
 
@@ -213,6 +231,8 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('employee', 'EmployeeController');
     Route::resource('secondsub', 'SecondarySubCategoryController');
     Route::resource('contactusslider', 'ContactUsSliderController');
+    Route::resource('area', 'AreaController');
+    Route::resource('emi', 'EMIController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');

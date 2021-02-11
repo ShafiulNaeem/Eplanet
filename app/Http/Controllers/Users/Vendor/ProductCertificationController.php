@@ -58,9 +58,9 @@ class ProductCertificationController extends Controller
 
         if($request->hasFile('pdf')){
             $pdfs = request()->file('pdf');
-            $filename = time() . '.' . $pdfs->getClientOriginalExtension();
-            request()->pdf->move(public_path('documents'), $filename);
-            $productCertification->pdf= $filename;
+//            $filename = time() . '.' . $pdfs->getClientOriginalExtension();
+//            request()->pdf->move(public_path('documents'), $filename);
+            $productCertification->pdf= $this->uploadImage($pdfs, 'documents');
         }
 
 
@@ -114,13 +114,13 @@ class ProductCertificationController extends Controller
         $productCertification->issued_by = $request->issued_by;
         $productCertification->business_scope = $request->business_scope;
 
-        self::deleteFile( public_path('documents/' . $productCertification->pdf) ) ;
+        self::deleteFile( storage_path('app/public/documents/' . $productCertification->pdf) ) ;
 
         if($request->hasFile('pdf')){
             $pdfs = request()->file('pdf');
-            $filename = time() . '.' . $pdfs->getClientOriginalExtension();
-            request()->pdf->move(public_path('documents'), $filename);
-            $productCertification->pdf= $filename;
+//            $filename = time() . '.' . $pdfs->getClientOriginalExtension();
+//            request()->pdf->move(public_path('documents'), $filename);
+            $productCertification->pdf= $this->uploadImage($pdfs, 'documents');
         };
 
 
@@ -140,7 +140,7 @@ class ProductCertificationController extends Controller
      */
     public function destroy(ProductCertification $productCertification)
     {
-        self::deleteFile( public_path('documents/' . $productCertification->pdf) ) ;
+        self::deleteFile( storage_path('app/public/documents/' . $productCertification->pdf) ) ;
 
         $productCertification->delete();
         return redirect()->back()->with('info','Product Certification Deleted Successfully');

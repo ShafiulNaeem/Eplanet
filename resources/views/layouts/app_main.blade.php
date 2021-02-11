@@ -74,7 +74,7 @@
                                     <li><a href="#"> Privacy Policy</a></li>
                                     <li><a href="#"> Terms & Conditions</a></li>
                                     <li><a href="{{route('contact.show')}}"> Contact Us</a></li>
-                                    <li><a href="#"> Site Map</a></li>
+                                    <li><a href="{{ route('faq') }}">FAQ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -378,6 +378,46 @@
             video : true
         });
 	});
+
+   $(document).ready(function(){
+        $('#click_change').click(function(){
+            $('#click_change').css('color','#ffc107');
+            $('#click_change2').css('color','black');
+        });
+        $('#click_change2').click(function(){
+            $('#click_change2').css('color','#ffc107');
+            $('#click_change').css('color','black');
+
+        });
+        $('#click_change3').click(function(){
+            $('#click_change').css('color','#ffc107');
+            $('#click_change2').css('color','black');
+           
+
+        });
+
+        $('#top').click(function(){
+            $('#hide1').show();
+            $('#hide2').hide();
+            $('#hide3').hide();
+           
+        });
+
+        $('#mid').click(function(){
+            $('#hide2').show();
+            $('#hide1').hide();
+            $('#hide3').hide();
+            
+        });
+
+        $('#low').click(function(){
+            $('#hide3').show();
+            $('#hide2').hide();
+            $('#hide1').hide();
+         
+            
+        });
+   });
 
 </script>
 

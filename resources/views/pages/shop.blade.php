@@ -2,80 +2,45 @@
 
 @section('content')
 
-
     <!--slider area start-->
-    <section class="slider_section">
-        <div class="slider_area owl-carousel overviews">
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider_content">
-                                <h1>Baby Products</h1>
-                                <h2>Kids Fashion</h2>
-                                <p>
-                                    Valid till 15 Augest
-                                </p>
-                                <a href="shop.html">Shop Now </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider_content">
-                                <h1>Baby Products</h1>
-                                <h2>Kids Fashion</h2>
-                                <p>
-                                    Valid till 15 Augest
-                                </p>
-                                <a href="shop.html">Shop Now </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/main1.jpg') }}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="slider_content">
-                                <h1>Baby Products</h1>
-                                <h2>Kids Fashion</h2>
-                                <p>
-                                    Valid till 15 Augest
-                                </p>
-                                <a href="shop.html">Shop Now </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="image_video" id="sec1">
+        <div class="bo-slider">
+            @if( isset($sliders) )
+                @php $i = 0; @endphp
+                @foreach($sliders as $index => $slider)
+                    @if( strcmp($slider->type, 'video') )
+                        <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" data-type="image"></li>
+                    @else
+                        <li data-url="{{ asset('storage/videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                    @endif
+                @endforeach
+            @endif
+
         </div>
-    </section>
+    </div>
     <!--slider area end-->
+
 
     <!-- Overview start -->
 
     <section class="overview">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-12 col-lg-6">
-                    <div class="over_left">
-                        <img src="{{asset('frontend/assets/img/overview.webp')}}" alt="">
+                @foreach($factoryViews as $factoryView)
+                    <div class="col-md-6 col-12 col-lg-6">
+                        <div class="over_left">
+                            <img src="{{asset('storage/images/' .$factoryView->image)}}" alt="{{$factoryView->description}}">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="over_right">
-                        <textarea name=""  class="form-control" cols="32" rows="10">
-                           The YZF-R15 changed the 150cc segment in the Indian market the way the CBZ did when it was launched. It was an everyday motorcycle that could genuinely be used as a trackday tool. The second version of the R15 traded practicality for more focused performance, but the advent of the KTM RC200 meant that a far better performance was available for the sportbike enthusiasts at a similar price. The R15 Version 3.0 reduces that gap significantly with technology. On the list is now a BS6 engine with a few more ccs, but featuring variable valve timing which takes the maximum power output to nearly 18.3bhp with a peak torque output of 14.1Nm. It also gets all-LED lamps and an all-digital LCD instrument cluster that displays a wealth of information, including when the Variable Valve Actuation switches to the different camshaft profile.
-                        </textarea>
-                    </div>
+                    <div class="col-md-6">
+                        <div class="over_right">
+                            <textarea name=""  class="form-control" cols="32" rows="10">
+                                {{$factoryView->description}}
+                            </textarea>
+                        </div>
 
-                </div>
+                    </div>
+                 @endforeach
             </div>
         </div>
     </section>
@@ -111,7 +76,7 @@
                                                                         <div class="single_banner">
                                                                             <div class="banner_thumb">
                                                                                 <a href="{{route('pages.show',$product->id)}}">
-                                                                                    <img src="{{url('images',$product->feature_image)}}" alt="{{$product->product_name}}">
+                                                                                    <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
                                                                                 </a>
                                                                             </div>
                                                                         </div>
@@ -145,7 +110,7 @@
     <!-- Main product end -->
 
     <!--  PRODUCT CAPACITY start  -->
-    <section class="product_capasity text-center">
+    <section class="product_capasity text-center" id="sec2">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -153,9 +118,9 @@
                         <div class="container">
                             <div class="product_container">
                                 <div class="row">
-                                <div class="main_pro_img">
-                                    <h4>PRODUCTS CAPACITY</h4>
-                                </div>
+                                    <div class="main_pro_img">
+                                        <h4>PRODUCTS CAPACITY</h4>
+                                    </div>
                                 </div>
                                 <div class="row second-product">
                                     <div class="col-12">
@@ -170,7 +135,7 @@
                                                                         <div class="banner_thumb">
                                                                             <div class="zoom-In">
     {{--                                                                                <a href="{{route('pages.show',$product->id)}}">--}}
-                                                                                <img src="{{url('images',$capacity->capacity_image	)}}" alt="{{$capacity->title}}">
+                                                                                <img src="{{asset('storage/images/' .$capacity->capacity_image	)}}" alt="{{$capacity->title}}">
     {{--                                                                                </a>--}}
     </div>
                                                                         </div>
@@ -218,7 +183,7 @@
                 @foreach($ProductQualitys as $ProductQuality)
                    <div class="col-md-3">
                       <div class="litbox-inner">
-                          <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('images',$ProductQuality->quality_image)}}"><img src="{{url('images',$ProductQuality->quality_image)}}" width="150"></a>
+                          <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('images',$ProductQuality->quality_image)}}"><img src="{{asset('storage/images/' . $ProductQuality->quality_image)}}" width="150"></a>
                           <div>
                               <h4>{{$ProductQuality->title}}</h4>
                               <p class="card-text">{{$ProductQuality->description}}</p>
@@ -253,7 +218,7 @@
                     <div class="col-md-3">
                         <div class="litbox-inner">
                             <a id="firstlink" class="venobox" data-gall="gall1" title="Image 1" href="{{url('images',$rnd->rnd_image)}}">
-                                <img src="{{url('images',$rnd->rnd_image)}}" width="150"></a>
+                                <img src="{{asset('storage/images/' .$rnd->rnd_image)}}" width="150"></a>
                             <div>
                                 <h4>{{$rnd->title}}</h4>
                                 <p class="card-text">{{$rnd->description}}</p>
@@ -264,7 +229,7 @@
 
             </div>
 
-             <div class="row">
+             <div class="row" id="sec3">
              <div class="col-md-12">
                  <h4>Certification</h4>
               </div>

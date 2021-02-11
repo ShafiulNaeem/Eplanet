@@ -20,7 +20,12 @@ class SecondarySubCategory extends Model
     {
         return $query->where('status', 1);
     }
-    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
     {
         return $this->hasMany(Product::class, 'secondary_sub_categories_id');
     }
@@ -34,11 +39,17 @@ class SecondarySubCategory extends Model
         return $query->where('admin_id', Auth::guard('admin')->id());
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function subcategory()
     {
         return $this->belongsTo(SubCategory::class, 'sub_category_id');
