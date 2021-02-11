@@ -139,6 +139,6 @@ class Product extends Model
 
     public function eventProducts()
     {
-        return $this->hasMany(EventProduct::class);
+        return $this->hasMany(EventProduct::class, 'product_id');
     }
 }

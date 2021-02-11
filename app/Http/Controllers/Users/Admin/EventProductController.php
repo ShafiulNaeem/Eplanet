@@ -14,12 +14,12 @@ class EventProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        $eventProducts = EventProduct::with(['product','event'])->EventProductWithAdminOwner()->get();
-         //dd($eventProducts);
+        $eventProducts = Event::EventWithAdminOwner()->get();
+
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }
 
@@ -33,7 +33,7 @@ class EventProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -48,20 +48,26 @@ class EventProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
         $validate = $request->validate([
             'product_id'=> 'required',
             'event_id'=> 'required',
-
         ]);
 
-        $validate['admin_id'] = Auth::guard('admin')->id();
+        foreach ($request->product_id as $id){
+            $event = EventProduct::create([
+                'admin_id' => Auth::guard('admin')->id(),
+                'event_id' => $request->event_id,
+                'product_id' => $id,
+            ]);
 
-        if( EventProduct::create($validate) ) return redirect(route('eventProduct.index'))->with('success', 'Product Event Category created');
-        return redirect()->back()->with('error', 'Something went wrong, please try again');
+            if( empty($event->id) ) return redirect()->back()->with('error', 'Something went wrong, please try again');
+        }
+
+        return redirect(route('eventProduct.index'))->with('success', 'Product Event Category created');
     }
 
     /**
@@ -93,14 +99,13 @@ class EventProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, EventProduct $eventProduct)
     {
         $validate = $request->validate([
             'product_id'=> 'required',
             'event_id'=> 'required',
-
         ]);
 
         return ( $eventProduct->update($validate) )?
@@ -111,13 +116,46 @@ class EventProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param EventProduct $eventProduct
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(EventProduct $eventProduct)
     {
         return $eventProduct->delete() ?
             redirect()->back()->with('info', ' Delete Successfully') :
             redirect()->back()->with('error', 'Delete Unsuccessful') ;
+    }
+
+
+    public function allEventProducts($id)
+    {
+        $eventProduct = Event::with(['eventProducts.products.category', 'eventProducts.products.subcategory', 'eventProducts.products.brand', 'eventProducts.products.secondsub'])
+            ->where('id', $id)->get()->toArray();
+
+        $tableData = null;
+
+        foreach ($eventProduct as $event_products){
+            foreach ($event_products['event_products'] as $products){
+                $tableData .= '<tr role="row"><td class="text-center">' . $products['products']['product_name'] . "</td>";
+                $tableData .= '<td class="text-center"> <img width="80" src="' . asset('/storage/images/' . $products['products']['feature_image']) . '" /></td>';
+                $tableData .= '<td class="text-center">' . $products['products']['stock'] . '</td>';
+                $tableData .= '<td class="text-center">' . $products['products']['product_price'] . '</td>';
+                $tableData .= '<td class="text-center">' . $products['products']['category']['category_name'] . '</td>';
+                $tableData .= '<td class="text-center">' . $products['products']['subcategory']['subcategory_name'] . '</td>';
+                $tableData .= '<td class="text-center">' . $products['products']['secondsub']['secondary_subcategory_name'] . '</td>';
+                $tableData .= '<td class="text-center">' . $products['products']['brand']['brand_name'] . '</td>';
+                $tableData .= '<td class="text-center"> <form
+                                                                    action="'.route('eventProduct.destroy',$products["id"]).'"
+                                                                    method="post">
+                                                                    <input type="hidden" value="' . csrf_token() . '" name="_token">
+                                                                    <input type="hidden" value="DELETE"  name="_method">
+                                                                    <button type="submit" class="btn btn-app text-danger"><i class="fa fa-trash fa-2x"></i> </button>
+                                                                </form> </td></tr>';
+//                dd($products['products']);
+            }
+        }
+//        $tableData .= "</tr>";
+        return $tableData;
     }
 }

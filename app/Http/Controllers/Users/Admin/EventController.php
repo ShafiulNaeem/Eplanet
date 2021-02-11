@@ -109,7 +109,7 @@ class EventController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Event $event)
     {
@@ -143,12 +143,13 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Event $event
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Event $event)
     {
-        self::deleteFile(public_path('images/' . $event->event_image));
+        self::deleteFile(storage_path('app/public/images/' . $event->event_image));
         $event->delete();
         return redirect()->back()->with('info','Event Successfully Deleted');
     }

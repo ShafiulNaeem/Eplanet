@@ -49,14 +49,14 @@
                             <div class="single-zoom-thumb">
                                 <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                                     <li>
-                                        <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('images/'.$product->feature_image)}}">
+                                        <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('storage/images/' .$product->feature_image)}}">
                                             <img src="{{asset('storage/images/' . $product->feature_image)}}" alt="zo-th-1"/>
                                         </a>
 
                                     </li>
                                     @foreach($product->productImages as $images)
                                     <li >
-                                        <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$images->product_image)}}" data-zoom-image="{{asset('images/'.$images->product_image)}}">
+                                        <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$images->product_image)}}" data-zoom-image="{{asset('storage/images/' .$images->product_image)}}">
                                             <img src="{{asset('storage/images/' . $images->product_image)}}" alt="zo-th-1"/>
                                             <span></span>
                                         </a>
@@ -70,7 +70,7 @@
                             <div class="">
                                 <h3>Promo Video </h3>
                                 @foreach($product->productVideos as $video)
-                                <iframe width="400"  src="{{url('public/videos/'.$video->product_image)}}" frameborder="0" allowfullscreen>
+                                <iframe width="400"  src="{{asset('storage/videos/' .$video->product_image)}}" frameborder="0" allowfullscreen>
                                 </iframe>
                                 @endforeach
                             </div>
@@ -324,7 +324,7 @@
                                 <li>
                                     <select name="" id="" class="form-control" >
                                         @php
-                                            $areas = \App\Models\Area::where('product_id', $products[0]->id)->get()
+                                            $areas = \App\Models\Area::all()
                                         @endphp
                                         @if( ! empty($areas) )
                                             @foreach($areas as $area)
