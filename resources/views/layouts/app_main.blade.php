@@ -230,7 +230,7 @@
     <script src="{{asset('frontend/assets/js/plugins.js')}}"></script>
     <script src="{{asset('frontend/assets/js/toastr.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.fancybox.min.js')}}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>

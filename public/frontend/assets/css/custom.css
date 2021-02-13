@@ -1053,14 +1053,16 @@ Fading
     background: #181A1A;
 }
 .language_currency{
-    text-align:left;
+    padding-left:70px;
 }
 .language_currencys {
     text-align: center;
 }
 
-.top_last{
+.top_last {
     text-align: right;
+    position: relative;
+    right: 35px;
 }
 
 .header_account_area {
@@ -1159,3 +1161,52 @@ Fading
 .product_desc{
     border-bottom:none;
 }
+
+@media (min-width: 1280px) {
+
+    .fa-camera{
+        margin: 0;
+    }
+}
+.logo{
+    text-align: center;
+}
+
+@media (min-width: 1281px) and (max-width:1920px){
+
+    .fa-camera{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+}
+
+.anime h4{
+    color:#91B83B;
+    margin-bottom: -3px;
+}
+
+
+
+
+.ml2 {
+    font-weight: 900;
+    font-size:15px;
+  }
+  
+  .ml2 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+  .ml23 {
+    font-weight: 900;
+    font-size:15px;
+    margin:0px;
+  }
+  
+  .ml23 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+  
