@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\EventProduct;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Session;
@@ -150,6 +151,12 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         self::deleteFile(storage_path('app/public/images/' . $event->event_image));
+
+        $eventProducts = EventProduct::where('event_id', $event->id)->get();
+
+        foreach($eventProducts as $pro)
+            $pro->delete();
+
         $event->delete();
         return redirect()->back()->with('info','Event Successfully Deleted');
     }

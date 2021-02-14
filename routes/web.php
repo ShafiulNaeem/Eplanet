@@ -8,6 +8,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/createslug', function (){
+    $categories = \App\Models\Brand::all();
+
+    foreach ($categories as $category){
+        $count = \App\Models\Brand::where('brand_slug',  strtolower(str_replace(" ", "", $category->brand_name)))->count();
+
+        if( $count == 0 ) $counter = 0;
+        else    $counter = (int)$count + 1;
+
+        $slug = strtolower(str_replace(" ", "", $category->brand_name));
+
+        if ($counter) {
+            $slug = $slug . '-' . $counter;
+        }
+
+        $category->brand_slug  = $slug;
+        $category->save();
+    }
+});
+
 Route::get('test', function (){
     $pro = Product::where('admin_id', 1)->orderBy('sold', 'desc')->limit(5)->get();
 
@@ -61,7 +81,7 @@ dd($monthlySell);
 
 Route::get('/con',function(){
 
-    
+
     return view('pages.discover');
 
     // return view('pages.artical');
@@ -97,7 +117,7 @@ Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->name('prof
 Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->name('profile.order.cancel');
 
 //vendor page show
-Route::get('vendor', 'Users\VendorProductsController@allVendor')->name('allVendor.show');
+Route::get('allvendor', 'Users\VendorProductsController@allVendor')->name('allVendor.show');
 Route::get('vendor/{id}', 'Users\VendorProductsController@topSale')->name('topSale.show');
 Route::get('overview/{id}', 'Users\VendorProductsController@overview')->name('overview');
 
@@ -171,6 +191,7 @@ Route::prefix('admin')->group(function(){
         Route::post('employeeChange', 'EmployeeController@change')->name('employee.change.status');
         Route::post('emiChange', 'EMIController@change')->name('emi.change.status');
         Route::post('eventChange', 'EventController@change')->name('event.change.status');
+        Route::post('product/specification/{product}', 'ProductController@specification')->name('product.change.specification');
 
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
         Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
