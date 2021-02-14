@@ -24,9 +24,9 @@
                                     <thead>
 
                                     <tr>
+                                        <th>Product</th>
+                                        <th>Category</th>
                                         <th>Event</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
                                         <th>Date</th>
                                         <th>View Products</th>
                                         <th>Action</th>
@@ -36,9 +36,9 @@
                                     <tbody>
                                     @foreach($eventProducts as $eventProduct)
                                         <tr>
-                                            <td class="text-center">{{$eventProduct->event_name}}</td>
-                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->start_date)->format('M d Y') }}</td>
-                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->end_date)->format('M d Y') }}</td>
+                                            <td class="text-center">{{$eventProduct->product->product_name}}</td>
+                                            <td class="text-center">{{$eventProduct->category->category_name}}</td>
+                                            <td class="text-center">{{$eventProduct->event->event_name}}</td>
                                             <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->created_at)->format('M d Y') }}</td>
                                             <td class="text-center">
                                                 <button type="button" data-toggle="modal" id="eventProducts"
@@ -52,7 +52,7 @@
                                                     <div class="modal-dialog modal-xl">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title">{{$eventProduct->event_name}}
+                                                                <h4 class="modal-title">{{$eventProduct->event->event_name}}
                                                                     event Products </h4>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
@@ -129,7 +129,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form
-                                                                    action="{{route('event.destroy',$eventProduct->id)}}"
+                                                                    action="{{route('eventProduct.destroy',$eventProduct->id)}}"
                                                                     method="post">
                                                                     @csrf
                                                                     @method("DELETE")
@@ -149,9 +149,9 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>Product</th>
+                                        <th>Category</th>
                                         <th>Event</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
                                         <th>Date</th>
                                         <th>View Products</th>
                                         <th>Action</th>

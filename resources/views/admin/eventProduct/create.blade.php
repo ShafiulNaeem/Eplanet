@@ -26,12 +26,25 @@
 
                                     <div id="copy">
                                         <div class="form-group col-md-6 float-left">
-                                            <label for="exampleInputEmail1">Product Name</label>
-                                            <select multiple="multiple"  name="product_id[]" data-placeholder="Select Products" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
-{{--                                                <option value="">Select Product</option>--}}
-                                                @foreach($products as $product)
-                                                    <option value="{{$product->id}}">{{$product->product_name}}</option>
+                                            <label for="exampleInputPassword1">Category</label>
+                                            <select required name="event_category" id="cat_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                                <option value="" >Select Category</option>
+                                                @foreach($categories as $category )
+                                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
                                                 @endforeach
+                                            </select>
+                                            @error('event_category')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="exampleInputEmail1">Product Name</label>
+                                            <select multiple="multiple"  name="product_id[]" id="product_id" data-placeholder="Select Products" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                                <option value="">Select Product</option>
+{{--                                                @foreach($products as $product)--}}
+{{--                                                    <option value="{{$product->id}}">{{$product->product_name}}</option>--}}
+{{--                                                @endforeach--}}
                                             </select>
                                             @error('product_id')
                                             <span class="text-danger">{{$message}}</span>

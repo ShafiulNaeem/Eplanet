@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\EventProduct;
 use App\Models\Product;
@@ -18,14 +19,14 @@ class EventProductController extends Controller
      */
     public function index()
     {
-        $eventProducts = Event::EventWithAdminOwner()->get();
-
+        $eventProducts = EventProduct::with(['category','product','event'])->EventProductWithAdminOwner()->get();
+//dd($eventProducts);
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }
 
     public function allEventProduct()
     {
-        $eventProducts = EventProduct::with(['product','event'])->EventProductWithOutAdminOwner()->get();
+        $eventProducts = EventProduct::with(['category','product','event'])->EventProductWithOutAdminOwner()->get();
         //dd($eventProducts);
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }
@@ -37,11 +38,12 @@ class EventProductController extends Controller
      */
     public function create()
     {
+        $categories = Category::CategoryWithAdminOwner()->GetActive()->get();
         $products = Product::AdminProduct()->GetActive()->get();
         $events = Event::EventWithAdminOwner()->GetActive()->get();
          //dd($events);
 
-        return view('admin.eventProduct.create',compact('products','events'));
+        return view('admin.eventProduct.create',compact('products','events','categories'));
     }
 
     /**
@@ -52,7 +54,9 @@ class EventProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $validate = $request->validate([
+            'event_category'=> 'required',
             'product_id'=> 'required',
             'event_id'=> 'required',
         ]);
@@ -60,6 +64,7 @@ class EventProductController extends Controller
         foreach ($request->product_id as $id){
             $event = EventProduct::create([
                 'admin_id' => Auth::guard('admin')->id(),
+                'category_id' => $request->event_category,
                 'event_id' => $request->event_id,
                 'product_id' => $id,
             ]);
@@ -89,9 +94,12 @@ class EventProductController extends Controller
      */
     public function edit(EventProduct $eventProduct)
     {
-        $products = Product::AdminProduct()->GetActive()->get();
+        //dd($eventProduct->category_id);
+        $categories = Category::CategoryWithAdminOwner()->GetActive()->get();
+        $products = Category::with('products')->where('id',$eventProduct->category_id)->CategoryWithAdminOwner()->GetActive()->get();
         $events = Event::EventWithAdminOwner()->GetActive()->get();
-        return view('admin.eventProduct.edit',compact('eventProduct', 'products','events'));
+
+        return view('admin.eventProduct.edit',compact('categories','events','eventProduct','products'));
     }
 
     /**
@@ -104,13 +112,14 @@ class EventProductController extends Controller
     public function update(Request $request, EventProduct $eventProduct)
     {
         $validate = $request->validate([
+            'category_id'=> 'required',
             'product_id'=> 'required',
             'event_id'=> 'required',
         ]);
 
         return ( $eventProduct->update($validate) )?
-            redirect()->route('eventProduct.index')->with('success', 'Updated Successfully'):
-            redirect()->route('eventProduct.index')->with('error', 'Something went wrong') ;
+        redirect()->route('eventProduct.index')->with('success', 'Updated Successfully'):
+        redirect()->route('eventProduct.index')->with('error', 'Something went wrong') ;
     }
 
     /**
@@ -152,9 +161,30 @@ class EventProductController extends Controller
                                                                     <input type="hidden" value="DELETE"  name="_method">
                                                                     <button type="submit" class="btn btn-app text-danger"><i class="fa fa-trash fa-2x"></i> </button>
                                                                 </form> </td></tr>';
-//                dd($products['products']);
+
             }
         }
+
+//        foreach ($eventProduct as $event_products){
+//            foreach ($event_products['event_products'] as $products){
+//                $tableData .= '<tr role="row"><td class="text-center">' . $products['products']['product_name'] . "</td>";
+//                $tableData .= '<td class="text-center"> <img width="80" src="' . asset('/storage/images/' . $products['products']['feature_image']) . '" /></td>';
+//                $tableData .= '<td class="text-center">' . $products['products']['stock'] . '</td>';
+//                $tableData .= '<td class="text-center">' . $products['products']['product_price'] . '</td>';
+//                $tableData .= '<td class="text-center">' . $products['products']['category']['category_name'] . '</td>';
+//                $tableData .= '<td class="text-center">' . $products['products']['subcategory']['subcategory_name'] . '</td>';
+//                $tableData .= '<td class="text-center">' . $products['products']['secondsub']['secondary_subcategory_name'] . '</td>';
+//                $tableData .= '<td class="text-center">' . $products['products']['brand']['brand_name'] . '</td>';
+//                $tableData .= '<td class="text-center"> <form
+//                                                                    action="'.route('eventProduct.destroy',$products["id"]).'"
+//                                                                    method="post">
+//                                                                    <input type="hidden" value="' . csrf_token() . '" name="_token">
+//                                                                    <input type="hidden" value="DELETE"  name="_method">
+//                                                                    <button type="submit" class="btn btn-app text-danger"><i class="fa fa-trash fa-2x"></i> </button>
+//                                                                </form> </td></tr>';
+//
+//            }
+//        }
 //        $tableData .= "</tr>";
         return $tableData;
     }
