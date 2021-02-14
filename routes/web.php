@@ -168,6 +168,7 @@ Route::prefix('admin')->group(function(){
         Route::post('eventChange', 'EventController@change')->name('event.change.status');
 
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
+        Route::post('productbycat/{category}', 'CategoryController@productByCategory')->name('product.by.cat');
         Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
         Route::post('secondsubcatbysubcat/{subcategory}', 'SubCategoryController@secondarySubBySubCategory')->name('second.sub.cat.by.sub.cat');
 

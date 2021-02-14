@@ -467,6 +467,8 @@ data.push({
     });
 
 
+
+    // category by sub category
     $('#category_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let subCat = $('#sub_category_id');
@@ -502,6 +504,7 @@ data.push({
 
     });
 
+    // sub category by 2nd sub category
     $('#sub_category_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let subCat = $('#secondary_sub_categories_id');
@@ -552,6 +555,58 @@ data.push({
         else option.innerText = value.subcategory_name;
 
         if( value.id == subCatId ) option.selected = true;
+
+        return option;
+    }
+
+</script>
+
+<script>
+    // category by product
+    $('#cat_id').on('change',function (e) {
+        let selectedValue = $(this).children("option:selected").val();
+        let product = $('#product_id');
+        let productId = product.attr("data-product");
+        // console.log(subCatId)
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('admin/productbycat') }}/" + selectedValue,
+            method: 'post',
+
+
+            success: function (response) {
+                product[0].innerHTML = " ";
+                let option = createElement("option");
+
+                option.setAttribute('value', " ");
+                option.innerText = "Select";
+                product[0].append(option);
+
+                response.forEach((value, index) => {
+                    let option = returnOptions(value, productId);
+                    product[0].append(option);
+                });
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+
+
+    });
+    function createElement(element) {
+        return document.createElement(element);
+    }
+
+    function returnOptions(value, productId){
+        let option = createElement('option');
+        option.setAttribute('value', value.id);
+        option.innerText = value.product_name;
+
+        if( value.id == productId ) option.selected = true;
 
         return option;
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -161,5 +162,10 @@ class CategoryController extends Controller
     public function subCategoryByCategory(Category $category)
     {
         return SubCategory::where('category_id', $category->id)->SubCategoryWithAdminOwner()->get();
+    }
+
+    public function productByCategory(Category $category)
+    {
+        return Product::where('category_id', $category->id)->AdminProduct()->GetActive()->get();
     }
 }

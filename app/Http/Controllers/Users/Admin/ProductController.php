@@ -101,7 +101,7 @@ class ProductController extends Controller
 //            $filename = time() . '.' . $image->getClientOriginalExtension();
 //            request()->feature_image->move(public_path('images'), $filename);
             $products->feature_image = $this->uploadImage($image, 'images');
-            $products->save();
+            //$products->save();
         };
 
         if($products->save())
@@ -222,7 +222,7 @@ class ProductController extends Controller
             'secondary_sub_categories_id' => 'sometimes',
             'product_coupon' => 'sometimes',
             'manufactured_by' => 'sometimes',
-            'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ));
     }
 }
