@@ -27,16 +27,33 @@
 
                                     <div id="copy">
                                         <div class="form-group col-md-6 float-left">
+                                            <label for="exampleInputPassword1">Category</label>
+                                            <select required name="category_id" id="cat_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                                <option value="" >Select Category</option>
+                                                @foreach($categories as $category )
+                                                    <option
+                                                        @if( $category->id == $eventProduct->category_id )
+                                                        selected
+                                                        @endif
+
+                                                        value="{{$category->id}}">{{$category->category_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputEmail1">Product Name</label>
-                                            <select name="product_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                                <option selected="selected">Select Product</option>
-                                                @foreach($products as $product)
+                                            <select name="product_id" id="product_id" data-product="{{$eventProduct->product_id}}" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                                <option value="">Select Product</option>
+                                                @foreach($products as $category)
+                                                    @foreach($category->products as $product)
                                                     <option
                                                         @if( $product->id == $eventProduct->product_id )
                                                         selected
                                                         @endif
 
                                                         value="{{$product->id}}">{{$product->product_name}}</option>
+                                                    @endforeach
                                                 @endforeach
                                             </select>
                                         </div>

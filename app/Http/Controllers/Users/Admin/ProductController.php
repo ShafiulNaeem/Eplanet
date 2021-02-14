@@ -96,7 +96,7 @@ class ProductController extends Controller
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
             $products->feature_image = $this->uploadImage($image, 'images');
-            $products->save();
+            //$products->save();
         };
 
         if($products->save()){
@@ -227,7 +227,7 @@ class ProductController extends Controller
             'secondary_sub_categories_id' => 'sometimes',
             'product_coupon' => 'sometimes',
             'manufactured_by' => 'sometimes',
-            'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ));
     }
 }
