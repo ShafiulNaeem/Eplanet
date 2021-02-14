@@ -62,7 +62,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
+        //dd($request->all());
         $this->validation($request);
 
         $products = new Product();
@@ -75,7 +75,8 @@ class ProductController extends Controller
         $products->coupon_id = $request->product_coupon;
         $products->product_slug = $this->createSlug(Product::class, $request->product_name, "product_slug");
         $products->product_name = $request->product_name;
-        $products->product_description = $request->product_description;
+        $products->specification = $request->product_description;
+        //$products->product_description = $request->product_description[1];
         $products->color = $request->product_color;
         $products->model = $request->product_model;
         $products->tax = $request->product_tax;
@@ -89,23 +90,19 @@ class ProductController extends Controller
         $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
         $products->status = $request->status;
         if( ! empty($request->emi_id) )
-        $products->emi_id = implode(',', $request->emi_id);
-        $products->extra_description = $request->extra_description;
-        $products->specification = $request->specification;
+            $products->emi_id = implode(',', $request->emi_id);
 
-//        if( isset($request->secondary_sub_categories_id) )
-//            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
-//            $filename = time() . '.' . $image->getClientOriginalExtension();
-//            request()->feature_image->move(public_path('images'), $filename);
             $products->feature_image = $this->uploadImage($image, 'images');
             $products->save();
         };
 
-        if($products->save())
+        if($products->save()){
+            Session::flash('proID', $products->id);
             return redirect()->route('product.index')->with('success','Product Inserted Successfully');
+        }
         return redirect()->back()->with('error','Something went wrong');
     }
 
@@ -147,11 +144,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request->all());
         $this->validation($request);
 
         $products = Product::find($id);
 
         $products->product_name = $request->product_name;
+        $products->specification = $request->product_specification;
         $products->product_description = $request->product_description;
         $products->color = $request->product_color;
         $products->model = $request->product_model;
@@ -162,17 +161,15 @@ class ProductController extends Controller
         $products->size = $request->product_size;
         $products->stock = $request->product_stock;
         $products->brand_id = $request->product_brand;
-        $products->sub_categories_id = $request->product_category;
+        $products->sub_categories_id = $request->product_sub_category;
         $products->manufactured_by = $request->manufactured_by;
         $products->is_new = $request->is_new;
         $products->status = $request->status;
-        $products->extra_description = $request->extra_description;
-        $products->specification = $request->specification;
 
         if( ! empty($request->emi_id) )
             $products->emi_id = implode(',', $request->emi_id);
-        if( isset($request->secondary_sub_categories_id) )
-            $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
+        //if( isset($request->secondary_sub_categories_id) )
+        $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
         static::deleteFile(storage_path().'/app/public/images/' . $products->feature_image);
 
@@ -206,6 +203,14 @@ class ProductController extends Controller
         if( self::changeStatus($request->status, 'App\Models\Product', $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
+    }
+
+
+    public function specification(Request $request, Product $product){
+        $product->product_description = $request->product_description;
+
+
+        return ($product->save())? redirect()->back()->with('success', 'Description added') : redirect()->back()->with('error', 'Something went wrong');
     }
 
 

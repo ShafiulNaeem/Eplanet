@@ -88,6 +88,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 {{--<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>--}}
 
 <script>
@@ -97,69 +98,69 @@
     }
     var data = [];
     var mainDatas = [];
-@php
-    $from = date('Y') . '-01-01 ' . date('H:i:s');
-    $to = date('Y') . '-12-31 ' . date('H:i:s');
-    $pro = \App\Models\Product::where('admin_id', \Illuminate\Support\Facades\Auth::guard('admin')->id())->orderBy('sold', 'desc')->limit(5)->get();
-    $monthlySell = [];
+    @php
+        $from = date('Y') . '-01-01 ' . date('H:i:s');
+        $to = date('Y') . '-12-31 ' . date('H:i:s');
+        $pro = \App\Models\Product::where('admin_id', \Illuminate\Support\Facades\Auth::guard('admin')->id())->orderBy('sold', 'desc')->limit(5)->get();
+        $monthlySell = [];
 
-    foreach ($pro as $prIndex => $product){
-        $res= \App\Models\OrderProduct::with('order')
-            ->where('product_id', $product->id)
-            ->whereHas('order', function ($query){ $query->where('shifted', 1); })
-            ->whereBetween('created_at', [$from, $to])
-            ->get()
-            ->groupBy(function($val) {
-                return \Carbon\Carbon::parse($val->created_at)->format('m');
-        });
+        foreach ($pro as $prIndex => $product){
+            $res= \App\Models\OrderProduct::with('order')
+                ->where('product_id', $product->id)
+                ->whereHas('order', function ($query){ $query->where('shifted', 1); })
+                ->whereBetween('created_at', [$from, $to])
+                ->get()
+                ->groupBy(function($val) {
+                    return \Carbon\Carbon::parse($val->created_at)->format('m');
+            });
 
 
-        if( ! count($res) ){
-            for ($i = 1; $i <= 12; ++$i){
-                @endphp
+            if( ! count($res) ){
+                for ($i = 1; $i <= 12; ++$i){
+    @endphp
 
-                mainDatas.push(0);
-            @php
-            }
+    mainDatas.push(0);
+    @php
         }
-        else {
-            foreach ($res as $index => $value){
-                @endphp
-                mainDatas.push( {{ $value[0]->order->quantity }} );
+    }
+    else {
+        foreach ($res as $index => $value){
+    @endphp
+    mainDatas.push( {{ $value[0]->order->quantity }} );
 
-                @php
-                //$monthlySell[$prIndex]['data'][] = $value[0]->order->quantity;
-            }
+    @php
+        //$monthlySell[$prIndex]['data'][] = $value[0]->order->quantity;
+    }
 
-            $len = count($res) ;
+    $len = count($res) ;
 
-            if( $len < 12 ){
-                for ($i = $len+1; $i <= 12; ++$i){
-                    @endphp
-                mainDatas.push(0);
-                    @php
-                }
-            }
+    if( $len < 12 ){
+        for ($i = $len+1; $i <= 12; ++$i){
+    @endphp
+    mainDatas.push(0);
+    @php
         }
+    }
+}
 
-@endphp
-data.push({
-    label : '{{$product->product_name}}',
-    backgroundColor : random_rgba(),
-    borderColor : random_rgba(),
-    {{--pointRadius : true,--}}
-    {{--pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',--}}
-    pointStrokeColor : random_rgba(),
-    pointHighlightFill : random_rgba(),
-    pointHighlightStroke : random_rgba(),
-    data: mainDatas
-});
+    @endphp
+    data.push({
+        label : '{{$product->product_name}}',
+        backgroundColor : random_rgba(),
+        borderColor : random_rgba(),
+        {{--pointRadius : true,--}}
+            {{--pointColor : '{{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}',--}}
+        pointStrokeColor : random_rgba(),
+        pointHighlightFill : random_rgba(),
+        pointHighlightStroke : random_rgba(),
+        data: mainDatas
+    });
 
     mainDatas = [];
     @php
 
-    }
-@endphp
+        }
+    @endphp
 
     console.log(data);
 
@@ -269,7 +270,7 @@ data.push({
 
         $('#example2').DataTable({
             "paging": true,
-                "lengthChange": false,
+            "lengthChange": false,
             "searching": true,
             "ordering": true,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
@@ -351,7 +352,7 @@ data.push({
 
 
                     let image = createElement('img');
-                    let src = window.location.origin + "/storage/images/" + value.products[0].feature_image;
+                    let src = window.location.origin + "/storage/app/public/images/" + value.products[0].feature_image;
                     image.setAttribute('src', src);
                     image.setAttribute('alt', value.products[0].product_name);
                     image.setAttribute('width', 80);
@@ -430,7 +431,7 @@ data.push({
 
 
                     let image = createElement('img');
-                    let src = window.location.origin + "/images/" + value.products[0].feature_image;
+                    let src = window.location.origin + "/storage/app/public/images/" + value.products[0].feature_image;
                     image.setAttribute('src', src);
                     image.setAttribute('alt', value.products[0].product_name);
                     image.setAttribute('width', 80);
@@ -569,13 +570,26 @@ data.push({
         }
     })
 </script>
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
+@if( url()->current() == route('product.index') )
+    <script>
+        let all_description = $('[name^="product_description"]' );
+
+        all_description.each(function( index ) {
+            console.log( $( this )[0].id );
+            CKEDITOR.replace( $( this )[0].id );
+        });
+
+    </script>
+@endif
 <script>
     CKEDITOR.replace( 'product_description' );
-    CKEDITOR.replace( 'extra_description' );
-    CKEDITOR.replace( 'specification' );
- </script>
+    //CKEDITOR.replace( 'extra_description' );
+</script>
+
+<script>
+    CKEDITOR.replace( 'product_specification' );
+</script>
 
 
 <script>
@@ -593,6 +607,14 @@ data.push({
     });
 </script>
 
+@if( Session::has('proID') )
+
+    <script>
+        let proID = {{ Session::get('proID') }};
+        let modal = $('#modal-xl' + proID);
+        modal.modal('show');
+    </script>
+@endif
 </body>
 </html>
 

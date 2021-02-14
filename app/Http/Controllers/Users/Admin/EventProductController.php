@@ -137,25 +137,25 @@ class EventProductController extends Controller
 
         foreach ($eventProduct as $event_products){
             foreach ($event_products['event_products'] as $products){
-                $tableData .= '<tr role="row"><td class="text-center">' . $products['products']['product_name'] . "</td>";
-                $tableData .= '<td class="text-center"> <img width="80" src="' . asset('/storage/images/' . $products['products']['feature_image']) . '" /></td>';
-                $tableData .= '<td class="text-center">' . $products['products']['stock'] . '</td>';
-                $tableData .= '<td class="text-center">' . $products['products']['product_price'] . '</td>';
-                $tableData .= '<td class="text-center">' . $products['products']['category']['category_name'] . '</td>';
-                $tableData .= '<td class="text-center">' . $products['products']['subcategory']['subcategory_name'] . '</td>';
-                $tableData .= '<td class="text-center">' . $products['products']['secondsub']['secondary_subcategory_name'] . '</td>';
-                $tableData .= '<td class="text-center">' . $products['products']['brand']['brand_name'] . '</td>';
-                $tableData .= '<td class="text-center"> <form
+                if( $products['products'] != null ){
+                    $tableData .= '<tr role="row"><td class="text-center">' . $products['products']['product_name'] . "</td>";
+                    $tableData .= '<td class="text-center"> <img width="80" src="' . asset('/storage/app/public/images/' . $products['products']['feature_image']) . '" /></td>';
+                    $tableData .= '<td class="text-center">' . $products['products']['stock'] . '</td>';
+                    $tableData .= '<td class="text-center">' . $products['products']['product_price'] . '</td>';
+                    $tableData .= '<td class="text-center">' . $products['products']['category']['category_name'] . '</td>';
+                    $tableData .= '<td class="text-center">' . $products['products']['subcategory']['subcategory_name'] . '</td>';
+                    $tableData .= '<td class="text-center">' . $products['products']['secondsub']['secondary_subcategory_name'] . '</td>';
+                    $tableData .= '<td class="text-center">' . $products['products']['brand']['brand_name'] . '</td>';
+                    $tableData .= '<td class="text-center"> <form
                                                                     action="'.route('eventProduct.destroy',$products["id"]).'"
                                                                     method="post">
                                                                     <input type="hidden" value="' . csrf_token() . '" name="_token">
                                                                     <input type="hidden" value="DELETE"  name="_method">
                                                                     <button type="submit" class="btn btn-app text-danger"><i class="fa fa-trash fa-2x"></i> </button>
                                                                 </form> </td></tr>';
-//                dd($products['products']);
+                }
             }
         }
-//        $tableData .= "</tr>";
         return $tableData;
     }
 }

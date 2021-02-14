@@ -183,7 +183,7 @@
                                                                     <li>
                                                                         <select name="" id="" class="form-control" >
                                                                             @php
-                                                                                $areas = \App\Models\Area::where('product_id', $products[0]->id)->get()
+                                                                                $areas = \App\Models\Area::all()
                                                                             @endphp
                                                                             @if( ! empty($areas) )
                                                                                 @foreach($areas as $area)

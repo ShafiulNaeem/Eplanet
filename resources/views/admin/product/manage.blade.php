@@ -27,7 +27,6 @@
                                         <th>Product Name</th>
                                         <th>Brand</th>
                                         <th>Product Stock</th>
-                                        <th>Product Size</th>
                                         <th>Product Tax</th>
                                         <th>Product Price</th>
                                         <th>Product Created</th>
@@ -41,11 +40,10 @@
                                     @foreach($products as $index => $product)
                                         <tr>
                                             <td>{{$product->unique_id}}</td>
-                                            <td><img src="{{asset('storage/images/'.$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
+                                            <td><img src="{{asset('storage/app/public/images/'.$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
                                             <td>{{$product->product_name}}</td>
                                             <td>{{$product->brand->brand_name}}</td>
                                             <td>{{$product->stock}} piece(s) </td>
-                                            <td>{{$product->size}}</td>
                                             <td>{{$product->tax}}%</td>
                                             <td>BDT {{$product->product_price}}</td>
                                             <td>{{\Carbon\Carbon::parse($product->created_at)->format('M d Y')}}</td>
@@ -60,8 +58,44 @@
                                                     @else
                                                         <button type="submit" class="btn btn-danger">Inactive</button>
                                                     @endif
+                                                    <br>
+                                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                                            data-target="#modal-xl{{$product->id}}">Description</button>
                                                 </form>
+
+                                                <div class="modal fade" id="modal-xl{{$product->id}}">
+                                                    <div class="modal-dialog modal-xl">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title"> Product Description </h4>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="post" action="{{ route('product.change.specification', $product->id) }}">
+                                                                    @csrf
+                                                                    <textarea class="form-control" id="product_description{{$product->id}}" name="product_description" required rows="10">{{ old('product_description') }}</textarea>
+                                                                    <button class="btn btn-block btn-primary" type="submit" >Save</button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer justify-content-between">
+                                                                <button type="button" class="btn btn-info"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+
+                                                </div>
+
                                             </td>
+
+
+
+
                                             <td>
                                                 <a href="{{route('product.edit',$product->id)}}" class="btn text-warning btn-app float-left">
                                                     <i class="fas fa-edit"></i> Edit
@@ -102,7 +136,6 @@
                                         <th>Product Name</th>
                                         <th>Brand</th>
                                         <th>Product Stock</th>
-                                        <th>Product Size</th>
                                         <th>Product Tax</th>
                                         <th>Product Price</th>
                                         <th>Product Created</th>
