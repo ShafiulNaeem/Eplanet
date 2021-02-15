@@ -20,14 +20,14 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{route('eventProduct.store')}}" method="POST">
+                            <form action="{{route('eventproduct.store')}}" method="POST">
                                 @csrf
                                 <div class="card-body">
 
                                     <div id="copy">
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Category</label>
-                                            <select required name="event_category" id="cat_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <select required name="category_id" id="cat_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                                 <option value="" >Select Category</option>
                                                 @foreach($categories as $category )
                                                     <option value="{{$category->id}}">{{$category->category_name}}</option>

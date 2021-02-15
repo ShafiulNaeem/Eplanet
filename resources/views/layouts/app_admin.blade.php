@@ -578,6 +578,7 @@
 
 
             success: function (response) {
+                console.log(response)
                 product[0].innerHTML = " ";
                 let option = createElement("option");
 

@@ -260,7 +260,7 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('area', 'AreaController');
     Route::resource('emi', 'EMIController');
     Route::resource('event', 'EventController');
-    Route::resource('eventProduct', 'EventProductController');
+    Route::resource('eventproduct', 'EventProductController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
