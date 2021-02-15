@@ -179,7 +179,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="language_currencys">
-                                <a href="">GET Apps</a>
+                                <a href=""><h4 class="ml23">GET APPS</h4></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">
@@ -238,12 +238,12 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 area_top">
                                     <div class="header_account_area">
                                         <div class="header_account_list register">
                                             <ul>
                                                 @if(! \Illuminate\Support\Facades\Auth::check())
-                                                    <li><a href="{{route('register')}}">{{ __('Sign Up') }}</a></li>
+                                                    <li><a href="{{route('register')}}">{{ __('Signup') }}</a></li>
                                                     <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                                                 @else
                                                     <li><a href="{{route('logout')}}"
@@ -415,6 +415,7 @@
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                                 @endif
+                                <li class=" anime"><a href=""><h4 class="ml2">নবাবী হাট</h4></a></li>
 
                             </ul>
                         </nav>
