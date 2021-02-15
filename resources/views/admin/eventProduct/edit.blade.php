@@ -20,7 +20,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{route('eventProduct.update',$eventProduct->id)}}" method="POST">
+                            <form action="{{route('eventproduct.update',$eventProduct->id)}}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -32,7 +32,7 @@
                                                 <option value="" >Select Category</option>
                                                 @foreach($categories as $category )
                                                     <option
-                                                        @if( $category->id == $eventProduct->category_id )
+                                                        @if( $category->id == $categoriesID )
                                                         selected
                                                         @endif
 
@@ -43,17 +43,16 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputEmail1">Product Name</label>
-                                            <select name="product_id" id="product_id" data-product="{{$eventProduct->product_id}}" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <select name="product_id[]" id="product_id" multiple="multiple" data-product="{{$eventProduct->product_id}}" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                                 <option value="">Select Product</option>
-                                                @foreach($products as $category)
-                                                    @foreach($category->products as $product)
+                                                @foreach($products as $product)
+{{--                                                    {{is_numeric(array_search($product->id, $productsID))}}--}}
                                                     <option
-                                                        @if( $product->id == $eventProduct->product_id )
+                                                        @if( is_numeric(array_search($product->id, $productsID)) )
                                                         selected
                                                         @endif
 
                                                         value="{{$product->id}}">{{$product->product_name}}</option>
-                                                    @endforeach
                                                 @endforeach
                                             </select>
                                         </div>
@@ -64,7 +63,7 @@
                                                 <option selected>Select Event</option>
                                                 @foreach($events as $event)
                                                     <option
-                                                        @if( $event->id == $eventProduct->event_id )
+                                                        @if( $event->id == $eventProduct->id )
                                                         selected
                                                         @endif
 

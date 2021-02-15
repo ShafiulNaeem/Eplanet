@@ -364,14 +364,14 @@
                 </li>
 
                 <li class="nav-item @if(
-                                    url()->current() == route('eventProduct.create') ||
+                                    url()->current() == route('eventproduct.create') ||
                                     url()->current() == route('admin.all.eventProduct') ||
-                                    url()->current() == route('eventProduct.index')
+                                    url()->current() == route('eventproduct.index')
     ) menu-is-opening menu-open @endif">
                     <a href="#" class="nav-link @if(
-                                    url()->current() == route('eventProduct.create') ||
+                                    url()->current() == route('eventproduct.create') ||
                                     url()->current() == route('admin.all.eventProduct') ||
-                                    url()->current() == route('eventProduct.index')
+                                    url()->current() == route('eventproduct.index')
     ) active @endif ">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -380,18 +380,18 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('eventProduct.create') ||
+                                    url()->current() == route('eventproduct.create') ||
                                     url()->current() == route('admin.all.eventProduct') ||
-                                    url()->current() == route('eventProduct.index')
+                                    url()->current() == route('eventproduct.index')
     ) style="display: block" @endif >
                         <li class="nav-item">
-                            <a href="{{ route('eventProduct.create') }}" class="nav-link @if( url()->current() == route('eventProduct.create' ) )active @endif ">
+                            <a href="{{ route('eventproduct.create') }}" class="nav-link @if( url()->current() == route('eventproduct.create' ) )active @endif ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create Event Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('eventProduct.index') }}" class="nav-link @if( url()->current() == route('eventProduct.index' ) )active @endif ">
+                            <a href="{{ route('eventproduct.index') }}" class="nav-link @if( url()->current() == route('eventproduct.index' ) )active @endif ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Event Product</p>
                             </a>

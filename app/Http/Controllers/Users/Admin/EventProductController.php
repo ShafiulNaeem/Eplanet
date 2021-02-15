@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\EventProduct;
 use App\Models\Product;
@@ -39,9 +40,9 @@ class EventProductController extends Controller
     {
         $products = Product::AdminProduct()->GetActive()->get();
         $events = Event::EventWithAdminOwner()->GetActive()->get();
-         //dd($events);
+        $categories = Category::CategoryWithAdminOwner()->get();
 
-        return view('admin.eventProduct.create',compact('products','events'));
+        return view('admin.eventProduct.create',compact('products','events', 'categories'));
     }
 
     /**
@@ -52,7 +53,14 @@ class EventProductController extends Controller
      */
     public function store(Request $request)
     {
+        return ($this->createEvent($request)) ? redirect(route('eventproduct.index'))->with('success', ' Event created') :
+            redirect()->back()->with('error', ' Semething Went wrong');
+    }
+
+
+    private function createEvent(Request $request){
         $validate = $request->validate([
+            'category_id'=> 'required',
             'product_id'=> 'required',
             'event_id'=> 'required',
         ]);
@@ -60,14 +68,15 @@ class EventProductController extends Controller
         foreach ($request->product_id as $id){
             $event = EventProduct::create([
                 'admin_id' => Auth::guard('admin')->id(),
+                'category_id' => $request->category_id,
                 'event_id' => $request->event_id,
                 'product_id' => $id,
             ]);
 
-            if( empty($event->id) ) return redirect()->back()->with('error', 'Something went wrong, please try again');
+            if( empty($event->id) ) return false;
         }
 
-        return redirect(route('eventProduct.index'))->with('success', 'Product Event Category created');
+        return true;
     }
 
     /**
@@ -84,33 +93,42 @@ class EventProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $eventProduct
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit(EventProduct $eventProduct)
+    public function edit($eventProduct)
     {
         $products = Product::AdminProduct()->GetActive()->get();
         $events = Event::EventWithAdminOwner()->GetActive()->get();
-        return view('admin.eventProduct.edit',compact('eventProduct', 'products','events'));
+        $categories = Category::CategoryWithAdminOwner()->get();
+        $eventProductAll = EventProduct::where('event_id', $eventProduct)->get();
+        $eventProduct = Event::find($eventProduct);
+
+        $productsID = [];
+        $categoriesID = null;
+
+        foreach ($eventProductAll as $value){
+            array_push($productsID, $value->product_id);
+            $categoriesID = $value->category_id;
+        }
+
+        return view('admin.eventProduct.edit',compact('categoriesID','productsID','products','eventProduct','categories', 'products','events'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  $eventProduct
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, EventProduct $eventProduct)
+    public function update(Request $request, $eventProduct)
     {
-        $validate = $request->validate([
-            'product_id'=> 'required',
-            'event_id'=> 'required',
-        ]);
+        EventProduct::where('event_id', $eventProduct)->delete();
 
-        return ( $eventProduct->update($validate) )?
-            redirect()->route('eventProduct.index')->with('success', 'Updated Successfully'):
-            redirect()->route('eventProduct.index')->with('error', 'Something went wrong') ;
+        return ( $this->createEvent($request) )?
+            redirect()->route('eventproduct.index')->with('success', 'Updated Successfully'):
+            redirect()->back()->with('error', 'Something went wrong') ;
     }
 
     /**
@@ -120,7 +138,7 @@ class EventProductController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(EventProduct $eventProduct)
+    public function destroy(EventProduct $eventproduct)
     {
         return $eventProduct->delete() ?
             redirect()->back()->with('info', ' Delete Successfully') :
@@ -147,7 +165,7 @@ class EventProductController extends Controller
                     $tableData .= '<td class="text-center">' . $products['products']['secondsub']['secondary_subcategory_name'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['brand']['brand_name'] . '</td>';
                     $tableData .= '<td class="text-center"> <form
-                                                                    action="'.route('eventProduct.destroy',$products["id"]).'"
+                                                                    action="'.route('eventproduct.destroy',$products["id"]).'"
                                                                     method="post">
                                                                     <input type="hidden" value="' . csrf_token() . '" name="_token">
                                                                     <input type="hidden" value="DELETE"  name="_method">

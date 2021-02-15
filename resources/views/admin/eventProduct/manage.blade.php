@@ -7,7 +7,7 @@
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
                 'title' => 'Manage Event Product',
-                'link' => route('eventProduct.create'),
+                'link' => route('eventproduct.create'),
                 'text' => 'Create Event Product',
             ])
 
@@ -104,44 +104,44 @@
                                                 </div>
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('eventProduct.edit', $eventProduct->id) }}"
+                                                <a href="{{ route('eventproduct.edit', $eventProduct->id) }}"
                                                    class="btn btn-app float-left">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
 
-                                                <a href="" class="btn btn-app text-danger" data-toggle="modal"
-                                                   data-target="#exampleModal{{$eventProduct->id}}">
-                                                    <i class="fa fa-trash fa-2x"></i> DELETE
-                                                </a>
+{{--                                                <a href="" class="btn btn-app text-danger" data-toggle="modal"--}}
+{{--                                                   data-target="#exampleModal{{$eventProduct->id}}">--}}
+{{--                                                    <i class="fa fa-trash fa-2x"></i> DELETE--}}
+{{--                                                </a>--}}
 
-                                                <div class="modal fade" id="exampleModal{{$eventProduct->id}}"
-                                                     tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                     aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Do You
-                                                                    Want to Delete this !!!</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form
-                                                                    action="{{route('event.destroy',$eventProduct->id)}}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @method("DELETE")
-                                                                    <button class="btn btn-danger">Confirm</button>
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Close
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+{{--                                                <div class="modal fade" id="exampleModal{{$eventProduct->id}}"--}}
+{{--                                                     tabindex="-1" aria-labelledby="exampleModalLabel"--}}
+{{--                                                     aria-hidden="true">--}}
+{{--                                                    <div class="modal-dialog">--}}
+{{--                                                        <div class="modal-content">--}}
+{{--                                                            <div class="modal-header">--}}
+{{--                                                                <h5 class="modal-title" id="exampleModalLabel">Do You--}}
+{{--                                                                    Want to Delete this !!!</h5>--}}
+{{--                                                                <button type="button" class="close" data-dismiss="modal"--}}
+{{--                                                                        aria-label="Close">--}}
+{{--                                                                    <span aria-hidden="true">&times;</span>--}}
+{{--                                                                </button>--}}
+{{--                                                            </div>--}}
+{{--                                                            <div class="modal-body">--}}
+{{--                                                                <form--}}
+{{--                                                                    action="{{route('event.destroy',$eventProduct->id)}}"--}}
+{{--                                                                    method="post">--}}
+{{--                                                                    @csrf--}}
+{{--                                                                    @method("DELETE")--}}
+{{--                                                                    <button class="btn btn-danger">Confirm</button>--}}
+{{--                                                                    <button type="button" class="btn btn-secondary"--}}
+{{--                                                                            data-dismiss="modal">Close--}}
+{{--                                                                    </button>--}}
+{{--                                                                </form>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
 
                                             </td>
                                         </tr>
