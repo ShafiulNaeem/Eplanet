@@ -751,12 +751,18 @@ header .main-header, header .main-nav {
     }
 }
 
+
+
 .main_header{
 
     background: #181A1A;
 }
-.main-header-inner a{
+.main-header-inner a {
     color: #FFF;
+    font-size: 16px;
+}
+.main-header-inner{
+    margin-left: 10px;
 }
 
 
@@ -1042,8 +1048,10 @@ Fading
 .image_video{
     width:100%;
 }
-.header_account_area li a{
-    color:#FFF
+.header_account_area li a {
+    color: #FFF;
+    font-size: 14px;
+    padding: 0 5px;
 }
 @media only screen and (min-width:320px) and (max-width: 460px) {
 
@@ -1053,14 +1061,16 @@ Fading
     background: #181A1A;
 }
 .language_currency{
-    text-align:left;
+    padding-left:95px;
 }
 .language_currencys {
     text-align: center;
 }
 
-.top_last{
+.top_last {
     text-align: right;
+    position: relative;
+    right: 90px;
 }
 
 .header_account_area {
@@ -1159,3 +1169,70 @@ Fading
 .product_desc{
     border-bottom:none;
 }
+
+@media (min-width: 1280px) {
+
+    .fa-camera{
+        margin: 0;
+    }
+    .logo{
+        margin-left: -2px;
+    }
+}
+@media (min-width: 1281px)and (max-width:1920px) {
+
+    .logo{
+        margin-left: 10px;
+    }
+}
+
+/* .logo{
+    text-align: center;
+    margin-left:10px
+} */
+
+@media (min-width: 1281px) and (max-width:1920px){
+
+    .fa-camera{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+}
+
+.anime h4{
+    color:#91B83B;
+    margin-bottom: -3px;
+}
+
+
+
+
+.ml2 {
+    font-weight: 900;
+    font-size:15px;
+  }
+  
+  .ml2 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+  .ml23 {
+    font-weight: 900;
+    font-size:15px;
+    margin:0px;
+  }
+  
+  .ml23 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+
+  .area_top {
+    padding: 0;
+    
+}
+  .header_account_list{
+    margin-left: -39px;
+  }
