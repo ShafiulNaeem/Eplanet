@@ -48,7 +48,7 @@ class ProductFactory extends Factory
             },
             'product_name' => $this->faker->name,
             'product_description' => $this->faker->text(200),
-            'extra_description' => $this->faker->text(200),
+//            'extra_description' => $this->faker->text(200),
             'specification' => $this->faker->text(200),
             'feature_image' => $this->faker->image(storage_path('app\public\images'), 840, 680,null, false),
             'stock' => $this->faker->numberBetween(10, 400),
