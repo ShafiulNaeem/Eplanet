@@ -194,9 +194,14 @@ Route::prefix('admin')->group(function(){
         Route::post('product/specification/{product}', 'ProductController@specification')->name('product.change.specification');
 
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
+
+        //category by product, subcategory
         Route::post('productbycat/{category}', 'CategoryController@productByCategory')->name('product.by.cat');
         Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
         Route::post('secondsubcatbysubcat/{subcategory}', 'SubCategoryController@secondarySubBySubCategory')->name('second.sub.cat.by.sub.cat');
+
+        // Division by District
+        Route::post('districtByDivision/{division}', 'DivisionController@DistrictByDivision')->name('district.by.division');
 
         Route::name('admin.all.')->prefix('allvendor')->group(function (){
             Route::get('product', 'ProductController@allProduct')->name('product');
@@ -213,6 +218,9 @@ Route::prefix('admin')->group(function(){
             Route::get('emi', 'EMIController@withoutAdmin')->name('emi');
             Route::get('event', 'EventController@allEvent')->name('event');
             Route::get('eventProduct', 'EventProductController@allEventProduct')->name('eventProduct');
+            Route::get('division', 'DivisionController@allDivision')->name('division');
+            Route::get('district', 'DistrictController@allDistrict')->name('district');
+            Route::get('city', 'CityController@allCity')->name('city');
         });
     });
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
@@ -261,6 +269,9 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('emi', 'EMIController');
     Route::resource('event', 'EventController');
     Route::resource('eventproduct', 'EventProductController');
+    Route::resource('division', 'DivisionController');
+    Route::resource('district', 'DistrictController');
+    Route::resource('city', 'CityController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');

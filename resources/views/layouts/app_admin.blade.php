@@ -614,6 +614,58 @@
     }
 </script>
 
+<script>
+    // Division by District
+    $('#division_id').on('change',function (e) {
+        let selectedValue = $(this).children("option:selected").val();
+        let district = $('#district_id');
+        let districtId = district.attr("data-district");
+        // console.log(subCatId)
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('admin/districtByDivision') }}/" + selectedValue,
+            method: 'post',
+
+
+            success: function (response) {
+                console.log(response)
+                district[0].innerHTML = " ";
+                let option = createElement("option");
+
+                option.setAttribute('value', " ");
+                option.innerText = "Select";
+                district[0].append(option);
+
+                response.forEach((value, index) => {
+                    let option = returnByOption(value, districtId);
+                    district[0].append(option);
+                });
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+
+
+    });
+    function createElement(element) {
+        return document.createElement(element);
+    }
+
+    function returnByOption(value, districtId){
+        let option = createElement('option');
+        option.setAttribute('value', value.id);
+        option.innerText = value.district_name;
+
+        if( value.id == districtId ) option.selected = true;
+
+        return option;
+    }
+</script>
+
 
 <script>
     $('#reservation').daterangepicker()
