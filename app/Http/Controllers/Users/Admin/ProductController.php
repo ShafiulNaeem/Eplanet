@@ -75,8 +75,8 @@ class ProductController extends Controller
         $products->coupon_id = $request->product_coupon;
         $products->product_slug = $this->createSlug(Product::class, $request->product_name, "product_slug");
         $products->product_name = $request->product_name;
-        $products->specification = $request->product_description;
-        //$products->product_description = $request->product_description[1];
+        $products->specification = $request->product_specification;
+        $products->product_description = $request->product_description;
         $products->color = $request->product_color;
         $products->model = $request->product_model;
         $products->tax = $request->product_tax;
@@ -100,7 +100,6 @@ class ProductController extends Controller
         };
 
         if($products->save()){
-            Session::flash('proID', $products->id);
             return redirect()->route('product.index')->with('success','Product Inserted Successfully');
         }
         return redirect()->back()->with('error','Something went wrong');

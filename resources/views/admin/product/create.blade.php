@@ -35,6 +35,8 @@
                                                     </select>
                                                 </div>
 
+
+
                                                 <div class="form-group col-md-6 float-left">
                                                     <label for="exampleInputPassword1">Product Name</label>
                                                     <input type="text" name="product_name" value="{{old('product_name')}}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="Product Name">
@@ -180,6 +182,7 @@
                                                 </div>
 
 
+
                                                 <div class="form-group col-md-6 float-left">
                                                     <label for="exampleFormControlFile1">Product Feature Image</label>
                                                 <!-- {{--                                            <input type="file" name="feature_image" class="form-control-file" id="exampleFormControlFile1">--}} -->
@@ -195,49 +198,35 @@
                                             <div class="row">
                                                 <div class="form-group col-md-12">
                                                     <label >Product Specification</label>
-                                                    <textarea class="form-control" name="product_description" required rows="10">{{ old('product_description') }}</textarea>
+                                                    <textarea class="form-control" name="product_description"  rows="10">{{ old('product_description') }}</textarea>
+                                                    @error('product_description')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group col-md-12">
+                                                    <label >Product Description</label>
+                                                    <textarea class="form-control" name="product_specification"  rows="10">{{ old('product_description') }}</textarea>
                                                     @error('product_description')
                                                     <span class="text-danger">{{$message}}</span>
                                                     @enderror
                                                 </div>
                                             </div>
-
-
-                                            <!--<div class="form-group col-md-6 float-left">-->
-                                            <!--    <label >Product Description</label>-->
-                                        <!--    <textarea class="form-control" name="product_description[]" required rows="10">{{ old('product_description') }}</textarea>-->
-                                        <!--    @error('product_description')-->
-                                        <!--        <span class="text-danger">{{$message}}</span>-->
-                                            <!--    @enderror-->
-                                            <!--</div>-->
-
-                                            <!--<div class="form-group col-md-6 float-left">-->
-                                            <!--    <label>Product Other Description</label>-->
-                                        <!--    <textarea class="form-control" name="extra_description"   rows="3">{{ old('extra_description') }}</textarea>-->
-                                            <!--</div>-->
-
-
-
-                                            {{--                                        <div class="form-group col-md-6 float-left mt-2">--}}
-                                            {{--                                            <label for=""> </label>--}}
-                                            {{--                                            <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>--}}
-                                            {{--                                        </div>--}}
-
                                         </div><!-- /.box-body -->
 
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                                        </div>
-                                    </form>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
                                 </div>
-                                <!-- /.card -->
-
+                                </form>
                             </div>
-                            <!--/.col (left) -->
+                            <!-- /.card -->
+
                         </div>
-                        <!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-            </section>
-            <!-- /.content -->
+                        <!--/.col (left) -->
+                    </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+        </div>
+        </section>
+        <!-- /.content -->
 @endsection
