@@ -36,7 +36,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
                                     @foreach($products as $index => $product)
                                         <tr>
                                             <td>{{$product->unique_id}}</td>
@@ -58,38 +57,8 @@
                                                     @else
                                                         <button type="submit" class="btn btn-danger">Inactive</button>
                                                     @endif
-                                                    <br>
-                                                    <button type="button" class="btn btn-success" data-toggle="modal"
-                                                            data-target="#modal-xl{{$product->id}}">Description</button>
                                                 </form>
 
-                                                <div class="modal fade" id="modal-xl{{$product->id}}">
-                                                    <div class="modal-dialog modal-xl">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title"> Product Description </h4>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="post" action="{{ route('product.change.specification', $product->id) }}">
-                                                                    @csrf
-                                                                    <textarea class="form-control" id="product_description{{$product->id}}" name="product_description" required rows="10">{{ old('product_description') }}</textarea>
-                                                                    <button class="btn btn-block btn-primary" type="submit" >Save</button>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-info"
-                                                                        data-dismiss="modal">Close
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-
-                                                </div>
 
                                             </td>
 
