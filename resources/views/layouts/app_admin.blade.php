@@ -88,8 +88,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminAsset/dist/js/demo.js') }}"></script>
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-{{--<script src="{{ asset('adminAsset/dist/js/pages/dashboard2.js') }}"></script>--}}
+<script src="https://cdn.tiny.cloud/1/o2es2ighryq5asf07w5arxsgc1kdh1uf6y1e0moe6be8hozy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script>
     function random_rgba() {
@@ -639,13 +638,15 @@
     </script>
 @endif
 <script>
-    CKEDITOR.replace( 'product_description' );
-    //CKEDITOR.replace( 'extra_description' );
+    tinymce.init({
+        selector: '[name="product_specification"]'
+    });
+
+    tinymce.init({
+        selector: '[name="product_description"]'
+    });
 </script>
 
-<script>
-    CKEDITOR.replace( 'product_specification' );
-</script>
 
 
 <script>
@@ -663,14 +664,6 @@
     });
 </script>
 
-@if( Session::has('proID') )
-
-    <script>
-        let proID = {{ Session::get('proID') }};
-        let modal = $('#modal-xl' + proID);
-        modal.modal('show');
-    </script>
-@endif
 </body>
 </html>
 
