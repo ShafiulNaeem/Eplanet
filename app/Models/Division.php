@@ -23,14 +23,22 @@ class Division extends Model
      */
     public function scopeWithoutAdminDivision($query)
     {
-        return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
+        return $query->where('admin_id', '!=', Auth::guard('admin')->user()->id);
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function districts()
     {
         return $this->hasMany(District::class);
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function cities()
     {
         return $this->hasMany(City::class);

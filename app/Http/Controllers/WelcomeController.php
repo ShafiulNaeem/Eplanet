@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\ContactUsSlider;
+use App\Models\Division;
 use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -38,8 +39,9 @@ class WelcomeController extends Controller
         $mainRes = Category::with('products')
             ->where('id', $product[0]->category_id)
             ->first();
+        $area = Division::with('districts.cities')->get();
 //dd($mainRes);
-        return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
+        return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'areas' => $area]);
 
     }
 

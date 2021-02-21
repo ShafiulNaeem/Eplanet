@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('feature_image');
             $table->integer('stock');
             $table->string('size')->nullable();
+            $table->string('return_policy')->nullable();
             $table->longText('specification')->nullable();
             $table->integer('is_new')->nullable();
             $table->string('model')->nullable();

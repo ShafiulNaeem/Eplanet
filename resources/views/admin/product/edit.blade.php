@@ -187,6 +187,13 @@
                                                 </div>
                                                 <span><img src="{{asset('storage/app/public/images/'.$product->feature_image)}}" alt="" width="80"></span>
                                             </div>
+
+                                            <div class="form-group col-md-6 float-left">
+                                                <label for="return_policy">Return Policy</label>
+                                                <input type="text" value="{{$product->return_policy}}" name="return_policy" id="return_policy" placeholder="Exm: 12 days return" class="form-control" />
+                                            </div>
+
+
                                         </div>
 
 

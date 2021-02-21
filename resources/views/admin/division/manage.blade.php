@@ -24,7 +24,6 @@
                         <thead style="background-color: #000;color:#fff">
                         <tr>
                             <th>Division</th>
-                            <th>Zip Code</th>
                             <th>Delivery Charge</th>
                             <th>Created at</th>
                             <th>Action</th>
@@ -36,10 +35,9 @@
 
                             <tr>
                                 <td style="width: 19%">{{$division->division_name}}</td>
-                                <td style="width: 19%">{{$division->zip_code}}</td>
                                 <td style="width: 19%">BDT: {{$division->price}}</td>
                                 <td>{{\Carbon\Carbon::parse($division->created_at)->format('M d Y')}}</td>
-                                <td >
+                                <td class="text-center">
                                     <a href="{{route('division.edit',$division->id)}}" style="margin: 0px 0px 10px 0px" class="btn text-warning btn-app float-left">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
@@ -77,7 +75,6 @@
                         <tfoot>
                         <tr>
                             <th>Division</th>
-                            <th>Zip Code</th>
                             <th>Delivery Charge</th>
                             <th>Created at</th>
                             <th>Action</th>
