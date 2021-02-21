@@ -111,7 +111,7 @@
 }.div_radis{
     border-radius: 10px;
 }
-..category-inner{
+.category-inner{
     width:100%;
     padding:12px 0;
 }
@@ -940,11 +940,11 @@ Fading
   -webkit-animation-name: fade;
   -webkit-animation-duration: 8.5s;
   -moz-animation-name: fade;
-  -moz-animation-duration: 1.5;
+  -moz-animation-duration: 1.5s;
   -ms-animation-name: fade;
   -ms-animation-duration: 1.5;
   -o-animation-name: fade;
-  -o-animation-duration: 1.5;
+  -o-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
 }
@@ -981,11 +981,11 @@ Fading
   -webkit-animation-name: slide;
   -webkit-animation-duration: 1.5s;
   -moz-animation-name: slide;
-  -moz-animation-duration: 1.5;
+  -moz-animation-duration: 1.5s;
   -ms-animation-name: slide;
-  -ms-animation-duration: 1.5;
+  -ms-animation-duration: 1.5s;
   -o-animation-name: slide;
-  -o-animation-duration: 1.5;
+  -o-animation-duration: 1.5s;
   animation-name: slide;
   animation-duration: 1.5s;
 }
@@ -1211,7 +1211,7 @@ Fading
     font-weight: 900;
     font-size:15px;
   }
-  
+
   .ml2 .letter {
     display: inline-block;
     line-height: 1em;
@@ -1222,7 +1222,7 @@ Fading
     font-size:15px;
     margin:0px;
   }
-  
+
   .ml23 .letter {
     display: inline-block;
     line-height: 1em;
@@ -1231,8 +1231,16 @@ Fading
 
   .area_top {
     padding: 0;
-    
+
 }
-  .header_account_list{
-    margin-left: -39px;
-  }
+
+.header_account_list{
+margin-left: -39px;
+}
+
+#click_change3 > i{
+  transform: rotate(90deg);
+  position: relative;
+  top: 4px;
+  left: -7px;
+}

@@ -25,8 +25,6 @@
                         <tr>
                             <th>Division</th>
                             <th>District</th>
-                            <th>Zip Code</th>
-                            <th>Delivery Charge</th>
                             <th>Created at</th>
                             <th>Action</th>
                         </tr>
@@ -38,8 +36,6 @@
                             <tr>
                                 <td style="width: 19%">{{$district->division->division_name}}</td>
                                 <td style="width: 19%">{{$district->district_name}}</td>
-                                <td style="width: 19%">{{$district->zip_code}}</td>
-                                <td style="width: 19%">BDT: {{$district->price}}</td>
                                 <td>{{\Carbon\Carbon::parse($district->created_at)->format('M d Y')}}</td>
                                 <td >
                                     <a href="{{route('district.edit',$district->id)}}" style="margin: 0px 0px 10px 0px" class="btn text-warning btn-app float-left">
@@ -80,8 +76,6 @@
                         <tr>
                             <th>Division</th>
                             <th>District</th>
-                            <th>Zip Code</th>
-                            <th>Delivery Charge</th>
                             <th>Created at</th>
                             <th>Action</th>
                         </tr>

@@ -11017,7 +11017,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-size: ;
+	/*font-size: ;*/
 	color: #FFF;
 }
 .footer_top{
@@ -11033,10 +11033,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width:100%;
   margin-bottom:60px;
 }
-/* .logo{
-  float:right;
-} */
 
-/*privacy policy css end*/
+.location {
+    border: 1.5px solid;
+}
 
-/*# sourceMappingURL=style.css.map */
+.location[data-toggle].collapsed:after {
+    content: "▾";
+}
+.location[data-toggle]:not(.collapsed):after {
+    content: "▴";
+}

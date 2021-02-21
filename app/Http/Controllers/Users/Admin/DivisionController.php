@@ -13,24 +13,28 @@ class DivisionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        $divisions = Division::orderBy('created_at','desc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
         return view('admin.division.manage',compact('divisions'));
     }
 
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function allDivision()
     {
-        $divisions = Division::orderBy('created_at','desc')->WithoutAdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->WithoutAdminDivision()->get();
         return view('admin.division.manage',compact('divisions'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -41,19 +45,18 @@ class DivisionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
         $validate = $request->validate([
             'division_name' => 'required',
-            'zip_code' => 'sometimes',
             'price' => 'sometimes'
         ]);
 
         $validate['admin_id'] = Auth::guard('admin')->id();
 
-        if( Division::create($validate) ) return redirect(route('division.index'))->with('success', 'Delivery Area division created');
+        if( Division::create($validate) ) return redirect(route('division.index'))->with('success', 'Division created');
         return redirect()->back()->with('error', 'Something went wrong, please try again');
     }
 
@@ -71,8 +74,8 @@ class DivisionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Division $division
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit(Division $division)
     {
@@ -82,16 +85,15 @@ class DivisionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Division $division
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Division $division)
     {
         $validate = $request->validate([
             'division_name' => 'required',
-            'price' => 'sometimes',
-            'zip_code' => 'sometimes'
+            'price' => 'sometimes'
         ]);
 
         return ( $division->update($validate) )?
@@ -102,8 +104,9 @@ class DivisionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Division $division
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Division $division)
     {

@@ -26,7 +26,7 @@
                                 <div class="card-body">
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1"> Division</label>
-                                        <select name="division_id" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                        <select name="division_id"  class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                             <option selected>Select Division</option>
                                             @foreach($divisions as $division)
                                                 <option value="{{$division->id}}">{{$division->division_name}}</option>
@@ -42,20 +42,20 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-6 float-left">
-                                        <label for="exampleInputPassword1">Zip Code</label>
-                                        <input type="text" name="zip_code" value="{{ old('zip_code') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">
-                                        @error('zip_code')
-                                        <span class="text-danger">{{$message}}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6 float-left">
-                                        <label for="exampleInputPassword1">Delivery Charge</label>
-                                        <input type="text" name="price" value="{{ old('price') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">
-                                        @error('price')
-                                        <span class="text-danger">{{$message}}</span>
-                                        @enderror
-                                    </div>
+{{--                                    <div class="form-group col-md-6 float-left">--}}
+{{--                                        <label for="exampleInputPassword1">Zip Code</label>--}}
+{{--                                        <input type="text" name="zip_code" value="{{ old('zip_code') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">--}}
+{{--                                        @error('zip_code')--}}
+{{--                                        <span class="text-danger">{{$message}}</span>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group col-md-6 float-left">--}}
+{{--                                        <label for="exampleInputPassword1">Delivery Charge</label>--}}
+{{--                                        <input type="text" name="price" value="{{ old('price') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">--}}
+{{--                                        @error('price')--}}
+{{--                                        <span class="text-danger">{{$message}}</span>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
                                 </div><!-- /.box-body -->
 
                                 <div class="card-footer">
