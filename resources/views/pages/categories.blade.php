@@ -68,69 +68,41 @@
             </div>
 
             @foreach($categories as $category)
-            <div class="row">
-                <div class="col-md-10">
-                    <h3>{{$category->subcategory_name}}</h3>
-                </div>
-                <div class="col-md-2">
-                    <h2><a href="{{route('subcat.show',$category->subcategory_slug)}}">View more</a></h2>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($category->productWithStatus as $product)
-                    <div class="col-md-3">
-                        <div class="right-category">
-                            <div class="card">
-                                <div class="zoom-In">
+                @if( count($category->productWithStatus) > 0 )
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3>{{$category->subcategory_name}}</h3>
+                        </div>
+                        <div class="col-md-2">
+                            <h2><a href="{{route('subcat.show',$category->subcategory_slug)}}">View more</a></h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                    @foreach($category->productWithStatus as $product)
+                        <div class="col-md-3">
+                            <div class="right-category">
+                                <div class="card">
+                                    <div class="zoom-In">
                                         <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{asset('storage/images/' .$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
-                                </div>
-                                <div class="card-body">
-                                    <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
-                                    <div class="price_box text-center">
-
-{{--                                        <div class=" product_ratting">--}}
-{{--                                            <ul>--}}
-{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                <li class="review"><a href="#"> (customer review )</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-                                        <a href="{{route('pages.show',$product->product_slug)}}" class="float-right">
-                                            <p>Size : {{ $product->size }}</p>
-                                        </a>
-                                        <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                        <div class="price_box text-center">
+                                            <a href="{{route('pages.show',$product->product_slug)}}" class="float-right">
+                                                <p>Size : {{ $product->size }}</p>
+                                            </a>
+                                            <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-
+                    @endforeach
+                </div>
+                @endif
             @endforeach
-      {{ $categories->links() }}
+            {{ $categories->links() }}
         </div>
-
-{{--        <div class="blog_pagination">--}}
-{{--            <div class="container">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-12">--}}
-{{--                        <div class="pagination">--}}
-{{--                           <ul>--}}
-{{--                                <li class="current">1</li>--}}
-{{--                                <li><a href="#">2</a></li>--}}
-{{--                               <li><a href="#">3</a></li>--}}
-{{--                                <li class="next"><a href="#">next</a></li>--}}
-{{--                                <li><a href="#">&gt;&gt;</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </section>
 
     <!-- related-section area End -->
