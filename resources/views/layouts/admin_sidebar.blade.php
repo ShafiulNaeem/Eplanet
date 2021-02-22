@@ -115,112 +115,6 @@
                     </li>
                 @endif
 
-                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                    <li class="nav-item @if(
-                                    url()->current() == route('employee.index') ||
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('employee.create')
-    ) menu-is-opening menu-open @endif ">
-                        <a href="#" class="nav-link @if(
-                                    url()->current() == route('employee.index') ||
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('employee.create')
-    ) active @endif ">
-                            <i class="nav-icon fas fa-circle"></i>
-                            <p>
-                                Employee Details
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-
-                        <ul class="nav nav-treeview " @if(
-                                    url()->current() == route('employee.index') ||
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('employee.create')
-    ) style="display: block" @endif >
-                            <li class="nav-item @if(
-                                    url()->current() == route('designation.create') ||
-                                    url()->current() == route('designation.index')
-    ) menu-is-opening menu-open @endif ">
-                                <a href="#" class="nav-link @if(
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('designation.create')
-    ) active @endif ">
-                                    <i class="far fa-circle nav-icon text-primary"></i>
-                                    <p>
-                                        Designation
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('designation.index') ||
-                                    url()->current() == route('designation.create')
-    ) style="display: block" @endif >
-                                    <li class="nav-item">
-                                        <a href="{{ route('designation.create') }}" class="nav-link @if(
-                                    url()->current() == route('designation.create')
-    ) active @endif ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Create Designation</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('designation.index') }}" class="nav-link @if(
-                                    url()->current() == route('designation.index')
-    ) active @endif ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Designation Manage</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-
-
-                            <li class="nav-item @if(
-                                    url()->current() == route('employee.create') ||
-                                    url()->current() == route('employee.index')
-    ) menu-is-opening menu-open @endif ">
-                                <a href="#" class="nav-link @if(
-                                    url()->current() == route('employee.create') ||
-                                    url()->current() == route('employee.index')
-    ) active @endif ">
-                                    <i class="far fa-circle nav-icon text-warning"></i>
-                                    <p>
-                                        Employee
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('employee.create') ||
-                                    url()->current() == route('employee.index')
-    ) style="display: block" @endif >
-                                    <li class="nav-item">
-                                        <a href="{{route('employee.create')}}" class="nav-link @if(
-                                    url()->current() == route('employee.create')
-    ) active @endif ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Create Employee</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('employee.index') }}" class="nav-link @if(
-                                    url()->current() == route('employee.index')
-    ) active @endif ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Manage Employee</p>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </li>
-                @endif
 
                 <li class="nav-item @if(
                                     url()->current() == route('brand.create') ||
@@ -260,187 +154,6 @@
                                 <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.brand' ) )active @endif ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Vendor Brand</p>
-                                </a>
-                            </li>
-                        @endif
-
-                    </ul>
-                </li>
-
-                <li class="nav-item @if(
-                                    url()->current() == route('event.create') ||
-                                    url()->current() == route('admin.all.event') ||
-                                    url()->current() == route('event.index')
-    ) menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if(
-                                    url()->current() == route('event.create') ||
-                                    url()->current() == route('admin.all.event') ||
-                                    url()->current() == route('event.index')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Event
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('event.create') ||
-                                    url()->current() == route('admin.all.event') ||
-                                    url()->current() == route('event.index')
-    ) style="display: block" @endif >
-                        <li class="nav-item">
-                            <a href="{{ route('event.create') }}" class="nav-link @if( url()->current() == route('event.create' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create Event</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('event.index') }}" class="nav-link @if( url()->current() == route('event.index' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Event</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
-                                <a href="{{ route('admin.all.event') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.event' ) )active @endif ">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Vendor Event</p>
-                                </a>
-                            </li>
-                        @endif
-
-                    </ul>
-                </li>
-
-                <li class="nav-item @if(
-                                    url()->current() == route('eventproduct.create') ||
-                                    url()->current() == route('admin.all.eventProduct') ||
-                                    url()->current() == route('eventproduct.index')
-    ) menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if(
-                                    url()->current() == route('eventproduct.create') ||
-                                    url()->current() == route('admin.all.eventProduct') ||
-                                    url()->current() == route('eventproduct.index')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Event Product
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('eventproduct.create') ||
-                                    url()->current() == route('admin.all.eventProduct') ||
-                                    url()->current() == route('eventproduct.index')
-    ) style="display: block" @endif >
-                        <li class="nav-item">
-                            <a href="{{ route('eventproduct.create') }}" class="nav-link @if( url()->current() == route('eventproduct.create' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create Event Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('eventproduct.index') }}" class="nav-link @if( url()->current() == route('eventproduct.index' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Event Product</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
-                                <a href="{{ route('admin.all.eventProduct') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.eventProduct' ) )active @endif ">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Vendor Event Product</p>
-                                </a>
-                            </li>
-                        @endif
-
-                    </ul>
-                </li>
-
-
-                <li class="nav-item @if(
-                                    url()->current() == route('emi.create') ||
-                                    url()->current() == route('admin.all.emi') ||
-                                    url()->current() == route('emi.index')
-    ) menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if(
-                                    url()->current() == route('emi.create') ||
-                                    url()->current() == route('admin.all.emi') ||
-                                    url()->current() == route('emi.index')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            EMI
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('emi.create') ||
-                                    url()->current() == route('admin.all.emi') ||
-                                    url()->current() == route('emi.index')
-    ) style="display: block" @endif >
-                        <li class="nav-item">
-                            <a href="{{ route('emi.create') }}" class="nav-link @if( url()->current() == route('emi.create' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create EMI</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('emi.index') }}" class="nav-link @if( url()->current() == route('emi.index' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage EMI</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
-                                <a href="{{ route('admin.all.emi') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.emi' ) )active @endif ">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Vendor EMI</p>
-                                </a>
-                            </li>
-                        @endif
-                    </ul>
-                </li>
-
-
-                <li class="nav-item @if(
-                                    url()->current() == route('contactusslider.create') ||
-                                    url()->current() == route('admin.all.slider') ||
-                                    url()->current() == route('contactusslider.index')
-    ) menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if(
-                                    url()->current() == route('contactusslider.create') ||
-                                    url()->current() == route('admin.all.slider') ||
-                                    url()->current() == route('contactusslider.index')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Slider
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('contactusslider.create') ||
-                                    url()->current() == route('admin.all.slider') ||
-                                    url()->current() == route('contactusslider.index')
-    ) style="display: block" @endif >
-                        <li class="nav-item">
-                            <a href="{{ route('contactusslider.create') }}" class="nav-link @if( url()->current() == route('contactusslider.create' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Upload Slider</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('contactusslider.index') }}" class="nav-link @if( url()->current() == route('contactusslider.index' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Slider</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
-                                <a href="{{ route('admin.all.slider') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.brand' ) )active @endif ">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Slider</p>
                                 </a>
                             </li>
                         @endif
@@ -640,6 +353,406 @@
                 </li>
 
 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            All Products
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Product
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('product.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Product</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('product.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Product Manage</p>
+                                    </a>
+                                </li>
+
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.product') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor   Products</p>
+                                        </a>
+                                    </li>
+                                @endif
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-warning"></i>
+                                <p>
+                                    Product Image
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('productImage.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Upload Product Images</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('productImage.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Product Images</p>
+                                    </a>
+                                </li>
+
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.product.image') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Category</p>
+                                        </a>
+                                    </li>
+                                @endif
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-danger"></i>
+                                <p>
+                                    Product Videos
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('productVideo.create') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Upload Product Video</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('productVideo.index') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Product Video</p>
+                                    </a>
+                                </li>
+
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.product.video') }}" class="nav-link text-fuchsia">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Product Video</p>
+                                        </a>
+                                    </li>
+                                @endif
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                    <li class="nav-item @if(
+                                    url()->current() == route('employee.index') ||
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('employee.create')
+    ) menu-is-opening menu-open @endif ">
+                        <a href="#" class="nav-link @if(
+                                    url()->current() == route('employee.index') ||
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('employee.create')
+    ) active @endif ">
+                            <i class="nav-icon fas fa-circle"></i>
+                            <p>
+                                Employee Details
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview " @if(
+                                    url()->current() == route('employee.index') ||
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('employee.create')
+    ) style="display: block" @endif >
+                            <li class="nav-item @if(
+                                    url()->current() == route('designation.create') ||
+                                    url()->current() == route('designation.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('designation.create')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-primary"></i>
+                                    <p>
+                                        Designation
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('designation.index') ||
+                                    url()->current() == route('designation.create')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{ route('designation.create') }}" class="nav-link @if(
+                                    url()->current() == route('designation.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Designation</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('designation.index') }}" class="nav-link @if(
+                                    url()->current() == route('designation.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Designation Manage</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+                            <li class="nav-item @if(
+                                    url()->current() == route('employee.create') ||
+                                    url()->current() == route('employee.index')
+    ) menu-is-opening menu-open @endif ">
+                                <a href="#" class="nav-link @if(
+                                    url()->current() == route('employee.create') ||
+                                    url()->current() == route('employee.index')
+    ) active @endif ">
+                                    <i class="far fa-circle nav-icon text-warning"></i>
+                                    <p>
+                                        Employee
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('employee.create') ||
+                                    url()->current() == route('employee.index')
+    ) style="display: block" @endif >
+                                    <li class="nav-item">
+                                        <a href="{{route('employee.create')}}" class="nav-link @if(
+                                    url()->current() == route('employee.create')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Create Employee</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('employee.index') }}" class="nav-link @if(
+                                    url()->current() == route('employee.index')
+    ) active @endif ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Manage Employee</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                @endif
+
+                <li class="nav-item @if(
+                                    url()->current() == route('event.create') ||
+                                    url()->current() == route('admin.all.event') ||
+                                    url()->current() == route('event.index')
+    ) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(
+                                    url()->current() == route('event.create') ||
+                                    url()->current() == route('admin.all.event') ||
+                                    url()->current() == route('event.index')
+    ) active @endif ">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Event
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('event.create') ||
+                                    url()->current() == route('admin.all.event') ||
+                                    url()->current() == route('event.index')
+    ) style="display: block" @endif >
+                        <li class="nav-item">
+                            <a href="{{ route('event.create') }}" class="nav-link @if( url()->current() == route('event.create' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Event</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('event.index') }}" class="nav-link @if( url()->current() == route('event.index' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Event</p>
+                            </a>
+                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.event') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.event' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Vendor Event</p>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+
+                <li class="nav-item @if(
+                                    url()->current() == route('eventproduct.create') ||
+                                    url()->current() == route('admin.all.eventProduct') ||
+                                    url()->current() == route('eventproduct.index')
+    ) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(
+                                    url()->current() == route('eventproduct.create') ||
+                                    url()->current() == route('admin.all.eventProduct') ||
+                                    url()->current() == route('eventproduct.index')
+    ) active @endif ">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Event Product
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('eventproduct.create') ||
+                                    url()->current() == route('admin.all.eventProduct') ||
+                                    url()->current() == route('eventproduct.index')
+    ) style="display: block" @endif >
+                        <li class="nav-item">
+                            <a href="{{ route('eventproduct.create') }}" class="nav-link @if( url()->current() == route('eventproduct.create' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Event Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('eventproduct.index') }}" class="nav-link @if( url()->current() == route('eventproduct.index' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Event Product</p>
+                            </a>
+                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.eventProduct') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.eventProduct' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Vendor Event Product</p>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item @if(
+                                    url()->current() == route('emi.create') ||
+                                    url()->current() == route('admin.all.emi') ||
+                                    url()->current() == route('emi.index')
+    ) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(
+                                    url()->current() == route('emi.create') ||
+                                    url()->current() == route('admin.all.emi') ||
+                                    url()->current() == route('emi.index')
+    ) active @endif ">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            EMI
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('emi.create') ||
+                                    url()->current() == route('admin.all.emi') ||
+                                    url()->current() == route('emi.index')
+    ) style="display: block" @endif >
+                        <li class="nav-item">
+                            <a href="{{ route('emi.create') }}" class="nav-link @if( url()->current() == route('emi.create' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create EMI</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('emi.index') }}" class="nav-link @if( url()->current() == route('emi.index' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage EMI</p>
+                            </a>
+                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.emi') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.emi' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Vendor EMI</p>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+
+
+                <li class="nav-item @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index')
+    ) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index')
+    ) active @endif ">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Slider
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index')
+    ) style="display: block" @endif >
+                        <li class="nav-item">
+                            <a href="{{ route('contactusslider.create') }}" class="nav-link @if( url()->current() == route('contactusslider.create' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Upload Slider</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('contactusslider.index') }}" class="nav-link @if( url()->current() == route('contactusslider.index' ) )active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Slider</p>
+                            </a>
+                        </li>
+                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                            <li class="nav-item">
+                                <a href="{{ route('admin.all.slider') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.brand' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Slider</p>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+
                 <li class="nav-item @if(
                                     url()->current() == route('division.create') ||
                                     url()->current() == route('admin.all.division') ||
@@ -791,7 +904,7 @@
     ) active @endif ">
                                 <i class="far fa-circle nav-icon text-primary"></i>
                                 <p>
-                                   City
+                                    City
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -884,120 +997,6 @@
 
                     </ul>
                 </li>
-
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-circle"></i>
-                        <p>
-                            All Products
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon text-primary"></i>
-                                <p>
-                                    Product
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('product.create') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Create Product</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('product.index') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Product Manage</p>
-                                    </a>
-                                </li>
-
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.product') }}" class="nav-link text-fuchsia">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor   Products</p>
-                                        </a>
-                                    </li>
-                                @endif
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon text-warning"></i>
-                                <p>
-                                    Product Image
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('productImage.create') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Upload Product Images</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('productImage.index') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Manage Product Images</p>
-                                    </a>
-                                </li>
-
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.product.image') }}" class="nav-link text-fuchsia">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor Category</p>
-                                        </a>
-                                    </li>
-                                @endif
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon text-danger"></i>
-                                <p>
-                                    Product Videos
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('productVideo.create') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Upload Product Video</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('productVideo.index') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Manage Product Video</p>
-                                    </a>
-                                </li>
-
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.product.video') }}" class="nav-link text-fuchsia">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor Product Video</p>
-                                        </a>
-                                    </li>
-                                @endif
-
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
 
                 <li class="nav-item @if(
                                     url()->current() == route('orders.index') ||
