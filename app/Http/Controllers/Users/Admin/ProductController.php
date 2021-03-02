@@ -32,10 +32,10 @@ class ProductController extends Controller
         return view('admin.product.manage',compact('products'));
     }
 
+
     public function allProduct()
     {
         $products = Product::with('brand')->withoutAdminProduct()->get();
-//dd($products);
         return view('admin.product.manage',compact('products'));
     }
 
@@ -89,6 +89,7 @@ class ProductController extends Controller
         $products->is_new = $request->is_new;
         $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
         $products->status = $request->status;
+        $products->return_policy = $request->return_policy;
         if( ! empty($request->emi_id) )
             $products->emi_id = implode(',', $request->emi_id);
 
@@ -164,6 +165,7 @@ class ProductController extends Controller
         $products->manufactured_by = $request->manufactured_by;
         $products->is_new = $request->is_new;
         $products->status = $request->status;
+        $products->return_policy = $request->return_policy;
 
         if( ! empty($request->emi_id) )
             $products->emi_id = implode(',', $request->emi_id);
@@ -226,6 +228,7 @@ class ProductController extends Controller
             'secondary_sub_categories_id' => 'sometimes',
             'product_coupon' => 'sometimes',
             'manufactured_by' => 'sometimes',
+            'return_policy' => 'sometimes',
             'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ));
     }

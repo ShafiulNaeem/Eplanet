@@ -45,12 +45,6 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-{{--        <div class="user-panel mt-3 pb-3 mb-3 d-flex">--}}
-{{--            <div class="info" style="margin: 0 auto">--}}
-{{--                <a href="{{route('admin.dashboard')}}" class="d-block text-center">{{ Auth::guard('admin')->user()->name }}</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
 
 
         <!-- Sidebar Menu -->
@@ -64,7 +58,6 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-{{--                            <span class="right badge badge-danger">New</span>--}}
                         </p>
                     </a>
                 </li>
@@ -228,50 +221,6 @@
                         </ul>
                     </li>
                 @endif
-
-
-{{--                <li class="nav-item @if(--}}
-{{--                                    url()->current() == route('secondsub.create') ||--}}
-{{--                                    url()->current() == route('secondsub.index')--}}
-{{--    ) menu-is-opening menu-open @endif">--}}
-{{--                    <a href="#" class="nav-link @if(--}}
-{{--                                    url()->current() == route('secondsub.create') ||--}}
-{{--                                    url()->current() == route('secondsub.index')--}}
-{{--    ) active @endif ">--}}
-{{--                        <i class="nav-icon fas fa-copy"></i>--}}
-{{--                        <p>--}}
-{{--                            Second SubCategory--}}
-{{--                            <i class="fas fa-angle-left right"></i>--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav nav-treeview" @if(--}}
-{{--                                    url()->current() == route('secondsub.create') ||--}}
-{{--                                    url()->current() == route('secondsub.index')--}}
-{{--    ) style="display: block" @endif >--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route('secondsub.create') }}" class="nav-link @if( url()->current() == route('secondsub.create' ) )active @endif ">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>{{__('Second SubCategory Create')}}</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route('secondsub.index') }}" class="nav-link @if( url()->current() == route('secondsub.index' ) )active @endif ">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>{{__('Second SubCategory Manage')}}</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{ route('admin.all.brand') }}" class="nav-link text-fuchsia @if( url()->current() == route('admin.all.brand' ) )active @endif ">--}}
-{{--                                    <i class="far fa-circle nav-icon"></i>--}}
-{{--                                    <p>All Vendor Brand</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        @endif--}}
-
-{{--                    </ul>--}}
-{{--                </li>--}}
-
 
                 <li class="nav-item @if(
                                     url()->current() == route('brand.create') ||
@@ -690,7 +639,6 @@
                     </ul>
                 </li>
 
-{{--                delivery area navar start--}}
 
                 <li class="nav-item @if(
                                     url()->current() == route('division.create') ||
@@ -886,7 +834,7 @@
                     </ul>
                 </li>
 
-{{--                delivery area navar start--}}
+
 
 
                 <li class="nav-item @if(
@@ -975,39 +923,6 @@
                                         <a href="{{ route('admin.all.product') }}" class="nav-link text-fuchsia">
                                             <i class="far fa-dot-circle nav-icon"></i>
                                             <p>All Vendor   Products</p>
-                                        </a>
-                                    </li>
-                                @endif
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon text-warning"></i>
-                                <p>
-                                    Delivery Area
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('area.create') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Upload Delivery Area</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('area.index') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Manage Delivery Area</p>
-                                    </a>
-                                </li>
-
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.allArea') }}" class="nav-link text-fuchsia">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor Area</p>
                                         </a>
                                     </li>
                                 @endif

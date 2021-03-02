@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\ContactUsSlider;
-use App\Models\Event;
-use App\Models\EventProduct;
 use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\SubCategory;
 use App\Models\WishList;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -133,7 +130,7 @@ class WelcomeController extends Controller
         $data['product_id'] = $id;
         if (Auth::check()) $data['user_id'] = Auth::user()->id;
 
-        $check = ExpressWish::where('product_id', $id)->first();
+        $check = ExpressWish::wher('product_id', $id)->first();
 
         if( empty($check) ){
             return ( ExpressWish::create($data) ) ? response([
@@ -147,32 +144,5 @@ class WelcomeController extends Controller
             'message' => 'Express wish Created'
         ], 200);
     }
-
-    //  promotion
-    public function promotion(){
-        //dd( \Carbon\Carbon::today()->format('Y-m-d'));
-        $count_date = \Carbon\Carbon::today()->format('Y-m-d');
-        $event = Event::with('eventProducts')->where('start_date', '>=', $count_date)->get();
-
-        $eventProduct =EventProduct::with('category')
-            ->where([
-                'event_id' => $event[0]->id
-            ])
-            ->select('category_id','event_id')->distinct()->get();
-
-        //dd($eventProduct);
-        //$category = Category::with('eventWithProducts')->get();
-        //$category = EventProduct::with('category')->get();
-        //dd($category);
-        return view('pages.promotion',['events' =>$event,'eventProducts' => $eventProduct]);
-
-    }
-
-    // promotion products
-    public function promotionProduct($event_id,$category_id){
-
-    }
-
-
 
 }
