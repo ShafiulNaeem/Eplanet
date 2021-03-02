@@ -130,6 +130,10 @@ Route::get('blogall', 'Users\BlogController@allBog')->name('blog.allBog');
 Route::get('blogall/{slug}', 'Users\BlogController@show')->middleware(['auth'])->name('blog.show');
 Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['auth'])->name('blog.destroy');
 
+// promotion route
+Route::get('promotion', 'WelcomeController@promotion')->name('promotion.category');
+Route::get('promotion/{event_id?}/{category_id}', 'WelcomeController@promotionProduct')->name('promotion.products');
+
 
 
 // comment route
