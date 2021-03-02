@@ -68,11 +68,13 @@
                                 </ul>
                             </div>
                             <div class="">
-                                <h3>Promo Video </h3>
-                                @foreach($product->productVideos as $video)
-                                <iframe width="400"  src="{{asset('storage/videos/' .$video->product_image)}}" frameborder="0" allowfullscreen>
-                                </iframe>
-                                @endforeach
+                                @if( count($product->productVideos) > 0 )
+                                    <h3>Promo Video </h3>
+                                    @foreach($product->productVideos as $video)
+                                        <iframe width="400"  src="{{asset('storage/videos/' .$video->product_image)}}" frameborder="0" allowfullscreen>
+                                    </iframe>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -136,16 +138,6 @@
                                                         @endfor
                                                     </select>
                                                 </li>
-{{--                                                <li>--}}
-{{--                                                    <select name="" id="" class="form-control" >--}}
-{{--                                                        <option value="">Months/Year</option>--}}
-{{--                                                        <option value="">Islamic Bank</option>--}}
-{{--                                                        <option value="">One Bank</option>--}}
-{{--                                                        <option value="">Brack Bank</option>--}}
-{{--                                                        <option value="">Islamic Bank</option>--}}
-{{--                                                        <option value="">One Bank</option>--}}
-{{--                                                    </select>--}}
-{{--                                                </li>--}}
                                             @endif
                                         </ul>
 {{--                                        @endif--}}
@@ -156,15 +148,12 @@
                                             <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
                                         </div>
                                     @endif
-                                    <a href="#sheet" id="click_change3">View more info</a>
+                                    <a href="#sheet" id="click_change3">
+                                        <i class="fa fa-2x fa-sort-up"></i> View more info
+                                    </a>
                                 </div>
                                 <div class="row">
-                                    {{--                    <div class="col-md-12">--}}
-                                    {{--                        <div class="area">--}}
-                                    {{--                            <h4>Product Receiving Area: <span>Dhaka</span></h4>--}}
-                                    {{--                        </div>--}}
-                                    {{--                    </div>--}}
-                                                        <div class="col-md-12">
+                                    <div class="col-md-12">
                                                             <div class=" product_recive">
                                                               <div class="recive_inner">
                                                                 <ul>
@@ -177,18 +166,47 @@
                                                                     </li>
                                                                 </ul>
                                                               </div>
+                                                              <div class="recive_inner col-md-6">
+                                                                  <ul class="nav nav-pills flex-column">
+                                                                      @foreach($areas as $index => $area)
+                                                                          <li class="nav-item  ">
+                                                                          <a class="nav-link bg-gradient-dark location collapsed" href="#submenu{{$index}}" data-toggle="collapse" data-target="#submenu{{$index}}">{{$area->division_name}}</a>
+                                                                            @if( isset($area->districts) )
+                                                                                <div class="collapse" id="submenu{{$index}}" aria-expanded="false">
+                                                                                    <ul class="flex-column pl-2 nav">
+{{--                                                                                  <li class="nav-item"><a class="nav-link py-0" href="">Orders</a></li>--}}
+                                                                                        @foreach($area->districts as $distIndex => $district)
+                                                                                            <li class="nav-item  ">
+                                                                                              <a class="nav-link  location collapsed py-0" href="#submenu{{$index}}sub{{$distIndex}}" data-toggle="collapse" data-target="#submenu{{$index}}sub{{$distIndex}}">{{$district->district_name}}</a>
+                                                                                                @if( isset($district->cities) )
+                                                                                                    <div class="collapse small" id="submenu{{$index}}sub{{$distIndex}}" aria-expanded="false">
+                                                                                                    <ul class="flex-column nav pl-4">
+                                                                                                        @foreach($district->cities as $city)
+                                                                                                          <li class="nav-item ">
+                                                                                                              <a class="nav-link p-0 location" href="">
+                                                                                                                  {{$city->city_name}}
+                                                                                                              </a>
+                                                                                                          </li>
+                                                                                                        @endforeach
+                                                                                                  </ul>
+                                                                                              </div>
+                                                                                                @endif
+                                                                                          </li>
+                                                                                        @endforeach
+                                                                                    </ul>
+                                                                                </div>
+                                                                            @endif
+                                                                          </li>
+                                                                      @endforeach
+                                                                  </ul>
+                                                              </div>
                                                               <div class="recive_inner">
                                                                 <ul>
-                                                                    <li>Home Delivary Charge </li>
+                                                                    <li>Product return policy </li>
                                                                     <li>
                                                                         <select name="" id="" class="form-control" >
-                                                                            @php
-                                                                                $areas = \App\Models\Area::all()
-                                                                            @endphp
-                                                                            @if( ! empty($areas) )
-                                                                                @foreach($areas as $area)
-                                                                                    <option value="{{$area->id}}">{{$area->area_name}} (BDT{{$area->price}}) </option>
-                                                                                @endforeach
+                                                                            @if( isset($product->return_policy) )
+                                                                                <option value="">{{$product->return_policy}}</option>
                                                                             @else
                                                                                 <option value="">No</option>
                                                                             @endif
@@ -196,20 +214,12 @@
                                                                     </li>
                                                                 </ul>
                                                               </div>
-                                                              <div class="recive_inner">
-                                                                <ul>
-                                                                    <li>Product return policy </li>
-                                                                    <li>
-                                                                        <select name="" id="" class="form-control" >
-                                                                            <option value="">15days</option>
-                                                                            <option value="">No</option>
-                                                                        </select>
-                                                                    </li>
-                                                                </ul>
-                                                              </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                </div>
+                                <a href="#sheet" id="click_change3">
+                                    <i class="fa fa-2x fa-sort-up"></i> More details
+                                </a>
                             </div>
                             <div class="col-md-5">
                                 <div class="product_d_right" >
@@ -220,16 +230,13 @@
 
 
                                         </div>
-                                        <div class="product_desc">
-{{--                                           <p> {!! $product->product_description !!} </p>--}}
-                                        </div>
                                         <div class="product_variant color">
 
 
                                             @if($product->stock > 0)
                                                 <h5>Available Product: {{$product->stock}}</h5>
                                             @else
-                                                <h5 class="text-danger">Available Product: Product Out of Stock</h5>
+                                                <h5 class="text-warning"> Product Out of Stock</h5>
                                             @endif
                                             <label>color</label>
                                                 @php
@@ -328,9 +335,9 @@
                             <li>
                                 <a class="active text" data-toggle="tab" id="click_change"  href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#info" role="tab" id="click_change2" aria-controls="info" aria-selected="false">Description</a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a data-toggle="tab" href="#info" role="tab" id="click_change2" aria-controls="info" aria-selected="false">Description</a>--}}
+{{--                            </li>--}}
 
                         </ul>
                     </div>

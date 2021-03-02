@@ -11,6 +11,11 @@ class District extends Model
     use HasFactory;
     protected $guarded = [];
 
+
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeAdminDistrict($query)
     {
         return $query->where('admin_id', Auth::guard('admin')->user()->id);
@@ -26,11 +31,19 @@ class District extends Model
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function division()
     {
         return $this->belongsTo(Division::class);
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function cities()
     {
         return $this->hasMany(City::class);

@@ -193,6 +193,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group col-md-6 float-left">
+                                                    <label for="return_policy">Return Policy</label>
+                                                    <input type="text" value="{{old('return_policy')}}" name="return_policy" id="return_policy" placeholder="Exm: 12 days return" class="form-control" />
+                                                </div>
+
                                             </div>
 
                                             <div class="row">

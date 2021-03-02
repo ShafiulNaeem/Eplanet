@@ -18,14 +18,14 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::orderBy('created_at','desc')->with(['division','district'])->AdminCity()->get();
+        $cities = City::orderBy('city_name','asc')->with(['division','district'])->AdminCity()->get();
         //dd($cities);
         return view('admin.city.manage',compact('cities'));
     }
 
     public function allCity()
     {
-        $cities = City::orderBy('created_at','desc')->with(['division','district'])->WithoutAdminCity()->get();
+        $cities = City::orderBy('city_name','asc')->with(['division','district'])->WithoutAdminCity()->get();
         //dd($cities);
         return view('admin.city.manage',compact('cities'));
     }
@@ -33,11 +33,11 @@ class CityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        $divisions = Division::orderBy('created_at','desc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
         return view('admin.city.create',compact('divisions'));
     }
 
@@ -45,16 +45,14 @@ class CityController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
         $validate = $request->validate([
             'district_id' => 'required',
             'city_name' => 'required',
-            'division_id' => 'required',
-            'price' => 'sometimes',
-            'zip_code' => 'sometimes'
+            'division_id' => 'required'
         ]);
 
         $validate['admin_id'] = Auth::guard('admin')->id();
@@ -77,13 +75,13 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param City $city
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit(City $city)
     {
         //dd($city->division_id);
-        $divisions = Division::orderBy('created_at','desc')->AdminDivision()->get();
+        $divisions = Division::orderBy('city_name','asc')->AdminDivision()->get();
         $districts = District::with('division')->where('division_id',$city->division_id)->get();
         //dd($districts);
         return view('admin.city.edit',compact('city','divisions','districts'));
@@ -92,18 +90,16 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param City $city
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, City $city)
     {
         $validate = $request->validate([
             'division_id' => 'required',
             'district_id' => 'required',
-            'city_name' => 'required',
-            'price' => 'sometimes',
-            'zip_code' => 'sometimes',
+            'city_name' => 'required'
         ]);
 
         return ( $city->update($validate) )?
@@ -114,8 +110,9 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param City $city
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(City $city)
     {

@@ -32,13 +32,13 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group col-md-6 float-left">
-                                        <label for="exampleInputPassword1">Zip Code</label>
-                                        <input type="text" name="zip_code" value="{{ old('zip_code') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">
-                                        @error('zip_code')
-                                        <span class="text-danger">{{$message}}</span>
-                                        @enderror
-                                    </div>
+{{--                                    <div class="form-group col-md-6 float-left">--}}
+{{--                                        <label for="exampleInputPassword1">Zip Code</label>--}}
+{{--                                        <input type="text" name="zip_code" value="{{ old('zip_code') }}" autocomplete="off" class="form-control" id="exampleInputPassword1">--}}
+{{--                                        @error('zip_code')--}}
+{{--                                        <span class="text-danger">{{$message}}</span>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
                                     <div class="form-group col-md-6 float-left">
                                         <label for="exampleInputPassword1">Delivery Charge</label>
                                         <input type="text" name="price" value="{{ old('price') }}"  class="form-control" id="exampleInputPassword1">

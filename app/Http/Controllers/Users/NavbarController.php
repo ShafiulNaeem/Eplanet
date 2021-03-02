@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Division;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\SecondarySubCategory;
@@ -23,8 +24,9 @@ class NavbarController extends Controller
             $mainRes = $mainRes = Category::with('products')
                 ->where('id', $product[0]->category_id)
                 ->first();
+            $area = Division::with('districts.cities')->get();
 
-            return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
+            return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'areas'=> $area]);
         } else {
             $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$request->category_name)->GetActive()->paginate(20);
 
