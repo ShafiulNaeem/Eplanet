@@ -3,10 +3,11 @@
     padding: 10px 0;
     background: #F7F8FA
 }
-.discover-section p{
-   text-align: center;
-    color:#000000;
+.discover-section p {
+    text-align: center;
+    color: #000000;
     padding-bottom: 10px;
+    font-size: 11px;
 }
 .discover-title h3{
     text-align: center;
@@ -16,7 +17,7 @@
 }
 .discover-section .owl-carousel .owl-item img {
 	display: block;
-	width: 55%;
+	width:26%;
 	margin: 0 auto;
     background:rgba(250, 250, 250, 0.53)
 }
@@ -641,7 +642,7 @@ header .main-header, header .main-nav {
 }
 .main-nav .nav li a {
     color: #ffffff;
-    font-size: 12px;
+    font-size: 10px;
 }
 .main-nav .nav .drop-menu-2 {
     top: 0px;
@@ -782,7 +783,7 @@ ul.bo-slider {
 .bo-slider {
 	position: relative;
 	width: 100%;
-    height: 290px;
+    height: 310px;
 }
 
 .bo-slider .bo-slide{
@@ -1243,4 +1244,12 @@ margin-left: -39px;
   position: relative;
   top: 4px;
   left: -7px;
+}
+
+@media (min-width: 1400px) and (max-width:1920px){
+
+    .fa-camera{
+        font-size: 20px;
+        margin-left:31px;
+    }
 }
