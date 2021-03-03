@@ -53,16 +53,15 @@
                                                     <input type="hidden" name="id" value="{{$product->id}}">
 
                                                     @if($product->status == 1)
-                                                        <button type="submit" class="btn btn-success">Active</button>
+                                                        <button type="submit" class="btn btn-success btn-group">Status Active</button>
                                                     @else
-                                                        <button type="submit" class="btn btn-danger">Inactive</button>
+                                                        <button type="submit" class="btn btn-danger">Status Inactive</button>
                                                     @endif
+                                                    <a href="{{ route('product.update.menual.get', $product->id) }}" class="btn-group btn btn-info">{{__('Specification')}}</a>
                                                 </form>
 
 
                                             </td>
-
-
 
 
                                             <td>
