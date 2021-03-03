@@ -198,10 +198,10 @@
 
 
                                         <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <label>Product Specification</label>
-                                                <textarea class="form-control" name="product_specification"   rows="3">{{ $product->specification }}</textarea>
-                                            </div>
+{{--                                            <div class="form-group col-md-12">--}}
+{{--                                                <label>Product Specification</label>--}}
+{{--                                                <textarea class="form-control" name="product_specification"   rows="3">{{ $product->specification }}</textarea>--}}
+{{--                                            </div>--}}
 
                                             <div class="form-group col-md-12">
                                                 <label for="exampleFormControlTextarea1">Product Description</label>
