@@ -6674,11 +6674,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_meta span a:hover {
   color: #40A944;
 }
+.product_info_button ul li{
+  margin:0 auto;
+}
 
 .product_info_button {
-  border-bottom: 1px solid #ededed;
-  padding-bottom: 15px;
-  margin-bottom: 29px;
+  /* border-bottom: 1px solid #ededed; */
+  /* padding-bottom: 15px; */
+  margin-bottom: 20px;
+  background: #D6D6D6;
+  padding: 7px 4px;
 }
 @media only screen and (max-width: 767px) {
   .product_info_button ul li {
@@ -6758,10 +6763,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-weight: 700;
 }
 
-.product_d_inner {
+/* .product_d_inner {
   padding: 20px 30px 27px;
   border: 1px solid #33333391;
-}
+} */
 @media only screen and (max-width: 767px) {
   .product_d_inner {
     padding: 20px 20px 27px;

@@ -1156,12 +1156,17 @@ Fading
 }
 .product_recive{
     border: 1px solid #b07e7e82;
-    padding: 20px 15px;
-    margin-bottom:15px;
+    padding: 0px 15px;
+    /*margin-bottom:15px;*/
 }
+
+.youtube{
+    background: #dc3545;
+}
+
 .product_recive ul li{
     display: inline-block;
-    padding:5px 0;
+    /*padding:5px 0;*/
 }
 .area h4{
     font-weight: 500;
@@ -1253,6 +1258,7 @@ margin-left: -39px;
         margin-left:31px;
     }
 }
+<<<<<<< HEAD
 
 
 
@@ -1331,3 +1337,5 @@ h2 span {
         0 50px 25px rgba(0, 0, 0, 0.2);
     }
   }
+=======
+>>>>>>> 76949c2e597c91b271660faf262e247f8ca79461

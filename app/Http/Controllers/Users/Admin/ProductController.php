@@ -32,10 +32,10 @@ class ProductController extends Controller
         return view('admin.product.manage',compact('products'));
     }
 
-
     public function allProduct()
     {
         $products = Product::with('brand')->withoutAdminProduct()->get();
+//dd($products);
         return view('admin.product.manage',compact('products'));
     }
 
@@ -77,6 +77,7 @@ class ProductController extends Controller
         $products->product_name = $request->product_name;
         $products->specification = $request->product_specification;
         $products->product_description = $request->product_description;
+        //$products->product_description = $request->product_description[1];
         $products->color = $request->product_color;
         $products->model = $request->product_model;
         $products->tax = $request->product_tax;
@@ -89,7 +90,6 @@ class ProductController extends Controller
         $products->is_new = $request->is_new;
         $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
         $products->status = $request->status;
-        $products->return_policy = $request->return_policy;
         if( ! empty($request->emi_id) )
             $products->emi_id = implode(',', $request->emi_id);
 
@@ -97,14 +97,20 @@ class ProductController extends Controller
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
             $products->feature_image = $this->uploadImage($image, 'images');
-            //$products->save();
-        };
 
-        if($products->save()){
-            return redirect()->route('product.index')->with('success','Product Inserted Successfully');
+            if( $products->save() ) return redirect()->route('product.update.menual.get', $products->id)->with('success','Product Inserted Successfully');
+        } else {
+            if( $products->save() ) return redirect()->route('product.update.menual.get', $products->id)->with('success','Product Inserted Successfully');
         }
+
         return redirect()->back()->with('error','Something went wrong');
     }
+
+    public function createSprcification()
+    {
+
+    }
+
 
     /**
      * Display the specified resource.
@@ -138,48 +144,63 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param Product $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
         //dd($request->all());
-        $this->validation($request);
+        //$this->validation($request);
 
-        $products = Product::find($id);
+        //$products = Product::find($id);
 
-        $products->product_name = $request->product_name;
-        $products->specification = $request->product_specification;
-        $products->product_description = $request->product_description;
-        $products->color = $request->product_color;
-        $products->model = $request->product_model;
-        $products->coupon_id = $request->product_coupon;
-        $products->tax = ( ! empty($request->product_tax) ) ? $request->product_tax : 0;
-        $products->sub_categories_id = $request->product_sub_category;
-        $products->product_price = $request->product_price;
-        $products->size = $request->product_size;
-        $products->stock = $request->product_stock;
-        $products->brand_id = $request->product_brand;
-        $products->sub_categories_id = $request->product_sub_category;
-        $products->manufactured_by = $request->manufactured_by;
-        $products->is_new = $request->is_new;
-        $products->status = $request->status;
-        $products->return_policy = $request->return_policy;
+        $product->product_name = $request->product_name;
+//        $product->specification = $request->product_specification;
+        $product->product_description = $request->product_description;
+        $product->color = $request->product_color;
+        $product->model = $request->product_model;
+        $product->coupon_id = $request->product_coupon;
+        $product->tax = ( ! empty($request->product_tax) ) ? $request->product_tax : 0;
+        $product->sub_categories_id = $request->product_sub_category;
+        $product->product_price = $request->product_price;
+        $product->size = $request->product_size;
+        $product->stock = $request->product_stock;
+        $product->brand_id = $request->product_brand;
+        $product->sub_categories_id = $request->product_sub_category;
+        $product->manufactured_by = $request->manufactured_by;
+        $product->is_new = $request->is_new;
+        $product->status = $request->status;
 
-        if( ! empty($request->emi_id) )
-            $products->emi_id = implode(',', $request->emi_id);
+        if( ! empty($product->emi_id) )
+            $product->emi_id = implode(',', $request->emi_id);
         //if( isset($request->secondary_sub_categories_id) )
-        $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
+        $product->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
-        static::deleteFile(storage_path().'/app/public/images/' . $products->feature_image);
+        static::deleteFile(storage_path().'/app/public/images/' . $product->feature_image);
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
-            $products->feature_image= $this->uploadImage($image, 'images');
-            $products->save();
-        } else $products->save();
+            $product->feature_image= $this->uploadImage($image, 'images');
 
+            if ( $product->save() ) return redirect()->route('product.index')->with('success','Product Updated Successfully');
+        } else {
+            if ( $product->save() ) return redirect()->route('product.index')->with('success','Product Updated Successfully');
+            else return redirect()->back()->with('error','Something went wrong');
+        }
+
+        return redirect()->back()->with('error','Something went wrong');
+    }
+
+    public function specificationForm(Product $product)
+    {
+        return view('admin.product.product_description', compact('product'));
+    }
+
+    public function updateMenual(Request $request, Product $product){
+        $product->specification = $request->product_specification;
+
+        if( $product->save() )
         return redirect()->route('product.index')->with('success','Product Updated Successfully');
     }
 
@@ -208,17 +229,18 @@ class ProductController extends Controller
 
 
     public function specification(Request $request, Product $product){
-        $product->product_description = $request->product_description;
+        $product->specification = $request->product_specification;
 
 
-        return ($product->save())? redirect()->back()->with('success', 'Description added') : redirect()->back()->with('error', 'Something went wrong');
+        return ($product->save())? redirect()->route('product.index')->with('success', 'specification added') : redirect()->back()->with('error', 'Something went wrong');
     }
 
 
     private function validation($request){
         $this->validate($request, array(
             'product_name' => ['required', 'string', 'max:255'],
-            'product_description' => 'required',
+            'product_description' => 'sometimes',
+            'product_specification' => 'sometimes',
             'product_tax' => 'sometimes',
             'product_price' => 'required',
             'product_color' => 'sometimes',
@@ -228,8 +250,7 @@ class ProductController extends Controller
             'secondary_sub_categories_id' => 'sometimes',
             'product_coupon' => 'sometimes',
             'manufactured_by' => 'sometimes',
-            'return_policy' => 'sometimes',
-            'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'feature_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
     }
 }
