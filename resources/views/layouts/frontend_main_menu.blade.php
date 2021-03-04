@@ -415,7 +415,7 @@
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                                 @endif
-                                <li class=" anime"><a href=""><h4 class="ml2">নবাবী হাট</h4></a></li>
+                                <li class=" anime"><a href=""><h4 class="ml2">নবাবীহাট</h4></a></li>
 
                             </ul>
                         </nav>

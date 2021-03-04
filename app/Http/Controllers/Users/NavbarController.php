@@ -38,16 +38,17 @@ class NavbarController extends Controller
     //subcategory
     public function show($slug)
     {
-        $catArray = ['kids', 'men'];
-        $mainRes = $this->productByCategory($catArray);
-
-        $category = SubCategory::where('subcategory_slug',$slug)->GetActive()->get();
+        $category = SubCategory::where('subcategory_slug',$slug)->GetActive()->first();
 
         $product = Product::where([
-            ['sub_categories_id' , '=', $category[0]->id],
+            ['sub_categories_id' , '=', $category->id],
             ['status', '=', 1],
         ])->paginate(16);
 
+        $mainRes = Product::where([
+            'category_id' => $category->category->id,
+            'status' => 1
+        ]);
 
         return view('pages.one_category',['results' => $mainRes,'categories' =>$category,'products' => $product]);
     }
@@ -55,17 +56,16 @@ class NavbarController extends Controller
     // 2nd subcategory
     public function secondary_subcategory($slug)
     {
-        $catArray = ['kids', 'men'];
-        $mainRes = $this->productByCategory($catArray);
-
-        //$category = SubCategory::with('productWithStatus')->where('id',$id)->GetActive()->paginate(1);
-        $category = SecondarySubCategory::where('secondary_subcategory_slug',$slug)->GetActive()->get();
+        $category = SecondarySubCategory::where('secondary_subcategory_slug',$slug)->GetActive()->first();
         $product = Product::where([
-            ['secondary_sub_categories_id' , '=', $category[0]->id],
+            ['secondary_sub_categories_id' , '=', $category->id],
             ['status', '=', 1],
         ])->paginate(16);
 
-        //dd($product);
+        $mainRes = Product::where([
+            'category_id' => $category->category->id,
+            'status' => 1
+        ]);
 
         return view('pages.one_category',['results' => $mainRes,'categories' =>$category,'products' => $product]);
     }
