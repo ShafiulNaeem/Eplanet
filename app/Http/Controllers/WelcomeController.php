@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategorySlider;
 use App\Models\ContactUsSlider;
+use App\Models\Event;
+use App\Models\EventProduct;
 use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -47,8 +50,9 @@ class WelcomeController extends Controller
     public function category($slug){
         $id = Category::where('category_slug', $slug)->first()->id;
         $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->paginate(20);
-        //dd($category);
-        return view('pages.categories',['categories' =>$category]);
+        $slider = CategorySlider::where('category_id', $id)->GetActive()->get();
+        //dd($categorySliders);
+        return view('pages.categories',['categories' =>$category,'sliders' =>$slider]);
     }
 
     private function productByCategory($catArray){
@@ -143,6 +147,26 @@ class WelcomeController extends Controller
         return response([
             'message' => 'Express wish Created'
         ], 200);
+    }
+
+    //  promotion
+    public function promotion(){
+        //dd( \Carbon\Carbon::today()->format('Y-m-d'));
+        $count_date = \Carbon\Carbon::today()->format('Y-m-d');
+        $event = Event::with('eventProducts')->where('start_date', '>=', $count_date)->get();
+
+        $eventProduct =EventProduct::with('category')
+            ->where([
+                'event_id' => $event[0]->id
+            ])
+            ->select('category_id','event_id')->distinct()->get();
+        return view('pages.promotion',['events' =>$event,'eventProducts' => $eventProduct]);
+
+    }
+
+    // promotion products
+    public function promotionProduct($event_id,$category_id){
+
     }
 
 }

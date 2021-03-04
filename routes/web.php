@@ -200,7 +200,7 @@ Route::prefix('admin')->group(function(){
         Route::post('vendorChange', 'AdminController@change')->name('vendor.change.status');
 
         //category by product, subcategory
-        Route::post('productbycat/{category}', 'CategoryController@productByCategory')->name('product.by.cat');
+        Route::post('productbycat/{secondarySubCategory}', 'SecondarySubCategoryController@productBySecondSubCategory')->name('product.by.cat');
         Route::post('subcatbycat/{category}', 'CategoryController@subCategoryByCategory')->name('sub.cat.by.cat');
         Route::post('secondsubcatbysubcat/{subcategory}', 'SubCategoryController@secondarySubBySubCategory')->name('second.sub.cat.by.sub.cat');
 
@@ -218,6 +218,7 @@ Route::prefix('admin')->group(function(){
             Route::get('user', 'UserController@allUser')->name('user.no.order');
 
             Route::get('contactusslider', 'ContactUsSliderController@allSlider')->name('slider');
+            Route::get('categorySlider', 'CategorySliderController@allCategorySlider')->name('categorySlider');
             Route::get('area', 'AreaController@allArea')->name('allArea');
             Route::get('emi', 'EMIController@withoutAdmin')->name('emi');
             Route::get('event', 'EventController@allEvent')->name('event');
@@ -276,6 +277,7 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('division', 'DivisionController');
     Route::resource('district', 'DistrictController');
     Route::resource('city', 'CityController');
+    Route::resource('categorySlider', 'CategorySliderController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');

@@ -562,8 +562,8 @@
 </script>
 
 <script>
-    // category by product
-    $('#cat_id').on('change',function (e) {
+    // secondary_sub_categories_id by product
+    $('#secondary_sub_categories_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let product = $('#product_id');
         let productId = product.attr("data-product");

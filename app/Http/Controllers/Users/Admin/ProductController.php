@@ -125,11 +125,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        //dd($product->sub_categories_id);
         $brands = Brand::orderBy('brand_name','asc')->BrandWithAdminOwner()->get();
-        $subcategory = SubCategory::SubCategoryWithAdminOwner()->get();
+        $subcategory = SubCategory::where('category_id',$product->category_id)->SubCategoryWithAdminOwner()->get();
         $categories = Category::CategoryWithAdminOwner()->get();
         $coupons = Coupon::CouponWithAdminOwner()->get();
-        $secondary_sub = SecondarySubCategory::SecondarySubCategoryWithAdminOwner()->get();
+        $secondary_sub = SecondarySubCategory::where('sub_category_id',$product->sub_categories_id)->SecondarySubCategoryWithAdminOwner()->get();
+       // dd($secondary_sub);
         $emis = Emi::withAdminOwner()->get();
 
         return view('admin.product.edit',compact('emis','product','brands', 'coupons','subcategory', 'categories', 'secondary_sub'));

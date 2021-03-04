@@ -33,13 +33,13 @@
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
-                                        <div class="form-group col-md-6 float-left">
-                                            <label for="exampleInputPassword1">Event Discount</label>
-                                            <input type="text" name="discount" value="{{ $event->discount}}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="40%">
-                                            @error('discount')
-                                            <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                        </div>
+{{--                                        <div class="form-group col-md-6 float-left">--}}
+{{--                                            <label for="exampleInputPassword1">Event Discount</label>--}}
+{{--                                            <input type="text" name="discount" value="{{ $event->discount}}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="40%">--}}
+{{--                                            @error('discount')--}}
+{{--                                            <span class="text-danger">{{$message}}</span>--}}
+{{--                                            @enderror--}}
+{{--                                        </div>--}}
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Event Start Date</label>

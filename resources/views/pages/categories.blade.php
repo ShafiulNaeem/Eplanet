@@ -2,37 +2,55 @@
 
 @section('content')
 
+    <!--slider area start-->
+    <div class="container image_video">
+        <div class="bo-slider">
+            @if( isset($sliders) )
+                @php $i = 0; @endphp
+                @foreach($sliders as $index => $slider)
+                    @if( strcmp($slider->type, 'video') )
+                        <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" data-type="image"></li>
+                    @else
+                        <li data-url="{{ asset('storage/videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                    @endif
+                @endforeach
+            @endif
+
+        </div>
+    </div>
+    <!--slider area end-->
+
     <!-- category area Start -->
 
     <section class="category">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="slider_area owl-carousel ">
-                        @foreach($categories as $category)
-                        <div class="single_slider d-flex align-items-center div_radis" data-bgimg="{{asset('storage/images/' .$category->sub_category_image)}}">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="slider_content">
-                                            <h1 class="text-success">{{$category->category->category_name}}</h1>
-                                            <h2 class="text-white">{{$category->subcategory_name}} </h2>
-                                            <p class="text-white">
-                                                {{\Carbon\Carbon::parse($category->created_at)->format('M d Y')}}
-                                            </p>
-                                            <a href="{{route('subcat.show',$category->subcategory_slug)}}">Shop Now </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="slider_area owl-carousel ">--}}
+{{--                        @foreach($categories as $category)--}}
+{{--                        <div class="single_slider d-flex align-items-center div_radis" data-bgimg="{{asset('storage/images/' .$category->sub_category_image)}}">--}}
+{{--                            <div class="container">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-lg-6">--}}
+{{--                                        <div class="slider_content">--}}
+{{--                                            <h1 class="text-success">{{$category->category->category_name}}</h1>--}}
+{{--                                            <h2 class="text-white">{{$category->subcategory_name}} </h2>--}}
+{{--                                            <p class="text-white">--}}
+{{--                                                {{\Carbon\Carbon::parse($category->created_at)->format('M d Y')}}--}}
+{{--                                            </p>--}}
+{{--                                            <a href="{{route('subcat.show',$category->subcategory_slug)}}">Shop Now </a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-            </div>
-        </div>
+{{--            </div>--}}
+{{--        </div>--}}
 
     </section>
 
