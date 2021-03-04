@@ -27,24 +27,43 @@
                                     <div id="copy">
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Category</label>
-                                            <select required name="category_id" id="cat_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                                            <select required name="category_id" id="category_id" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
                                                 <option value="" >Select Category</option>
                                                 @foreach($categories as $category )
                                                     <option value="{{$category->id}}">{{$category->category_name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('event_category')
+                                            @error('category_id')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+
+
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="">Sub Category</label>
+
+                                            <select required name="sub_categories_id" id="sub_category_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                                <option  value="">Select Sub Category</option>
+                                            </select>
+                                            @error('product_sub_category')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group col-md-6 float-left">
+                                            <label for="secondary_sub_categories_id">Second Sub Category</label>
+
+                                            <select name="secondary_sub_categories_id" id="secondary_sub_categories_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                                <option value="">Select Second Sub Category</option>
+                                            </select>
+
+                                        </div>
+
+
+                                        <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputEmail1">Product Name</label>
                                             <select multiple="multiple"  name="product_id[]" id="product_id" data-placeholder="Select Products" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option value="">Select Product</option>
-{{--                                                @foreach($products as $product)--}}
-{{--                                                    <option value="{{$product->id}}">{{$product->product_name}}</option>--}}
-{{--                                                @endforeach--}}
                                             </select>
                                             @error('product_id')
                                             <span class="text-danger">{{$message}}</span>
@@ -53,7 +72,7 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputEmail1">Event</label>
-                                            <select  name="event_id" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                            <select  name="event_id" id="" required class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option selected>Select Event</option>
                                                 @foreach($events as $event)
                                                     <option value="{{$event->id}}">{{$event->event_name}}</option>
@@ -64,19 +83,14 @@
                                             @enderror
                                         </div>
 
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="exampleInputPassword1">Discount</label>
+                                            <input type="text" name="discount" value="{{ old('discount') }}" required autocomplete="off" class="form-control" id="exampleInputPassword1" placeholder="40%">
+                                            @error('discount')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
                                     </div>
-
-{{--                                    <div id="others"></div>--}}
-
-{{--                                    <div class="form-group ">--}}
-{{--                                        --}}{{--                                            <label for="exampleFormControlFile1"> </label>--}}
-{{--                                        <div class="btn-group " style="margin-top: 30px">--}}
-{{--                                            <label for=""> </label>--}}
-{{--                                            <button type="button" class="btn btn-success" id="add_button">Add</button>--}}
-{{--                                            <button type="button" class="btn btn-danger" id="delete_button">Delete</button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
 
                                 </div>
 

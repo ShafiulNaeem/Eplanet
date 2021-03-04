@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -123,5 +124,11 @@ class SecondarySubCategoryController extends Controller
         if( self::changeStatus($request->status, 'App\Models\SecondarySubCategory', $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
+    }
+
+    // SecondSubCategory by Product
+    public function productBySecondSubCategory(SecondarySubCategory $secondarySubCategory)
+    {
+        return Product::where('secondary_sub_categories_id', $secondarySubCategory->id)->AdminProduct()->GetActive()->get();
     }
 }

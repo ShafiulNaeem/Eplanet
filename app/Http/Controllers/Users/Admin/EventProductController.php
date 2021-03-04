@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\EventProduct;
 use App\Models\Product;
+use App\Models\SecondarySubCategory;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +28,7 @@ class EventProductController extends Controller
 
     public function allEventProduct()
     {
-        $eventProducts = EventProduct::with(['product','event'])->EventProductWithOutAdminOwner()->get();
+        $eventProducts = Event::EventWithOutAdminOwner()->get();
         //dd($eventProducts);
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }
@@ -38,11 +40,11 @@ class EventProductController extends Controller
      */
     public function create()
     {
-        $products = Product::AdminProduct()->GetActive()->get();
+        //$products = Product::AdminProduct()->GetActive()->get();
         $events = Event::EventWithAdminOwner()->GetActive()->get();
         $categories = Category::CategoryWithAdminOwner()->get();
 
-        return view('admin.eventProduct.create',compact('products','events', 'categories'));
+        return view('admin.eventProduct.create',compact('events', 'categories'));
     }
 
     /**
@@ -54,14 +56,17 @@ class EventProductController extends Controller
     public function store(Request $request)
     {
         return ($this->createEvent($request)) ? redirect(route('eventproduct.index'))->with('success', ' Event created') :
-            redirect()->back()->with('error', ' Semething Went wrong');
+            redirect()->back()->with('error', ' Something Went wrong');
     }
 
 
     private function createEvent(Request $request){
         $validate = $request->validate([
             'category_id'=> 'required',
+            'sub_categories_id'=> 'required',
+            'secondary_sub_categories_id'=> 'required',
             'product_id'=> 'required',
+            'discount'=> 'sometimes',
             'event_id'=> 'required',
         ]);
 
@@ -69,6 +74,9 @@ class EventProductController extends Controller
             $event = EventProduct::create([
                 'admin_id' => Auth::guard('admin')->id(),
                 'category_id' => $request->category_id,
+                'sub_categories_id' => $request->sub_categories_id,
+                'secondary_sub_categories_id' => $request->secondary_sub_categories_id,
+                'discount' => $request->discount,
                 'event_id' => $request->event_id,
                 'product_id' => $id,
             ]);
@@ -98,21 +106,29 @@ class EventProductController extends Controller
      */
     public function edit($eventProduct)
     {
-        $products = Product::AdminProduct()->GetActive()->get();
+        $eventProduct = EventProduct::find($eventProduct);
+        $products = Product::where('secondary_sub_categories_id',$eventProduct->secondary_sub_categories_id)->AdminProduct()->GetActive()->get();
         $events = Event::EventWithAdminOwner()->GetActive()->get();
         $categories = Category::CategoryWithAdminOwner()->get();
-        $eventProductAll = EventProduct::where('event_id', $eventProduct)->get();
-        $eventProduct = Event::find($eventProduct);
+       // $eventProductAll = EventProduct::where('event_id', $eventProduct)->get();
 
-        $productsID = [];
-        $categoriesID = null;
 
-        foreach ($eventProductAll as $value){
-            array_push($productsID, $value->product_id);
-            $categoriesID = $value->category_id;
-        }
+        $subcategory = SubCategory::where('category_id',$eventProduct->category_id)->SubCategoryWithAdminOwner()->get();
+        $secondary_sub = SecondarySubCategory::where('sub_category_id',$eventProduct->sub_categories_id)->SecondarySubCategoryWithAdminOwner()->get();
 
-        return view('admin.eventProduct.edit',compact('categoriesID','productsID','products','eventProduct','categories', 'products','events'));
+       $productsID = [];
+       $categoriesID = null;
+//
+//        foreach ($eventProductAll as $value){
+//            array_push($productsID, $value->product_id);
+//            $categoriesID = $value->category_id;
+//        }
+
+        return view('admin.eventProduct.edit',
+            compact(
+                'categoriesID',
+                'productsID','products','eventProduct','categories', 'products','events','subcategory','secondary_sub'
+            ));
     }
 
     /**
@@ -124,7 +140,7 @@ class EventProductController extends Controller
      */
     public function update(Request $request, $eventProduct)
     {
-        EventProduct::where('event_id', $eventProduct)->delete();
+        EventProduct::where('id', $eventProduct)->delete();
 
         return ( $this->createEvent($request) )?
             redirect()->route('eventproduct.index')->with('success', 'Updated Successfully'):
@@ -140,7 +156,7 @@ class EventProductController extends Controller
      */
     public function destroy(EventProduct $eventproduct)
     {
-        return $eventProduct->delete() ?
+        return $eventproduct->delete() ?
             redirect()->back()->with('info', ' Delete Successfully') :
             redirect()->back()->with('error', 'Delete Unsuccessful') ;
     }
@@ -157,21 +173,28 @@ class EventProductController extends Controller
             foreach ($event_products['event_products'] as $products){
                 if( $products['products'] != null ){
                     $tableData .= '<tr role="row"><td class="text-center">' . $products['products']['product_name'] . "</td>";
-                    $tableData .= '<td class="text-center"> <img width="80" src="' . asset('/storage/app/public/images/' . $products['products']['feature_image']) . '" /></td>';
+                    $tableData .= '<td class="text-center"> <img width="80" src="' . asset('/storage/images/' . $products['products']['feature_image']) . '" /></td>';
                     $tableData .= '<td class="text-center">' . $products['products']['stock'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['product_price'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['category']['category_name'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['subcategory']['subcategory_name'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['secondsub']['secondary_subcategory_name'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['brand']['brand_name'] . '</td>';
-                    $tableData .= '<td class="text-center"> <form
+                    $tableData .= '<td class="text-center">' . $products['discount']. '</td>';
+                    $tableData .= '<td class="text-center"> <a href="'.route('eventproduct.edit',$products["id"]).'"
+                                                                   class="btn btn-app">
+                                                                    <i class="fas fa-edit"></i> Edit
+                                                                </a>
+                                                                <form
                                                                     action="'.route('eventproduct.destroy',$products["id"]).'"
                                                                     method="post">
                                                                     <input type="hidden" value="' . csrf_token() . '" name="_token">
                                                                     <input type="hidden" value="DELETE"  name="_method">
                                                                     <button type="submit" class="btn btn-app text-danger"><i class="fa fa-trash fa-2x"></i> </button>
-                                                                </form> </td></tr>';
+                                                                </form>
+                                                                 </td></tr>';
                 }
+                //dd($products["id"]);
             }
         }
         return $tableData;

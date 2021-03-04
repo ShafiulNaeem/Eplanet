@@ -54,7 +54,6 @@ class EventController extends Controller
         //dd($request->all());
         $val = $request->validate([
             'event_name' => ['required', 'string', 'max:255'],
-            'discount' => 'required',
             'start_date'  => 'required',
             'end_date'    => 'required|after:start_date',
             'event_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
@@ -70,7 +69,6 @@ class EventController extends Controller
         $val['event_name'] = $request->event_name;
         $val['start_date'] = $start_date;
         $val['end_date'] = $end_date;
-        $val['discount'] = $request->discount;
         $val['status'] = $request->status;
 
         if($request->hasFile('event_image')){
@@ -116,7 +114,6 @@ class EventController extends Controller
     {
         $val = $request->validate([
             'event_name' => ['required', 'string', 'max:255'],
-            'discount' => 'required',
             'start_date'  => 'required',
             'end_date'    => 'required|after:start_date',
             'event_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
@@ -129,7 +126,6 @@ class EventController extends Controller
         $val['event_name'] = $request->event_name;
         $val['start_date'] = $start_date;
         $val['end_date'] = $end_date;
-        $val['discount'] = $request->discount;
         $val['status'] = $request->status;
 
         if($request->hasFile('event_image')){

@@ -29,7 +29,7 @@
                                         <th>End Date</th>
                                         <th>Date</th>
                                         <th>View Products</th>
-                                        <th>Action</th>
+{{--                                        <th>Action</th>--}}
                                     </tr>
 
                                     </thead>
@@ -72,6 +72,7 @@
                                                                         <th>SubCategory</th>
                                                                         <th>SecondSubCategory</th>
                                                                         <th>Brand</th>
+                                                                        <th>Discount</th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                     </thead>
@@ -87,6 +88,7 @@
                                                                         <th>SubCategory</th>
                                                                         <th>SecondSubCategory</th>
                                                                         <th>Brand</th>
+                                                                        <th>Discount</th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                     </tfoot>
@@ -103,11 +105,11 @@
                                                     <!-- /.modal-dialog -->
                                                 </div>
                                             </td>
-                                            <td class="text-center">
-                                                <a href="{{ route('eventproduct.edit', $eventProduct->id) }}"
-                                                   class="btn btn-app float-left">
-                                                    <i class="fas fa-edit"></i> Edit
-                                                </a>
+{{--                                            <td class="text-center">--}}
+{{--                                                <a href="{{ route('eventproduct.edit', $eventProduct->id) }}"--}}
+{{--                                                   class="btn btn-app float-left">--}}
+{{--                                                    <i class="fas fa-edit"></i> Edit--}}
+{{--                                                </a>--}}
 
 {{--                                                <a href="" class="btn btn-app text-danger" data-toggle="modal"--}}
 {{--                                                   data-target="#exampleModal{{$eventProduct->id}}">--}}
@@ -143,7 +145,7 @@
 {{--                                                    </div>--}}
 {{--                                                </div>--}}
 
-                                            </td>
+{{--                                            </td>--}}
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -154,7 +156,7 @@
                                         <th>End Date</th>
                                         <th>Date</th>
                                         <th>View Products</th>
-                                        <th>Action</th>
+{{--                                        <th>Action</th>--}}
                                     </tr>
                                     </tfoot>
                                 </table>
