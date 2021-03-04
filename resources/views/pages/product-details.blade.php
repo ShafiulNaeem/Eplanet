@@ -333,10 +333,10 @@
                     <div class="product_info_button">    
                         <ul class="nav" role="tablist">
                             <li>
-                                 <a data-toggle="tab" class="active show" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" class="">Specification</a>
+                                 <a data-toggle="tab" class="active show" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" class="">Specification</a>
                             </li>
                             <li>
-                               <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="true" >Reviews</a>
+                               <a data-toggle="tab" href="#reviews" role="tab" id="click_change2" aria-controls="reviews" aria-selected="true" >Reviews</a>
                             </li>
                         </ul>
                     </div>
