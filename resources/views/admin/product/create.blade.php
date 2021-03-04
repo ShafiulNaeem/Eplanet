@@ -79,9 +79,6 @@
 
                                                     <select required name="product_sub_category" id="sub_category_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                         <option  value="">Select Sub Category</option>
-                                                        {{--                                                @foreach($subcategory as $category )--}}
-                                                        {{--                                                    <option value="{{$category->id}}">{{$category->subcategory_name}}</option>--}}
-                                                        {{--                                                @endforeach--}}
                                                     </select>
                                                     @error('product_sub_category')
                                                     <span class="text-danger">{{$message}}</span>
@@ -93,9 +90,6 @@
 
                                                     <select name="secondary_sub_categories_id" id="secondary_sub_categories_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                         <option value="">Select Second Sub Category</option>
-                                                        {{--                                                @foreach($secondary_sub as $category )--}}
-                                                        {{--                                                    <option value="{{$category->id}}">{{$category->secondary_subcategory_name}}</option>--}}
-                                                        {{--                                                @endforeach--}}
                                                     </select>
 
                                                 </div>
@@ -203,20 +197,20 @@
 
                                             <div class="row">
                                                 <div class="form-group col-md-12">
-                                                    <label >Product Specification</label>
+                                                    <label >Product Description</label>
                                                     <textarea class="form-control" name="product_description"  rows="10">{{ old('product_description') }}</textarea>
                                                     @error('product_description')
                                                     <span class="text-danger">{{$message}}</span>
                                                     @enderror
                                                 </div>
 
-                                                <div class="form-group col-md-12">
-                                                    <label >Product Description</label>
-                                                    <textarea class="form-control" name="product_specification"  rows="10">{{ old('product_description') }}</textarea>
-                                                    @error('product_description')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                    @enderror
-                                                </div>
+{{--                                                <div class="form-group col-md-12">--}}
+{{--                                                    <label >Product Description</label>--}}
+{{--                                                    <textarea class="form-control" name="product_specification"  rows="10">{{ old('product_specification') }}</textarea>--}}
+{{--                                                    @error('product_specification')--}}
+{{--                                                    <span class="text-danger">{{$message}}</span>--}}
+{{--                                                    @enderror--}}
+{{--                                                </div>--}}
                                             </div>
                                         </div><!-- /.box-body -->
 
