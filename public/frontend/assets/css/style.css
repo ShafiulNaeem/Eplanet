@@ -27,9 +27,9 @@
     23. newsletter popup css here
     24. modal css here
 -----------------------------------------------------------------------------------*/
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -57,7 +57,7 @@ body {
   font-style: normal;
   font-weight: 400;
   visibility: visible;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #222222;
   letter-spacing: 0.02em;
 }
