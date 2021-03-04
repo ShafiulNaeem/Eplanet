@@ -262,6 +262,8 @@ Route::prefix('admin')->namespace('Users\Admin')->group(function(){
     Route::resource('subcategory', 'SubCategoryController');
     Route::resource('brand', 'BrandController');
     Route::resource('product', 'ProductController');
+    Route::get('product/specification/{product}/update', 'ProductController@specificationForm')->name('product.update.menual.get');
+    Route::put('product/specification/{product}', 'ProductController@createMenual')->name('product.update.menual.post');
     Route::resource('productImage', 'ProductImageController');
     Route::resource('productVideo', 'ProductVideoController');
     Route::resource('coupon', 'CouponController');

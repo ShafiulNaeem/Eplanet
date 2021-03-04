@@ -6,7 +6,10 @@ use App\Models\Admin;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Coupon;
+use App\Models\District;
+use App\Models\Division;
 use App\Models\Emi;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -40,5 +43,8 @@ class DatabaseSeeder extends Seeder
         Comment::factory(15)->create();
         Reply::factory(15)->create();
         Emi::factory(10)->create();
+        Division::factory(5)->create();
+        District::factory(40)->create();
+        City::factory(150)->create();
     }
 }
