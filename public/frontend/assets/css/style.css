@@ -27,9 +27,9 @@
     23. newsletter popup css here
     24. modal css here
 -----------------------------------------------------------------------------------*/
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -57,7 +57,7 @@ body {
   font-style: normal;
   font-weight: 400;
   visibility: visible;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #222222;
   letter-spacing: 0.02em;
 }
@@ -6678,11 +6678,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_meta span a:hover {
   color: #40A944;
 }
+.product_info_button ul li{
+  margin:0 auto;
+}
 
 .product_info_button {
-  border-bottom: 1px solid #ededed;
-  padding-bottom: 15px;
-  margin-bottom: 29px;
+  /* border-bottom: 1px solid #ededed; */
+  /* padding-bottom: 15px; */
+  margin-bottom: 20px;
+  background: #D6D6D6;
+  padding: 7px 4px;
 }
 @media only screen and (max-width: 767px) {
   .product_info_button ul li {
@@ -6762,10 +6767,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-weight: 700;
 }
 
-.product_d_inner {
+/* .product_d_inner {
   padding: 20px 30px 27px;
   border: 1px solid #33333391;
-}
+} */
 @media only screen and (max-width: 767px) {
   .product_d_inner {
     padding: 20px 20px 27px;

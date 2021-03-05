@@ -334,30 +334,51 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-md-9">
-                <div class="product_d_inner">
-                    <div class="product_info_button">
+                <div class="product_d_inner">   
+                    <div class="product_info_button">    
                         <ul class="nav" role="tablist">
                             <li>
-                                <a class="active text" data-toggle="tab" id="click_change"  href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
-                           </li>
-{{--                            <li>--}}
-{{--                                <a data-toggle="tab" href="#info" role="tab" id="click_change2" aria-controls="info" aria-selected="false">Description</a>--}}
-{{--                            </li>--}}
-
+                                 <a data-toggle="tab" class="active show" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" class="">Specification</a>
+                            </li>
+                            <li>
+                               <a data-toggle="tab" href="#reviews" role="tab" id="click_change2" aria-controls="reviews" aria-selected="true" >Reviews</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="tab-content">
-
-                        <div class="tab-pane fade active" id="sheet" role="tabpanel">
-                            {!! $products[0]->specification !!}
-                        </div>
-
-                        <div class="tab-pane fade show " id="info" role="tabpanel">
-                            <div class="product_info_content">
+                      
+                        <div class="tab-pane fade active show" id="sheet" role="tabpanel">
+                            <div class="product_d_table">
+                              {!! $products[0]->specification !!}
+                            </div>  
+                            <div class="product_d_table">
                                 {!! $products[0]->extra_description !!}
-                            </div>
+                              </div>   
                         </div>
 
+                        <div class="tab-pane fade " id="reviews" role="tabpanel">
+                            <div class="reviews_wrapper">
+                                <div class="reviews_comment_box">
+                                    <div class="comment_thmb">
+                                        <img src="assets/img/blog/comment2.jpg" alt="">
+                                    </div>    
+                                </div>
+                                <div class="comment_title">
+                                    <h2>Add a review </h2>
+                                </div>
+        
+                                <div class="product_review_form">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <textarea name="comment" id="review_comment"></textarea>
+                                            </div>   
+                                        </div>
+                                        <button type="submit">Submit</button>
+                                     </form>   
+                                </div> 
+                            </div>     
+                        </div>
                     </div>
                 </div>
             </div>
