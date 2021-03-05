@@ -11,14 +11,21 @@
                     <!--shop toolbar start-->
                     <div class="shop_toolbar_wrapper">
                         <div class="shop_toolbar_btn">
-
-                            <button data-role="grid_3" type="button" class="active btn-grid-3" data-toggle="tooltip" title="3"><i class="fa fa-th" aria-hidden="true"></i></button>
-                            <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"><i class="fa fa-bars" aria-hidden="true"></i></button>
+{{$factoryViews->links()}}
+{{--                            <button data-role="grid_3" type="button" class="active btn-grid-3" data-toggle="tooltip" title="3"><i class="fa fa-th" aria-hidden="true"></i></button>--}}
+{{--                            <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"><i class="fa fa-bars" aria-hidden="true"></i></button>--}}
                         </div>
 
 
                         <div class="page_amount">
-                            <p>Showing 1–9 of 21 results</p>
+                            @php
+                                $queryString = ltrim(strrchr(request()->getQueryString(), '='), '=');
+                            @endphp
+                            <p>Showing
+                                @if(!empty($queryString) && $queryString != 1)
+                                    {{ ((int)$queryString-1) * $factoryViews->perPage() }}
+                                @else 1 @endif
+                                –{{ (!empty($queryString)) ? $queryString* $factoryViews->perPage() : $factoryViews->perPage()}} of {{$factoryViews->total()}} results</p>
                         </div>
                     </div>
                     <!--shop toolbar end-->
@@ -27,7 +34,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12 ">
                             <h3></h3>
                         </div>
-                        @foreach($factoryViews as $factoryView)
+                        @foreach($factoryViews->unique('admin_id') as $factoryView)
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                     <div class="single_product card">
                                         <div class="product_thumb">

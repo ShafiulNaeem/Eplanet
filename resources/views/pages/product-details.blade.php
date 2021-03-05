@@ -108,14 +108,14 @@
     {{--                                    </div>--}}
 
                                         <div class=" product_ratting">
-    {{--                                        <ul>--}}
-    {{--                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                            <li class="review"><a href="#"> (customer review ) </a></li>--}}
-    {{--                                        </ul>--}}
+                                            <ul>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                                <li class="review"><a href="#"> (customer review ) </a></li>
+                                            </ul>
                                         </div>
 
                                         <div class=" product_ratting">
@@ -147,6 +147,11 @@
                                                 <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
                                             </div>
                                         @endif
+
+                                        <div class="product_desc mt-2">
+                                            {!! $product->product_description !!}
+                                        </div>
+
                                         <a href="#sheet" id="click_change3">
                                             <i class="fa fa-2x fa-sort-up"></i> View more info
                                         </a>
@@ -277,7 +282,7 @@
                                             </div>
 
                                             <div class="product_meta">
-                                                <span>Category: <a href="{{ route('cat.show', $product->category->id) }}">{{$product->category->category_name}}</a></span>
+                                                <span>Category: <a href="{{ route('cat.show', $product->category->category_slug) }}">{{$product->category->category_name}}</a></span>
                                             </div>
                                         <div class=" product_d_action">
                                             <ul>
@@ -299,9 +304,7 @@
                                             <ul>
                                                 <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
                                                 <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a></li>
-                                                <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> save</a></li>
-                                                <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> share</a></li>
-                                                <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> linked</a></li>
+                                                <li><a class="pinterest" href="#" title="youtube"><i class="fa fa-youtube"></i> share</a></li>
                                             </ul>
                                         </div>
 
@@ -310,9 +313,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="product_desc mt-2">
-                                    {!! $product->product_description !!}
-                                </div>
+
                             </div>
 
                         </div>

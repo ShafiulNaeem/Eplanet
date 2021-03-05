@@ -94,7 +94,7 @@ Route::get('/faq',function(){
 })->name('faq');
 
 Route::get('/',  'WelcomeController@index')->name('home');
-Route::post('layouts/', 'Users\NavbarController@store')->name('pages.search');
+Route::get('layouts/', 'Users\NavbarController@store')->name('pages.search');
 Route::get('checkout', 'Users\CheckoutController@index')->middleware(['auth'])->name('checkout');
 Route::post('checkout', 'Users\CheckoutController@checkout')->name('checkout.final');
 Route::get('checkoutconfirm', 'Users\CheckoutController@checkoutConfirm')->name('checkout.confirm');

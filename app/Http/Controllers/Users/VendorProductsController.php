@@ -56,7 +56,7 @@ class VendorProductsController extends Controller
     // All Vendor Show
     public function allVendor()
     {
-        $factoryViews = FactoryView::orderBy('id','desc')->get();
+        $factoryViews = FactoryView::orderBy('id','desc')->distinct('admin_id')->paginate(16);
         return view('pages.vandor',compact('factoryViews'));
     }
 }
