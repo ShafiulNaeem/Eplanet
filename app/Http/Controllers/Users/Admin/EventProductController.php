@@ -21,14 +21,14 @@ class EventProductController extends Controller
      */
     public function index()
     {
-        $eventProducts = Event::EventWithAdminOwner()->get();
+        $eventProducts = Event::EventWithAdminOwner()->GetActive()->get();
 
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }
 
     public function allEventProduct()
     {
-        $eventProducts = Event::EventWithOutAdminOwner()->get();
+        $eventProducts = Event::EventWithOutAdminOwner()->GetActive()->get();
         //dd($eventProducts);
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }

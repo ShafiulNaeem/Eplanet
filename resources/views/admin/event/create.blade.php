@@ -42,11 +42,11 @@
 
                                 <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputPassword1">Event Start Date</label>
-                                    <input type="date" name="start_date" class="form-control" placeholder="Start Date" />
+                                    <input type="datetime-local" name="start_date" class="form-control" placeholder="Start Date" />
                                 </div>
                                 <div class="form-group col-md-6 float-left">
                                     <label for="exampleInputPassword1">Event End Date</label>
-                                    <input type="date" name="end_date" class="form-control" placeholder="End Date" />
+                                    <input type="datetime-local" name="end_date" class="form-control" placeholder="End Date" />
                                 </div>
 
                                 <div class="form-group col-md-6 float-left">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\CategorySlider;
 use App\Models\ContactUsSlider;
+use App\Models\Division;
 use App\Models\Event;
 use App\Models\EventProduct;
 use App\Models\ExpressWish;
@@ -41,8 +42,9 @@ class WelcomeController extends Controller
         $mainRes = Category::with('products')
             ->where('id', $product[0]->category_id)
             ->first();
+        $area = Division::with('districts.cities')->get();
 //dd($mainRes);
-        return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
+        return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'areas' => $area]);
 
     }
 
@@ -151,22 +153,39 @@ class WelcomeController extends Controller
 
     //  promotion
     public function promotion(){
-        //dd( \Carbon\Carbon::today()->format('Y-m-d'));
-        $count_date = \Carbon\Carbon::today()->format('Y-m-d');
-        $event = Event::with('eventProducts')->where('start_date', '>=', $count_date)->get();
 
-        $eventProduct =EventProduct::with('category')
+        $count_date = date('Y-m-d H:i:s', time()+6*3600);
+        $events = Event::where( 'start_date','>=', $count_date)->GetActive()->get();
+        $eventProducts = [];
+        $eventPro = Event::with('eventProducts')
+            ->where( 'start_date','<=', $count_date)
+            ->GetActive()
+            ->get();
+        //dd($eventPro);
+        if (count($eventPro) > 0){
+            $eventProducts =EventProduct::with('category')
             ->where([
-                'event_id' => $event[0]->id
+                'event_id' => $eventPro[0]->id
             ])
-            ->select('category_id','event_id')->distinct()->get();
-        return view('pages.promotion',['events' =>$event,'eventProducts' => $eventProduct]);
+                ->select('category_id','event_id')->distinct()->get();
+        }
+        return view('pages.promotion',compact('events','eventProducts'));
+
 
     }
 
     // promotion products
     public function promotionProduct($event_id,$category_id){
+        $event = Event::where( 'id',$event_id)->GetActive()->get();
+        $category = Category::where( 'id', $category_id)->GetActive()->get();
+        $products =EventProduct::with('products')
+            ->where([
+                'event_id' => $event_id,
+                'category_id' => $category_id
+            ])
+            ->get();
 
+        return view('pages.promotion_products',compact('products','category','event'));
     }
 
 }

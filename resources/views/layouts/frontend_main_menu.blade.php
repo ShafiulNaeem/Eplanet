@@ -213,12 +213,12 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="search_container">
-                                        <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
-                                            @csrf
+                                        <form action="{{route('pages.search')}}" method="get" enctype="multipart/form-data">
+{{--                                            @csrf--}}
                                             <div class="hover_category">
 
                                                 <select class="select_option" style="color:#000" name="category_name" id="categori2">
-                                                    <option selected>Select a categories</option>
+                                                    <option selected disabled value="">Select a categories</option>
 
                                                     @if(isset($categories))
                                                         @foreach($categories as $category)
@@ -415,7 +415,7 @@
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                                 @endif
-                                <li class=" anime"><a href=""><h4 class="ml2">নবাবীহাট</h4></a></li>
+                                <li class=" anime"><a href="{{route('promotion.category')}}"><h4 class="ml2">নবাবীহাট</h4></a></li>
 
                             </ul>
                         </nav>

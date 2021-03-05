@@ -250,6 +250,7 @@
         timeID2.innerHTML = time.toLocaleTimeString();
     }, 1000);
 </script>
+
 <script>
     toastr.options = {
         "closeButton": true,
