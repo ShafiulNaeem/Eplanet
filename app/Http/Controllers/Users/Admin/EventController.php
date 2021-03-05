@@ -55,19 +55,20 @@ class EventController extends Controller
         $val = $request->validate([
             'event_name' => ['required', 'string', 'max:255'],
             'start_date'  => 'required',
-            'end_date'    => 'required|after:start_date',
+            'end_date'    => 'required',
             'event_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
         //dd($val['start_date']);
-
-        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d');
-        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d');
-//dd($start_date);
+        //$dateTime = Carbon::parse($request->your_datetime_field);
+        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s', time() - 6*3600);
+        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s',time()-6*3600);
+//dd($end_date);
         $admin_id = Auth::guard('admin')->user()->id;
 
         $val['admin_id'] = $admin_id;
         $val['event_name'] = $request->event_name;
         $val['start_date'] = $start_date;
+        //dd($val['start_date']);
         $val['end_date'] = $end_date;
         $val['status'] = $request->status;
 
@@ -120,8 +121,8 @@ class EventController extends Controller
         ]);
         //dd($val['start_date']);
 
-        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d');
-        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d');
+        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s');
+        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s');
 
         $val['event_name'] = $request->event_name;
         $val['start_date'] = $start_date;

@@ -19,6 +19,7 @@ class NavbarController extends Controller
 {
     public function store(Request $request)
     {
+        //dd($request->all());
         if ($request->product_name != null ){
             $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->GetActive()->get();
             $mainRes = $mainRes = Category::with('products')

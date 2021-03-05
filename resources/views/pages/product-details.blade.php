@@ -91,7 +91,7 @@
                                         </div>
                                         @if( ! empty($product->model) )
                                             <div class="product_meta">
-                                                <span> <b>Brand Model:</b>  {{$product->model}}</span>
+                                                <span> <b>Model:</b>  {{$product->model}}</span>
                                             </div>
                                         @endif
 
@@ -102,6 +102,9 @@
                                         @endif
                                          <div class="product_meta">
                                             <span> <b>Product Code: </b> {{ $product->unique_id }}</span>
+                                        </div>
+                                        <div class="product_desc mt-2">
+                                            {!! $product->product_description !!}
                                         </div>
     {{--                                      <div class="product_meta">--}}
     {{--                                        <span>Regular Price: <a href="#">12534</a></span>--}}
@@ -120,7 +123,7 @@
 
                                         <div class=" product_ratting">
                                             <ul>
-                                                <li style="color:#28a745">EMI Availabe:</li>
+                                                <li class="btn-success text-white" style="padding: 5px; border-radius: 3px;">EMI Availabe:</li>
                                                 <li>
                                                     @if( ! empty( $product->emi_id ) ) Yes @else No @endif
                                                 </li>
@@ -310,9 +313,9 @@
                             </div>
 
                             <div class="row">
-                                <div class="product_desc mt-2">
-                                    {!! $product->product_description !!}
-                                </div>
+{{--                                <div class="product_desc mt-2">--}}
+{{--                                    {!! $product->product_description !!}--}}
+{{--                                </div>--}}
                             </div>
 
                         </div>
