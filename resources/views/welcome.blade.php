@@ -119,7 +119,21 @@
     <div class="container">
         <div class="product_container">
             <div class="row">
-                <div class="col-md-12"><h2>Categories</h2></div>
+                <div class="col-md-12">
+                    <h2>
+                        <span>C</span>
+                        <span>a</span>
+                        <span>t</span>
+                        <span>e</span>
+                        <span>g</span>
+                        <span>o</span>
+                        <span>r</span>
+                        <span>i</span>
+                        <span>e</span>
+                        <span>s</span>
+                      
+                      </h2>
+                </div>
 
                 <div class="col-12">
                     <div class="tab-content">
@@ -153,7 +167,22 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12"><h2>Best Seller</h2></div>
+                <div class="col-md-12">
+                    <h2>
+                        <span>B</span>
+                        <span>e</span>
+                        <span>s</span>
+                        <span>t</span>
+                        <span></span>
+                        <span>s</span>
+                        <span>e</span>
+                        <span>l</span>
+                        <span>l</span>
+                        <span>e</span>
+                        <span>r</span>
+                      
+                      </h2>
+                </div>
 
                 <div class="col-12">
                     <div class="tab-content">
