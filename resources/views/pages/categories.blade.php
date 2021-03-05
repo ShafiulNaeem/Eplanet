@@ -118,7 +118,7 @@
                                         </div>
 
                                         <div class="price_box text-center">
-                                            <p class="float-right">Size : {{ $product->size }}</p>
+                                            <p class="float-right">Model : {{ $product->model }}</p>
                                             <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
                                         </div>
                                     </div>

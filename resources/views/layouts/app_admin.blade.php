@@ -468,7 +468,7 @@
 
 
 
-    // category by sub category
+    // subcategory by category
     $('#category_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let subCat = $('#sub_category_id');
@@ -483,7 +483,7 @@
 
 
             success: function (response) {
-                subCat[0].innerHTML = " ";
+                subCat.empty();
                 let option = createElement("option");
 
                 option.setAttribute('value', " ");

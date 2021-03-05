@@ -21,10 +21,6 @@ class NavbarController extends Controller
     {
         if ($request->product_name != null ){
             $product = Product::where('product_name', 'LIKE','%'.$request->product_name.'%')->GetActive()->paginate(16);
-//            $mainRes = $mainRes = Category::with('products')
-//                ->where('id', $product[0]->category_id)
-//                ->first();
-//            $area = Division::with('districts.cities')->get();
 
             return view('pages.searchResultWeb',['products' =>$product]);
         } else {
