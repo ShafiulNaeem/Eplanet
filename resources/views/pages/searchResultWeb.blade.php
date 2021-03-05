@@ -13,10 +13,10 @@
                 </div>
             </div>
 
-            @foreach($categories as $category)
-                @if( count($category->productWithStatus) > 0 )
+{{--            @foreach($categories as $category)--}}
+                @if( count($products) > 0 )
                     <div class="row">
-                        @foreach($category->productWithStatus as $product)
+                        @foreach($products as $product)
                             <div class="col-md-3">
                                 <div class="right-category">
                                     <div class="card">
@@ -24,11 +24,21 @@
                                             <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{asset('storage/images/' .$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                         </div>
                                         <div class="card-body">
-                                            <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                            <div class="pro_des">
+                                                <a class="float-left" href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                                <div class="float-right product_ratting">
+                                                    <ul>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
                                             <div class="price_box text-center">
-                                                <a href="{{route('pages.show',$product->product_slug)}}" class="float-right">
-                                                    <p>Size : {{ $product->size }}</p>
-                                                </a>
+                                                <p class="float-right">Model : {{ $product->model }}</p>
                                                 <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
                                             </div>
                                         </div>
@@ -38,8 +48,8 @@
                         @endforeach
                     </div>
                 @endif
-            @endforeach
-            {{ $categories->links() }}
+{{--            @endforeach--}}
+            {{ $products->links() }}
         </div>
     </section>
 
