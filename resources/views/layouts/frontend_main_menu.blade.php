@@ -37,11 +37,10 @@
                         @php $categories = \App\Models\Category::with(['subcategory', 'subcategory.secondary_sub_categories'])->orderBy('created_at','desc')->GetActive()->get();  @endphp
                     </div>
                     <div class="search_container">
-                        <form action="{{route('pages.search')}}" method="post">
-                            @csrf
+                        <form action="{{route('pages.search')}}" method="get" enctype="multipart/form-data">
                             <div class="hover_category">
                                 <select class="select_option" name="category_name" id="categori1">
-                                    <option selected >Select a categories</option>
+                                    <option selected disabled value="" >Select a categories</option>
                                     @if(isset($categories))
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">
@@ -52,7 +51,7 @@
                                 </select>
                             </div>
                             <div class="search_box">
-                                <input placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
+                                <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                             </div>
                         </form>
@@ -213,12 +212,12 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="search_container">
-                                        <form action="{{route('pages.search')}}" method="post" enctype="multipart/form-data">
-                                            @csrf
+                                        <form action="{{route('pages.search')}}" method="get" enctype="multipart/form-data">
+
                                             <div class="hover_category">
 
                                                 <select class="select_option" style="color:#000" name="category_name" id="categori2">
-                                                    <option selected>Select a categories</option>
+                                                    <option selected disabled value="">Select a categories</option>
 
                                                     @if(isset($categories))
                                                         @foreach($categories as $category)
@@ -232,7 +231,8 @@
                                             </div>
 
                                             <div class="search_box">
-                                                <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
+                                                <input name="product_name" placeholder="Search product..." type="text">
+                                                <a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                                             </div>
                                         </form>

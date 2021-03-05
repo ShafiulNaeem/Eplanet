@@ -5,16 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\CategorySlider;
 use App\Models\ContactUsSlider;
+use App\Models\Division;
 use App\Models\Event;
 use App\Models\EventProduct;
 use App\Models\ExpressWish;
 use App\Models\Product;
-use App\Models\ProductImage;
 use App\Models\SubCategory;
 use App\Models\WishList;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
@@ -41,8 +39,9 @@ class WelcomeController extends Controller
         $mainRes = Category::with('products')
             ->where('id', $product[0]->category_id)
             ->first();
-//dd($mainRes);
-        return view('pages.product-details',['results' => $mainRes,'products' =>$product]);
+        $area = Division::with('districts.cities')->get();
+
+        return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'areas' => $area]);
 
     }
 
@@ -53,43 +52,6 @@ class WelcomeController extends Controller
         $slider = CategorySlider::where('category_id', $id)->GetActive()->get();
         //dd($categorySliders);
         return view('pages.categories',['categories' =>$category,'sliders' =>$slider]);
-    }
-
-    private function productByCategory($catArray){
-        $mainRes = [];
-        foreach ($catArray as $val){
-            $category_result = [];
-            $subCategories = Category::with('products')->where(
-                'category_name' , '=', $val
-            )->GetActive()->get();
-
-            foreach ($subCategories as $sub) {
-                if ( count($sub->products) ){
-                    $category_result['category'] = [
-                        'category_name' => $sub->category_name,
-                        'category_image' => $sub->category_image
-                    ];
-
-                    foreach ($sub->products as $product){
-                            //dd($product->status);
-                            if ($product->status == 1){
-                                $category_result['category']['products'][] = [
-                                    'id' => $product->id,
-                                    'unique_id' => $product->unique_id,
-                                    'brand_id' => $product->brand_id,
-                                    'product_name' => $product->product_name,
-                                    'feature_image' => $product->feature_image,
-                                    'stock' => $product->stock,
-                                    'product_price' => $product->product_price
-                                ];
-                            }
-
-                    }
-                    $mainRes[] = $category_result;
-                }
-            }
-        }
-        return $mainRes;
     }
 
 

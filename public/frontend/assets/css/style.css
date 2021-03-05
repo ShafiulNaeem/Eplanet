@@ -3534,6 +3534,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #40A944;
 }
 
+.pro_des{
+    margin-bottom: 40px;
+}
+
 .price_box {
   margin-top: 12px;
 }
