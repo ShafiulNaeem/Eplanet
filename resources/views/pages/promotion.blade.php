@@ -29,7 +29,9 @@
                                       $datetime2 = new \DateTime($count_date);
                                       $interval = $datetime1->diff($datetime2);
                                       $elapsed = $interval->format('%a days        %h : %i : %S ');
+
                                 @endphp
+
                                  <div class="col-md-6 text-center" style="padding: 15px">
                                     <img style="max-width: 60%" src="{{asset('storage/images/' .$event->event_image)}}" class="card-img-top" alt="{{$event->event_name}}">
                                 </div>
@@ -37,6 +39,7 @@
                                     <h4 class="text-white text-uppercase">{{$event->event_name}} STARTING IN</h4>
                                     <p class="text-white text-uppercase">{{\Carbon\Carbon::parse($event->start_date)->format('d M  Y')}}</p>
                                     <h1 class="text-white text-uppercase">{{$elapsed}}</h1>
+
                                 </div>
                             @endforeach
                         @endif
