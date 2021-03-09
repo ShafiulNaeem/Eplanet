@@ -40,7 +40,7 @@
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
-                                <span><img src="{{asset('storage/images/'.$factoryView->image)}}" alt="{{$factoryView->description}}" width="80"></span>
+                                <span><img src="{{assetImageAndVideo('images').$factoryView->image}}" alt="{{$factoryView->description}}" width="80"></span>
                             </div>
 
                             </div><!-- /.box-body -->

@@ -52,7 +52,7 @@
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
-                                <span><img src="{{asset('storage/documents/'.$productCertification->pdf)}}" alt="{{$productCertification->name}}" width="80"></span>
+                                <span><img src="{{assetImageAndVideo('documents').$productCertification->pdf}}" alt="{{$productCertification->name}}" width="80"></span>
                             </div>
 
                             </div><!-- /.box-body -->

@@ -43,21 +43,21 @@
                             <div class="product-details-tab">
                                 <div id="img-1" class="zoomWrapper single-zoom">
                                     <a href="#">
-                                        <img id="zoom1" src="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
+                                        <img id="zoom1" src="{{assetImageAndVideo('images') .$product->feature_image}}" data-zoom-image="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}">
                                     </a>
                                 </div>
                                 <div class="single-zoom-thumb">
                                     <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                                         <li>
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('storage/images/' .$product->feature_image)}}">
-                                                <img src="{{asset('storage/images/' . $product->feature_image)}}" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{assetImageAndVideo('images') .$product->feature_image}}" data-zoom-image="{{assetImageAndVideo('images') .$product->feature_image}}">
+                                                <img src="{{assetImageAndVideo('images') . $product->feature_image}}" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         @foreach($product->productImages as $images)
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$images->product_image)}}" data-zoom-image="{{asset('storage/images/' .$images->product_image)}}">
-                                                <img src="{{asset('storage/images/' . $images->product_image)}}" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{assetImageAndVideo('images') .$images->product_image}}" data-zoom-image="{{assetImageAndVideo('images') .$images->product_image}}">
+                                                <img src="{{assetImageAndVideo('images') . $images->product_image}}" alt="zo-th-1"/>
                                                 <span></span>
                                             </a>
 
@@ -71,7 +71,7 @@
                                     @if( count($product->productVideos) > 0 )
                                         <h3>Promo Video </h3>
                                         @foreach($product->productVideos as $video)
-                                            <iframe width="400"  src="{{asset('storage/videos/' .$video->product_image)}}" frameborder="0" allowfullscreen>
+                                            <iframe width="400"  src="{{assetImageAndVideo('videos') .$video->product_image}}" frameborder="0" allowfullscreen>
                                         </iframe>
                                         @endforeach
                                     @endif
@@ -158,68 +158,59 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                                                <div class=" product_recive">
-                                                                  <div class="recive_inner">
-                                                                    <ul>
-                                                                        <li>Cash On Delivary: </li>
-                                                                        <li>
-                                                                            <select name="" id="" class="form-control" >
-                                                                                <option value="">Yes</option>
-                                                                                <option value="">No</option>
-                                                                            </select>
-                                                                        </li>
-                                                                    </ul>
-                                                                  </div>
-                                                                  <div class="recive_inner col-md-6">
-                                                                      <ul class="nav nav-pills flex-column">
-                                                                          @foreach($areas as $index => $area)
-                                                                              <li class="nav-item  ">
-                                                                              <a class="nav-link bg-gradient-dark location collapsed" href="#submenu{{$index}}" data-toggle="collapse" data-target="#submenu{{$index}}">{{$area->division_name}}</a>
-                                                                                @if( isset($area->districts) )
-                                                                                    <div class="collapse" id="submenu{{$index}}" aria-expanded="false">
-                                                                                        <ul class="flex-column pl-2 nav">
-    {{--                                                                                  <li class="nav-item"><a class="nav-link py-0" href="">Orders</a></li>--}}
-                                                                                            @foreach($area->districts as $distIndex => $district)
-                                                                                                <li class="nav-item  ">
-                                                                                                  <a class="nav-link  location collapsed py-0" href="#submenu{{$index}}sub{{$distIndex}}" data-toggle="collapse" data-target="#submenu{{$index}}sub{{$distIndex}}">{{$district->district_name}}</a>
-                                                                                                    @if( isset($district->cities) )
-                                                                                                        <div class="collapse small" id="submenu{{$index}}sub{{$distIndex}}" aria-expanded="false">
-                                                                                                        <ul class="flex-column nav pl-4">
-                                                                                                            @foreach($district->cities as $city)
-                                                                                                              <li class="nav-item ">
-                                                                                                                  <a class="nav-link p-0 location" href="">
-                                                                                                                      {{$city->city_name}}
-                                                                                                                  </a>
-                                                                                                              </li>
-                                                                                                            @endforeach
-                                                                                                      </ul>
-                                                                                                  </div>
-                                                                                                    @endif
-                                                                                              </li>
-                                                                                            @endforeach
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                @endif
-                                                                              </li>
-                                                                          @endforeach
-                                                                      </ul>
-                                                                  </div>
-                                                                  <div class="recive_inner">
-                                                                    <ul>
-                                                                        <li>Product return policy </li>
-                                                                        <li>
-                                                                            <select name="" id="" class="form-control" >
-                                                                                @if( isset($product->return_policy) )
-                                                                                    <option value="">{{$product->return_policy}}</option>
-                                                                                @else
-                                                                                    <option value="">No</option>
-                                                                                @endif
-                                                                            </select>
-                                                                        </li>
-                                                                    </ul>
-                                                                  </div>
-                                                                </div>
-                                                            </div>
+                                            <div class=" product_recive">
+                                              <div class="recive_inner col-md-12">
+                                                <ul>
+                                                    <li>Cash On Delivary: </li>
+                                                    <li>
+                                                        <select name="" id="" class="form-control" >
+                                                            <option value="">Yes</option>
+                                                            <option value="">No</option>
+                                                        </select>
+                                                    </li>
+                                                </ul>
+                                              </div>
+                                              <div class="recive_inner col-md-12" style="height: 54px">
+                                                  <div class="col-md-8 float-left">
+                                                      <i class="fa fa-location-arrow"></i>
+                                                      <span id="currentlocationselected">Dhaka > Bangladesh</span>
+                                                  </div>
+                                                  <div class="col-md-4 float-right">
+                                                      <p id="changelocationtext">change</p>
+                                                  </div>
+
+                                                  <div class="locationDropdownMainDiv" id="locationDropdownMainDiv">
+                                                      <div class="card" style="width: 100%; z-index: 1">
+                                                          <div class="card-body">
+                                                              <div class="location-dropdown">
+                                                                  <ul class="nav nav-pills flex-column" id="mainLocationUl">
+                                                                      @foreach($areas as $index => $area)
+                                                                          <li class="nav-item  " id="mainLocationLi">
+                                                                              <p class=" bg-gradient-dark location collapsed" onclick="changeLocation(this)" data-location-id="{{$area->id}}" data-location-current="division" id="mainLocationP">{{$area->division_name}}</p>
+                                                                          </li>
+                                                                      @endforeach
+                                                                  </ul>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-12 recive_inner">
+                                                <ul>
+                                                    <li>Product return policy </li>
+                                                    <li>
+                                                        <select name="" id="" class="form-control" >
+                                                            @if( isset($product->return_policy) )
+                                                                <option value="">{{$product->return_policy}}</option>
+                                                            @else
+                                                                <option value="">No</option>
+                                                            @endif
+                                                        </select>
+                                                    </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <a href="#sheet" id="click_change3">
                                         <i class="fa fa-2x fa-sort-up"></i> More details
@@ -334,8 +325,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-md-9">
-                <div class="product_d_inner">   
-                    <div class="product_info_button">    
+                <div class="product_d_inner">
+                    <div class="product_info_button">
                         <ul class="nav" role="tablist">
                             <li>
                                  <a data-toggle="tab" class="active show" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" class="">Specification</a>
@@ -346,14 +337,14 @@
                         </ul>
                     </div>
                     <div class="tab-content">
-                      
+
                         <div class="tab-pane fade active show" id="sheet" role="tabpanel">
                             <div class="product_d_table">
                               {!! $products[0]->specification !!}
-                            </div>  
+                            </div>
                             <div class="product_d_table">
                                 {!! $products[0]->extra_description !!}
-                              </div>   
+                              </div>
                         </div>
 
                         <div class="tab-pane fade " id="reviews" role="tabpanel">
@@ -361,23 +352,23 @@
                                 <div class="reviews_comment_box">
                                     <div class="comment_thmb">
                                         <img src="assets/img/blog/comment2.jpg" alt="">
-                                    </div>    
+                                    </div>
                                 </div>
                                 <div class="comment_title">
                                     <h2>Add a review </h2>
                                 </div>
-        
+
                                 <div class="product_review_form">
                                     <form action="#">
                                         <div class="row">
                                             <div class="col-12">
                                                 <textarea name="comment" id="review_comment"></textarea>
-                                            </div>   
+                                            </div>
                                         </div>
                                         <button type="submit">Submit</button>
-                                     </form>   
-                                </div> 
-                            </div>     
+                                     </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -449,7 +440,7 @@
                             <div class="col-md-4">
                                 <div class="product_img">
                                     <a href="{{ route('pages.show', $product->product_slug) }}">
-                                    <img src="{{ asset('storage/images/' . $product->feature_image) }}" class="card-img-top" alt="...">
+                                    <img src="{{ assetImageAndVideo('images') . $product->feature_image }}" class="card-img-top" alt="...">
                                     </a>
                                 </div>
                             </div>
@@ -491,7 +482,7 @@
                                                             <div class="single_banner">
                                                                 <div class="banner_thumb">
                                                                     <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
-                                                                        <img src="{{asset('storage/images/' .$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
+                                                                        <img src="{{assetImageAndVideo('images') .$mainRe['category']['products'][$index]['feature_image']}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
                                                                     </a>
                                                                 </div>
                                                             </div>

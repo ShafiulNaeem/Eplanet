@@ -45,10 +45,10 @@
                                             </td>
                                             <td>
                                                 @if($slider->type != 'video')
-                                                    <img src="{{asset('storage/images/'.$slider->slider_media)}}" alt="" class="img-rounded" width="80" />
+                                                    <img src="{{assetImageAndVideo('images').$slider->slider_media}}" alt="" class="img-rounded" width="80" />
                                                 @else
                                                     <div class="embed-responsive embed-responsive-16by9">
-                                                        <iframe class="embed-responsive-item" src="{{asset('storage/videos/'.$slider->slider_media)}}" allowfullscreen></iframe>
+                                                        <iframe class="embed-responsive-item" src="{{assetImageAndVideo('videos').$slider->slider_media}}" allowfullscreen></iframe>
                                                     </div>
 {{--                                                    <video width="320" height="200" controls>--}}
 {{--                                                        <source src="{{url('videos',$slider->slider_media)}}" type="video/{{$slider->file_type}}">--}}

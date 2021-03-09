@@ -185,7 +185,7 @@
                                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                                     </div>
                                                 </div>
-                                                <span><img src="{{asset('storage/app/public/images/'.$product->feature_image)}}" alt="" width="80"></span>
+                                                <span><img src="{{assetImageAndVideo('images').$product->feature_image}}" alt="" width="80"></span>
                                             </div>
 
                                             <div class="form-group col-md-6 float-left">

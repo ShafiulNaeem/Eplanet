@@ -9,9 +9,9 @@
                 @php $i = 0; @endphp
                 @foreach($sliders as $index => $slider)
                     @if( strcmp($slider->type, 'video') )
-                        <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" data-type="image"></li>
+                        <li data-url="{{ assetImageAndVideo('images') . $slider->slider_media }}" data-type="image"></li>
                     @else
-                        <li data-url="{{ asset('storage/videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                        <li data-url="{{ assetImageAndVideo('videos') . $slider->slider_media }}" id="video{{$i++}}" data-type="video">
                     @endif
                 @endforeach
             @endif
@@ -64,7 +64,7 @@
                 @foreach($categories as $category)
                     <div class="col-md-2">
                         <div class="category-inner">
-                            <a href="{{route('subcat.show',$category->subcategory_slug)}}"><img src="{{asset('storage/images/' .$category->sub_category_image)}}" alt=""></a>
+                            <a href="{{route('subcat.show',$category->subcategory_slug)}}"><img src="{{assetImageAndVideo('images') .$category->sub_category_image}}" alt=""></a>
                             <a href="{{route('subcat.show',$category->subcategory_slug)}}">
                                 <p>{{$category->subcategory_name}}</p>
                             </a>
@@ -101,7 +101,7 @@
                             <div class="right-category">
                                 <div class="card">
                                     <div class="zoom-In">
-                                        <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{asset('storage/images/' .$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                        <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{assetImageAndVideo('images') .$product->feature_image}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                     </div>
                                     <div class="card-body">
                                         <div class="pro_des">

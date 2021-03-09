@@ -38,8 +38,8 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                     <div class="single_product card">
                                         <div class="product_thumb">
-                                            <a class="primary_img" href="{{route('topSale.show',$factoryView->admin_id)}}"><img src="{{asset('storage/images/' .$factoryView->image)}}" alt=""></a>
-                                            <a class="secondary_img" href="{{route('topSale.show',$factoryView->admin_id)}}"><img src="{{asset('storage/images/' .$factoryView->image)}}" alt=""></a>
+                                            <a class="primary_img" href="{{route('topSale.show',$factoryView->admin_id)}}"><img src="{{assetImageAndVideo('images').$factoryView->image}}" alt=""></a>
+                                            <a class="secondary_img" href="{{route('topSale.show',$factoryView->admin_id)}}"><img src="{{assetImageAndVideo('images') .$factoryView->image}}" alt=""></a>
 {{--                                            <div class="label_product">--}}
 {{--                                                <span class="label_sale">Sale</span>--}}
 {{--                                                <span class="label_new">New</span>--}}
