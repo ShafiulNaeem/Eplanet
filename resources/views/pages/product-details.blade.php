@@ -43,21 +43,21 @@
                             <div class="product-details-tab">
                                 <div id="img-1" class="zoomWrapper single-zoom">
                                     <a href="#">
-                                        <img id="zoom1" src="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
+                                        <img id="zoom1" src="{{assetImageAndVideo('images') .$product->feature_image}}" data-zoom-image="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}">
                                     </a>
                                 </div>
                                 <div class="single-zoom-thumb">
                                     <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                                         <li>
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('storage/images/' .$product->feature_image)}}">
-                                                <img src="{{asset('storage/images/' . $product->feature_image)}}" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{assetImageAndVideo('images') .$product->feature_image}}" data-zoom-image="{{assetImageAndVideo('images') .$product->feature_image}}">
+                                                <img src="{{assetImageAndVideo('images') . $product->feature_image}}" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         @foreach($product->productImages as $images)
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$images->product_image)}}" data-zoom-image="{{asset('storage/images/' .$images->product_image)}}">
-                                                <img src="{{asset('storage/images/' . $images->product_image)}}" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{assetImageAndVideo('images') .$images->product_image}}" data-zoom-image="{{assetImageAndVideo('images') .$images->product_image}}">
+                                                <img src="{{assetImageAndVideo('images') . $images->product_image}}" alt="zo-th-1"/>
                                                 <span></span>
                                             </a>
 
@@ -71,7 +71,7 @@
                                     @if( count($product->productVideos) > 0 )
                                         <h3>Promo Video </h3>
                                         @foreach($product->productVideos as $video)
-                                            <iframe width="400"  src="{{asset('storage/videos/' .$video->product_image)}}" frameborder="0" allowfullscreen>
+                                            <iframe width="400"  src="{{assetImageAndVideo('videos') .$video->product_image}}" frameborder="0" allowfullscreen>
                                         </iframe>
                                         @endforeach
                                     @endif
@@ -91,7 +91,7 @@
                                         </div>
                                         @if( ! empty($product->model) )
                                             <div class="product_meta">
-                                                <span> <b>Model:</b>  {{$product->model}}</span>
+                                                <span> <b>Brand Model:</b>  {{$product->model}}</span>
                                             </div>
                                         @endif
 
@@ -103,27 +103,24 @@
                                          <div class="product_meta">
                                             <span> <b>Product Code: </b> {{ $product->unique_id }}</span>
                                         </div>
-                                        <div class="product_desc mt-2">
-                                            {!! $product->product_description !!}
-                                        </div>
     {{--                                      <div class="product_meta">--}}
     {{--                                        <span>Regular Price: <a href="#">12534</a></span>--}}
     {{--                                    </div>--}}
 
                                         <div class=" product_ratting">
-    {{--                                        <ul>--}}
-    {{--                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-    {{--                                            <li class="review"><a href="#"> (customer review ) </a></li>--}}
-    {{--                                        </ul>--}}
+                                            <ul>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                                <li class="review"><a href="#"> (customer review ) </a></li>
+                                            </ul>
                                         </div>
 
                                         <div class=" product_ratting">
                                             <ul>
-                                                <li class="btn-success text-white" style="padding: 5px; border-radius: 3px;">EMI Availabe:</li>
+                                                <li style="color:#28a745">EMI Availabe:</li>
                                                 <li>
                                                     @if( ! empty( $product->emi_id ) ) Yes @else No @endif
                                                 </li>
@@ -150,74 +147,70 @@
                                                 <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
                                             </div>
                                         @endif
+
+                                        <div class="product_desc mt-2">
+                                            {!! $product->product_description !!}
+                                        </div>
+
                                         <a href="#sheet" id="click_change3">
                                             <i class="fa fa-2x fa-sort-up"></i> View more info
                                         </a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                                                <div class=" product_recive">
-                                                                  <div class="recive_inner">
-                                                                    <ul>
-                                                                        <li>Cash On Delivary: </li>
-                                                                        <li>
-                                                                            <select name="" id="" class="form-control" >
-                                                                                <option value="">Yes</option>
-                                                                                <option value="">No</option>
-                                                                            </select>
-                                                                        </li>
-                                                                    </ul>
-                                                                  </div>
-                                                                  <div class="recive_inner col-md-6">
-                                                                      <ul class="nav nav-pills flex-column">
-                                                                          @foreach($areas as $index => $area)
-                                                                              <li class="nav-item  ">
-                                                                              <a class="nav-link bg-gradient-dark location collapsed" href="#submenu{{$index}}" data-toggle="collapse" data-target="#submenu{{$index}}">{{$area->division_name}}</a>
-                                                                                @if( isset($area->districts) )
-                                                                                    <div class="collapse" id="submenu{{$index}}" aria-expanded="false">
-                                                                                        <ul class="flex-column pl-2 nav">
-    {{--                                                                                  <li class="nav-item"><a class="nav-link py-0" href="">Orders</a></li>--}}
-                                                                                            @foreach($area->districts as $distIndex => $district)
-                                                                                                <li class="nav-item  ">
-                                                                                                  <a class="nav-link  location collapsed py-0" href="#submenu{{$index}}sub{{$distIndex}}" data-toggle="collapse" data-target="#submenu{{$index}}sub{{$distIndex}}">{{$district->district_name}}</a>
-                                                                                                    @if( isset($district->cities) )
-                                                                                                        <div class="collapse small" id="submenu{{$index}}sub{{$distIndex}}" aria-expanded="false">
-                                                                                                        <ul class="flex-column nav pl-4">
-                                                                                                            @foreach($district->cities as $city)
-                                                                                                              <li class="nav-item ">
-                                                                                                                  <a class="nav-link p-0 location" href="">
-                                                                                                                      {{$city->city_name}}
-                                                                                                                  </a>
-                                                                                                              </li>
-                                                                                                            @endforeach
-                                                                                                      </ul>
-                                                                                                  </div>
-                                                                                                    @endif
-                                                                                              </li>
-                                                                                            @endforeach
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                @endif
-                                                                              </li>
-                                                                          @endforeach
-                                                                      </ul>
-                                                                  </div>
-                                                                  <div class="recive_inner">
-                                                                    <ul>
-                                                                        <li>Product return policy </li>
-                                                                        <li>
-                                                                            <select name="" id="" class="form-control" >
-                                                                                @if( isset($product->return_policy) )
-                                                                                    <option value="">{{$product->return_policy}}</option>
-                                                                                @else
-                                                                                    <option value="">No</option>
-                                                                                @endif
-                                                                            </select>
-                                                                        </li>
-                                                                    </ul>
-                                                                  </div>
-                                                                </div>
-                                                            </div>
+                                            <div class=" product_recive">
+                                              <div class="recive_inner col-md-12">
+                                                <ul>
+                                                    <li>Cash On Delivary: </li>
+                                                    <li>
+                                                        <select name="" id="" class="form-control" >
+                                                            <option value="">Yes</option>
+                                                            <option value="">No</option>
+                                                        </select>
+                                                    </li>
+                                                </ul>
+                                              </div>
+                                              <div class="recive_inner col-md-12" style="height: 54px">
+                                                  <div class="col-md-8 float-left">
+                                                      <i class="fa fa-location-arrow"></i>
+                                                      <span id="currentlocationselected">Dhaka > Bangladesh</span>
+                                                  </div>
+                                                  <div class="col-md-4 float-right">
+                                                      <p id="changelocationtext">change</p>
+                                                  </div>
+
+                                                  <div class="locationDropdownMainDiv" id="locationDropdownMainDiv">
+                                                      <div class="card" style="width: 100%; z-index: 1">
+                                                          <div class="card-body">
+                                                              <div class="location-dropdown">
+                                                                  <ul class="nav nav-pills flex-column" id="mainLocationUl">
+                                                                      @foreach($areas as $index => $area)
+                                                                          <li class="nav-item  " id="mainLocationLi">
+                                                                              <p class=" bg-gradient-dark location collapsed" onclick="changeLocation(this)" data-location-id="{{$area->id}}" data-location-current="division" id="mainLocationP">{{$area->division_name}}</p>
+                                                                          </li>
+                                                                      @endforeach
+                                                                  </ul>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-12 recive_inner">
+                                                <ul>
+                                                    <li>Product return policy </li>
+                                                    <li>
+                                                        <select name="" id="" class="form-control" >
+                                                            @if( isset($product->return_policy) )
+                                                                <option value="">{{$product->return_policy}}</option>
+                                                            @else
+                                                                <option value="">No</option>
+                                                            @endif
+                                                        </select>
+                                                    </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <a href="#sheet" id="click_change3">
                                         <i class="fa fa-2x fa-sort-up"></i> More details
@@ -280,7 +273,7 @@
                                             </div>
 
                                             <div class="product_meta">
-                                                <span>Category: <a href="{{ route('cat.show', $product->category->id) }}">{{$product->category->category_name}}</a></span>
+                                                <span>Category: <a href="{{ route('cat.show', $product->category->category_slug) }}">{{$product->category->category_name}}</a></span>
                                             </div>
                                         <div class=" product_d_action">
                                             <ul>
@@ -302,9 +295,7 @@
                                             <ul>
                                                 <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
                                                 <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a></li>
-                                                <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> save</a></li>
-                                                <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> share</a></li>
-                                                <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> linked</a></li>
+                                                <li><a class="pinterest" href="#" title="youtube"><i class="fa fa-youtube"></i> share</a></li>
                                             </ul>
                                         </div>
 
@@ -313,9 +304,7 @@
                             </div>
 
                             <div class="row">
-{{--                                <div class="product_desc mt-2">--}}
-{{--                                    {!! $product->product_description !!}--}}
-{{--                                </div>--}}
+
                             </div>
 
                         </div>
@@ -340,26 +329,47 @@
                     <div class="product_info_button">
                         <ul class="nav" role="tablist">
                             <li>
-                                <a class="active text" data-toggle="tab" id="click_change"  href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
-                           </li>
-{{--                            <li>--}}
-{{--                                <a data-toggle="tab" href="#info" role="tab" id="click_change2" aria-controls="info" aria-selected="false">Description</a>--}}
-{{--                            </li>--}}
-
+                                 <a data-toggle="tab" class="active show" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" class="">Specification</a>
+                            </li>
+                            <li>
+                               <a data-toggle="tab" href="#reviews" role="tab" id="click_change2" aria-controls="reviews" aria-selected="true" >Reviews</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="tab-content">
 
-                        <div class="tab-pane fade active" id="sheet" role="tabpanel">
-                            {!! $products[0]->specification !!}
+                        <div class="tab-pane fade active show" id="sheet" role="tabpanel">
+                            <div class="product_d_table">
+                              {!! $products[0]->specification !!}
+                            </div>
+                            <div class="product_d_table">
+                                {!! $products[0]->extra_description !!}
+                              </div>
                         </div>
 
-                        <div class="tab-pane fade show " id="info" role="tabpanel">
-                            <div class="product_info_content">
-                                {!! $products[0]->extra_description !!}
+                        <div class="tab-pane fade " id="reviews" role="tabpanel">
+                            <div class="reviews_wrapper">
+                                <div class="reviews_comment_box">
+                                    <div class="comment_thmb">
+                                        <img src="assets/img/blog/comment2.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="comment_title">
+                                    <h2>Add a review </h2>
+                                </div>
+
+                                <div class="product_review_form">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <textarea name="comment" id="review_comment"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit">Submit</button>
+                                     </form>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -430,7 +440,7 @@
                             <div class="col-md-4">
                                 <div class="product_img">
                                     <a href="{{ route('pages.show', $product->product_slug) }}">
-                                    <img src="{{ asset('storage/images/' . $product->feature_image) }}" class="card-img-top" alt="...">
+                                    <img src="{{ assetImageAndVideo('images') . $product->feature_image }}" class="card-img-top" alt="...">
                                     </a>
                                 </div>
                             </div>
@@ -472,7 +482,7 @@
                                                             <div class="single_banner">
                                                                 <div class="banner_thumb">
                                                                     <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
-                                                                        <img src="{{asset('storage/images/' .$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
+                                                                        <img src="{{assetImageAndVideo('images') .$mainRe['category']['products'][$index]['feature_image']}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
                                                                     </a>
                                                                 </div>
                                                             </div>

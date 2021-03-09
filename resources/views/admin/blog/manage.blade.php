@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{$blog->user->fname}} {{$blog->user->lname}}</td>
                             <td>
-                                <img src="{{asset('storage/images/'.$blog->blog_image)}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
+                                <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$blog->post}}</td>
                             <td>

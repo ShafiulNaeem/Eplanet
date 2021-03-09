@@ -45,7 +45,7 @@
                                             <div class="form-group float-left col-md-6">
                                                 <label for="exampleInputPassword1">Product Brand</label>
                                                 <select name="product_brand" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                                    <option value="">Select Brand</option>
+                                                    <option value="" selected disabled>Select Brand</option>
                                                     @foreach($brands as $brand)
                                                         <option
 
@@ -60,7 +60,7 @@
                                             <div class="form-group float-left col-md-6">
                                                 <label for="exampleInputPassword1">Product Category</label>
                                                 <select name="product_category" id="category_id"  class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                                    <option value="">Select </option>
+                                                    <option value="" selected disabled>Select </option>
                                                     @foreach($categories as $category )
                                                         <option
 
@@ -76,7 +76,7 @@
                                                 <label for="">Sub Category</label>
 
                                                 <select name="product_sub_category" id="sub_category_id" data-subcat="{{ $product->sub_categories_id }}" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                                    <option value="">Select </option>
+                                                    <option value="" selected disabled>Select </option>
                                                     @foreach($subcategory as $scategory )
                                                         <option
                                                             @if( $scategory->id == $product->sub_categories_id )
@@ -185,7 +185,7 @@
                                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                                     </div>
                                                 </div>
-                                                <span><img src="{{asset('storage/app/public/images/'.$product->feature_image)}}" alt="" width="80"></span>
+                                                <span><img src="{{assetImageAndVideo('images').$product->feature_image}}" alt="" width="80"></span>
                                             </div>
 
                                             <div class="form-group col-md-6 float-left">
