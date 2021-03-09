@@ -155,23 +155,26 @@ class WelcomeController extends Controller
     public function promotion(){
 
         $count_date = date('Y-m-d H:i:s', time()+6*3600);
-        $events = Event::where( 'start_date','>=', $count_date)->GetActive()->first();
-        dd($events->start_date);
+        $event = Event::where( 'start_date','>=', $count_date)->GetActive()->first();
+        //dd($events->event_name);
         $eventProducts = [];
         $eventPro = Event::with('eventProducts')
             ->where( 'start_date','<=', $count_date)
+            ->where( 'end_date','>', $count_date)
             ->GetActive()
             ->get();
-        //dd($eventPro);
-        if (count($eventPro) > 0){
-            $eventProducts =EventProduct::with('category')
-            ->where([
-                'event_id' => $eventPro[0]->id
-            ])
-                ->select('category_id','event_id')->distinct()->get();
-        }
-        return view('pages.promotion',compact('events','eventProducts'));
+       // dd($eventPro);
 
+
+        if (count($eventPro) > 0){
+
+                $eventProducts =EventProduct::with('category')
+                    ->where([
+                        'event_id' => $eventPro[0]->id
+                    ])
+                    ->select('category_id','event_id')->distinct()->get();
+        }
+        return view('pages.promotion',compact('event','eventProducts'));
 
     }
 

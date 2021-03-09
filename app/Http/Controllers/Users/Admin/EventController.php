@@ -60,8 +60,10 @@ class EventController extends Controller
         ]);
         //dd($val['start_date']);
         //$dateTime = Carbon::parse($request->your_datetime_field);
-        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s', time() - 6*3600);
-        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s',time()-6*3600);
+//        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s', time() - 6*3600);
+//        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s',time()-6*3600);
+        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s');
+        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s');
 //dd($end_date);
         $admin_id = Auth::guard('admin')->user()->id;
 

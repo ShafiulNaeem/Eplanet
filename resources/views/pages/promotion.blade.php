@@ -22,8 +22,8 @@
     <section class="category">
         <div class="container card">
             <div class="row" style="background-color: #1e2b37">
-                @if(isset($events))
-                    @foreach($events as $event)
+                @if(isset($event))
+{{--                    @foreach($events as $event)--}}
                         @php
                             $datetime1 = new \DateTime($event->start_date);
                             $datetime2 = new \DateTime($count_date);
@@ -41,7 +41,7 @@
                             <h1 class="text-white text-uppercase">{{$elapsed}}</h1>
 
                         </div>
-                    @endforeach
+{{--                    @endforeach--}}
                 @endif
             </div>
         </div>
@@ -55,7 +55,7 @@
                     <div class="right-main-cat">
                         <div class="row">
                             @foreach($eventProducts as $eventProduct)
-                                @if($eventProduct->event->end_date > $count_date)
+{{--                                @if($eventProduct->event->end_date > $count_date)--}}
                                     <div class="col-md-4">
                                         <div class="right-category">
                                             <div class="card">
@@ -68,8 +68,8 @@
                                                     <a href="{{route('promotion.products',[$eventProduct->event_id,$eventProduct->category_id])}}">
                                                         <h4>{{ $eventProduct->event->event_name }} | {{$eventProduct->category->category_name}}</h4>
                                                     </a>
-                                                    <p class="">Offer Active : {{\Carbon\Carbon::parse($eventProduct->start_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</p>
-                                                    <p class="">To: {{\Carbon\Carbon::parse($eventProduct->end_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</p>
+                                                    <p class="">Offer Active : {{\Carbon\Carbon::parse($eventProduct->event->start_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</p>
+                                                    <p class="">To: {{\Carbon\Carbon::parse($eventProduct->event->end_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</p>
                                                     <div class="price_box text-center">
                                                         {{--                                                    <span class="current_price float-left">BDT: {{$eventProduct->event->discount}}</span>--}}
                                                         <a class="float-right" href="{{route('promotion.products',[$eventProduct->event_id,$eventProduct->category_id])}}">
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+{{--                                @endif--}}
                             @endforeach
                         </div>
                     </div>
