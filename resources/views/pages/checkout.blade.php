@@ -351,13 +351,13 @@
                                    <tbody>
                                    @foreach(Session::get('cart') as $cart)
                                        @php
-                                           $total += ( $cart['quantity'] * $cart['product_price'] );
+                                           $total += ( $cart['quantity'] * round($cart['product_price']) );
                                            $subTotal += ( ($total * $cart['product_tax']) / 100 ) + $total;
                                            $tax += $cart['product_tax'];
                                        @endphp
                                        <tr>
                                            <td> {{$cart['product_name']}} <strong> × {{$cart['quantity']}}</strong></td>
-                                           <td> BDT {{round($cart['quantity'] * $cart['product_price'])}}</td>
+                                           <td> BDT {{round($cart['quantity'] * round($cart['product_price']))}}</td>
                                        </tr>
                                    @endforeach
                                    </tbody>

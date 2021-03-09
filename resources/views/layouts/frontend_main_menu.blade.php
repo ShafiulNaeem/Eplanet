@@ -37,11 +37,10 @@
                         @php $categories = \App\Models\Category::with(['subcategory', 'subcategory.secondary_sub_categories'])->orderBy('created_at','desc')->GetActive()->get();  @endphp
                     </div>
                     <div class="search_container">
-                        <form action="{{route('pages.search')}}" method="post">
-                            @csrf
+                        <form action="{{route('pages.search')}}" method="get" enctype="multipart/form-data">
                             <div class="hover_category">
                                 <select class="select_option" name="category_name" id="categori1">
-                                    <option selected >Select a categories</option>
+                                    <option selected disabled value="" >Select a categories</option>
                                     @if(isset($categories))
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">
@@ -52,7 +51,7 @@
                                 </select>
                             </div>
                             <div class="search_box">
-                                <input placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
+                                <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                             </div>
                         </form>
@@ -214,7 +213,7 @@
                                 <div class="col-md-10">
                                     <div class="search_container">
                                         <form action="{{route('pages.search')}}" method="get" enctype="multipart/form-data">
-{{--                                            @csrf--}}
+
                                             <div class="hover_category">
 
                                                 <select class="select_option" style="color:#000" name="category_name" id="categori2">
@@ -232,7 +231,8 @@
                                             </div>
 
                                             <div class="search_box">
-                                                <input name="product_name" placeholder="Search product..." type="text"><a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
+                                                <input name="product_name" placeholder="Search product..." type="text">
+                                                <a href=""><i class="fa fa-camera" aria-hidden="true"></i></a>
                                                 <button type="submit"><span class="lnr lnr-magnifier"></span></button>
                                             </div>
                                         </form>
@@ -290,7 +290,7 @@
 
                                                         <div class="cart_item">
                                                            <div class="cart_img">
-                                                               <a href="#"><img src="{{asset('storage/images/'.$addTocart['feature_image'])}}" alt=""></a>
+                                                               <a href="#"><img src="{{assetImageAndVideo('images').$addTocart['feature_image']}}" alt=""></a>
                                                            </div>
                                                             <div class="cart_info">
                                                                 <a href="#">{{$addTocart['product_name']}}</a>
@@ -415,7 +415,7 @@
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
                                 @endif
-                                <li class=" anime"><a href="{{route('promotion.category')}}"><h4 class="ml2">নবাবীহাট</h4></a></li>
+                                <li class=" anime"><a href=""><h4 class="ml2">নবাবীহাট</h4></a></li>
 
                             </ul>
                         </nav>

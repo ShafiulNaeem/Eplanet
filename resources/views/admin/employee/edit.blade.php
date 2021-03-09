@@ -77,7 +77,7 @@
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                         </div>
-                                        <span><img src="{{url('images',$employee->employee_image)}}" alt="{{$employee->name}}" width="80"></span>
+                                        <span><img src="{{assetImageAndVideo('images').$employee->employee_image}}" alt="{{$employee->name}}" width="80"></span>
                                     </div>
 
                                     <div class="form-group mt-2 col-md-6 float-left">

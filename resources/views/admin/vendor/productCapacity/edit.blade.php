@@ -44,7 +44,7 @@
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
-                                <span><img src="{{asset('storage/images/'.$productCapacity->capacity_image)}}" alt="{{$productCapacity->title}}" width="80"></span>
+                                <span><img src="{{assetImageAndVideo('images').$productCapacity->capacity_image}}" alt="{{$productCapacity->title}}" width="80"></span>
                             </div>
 
                             </div><!-- /.box-body -->

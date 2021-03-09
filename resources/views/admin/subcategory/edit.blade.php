@@ -62,7 +62,7 @@
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                         </div>
-                                        <span><img src="{{asset('storage/images/'.$subcategory->sub_category_image)}}" alt="{{$category->subcategory_name}}" width="80"></span>
+                                        <span><img src="{{assetImageAndVideo('images').$subcategory->sub_category_image}}" alt="{{$category->subcategory_name}}" width="80"></span>
                                     </div>
                                 </div><!-- /.box-body -->
 

@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>{{$index + 1}}</td>
                                             <td>{{$expressWish->user->fname .' '.$expressWish->user->lname}}</td>
-                                            <td><img src="{{url('images',$expressWish->product->feature_image)}}" alt="{{$expressWish->product->product_name}}" width="80"></td>
+                                            <td><img src="{{assetImageAndVideo('images').$expressWish->product->feature_image}}" alt="{{$expressWish->product->product_name}}" width="80"></td>
                                             <td>{{$expressWish->product->product_name}}</td>
                                             <td>{{$expressWish->product->stock}} piece(s) </td>
                                             <td>BDT {{$expressWish->product->product_price}}</td>

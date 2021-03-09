@@ -51,7 +51,7 @@
                                         </div>
 
                                             <input type="hidden" name="product_image_id[]" value="{{$images->id}}">
-                                            <span><img src="{{asset('storage/images/'.$images->product_image)}}" alt="" width="80"></span>
+                                            <span><img src="{{assetImageAndVideo('images').$images->product_image}}" alt="" width="80"></span>
 
 
                                     </div>

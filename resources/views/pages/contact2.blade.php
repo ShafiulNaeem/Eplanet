@@ -14,9 +14,9 @@
                                 @php $i = 0; @endphp
                                 @foreach($sliders as $index => $slider)
                                     @if( strcmp($slider->type, 'video') )
-                                        <li data-url="{{ url('images/' . $slider->slider_media) }}" data-type="image"></li>
+                                        <li data-url="{{ assetImageAndVideo('images') . $slider->slider_media }}" data-type="image"></li>
                                     @else
-                                        <li data-url="{{ url('videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                                        <li data-url="{{ assetImageAndVideo('videos') . $slider->slider_media }}" id="video{{$i++}}" data-type="video">
                                     @endif
                                 @endforeach
                             @endif
@@ -50,7 +50,7 @@
                                     <div class="row">
                                         <div class="col-md-4 no-gutter">
                                            <div class="car-img">
-                                           <img src="{{asset('storage/images/' . $employ->employee_image)}}" alt="{{$employ->name}}" class="image-fluid">
+                                           <img src="{{assetImageAndVideo('images') . $employ->employee_image}}" alt="{{$employ->name}}" class="image-fluid">
                                            </div>
                                         </div>
                                         <div class="col-md-8 no-gutter">

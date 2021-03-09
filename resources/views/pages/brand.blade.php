@@ -65,8 +65,8 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12" >
                                     <div class="single_product" >
                                         <div class="product_thumb">
-                                            <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
-                                            <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
+                                            <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{assetImageAndVideo('images').$brand->brand_image}}" alt=""></a>
+                                            <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{assetImageAndVideo('images').$brand->brand_image}}" alt=""></a>
                                         </div>
                                         <div class="product_content grid_content">
                                             <h4 class="product_name"><a href="{{route('brandProduct.show',$brand->brand_slug)}}">{{$brand->brand_name}}</a></h4>
@@ -97,8 +97,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12 " >
                                 <div class="single_product" >
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
-                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{assetImageAndVideo('images').$brand->brand_image}}" alt=""></a>
+                                        <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{assetImageAndVideo('images').$brand->brand_image}}" alt=""></a>
 
 
                                     </div>
@@ -143,8 +143,8 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12 " >
                                     <div class="single_product">
                                         <div class="product_thumb">
-                                            <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
-                                            <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{asset('storage/images/'.$brand->brand_image)}}" alt=""></a>
+                                            <a class="primary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{assetImageAndVideo('images').$brand->brand_image}}" alt=""></a>
+                                            <a class="secondary_img" href="{{route('brandProduct.show',$brand->brand_slug)}}"><img src="{{assetImageAndVideo('images').$brand->brand_image}}" alt=""></a>
 
 
                                         </div>

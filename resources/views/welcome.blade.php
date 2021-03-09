@@ -7,9 +7,9 @@
         @php $i = 0; @endphp
         @foreach($sliders as $index => $slider)
                 @if( strcmp($slider->type, 'video') )
-                    <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" data-type="image"></li>
+                    <li data-url="{{ assetImageAndVideo('images') . $slider->slider_media }}" data-type="image"></li>
                 @else
-                    <li data-url="{{ asset('storage/videos/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                    <li data-url="{{ assetImageAndVideo('videos') . $slider->slider_media }}" id="video{{$i++}}" data-type="video">
                 @endif
         @endforeach
     @endif
@@ -119,7 +119,21 @@
     <div class="container">
         <div class="product_container">
             <div class="row">
-                <div class="col-md-12"><h2>Categories</h2></div>
+                <div class="col-md-12">
+                    <h2>
+                        <span>C</span>
+                        <span>a</span>
+                        <span>t</span>
+                        <span>e</span>
+                        <span>g</span>
+                        <span>o</span>
+                        <span>r</span>
+                        <span>i</span>
+                        <span>e</span>
+                        <span>s</span>
+
+                      </h2>
+                </div>
 
                 <div class="col-12">
                     <div class="tab-content">
@@ -134,7 +148,7 @@
                                                           <div class="zoom-In">
 
                                                             <a href="{{route('cat.show',$category->category_slug)}}">
-                                                                <img src="{{asset('storage/images/' . $category->category_image)}}" alt="{{$category->category_name}}">
+                                                                <img src="{{assetImageAndVideo('images') . $category->category_image}}" alt="{{$category->category_name}}">
                                                             </a>
                                                         </div>
                                                         </div>
@@ -153,7 +167,22 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12"><h2>Best Seller</h2></div>
+                <div class="col-md-12">
+                    <h2>
+                        <span>B</span>
+                        <span>e</span>
+                        <span>s</span>
+                        <span>t</span>
+                        <span></span>
+                        <span>s</span>
+                        <span>e</span>
+                        <span>l</span>
+                        <span>l</span>
+                        <span>e</span>
+                        <span>r</span>
+
+                      </h2>
+                </div>
 
                 <div class="col-12">
                     <div class="tab-content">
@@ -167,7 +196,7 @@
                                                         <div class="banner_thumb">
                                                          <div class="zoom-In">
                                                             <a href="{{route('pages.show',$product->product_slug)}}">
-                                                                <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
+                                                                <img src="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}">
                                                             </a>
                                                         </div>
                                                         </div>
@@ -209,7 +238,7 @@
                                                     <div class="banner_thumb">
                                                         <div class="zoom-In">
                                                         <a href="{{route('pages.show',$pro->product_slug)}}">
-                                                            <img src="{{asset('storage/images/' .$pro->feature_image)}}" alt="{{$pro->product_name}}">
+                                                            <img src="{{assetImageAndVideo('images') .$pro->feature_image}}" alt="{{$pro->product_name}}">
                                                         </a>
                                                     </div>
                                                     </div>

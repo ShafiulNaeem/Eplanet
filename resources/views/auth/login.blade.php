@@ -11,10 +11,10 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <h3>Login</h3>
-                        <ul>
-                            <li><a href="{{ route('home') }}">home</a></li>
-                            <li>Login</li>
-                        </ul>
+{{--                        <ul>--}}
+{{--                            <li><a href="{{ route('home') }}">home</a></li>--}}
+{{--                            <li>Login</li>--}}
+{{--                        </ul>--}}
                     </div>
                 </div>
             </div>

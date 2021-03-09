@@ -34,7 +34,7 @@
                         @foreach($showViews as $index => $showView)
                         <tr>
                             <td>
-                                <img src="{{asset('storage/images/'.$showView->image)}}" alt="{{$showView->description}}" class="img-rounded" width="80" />
+                                <img src="{{assetImageAndVideo('images').$showView->image}}" alt="{{$showView->description}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$showView->description}}</td>
 
