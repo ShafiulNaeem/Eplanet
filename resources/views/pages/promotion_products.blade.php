@@ -37,7 +37,7 @@
                                     <div class="right-category">
                                         <div class="card">
                                             <div class="zoom-In">
-                                                <a href="{{route('pages.show',$product->products->product_slug)}}"><img src="{{asset('storage/images/' .$product->products->feature_image)}}" class="card-img-top" alt="{{$product->products->product_name}}"></a>
+                                                <a href="{{route('pages.show',$product->products->product_slug)}}"><img src="{{assetImageAndVideo('images') .$product->products->feature_image}}" class="card-img-top" alt="{{$product->products->product_name}}"></a>
                                             </div>
                                             <div class="card-body text-left">
                                                 <a href="{{route('pages.show',$product->products->product_slug)}}"><p>{{$product->products->product_name}}</p></a>
@@ -51,7 +51,7 @@
                                                     <a href="{{route('pages.show',$product->products->product_slug)}}">
                                                         <p class="text-success">BDT : {{$total}} </p>
                                                     </a>
-{{--                                                    ৳--}}
+                                                    {{--                                                    ৳--}}
                                                     <p><strike class="current_price">BDT: {{$product->products->product_price}} </strike> -  {{$product->discount}}%</p>
                                                 </div>
                                             </div>
@@ -92,5 +92,4 @@
 
 
 @endsection
-
 

@@ -44,27 +44,25 @@
                                     <div class="right-category">
                                         <div class="card">
                                             <div class="zoom-In">
-                                            <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{asset('storage/images/' .$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                            <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{assetImageAndVideo('images') .$product->feature_image}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             </div>
                                             <div class="card-body">
-                                                <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                                <div class="pro_des">
+                                                    <a class="float-left" href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                                    <div class="float-right product_ratting">
+                                                        <ul>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
 
                                                 <div class="price_box text-center">
-
-{{--                                                    <div class=" product_ratting">--}}
-{{--                                                        <ul>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li class="review"><a href="#"> (customer review )</a></li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-                                                    <a class="float-right" href="{{route('pages.show',$product->product_slug)}}">
-                                                        <p>Size : {{ $product->size }}</p>
-                                                    </a>
-                                                    <span class="current_price float-left">BDT {{$product->product_price}}</span>
+                                                    <p class="float-right">Model : {{ $product->model }}</p>
+                                                    <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +119,7 @@
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
                                                                         <a href="{{route('pages.show',$ffgr->id)}}">
-                                                                            <img src="{{asset('storage/images/' . $ffgr->feature_image)}}" alt="{{$ffgr->product_name}}">
+                                                                            <img src="{{assetImageAndVideo('images') . $ffgr->feature_image}}" alt="{{$ffgr->product_name}}">
                                                                         </a>
                                                                     </div>
                                                                 </div>
