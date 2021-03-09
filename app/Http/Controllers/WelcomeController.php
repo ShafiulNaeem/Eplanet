@@ -155,7 +155,8 @@ class WelcomeController extends Controller
     public function promotion(){
 
         $count_date = date('Y-m-d H:i:s', time()+6*3600);
-        $events = Event::where( 'start_date','>=', $count_date)->GetActive()->get();
+        $events = Event::where( 'start_date','>=', $count_date)->GetActive()->first();
+        dd($events->start_date);
         $eventProducts = [];
         $eventPro = Event::with('eventProducts')
             ->where( 'start_date','<=', $count_date)
