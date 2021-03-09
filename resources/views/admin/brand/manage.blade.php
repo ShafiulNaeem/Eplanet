@@ -40,7 +40,7 @@
                                     <td class="text-center">{{$index + 1}}</td>
                                     <td class="text-center">{{$brand->brand_name}}</td>
                                     <td class="text-center" >
-                                        <img width="90" src="{{ asset('storage/images/' . $brand->brand_image) }}" alt="{{$brand->brand_name}}">
+                                        <img width="90" src="{{ assetImageAndVideo('images'). $brand->brand_image }}" alt="{{$brand->brand_name}}">
                                     </td>
                                     <td class="text-center">
                                         <form action="{{route('brand.change.level')}}" method="post">

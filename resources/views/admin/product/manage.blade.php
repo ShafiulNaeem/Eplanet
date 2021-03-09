@@ -39,7 +39,7 @@
                                     @foreach($products as $index => $product)
                                         <tr>
                                             <td>{{$product->sold}}</td>
-                                            <td><img src="{{asset('storage/app/public/images/'.$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
+                                            <td><img src="{{assetImageAndVideo('images').$product->feature_image}}" alt="{{$product->product_name}}" width="80"></td>
                                             <td>{{$product->product_name}}</td>
                                             <td>{{$product->brand->brand_name}}</td>
                                             <td>{{$product->stock}} piece(s) </td>

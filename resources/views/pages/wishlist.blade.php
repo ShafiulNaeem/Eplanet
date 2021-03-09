@@ -50,7 +50,7 @@
                                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                                </form>
                                                            </td>
-                                                            <td class="product_thumb"><a href="#"><img src="{{ asset('storage/images') . '/' . $wishlist->product->feature_image }}" alt=""></a></td>
+                                                            <td class="product_thumb"><a href="#"><img src="{{ assetImageAndVideo('images'). $wishlist->product->feature_image }}" alt=""></a></td>
                                                             <td class="product_name"><a href="#">{{$wishlist->product->product_name}}</a></td>
                                                             <td class="product-price">BDT {{ $wishlist->product->product_price }}</td>
                                                             <td class="product_quantity">

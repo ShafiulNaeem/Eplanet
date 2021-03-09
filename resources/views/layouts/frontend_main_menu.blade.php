@@ -290,7 +290,7 @@
 
                                                         <div class="cart_item">
                                                            <div class="cart_img">
-                                                               <a href="#"><img src="{{asset('storage/images/'.$addTocart['feature_image'])}}" alt=""></a>
+                                                               <a href="#"><img src="{{assetImageAndVideo('images').$addTocart['feature_image']}}" alt=""></a>
                                                            </div>
                                                             <div class="cart_info">
                                                                 <a href="#">{{$addTocart['product_name']}}</a>

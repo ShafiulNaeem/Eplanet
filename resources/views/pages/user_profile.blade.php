@@ -96,7 +96,7 @@
                                                <td>{{\Carbon\Carbon::parse($order->created_at)->format('M d Y')}} </td>
                                                @foreach($order->products as $product)
                                                    <td>
-                                                       <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}" class="img-rounded" width="80" />
+                                                       <img src="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}" class="img-rounded" width="80" />
                                                    </td>
                                                    <td>{{$product->product_name}}</td>
                                                    <td>{{$product->size}}</td>
@@ -178,7 +178,7 @@
                                         <figure>
                                             <div class="related_thumb">
                                                 <div class="zoom-In">
-                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{asset('storage/images/' .$userBlog->blog_image)}}" alt="{{$userBlog->title}}"></a>
+                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{assetImageAndVideo('images') .$userBlog->blog_image}}" alt="{{$userBlog->title}}"></a>
                                                 </div>
                                             </div>
                                             <figcaption class="related_content">

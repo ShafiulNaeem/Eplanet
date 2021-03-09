@@ -36,7 +36,7 @@
                                         @foreach($subCategories as $index => $subCategory)
                                             <tr>
                                                 <td>
-                                                    <img src="{{asset('storage/images/' . $subCategory->sub_category_image)}}" alt="{{$subCategory->subcategory_name}}" class="img-rounded" width="80">
+                                                    <img src="{{assetImageAndVideo('images') . $subCategory->sub_category_image}}" alt="{{$subCategory->subcategory_name}}" class="img-rounded" width="80">
                                                 </td>
                                                 <td>{{$subCategory->category->category_name}}</td>
                                                 <td>{{$subCategory->subcategory_name}}</td>

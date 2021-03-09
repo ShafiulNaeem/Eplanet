@@ -11044,12 +11044,26 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .location {
-    border: 1.5px solid;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #eed1b3;
 }
 
-.location[data-toggle].collapsed:after {
-    content: "▾";
+#changelocationtext, .location{
+    cursor: pointer;
 }
-.location[data-toggle]:not(.collapsed):after {
-    content: "▴";
+
+.changelocationtext{
+    width: 80%;
+}
+
+.locationDropdownMainDiv{
+    position: absolute;
+    width: 85%;
+    top: 25px;
+    left: 80px;
+}
+
+.fa-location-arrow{
+    left: -14px;
+    position: relative;
 }

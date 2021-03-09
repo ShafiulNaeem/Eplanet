@@ -35,7 +35,7 @@
                                 <tr>
                                     <td>
                                         <video width="320" height="200" controls>
-                                            <source src="{{asset('storage/videos/'.$productvideo->product_video)}}" type="video/{{$productvideo->product_video_type}}">
+                                            <source src="{{assetImageAndVideo('videos').$productvideo->product_video}}" type="video/{{$productvideo->product_video_type}}">
                                             Your browser does not support the video .
                                         </video>
                                     </td>

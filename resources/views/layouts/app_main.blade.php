@@ -439,6 +439,102 @@
 
 </script>
 
+<script>
+    var locationDropdownMainDiv = $('#locationDropdownMainDiv');
+    var changelocationtext = $('#changelocationtext');
+
+    var currentlocationselected = $('#currentlocationselected');
+    var mainLocationLi = $('#mainLocationLi');
+    var mainLocationUl = $('#mainLocationUl');
+    var trackLocationChange = [];
+
+    locationDropdownMainDiv.hide();
+
+    changelocationtext.on('click', function (){
+        locationDropdownMainDiv.toggle();
+        let url = window.origin + '/changelocation/null/null';
+        apiget(url, null);
+    });
+
+
+
+    function changeLocation(param) {
+        let data_location_current = param.getAttribute('data-location-current');
+        if ( data_location_current == 'division' ) trackLocationChange[0] = param.innerText;
+        if ( data_location_current == 'district' ) trackLocationChange[1] = param.innerText;
+        if ( data_location_current == 'city' ) {
+            trackLocationChange[2] = param.innerText;
+            locationDropdownMainDiv.hide();
+        }
+
+        currentlocationselected.empty();
+        currentlocationselected.append( trackLocationChange.join(" > ") );
+
+        let data_location_id = param.getAttribute('data-location-id');
+
+        let url = window.origin + '/changelocation/' + data_location_current+'/'+data_location_id;
+
+        apiget(url ,data_location_current)
+
+        console.log(trackLocationChange);
+    }
+
+
+    function apiget(url, data_location_current) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: url,
+            method: 'get',
+
+
+            success: function (response) {
+                console.log(response);
+                if ( response.length > 0 ){
+                    mainLocationUl.empty();
+                    makeList(response, data_location_current)
+                }
+            },
+            error:function(response)
+            {
+                let error = JSON.parse(response.responseText);
+                console.error(error);
+            }
+        });
+    }
+
+    function makeList(response, currentLocationType){
+        response.forEach((value, index) => {
+            let para = createElement('p');
+            para.setAttribute('class', 'bg-gradient-dark location');
+            para.setAttribute('onclick', 'changeLocation(this)');
+            para.setAttribute('data-location-id', value.id);
+            (currentLocationType != null) ?
+            para.setAttribute('data-location-current',
+                (currentLocationType == 'division') ? 'district' : 'city'
+            ) : para.setAttribute('data-location-current',
+                'division'
+            );
+
+            (currentLocationType != null) ?
+                para.append(
+                    (currentLocationType == 'division') ? value.district_name : value.city_name
+                ) : para.append(
+                value.division_name
+                );
+
+            let li = createElement('li');
+            li.append(para);
+            mainLocationUl.append(li);
+        });
+    }
+
+    function createElement(tag){
+        return document.createElement(tag);
+    }
+</script>
+
 </body>
 
 </html>

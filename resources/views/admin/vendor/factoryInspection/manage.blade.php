@@ -34,7 +34,7 @@
                         @foreach($factoryInspections as $index => $factoryInspection)
                         <tr>
                             <td>
-                                <embed src="{{asset('storage/documents',$factoryInspection->pdf)}}" alt="{{$factoryInspection->title}}" class="img-rounded" width="80" />
+                                <embed src="{{assetImageAndVideo('documents').$factoryInspection->pdf}}" alt="{{$factoryInspection->title}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$factoryInspection->title}}</td>
 

@@ -4,9 +4,19 @@ use App\Mail\VerificationMail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+
+Route::get('cache', function (){
+    Artisan::call('cache:clear');
+});
+
+
+Route::get('link', function (){
+    Artisan::call('storage:link');
+});
 
 Route::get('/createslug', function (){
     $categories = \App\Models\Brand::all();
@@ -110,6 +120,7 @@ Route::get('brands/{slug}', 'Users\NavbarController@brandProduct')->name('brandP
 
 //user profile
 Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
+Route::get('changelocation/{current}/{id}', 'Users\NavbarController@searchLocation');
 Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->name('profile.edit');
 Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->name('profile.update');
 

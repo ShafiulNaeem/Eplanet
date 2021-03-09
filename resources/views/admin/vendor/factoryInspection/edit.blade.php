@@ -39,7 +39,7 @@
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
-                                <span><embed src="{{asset('storage/documents/'.$factoryInspection->pdf)}}" alt="{{$factoryInspection->title}}" width="80"></span>
+                                <span><embed src="{{assetImageAndVideo('documents').$factoryInspection->pdf}}" alt="{{$factoryInspection->title}}" width="80"></span>
                             </div>
 
                             </div><!-- /.box-body -->

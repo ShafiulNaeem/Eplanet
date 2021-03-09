@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\District;
 use App\Models\Division;
 use App\Models\Order;
 use App\Models\Product;
@@ -114,5 +116,16 @@ class NavbarController extends Controller
     {
         $order->delete();
         return redirect()->back();
+    }
+
+    public function searchLocation($current, $id)
+    {
+        if( $current == "division" ){
+            return District::where('division_id', $id)->get();
+        }
+        if( $current == "district" ){
+            return City::where('district_id', $id)->get();
+        }
+        return Division::all();
     }
 }
