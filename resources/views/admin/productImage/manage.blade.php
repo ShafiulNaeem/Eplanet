@@ -41,7 +41,7 @@
                                         $width = 100/count($productImage->productImages);
                                     @endphp
                                     @foreach($productImage->productImages as $images)
-                                        <img src="{{asset('storage/images/'.$images->product_image)}}" alt="{{$productImage->product_name}}" class="img-rounded" style=" width:{{$width-1}}%" />
+                                        <img src="{{assetImageAndVideo('images').$images->product_image}}" alt="{{$productImage->product_name}}" class="img-rounded" style=" width:{{$width-1}}%" />
                                     @endforeach
                                 </td>
                                 <td >

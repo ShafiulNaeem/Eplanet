@@ -34,7 +34,7 @@
                         @foreach($productCapacities as $index => $productCapacity)
                         <tr>
                             <td>
-                                <img src="{{asset('storage/images/'.$productCapacity->capacity_image)}}" alt="{{$productCapacity->title}}" class="img-rounded" width="80" />
+                                <img src="{{assetImageAndVideo('images').$productCapacity->capacity_image}}" alt="{{$productCapacity->title}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$productCapacity->title}}</td>
 

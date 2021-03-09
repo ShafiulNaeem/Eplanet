@@ -20,7 +20,6 @@ class CreateEventsTable extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->string('event_image')->nullable();
-            //$table->float('discount')->default(0);
             $table->integer('status')->default(1);
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();

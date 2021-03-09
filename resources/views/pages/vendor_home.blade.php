@@ -9,9 +9,9 @@
                 @php $i = 0; @endphp
                 @foreach($sliders as $index => $slider)
                     @if( strcmp($slider->type, 'video') )
-                        <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" data-type="image"></li>
+                        <li data-url="{{ assetImageAndVideo('images') . $slider->slider_media }}" data-type="image"></li>
                     @else
-                        <li data-url="{{ asset('storage/images/' . $slider->slider_media) }}" id="video{{$i++}}" data-type="video">
+                        <li data-url="{{ assetImageAndVideo('videos') . $slider->slider_media }}" id="video{{$i++}}" data-type="video">
                     @endif
                 @endforeach
             @endif
@@ -37,12 +37,12 @@
                             <div class="related_inner">
                                 <div class="card">
                                     <div class="zoom-In">
-                                    <a href="{{route('pages.show',$product->id)}}">
-                                        <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
+                                    <a href="{{route('pages.show',$product->product_slug)}}">
+                                        <img src="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}">
                                     </a>
                                 </div>
                                     <div class="card-body">
-                                        <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
+                                        <h5 class="card-text"><a href="{{route('pages.show',$product->product_slug)}}">{{$product->product_name}}</a></h5>
                                         <p class="card-title">BDT: {{$product->product_price}}</p>
                                     </div>
                                 </div>
@@ -76,12 +76,12 @@
                             <div class="related_inner">
                                 <div class="card">
                                     <div class="zoom-In">
-                                    <a href="{{route('pages.show',$product->id)}}">
-                                        <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
+                                    <a href="{{route('pages.show',$product->product_slug)}}">
+                                        <img src="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}">
                                     </a>
                                 </div>
                                     <div class="card-body">
-                                        <h5 class="card-text"><a href="{{route('pages.show',$product->id)}}">{{$product->product_name}}</a></h5>
+                                        <h5 class="card-text"><a href="{{route('pages.show',$product->product_slug)}}">{{$product->product_name}}</a></h5>
                                         <p class="card-title">BDT: {{$product->product_price}}</p>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                 @foreach($showViews as $showView)
                                     <div class="card">
                                         <div class="zoom-In">
-                                        <a href="#"><img src="{{ asset('storage/images/' . $showView->image)}}"/></a>
+                                        <a href="#"><img src="{{ assetImageAndVideo('images') . $showView->image}}"/></a>
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">{{$showView->description}}</p>
@@ -134,7 +134,7 @@
                                 @foreach($factoryViews as $factoryView)
                                     <div class="card">
                                         <div class="zoom-In">
-                                        <a href="#"><img src="{{ asset('storage/images/' . $factoryView->image)}}" /></a>
+                                        <a href="#"><img src="{{ assetImageAndVideo('images') . $factoryView->image}}" /></a>
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">{{$factoryView->description}}</p>
