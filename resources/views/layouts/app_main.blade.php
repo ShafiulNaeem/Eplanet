@@ -236,20 +236,8 @@
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/slider.js')}}"></script>
-<script>
+    <script src="{{asset('frontend/assets/js/extra.js')}}"></script>
 
-
-    var timeID = document.getElementById('time');
-    var timeID2 = document.getElementById('time2');
-    setInterval(() => {
-        var time = new Date();
-        timeID.innerHTML = ' ';
-        timeID.innerHTML = time.toLocaleTimeString();
-
-        timeID2.innerHTML = ' ';
-        timeID2.innerHTML = time.toLocaleTimeString();
-    }, 1000);
-</script>
 <script>
     toastr.options = {
         "closeButton": true,
@@ -446,14 +434,17 @@
     var currentlocationselected = $('#currentlocationselected');
     var mainLocationLi = $('#mainLocationLi');
     var mainLocationUl = $('#mainLocationUl');
+    var mainLocationP = $('#mainLocationP');
     var trackLocationChange = [];
 
     locationDropdownMainDiv.hide();
 
     changelocationtext.on('click', function (){
         locationDropdownMainDiv.toggle();
+
         let url = window.origin + '/changelocation/null/null';
         apiget(url, null);
+        changeLocation()
     });
 
 

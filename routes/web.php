@@ -133,7 +133,7 @@ Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['a
 // promotion route
 Route::get('promotion', 'WelcomeController@promotion')->name('promotion.category');
 Route::get('promotion/{event_id?}/{category_id}', 'WelcomeController@promotionProduct')->name('promotion.products');
-
+Route::get('changelocation/{region}/{id}', 'WelcomeController@changeLocation');
 
 
 // comment route
@@ -155,6 +155,14 @@ Route::prefix('pages')->group(function(){
 
 //User Auth
 Auth::routes();
+Route::prefix('admin')->group(function (){
+    Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
+    Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
+    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+});
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->name('verification.verify');
@@ -170,13 +178,7 @@ Route::get('verify', 'Auth\RegisterController@verify')->name('verify.mail');
 
 
 // Admin Auth routes
-Route::prefix('admin')->group(function(){
-    Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
-    Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
-    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
     Route::get('allevent/{id}', 'Users\Admin\EventProductController@allEventProducts')->name('event.allEvents');
     Route::get('sellreport', 'Users\Admin\AdminController@adminMonthlySell')->name('sell.report');
@@ -233,7 +235,7 @@ Route::prefix('admin')->group(function(){
 
 });
 
-Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
+Route::prefix('admin')->namespace('Users\Vendor')->middleware('auth:admin')->group(function (){
 
     Route::prefix('vendor')->group(function(){
         Route::resource('productCapacity', 'ProductCapacityController');
@@ -248,7 +250,7 @@ Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
     });
 });
 
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->middleware('auth:admin')->group(function (){
     Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
     Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');
 
@@ -257,7 +259,7 @@ Route::prefix('admin')->group(function (){
     Route::delete('blog/{blog}', 'Users\BlogController@destroy')->name('blog.destroy');
 });
 
-Route::prefix('admin')->namespace('Users\Admin')->group(function(){
+Route::prefix('admin')->middleware('auth:admin')->namespace('Users\Admin')->group(function(){
     Route::resource('category', 'CategoryController');
     Route::resource('subcategory', 'SubCategoryController');
     Route::resource('brand', 'BrandController');

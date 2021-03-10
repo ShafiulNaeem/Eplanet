@@ -24,23 +24,23 @@
             <div class="row" style="background-color: #1e2b37">
                 @if(isset($event))
 {{--                    @foreach($events as $event)--}}
-                        @php
-                            $datetime1 = new \DateTime($event->start_date);
-                            $datetime2 = new \DateTime($count_date);
-                            $interval = $datetime1->diff($datetime2);
-                            $elapsed = $interval->format('%a days        %h : %i : %S ');
+                    @php
+                        $datetime1 = new \DateTime($event->start_date);
+                        $datetime2 = new \DateTime($count_date);
+                        $interval = $datetime1->diff($datetime2);
+                        $elapsed = $interval->format('%a days        %h : %i : %S ');
 
-                        @endphp
-
+                    @endphp
                         <div class="col-md-6 text-center" style="padding: 15px">
                             <img style="max-width: 60%" src="{{assetImageAndVideo('images' ).$event->event_image}}" class="card-img-top" alt="{{$event->event_name}}">
                         </div>
                         <div class="col-md-6 text-center" style="padding-top: 80px;">
                             <h4 class="text-white text-uppercase">{{$event->event_name}} STARTING IN</h4>
                             <p class="text-white text-uppercase">{{\Carbon\Carbon::parse($event->start_date)->format('d M  Y')}}</p>
-                            <h1 class="text-white text-uppercase">{{$elapsed}}</h1>
+                            <h1 class="text-white text-uppercase" data-start-date="{{$event->start_date}}"  id="time_difference" >{{$elapsed}}</h1>
 
                         </div>
+
 {{--                    @endforeach--}}
                 @endif
             </div>

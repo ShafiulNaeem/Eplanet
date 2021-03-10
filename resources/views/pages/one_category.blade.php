@@ -47,7 +47,7 @@
                                             <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{assetImageAndVideo('images') .$product->feature_image}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             </div>
                                             <div class="card-body">
-                                                <div class="pro_des">
+                                                <div class="pro_des col-md-12">
                                                     <a class="float-left" href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
                                                     <div class="float-right product_ratting">
                                                         <ul>
@@ -60,9 +60,9 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="price_box text-center">
-                                                    <p class="float-right">Model : {{ $product->model }}</p>
+                                                <div class="price_box col-md-12">
                                                     <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
+                                                    <p class="float-right">Model : {{ $product->model }}</p>
                                                 </div>
                                             </div>
                                         </div>
