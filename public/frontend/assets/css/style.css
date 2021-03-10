@@ -3555,6 +3555,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-weight: 500;
   font-size: 17px;
   color: #40A944;
+  padding-top: 6px;
 }
 @media only screen and (max-width: 767px) {
   .price_box span.current_price {
@@ -11035,7 +11036,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .location {
-    border: 1.5px solid;
+    border-bottom: 1.5px solid;
 }
 
 .location[data-toggle].collapsed:after {
@@ -11043,4 +11044,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .location[data-toggle]:not(.collapsed):after {
     content: "▴";
+}
+
+.pro_des{
+    margin-bottom: 30px
+}
+
+#changelocationtext{
+    cursor: pointer;
 }

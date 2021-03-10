@@ -4,20 +4,20 @@
 
 
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                        <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
-                            <li>My account</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="breadcrumbs_area">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="breadcrumb_content">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="{{route('home')}}">home</a></li>--}}
+{{--                            <li>My account</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 <!--breadcrumbs area end-->
 
 <!--  User information start  -->
@@ -31,7 +31,7 @@
                     </div>
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><h4>User Information</h4></li>
+                            <li><h4>Your Information</h4></li>
                             <li><a href="{{route('profile.edit',$user->id)}}">Update Your Information</a></li>
                         </ul>
                     </div>
@@ -45,7 +45,7 @@
                             <h4>Name: {{$user->fname." ".$user->lname}}</h4>
                         </div>
                         <div class="user_name">
-                            <p>Number: +880{{$user->phone}}</p>
+                            <p>Number: {{$user->phone}}</p>
                         </div>
                         <div class="user_name">
                             <p>Email: {{$user->email}}</p>
@@ -170,7 +170,7 @@
             <div class="col-md-12">
                 <div class="user_post_inner">
                     <div class="related_posts" style="border-top:none">
-                        <h3>User Posts</h3>
+                        <h3>Your Posts</h3>
                         <div class="row">
                             @foreach($userPBlogs as $userBlog)
                                 <div class="col-lg-4 col-md-4 col-sm-6">

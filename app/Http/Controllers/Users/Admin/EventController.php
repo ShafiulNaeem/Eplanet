@@ -51,20 +51,14 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
         $val = $request->validate([
             'event_name' => ['required', 'string', 'max:255'],
             'start_date'  => 'required',
             'end_date'    => 'required',
             'event_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-        //dd($val['start_date']);
-        //$dateTime = Carbon::parse($request->your_datetime_field);
-//        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s', time() - 6*3600);
-//        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s',time()-6*3600);
         $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s');
         $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s');
-//dd($end_date);
         $admin_id = Auth::guard('admin')->user()->id;
 
         $val['admin_id'] = $admin_id;
@@ -109,26 +103,30 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param Event $event
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Event $event)
     {
         $val = $request->validate([
             'event_name' => ['required', 'string', 'max:255'],
-            'start_date'  => 'required',
-            'end_date'    => 'required|after:start_date',
-            'event_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'start_date'  => 'sometimes',
+            'end_date'    => 'sometimes',
+            'event_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg',
+            'status' => 'required'
         ]);
-        //dd($val['start_date']);
 
-        $start_date = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s');
-        $end_date = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s');
+        if ( $val['start_date'] != null )
+            $val['start_date'] = Carbon::parse($request['start_date'])->format('Y-m-d H:i:s');
+        else unset($val['start_date']);
+
+        if( $val['end_date'] != null )
+            $val['end_date'] = Carbon::parse($request['end_date'])->format('Y-m-d H:i:s');
+        else unset($val['end_date']);
 
         $val['event_name'] = $request->event_name;
-        $val['start_date'] = $start_date;
-        $val['end_date'] = $end_date;
+
         $val['status'] = $request->status;
 
         if($request->hasFile('event_image')){
