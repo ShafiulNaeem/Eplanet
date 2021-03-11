@@ -59,7 +59,7 @@
                                     <div class="col-md-4">
                                         <div class="right-category">
                                             <div class="card">
-                                                <p>{{$eventProduct->event_id}} | {{$eventProduct->category_id}}</p>
+{{--                                                <p>{{$eventProduct->event_id}} | {{$eventProduct->category_id}}</p>--}}
                                                 <div class="zoom-In">
                                                     <a href="{{route('promotion.products',[$eventProduct->event_id,$eventProduct->category_id])}}"><img src="{{assetImageAndVideo('images' ).$eventProduct->category->category_image}}" class="card-img-top" alt="{{$eventProduct->category->category_name}}"></a>
 

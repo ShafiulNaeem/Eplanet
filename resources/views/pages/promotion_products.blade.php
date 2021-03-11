@@ -39,20 +39,28 @@
                                             <div class="zoom-In">
                                                 <a href="{{route('pages.show',$product->products->product_slug)}}"><img src="{{assetImageAndVideo('images') .$product->products->feature_image}}" class="card-img-top" alt="{{$product->products->product_name}}"></a>
                                             </div>
-                                            <div class="card-body text-left">
-                                                <a href="{{route('pages.show',$product->products->product_slug)}}"><p>{{$product->products->product_name}}</p></a>
 
-                                                <div class="price_box text-left">
-                                                    @php
-                                                        $price = $product->products->product_price;
-                                                        $subtotal = ($price * $product->discount)/100;
-                                                        $total = $price - $subtotal;
-                                                    @endphp
-                                                    <a href="{{route('pages.show',$product->products->product_slug)}}">
-                                                        <p class="text-success">BDT : {{$total}} </p>
-                                                    </a>
-                                                    {{--                                                    ৳--}}
-                                                    <p><strike class="current_price">BDT: {{$product->products->product_price}} </strike> -  {{$product->discount}}%</p>
+                                            <div class="card-body">
+                                                <div class="pro_des col-md-12">
+                                                    <a class="float-left" href="{{route('pages.show',$product->products->product_slug)}}"><p>{{$product->products->product_name}}</p></a>
+                                                    <div class="float-right product_ratting">
+                                                        <ul>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                @php
+                                                    $price = $product->products->product_price;
+                                                    $subtotal = ($price * $product->discount)/100;
+                                                    $total = $price - $subtotal;
+                                                @endphp
+                                                <div class="price_box col-md-12">
+                                                    <span class="current_price float-left">BDT {{ round($total) }}</span>
+                                                    <p class="float-right" style="font-size: 15px"><strike class="current_price">BDT: {{$product->products->product_price}} </strike></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,23 +75,7 @@
         </div>
 
         <div class="blog_pagination">
-            {{--            <div class="container">--}}
-            {{--                <div class="row">--}}
-            {{--                    <div class="col-12">--}}
-            {{--                        <div class="pagination">--}}
 
-            {{--                            {{$products->links()}}--}}
-            {{--                            --}}{{--                        <ul>--}}
-            {{--                            --}}{{--                            <li class="current">{{$products->links()}}</li>--}}
-            {{--                            --}}{{--                            <li><a href="#">2</a></li>--}}
-            {{--                            --}}{{--                            <li><a href="#">3</a></li>--}}
-            {{--                            --}}{{--                            <li class="next"><a href="#">next</a></li>--}}
-            {{--                            --}}{{--                            <li><a href="#">&gt;&gt;</a></li>--}}
-            {{--                            --}}{{--                        </ul>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
         </div>
 
     </section>

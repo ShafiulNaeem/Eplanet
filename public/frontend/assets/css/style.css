@@ -3553,7 +3553,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .price_box span.current_price {
   font-weight: 500;
-  font-size: 17px;
+  font-size: 15px;
   color: #40A944;
   padding-top: 6px;
 }

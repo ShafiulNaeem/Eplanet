@@ -54,8 +54,8 @@
                                                 </div>
 
                                                 <div class="price_box text-center">
-                                                    <p class="float-right">Model : {{ $product->model }}</p>
-                                                    <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
+                                                    <p class="">Model : {{ $product->model }}</p>
+                                                    <span class="current_price ">BDT {{ round($product->product_price) }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,60 +95,7 @@
 
     <!-- category area End -->
 
-    <!-- related-section area Start -->
 
-{{--    <section class="related-section">--}}
-{{--        <div class="product_area ">--}}
-{{--            <div class="container">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-md-12">--}}
-{{--                        <h3  class="text-dark text-center mb-20">Related Product</h3>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="product_container">--}}
-{{--                    @foreach($results as $mainRe)--}}
-{{--                        @if(isset($mainRe['category']['products']))--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-12"><h2 class="float-left">{{$mainRe['category']['category_name']}}</h2></div>--}}
 
-{{--                                <div class="col-12">--}}
-{{--                                    <div class="tab-content">--}}
-{{--                                        <div class="tab-pane fade show active" id="plant1" role="tabpanel">--}}
-{{--                                            <div class="product_carousel product_column5 owl-carousel">--}}
-{{--                                                @foreach($mainRe['category']['products'] as $index => $ffgr)--}}
-{{--                                                    <div class="product_items">--}}
-{{--                                                        <article class="single_product">--}}
-{{--                                                            <figure>--}}
-{{--                                                                <div class="single_banner">--}}
-{{--                                                                    <div class="banner_thumb">--}}
-{{--                                                                        <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">--}}
-{{--                                                                            <img src="{{asset('storage/images/'.$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">--}}
-{{--                                                                        </a>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
-{{--                                                                <figcaption class="product_content">--}}
-{{--                                                                    <h4 class="product_name"><a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">{{$mainRe['category']['products'][$index]['product_name']}}</a></h4>--}}
-{{--                                                                    <div class="price_box">--}}
-{{--                                                                        <span class="current_price">$ {{$mainRe['category']['products'][$index]['product_price']}}</span>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </figcaption>--}}
-{{--                                                            </figure>--}}
-{{--                                                        </article>--}}
-{{--                                                    </div>--}}
-{{--                                                @endforeach--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
-{{--                        @endif--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-
-    <!-- related-section area End -->
 
 @endsection
