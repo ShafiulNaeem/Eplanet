@@ -107,18 +107,18 @@ class WelcomeController extends Controller
         $data['product_id'] = $id;
         if (Auth::check()) $data['user_id'] = Auth::user()->id;
 
-        $check = ExpressWish::wher('product_id', $id)->first();
+        $check = ExpressWish::where('product_id', $id)->first();
 
         if( empty($check) ){
             return ( ExpressWish::create($data) ) ? response([
-                'message' => 'Express wish Created'
+                'message' => 'Express wish taken'
             ], 200) : response([
                 'message' => 'Something went wrong'
             ], 404);
         }
 
         return response([
-            'message' => 'Express wish Created'
+            'message' => 'Express wish taken'
         ], 200);
     }
 

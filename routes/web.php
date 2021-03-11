@@ -116,12 +116,12 @@ Route::get('brands', 'Users\ContactController@brandShow')->name('brands.show');
 Route::get('brands/{slug}', 'Users\NavbarController@brandProduct')->name('brandProduct.show');
 
 //user profile
-Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
-Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->name('profile.edit');
-Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->name('profile.update');
+Route::get('profile', 'Users\NavbarController@profile')->middleware('auth:web')->name('profile.show');
+Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->middleware('auth:web')->name('profile.edit');
+Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->middleware('auth:web')->name('profile.update');
 
 // Cancel Order
-Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->name('profile.order.cancel');
+Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->middleware(['auth'])->name('profile.order.cancel');
 
 //vendor page show
 Route::get('allvendor', 'Users\VendorProductsController@allVendor')->name('allVendor.show');
