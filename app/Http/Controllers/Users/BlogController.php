@@ -47,7 +47,7 @@ class BlogController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param Blog $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, Blog $blog)
@@ -63,21 +63,18 @@ class BlogController extends Controller
         $blog->user_id = $user_id;
         $blog->post = $request->post;
         $blog->title = $request->title;
+        $blog->blog_slug = $this->createSlug(Blog::class, $request->title, 'blog_slug');
 
         if($request->hasFile('blog_image')){
             $image = request()->file('blog_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->blog_image->move(public_path('images'), $filename);
-            $blog->blog_image= $filename;
+            $blog->blog_image= $this->uploadImage($image, 'images');;
             $blog->save();
         };
 
         if($blog->save()){
-            Session::flash('success','Post Created Successfully');
-            return redirect()->route('blog.allBog');
+            return redirect()->route('blog.allBog')->with('success','Post Created Successfully');
         } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('success','Something went wrong');
         }
     }
 

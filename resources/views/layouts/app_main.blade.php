@@ -231,6 +231,7 @@
     <script src="{{asset('frontend/assets/js/toastr.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.fancybox.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/o2es2ighryq5asf07w5arxsgc1kdh1uf6y1e0moe6be8hozy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>
@@ -524,6 +525,12 @@
     function createElement(tag){
         return document.createElement(tag);
     }
+</script>
+
+<script>
+    tinymce.init({
+        selector: '[name="post"]',
+    });
 </script>
 
 </body>

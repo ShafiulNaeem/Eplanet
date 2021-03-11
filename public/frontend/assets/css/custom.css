@@ -1250,6 +1250,13 @@ margin-left: -39px;
   top: 4px;
   left: -7px;
 }
+.allBrands{
+    width:100%
+}
+
+.top, .mid, .low{
+    display: block;
+}
 
 @media (min-width: 1400px) and (max-width:1920px){
 
