@@ -21,6 +21,7 @@
                                     <thead >
                                         <tr>
                                             <th>User Name</th>
+                                            <th>Title</th>
                                             <th>Image</th>
                                             <th>Post</th>
                                             <th>Approved</th>
@@ -34,6 +35,7 @@
                         @foreach($blogs as $index => $blog)
                         <tr>
                             <td>{{$blog->user->fname}} {{$blog->user->lname}}</td>
+                            <td>{{$blog->title}} </td>
                             <td>
                                 <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
                             </td>
@@ -87,6 +89,7 @@
                                     <tr>
                                         <th>User Name</th>
                                         <th>Image</th>
+                                        <th>Title</th>
                                         <th>Post</th>
                                         <th>Approved</th>
                                         <th>Create Date</th>

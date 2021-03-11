@@ -121,6 +121,8 @@ class NavbarController extends Controller
 
     public function orderCancel(Order $order)
     {
+        Product::where('id', $order->product_id)->decrement('sold', $order->quantity);
+        Product::where('id', $order->product_id)->increment('stock', $order->quantity);
         $order->delete();
         return redirect()->back();
     }

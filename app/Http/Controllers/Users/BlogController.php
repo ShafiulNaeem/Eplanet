@@ -128,14 +128,14 @@ class BlogController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Blog $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
     public function destroy(Blog $blog)
     {
         self::deleteFile( storage_path().'/app/public/images/' . $blog->blog_image );
-        $blog->delete();
-        return redirect()->back();
+        return($blog->delete()) ?  redirect()->back()->with('info', 'Blog Deleted') :
+          redirect()->back()->with('error', 'Something went wrong');
     }
 
     // Blog Approved
