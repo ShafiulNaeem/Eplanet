@@ -39,7 +39,7 @@
                             <td>
                                 <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
                             </td>
-                            <td>{{$blog->post}}</td>
+                            <td>{!! $blog->post !!}</td>
                             <td>
                                 <form action="{{ route('blog.change.status') }}" method="post">
                                     @csrf
