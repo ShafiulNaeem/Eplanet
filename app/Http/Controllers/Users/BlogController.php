@@ -127,13 +127,13 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Blog $blog
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Blog $blog)
     {
-        if ( ! self::deleteFile( public_path('images/' . $blog->blog_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
+        self::deleteFile( storage_path().'/app/public/images/' . $blog->blog_image );
         $blog->delete();
         return redirect()->back();
     }

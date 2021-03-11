@@ -4,10 +4,17 @@ use App\Mail\VerificationMail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+Route::get('link', function (){
+    Artisan::call('storage:link');
+});
 
+Route::get('clear', function (){
+    Artisan::call('cache:clear');
+});
 Route::get('/createslug', function (){
     $categories = \App\Models\Brand::all();
 

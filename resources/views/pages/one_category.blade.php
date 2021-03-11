@@ -61,8 +61,8 @@
                                                 </div>
 
                                                 <div class="price_box col-md-12">
-                                                    <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
-                                                    <p class="float-right">Model : {{ $product->model }}</p>
+                                                    <span class="current_price ">BDT {{ round($product->product_price) }}</span>
+                                                    <p class="">Model : {{ $product->model }}</p>
                                                 </div>
                                             </div>
                                         </div>

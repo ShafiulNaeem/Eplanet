@@ -20,42 +20,6 @@
     </div>
     <!--slider area end-->
 
-    <!-- category area Start -->
-
-    <section class="category">
-
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="slider_area owl-carousel ">--}}
-{{--                        @foreach($categories as $category)--}}
-{{--                        <div class="single_slider d-flex align-items-center div_radis" data-bgimg="{{asset('storage/images/' .$category->sub_category_image)}}">--}}
-{{--                            <div class="container">--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-lg-6">--}}
-{{--                                        <div class="slider_content">--}}
-{{--                                            <h1 class="text-success">{{$category->category->category_name}}</h1>--}}
-{{--                                            <h2 class="text-white">{{$category->subcategory_name}} </h2>--}}
-{{--                                            <p class="text-white">--}}
-{{--                                                {{\Carbon\Carbon::parse($category->created_at)->format('M d Y')}}--}}
-{{--                                            </p>--}}
-{{--                                            <a href="{{route('subcat.show',$category->subcategory_slug)}}">Shop Now </a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        @endforeach--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--            </div>--}}
-{{--        </div>--}}
-
-    </section>
-
-    <!-- category area End -->
-
     <!--  Category bottom Code Start     -->
 
     <section class="category_bottom mt-4 mb-4">
@@ -118,8 +82,8 @@
                                         </div>
 
                                         <div class="price_box col-md-12">
-                                            <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
-                                            <p class="float-right">Model : {{ $product->model }}</p>
+                                            <span class="current_price ">BDT {{ round($product->product_price) }}</span>
+                                            <p class="">Model : {{ $product->model }}</p>
                                         </div>
                                     </div>
                                 </div>

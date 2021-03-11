@@ -22,12 +22,15 @@ class NavbarController extends Controller
         //dd($request->all());
         if ($request->product_name != null ){
             $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->GetActive()->get();
-            $mainRes = $mainRes = Category::with('products')
+
+            if ( count($product) > 0 )
+            $mainRes = Category::with('products')
                 ->where('id', $product[0]->category_id)
                 ->first();
+            else $mainRes = [];
             $area = Division::with('districts.cities')->get();
 
-            return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'areas'=> $area]);
+            return view('pages.searchResultWeb',['results' => $mainRes,'products' =>$product, 'areas'=> $area]);
         } else {
             $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$request->category_name)->GetActive()->paginate(20);
 
@@ -74,18 +77,16 @@ class NavbarController extends Controller
     // BrandProducts
     public function brandProduct($slug)
     {
-        $catArray = ['kids', 'men'];
-        $mainRes = $this->productByCategory($catArray);
 
-        $brand = Brand::where('brand_slug',$slug)->GetActive()->get();
+        $brand = Brand::where('brand_slug',$slug)->GetActive()->first();
         $product = Product::where([
-            ['brand_id' , '=', $brand[0]->id],
+            ['brand_id' , '=', $brand->id],
             ['status', '=', 1],
         ])->paginate(16);
 
         //dd($product);
 
-        return view('pages.brand_products',['results' => $mainRes,'brands' =>$brand,'products' => $product]);
+        return view('pages.brand_products',['brands' =>$brand,'products' => $product]);
     }
 
     public  function profile(){
@@ -124,41 +125,4 @@ class NavbarController extends Controller
         return redirect()->back();
     }
 
-    private function productByCategory($catArray){
-        $mainRes = [];
-        foreach ($catArray as $val){
-            $category_result = [];
-            $subCategories = Category::with('products')->where([
-                ['category_name' , '=', $val],
-                ['status', '=', 1],
-            ])->get();
-
-            foreach ($subCategories as $sub) {
-                if ( count($sub->products) ){
-                    $category_result['category'] = [
-                        'category_name' => $sub->category_name,
-                        'category_image' => $sub->category_image
-                    ];
-
-                    foreach ($sub->products as $product){
-                        //dd($product->status);
-                        if ($product->status == 1){
-                            $category_result['category']['products'][] = [
-                                'id' => $product->id,
-                                'unique_id' => $product->unique_id,
-                                'brand_id' => $product->brand_id,
-                                'product_name' => $product->product_name,
-                                'feature_image' => $product->feature_image,
-                                'stock' => $product->stock,
-                                'product_price' => $product->product_price
-                            ];
-                        }
-
-                    }
-                    $mainRes[] = $category_result;
-                }
-            }
-        }
-        return $mainRes;
-    }
 }
