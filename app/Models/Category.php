@@ -23,6 +23,25 @@ class Category extends Model
         return $this->hasMany('App\Models\SubCategory');
     }
 
+    public function evenProducts()
+    {
+        return $this->hasMany('App\Models\EventProduct');
+    }
+
+    public function eventWithProducts()
+    {
+        $count_date = \Carbon\Carbon::today()->format('Y-m-d');
+        $event = Event::with('eventProducts')->where('start_date', '>=', $count_date)->get();
+        //dd($event);
+            //dd($event->id);
+            return $this->evenProducts()->where([
+                'event_id' => $event[0]->id
+            ])
+                ->orderBy('created_at', 'DESC');
+           // dd($event->id);
+
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

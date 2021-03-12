@@ -26,7 +26,7 @@ class ContactController extends Controller
      */
     public function brandShow()
     {
-        $brands = Brand::orderBy('created_at','desc')->where('status',1)->paginate(18);
+        $brands = Brand::orderBy('created_at','desc')->GetActive()->paginate(18);
 
         return view('pages.brand',compact('brands'));
     }

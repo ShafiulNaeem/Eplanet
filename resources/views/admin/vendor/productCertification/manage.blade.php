@@ -36,7 +36,7 @@
                         @foreach($productCertifications as $index => $productCertification)
                         <tr>
                             <td>
-                                <embed src="{{asset('storage/documents/'.$productCertification->pdf)}}" alt="{{$productCertification->name}}" class="img-rounded" width="80" />
+                                <embed src="{{assetImageAndVideo('documents').$productCertification->pdf}}" alt="{{$productCertification->name}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$productCertification->name}}</td>
                             <td>{{$productCertification->issued_by}}</td>

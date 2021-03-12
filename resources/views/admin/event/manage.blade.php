@@ -39,11 +39,11 @@
                         <tr>
                             <td>{{$index + 1}}</td>
                             <td>
-                                <img src="{{url('storage\images',$event->event_image)}}" alt="{{$event->event_name}}" class="img-rounded" width="80" />
+                                <img src="{{assetImageAndVideo('images').$event->event_image}}" alt="{{$event->event_name}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$event->event_name}}</td>
-                            <td>{{\Carbon\Carbon::parse($event->start_date)->format('M d Y')}}</td>
-                            <td>{{\Carbon\Carbon::parse($event->end_date)->format('M d Y')}}</td>
+                            <td>{{\Carbon\Carbon::parse($event->start_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</td>
+                            <td>{{\Carbon\Carbon::parse($event->end_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</td>
                             <td>
                                 <form action="{{ route('event.change.status') }}" method="post">
                                     @csrf
@@ -60,7 +60,7 @@
 
                             <td>{{\Carbon\Carbon::parse($event->created_at)->format('M d Y')}}</td>
                             <td>
-                                <a href="{{route('event.edit',$event->id)}}" class="btn text-warning btn-app float-left">
+                                <a href="{{route('event.edit',$event->id)}}" class="btn text-warning btn-app">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
                                 <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$event->id}}">

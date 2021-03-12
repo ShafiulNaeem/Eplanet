@@ -34,15 +34,15 @@
                                     <div class="post_header">
                                         <h3 class="post_title">{{$blog->title}}</h3>
                                         <div class="blog_meta">
-                                            <p>Posted by : <a href="{{route('blog.show',$blog->id)}}">{{$blog->user->fname . " " . $blog->user->lname}}</a> / On : <a href="#">{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}}</a></p>
+                                            <p>Posted by : <a href="{{route('blog.show',$blog->blog_slug)}}">{{$blog->user->fname . " " . $blog->user->lname}}</a> / On : <a href="#">{{\Carbon\Carbon::parse($blog->created_at)->format('M d Y')}}</a></p>
                                         </div>
                                     </div>
                                     <div class="blog_thumb">
-                                        <a href="#"><img src="{{asset('storage/images/'.$blog->blog_image)}}" alt="{{$blog->title}}"></a>
+                                        <a href="#"><img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}"></a>
                                     </div>
                                     <figcaption class="blog_content">
                                         <div class="post_content">
-                                            <p>{{ $blog->post }}</p>
+                                            <p>{!! $blog->post !!}</p>
                                         </div>
                                     </figcaption>
                                 </figure>
@@ -84,7 +84,7 @@
                                                     <textarea name="reply" id="" class="form-control" cols="5" rows="3"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button id="submit_reply" type="submit" class="btn btn-success">comment</button>
+                                                    <button id="submit_reply" type="submit" class="btn btn-success">Replay</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -140,19 +140,19 @@
 
 
                         <div class="related_posts" style="border-top:none">
-                            <h3>User posts</h3>
+                            <h3>User other posts</h3>
                             <div class="row">
                                 @foreach($userPBlogs as $userBlog)
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <article class="single_related">
                                         <figure>
                                             <div class="related_thumb">
-                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{asset('storage/images/'.$userBlog->blog_image)}}" alt="{{$userBlog->title}}"></a>
+                                                <a href="{{route('blog.show',$userBlog->blog_slug)}}"><img src="{{assetImageAndVideo('images').$userBlog->blog_image}}" alt="{{$userBlog->title}}"></a>
                                             </div>
                                             <figcaption class="related_content">
-                                                <h4><a href="#">{{$userBlog->title}}</a></h4>
+                                                <h4><a href="{{route('blog.show',$userBlog->blog_slug)}}">{{$userBlog->title}}</a></h4>
                                                 <div class="blog_meta">
-                                                    <span class="author">By : <a href="{{route('blog.show',$userBlog->id)}}">{{$userBlog->user->fname . " " . $userBlog->user->lname}}</a> / </span>
+                                                    <span class="author">By : <a href="{{route('blog.show',$userBlog->blog_slug)}}">{{$userBlog->user->fname . " " . $userBlog->user->lname}}</a> / </span>
                                                     <span class="meta_date"> {{\Carbon\Carbon::parse($userBlog->created_at)->format('M d Y')}} </span>
                                                 </div>
                                             </figcaption>

@@ -9,20 +9,17 @@
                     <div class="breadcrumb_content_new text-left" >
                         <ul style="color: #cfcfcf; font-weight: 600;">
                             <li><a href="{{ route('home') }}">home</a></li>
-                            @foreach($categories as $category)
-                                @if($category->category_id != null)
-                                    <li><a href="{{ route('cat.show',$category->category->category_slug) }}">{{$category->category->category_name}}</a></li>
+                                @if($categories->category_id != null)
+                                    <li><a href="{{ route('cat.show',$categories->category->category_slug) }}">{{$categories->category->category_name}}</a></li>
                                 @endif
-                                @if($category->sub_category_id != null)
-                                    <li><a href="{{ route('subcat.show',$category->subcategory->subcategory_slug) }}">{{$category->subcategory->subcategory_name}}</a></li>
+                                @if($categories->sub_category_id != null)
+                                    <li><a href="{{ route('subcat.show',$categories->subcategory->subcategory_slug) }}">{{$categories->subcategory->subcategory_name}}</a></li>
                                     @else
-                                        <li> {{$category->subcategory_name}}</li>
+                                        <li> {{$categories->subcategory_name}}</li>
                                 @endif
-                                @if($category->sub_category_id != null)
-                                    <li>{{$category->secondary_subcategory_name}}</li>
+                                @if($categories->sub_category_id != null)
+                                    <li>{{$categories->secondary_subcategory_name}}</li>
                                 @endif
-
-                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -38,9 +35,7 @@
                         <div class="row">
                             <div class="col-md-12 ">
                                 <div class="sub_head">
-                                    @foreach($categories as $category)
-                                        <h4>All {{$category->subcategory_name}} > {{$category->secondary_subcategory_name}} Collection</h4>
-                                    @endforeach
+                                    <h4>All {{$categories->subcategory_name}}   {{$categories->secondary_subcategory_name}} Collection</h4>
                                 </div>
                             </div>
 
@@ -49,27 +44,25 @@
                                     <div class="right-category">
                                         <div class="card">
                                             <div class="zoom-In">
-                                            <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{asset('storage/images/' .$product->feature_image)}}" class="card-img-top" alt="{{$product->product_name}}"></a>
+                                            <a href="{{route('pages.show',$product->product_slug)}}"><img src="{{assetImageAndVideo('images') .$product->feature_image}}" class="card-img-top" alt="{{$product->product_name}}"></a>
                                             </div>
                                             <div class="card-body">
-                                                <a href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                                <div class="pro_des col-md-12">
+                                                    <a class="float-left" href="{{route('pages.show',$product->product_slug)}}"><p>{{$product->product_name}}</p></a>
+                                                    <div class="float-right product_ratting">
+                                                        <ul>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
 
-                                                <div class="price_box text-center">
-
-{{--                                                    <div class=" product_ratting">--}}
-{{--                                                        <ul>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                                            <li class="review"><a href="#"> (customer review )</a></li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-                                                    <a class="float-right" href="{{route('pages.show',$product->product_slug)}}">
-                                                        <p>Size : {{ $product->size }}</p>
-                                                    </a>
-                                                    <span class="current_price float-left">BDT {{$product->product_price}}</span>
+                                                <div class="price_box col-md-12">
+                                                    <span class="current_price ">BDT {{ round($product->product_price) }}</span>
+                                                    <p class="">Model : {{ $product->model }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,21 +85,12 @@
                         <div class="pagination">
 
                             {{$products->links()}}
-                            {{--                        <ul>--}}
-                            {{--                            <li class="current">{{$products->links()}}</li>--}}
-                            {{--                            <li><a href="#">2</a></li>--}}
-                            {{--                            <li><a href="#">3</a></li>--}}
-                            {{--                            <li class="next"><a href="#">next</a></li>--}}
-                            {{--                            <li><a href="#">&gt;&gt;</a></li>--}}
-                            {{--                        </ul>--}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
-
     <!-- category area End -->
 
     <!-- related-section area Start -->
@@ -121,29 +105,28 @@
                 </div>
                 <div class="product_container">
                     @foreach($results as $mainRe)
-                        @if(isset($mainRe['category']['products']))
-                            <div class="row">
-                                <div class="col-md-12"><h2 class="float-left">{{$mainRe['category']['category_name']}}</h2></div>
+                        <div class="row">
+                                <div class="col-md-12"><h2 class="float-left">{{$mainRe->category->category_name}}</h2></div>
 
                                 <div class="col-12">
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="plant1" role="tabpanel">
                                             <div class="product_carousel product_column5 owl-carousel">
-                                                @foreach($mainRe['category']['products'] as $index => $ffgr)
+                                                @foreach($mainRe->category->products as $index => $ffgr)
                                                     <div class="product_items">
                                                         <article class="single_product">
                                                             <figure>
                                                                 <div class="single_banner">
                                                                     <div class="banner_thumb">
-                                                                        <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
-                                                                            <img src="{{asset('storage/images/' .$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
+                                                                        <a href="{{route('pages.show',$ffgr->id)}}">
+                                                                            <img src="{{assetImageAndVideo('images') . $ffgr->feature_image}}" alt="{{$ffgr->product_name}}">
                                                                         </a>
                                                                     </div>
                                                                 </div>
                                                                 <figcaption class="product_content">
-                                                                    <h4 class="product_name"><a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">{{$mainRe['category']['products'][$index]['product_name']}}</a></h4>
+                                                                    <h4 class="product_name"><a href="{{route('pages.show',$ffgr->id)}}">{{$ffgr->product_name}}</a></h4>
                                                                     <div class="price_box">
-                                                                        <span class="current_price">$ {{$mainRe['category']['products'][$index]['product_price']}}</span>
+                                                                        <span class="current_price">BDT {{$ffgr->product_price}}</span>
                                                                     </div>
                                                                 </figcaption>
                                                             </figure>
@@ -156,7 +139,6 @@
                                 </div>
 
                             </div>
-                        @endif
                     @endforeach
                 </div>
             </div>

@@ -34,7 +34,7 @@
                         @foreach($factoryViews as $index => $factoryView)
                         <tr>
                             <td>
-                                <img src="{{asset('storage/images/'.$factoryView->image)}}" alt="{{$factoryView->description}}" class="img-rounded" width="80" />
+                                <img src="{{assetImageAndVideo('images').$factoryView->image}}" alt="{{$factoryView->description}}" class="img-rounded" width="80" />
                             </td>
                             <td>{{$factoryView->description}}</td>
 

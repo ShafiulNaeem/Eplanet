@@ -39,7 +39,7 @@
                                             <tr>
                                                 <td class="">{{$employee['employee_unique_id']}}</td>
                                                 <td>
-                                                    <img src="{{url('public/images/' . $employee->employee_image)}}" alt="{{$employee->name}}" class="img-rounded" width="80">
+                                                    <img src="{{assetImageAndVideo('images') . $employee->employee_image}}" alt="{{$employee->name}}" class="img-rounded" width="80">
                                                 </td>
                                                 <td>{{$employee->name}}</td>
                                                 <td>{{$employee->email}}</td>

@@ -231,25 +231,14 @@
     <script src="{{asset('frontend/assets/js/toastr.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.fancybox.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/o2es2ighryq5asf07w5arxsgc1kdh1uf6y1e0moe6be8hozy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/slider.js')}}"></script>
-<script>
+    <script src="{{asset('frontend/assets/js/extra.js')}}"></script>
 
-
-    var timeID = document.getElementById('time');
-    var timeID2 = document.getElementById('time2');
-    setInterval(() => {
-        var time = new Date();
-        timeID.innerHTML = ' ';
-        timeID.innerHTML = time.toLocaleTimeString();
-
-        timeID2.innerHTML = ' ';
-        timeID2.innerHTML = time.toLocaleTimeString();
-    }, 1000);
-</script>
 <script>
     toastr.options = {
         "closeButton": true,
@@ -437,6 +426,111 @@
         });
    });
 
+</script>
+
+<script>
+    var locationDropdownMainDiv = $('#locationDropdownMainDiv');
+    var changelocationtext = $('#changelocationtext');
+
+    var currentlocationselected = $('#currentlocationselected');
+    var mainLocationLi = $('#mainLocationLi');
+    var mainLocationUl = $('#mainLocationUl');
+    var mainLocationP = $('#mainLocationP');
+    var trackLocationChange = [];
+
+    locationDropdownMainDiv.hide();
+
+    changelocationtext.on('click', function (){
+        locationDropdownMainDiv.toggle();
+
+        let url = window.origin + '/changelocation/null/null';
+        apiget(url, null);
+        changeLocation()
+    });
+
+
+
+    function changeLocation(param) {
+        let data_location_current = param.getAttribute('data-location-current');
+        if ( data_location_current == 'division' ) trackLocationChange[0] = param.innerText;
+        if ( data_location_current == 'district' ) trackLocationChange[1] = param.innerText;
+        if ( data_location_current == 'city' ) {
+            trackLocationChange[2] = param.innerText;
+            locationDropdownMainDiv.hide();
+        }
+
+        currentlocationselected.empty();
+        currentlocationselected.append( trackLocationChange.join(" > ") );
+
+        let data_location_id = param.getAttribute('data-location-id');
+
+        let url = window.origin + '/changelocation/' + data_location_current+'/'+data_location_id;
+
+        apiget(url ,data_location_current)
+
+        console.log(trackLocationChange);
+    }
+
+
+    function apiget(url, data_location_current) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: url,
+            method: 'get',
+
+
+            success: function (response) {
+                console.log(response);
+                if ( response.length > 0 ){
+                    mainLocationUl.empty();
+                    makeList(response, data_location_current)
+                }
+            },
+            error:function(response)
+            {
+                let error = JSON.parse(response.responseText);
+                console.error(error);
+            }
+        });
+    }
+
+    function makeList(response, currentLocationType){
+        response.forEach((value, index) => {
+            let para = createElement('p');
+            para.setAttribute('class', 'bg-gradient-dark location');
+            para.setAttribute('onclick', 'changeLocation(this)');
+            para.setAttribute('data-location-id', value.id);
+            (currentLocationType != null) ?
+            para.setAttribute('data-location-current',
+                (currentLocationType == 'division') ? 'district' : 'city'
+            ) : para.setAttribute('data-location-current',
+                'division'
+            );
+
+            (currentLocationType != null) ?
+                para.append(
+                    (currentLocationType == 'division') ? value.district_name : value.city_name
+                ) : para.append(
+                value.division_name
+                );
+
+            let li = createElement('li');
+            li.append(para);
+            mainLocationUl.append(li);
+        });
+    }
+
+    function createElement(tag){
+        return document.createElement(tag);
+    }
+</script>
+
+<script>
+    tinymce.init({
+        selector: '[name="post"]',
+    });
 </script>
 
 </body>

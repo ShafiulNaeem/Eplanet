@@ -22,14 +22,14 @@
                                 <table id="example1" class="table table-bordered table-striped table-responsive">
                                     <thead >
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Product Image</th>
-                                        <th>Product Name</th>
+                                        <th> Sold</th>
+                                        <th> Image</th>
+                                        <th> Name</th>
                                         <th>Brand</th>
-                                        <th>Product Stock</th>
-                                        <th>Product Tax</th>
-                                        <th>Product Price</th>
-                                        <th>Product Created</th>
+                                        <th> Stock</th>
+                                        <th> Tax</th>
+                                        <th> Price</th>
+                                        <th> Created</th>
                                         <th>Status</th>
                                         <th>Action</th>
 
@@ -38,8 +38,8 @@
                                     <tbody>
                                     @foreach($products as $index => $product)
                                         <tr>
-                                            <td>{{$product->unique_id}}</td>
-                                            <td><img src="{{asset('storage/app/public/images/'.$product->feature_image)}}" alt="{{$product->product_name}}" width="80"></td>
+                                            <td>{{$product->sold}}</td>
+                                            <td><img src="{{assetImageAndVideo('images').$product->feature_image}}" alt="{{$product->product_name}}" width="80"></td>
                                             <td>{{$product->product_name}}</td>
                                             <td>{{$product->brand->brand_name}}</td>
                                             <td>{{$product->stock}} piece(s) </td>
@@ -99,14 +99,14 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Product Image</th>
-                                        <th>Product Name</th>
+                                        <th>Sold</th>
+                                        <th> Image</th>
+                                        <th> Name</th>
                                         <th>Brand</th>
-                                        <th>Product Stock</th>
-                                        <th>Product Tax</th>
-                                        <th>Product Price</th>
-                                        <th>Product Created</th>
+                                        <th> Stock</th>
+                                        <th> Tax</th>
+                                        <th> Price</th>
+                                        <th> Created</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
