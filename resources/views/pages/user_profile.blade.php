@@ -3,23 +3,6 @@
 @section('content')
 
 
-    <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                        <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
-                            <li>My account</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--breadcrumbs area end-->
-
 <!--  User information start  -->
     @foreach($users as $user)
     <section class="user_info">
@@ -31,7 +14,7 @@
                     </div>
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><h4>User Information</h4></li>
+                            <li><h4>Your Information</h4></li>
                             <li><a href="{{route('profile.edit',$user->id)}}">Update Your Information</a></li>
                         </ul>
                     </div>
@@ -45,7 +28,7 @@
                             <h4>Name: {{$user->fname." ".$user->lname}}</h4>
                         </div>
                         <div class="user_name">
-                            <p>Number: +880{{$user->phone}}</p>
+                            <p>Number: {{$user->phone}}</p>
                         </div>
                         <div class="user_name">
                             <p>Email: {{$user->email}}</p>
@@ -96,7 +79,7 @@
                                                <td>{{\Carbon\Carbon::parse($order->created_at)->format('M d Y')}} </td>
                                                @foreach($order->products as $product)
                                                    <td>
-                                                       <img src="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}" class="img-rounded" width="80" />
+                                                       <img src="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}" class="img-rounded" width="80" />
                                                    </td>
                                                    <td>{{$product->product_name}}</td>
                                                    <td>{{$product->size}}</td>
@@ -170,7 +153,7 @@
             <div class="col-md-12">
                 <div class="user_post_inner">
                     <div class="related_posts" style="border-top:none">
-                        <h3>User Posts</h3>
+                        <h3>Your Posts</h3>
                         <div class="row">
                             @foreach($userPBlogs as $userBlog)
                                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -178,7 +161,7 @@
                                         <figure>
                                             <div class="related_thumb">
                                                 <div class="zoom-In">
-                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{asset('storage/images/' .$userBlog->blog_image)}}" alt="{{$userBlog->title}}"></a>
+                                                <a href="{{route('blog.show',$userBlog)}}"><img src="{{assetImageAndVideo('images') .$userBlog->blog_image}}" alt="{{$userBlog->title}}"></a>
                                                 </div>
                                             </div>
                                             <figcaption class="related_content">

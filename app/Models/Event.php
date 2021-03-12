@@ -32,4 +32,11 @@ class Event extends Model
     {
         return $this->hasMany(EventProduct::class, 'event_id');
     }
+
+    public function eventWithProducts()
+    {
+        return $this->eventProducts()->distinct()->count('category_id');
+        // dd($event->id);
+
+    }
 }

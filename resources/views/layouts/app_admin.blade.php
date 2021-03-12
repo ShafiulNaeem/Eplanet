@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminAsset/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminAsset/dist/css/custom.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -286,7 +287,6 @@
         var id = (this.getAttribute('data-target'));
         id = id.slice(9, id.length);
         var modalTableBody = $("#modalTableBodyEvent"+id);
-        console.log(modalTableBody);
         modalTableBody.empty();
 
         $.ajax({
@@ -318,7 +318,7 @@
 
         moda.modal('show');
         modalTableBody.empty();
-        $(".modal-dialog")[0].style = "max-width: 1000px !important";
+        //$(".modal-dialog")[0].style = "max-width: 1000px !important";
 
 
         $.ajax({
@@ -346,7 +346,7 @@
                     let url = window.location.origin + '/admin/orders/' + value.id + '/edit';
                     anchor.setAttribute('href', url);
                     action.appendChild(anchor);
-                    anchor.innerText = "Mark as Shifted";
+                    anchor.innerText = "Shift now";
                     anchor.className = "btn btn-info";
 
 
@@ -357,9 +357,9 @@
                     image.setAttribute('width', 80);
 
                     product_image.appendChild(image);
-
+                    let time = new Date(value.created_at);
                     unique_id.innerText = value.unique_id;
-                    order_date.innerText = value.created_at;
+                    order_date.innerText = time.toDateString();
                     quantity.innerText = value.quantity;
                     product_name.innerText = value.products[0].product_name;
                     product_model.innerText = value.products[0].model;
@@ -468,7 +468,7 @@
 
 
 
-    // category by sub category
+    // subcategory by category
     $('#category_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let subCat = $('#sub_category_id');
@@ -483,7 +483,7 @@
 
 
             success: function (response) {
-                subCat[0].innerHTML = " ";
+                subCat.empty();
                 let option = createElement("option");
 
                 option.setAttribute('value', " ");
@@ -562,8 +562,8 @@
 </script>
 
 <script>
-    // category by product
-    $('#cat_id').on('change',function (e) {
+    // secondary_sub_categories_id by product
+    $('#secondary_sub_categories_id').on('change',function (e) {
         let selectedValue = $(this).children("option:selected").val();
         let product = $('#product_id');
         let productId = product.attr("data-product");

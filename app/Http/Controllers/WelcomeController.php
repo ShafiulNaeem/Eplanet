@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategorySlider;
+use App\Models\City;
 use App\Models\ContactUsSlider;
+use App\Models\District;
 use App\Models\Division;
+use App\Models\Event;
+use App\Models\EventProduct;
 use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -49,45 +54,15 @@ class WelcomeController extends Controller
     public function category($slug){
         $id = Category::where('category_slug', $slug)->first()->id;
         $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$id)->GetActive()->paginate(20);
-        //dd($category);
-        return view('pages.categories',['categories' =>$category]);
+        $slider = CategorySlider::where('category_id', $id)->GetActive()->get();
+        //dd($categorySliders);
+        return view('pages.categories',['categories' =>$category,'sliders' =>$slider]);
     }
 
-    private function productByCategory($catArray){
-        $mainRes = [];
-        foreach ($catArray as $val){
-            $category_result = [];
-            $subCategories = Category::with('products')->where(
-                'category_name' , '=', $val
-            )->GetActive()->get();
-
-            foreach ($subCategories as $sub) {
-                if ( count($sub->products) ){
-                    $category_result['category'] = [
-                        'category_name' => $sub->category_name,
-                        'category_image' => $sub->category_image
-                    ];
-
-                    foreach ($sub->products as $product){
-                            //dd($product->status);
-                            if ($product->status == 1){
-                                $category_result['category']['products'][] = [
-                                    'id' => $product->id,
-                                    'unique_id' => $product->unique_id,
-                                    'brand_id' => $product->brand_id,
-                                    'product_name' => $product->product_name,
-                                    'feature_image' => $product->feature_image,
-                                    'stock' => $product->stock,
-                                    'product_price' => $product->product_price
-                                ];
-                            }
-
-                    }
-                    $mainRes[] = $category_result;
-                }
-            }
-        }
-        return $mainRes;
+    public function changeLocation($region, $id){
+        if ( $region == "division" ) return District::where('division_id', $id)->get();
+        elseif ($region == "district") return City::where('district_id', $id)->get();
+        return Division::all();
     }
 
 
@@ -132,19 +107,60 @@ class WelcomeController extends Controller
         $data['product_id'] = $id;
         if (Auth::check()) $data['user_id'] = Auth::user()->id;
 
-        $check = ExpressWish::wher('product_id', $id)->first();
+        $check = ExpressWish::where('product_id', $id)->first();
 
         if( empty($check) ){
             return ( ExpressWish::create($data) ) ? response([
-                'message' => 'Express wish Created'
+                'message' => 'Express wish taken'
             ], 200) : response([
                 'message' => 'Something went wrong'
             ], 404);
         }
 
         return response([
-            'message' => 'Express wish Created'
+            'message' => 'Express wish taken'
         ], 200);
+    }
+
+    //  promotion
+    public function promotion(){
+
+        $count_date = date('Y-m-d H:i:s', time()+6*3600);
+        $event = Event::where( 'start_date','>=', $count_date)->GetActive()->first();
+        //dd($events->event_name);
+        $eventProducts = [];
+        $eventPro = Event::with('eventProducts')
+            ->where( 'start_date','<=', $count_date)
+            ->where( 'end_date','>', $count_date)
+            ->GetActive()
+            ->get();
+       // dd($eventPro);
+
+
+        if (count($eventPro) > 0){
+
+                $eventProducts =EventProduct::with('category')
+                    ->where([
+                        'event_id' => $eventPro[0]->id
+                    ])
+                    ->select('category_id','event_id')->distinct()->get();
+        }
+        return view('pages.promotion',compact('event','eventProducts'));
+
+    }
+
+    // promotion products
+    public function promotionProduct($event_id,$category_id){
+        $event = Event::where( 'id',$event_id)->GetActive()->get();
+        $category = Category::where( 'id', $category_id)->GetActive()->get();
+        $products =EventProduct::with('products')
+            ->where([
+                'event_id' => $event_id,
+                'category_id' => $category_id
+            ])
+            ->get();
+
+        return view('pages.promotion_products',compact('products','category','event'));
     }
 
 }

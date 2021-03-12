@@ -38,281 +38,280 @@
             @if( count($products) > 0 )
                 @foreach($products as $product)
                     @php $proid = $product->id @endphp
-                <div class="row">
-                    <div class="col-lg-5 col-md-5 float-left">
-                        <div class="product-details-tab">
-                            <div id="img-1" class="zoomWrapper single-zoom">
-                                <a href="#">
-                                    <img id="zoom1" src="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('storage/images/' .$product->feature_image)}}" alt="{{$product->product_name}}">
-                                </a>
-                            </div>
-                            <div class="single-zoom-thumb">
-                                <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
-                                    <li>
-                                        <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$product->feature_image)}}" data-zoom-image="{{asset('storage/images/' .$product->feature_image)}}">
-                                            <img src="{{asset('storage/images/' . $product->feature_image)}}" alt="zo-th-1"/>
-                                        </a>
-
-                                    </li>
-                                    @foreach($product->productImages as $images)
-                                    <li >
-                                        <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('storage/images/' .$images->product_image)}}" data-zoom-image="{{asset('storage/images/' .$images->product_image)}}">
-                                            <img src="{{asset('storage/images/' . $images->product_image)}}" alt="zo-th-1"/>
-                                            <span></span>
-                                        </a>
-
-                                    </li>
-                                    @endforeach
-
-
-                                </ul>
-                            </div>
-                            <div class="">
-                                @if( count($product->productVideos) > 0 )
-                                    <h3>Promo Video </h3>
-                                    @foreach($product->productVideos as $video)
-                                        <iframe width="400"  src="{{asset('storage/videos/' .$video->product_image)}}" frameborder="0" allowfullscreen>
-                                    </iframe>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 col-md-7 float-left">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="product_d_right " style="border-right:1px solid #ededed;">
-                                    <div class="product_meta">
-                                        <span> <b>Condition:</b> @if($product->is_new == 1) Brand New @else Old @endif </span>
-                                    </div>
-                                    <div class="product_meta">
-                                        <span> <b>Brand Name:</b> {{ $product->brand->brand_name }} </span>
-                                    </div>
-                                    @if( ! empty($product->model) )
-                                        <div class="product_meta">
-                                            <span> <b>Brand Model:</b>  {{$product->model}}</span>
-                                        </div>
-                                    @endif
-
-                                    @if( ! empty($product->coupon) )
-                                        <div class="product_meta">
-                                            <span> <b>Discount Code:</b> {{ $product->coupon->coupon_code }}</span>
-                                        </div>
-                                    @endif
-                                     <div class="product_meta">
-                                        <span> <b>Product Code: </b> {{ $product->unique_id }}</span>
-                                    </div>
-{{--                                      <div class="product_meta">--}}
-{{--                                        <span>Regular Price: <a href="#">12534</a></span>--}}
-{{--                                    </div>--}}
-                                    <div class="product_desc mt-2">
-                                        {!! $product->product_description !!}
-                                    </div>
-                                    <div class=" product_ratting">
-{{--                                        <ul>--}}
-{{--                                            <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                           <li><a href="#"><i class="icon-star"></i></a></li>--}}
-{{--                                            <li class="review"><a href="#"> (customer review ) </a></li>--}}
-{{--                                        </ul>--}}
-                                    </div>
-
-                                    <div class=" product_ratting">
-                                        <ul>
-                                            <li style="color:#28a745">EMI Availabe:</li>
-                                            <li>
-                                                @if( ! empty( $product->emi_id ) ) Yes @else No @endif
-                                            </li>
-                                            @if( ! empty( $product->emi_id ) )
-                                                @php
-                                                    $ids = explode(',', $product->emi_id);
-
-                                                @endphp
-                                                <li>
-                                                    <select name="" id="" class="form-control" >
-                                                        @for($i  = 0; $i < count($ids); ++$i)
-                                                            @php $emi = \App\Models\Emi::find($ids[$i]) @endphp
-                                                            <option value="{{$emi->id}}">{{$emi->bank_name}} ({{$emi->duration}}) </option>
-                                                        @endfor
-                                                    </select>
-                                                </li>
-                                            @endif
-                                        </ul>
-{{--                                        @endif--}}
-                                    </div>
-{{--                                    @endif--}}
-                                    @if( ! empty($product->coupon) )
-                                        <div class="product_meta">
-                                            <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
-                                        </div>
-                                    @endif
-                                    <a href="#sheet" id="click_change3">
-                                        <i class="fa fa-2x fa-sort-up"></i> View more info
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 float-left">
+                            <div class="product-details-tab">
+                                <div id="img-1" class="zoomWrapper single-zoom">
+                                    <a href="#">
+                                        <img id="zoom1" src="{{assetImageAndVideo('images') .$product->feature_image}}" data-zoom-image="{{assetImageAndVideo('images') .$product->feature_image}}" alt="{{$product->product_name}}">
                                     </a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                                            <div class=" product_recive">
-                                                              <div class="recive_inner">
-                                                                <ul>
-                                                                    <li>Cash On Delivary: </li>
-                                                                    <li>
-                                                                        <select name="" id="" class="form-control" >
-                                                                            <option value="">Yes</option>
-                                                                            <option value="">No</option>
-                                                                        </select>
-                                                                    </li>
-                                                                </ul>
-                                                              </div>
-                                                              <div class="recive_inner col-md-6">
-                                                                  <ul class="nav nav-pills flex-column">
+                                <div class="single-zoom-thumb">
+                                    <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                                        <li>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{assetImageAndVideo('images') .$product->feature_image}}" data-zoom-image="{{assetImageAndVideo('images') .$product->feature_image}}">
+                                                <img src="{{assetImageAndVideo('images') . $product->feature_image}}" alt="zo-th-1"/>
+                                            </a>
+
+                                        </li>
+                                        @foreach($product->productImages as $images)
+                                        <li >
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{assetImageAndVideo('images') .$images->product_image}}" data-zoom-image="{{assetImageAndVideo('images') .$images->product_image}}">
+                                                <img src="{{assetImageAndVideo('images') . $images->product_image}}" alt="zo-th-1"/>
+                                                <span></span>
+                                            </a>
+
+                                        </li>
+                                        @endforeach
+
+
+                                    </ul>
+                                </div>
+                                <div class="">
+                                    @if( count($product->productVideos) > 0 )
+                                        <h3>Promo Video </h3>
+                                        @foreach($product->productVideos as $video)
+{{--                                            <iframe width="400"  src="{{$video->product_video}}" frameborder="0" allowfullscreen>--}}
+{{--                                        </iframe>--}}
+                                            {!! $video->product_video !!}
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 float-left">
+
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="product_d_right " style="border-right:1px solid #ededed;">
+                                        <div class="product_meta">
+                                            <span> <b>Condition:</b> @if($product->is_new == 1) Brand New @else Old @endif </span>
+                                        </div>
+                                        <div class="product_meta">
+                                            <span> <b>Brand Name:</b> {{ $product->brand->brand_name }} </span>
+                                        </div>
+                                        @if( ! empty($product->model) )
+                                            <div class="product_meta">
+                                                <span> <b>Brand Model:</b>  {{$product->model}}</span>
+                                            </div>
+                                        @endif
+
+                                        @if( ! empty($product->coupon) )
+                                            <div class="product_meta">
+                                                <span> <b>Discount Code:</b> {{ $product->coupon->coupon_code }}</span>
+                                            </div>
+                                        @endif
+                                         <div class="product_meta">
+                                            <span> <b>Product Code: </b> {{ $product->unique_id }}</span>
+                                        </div>
+    {{--                                      <div class="product_meta">--}}
+    {{--                                        <span>Regular Price: <a href="#">12534</a></span>--}}
+    {{--                                    </div>--}}
+
+                                        <div class=" product_ratting">
+                                            <ul>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                               <li><a href="#"><i class="icon-star"></i></a></li>
+                                                <li class="review"><a href="#"> (customer review ) </a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class=" product_ratting">
+                                            <ul>
+                                                <li style="color:#28a745">EMI Availabe:</li>
+                                                <li>
+                                                    @if( ! empty( $product->emi_id ) ) Yes @else No @endif
+                                                </li>
+                                                @if( ! empty( $product->emi_id ) )
+                                                    @php
+                                                        $ids = explode(',', $product->emi_id);
+
+                                                    @endphp
+                                                    <li>
+                                                        <select name="" id="" class="form-control" >
+                                                            @for($i  = 0; $i < count($ids); ++$i)
+                                                                @php $emi = \App\Models\Emi::find($ids[$i]) @endphp
+                                                                    @if(!empty($emi))
+                                                                <option value="{{$emi->id}}">{{$emi->bank_name}} ({{$emi->duration}}) </option>
+                                                            @endif
+                                                                    @endfor
+                                                        </select>
+                                                    </li>
+                                                @endif
+                                            </ul>
+    {{--                                        @endif--}}
+                                        </div>
+    {{--                                    @endif--}}
+                                        @if( ! empty($product->coupon) )
+                                            <div class="product_meta">
+                                                <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
+                                            </div>
+                                        @endif
+
+                                        <div class="product_desc mt-2">
+                                            {!! $product->product_description !!}
+                                        </div>
+
+                                        <a href="#sheet" id="click_change3">
+                                            <i class="fa fa-2x fa-sort-up"></i> View more info
+                                        </a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class=" product_recive">
+                                              <div class="recive_inner col-md-12">
+                                                <ul>
+                                                    <li>Cash On Delivary: </li>
+                                                    <li>
+                                                        <select name="" id="" class="form-control" >
+                                                            <option value="">Yes</option>
+                                                            <option value="">No</option>
+                                                        </select>
+                                                    </li>
+                                                </ul>
+                                              </div>
+                                              <div class="recive_inner col-md-12" style="height: 54px">
+                                                  <div class="col-md-8 float-left">
+                                                      <i class="fa fa-location-arrow"></i>
+                                                      <span id="currentlocationselected">Dhaka > Bangladesh</span>
+                                                  </div>
+                                                  <div class="col-md-4 float-right">
+                                                      <p id="changelocationtext">change</p>
+                                                  </div>
+
+                                                  <div class="locationDropdownMainDiv" id="locationDropdownMainDiv">
+                                                      <div class="card" style="width: 100%; z-index: 1">
+                                                          <div class="card-body">
+                                                              <div class="location-dropdown">
+                                                                  <ul class="nav nav-pills flex-column" id="mainLocationUl">
                                                                       @foreach($areas as $index => $area)
-                                                                          <li class="nav-item  ">
-                                                                          <a class="nav-link bg-gradient-dark location collapsed" href="#submenu{{$index}}" data-toggle="collapse" data-target="#submenu{{$index}}">{{$area->division_name}}</a>
-                                                                            @if( isset($area->districts) )
-                                                                                <div class="collapse" id="submenu{{$index}}" aria-expanded="false">
-                                                                                    <ul class="flex-column pl-2 nav">
-{{--                                                                                  <li class="nav-item"><a class="nav-link py-0" href="">Orders</a></li>--}}
-                                                                                        @foreach($area->districts as $distIndex => $district)
-                                                                                            <li class="nav-item  ">
-                                                                                              <a class="nav-link  location collapsed py-0" href="#submenu{{$index}}sub{{$distIndex}}" data-toggle="collapse" data-target="#submenu{{$index}}sub{{$distIndex}}">{{$district->district_name}}</a>
-                                                                                                @if( isset($district->cities) )
-                                                                                                    <div class="collapse small" id="submenu{{$index}}sub{{$distIndex}}" aria-expanded="false">
-                                                                                                    <ul class="flex-column nav pl-4">
-                                                                                                        @foreach($district->cities as $city)
-                                                                                                          <li class="nav-item ">
-                                                                                                              <a class="nav-link p-0 location" href="">
-                                                                                                                  {{$city->city_name}}
-                                                                                                              </a>
-                                                                                                          </li>
-                                                                                                        @endforeach
-                                                                                                  </ul>
-                                                                                              </div>
-                                                                                                @endif
-                                                                                          </li>
-                                                                                        @endforeach
-                                                                                    </ul>
-                                                                                </div>
-                                                                            @endif
+                                                                          <li class="nav-item  " id="mainLocationLi">
+                                                                              <p class=" bg-gradient-dark location collapsed" onclick="changeLocation(this)" data-location-id="{{$area->id}}" data-location-current="division" id="mainLocationP">{{$area->division_name}}</p>
                                                                           </li>
                                                                       @endforeach
                                                                   </ul>
                                                               </div>
-                                                              <div class="recive_inner">
-                                                                <ul>
-                                                                    <li>Product return policy </li>
-                                                                    <li>
-                                                                        <select name="" id="" class="form-control" >
-                                                                            @if( isset($product->return_policy) )
-                                                                                <option value="">{{$product->return_policy}}</option>
-                                                                            @else
-                                                                                <option value="">No</option>
-                                                                            @endif
-                                                                        </select>
-                                                                    </li>
-                                                                </ul>
-                                                              </div>
-                                                            </div>
-                                                        </div>
-                                </div>
-                                <a href="#sheet" id="click_change3">
-                                    <i class="fa fa-2x fa-sort-up"></i> More details
-                                </a>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="product_d_right" >
-                                    <h4> Name:{{$product->product_name}}</h4>
-
-                                        <div class="price_box ">
-                                            <span class="current_price">BDT {{ round($product->product_price) }}</span>
-
-
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-12 recive_inner">
+                                                <ul>
+                                                    <li>Product return policy </li>
+                                                    <li>
+                                                        <select name="" id="" class="form-control" >
+                                                            @if( isset($product->return_policy) )
+                                                                <option value="">{{$product->return_policy}}</option>
+                                                            @else
+                                                                <option value="">No</option>
+                                                            @endif
+                                                        </select>
+                                                    </li>
+                                                </ul>
+                                              </div>
+                                            </div>
                                         </div>
-                                        <div class="product_variant color">
+                                    </div>
+                                    <a href="#sheet" id="click_change3">
+                                        <i class="fa fa-2x fa-sort-up"></i> More details
+                                    </a>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="product_d_right" >
+                                        <h4> Name:{{$product->product_name}}</h4>
+
+                                            <div class="price_box ">
+                                                <span class="current_price">BDT {{ round($product->product_price) }}</span>
 
 
-                                            @if($product->stock > 0)
-                                                <h5>Available Product: {{$product->stock}}</h5>
-                                            @else
-                                                <h5 class="text-warning"> Product Out of Stock</h5>
-                                            @endif
-                                            <label>color</label>
-                                                @php
-                                                    $colors = $product->color;
-                                                    $printColor = explode(",",$colors);
-                                                @endphp
-                                            <style>
+                                            </div>
+                                            <div class="product_variant color">
 
-                                            </style>
+
+                                                @if($product->stock > 0)
+                                                    <h5>Available Product: {{$product->stock}}</h5>
+                                                @else
+                                                    <h5 class="text-warning"> Product Out of Stock</h5>
+                                                @endif
+                                                <label>color</label>
+                                                    @php
+                                                        $colors = $product->color;
+                                                        $printColor = explode(",",$colors);
+                                                    @endphp
+                                                <style>
+
+                                                </style>
+                                                <ul>
+                                                    @foreach($printColor as $color)
+                                                    <li class="color1"><a style="background:{{$color}} !important;" class=""></a></li>
+                                                        @endforeach
+                                                </ul>
+                                            </div>
+                                            <div class="product_variant quantity">
+
+                                                <form role="form" action="{{route('pages.cart')}}" enctype="multipart/form-data" method="POST">
+                                                    @csrf
+                                                    <label>quantity</label>
+                                                    <input min="1" max="100" name="quantity" value="1" type="number">
+                                                    <input  name="product_id" value="{{$product->id}}" hidden>
+                                                    <input  name="product_name" value="{{$product->product_name}}" hidden>
+                                                    <input  name="feature_image" value="{{$product->feature_image}}" hidden>
+                                                    <input  name="product_price" value="{{$product->product_price}}" hidden>
+                                                    <input  name="product_tax" value="{{$product->tax}}" hidden>
+                                                    @if($product->stock > 0)
+                                                        <button class="button " type="submit">add to cart</button>
+                                                    @else
+                                                        <button style="
+                                                        color: #fff !important;
+                                                        background-color: #dc3545 !important;
+                                                        border-color: #dc3545 !important;"
+                                                                class="button btn-danger" disabled>Product Out of Stock</button>
+                                                    @endif
+                                                </form>
+
+
+                                            </div>
+
+                                            <div class="product_meta">
+                                                <span>Category: <a href="{{ route('cat.show', $product->category->category_slug) }}">{{$product->category->category_name}}</a></span>
+                                            </div>
+                                        <div class=" product_d_action">
                                             <ul>
-                                                @foreach($printColor as $color)
-                                                <li class="color1"><a style="background:{{$color}} !important;" class=""></a></li>
-                                                    @endforeach
+                                                @if($product->status == 1)
+                                                    <li><a data-target="{{$product->id}}" id="add_to_wish_list" title="Add to wishlist">+ Add to Wishlist</a></li>
+                                                @endif
+                                                @if( $product->stock <= 0 )
+                                                    <li><a data-target="{{$product->id}}" id="express_wish"  title="Express wish" >+ Express wish</a></li>
+                                                @endif
+
+            {{--                                    @if($product->admin->role == 2)--}}
+                                                    <li>
+                                                        <a href="{{route('topSale.show',$product->admin_id)}}" title="Add to wishlist">Vendor Details</a>
+                                                    </li>
+            {{--                                     @endif--}}
                                             </ul>
                                         </div>
-                                        <div class="product_variant quantity">
-
-                                            <form role="form" action="{{route('pages.cart')}}" enctype="multipart/form-data" method="POST">
-                                                @csrf
-                                                <label>quantity</label>
-                                                <input min="1" max="100" name="quantity" value="1" type="number">
-                                                <input  name="product_id" value="{{$product->id}}" hidden>
-                                                <input  name="product_name" value="{{$product->product_name}}" hidden>
-                                                <input  name="feature_image" value="{{$product->feature_image}}" hidden>
-                                                <input  name="product_price" value="{{$product->product_price}}" hidden>
-                                                <input  name="product_tax" value="{{$product->tax}}" hidden>
-                                                @if($product->stock > 0)
-                                                    <button class="button " type="submit">add to cart</button>
-                                                @else
-                                                    <button style="
-                                                    color: #fff !important;
-                                                    background-color: #dc3545 !important;
-                                                    border-color: #dc3545 !important;"
-                                                            class="button btn-danger" disabled>Product Out of Stock</button>
-                                                @endif
-                                            </form>
-
-
+                                        <div class="priduct_social">
+                                            <ul>
+                                                <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
+                                                <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a></li>
+                                                <li><a class="pinterest" href="#" title="youtube"><i class="fa fa-youtube"></i> share</a></li>
+                                            </ul>
                                         </div>
 
-                                        <div class="product_meta">
-                                            <span>Category: <a href="{{ route('cat.show', $product->category->id) }}">{{$product->category->category_name}}</a></span>
-                                        </div>
-                                    <div class=" product_d_action">
-                                        <ul>
-                                            @if($product->status == 1)
-                                                <li><a data-target="{{$product->id}}" id="add_to_wish_list" title="Add to wishlist">+ Add to Wishlist</a></li>
-                                            @endif
-                                            @if( $product->stock <= 0 )
-                                                <li><a data-target="{{$product->id}}" id="express_wish"  title="Express wish" >+ Express wish</a></li>
-                                            @endif
-
-        {{--                                    @if($product->admin->role == 2)--}}
-                                                <li>
-                                                    <a href="{{route('topSale.show',$product->admin_id)}}" title="Add to wishlist">Vendor Details</a>
-                                                </li>
-        {{--                                     @endif--}}
-                                        </ul>
                                     </div>
-                                    <div class="priduct_social">
-                                        <ul>
-                                            <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
-                                            <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a></li>
-                                            <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> save</a></li>
-                                            <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> share</a></li>
-                                            <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> linked</a></li>
-                                        </ul>
-                                    </div>
-
                                 </div>
                             </div>
+
+                            <div class="row">
+
+                            </div>
+
                         </div>
-
-
                     </div>
-                </div>
                 @endforeach
             @else
                 <div class="row">
@@ -329,8 +328,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-md-9">
-                <div class="product_d_inner">   
-                    <div class="product_info_button">    
+                <div class="product_d_inner">
+                    <div class="product_info_button">
                         <ul class="nav" role="tablist">
                             <li>
                                  <a data-toggle="tab" class="active show" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" class="">Specification</a>
@@ -341,14 +340,14 @@
                         </ul>
                     </div>
                     <div class="tab-content">
-                      
+
                         <div class="tab-pane fade active show" id="sheet" role="tabpanel">
                             <div class="product_d_table">
                               {!! $products[0]->specification !!}
-                            </div>  
+                            </div>
                             <div class="product_d_table">
                                 {!! $products[0]->extra_description !!}
-                              </div>   
+                              </div>
                         </div>
 
                         <div class="tab-pane fade " id="reviews" role="tabpanel">
@@ -356,23 +355,23 @@
                                 <div class="reviews_comment_box">
                                     <div class="comment_thmb">
                                         <img src="assets/img/blog/comment2.jpg" alt="">
-                                    </div>    
+                                    </div>
                                 </div>
                                 <div class="comment_title">
                                     <h2>Add a review </h2>
                                 </div>
-        
+
                                 <div class="product_review_form">
                                     <form action="#">
                                         <div class="row">
                                             <div class="col-12">
                                                 <textarea name="comment" id="review_comment"></textarea>
-                                            </div>   
+                                            </div>
                                         </div>
                                         <button type="submit">Submit</button>
-                                     </form>   
-                                </div> 
-                            </div>     
+                                     </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -444,7 +443,7 @@
                             <div class="col-md-4">
                                 <div class="product_img">
                                     <a href="{{ route('pages.show', $product->product_slug) }}">
-                                    <img src="{{ asset('storage/images/' . $product->feature_image) }}" class="card-img-top" alt="...">
+                                    <img src="{{ assetImageAndVideo('images') . $product->feature_image }}" class="card-img-top" alt="...">
                                     </a>
                                 </div>
                             </div>
@@ -486,7 +485,7 @@
                                                             <div class="single_banner">
                                                                 <div class="banner_thumb">
                                                                     <a href="{{route('pages.show',$mainRe['category']['products'][$index]['id'])}}">
-                                                                        <img src="{{asset('storage/images/' .$mainRe['category']['products'][$index]['feature_image'])}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
+                                                                        <img src="{{assetImageAndVideo('images') .$mainRe['category']['products'][$index]['feature_image']}}" alt="{{$mainRe['category']['products'][$index]['product_name']}}">
                                                                     </a>
                                                                 </div>
                                                             </div>

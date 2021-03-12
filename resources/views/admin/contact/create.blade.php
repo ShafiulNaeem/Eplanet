@@ -51,8 +51,9 @@
                                             @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
                                                 <option value="1">Home</option>
                                                 <option value="0">Contact</option>
-                                            @endif
+                                            @else
                                             <option value="2">Vendor</option>
+                                                @endif
                                         </select>
                                     </div>
 

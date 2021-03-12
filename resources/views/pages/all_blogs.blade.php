@@ -35,7 +35,7 @@
                                         <figure>
                                             <div class="blog_thumb">
                                                 <a href="{{route('blog.show',$blog->blog_slug)}}">
-                                                    <img src="{{asset('storage/images/'.$blog->blog_image)}}" alt="{{$blog->post}}" />
+                                                    <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}" />
                                                 </a>
                                             </div>
                                             <figcaption class="blog_content">
@@ -43,7 +43,7 @@
                                                     <a href="{{route('blog.show',$blog->blog_slug)}}">{{$blog->title}}</a>
                                                 </h1>
                                                 <p>
-                                                    {{$blog->post}}
+                                                    {!! $blog->post !!}
                                                 </p>
                                                 <div class="articles_date">
                                                     <p class="text-success">Created by {{$blog->user->fname}} : {{$blog->user->lname}} </p>

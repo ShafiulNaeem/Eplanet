@@ -164,8 +164,8 @@ class CategoryController extends Controller
         return SubCategory::where('category_id', $category->id)->SubCategoryWithAdminOwner()->get();
     }
 
-    public function productByCategory(Category $category)
-    {
-        return Product::where('category_id', $category->id)->AdminProduct()->GetActive()->get();
-    }
+//    public function productByCategory(Category $category)
+//    {
+//        return Product::where('category_id', $category->id)->AdminProduct()->GetActive()->get();
+//    }
 }

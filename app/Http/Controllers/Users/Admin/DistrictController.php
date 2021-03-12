@@ -36,7 +36,7 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        $divisions = Division::orderBy('district_name','asc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
         return view('admin.district.create',compact('divisions'));
     }
 
@@ -78,7 +78,7 @@ class DistrictController extends Controller
      */
     public function edit(District $district)
     {
-        $divisions = Division::orderBy('district_name','asc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
         return view('admin.district.edit',compact('district','divisions'));
     }
 
