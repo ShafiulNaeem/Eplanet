@@ -67,9 +67,9 @@ class EmployeeController extends Controller
 
         if($request->hasFile('employee_image')){
             $image = request()->file('employee_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->employee_image->move(public_path('images'), $filename);
-            $employee->employee_image= $filename;
+//            $filename = time() . '.' . $image->getClientOriginalExtension();
+//            request()->employee_image->move(public_path('images'), $filename);
+            $employee->employee_image= $this->uploadImage($image, 'images');
             $employee->save();
         }
 
@@ -128,9 +128,7 @@ class EmployeeController extends Controller
 
         if($request->hasFile('employee_image')){
             $image = request()->file('employee_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->employee_image->move(public_path('images'), $filename);
-            $employee->employee_image= $filename;
+            $employee->employee_image= $this->uploadImage($image, 'images');
             $employee->save();
         }
 
@@ -152,7 +150,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        self::deleteFile( public_path('public/images/' . $employee->employee_image) );
+        self::deleteFile( assetImageAndVideo('images' . $employee->employee_image) );
 
         $employee->delete();
         return redirect()->back()->with('info','Employee Delete Successfully');
@@ -161,7 +159,7 @@ class EmployeeController extends Controller
     // change status
     public function change(Request $request)
     {
-        if( self::changeStatus($request->status, 'App\Models\Employee', $request->id) )
+        if( self::changeStatus($request->status, Employee::class, $request->id) )
             return redirect()->back()->with('success', 'Status Changes');
         return  redirect()->back()->with('error', 'Something went wrong');
     }

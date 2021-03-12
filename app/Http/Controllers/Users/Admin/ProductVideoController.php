@@ -56,19 +56,13 @@ class ProductVideoController extends Controller
     {
         $this->validate($request, array(
             'product_name' => 'required',
-            'product_video' => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required',
+            'product_video' => 'required',
         ));
 
         $productVideos = new ProductVideo();
         $productVideos->product_id = $request->product_name;
         $productVideos->admin_id = Auth::guard('admin')->user()->id;
-
-        if($request->hasFile('product_video')){
-            $image = request()->file('product_video');
-            $productVideos->product_video_type= $image->getClientOriginalExtension();
-            $productVideos->product_video = $this->uploadImage($image, 'videos');
-            $productVideos->save();
-        }
+        $productVideos->product_video = $request->product_video;
 
 
         if($productVideos->save()){
@@ -105,33 +99,35 @@ class ProductVideoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param ProductVideo $productVideo
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ProductVideo $productVideo)
     {
         $this->validate($request, array(
             'product_name' => 'required',
-            'product_video' => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required',
+            'product_video' => 'required',
         ));
 
-        $productVideos = ProductVideo::find($id);
-        $productVideos->product_id = $request->product_name;
+//        $productVideos = ProductVideo::find($id);
+        $productVideo->product_id = $request->product_name;
+        $productVideo->product_video = $request->product_video;
 
-        self::deleteFile(storage_path().'/app/public/videos/' . $productVideos->product_video);
+//        self::deleteFile(storage_path().'/app/public/videos/' . $productVideos->product_video);
 
-        if($request->hasFile('product_video')){
-            $image = request()->file('product_video');
-//            $filename = time() . '.' . $image->getClientOriginalExtension();
-//            request()->product_video->move(public_path('videos'), $filename);
-            $productVideos->product_video = $this->uploadImage($image, 'videos');
-            $productVideos->product_video_type= $image->getClientOriginalExtension();
-            $productVideos->save();
-        }
+//        if($request->hasFile('product_video')){
+//            $image = request()->file('product_video');
+////            $filename = time() . '.' . $image->getClientOriginalExtension();
+////            request()->product_video->move(public_path('videos'), $filename);
+//            $productVideos->product_video = $this->uploadImage($image, 'videos');
+//            $productVideos->product_video_type= $image->getClientOriginalExtension();
+//            $productVideos->save();
+//        }
 
 
-        if($productVideos->save()){
+        if($productVideo->save()){
             return redirect()->route('productVideo.index')->with('success','Product Video Updated Successfully');
         } else {
             return redirect()->back()->with('erro','Something went wrong');
@@ -146,7 +142,7 @@ class ProductVideoController extends Controller
      */
     public function destroy(ProductVideo $productVideo)
     {
-        self::deleteFile(storage_path().'/app/public/videos/' . $productVideo->product_video);
+//        self::deleteFile(storage_path().'/app/public/videos/' . $productVideo->product_video);
         //return redirect()->back()->with('error','Something went wrong');
 
         $productVideo->delete();

@@ -71,8 +71,9 @@
                                     @if( count($product->productVideos) > 0 )
                                         <h3>Promo Video </h3>
                                         @foreach($product->productVideos as $video)
-                                            <iframe width="400"  src="{{assetImageAndVideo('videos') .$video->product_image}}" frameborder="0" allowfullscreen>
-                                        </iframe>
+{{--                                            <iframe width="400"  src="{{$video->product_video}}" frameborder="0" allowfullscreen>--}}
+{{--                                        </iframe>--}}
+                                            {!! $video->product_video !!}
                                         @endforeach
                                     @endif
                                 </div>
@@ -133,8 +134,10 @@
                                                         <select name="" id="" class="form-control" >
                                                             @for($i  = 0; $i < count($ids); ++$i)
                                                                 @php $emi = \App\Models\Emi::find($ids[$i]) @endphp
+                                                                    @if(!empty($emi))
                                                                 <option value="{{$emi->id}}">{{$emi->bank_name}} ({{$emi->duration}}) </option>
-                                                            @endfor
+                                                            @endif
+                                                                    @endfor
                                                         </select>
                                                     </li>
                                                 @endif
