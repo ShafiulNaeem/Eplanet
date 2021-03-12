@@ -39,11 +39,11 @@
                                     </div>
 
                                     <div class="form-group col-md-6 float-left">
-                                        <label for="exampleFormControlFile1">Product Video</label>
+                                        <label for="exampleFormControlFile1">youtube Embade link</label>
                                         <div class="input-group ">
                                             <div class="custom-file">
-                                                <input type="file" name="product_video"  class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                <input type="text" name="product_video"  class="form-control" id="exampleInputFile">
+{{--                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>--}}
                                             </div>
                                         </div>
                                     </div>

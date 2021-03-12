@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\City;
-use App\Models\District;
 use App\Models\Division;
 use App\Models\Order;
 use App\Models\Product;
@@ -21,10 +19,18 @@ class NavbarController extends Controller
 {
     public function store(Request $request)
     {
+        //dd($request->all());
         if ($request->product_name != null ){
-            $product = Product::where('product_name', 'LIKE','%'.$request->product_name.'%')->GetActive()->paginate(16);
+            $product = Product::with(['productImages', 'productVideos'])->where('product_name', 'LIKE','%'.$request->product_name.'%')->GetActive()->get();
 
-            return view('pages.searchResultWeb',['products' =>$product]);
+            if ( count($product) > 0 )
+            $mainRes = Category::with('products')
+                ->where('id', $product[0]->category_id)
+                ->first();
+            else $mainRes = [];
+            $area = Division::with('districts.cities')->get();
+
+            return view('pages.searchResultWeb',['results' => $mainRes,'products' =>$product, 'areas'=> $area]);
         } else {
             $category = SubCategory::with(['category','productWithStatus'])->where('category_id',$request->category_name)->GetActive()->paginate(20);
 
@@ -71,6 +77,7 @@ class NavbarController extends Controller
     // BrandProducts
     public function brandProduct($slug)
     {
+
         $brand = Brand::where('brand_slug',$slug)->GetActive()->first();
         $product = Product::where([
             ['brand_id' , '=', $brand->id],
@@ -114,18 +121,10 @@ class NavbarController extends Controller
 
     public function orderCancel(Order $order)
     {
+        Product::where('id', $order->product_id)->decrement('sold', $order->quantity);
+        Product::where('id', $order->product_id)->increment('stock', $order->quantity);
         $order->delete();
         return redirect()->back();
     }
 
-    public function searchLocation($current, $id)
-    {
-        if( $current == "division" ){
-            return District::where('division_id', $id)->get();
-        }
-        if( $current == "district" ){
-            return City::where('district_id', $id)->get();
-        }
-        return Division::all();
-    }
 }

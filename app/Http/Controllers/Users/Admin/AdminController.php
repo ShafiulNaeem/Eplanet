@@ -91,8 +91,9 @@ class AdminController extends Controller
                 'shifted' => 1
             ]);
         })
-            ->whereBetween('created_at', [$from, $to])->get();
-//dd($orders);
+            ->whereBetween('created_at', [$from, $to])
+            ->get();
+
         return view('admin.sellReport', [
             'orders' => $orders
         ]);

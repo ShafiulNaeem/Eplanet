@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\CategorySlider;
+use App\Models\City;
 use App\Models\ContactUsSlider;
+use App\Models\District;
 use App\Models\Division;
 use App\Models\Event;
 use App\Models\EventProduct;
 use App\Models\ExpressWish;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\SubCategory;
 use App\Models\WishList;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
@@ -40,7 +45,7 @@ class WelcomeController extends Controller
             ->where('id', $product[0]->category_id)
             ->first();
         $area = Division::with('districts.cities')->get();
-
+//dd($mainRes);
         return view('pages.product-details',['results' => $mainRes,'products' =>$product, 'areas' => $area]);
 
     }
@@ -52,6 +57,12 @@ class WelcomeController extends Controller
         $slider = CategorySlider::where('category_id', $id)->GetActive()->get();
         //dd($categorySliders);
         return view('pages.categories',['categories' =>$category,'sliders' =>$slider]);
+    }
+
+    public function changeLocation($region, $id){
+        if ( $region == "division" ) return District::where('division_id', $id)->get();
+        elseif ($region == "district") return City::where('district_id', $id)->get();
+        return Division::all();
     }
 
 
@@ -96,39 +107,60 @@ class WelcomeController extends Controller
         $data['product_id'] = $id;
         if (Auth::check()) $data['user_id'] = Auth::user()->id;
 
-        $check = ExpressWish::wher('product_id', $id)->first();
+        $check = ExpressWish::where('product_id', $id)->first();
 
         if( empty($check) ){
             return ( ExpressWish::create($data) ) ? response([
-                'message' => 'Express wish Created'
+                'message' => 'Express wish taken'
             ], 200) : response([
                 'message' => 'Something went wrong'
             ], 404);
         }
 
         return response([
-            'message' => 'Express wish Created'
+            'message' => 'Express wish taken'
         ], 200);
     }
 
     //  promotion
     public function promotion(){
-        //dd( \Carbon\Carbon::today()->format('Y-m-d'));
-        $count_date = \Carbon\Carbon::today()->format('Y-m-d');
-        $event = Event::with('eventProducts')->where('start_date', '>=', $count_date)->get();
 
-        $eventProduct =EventProduct::with('category')
-            ->where([
-                'event_id' => $event[0]->id
-            ])
-            ->select('category_id','event_id')->distinct()->get();
-        return view('pages.promotion',['events' =>$event,'eventProducts' => $eventProduct]);
+        $count_date = date('Y-m-d H:i:s', time()+6*3600);
+        $event = Event::where( 'start_date','>=', $count_date)->GetActive()->first();
+        //dd($events->event_name);
+        $eventProducts = [];
+        $eventPro = Event::with('eventProducts')
+            ->where( 'start_date','<=', $count_date)
+            ->where( 'end_date','>', $count_date)
+            ->GetActive()
+            ->get();
+       // dd($eventPro);
+
+
+        if (count($eventPro) > 0){
+
+                $eventProducts =EventProduct::with('category')
+                    ->where([
+                        'event_id' => $eventPro[0]->id
+                    ])
+                    ->select('category_id','event_id')->distinct()->get();
+        }
+        return view('pages.promotion',compact('event','eventProducts'));
 
     }
 
     // promotion products
     public function promotionProduct($event_id,$category_id){
+        $event = Event::where( 'id',$event_id)->GetActive()->get();
+        $category = Category::where( 'id', $category_id)->GetActive()->get();
+        $products =EventProduct::with('products')
+            ->where([
+                'event_id' => $event_id,
+                'category_id' => $category_id
+            ])
+            ->get();
 
+        return view('pages.promotion_products',compact('products','category','event'));
     }
 
 }

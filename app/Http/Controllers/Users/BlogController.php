@@ -47,7 +47,7 @@ class BlogController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param Blog $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, Blog $blog)
@@ -63,21 +63,18 @@ class BlogController extends Controller
         $blog->user_id = $user_id;
         $blog->post = $request->post;
         $blog->title = $request->title;
+        $blog->blog_slug = $this->createSlug(Blog::class, $request->title, 'blog_slug');
 
         if($request->hasFile('blog_image')){
             $image = request()->file('blog_image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            request()->blog_image->move(public_path('images'), $filename);
-            $blog->blog_image= $filename;
+            $blog->blog_image= $this->uploadImage($image, 'images');;
             $blog->save();
         };
 
         if($blog->save()){
-            Session::flash('success','Post Created Successfully');
-            return redirect()->route('blog.allBog');
+            return redirect()->route('blog.allBog')->with('success','Post Created Successfully');
         } else {
-            Session::flash('success','Something went wrong');
-            return redirect()->back();
+            return redirect()->back()->with('success','Something went wrong');
         }
     }
 
@@ -127,15 +124,15 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Blog $blog
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Blog $blog)
     {
-        if ( ! self::deleteFile( public_path('images/' . $blog->blog_image) ) )
-            return redirect()->back()->with('error','Something went wrong');
-        $blog->delete();
-        return redirect()->back();
+        self::deleteFile( storage_path().'/app/public/images/' . $blog->blog_image );
+        return($blog->delete()) ?  redirect()->back()->with('info', 'Blog Deleted') :
+          redirect()->back()->with('error', 'Something went wrong');
     }
 
     // Blog Approved

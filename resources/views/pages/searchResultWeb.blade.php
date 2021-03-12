@@ -38,8 +38,8 @@
                                             </div>
 
                                             <div class="price_box text-center">
-                                                <p class="float-right">Model : {{ $product->model }}</p>
-                                                <span class="current_price float-left">BDT {{ round($product->product_price) }}</span>
+                                                <span class="current_price ">BDT {{ round($product->product_price) }}</span>
+                                                <p class="">Model : {{ $product->model }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -47,9 +47,14 @@
                             </div>
                         @endforeach
                     </div>
+                 @else
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center text-danger">No Product</h2>
+                        </div>
+                    </div>
                 @endif
 {{--            @endforeach--}}
-            {{ $products->links() }}
         </div>
     </section>
 

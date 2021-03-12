@@ -11,6 +11,8 @@ use App\Models\Coupon;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\Emi;
+use App\Models\Event;
+use App\Models\EventProduct;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Reply;
@@ -46,5 +48,7 @@ class DatabaseSeeder extends Seeder
         Division::factory(5)->create();
         District::factory(40)->create();
         City::factory(150)->create();
+        Event::factory(3)->create();
+        EventProduct::factory(10)->create();
     }
 }

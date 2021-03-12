@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Users\Admin;
 
 use App\Helper\DeleteFile;
 use App\Http\Controllers\Controller;
-use App\Models\EMI;
+use App\Models\Emi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,10 +77,10 @@ class EMIController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param EMI $emi
+     * @param Emi $emi
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(EMI $emi)
+    public function edit(Emi $emi)
     {
         return view('admin.emi.edit', ['emi' => $emi]);
     }
@@ -89,10 +89,10 @@ class EMIController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param EMI $emi
+     * @param Emi $emi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, EMI $emi)
+    public function update(Request $request, Emi $emi)
     {
         $emi->bank_name = $request->bank_name;
         $emi->duration = $request->duration;
@@ -105,10 +105,10 @@ class EMIController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param EMI $emi
+     * @param Emi $emi
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(EMI $emi)
+    public function destroy(Emi $emi)
     {
         if( $emi->delete() ) return redirect()->back()->with('info', 'Delete Successfully');
         return redirect()->back()->with('error', 'Something went wrong');
