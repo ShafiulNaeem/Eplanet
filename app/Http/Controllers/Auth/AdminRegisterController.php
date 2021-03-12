@@ -27,12 +27,13 @@ class AdminRegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
         $val['password'] = Hash::make($request->password);
-        Admin::create($val);
 
-        Session::flash('message','Registration Successfull. You will get confirmation mail');
+        if ( Admin::create($val) ) {
+            Session::flash('message', 'Registration Successfull. You will get confirmation mail');
 
-        return view('admin.pendding');
+            return view('admin.pendding');
+        }
+        return redirect()->back();
     }
 }

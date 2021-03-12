@@ -33,8 +33,8 @@
                         <tbody>
 
                         @foreach($cities as $index => $city)
-
-                            <tr>
+                            @if( ! empty($city->district) && ! empty($city->division) )
+                                <tr>
                                 <td style="width: 19%">{{$city->division->division_name}}</td>
                                 <td style="width: 19%">{{$city->district->district_name}}</td>
                                 <td style="width: 19%">{{$city->city_name}}</td>
@@ -71,7 +71,7 @@
                                     </div>
                                 </td>
                             </tr>
-
+                            @endif
                         @endforeach
                         </tbody>
                         <tfoot>

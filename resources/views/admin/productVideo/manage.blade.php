@@ -34,10 +34,11 @@
                             @foreach($productvideos as $index => $productvideo)
                                 <tr>
                                     <td>
-                                        <video width="320" height="200" controls>
-                                            <source src="{{assetImageAndVideo('videos').$productvideo->product_video}}" type="video/{{$productvideo->product_video_type}}">
-                                            Your browser does not support the video .
-                                        </video>
+{{--                                        <video width="320" height="200" controls>--}}
+{{--                                            <source src="{{assetImageAndVideo('videos').$productvideo->product_video}}" type="video/{{$productvideo->product_video_type}}">--}}
+{{--                                            Your browser does not support the video .--}}
+{{--                                        </video>--}}
+                                        {!! $productvideo->product_video !!}
                                     </td>
                                     <td>{{$productvideo->product->product_name}}</td>
                                     <td>{{\Carbon\Carbon::parse($productvideo->created_at)->format('M d Y')}}</td>
