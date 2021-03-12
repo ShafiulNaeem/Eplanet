@@ -8,16 +8,13 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
-Route::get('cache', function (){
-    Artisan::call('cache:clear');
-});
-
-
 Route::get('link', function (){
     Artisan::call('storage:link');
 });
 
+Route::get('clear', function (){
+    Artisan::call('cache:clear');
+});
 Route::get('/createslug', function (){
     $categories = \App\Models\Brand::all();
 
@@ -119,13 +116,12 @@ Route::get('brands', 'Users\ContactController@brandShow')->name('brands.show');
 Route::get('brands/{slug}', 'Users\NavbarController@brandProduct')->name('brandProduct.show');
 
 //user profile
-Route::get('profile', 'Users\NavbarController@profile')->name('profile.show');
-Route::get('changelocation/{current}/{id}', 'Users\NavbarController@searchLocation');
-Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->name('profile.edit');
-Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->name('profile.update');
+Route::get('profile', 'Users\NavbarController@profile')->middleware('auth:web')->name('profile.show');
+Route::get('profile/{user}/edit', 'Users\NavbarController@profileEdit')->middleware('auth:web')->name('profile.edit');
+Route::put('profile/{user}', 'Users\NavbarController@profileUpdate')->middleware('auth:web')->name('profile.update');
 
 // Cancel Order
-Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->name('profile.order.cancel');
+Route::delete('profile/{order}', 'Users\NavbarController@orderCancel')->middleware(['auth'])->name('profile.order.cancel');
 
 //vendor page show
 Route::get('allvendor', 'Users\VendorProductsController@allVendor')->name('allVendor.show');
@@ -144,7 +140,7 @@ Route::DELETE('blogDelete/{id}', 'Users\BlogController@destroy')->middleware(['a
 // promotion route
 Route::get('promotion', 'WelcomeController@promotion')->name('promotion.category');
 Route::get('promotion/{event_id?}/{category_id}', 'WelcomeController@promotionProduct')->name('promotion.products');
-
+Route::get('changelocation/{region}/{id}', 'WelcomeController@changeLocation');
 
 
 // comment route
@@ -166,6 +162,14 @@ Route::prefix('pages')->group(function(){
 
 //User Auth
 Auth::routes();
+Route::prefix('admin')->group(function (){
+    Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
+    Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
+    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+});
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->name('verification.verify');
@@ -181,13 +185,7 @@ Route::get('verify', 'Auth\RegisterController@verify')->name('verify.mail');
 
 
 // Admin Auth routes
-Route::prefix('admin')->group(function(){
-    Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
-    Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
-    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
     Route::get('allevent/{id}', 'Users\Admin\EventProductController@allEventProducts')->name('event.allEvents');
     Route::get('sellreport', 'Users\Admin\AdminController@adminMonthlySell')->name('sell.report');
@@ -244,7 +242,7 @@ Route::prefix('admin')->group(function(){
 
 });
 
-Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
+Route::prefix('admin')->namespace('Users\Vendor')->middleware('auth:admin')->group(function (){
 
     Route::prefix('vendor')->group(function(){
         Route::resource('productCapacity', 'ProductCapacityController');
@@ -259,7 +257,7 @@ Route::prefix('admin')->namespace('Users\Vendor')->group(function (){
     });
 });
 
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->middleware('auth:admin')->group(function (){
     Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
     Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');
 
@@ -268,7 +266,7 @@ Route::prefix('admin')->group(function (){
     Route::delete('blog/{blog}', 'Users\BlogController@destroy')->name('blog.destroy');
 });
 
-Route::prefix('admin')->namespace('Users\Admin')->group(function(){
+Route::prefix('admin')->middleware('auth:admin')->namespace('Users\Admin')->group(function(){
     Route::resource('category', 'CategoryController');
     Route::resource('subcategory', 'SubCategoryController');
     Route::resource('brand', 'BrandController');

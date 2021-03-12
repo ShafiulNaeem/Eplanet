@@ -21,14 +21,14 @@ class EventProductController extends Controller
      */
     public function index()
     {
-        $eventProducts = Event::EventWithAdminOwner()->get();
+        $eventProducts = Event::EventWithAdminOwner()->GetActive()->get();
 
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }
 
     public function allEventProduct()
     {
-        $eventProducts = Event::EventWithOutAdminOwner()->get();
+        $eventProducts = Event::EventWithOutAdminOwner()->GetActive()->get();
         //dd($eventProducts);
         return view('admin.eventProduct.manage',compact('eventProducts'));
     }
@@ -173,7 +173,7 @@ class EventProductController extends Controller
             foreach ($event_products['event_products'] as $products){
                 if( $products['products'] != null ){
                     $tableData .= '<tr role="row"><td class="text-center">' . $products['products']['product_name'] . "</td>";
-                    $tableData .= '<td class="text-center"> <img width="80" src="' . (assetImageAndVideo('images') . $products['products']['feature_image']) . '" /></td>';
+                    $tableData .= '<td class="text-center"> <img width="80" src="' . assetImageAndVideo('images') . $products['products']['feature_image'] . '" /></td>';
                     $tableData .= '<td class="text-center">' . $products['products']['stock'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['product_price'] . '</td>';
                     $tableData .= '<td class="text-center">' . $products['products']['category']['category_name'] . '</td>';

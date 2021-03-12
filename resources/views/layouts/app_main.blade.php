@@ -231,25 +231,14 @@
     <script src="{{asset('frontend/assets/js/toastr.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.fancybox.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/o2es2ighryq5asf07w5arxsgc1kdh1uf6y1e0moe6be8hozy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- Main JS -->
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.js')}}"></script>
     <script src="{{asset('frontend/assets/js/script.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/slider.js')}}"></script>
-<script>
+    <script src="{{asset('frontend/assets/js/extra.js')}}"></script>
 
-
-    var timeID = document.getElementById('time');
-    var timeID2 = document.getElementById('time2');
-    setInterval(() => {
-        var time = new Date();
-        timeID.innerHTML = ' ';
-        timeID.innerHTML = time.toLocaleTimeString();
-
-        timeID2.innerHTML = ' ';
-        timeID2.innerHTML = time.toLocaleTimeString();
-    }, 1000);
-</script>
 <script>
     toastr.options = {
         "closeButton": true,
@@ -446,14 +435,17 @@
     var currentlocationselected = $('#currentlocationselected');
     var mainLocationLi = $('#mainLocationLi');
     var mainLocationUl = $('#mainLocationUl');
+    var mainLocationP = $('#mainLocationP');
     var trackLocationChange = [];
 
     locationDropdownMainDiv.hide();
 
     changelocationtext.on('click', function (){
         locationDropdownMainDiv.toggle();
+
         let url = window.origin + '/changelocation/null/null';
         apiget(url, null);
+        changeLocation()
     });
 
 
@@ -533,6 +525,12 @@
     function createElement(tag){
         return document.createElement(tag);
     }
+</script>
+
+<script>
+    tinymce.init({
+        selector: '[name="post"]',
+    });
 </script>
 
 </body>

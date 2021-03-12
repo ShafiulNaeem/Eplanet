@@ -27,9 +27,6 @@
                             </form>
                         @endif
                         <li><a href="#">English</a></li>
-{{--                            <li><a href="{{ route('admin.register') }}">Sell</a></li>--}}
-{{--                            <li><a href="#">EMI</a></li>--}}
-{{--                            <li><a href="#">Gift Card</a></li>--}}
                             <li><a href="{{ route('contact.show') }}">Customer Care</a></li>
                         </ul>
                     </div>
@@ -86,25 +83,6 @@
 
                                         </ul>
                                     </li>
-{{--                                    <li class="menu-item-has-children">--}}
-{{--                                        <a href="#">other Pages</a>--}}
-{{--                                        <ul class="sub-menu">--}}
-{{--                                            <li><a href="cart.html">cart</a></li>--}}
-{{--                                            <li><a href="wishlist.html">Wishlist</a></li>--}}
-{{--                                            <li><a href="checkout.html">Checkout</a></li>--}}
-{{--                                            <li><a href="my-account.html">my account</a></li>--}}
-{{--                                            <li><a href="404.html">Error 404</a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="menu-item-has-children">--}}
-{{--                                        <a href="#">Product Types</a>--}}
-{{--                                        <ul class="sub-menu">--}}
-{{--                                            <li><a href="product-details.html">product details</a></li>--}}
-{{--                                            <li><a href="product-sidebar.html">product sidebar</a></li>--}}
-{{--                                            <li><a href="product-grouped.html">product grouped</a></li>--}}
-{{--                                            <li><a href="variable-product.html">product variable</a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
                                 </ul>
                             </li>
                             @endif
@@ -124,33 +102,21 @@
                                 </li>
                             @endif
 
-                            <li class="menu-item-has-children "><a href="{{ route('blog.allBog') }}"> Vlog </a>
-{{--                            <li class="menu-item-has-children "><a href="{{route('contact.show')}}"> Contact Us</a>--}}
+
                             @if( \Illuminate\Support\Facades\Auth::check())
+                                <li class="has-child c-1">
+                                    <a href="#">Vlog</a>
+                                    <ul class="drop-down drop-menu-1">
+                                        <li><a href="{{ route('blog.allBog') }}">All Vlogs</a></li>
+                                        <li><a href="{{ route('blog.create') }}">Create Vlog</a></li>
+
+                                    </ul>
+                                </li>
                                 <li class="menu-item-has-children "><a href="{{route('profile.show')}}">Profile</a>
                                 <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
+                            @else
+                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Vlog </a> </li>
                             @endif
-{{--                            <li class="menu-item-has-children">--}}
-{{--                                <a href="#">pages </a>--}}
-{{--                                <ul class="sub-menu">--}}
-{{--                                    <li><a href="about.html">About Us</a></li>--}}
-{{--                                    <li><a href="services.html">services</a></li>--}}
-{{--                                    <li><a href="faq.html">Frequently Questions</a></li>--}}
-{{--                                    <li><a href="contact.html">contact</a></li>--}}
-{{--                                    <li><a href="login.html">login</a></li>--}}
-{{--                                    <li><a href="404.html">Error 404</a></li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
-
-{{--                                <li class="menu-item-has-children">--}}
-{{--                                    <a href="my-account.html">my account</a>--}}
-{{--                                </li>--}}
-{{--                            <li class="menu-item-has-children">--}}
-{{--                                <a href="about.html">about Us</a>--}}
-{{--                            </li>--}}
-{{--                            <li class="menu-item-has-children">--}}
-{{--                                <a href="contact.html"> Contact Us</a>--}}
-{{--                            </li>--}}
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
@@ -409,13 +375,22 @@
                                     @endforeach
                                 @endif
 
-                                <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Vlog </a> </li>
-{{--                                <li class="has-child c-1"><a href="{{route('contact.show')}}"> Contact Us</a> </li>--}}
+
                                 @if( \Illuminate\Support\Facades\Auth::check())
+                                    <li class="has-child c-1">
+                                        <a href="#">Vlog</a>
+                                        <ul class="drop-down drop-menu-1">
+                                            <li><a href="{{ route('blog.allBog') }}">All Vlogs</a></li>
+                                            <li><a href="{{ route('blog.create') }}">Create Vlog</a></li>
+
+                                        </ul>
+                                    </li>
                                     <li class="has-child c-1"><a href="{{route('profile.show')}}">Profile</a> </li>
                                     <li class="menu-item-has-children "><a href="{{route('wish.list')}}">Wishlist</a>
+                                @else
+                                    <li class="has-child c-1 c-1"><a href="{{ route('blog.allBog') }}"> Vlog </a> </li>
                                 @endif
-                                <li class=" anime"><a href=""><h4 class="ml2">নবাবীহাট</h4></a></li>
+                                <li class=" anime"><a href="{{route('promotion.category')}}"><h4 class="ml2">নবাবীহাট</h4></a></li>
 
                             </ul>
                         </nav>

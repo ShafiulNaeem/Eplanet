@@ -40,22 +40,23 @@
 {{--                                            <span class="text-danger">{{$message}}</span>--}}
 {{--                                            @enderror--}}
 {{--                                        </div>--}}
-
-                                        <div class="form-group col-md-6 float-left">
-                                            <label for="exampleInputPassword1">Event Start Date</label>
-                                            <input type="date" name="start_date" class="form-control" value="{{ $event->start_date}}" />
-                                        </div>
-                                        <div class="form-group col-md-6 float-left">
-                                            <label for="exampleInputPassword1">Event End Date</label>
-                                            <input type="date" name="end_date" class="form-control" value="{{ $event->end_date}}" />
-                                        </div>
-
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Event Status</label>
                                             <select name="status" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option value="1" @if($event->status == 1 ) selected @endif>Active</option>
                                                 <option value="0" @if($event->status == 0 ) selected @endif>InActive</option>
                                             </select>
+                                        </div>
+
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="exampleInputPassword1">Event Start Date</label>
+                                            <input type="datetime-local" name="start_date" class="form-control" value="{{ date('m/d/Y H:i A', strtotime($event->start_date)) }}" />
+                                            <span>{{\Carbon\Carbon::parse($event->start_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</span>
+                                        </div>
+                                        <div class="form-group col-md-6 float-left">
+                                            <label for="exampleInputPassword1">Event End Date</label>
+                                            <input type="datetime-local" name="end_date" class="form-control" value="{{ $event->end_date}}" />
+                                            <span>{{\Carbon\Carbon::parse($event->end_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</span>
                                         </div>
 
                                         <div class="form-group col-md-6 float-left">

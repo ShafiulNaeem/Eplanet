@@ -37,8 +37,8 @@
                                     @foreach($eventProducts as $eventProduct)
                                         <tr>
                                             <td class="text-center">{{$eventProduct->event_name}}</td>
-                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->start_date)->format('M d Y') }}</td>
-                                            <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->end_date)->format('M d Y') }}</td>
+                                            <td>{{\Carbon\Carbon::parse($eventProduct->start_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</td>
+                                            <td>{{\Carbon\Carbon::parse($eventProduct->end_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</td>
                                             <td class="text-center">{{  \Carbon\Carbon::parse($eventProduct->created_at)->format('M d Y') }}</td>
                                             <td class="text-center">
                                                 <button type="button" data-toggle="modal" id="eventProducts"
