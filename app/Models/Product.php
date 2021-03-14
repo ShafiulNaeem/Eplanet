@@ -137,8 +137,17 @@ class Product extends Model
         return $query->where('status', 1);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function eventProducts()
     {
         return $this->hasMany(EventProduct::class, 'product_id');
+    }
+
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

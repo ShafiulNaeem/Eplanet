@@ -82,144 +82,163 @@
                         <div class="col-lg-7 col-md-7 float-left">
 
                             <div class="row">
-                                <div class="col-md-7">
-                                    <div class="product_d_right " style="border-right:1px solid #ededed;">
-                                        <div class="product_meta">
-                                            <span> <b>Condition:</b> @if($product->is_new == 1) Brand New @else Old @endif </span>
-                                        </div>
-                                        <div class="product_meta">
-                                            <span> <b>Brand Name:</b> {{ $product->brand->brand_name }} </span>
-                                        </div>
-                                        @if( ! empty($product->model) )
+                                <form role="form" action="{{route('pages.cart')}}" enctype="multipart/form-data" method="POST">
+                                    <div class="col-md-7 float-left">
+                                        <div class="product_d_right " style="border-right:1px solid #ededed;">
                                             <div class="product_meta">
-                                                <span> <b>Brand Model:</b>  {{$product->model}}</span>
+                                                <span> <b>Condition:</b> @if($product->is_new == 1) Brand New @else Old @endif </span>
                                             </div>
-                                        @endif
-
-                                        @if( ! empty($product->coupon) )
                                             <div class="product_meta">
-                                                <span> <b>Discount Code:</b> {{ $product->coupon->coupon_code }}</span>
+                                                <span> <b>Brand Name:</b> {{ $product->brand->brand_name }} </span>
                                             </div>
-                                        @endif
-                                         <div class="product_meta">
-                                            <span> <b>Product Code: </b> {{ $product->unique_id }}</span>
-                                        </div>
-    {{--                                      <div class="product_meta">--}}
-    {{--                                        <span>Regular Price: <a href="#">12534</a></span>--}}
-    {{--                                    </div>--}}
+                                            @if( ! empty($product->model) )
+                                                <div class="product_meta">
+                                                    <span> <b>Brand Model:</b>  {{$product->model}}</span>
+                                                </div>
+                                            @endif
 
-                                        <div class=" product_ratting">
-                                            <ul>
-                                                <li><a href="#"><i class="icon-star"></i></a></li>
-                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                               <li><a href="#"><i class="icon-star"></i></a></li>
-                                                <li class="review"><a href="#"> (customer review ) </a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class=" product_ratting">
-                                            <ul>
-                                                <li style="color:#28a745">EMI Availabe:</li>
-                                                <li>
-                                                    @if( ! empty( $product->emi_id ) ) Yes @else No @endif
-                                                </li>
-                                                @if( ! empty( $product->emi_id ) )
-                                                    @php
-                                                        $ids = explode(',', $product->emi_id);
-
-                                                    @endphp
-                                                    <li>
-                                                        <select name="" id="" class="form-control" >
-                                                            @for($i  = 0; $i < count($ids); ++$i)
-                                                                @php $emi = \App\Models\Emi::find($ids[$i]) @endphp
-                                                                    @if(!empty($emi))
-                                                                <option value="{{$emi->id}}">{{$emi->bank_name}} ({{$emi->duration}}) </option>
-                                                            @endif
-                                                                    @endfor
-                                                        </select>
-                                                    </li>
-                                                @endif
-                                            </ul>
-    {{--                                        @endif--}}
-                                        </div>
-    {{--                                    @endif--}}
-                                        @if( ! empty($product->coupon) )
-                                            <div class="product_meta">
-                                                <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
+                                            @if( ! empty($product->coupon) )
+                                                <div class="product_meta">
+                                                    <span> <b>Discount Code:</b> {{ $product->coupon->coupon_code }}</span>
+                                                </div>
+                                            @endif
+                                             <div class="product_meta">
+                                                <span> <b>Product Code: </b> {{ $product->unique_id }}</span>
                                             </div>
-                                        @endif
+        {{--                                      <div class="product_meta">--}}
+        {{--                                        <span>Regular Price: <a href="#">12534</a></span>--}}
+        {{--                                    </div>--}}
 
-                                        <div class="product_desc mt-2">
-                                            {!! $product->product_description !!}
-                                        </div>
-
-                                        <a href="#sheet" id="click_change3">
-                                            <i class="fa fa-2x fa-sort-up"></i> View more info
-                                        </a>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class=" product_recive">
-                                              <div class="recive_inner col-md-12">
+                                            <div class=" product_ratting">
                                                 <ul>
-                                                    <li>Cash On Delivary: </li>
-                                                    <li>
-                                                        <select name="" id="" class="form-control" >
-                                                            <option value="">Yes</option>
-                                                            <option value="">No</option>
-                                                        </select>
-                                                    </li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                   <li><a href="#"><i class="icon-star"></i></a></li>
+                                                   <li><a href="#"><i class="icon-star"></i></a></li>
+                                                   <li><a href="#"><i class="icon-star"></i></a></li>
+                                                   <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li class="review"><a href="#"> (customer review ) </a></li>
                                                 </ul>
-                                              </div>
-                                              <div class="recive_inner col-md-12" style="height: 54px">
-                                                  <div class="col-md-8 float-left">
-                                                      <i class="fa fa-location-arrow"></i>
-                                                      <span id="currentlocationselected">Dhaka > Bangladesh</span>
-                                                  </div>
-                                                  <div class="col-md-4 float-right">
-                                                      <p id="changelocationtext">change</p>
-                                                  </div>
+                                            </div>
 
-                                                  <div class="locationDropdownMainDiv" id="locationDropdownMainDiv">
-                                                      <div class="card" style="width: 100%; z-index: 1">
-                                                          <div class="card-body">
-                                                              <div class="location-dropdown">
-                                                                  <ul class="nav nav-pills flex-column" id="mainLocationUl">
-                                                                      @foreach($areas as $index => $area)
-                                                                          <li class="nav-item  " id="mainLocationLi">
-                                                                              <p class=" bg-gradient-dark location collapsed" onclick="changeLocation(this)" data-location-id="{{$area->id}}" data-location-current="division" id="mainLocationP">{{$area->division_name}}</p>
-                                                                          </li>
-                                                                      @endforeach
-                                                                  </ul>
+                                            <div class=" product_ratting">
+                                                <ul>
+                                                    <li style="color:#28a745">EMI Availabe:</li>
+                                                    <li>
+                                                        @if( ! empty( $product->emi_id ) ) Yes @else No @endif
+                                                    </li>
+                                                    @if( ! empty( $product->emi_id ) )
+                                                        @php
+                                                            $ids = explode(',', $product->emi_id);
+
+                                                        @endphp
+                                                        <li>
+                                                            <select name="emi_choose" id="" class="form-control" >
+                                                                @for($i  = 0; $i < count($ids); ++$i)
+                                                                    @php $emi = \App\Models\Emi::find($ids[$i]) @endphp
+                                                                        @if(!empty($emi))
+                                                                    <option value="{{$emi->id}}">{{$emi->bank_name}} ({{$emi->duration}}) </option>
+                                                                @endif
+                                                                        @endfor
+                                                            </select>
+                                                        </li>
+                                                    @endif
+                                                </ul>
+        {{--                                        @endif--}}
+                                            </div>
+        {{--                                    @endif--}}
+                                            @if( ! empty($product->coupon) )
+                                                <div class="product_meta">
+                                                    <span> <b>Discount Price:</b>  {{ $product->coupon->amount }}</span>
+                                                </div>
+                                            @endif
+
+                                            <div class="product_desc mt-2">
+                                                {!! $product->product_description !!}
+                                            </div>
+
+                                            <a href="#sheet" id="click_change3">
+                                                <i class="fa fa-2x fa-sort-up"></i> View more info
+                                            </a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class=" product_recive">
+                                                  <div class="recive_inner col-md-12">
+                                                    <ul>
+                                                        <li>Cash On Delivary: </li>
+                                                        <li>
+                                                            <select name="cash_on_delivery" id="" class="form-control" >
+                                                                <option value="1">Yes</option>
+                                                                <option value="0">No</option>
+                                                            </select>
+                                                        </li>
+                                                    </ul>
+                                                  </div>
+                                                  <div class="recive_inner col-md-12" style="height: 54px">
+                                                      <div class="col-md-8 float-left">
+                                                          <i class="fa fa-location-arrow"></i>
+                                                          <span id="currentlocationselected">Dhaka > Bangladesh</span>
+                                                          <input type="hidden" name="delivery_location" value="Dhaka">
+                                                      </div>
+                                                      <div class="col-md-4 float-right">
+                                                          <p id="changelocationtext">change</p>
+                                                      </div>
+
+                                                      <div class="locationDropdownMainDiv" id="locationDropdownMainDiv">
+                                                          <div class="card" style="width: 100%; z-index: 1">
+                                                              <div class="card-body">
+                                                                  <div class="location-dropdown">
+                                                                      <ul class="nav nav-pills flex-column" id="mainLocationUl">
+                                                                          @foreach($areas as $index => $area)
+                                                                              <li class="nav-item  " id="mainLocationLi">
+                                                                                  <p class=" bg-gradient-dark location collapsed" onclick="changeLocation(this)" data-location-id="{{$area->id}}" data-location-current="division" id="mainLocationP">{{$area->division_name}}</p>
+                                                                              </li>
+                                                                          @endforeach
+                                                                      </ul>
+                                                                  </div>
                                                               </div>
                                                           </div>
                                                       </div>
                                                   </div>
-                                              </div>
-                                              <div class="col-md-12 recive_inner">
-                                                <ul>
-                                                    <li>Product return policy </li>
-                                                    <li>
-                                                        <select name="" id="" class="form-control" >
-                                                            @if( isset($product->return_policy) )
-                                                                <option value="">{{$product->return_policy}}</option>
-                                                            @else
-                                                                <option value="">No</option>
-                                                            @endif
-                                                        </select>
-                                                    </li>
-                                                </ul>
-                                              </div>
+
+                                                    <div class="col-md-12 recive_inner">
+                                                        <ul>
+                                                            <li>Product return policy </li>
+                                                            <li>
+                                                                <select name="return_policy" id="" class="form-control" >
+                                                                    @if( isset($product->return_policy) )
+                                                                        <option value="{{ $product->return_policy }}">{{$product->return_policy}}</option>
+                                                                    @else
+                                                                        <option value="0">No</option>
+                                                                    @endif
+                                                                </select>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                  <div class="col-md-12 recive_inner">
+                                                    <ul>
+                                                        <li>Home delivery Charge </li>
+                                                        <li>
+                                                            <select name="delivery_charge" id="" class="form-control" >
+                                                                <option value="30/100">30/100</option>
+                                                            </select>
+                                                        </li>
+                                                        <li>
+                                                            <select name="delivery_charge_option" id="" class="form-control" >
+                                                                <option value="Emergency Normal">Emergency Normal</option>
+                                                            </select>
+                                                        </li>
+                                                    </ul>
+                                                  </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <a href="#sheet" id="click_change3">
+                                            <i class="fa fa-2x fa-sort-up"></i> More details
+                                        </a>
                                     </div>
-                                    <a href="#sheet" id="click_change3">
-                                        <i class="fa fa-2x fa-sort-up"></i> More details
-                                    </a>
-                                </div>
-                                <div class="col-md-5">
+                                    <div class="col-md-5 float-left">
                                     <div class="product_d_right" >
                                         <h4> Name:{{$product->product_name}}</h4>
 
@@ -252,7 +271,7 @@
                                             </div>
                                             <div class="product_variant quantity">
 
-                                                <form role="form" action="{{route('pages.cart')}}" enctype="multipart/form-data" method="POST">
+{{--                                                <form role="form" action="{{route('pages.cart')}}" enctype="multipart/form-data" method="POST">--}}
                                                     @csrf
                                                     <label>quantity</label>
                                                     <input min="1" max="100" name="quantity" value="1" type="number">
@@ -270,7 +289,7 @@
                                                         border-color: #dc3545 !important;"
                                                                 class="button btn-danger" disabled>Product Out of Stock</button>
                                                     @endif
-                                                </form>
+{{--                                                </form>--}}
 
 
                                             </div>
@@ -304,11 +323,9 @@
 
                                     </div>
                                 </div>
+                                </form>
                             </div>
 
-                            <div class="row">
-
-                            </div>
 
                         </div>
                     </div>
@@ -330,12 +347,12 @@
             <div class="col-lg-9 col-md-9">
                 <div class="product_d_inner">
                     <div class="product_info_button">
-                        <ul class="nav" role="tablist">
+                        <ul class="nav nav-tabs" role="tablist">
                             <li>
-                                 <a data-toggle="tab" class="active show" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" class="">Specification</a>
+                                 <a data-toggle="tab" class="active  show nav-link override-nav-link" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" >Specification</a>
                             </li>
                             <li>
-                               <a data-toggle="tab" href="#reviews" role="tab" id="click_change2" aria-controls="reviews" aria-selected="true" >Reviews</a>
+                               <a data-toggle="tab" href="#reviews" class="nav-link override-nav-link" role="tab" id="click_change2" aria-controls="reviews" aria-selected="true" >Reviews</a>
                             </li>
                         </ul>
                     </div>
@@ -362,10 +379,31 @@
                                 </div>
 
                                 <div class="product_review_form">
-                                    <form action="#">
+                                    <form action="{{route('review.store')}}" method="post">
+                                        <input type="hidden" name="product_id" value="{{$products[0]->id}}">
                                         <div class="row">
-                                            <div class="col-12">
-                                                <textarea name="comment" id="review_comment"></textarea>
+                                            <div class="col-md-8">
+                                                <textarea name="review_text" id="review_comment"></textarea>
+                                            </div>
+                                            @csrf
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="review" value="1" checked> 1
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="review" value="2" > 2
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="review" value="3" > 3
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="review" value="4" > 4
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="review" value="5" > 5
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <button type="submit">Submit</button>
