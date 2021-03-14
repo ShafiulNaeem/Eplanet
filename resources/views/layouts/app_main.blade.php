@@ -271,7 +271,7 @@
     @endif
 </script>
 
-   <script type="text/javascript">
+<script type="text/javascript">
 
         $(document).on('click', '#add_to_wish_list', function (e) {
             var id = (this.getAttribute('data-target'));
@@ -355,8 +355,6 @@
 
 </script>
 
-
-
 <script>
 	$(function(){
         $('.bo-slider').boSlider({
@@ -436,6 +434,7 @@
     var mainLocationLi = $('#mainLocationLi');
     var mainLocationUl = $('#mainLocationUl');
     var mainLocationP = $('#mainLocationP');
+    var delivery_location = $('input[name="delivery_location"]');
     var trackLocationChange = [];
 
     locationDropdownMainDiv.hide();
@@ -467,8 +466,8 @@
         let url = window.origin + '/changelocation/' + data_location_current+'/'+data_location_id;
 
         apiget(url ,data_location_current)
-
-        console.log(trackLocationChange);
+        delivery_location.val(trackLocationChange[trackLocationChange.length-1]);
+        console.log(trackLocationChange[trackLocationChange.length]);
     }
 
 
@@ -513,9 +512,8 @@
                 para.append(
                     (currentLocationType == 'division') ? value.district_name : value.city_name
                 ) : para.append(
-                value.division_name
+                    value.division_name
                 );
-
             let li = createElement('li');
             li.append(para);
             mainLocationUl.append(li);

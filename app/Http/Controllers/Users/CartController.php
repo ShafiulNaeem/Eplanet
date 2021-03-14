@@ -40,7 +40,6 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-
         $checkStock = Product::where('id', $request->product_id)->first();
 
         if( $checkStock->stock <= $request->quantity )
@@ -55,9 +54,15 @@ class CartController extends Controller
                     "id" => $request->product_id,
                     "product_name" => $request->product_name,
                     "quantity" => $request->quantity,
-                    "product_price" => $request->product_price,
+                    "product_price" => round($request->product_price),
                     "feature_image" => $request->feature_image,
                     "product_tax" => $request->product_tax,
+                    "emi_choose" => $request->emi_choose,
+                    "cash_on_delivery" => $request->cash_on_delivery,
+                    "delivery_location" => $request->delivery_location,
+                    "return_policy" => $request->return_policy,
+                    "delivery_charge" => $request->delivery_charge,
+                    "delivery_charge_option" => $request->delivery_charge_option,
                 ]
             ];
             Session::put('cart', $cart);
@@ -78,9 +83,15 @@ class CartController extends Controller
             "id" => $request->product_id,
             "product_name" => $request->product_name,
             "quantity" => $request->quantity,
-            "product_price" => $request->product_price,
+            "product_price" => round($request->product_price),
             "feature_image" => $request->feature_image,
             "product_tax" => $request->product_tax,
+            "emi_choose" => $request->emi_choose,
+            "cash_on_delivery" => $request->cash_on_delivery,
+            "delivery_location" => $request->delivery_location,
+            "return_policy" => $request->return_policy,
+            "delivery_charge" => $request->delivery_charge,
+            "delivery_charge_option" => $request->delivery_charge_option,
         ];
 
         Session::put('cart', $cart);

@@ -145,7 +145,7 @@ Route::get('changelocation/{region}/{id}', 'WelcomeController@changeLocation');
 
 // comment route
 Route::post('coupon', 'Users\CartController@getCoupon')->name('coupon.code');
-
+Route::resource('review', 'Users\ReviewController')->middleware(['auth']);
 
 Route::prefix('pages')->group(function(){
     Route::get('/{slug}', 'WelcomeController@show')->name('pages.show');
