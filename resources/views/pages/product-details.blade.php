@@ -122,10 +122,13 @@
 
                                             <div class=" product_ratting">
                                                 <ul>
-                                                    <li style="color:#28a745">EMI Availabe:</li>
+                                                    <li style="cursor: context-menu;"  class="btn btn-success">EMI Availabe</li>
+                                    
                                                     <li>
-                                                        @if( ! empty( $product->emi_id ) ) Yes @else No @endif
+                                                        
+                                                        @if( ! empty( $product->emi_id ) ) <span class="badge badge-pill badge-primary">Yes</span> @else <span class="badge badge-pill badge-warning">No</span> @endif
                                                     </li>
+                                                    
                                                     @if( ! empty( $product->emi_id ) )
                                                         @php
                                                             $ids = explode(',', $product->emi_id);
@@ -143,6 +146,17 @@
                                                         </li>
                                                     @endif
                                                 </ul>
+                                               <div class="emi">
+                                                <a  id="click_change3" >
+                                                    <i class="fa fa-2x fa-sort-up"></i> <span data-toggle="collapse" href="#collapseExample" >More details</span>
+                                                </a>
+                                                <div class="collapse" id="collapseExample">
+                                                    <div class="card card-body">
+                                                        <img src="{{asset('emi.png')}}" class="image-fluid" alt="emi">
+                                                    </div>
+                                                  </div>
+                                               </div>
+                                                
         {{--                                        @endif--}}
                                             </div>
         {{--                                    @endif--}}
@@ -234,9 +248,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#sheet" id="click_change3">
-                                            <i class="fa fa-2x fa-sort-up"></i> More details
-                                        </a>
+                                       
                                     </div>
                                     <div class="col-md-5 float-left">
                                     <div class="product_d_right" >
