@@ -122,13 +122,13 @@
 
                                             <div class=" product_ratting">
                                                 <ul>
-                                                    <li style="cursor: context-menu;"  class="btn btn-success">EMI Availabe</li>
-                                    
+                                                    <li style="cursor: context-menu;"  class="btn btn-success">EMI Available</li>
+
                                                     <li>
-                                                        
+
                                                         @if( ! empty( $product->emi_id ) ) <span class="badge badge-pill badge-primary">Yes</span> @else <span class="badge badge-pill badge-warning">No</span> @endif
                                                     </li>
-                                                    
+
                                                     @if( ! empty( $product->emi_id ) )
                                                         @php
                                                             $ids = explode(',', $product->emi_id);
@@ -156,7 +156,7 @@
                                                     </div>
                                                   </div>
                                                </div>
-                                                
+
         {{--                                        @endif--}}
                                             </div>
         {{--                                    @endif--}}
@@ -252,7 +252,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                     <div class="col-md-5 float-left">
                                     <div class="product_d_right" >
