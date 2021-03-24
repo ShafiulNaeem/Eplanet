@@ -1363,3 +1363,16 @@ h2 span {
     }
   }
 
+  .about{
+      width:100%;
+      padding: 25px 0;
+     
+  }
+  .about_eplanet{
+    width:100%;
+    padding:25px;
+    background:#f1f3f5da;;
+  }
+  .about_description{
+    width:100%;
+  }
