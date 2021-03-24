@@ -86,7 +86,7 @@
                                     <div class="col-md-7 float-left">
                                         <div class="product_d_right " style="border-right:1px solid #ededed;">
                                             <div class="product_meta">
-                                                <span> <b>Condition:</b> @if($product->is_new == 1) Brand New @else Old @endif </span>
+                                                <span> <b>Condition :</b> @if($product->is_new == 1) Brand New @else Old @endif </span>
                                             </div>
                                             <div class="product_meta">
                                                 <span> <b>Brand Name:</b> {{ $product->brand->brand_name }} </span>
@@ -122,13 +122,13 @@
 
                                             <div class=" product_ratting">
                                                 <ul>
-                                                    <li style="cursor: context-menu;"  class="btn btn-success">EMI Availabe</li>
-                                    
+                                                    <li style="cursor: context-menu;"  class="btn btn-success">EMI Available</li>
+
                                                     <li>
-                                                        
+
                                                         @if( ! empty( $product->emi_id ) ) <span class="badge badge-pill badge-primary">Yes</span> @else <span class="badge badge-pill badge-warning">No</span> @endif
                                                     </li>
-                                                    
+
                                                     @if( ! empty( $product->emi_id ) )
                                                         @php
                                                             $ids = explode(',', $product->emi_id);
@@ -156,7 +156,7 @@
                                                     </div>
                                                   </div>
                                                </div>
-                                                
+
         {{--                                        @endif--}}
                                             </div>
         {{--                                    @endif--}}
@@ -188,8 +188,12 @@
                                                         </li>
                                                     </ul>
                                                   </div>
-                                                  <div class="recive_inner col-md-12" style="height: 54px">
+                                                  <div class="recive_inner col-md-12" style="height: 60px">
+
                                                       <div class="col-md-8 float-left">
+
+
+
                                                           <i class="fa fa-location-arrow"></i>
                                                           <span id="currentlocationselected">Dhaka > Bangladesh</span>
                                                           <input type="hidden" name="delivery_location" value="Dhaka">
@@ -205,7 +209,7 @@
                                                                       <ul class="nav nav-pills flex-column" id="mainLocationUl">
                                                                           @foreach($areas as $index => $area)
                                                                               <li class="nav-item  " id="mainLocationLi">
-                                                                                  <p class=" bg-gradient-dark location collapsed" onclick="changeLocation(this)" data-location-id="{{$area->id}}" data-location-current="division" id="mainLocationP">{{$area->division_name}}</p>
+                                                                                  <p class=" bg-gradient-dark location " onclick="changeLocation(this)" data-location-id="{{$area->id}}" data-location-current="division" id="mainLocationP">{{$area->division_name}}</p>
                                                                               </li>
                                                                           @endforeach
                                                                       </ul>
@@ -248,11 +252,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                     <div class="col-md-5 float-left">
                                     <div class="product_d_right" >
-                                        <h4> Name:{{$product->product_name}}</h4>
+                                        <h4> Name: {{$product->product_name}}</h4>
 
                                             <div class="price_box ">
                                                 <span class="current_price">BDT {{ round($product->product_price) }}</span>

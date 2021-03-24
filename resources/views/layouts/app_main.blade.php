@@ -442,14 +442,24 @@
     changelocationtext.on('click', function (){
         locationDropdownMainDiv.toggle();
 
-        let url = window.origin + '/changelocation/null/null';
-        apiget(url, null);
-        changeLocation()
+        if ( currentLocationType == 'division' ){
+            let url = window.origin + '/changelocation/null/null';
+            apiget(url, null);
+        }
     });
 
+    $(document).mouseup(function(e)
+    {
 
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!changelocationtext.is(e.target) && changelocationtext.has(e.target).length === 0)
+        {
+            locationDropdownMainDiv.hide();
+        }
+    });
 
     function changeLocation(param) {
+        param.style.display= 'block';
         let data_location_current = param.getAttribute('data-location-current');
         if ( data_location_current == 'division' ) trackLocationChange[0] = param.innerText;
         if ( data_location_current == 'district' ) trackLocationChange[1] = param.innerText;
