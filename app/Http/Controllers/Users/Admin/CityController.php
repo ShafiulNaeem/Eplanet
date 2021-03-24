@@ -81,7 +81,7 @@ class CityController extends Controller
     public function edit(City $city)
     {
         $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
-        $districts = District::with('division')->where('division_id',$city->division_id)->get();
+        $districts = District::with('division')->where('division_id',$city->division_id)->AdminDistrict()->get();
         //dd($districts);
         return view('admin.city.edit',compact('city','divisions','districts'));
     }

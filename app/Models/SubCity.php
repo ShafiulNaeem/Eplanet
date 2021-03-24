@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class City extends Model
+class SubCity extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded =[];
 
-    public function scopeAdminCity($query)
+    public function scopeAdminSubCity($query)
     {
         return $query->where('admin_id', Auth::guard('admin')->user()->id);
     }
@@ -21,7 +21,7 @@ class City extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeWithoutAdminCity($query)
+    public function scopeWithoutAdminSubCity($query)
     {
         return $query->where('admin_id', '!=',Auth::guard('admin')->user()->id);
     }
@@ -36,8 +36,8 @@ class City extends Model
         return $this->belongsTo(District::class);
     }
 
-    public function subcity()
+    public function city()
     {
-        return $this->hasMany(SubCity::class);
+        return $this->belongsTo(City::class);
     }
 }

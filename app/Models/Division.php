@@ -43,4 +43,9 @@ class Division extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    public function subcity()
+    {
+        return $this->hasMany(SubCity::class);
+    }
 }
