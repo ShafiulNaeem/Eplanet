@@ -711,97 +711,135 @@
                 <li class="nav-item @if(
                                     url()->current() == route('contactusslider.create') ||
                                     url()->current() == route('admin.all.slider') ||
-                                    url()->current() == route('contactusslider.index')
-    ) menu-is-opening menu-open @endif">
-                    <a href="#" class="admin_sidebar_nav_link nav-link @if(
-                                    url()->current() == route('contactusslider.create') ||
-                                    url()->current() == route('admin.all.slider') ||
-                                    url()->current() == route('contactusslider.index')
-    ) active @endif ">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Slider
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" @if(
-                                    url()->current() == route('contactusslider.create') ||
-                                    url()->current() == route('admin.all.slider') ||
-                                    url()->current() == route('contactusslider.index')
-    ) style="display: block" @endif >
-                        <li class="nav-item">
-                            <a href="{{ route('contactusslider.create') }}" class="admin_sidebar_nav_link nav-link @if( url()->current() == route('contactusslider.create' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Upload Slider</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('contactusslider.index') }}" class="admin_sidebar_nav_link nav-link @if( url()->current() == route('contactusslider.index' ) )active @endif ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Slider</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
-                                <a href="{{ route('admin.all.slider') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if( url()->current() == route('admin.all.brand' ) )active @endif ">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Slider</p>
-                                </a>
-                            </li>
-                        @endif
-
-                    </ul>
-                </li>
-
-
-
-                <li class="nav-item @if(
+                                    url()->current() == route('contactusslider.index') ||
                                     url()->current() == route('categorySlider.index') ||
                                     url()->current() == route('categorySlider.create') ||
                                     url()->current() == route('admin.all.categorySlider')
     ) menu-is-opening menu-open @endif ">
                     <a href="#" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index') ||
                                     url()->current() == route('categorySlider.index') ||
                                     url()->current() == route('categorySlider.create') ||
                                     url()->current() == route('admin.all.categorySlider')
     ) active @endif ">
-                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <i class="nav-icon fas fa-circle"></i>
                         <p>
-                            Category Slider
+                            All Slider
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+
                     <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index')
+    ) style="display: block" @endif  >
+                        <li class="nav-item @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index')
+    ) menu-is-opening menu-open  @endif  ">
+                            <a href="#" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index')
+    ) active @endif ">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Slider
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('contactusslider.create') ||
+                                    url()->current() == route('admin.all.slider') ||
+                                    url()->current() == route('contactusslider.index')
+    ) style="display: block" @endif  >
+                                <li class="nav-item">
+                                    <a href="{{ route('contactusslider.create') }}" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('contactusslider.create')
+    ) active @endif ">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Slider</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('contactusslider.index') }}" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('contactusslider.index')
+    ) active @endif  ">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Slider Manage</p>
+                                    </a>
+                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.slider') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
+                                    url()->current() == route('admin.all.slider')
+    ) active @endif  ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Slider</p>
+                                        </a>
+                                    </li>
+                                @endif
+
+
+                            </ul>
+                        </li>
+
+
+
+                        <li class="nav-item @if(
+                                    url()->current() == route('categorySlider.index') ||
+                                    url()->current() == route('categorySlider.create') ||
+                                    url()->current() == route('admin.all.categorySlider')
+    ) menu-is-opening menu-open @endif ">
+                            <a href="#" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('categorySlider.index') ||
+                                    url()->current() == route('categorySlider.create') ||
+                                    url()->current() == route('admin.all.categorySlider')
+    ) active @endif ">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Category Slider
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" @if(
                                     url()->current() == route('categorySlider.index') ||
                                     url()->current() == route('categorySlider.create') ||
                                     url()->current() == route('admin.all.categorySlider')
     ) style="display: block" @else style="display: none" @endif  >
-                        <li class="nav-item">
-                            <a href="{{ route('categorySlider.create') }}" class="admin_sidebar_nav_link nav-link @if(
+                                <li class="nav-item">
+                                    <a href="{{ route('categorySlider.create') }}" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('categorySlider.create')
     ) active @endif  ">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Create Category Slider</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('categorySlider.index') }}" class="admin_sidebar_nav_link nav-link @if(
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Category Slider</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('categorySlider.index') }}" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('categorySlider.index')
     ) active @endif   ">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Manage Category Slider</p>
-                            </a>
-                        </li>
-                        @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                            <li class="nav-item">
-                                <a href="{{ route('admin.all.categorySlider') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Category Slider</p>
+                                    </a>
+                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.categorySlider') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
                                     url()->current() == route('admin.all.categorySlider')
     ) active @endif   ">
-                                    <i class="far fa-dot-circle nav-icon"></i>
-                                    <p>All Category Slider</p>
-                                </a>
-                            </li>
-                        @endif
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Category Slider</p>
+                                        </a>
+                                    </li>
+                                @endif
+
+                            </ul>
+                        </li>
 
                     </ul>
                 </li>
@@ -817,7 +855,10 @@
                                     url()->current() == route('admin.all.district') ||
                                     url()->current() == route('city.create') ||
                                     url()->current() == route('city.index') ||
-                                    url()->current() == route('admin.all.city')
+                                    url()->current() == route('admin.all.city') ||
+                                    url()->current() == route('subCity.create') ||
+                                    url()->current() == route('subCity.index') ||
+                                    url()->current() == route('admin.all.subCity')
     ) menu-is-opening menu-open @endif ">
                     <a href="#" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('division.create') ||
@@ -828,7 +869,10 @@
                                     url()->current() == route('admin.all.district') ||
                                     url()->current() == route('city.create') ||
                                     url()->current() == route('city.index') ||
-                                    url()->current() == route('admin.all.city')
+                                    url()->current() == route('admin.all.city') ||
+                                    url()->current() == route('subCity.create') ||
+                                    url()->current() == route('subCity.index') ||
+                                    url()->current() == route('admin.all.subCity')
     ) active @endif ">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
@@ -893,8 +937,6 @@
 
                             </ul>
                         </li>
-
-
 
                         <li class="nav-item @if(
                                     url()->current() == route('district.index') ||
@@ -997,6 +1039,56 @@
                             </ul>
                         </li>
 
+
+                        <li class="nav-item @if(
+                                    url()->current() == route('subCity.create') ||
+                                    url()->current() == route('subCity.index') ||
+                                    url()->current() == route('admin.all.subCity')
+    ) menu-is-opening menu-open @endif ">
+                            <a href="#" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('subCity.create') ||
+                                    url()->current() == route('subCity.index') ||
+                                    url()->current() == route('admin.all.subCity')
+    ) active @endif ">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>
+                                    Sub City
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('subCity.create') ||
+                                    url()->current() == route('subCity.index')
+    ) style="display: block" @else style="display: none" @endif  >
+                                <li class="nav-item">
+                                    <a href="{{ route('subCity.create') }}" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('subCity.create')
+    ) active @endif  ">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Create Sub City</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('subCity.index') }}" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('subCity.index')
+    ) active @endif   ">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Manage Sub City</p>
+                                    </a>
+                                </li>
+                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.all.subCity') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
+                                    url()->current() == route('admin.all.subCity')
+    ) active @endif   ">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>All Vendor Sub City</p>
+                                        </a>
+                                    </li>
+                                @endif
+
+                            </ul>
+                        </li>
 
 
                     </ul>

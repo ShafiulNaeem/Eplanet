@@ -665,6 +665,61 @@
     }
 </script>
 
+<script>
+
+    $('#district_id').on('change',function (e) {
+        let selectedValue = $(this).children("option:selected").val();
+        let city = $('#city_id');
+        let cityId = city.attr("data-city");
+        // console.log(cityId)
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('admin/cityByDistrict') }}/" + selectedValue,
+            method: 'post',
+
+
+            success: function (response) {
+                console.log(response);
+                city[0].innerHTML = " ";
+                let option = createElement("option");
+
+                option.setAttribute('value', " ");
+                option.innerText = "Select";
+                city[0].append(option);
+
+                response.forEach((value, index) => {
+                    let option = returnByOptions(value, cityId);
+                    city[0].append(option);
+                });
+            },
+            error:function(response)
+            {
+                console.warn(response);
+            }
+        });
+
+
+    });
+    function createElement(element) {
+        return document.createElement(element);
+    }
+
+    function returnByOptions(value, cityId){
+        let option = createElement('option');
+        option.setAttribute('value', value.id);
+        option.innerText = value.city_name;
+
+        if( value.id == cityId ) option.selected = true;
+
+        return option;
+    }
+</script>
+
+
+
+
 
 <script>
     $('#reservation').daterangepicker()
@@ -842,8 +897,6 @@
     //     selector: '[name="product_description"]'
     // });
 </script>
-
-
 
 <script>
     $('#add_button').click(() => {

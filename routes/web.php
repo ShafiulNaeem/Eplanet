@@ -215,6 +215,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
 
         // Division by District
         Route::post('districtByDivision/{division}', 'DivisionController@DistrictByDivision')->name('district.by.division');
+        // District by City
+        Route::post('cityByDistrict/{district}', 'DistrictController@cityByDistrict')->name('city.by.district');
 
         Route::name('admin.all.')->prefix('allvendor')->group(function (){
             Route::get('product', 'ProductController@allProduct')->name('product');
@@ -235,6 +237,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
             Route::get('division', 'DivisionController@allDivision')->name('division');
             Route::get('district', 'DistrictController@allDistrict')->name('district');
             Route::get('city', 'CityController@allCity')->name('city');
+            Route::get('subCity', 'SubCityController@allSubCity')->name('subCity');
         });
     });
     Route::post('blogChange', 'Users\BlogController@change')->name('blog.change.status');
@@ -288,6 +291,7 @@ Route::prefix('admin')->middleware('auth:admin')->namespace('Users\Admin')->grou
     Route::resource('division', 'DivisionController');
     Route::resource('district', 'DistrictController');
     Route::resource('city', 'CityController');
+    Route::resource('subCity', 'SubCityController');
     Route::resource('categorySlider', 'CategorySliderController');
 
 

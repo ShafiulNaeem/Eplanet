@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\District;
 use App\Models\Division;
 use Illuminate\Http\Request;
@@ -112,5 +113,11 @@ class DistrictController extends Controller
         return $district->delete() ?
             redirect()->back()->with('info', ' Deleted Successfully') :
             redirect()->back()->with('error', 'Something went wrong') ;
+    }
+
+    public function cityByDistrict(District $district)
+    {
+        //dd(City::where('district_id', $district->id)->AdminCity()->get());
+        return City::where('district_id', $district->id)->AdminCity()->get();
     }
 }

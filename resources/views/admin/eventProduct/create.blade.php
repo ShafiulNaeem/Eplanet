@@ -41,7 +41,6 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="">Sub Category</label>
-
                                             <select required name="sub_categories_id" id="sub_category_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option  value="">Select Sub Category</option>
                                             </select>
@@ -52,7 +51,6 @@
 
                                         <div class="form-group col-md-6 float-left">
                                             <label for="secondary_sub_categories_id">Second Sub Category</label>
-
                                             <select name="secondary_sub_categories_id" id="secondary_sub_categories_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                                 <option value="">Select Second Sub Category</option>
                                             </select>
