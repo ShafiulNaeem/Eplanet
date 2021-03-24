@@ -23,7 +23,7 @@
         <div class="container card">
             <div class="row" style="background-color: #1e2b37">
                 @if(isset($event))
-{{--                    @foreach($events as $event)--}}
+                   @foreach($events as $event)
                     @php
                         $datetime1 = new \DateTime($event->start_date);
                         $datetime2 = new \DateTime($count_date);
@@ -41,7 +41,7 @@
 
                         </div>
 
-{{--                    @endforeach--}}
+                    @endforeach
                 @endif
             </div>
         </div>
@@ -55,11 +55,11 @@
                     <div class="right-main-cat">
                         <div class="row">
                             @foreach($eventProducts as $eventProduct)
-{{--                                @if($eventProduct->event->end_date > $count_date)--}}
+                                @if($eventProduct->event->end_date > $count_date)
                                     <div class="col-md-4">
                                         <div class="right-category">
                                             <div class="card">
-{{--                                                <p>{{$eventProduct->event_id}} | {{$eventProduct->category_id}}</p>--}}
+                                                <p>{{$eventProduct->event_id}} | {{$eventProduct->category_id}}</p>
                                                 <div class="zoom-In">
                                                     <a href="{{route('promotion.products',[$eventProduct->event_id,$eventProduct->category_id])}}"><img src="{{assetImageAndVideo('images' ).$eventProduct->category->category_image}}" class="card-img-top" alt="{{$eventProduct->category->category_name}}"></a>
 
@@ -71,7 +71,7 @@
                                                     <p class="">Offer Active : {{\Carbon\Carbon::parse($eventProduct->event->start_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</p>
                                                     <p class="">To: {{\Carbon\Carbon::parse($eventProduct->event->end_date)->format('F j, Y,g:i:s a', time() - 6*3600)}}</p>
                                                     <div class="price_box text-center">
-                                                        {{--                                                    <span class="current_price float-left">BDT: {{$eventProduct->event->discount}}</span>--}}
+                                                        <span class="current_price float-left">BDT: {{$eventProduct->event->discount}}</span>
                                                         <a class="float-right" href="{{route('promotion.products',[$eventProduct->event_id,$eventProduct->category_id])}}">
                                                             view more
                                                         </a>
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
                                     </div>
-{{--                                @endif--}}
+                               @endif
                             @endforeach
                         </div>
                     </div>
@@ -90,23 +90,23 @@
         </div>
 
         <div class="blog_pagination">
-            {{--            <div class="container">--}}
-            {{--                <div class="row">--}}
-            {{--                    <div class="col-12">--}}
-            {{--                        <div class="pagination">--}}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="pagination">
 
-            {{--                            {{$products->links()}}--}}
-            {{--                            --}}{{--                        <ul>--}}
-            {{--                            --}}{{--                            <li class="current">{{$products->links()}}</li>--}}
-            {{--                            --}}{{--                            <li><a href="#">2</a></li>--}}
-            {{--                            --}}{{--                            <li><a href="#">3</a></li>--}}
-            {{--                            --}}{{--                            <li class="next"><a href="#">next</a></li>--}}
-            {{--                            --}}{{--                            <li><a href="#">&gt;&gt;</a></li>--}}
-            {{--                            --}}{{--                        </ul>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
+                                    {{$products->links()}}
+                                    <ul>
+                                        <li class="current">{{$products->links()}}</li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li class="next"><a href="#">next</a></li>
+                                        <li><a href="#">&gt;&gt;</a></li>
+                                    </ul>--}}
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
         </div>
 
     </section>
