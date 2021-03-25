@@ -6,7 +6,7 @@
     <div class="container">   
         <div class="row">
             <div class="col-12">
-                <div class="breadcrumb_content">
+                <div class="breadcrumb_content" style="margin-top:62px">
                    <h3>Frequently Ask Questions</h3>
                     <ul>
                         <li><a href="index.html">home</a></li>
