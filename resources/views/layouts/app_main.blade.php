@@ -69,10 +69,10 @@
                             <div class="footer_menu">
 
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#"> Privacy Policy</a></li>
-                                    <li><a href="#"> Terms & Conditions</a></li>
+                                    <li><a href="{{ route('about') }}">About Us</a></li>
+                                    <li><a href="{{ route('delivery') }}">Delivery Information</a></li>
+                                    <li><a href="{{ route('privacy') }}"> Privacy Policy</a></li>
+                                    <li><a href="{{ route('terms') }}"> Terms & Conditions</a></li>
                                     <li><a href="{{route('contact.show')}}"> Contact Us</a></li>
                                     <li><a href="{{ route('faq') }}">FAQ</a></li>
                                 </ul>
@@ -84,12 +84,14 @@
                             <h3>Extras</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="#">Brands</a></li>
-                                    <li><a href="#">  Gift Certificates</a></li>
-                                    <li><a href="#">Affiliate</a></li>
-                                    <li><a href="#">Specials</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                    <li><a href="#"> Order History</a></li>
+                                    <li><a href="{{ route('brands.show') }}">Brands</a></li>
+                                    <li><a href="{{ route('gift') }}">  Gift Certificates</a></li>
+                                    <li><a href="{{ route('affilate') }}">Affiliate</a></li>
+                                    <li><a href="{{ route('special') }}">Specials</a></li>
+                                    <li><a href="{{ route('return') }}">Returns</a></li>
+                                    @if( \Illuminate\Support\Facades\Auth::check())
+                                        <li><a href="{{route('profile.show')}}"> Order History</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
