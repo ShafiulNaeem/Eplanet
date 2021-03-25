@@ -86,13 +86,48 @@ dd($monthlySell);
     return json_encode($monthlySell, true);
 });
 
-Route::get('/con',function(){
+Route::get('/privacy',function(){
+    return view('pages.privacy');
+})->name('privacy');
 
-return view('pages.privacy');
+Route::get('/affilate', function (){
+    return view('pages.affiliate');
+})->name('affilate');
 
-    // return view('pages.artical');
 
-});
+Route::get('/article', function (){
+    return view('pages.artical');
+})->name('article');
+
+
+Route::get('/delivery', function (){
+    return view('pages.delivery');
+})->name('delivery');
+
+
+Route::get('/return', function (){
+    return view('pages.return');
+})->name('return');
+
+
+Route::get('/terms', function (){
+    return view('pages.terms_and_con');
+})->name('terms');
+
+
+Route::get('/gift', function (){
+    return view('pages.gift');
+})->name('gift');
+
+
+Route::get('/special', function (){
+    return view('pages.special');
+})->name('special');
+
+
+Route::get('/about', function (){
+    return view('pages.about');
+})->name('about');
 
 
 Route::get('/faq',function(){
