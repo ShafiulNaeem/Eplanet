@@ -89,7 +89,7 @@ dd($monthlySell);
 Route::get('/con',function(){
 
 
-    return view('pages.about');
+    return view('pages.return');
 
     // return view('pages.artical');
 
