@@ -88,8 +88,7 @@ dd($monthlySell);
 
 Route::get('/con',function(){
 
-
-    return view('pages.return');
+return view('pages.privacy');
 
     // return view('pages.artical');
 
