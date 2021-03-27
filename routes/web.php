@@ -196,6 +196,13 @@ Route::prefix('pages')->group(function(){
 
 //User Auth
 Auth::routes();
+
+Route::prefix('callback')->group(function (){
+    Route::get('{provider}', 'Users\SocialLoginController@socialCallback');
+    Route::get('{provider}/handle', 'Users\SocialLoginController@googleHandel');
+});
+
+
 Route::prefix('admin')->group(function (){
     Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
