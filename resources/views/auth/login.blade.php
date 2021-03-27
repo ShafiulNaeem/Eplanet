@@ -44,12 +44,39 @@
                                 <label>Username or email <span>*</span></label>
                                 <input type="email" name="email" value="{{old('email')}}" placeholder="Your Email" required>
                             </p>
-                            <p>
+                            <div class="form-group">
                                 <label>Passwords <span>*</span></label>
                                 <input type="password" name="password" placeholder="Your Password" required>
-                            </p>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 float-left">
+                                    <div class="flex items-center justify-end mt-4">
+                                        <a href="{{ url('callback/google/handle') }}">
+                                            <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 float-left">
+                                    <div class="flex items-center justify-end mt-4">
+                                        <a href="{{ url('callback/facebook/handle') }}" style="
+    background: #3B5499;
+    color: #ffffff;
+    padding: 8px 0 7px 0px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 3px;
+    position: relative;
+    top: 3px;
+    font-size: 16px;
+">
+                                            <i class="fa fa-facebook-square " style="padding-right: 16px;"></i>Login with Facebook
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="login_submit">
-{{--                                <a href="forgetpass.html">Lost your password?<span>/</span></a>--}}
                                 @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}">
                                         {{ __('Lost Your Password?') }}
@@ -63,6 +90,8 @@
                                 <button type="submit">login</button>
 
                             </div>
+
+
 
                         </form>
                     </div>
