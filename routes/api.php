@@ -18,5 +18,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('getUser', 'API\UserInfoAPIController@getUser');
-Route::post('createUser', 'API\UserInfoAPIController@createUser');
+
+
+Route::namespace('API')->group(function(){
+    //user info api
+    Route::post('getUser', 'UserInfoAPIController@getUser');
+    Route::post('createUser', 'UserInfoAPIController@createUser');
+    Route::post('userByEmail', 'UserInfoAPIController@userByEmail');
+    Route::put('updateProfile/{user}', 'UserInfoAPIController@updateProfile');
+
+    //product api
+    Route::prefix('all')->group(function (){
+        Route::get('product', 'ProductAPIController@allProduct');
+        Route::get('category', 'ProductAPIController@allCategory');
+        Route::get('subCategory', 'ProductAPIController@allSubCategory');
+        Route::get('secondarySubCategory', 'ProductAPIController@allSecondarySubCategory');
+    });
+    Route::get('productBySlug/{slug}', 'ProductAPIController@productBySlug');
+    Route::get('categoryBySlug/{slug}', 'ProductAPIController@categoryBySlug');
+    Route::get('subCatBySlug/{slug}', 'ProductAPIController@subCatBySlug');
+    Route::get('secondarySubCatBySlug/{slug}', 'ProductAPIController@secondarySubCatBySlug');
+});

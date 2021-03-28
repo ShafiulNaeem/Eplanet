@@ -32,6 +32,37 @@ class UserInfoAPIController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function userByEmail(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $user = User::where('email', $request->email)->first();
+        return ($user) ? response()->json($user, 200) : response()->json([], 404);
+    }
+
+
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateProfile(Request $request, User $user): \Illuminate\Http\JsonResponse
+    {
+        $validate = $request->validate([
+            'fname'=> 'sometimes',
+            'lname' => 'sometimes',
+            'phone' => 'sometimes',
+            'email' => 'sometimes',
+        ]);
+        return ( $user->update($validate) )?
+            response()->json($user, 200):
+            response()->json([], 400) ;
+    }
+
+
+
     private function validateData(Request $request){
         if (
             ! empty($request->fname) &&

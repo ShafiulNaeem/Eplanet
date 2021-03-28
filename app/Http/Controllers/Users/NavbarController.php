@@ -109,10 +109,10 @@ class NavbarController extends Controller
     public function profileUpdate(Request $request,User $user)
     {
         $validate = $request->validate([
-            'fname'=> 'required',
-            'lname' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
+            'fname'=> 'sometimes',
+            'lname' => 'sometimes',
+            'phone' => 'sometimes',
+            'email' => 'sometimes',
         ]);
         return ( $user->update($validate) )?
             redirect()->route('profile.show')->with('success', 'Your Information Updated Successfully'):
