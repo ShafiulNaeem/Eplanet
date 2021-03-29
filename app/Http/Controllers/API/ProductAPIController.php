@@ -27,28 +27,33 @@ class ProductAPIController extends Controller
 
     /**
      * @param $slug
+     * @param $withRelatedTable
      * @return \Illuminate\Http\JsonResponse
      */
-    public function categoryBySlug($slug): \Illuminate\Http\JsonResponse
+    public function categoryBySlug($slug, $withRelatedTable): \Illuminate\Http\JsonResponse
     {
-        $cat = Category::where('category_slug', $slug)->with('subcategory')->GetActive()->first();
+        $cat = Category::where('category_slug', $slug)->GetActive()->first();
 
         return ($cat)?
-            response()->json($cat, 200):
+            response()->json(
+                ($withRelatedTable == "true") ?
+                    $cat : $cat->subcategory
+                , 200):
             response()->json([], 404);
     }
 
 
     /**
      * @param $slug
+     * @param $withRelatedTable
      * @return \Illuminate\Http\JsonResponse
      */
-    public function subCatBySlug($slug): \Illuminate\Http\JsonResponse
+    public function subCatBySlug($slug, $withRelatedTable): \Illuminate\Http\JsonResponse
     {
-        $cat = SubCategory::where('subcategory_slug', $slug)->with('secondary_sub_categories')->GetActive()->first();
+        $cat = SubCategory::where('subcategory_slug', $slug)->GetActive()->first();
 
         return ($cat)?
-            response()->json($cat, 200):
+            response()->json( ($withRelatedTable == "true") ? $cat : $cat->secondary_sub_categories, 200):
             response()->json([], 404);
     }
 
