@@ -34,8 +34,9 @@ Route::namespace('API')->group(function(){
         Route::get('subCategory', 'ProductAPIController@allSubCategory');
         Route::get('secondarySubCategory', 'ProductAPIController@allSecondarySubCategory');
     });
+
     Route::get('productBySlug/{slug}', 'ProductAPIController@productBySlug');
-    Route::get('categoryBySlug/{slug}', 'ProductAPIController@categoryBySlug');
-    Route::get('subCatBySlug/{slug}', 'ProductAPIController@subCatBySlug');
+    Route::get('categoryBySlug/{slug}/{withRelatedTable}', 'ProductAPIController@categoryBySlug');
+    Route::get('subCatBySlug/{slug}/{withRelatedTable}', 'ProductAPIController@subCatBySlug');
     Route::get('secondarySubCatBySlug/{slug}', 'ProductAPIController@secondarySubCatBySlug');
 });
