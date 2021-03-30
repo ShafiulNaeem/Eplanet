@@ -33,10 +33,17 @@ Route::namespace('API')->group(function(){
         Route::get('category', 'ProductAPIController@allCategory');
         Route::get('subCategory', 'ProductAPIController@allSubCategory');
         Route::get('secondarySubCategory', 'ProductAPIController@allSecondarySubCategory');
+        Route::get('user', 'UserInfoAPIController@allUser');
     });
 
     Route::get('productBySlug/{slug}', 'ProductAPIController@productBySlug');
     Route::get('categoryBySlug/{slug}/{withRelatedTable}', 'ProductAPIController@categoryBySlug');
     Route::get('subCatBySlug/{slug}/{withRelatedTable}', 'ProductAPIController@subCatBySlug');
     Route::get('secondarySubCatBySlug/{slug}', 'ProductAPIController@secondarySubCatBySlug');
+    Route::get('productBySubCategory/{slug}', 'ProductAPIController@productBySubCategory');
+
+    Route::prefix('wishlist')->group(function (){
+        Route::post('create', 'WishListAPIController@createWishList');
+        Route::get('byUser/{user}', 'WishListAPIController@getWishListByUser');
+    });
 });

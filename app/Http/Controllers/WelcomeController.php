@@ -71,7 +71,10 @@ class WelcomeController extends Controller
         $data['product_id'] = $id;
         $data['user_id'] = Auth::user()->id;
 
-        $check = WishList::where('product_id', $id)->first();
+        $check = WishList::where([
+            'product_id'=> $id,
+            'user_id'=> $data['user_id']
+        ])->first();
 
         if( empty($check) ){
             return ( WishList::create($data) ) ? response([
