@@ -37,7 +37,7 @@
                             <h4 class="text-white text-uppercase">{{$event->event_name}} STARTING IN</h4>
                             <p class="text-white text-uppercase">{{\Carbon\Carbon::parse($event->start_date)->format('d M  Y')}}</p>
                             <h1 class="text-white text-uppercase" data-start-date="{{$event->start_date}}"  id="time_difference" >{{$elapsed}}</h1>
-
+                            <a href="{{route('promotion.category')}}" class="btn btn-outline-success" id="nobabi_link">Go to নবাবীহাট</a>
                         </div>
                 @endif
             </div>
@@ -56,7 +56,6 @@
                                     <div class="col-md-4">
                                         <div class="right-category">
                                             <div class="card">
-                                                <p>{{$eventProduct->event_id}} | {{$eventProduct->category_id}}</p>
                                                 <div class="zoom-In">
                                                     <a href="{{route('promotion.products',[$eventProduct->event_id,$eventProduct->category_id])}}"><img src="{{assetImageAndVideo('images' ).$eventProduct->category->category_image}}" class="card-img-top" alt="{{$eventProduct->category->category_name}}"></a>
 
@@ -77,7 +76,7 @@
                                             </div>
                                         </div>
                                     </div>
-                               @endif
+                                @endif
                             @endforeach
 
                         </div>
@@ -87,19 +86,21 @@
 
         </div>
 
-        <div class="blog_pagination">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="">
-                                    <ul>
-                                        <li>{{$eventProducts->links()}}</li>
-                                    </ul>
-                                   </div>
-                               </div>
-                           </div>
+        @if(!empty($eventProducts))
+            <div class="blog_pagination">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="">
+                                <ul>
+                                    <li>{{$eventProducts->links()}}</li>
+                                </ul>
+                            </div>
                         </div>
-        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
 
     </section>
 
