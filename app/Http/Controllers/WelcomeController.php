@@ -130,24 +130,26 @@ class WelcomeController extends Controller
 
         $count_date = date('Y-m-d H:i:s', time()+6*3600);
         $event = Event::where( 'start_date','>=', $count_date)->orderby('start_date','asc')->GetActive()->first();
-       //dd($event);
+//        dd($event);
         $eventProducts = [];
         $eventPro = Event::with('eventProducts')
             ->where( 'start_date','<=', $count_date)
             ->where( 'end_date','>', $count_date)
             ->GetActive()
             ->get();
-       // dd($eventPro);
+         //dd($eventPro);
 
 
         if (count($eventPro) > 0){
 
-                $eventProducts =EventProduct::with('category')
-                    ->where([
-                        'event_id' => $eventPro[0]->id
-                    ])
-                    ->select('category_id','event_id')->distinct()->paginate(20);
+            $eventProducts =EventProduct::with('category')
+                ->where([
+                    'event_id' => $eventPro[0]->id
+                ])
+                ->select('category_id','event_id')->distinct()->paginate(20);
         }
+
+        //dd($eventProducts);
         return view('pages.promotion',compact('event','eventProducts'));
 
     }
