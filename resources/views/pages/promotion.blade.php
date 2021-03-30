@@ -23,7 +23,6 @@
         <div class="container card">
             <div class="row" style="background-color: #1e2b37">
                 @if(isset($event))
-                   @foreach($events as $event)
                     @php
                         $datetime1 = new \DateTime($event->start_date);
                         $datetime2 = new \DateTime($count_date);
@@ -40,8 +39,6 @@
                             <h1 class="text-white text-uppercase" data-start-date="{{$event->start_date}}"  id="time_difference" >{{$elapsed}}</h1>
 
                         </div>
-
-                    @endforeach
                 @endif
             </div>
         </div>
@@ -82,6 +79,7 @@
                                     </div>
                                @endif
                             @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -93,20 +91,14 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="pagination">
-
-                                    {{$products->links()}}
+                                    <div class="">
                                     <ul>
-                                        <li class="current">{{$products->links()}}</li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li class="next"><a href="#">next</a></li>
-                                        <li><a href="#">&gt;&gt;</a></li>
-                                    </ul>--}}
+                                        <li>{{$eventProducts->links()}}</li>
+                                    </ul>
                                    </div>
                                </div>
                            </div>
-                       </div>
+                        </div>
         </div>
 
     </section>

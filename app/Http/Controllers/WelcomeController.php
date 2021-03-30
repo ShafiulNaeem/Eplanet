@@ -129,8 +129,8 @@ class WelcomeController extends Controller
     public function promotion(){
 
         $count_date = date('Y-m-d H:i:s', time()+6*3600);
-        $event = Event::where( 'start_date','>=', $count_date)->GetActive()->first();
-        //dd($events->event_name);
+        $event = Event::where( 'start_date','>=', $count_date)->orderby('start_date','asc')->GetActive()->first();
+       //dd($event);
         $eventProducts = [];
         $eventPro = Event::with('eventProducts')
             ->where( 'start_date','<=', $count_date)
@@ -146,7 +146,7 @@ class WelcomeController extends Controller
                     ->where([
                         'event_id' => $eventPro[0]->id
                     ])
-                    ->select('category_id','event_id')->distinct()->get();
+                    ->select('category_id','event_id')->distinct()->paginate(20);
         }
         return view('pages.promotion',compact('event','eventProducts'));
 
