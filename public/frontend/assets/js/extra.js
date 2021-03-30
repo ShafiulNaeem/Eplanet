@@ -42,5 +42,5 @@ function timeDiffCalc(dateFuture, dateNow) {
     diffInMilliSeconds -= minutes * 60;
 
     const seconds = Math.floor(diffInMilliSeconds % 60);
-    return days + ' DAYS ' + hours + ' h : ' + minutes + ' m : ' + (( seconds/10 < 1 ) ? '0'+ String(seconds) +' s' : seconds+' s');
+    return days + ' DAYS ' + hours + ' : ' + minutes + ' : ' + (( seconds/10 < 1 ) ? '0'+ String(seconds)  : seconds);
 }
