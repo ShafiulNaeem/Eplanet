@@ -38,7 +38,10 @@
                                         </div>
                                     </div>
                                     <div class="blog_thumb">
-                                        <a href="#"><img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}"></a>
+                                        <a href="#">
+                                            {!! $blog->blog_video !!}
+{{--                                            <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}">--}}
+                                        </a>
                                     </div>
                                     <figcaption class="blog_content">
                                         <div class="post_content">
