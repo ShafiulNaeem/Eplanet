@@ -1147,8 +1147,9 @@ Fading
     margin:5px auto;
 }
 
-.product_d_right{
-    font-weight: 400
+.product_d_right {
+    font-weight: 400;
+    background: #bdb9a0;
 }
 
 .product_desc p{
@@ -1402,4 +1403,23 @@ h2 span {
     width:100%;
     background:#f1f3f5da;
     padding: 20px;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.related_pro{
+    background: #bdb9a0;
+}
+.product_d_right{
+    background: #bdb9a0;
+}
+.product_d_inner{
+    background: #bdb9a0;
+}
+
+.product_info_button{
+    background:#85929e73;
+    padding:20px 0
 }
