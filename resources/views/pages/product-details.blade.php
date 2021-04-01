@@ -489,7 +489,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 no-gutter">
-                        <h4 class="text-center" style="background:#bdb9a0;padding:5px 0">Related Product</h4>
+                        <h4 class="text-center" style="background:#bdb9a042;padding:5px 0">Related Product</h4>
                     </div>
                 </div>
                 <div class="row">
