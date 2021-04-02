@@ -1420,6 +1420,12 @@ h2 span {
 }
 
 .product_info_button{
-    background:#bdb9a042;
+    background:#f2f3f7;
     padding:20px 0
+}
+.location-dropdown ul li{
+    cursor: pointer;
+}
+.window_hide{
+    display: none;
 }
