@@ -845,34 +845,26 @@
                 </li>
 
 
-
-            <li class="nav-item @if(
-                                    url()->current() == route('division.create') ||
-                                    url()->current() == route('admin.all.division') ||
-                                    url()->current() == route('division.index') ||
-                                    url()->current() == route('district.index') ||
-                                    url()->current() == route('district.create') ||
-                                    url()->current() == route('admin.all.district') ||
-                                    url()->current() == route('city.create') ||
-                                    url()->current() == route('city.index') ||
-                                    url()->current() == route('admin.all.city') ||
-                                    url()->current() == route('subCity.create') ||
-                                    url()->current() == route('subCity.index') ||
-                                    url()->current() == route('admin.all.subCity')
-    ) menu-is-opening menu-open @endif ">
+            @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                <li class="nav-item @if(
+                                        url()->current() == route('division.create') ||
+                                        url()->current() == route('division.index') ||
+                                        url()->current() == route('district.index') ||
+                                        url()->current() == route('district.create') ||
+                                        url()->current() == route('city.create') ||
+                                        url()->current() == route('city.index') ||
+                                        url()->current() == route('subCity.create') ||
+                                        url()->current() == route('subCity.index')
+        ) menu-is-opening menu-open @endif ">
                     <a href="#" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('division.create') ||
-                                    url()->current() == route('admin.all.division') ||
                                     url()->current() == route('division.index') ||
                                     url()->current() == route('district.index') ||
                                     url()->current() == route('district.create') ||
-                                    url()->current() == route('admin.all.district') ||
                                     url()->current() == route('city.create') ||
                                     url()->current() == route('city.index') ||
-                                    url()->current() == route('admin.all.city') ||
                                     url()->current() == route('subCity.create') ||
-                                    url()->current() == route('subCity.index') ||
-                                    url()->current() == route('admin.all.subCity')
+                                    url()->current() == route('subCity.index')
     ) active @endif ">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
@@ -883,28 +875,24 @@
 
                     <ul class="nav nav-treeview" @if(
                                     url()->current() == route('division.create') ||
-                                    url()->current() == route('admin.all.division') ||
                                     url()->current() == route('division.index')
     ) style="display: block" @endif  >
                         <li class="nav-item @if(
                                     url()->current() == route('division.create') ||
-                                    url()->current() == route('admin.all.division') ||
                                     url()->current() == route('division.index')
     ) menu-is-opening menu-open  @endif  ">
                             <a href="#" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('division.create') ||
-                                    url()->current() == route('admin.all.division') ||
                                     url()->current() == route('division.index')
     ) active @endif ">
                                 <i class="far fa-circle nav-icon text-primary"></i>
                                 <p>
-                                    Division
+                                    {{__('Division')}}
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview" @if(
                                     url()->current() == route('division.create') ||
-                                    url()->current() == route('admin.all.division') ||
                                     url()->current() == route('division.index')
     ) style="display: block" @endif  >
                                 <li class="nav-item">
@@ -912,7 +900,7 @@
                                     url()->current() == route('division.create')
     ) active @endif ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Create Division</p>
+                                        <p> {{ __('Create Division') }} </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -920,51 +908,36 @@
                                     url()->current() == route('division.index')
     ) active @endif  ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Division Manage</p>
+                                        <p>{{ __('Division Manage') }}</p>
                                     </a>
                                 </li>
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.division') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
-                                    url()->current() == route('admin.all.division')
-    ) active @endif  ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor Division</p>
-                                        </a>
-                                    </li>
-                                @endif
-
-
                             </ul>
                         </li>
 
                         <li class="nav-item @if(
                                     url()->current() == route('district.index') ||
-                                    url()->current() == route('district.create') ||
-                                    url()->current() == route('admin.all.district')
+                                    url()->current() == route('district.create')
     ) menu-is-opening menu-open @endif ">
                             <a href="#" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('district.index') ||
-                                    url()->current() == route('district.create') ||
-                                    url()->current() == route('admin.all.district')
+                                    url()->current() == route('district.create')
     ) active @endif ">
                                 <i class="far fa-circle nav-icon text-primary"></i>
                                 <p>
-                                    District
+                                    {{__('District')}}
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview" @if(
                                     url()->current() == route('district.index') ||
-                                    url()->current() == route('district.create') ||
-                                    url()->current() == route('admin.all.district')
+                                    url()->current() == route('district.create')
     ) style="display: block" @else style="display: none" @endif  >
                                 <li class="nav-item">
                                     <a href="{{ route('district.create') }}" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('district.create')
     ) active @endif  ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Create District</p>
+                                        <p>{{ __('Create District') }}</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -972,36 +945,23 @@
                                     url()->current() == route('district.index')
     ) active @endif   ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Manage District</p>
+                                        <p>{{ __('Manage District') }}</p>
                                     </a>
                                 </li>
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.district') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
-                                    url()->current() == route('admin.all.district')
-    ) active @endif   ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor District</p>
-                                        </a>
-                                    </li>
-                                @endif
-
                             </ul>
                         </li>
 
                         <li class="nav-item @if(
                                     url()->current() == route('city.create') ||
-                                    url()->current() == route('city.index')  ||
-                                    url()->current() == route('admin.all.city')
+                                    url()->current() == route('city.index')
     ) menu-is-opening menu-open @endif ">
                             <a href="#" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('city.create') ||
-                                    url()->current() == route('city.index')  ||
-                                    url()->current() == route('admin.all.city')
+                                    url()->current() == route('city.index')
     ) active @endif ">
                                 <i class="far fa-circle nav-icon text-primary"></i>
                                 <p>
-                                    City
+                                    {{ __('City') }}
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -1014,7 +974,7 @@
                                     url()->current() == route('city.create')
     ) active @endif  ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Create City</p>
+                                        <p>{{ __('Create City') }}</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -1022,37 +982,24 @@
                                     url()->current() == route('city.index')
     ) active @endif   ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Manage City</p>
+                                        <p>{{ __('Manage City') }}</p>
                                     </a>
                                 </li>
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.city') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
-                                    url()->current() == route('admin.all.city')
-    ) active @endif   ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor City</p>
-                                        </a>
-                                    </li>
-                                @endif
-
                             </ul>
                         </li>
 
 
                         <li class="nav-item @if(
                                     url()->current() == route('subCity.create') ||
-                                    url()->current() == route('subCity.index') ||
-                                    url()->current() == route('admin.all.subCity')
+                                    url()->current() == route('subCity.index')
     ) menu-is-opening menu-open @endif ">
                             <a href="#" class="admin_sidebar_nav_link nav-link @if(
                                     url()->current() == route('subCity.create') ||
-                                    url()->current() == route('subCity.index') ||
-                                    url()->current() == route('admin.all.subCity')
+                                    url()->current() == route('subCity.index')
     ) active @endif ">
                                 <i class="far fa-circle nav-icon text-primary"></i>
                                 <p>
-                                    Sub City
+                                    {{ __('Sub City') }}
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -1065,7 +1012,7 @@
                                     url()->current() == route('subCity.create')
     ) active @endif  ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Create Sub City</p>
+                                        <p>{{ __('Create Sub City') }}</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -1073,27 +1020,16 @@
                                     url()->current() == route('subCity.index')
     ) active @endif   ">
                                         <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Manage Sub City</p>
+                                        <p>{{ __('Manage Sub City') }}</p>
                                     </a>
                                 </li>
-                                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
-                                    <li class="nav-item">
-                                        <a href="{{ route('admin.all.subCity') }}" class="admin_sidebar_nav_link nav-link text-fuchsia @if(
-                                    url()->current() == route('admin.all.subCity')
-    ) active @endif   ">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>All Vendor Sub City</p>
-                                        </a>
-                                    </li>
-                                @endif
-
                             </ul>
                         </li>
 
 
                     </ul>
                 </li>
-
+        @endif
 
 
 

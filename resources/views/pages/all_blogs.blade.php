@@ -35,7 +35,8 @@
                                         <figure>
                                             <div class="blog_thumb">
                                                 <a href="{{route('blog.show',$blog->blog_slug)}}">
-                                                    <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}" />
+                                                    {!! $blog->blog_video !!}
+{{--                                                    <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}" />--}}
                                                 </a>
                                             </div>
                                             <figcaption class="blog_content">

@@ -14,8 +14,7 @@ class SocialLoginController extends Controller
     public function socialCallback($provider)
     {
         $user = Socialite::driver($provider)->stateless()->user();
-
-        $inDatabase = User::where('provider_id', $user->id)->first();
+        $inDatabase = User::where('email', $user->email)->orWhere('provider_id',  $user->id)->first();
 
         if( $inDatabase ) {
             Auth::login($inDatabase);

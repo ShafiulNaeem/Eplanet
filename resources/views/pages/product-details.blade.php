@@ -174,7 +174,7 @@
                                             </div>
 
                                         </div>
-                                       
+
 
                                     </div>
                                     <div class="col-md-5 float-left">
@@ -281,7 +281,7 @@
 
 
                                                         <i class="fa fa-map-marker " aria-hidden="true" style="color:#000"></i>
-                                                          <span id="currentlocationselected">Dhaka > Bangladesh</span>
+                                                          <span id="currentlocationselected"  >Dhaka > Bangladesh</span>
                                                           <input type="hidden" name="delivery_location" value="Dhaka">
                                                       </div>
                                                       <div class="col-md-4 float-right">

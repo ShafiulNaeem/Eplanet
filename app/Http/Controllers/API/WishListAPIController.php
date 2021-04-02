@@ -39,4 +39,20 @@ class WishListAPIController extends Controller
     {
         return response()->json($user->wishLists, 200);
     }
+
+
+    /**
+     * @param $user
+     * @param $productID
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function wishListByUserIdAndProductID($user, $productID): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(
+            WishList::where([
+                'user_id' => $user,
+                'product_id' => $productID
+            ])->first()
+        );
+    }
 }
