@@ -371,18 +371,18 @@
    $(document).ready(function(){
         $('#click_change').click(function(){
             $('#click_change').css('color','blue');
-            $('#click_change2').css('color','black');
+            $('#click_change2').css('color','white');
         });
 
         $('#click_change2').click(function(){
             $('#click_change2').css('color','blue');
-            $('#click_change').css('color','black');
+            $('#click_change').css('color','white');
 
         });
 
         $('#click_change3').click(function(){
             $('#click_change').css('color','blue');
-            $('#click_change2').css('color','black');
+            $('#click_change2').css('color','white');
         });
 
         $('#top').click(function(){
