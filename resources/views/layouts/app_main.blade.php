@@ -456,7 +456,7 @@
         // if the target of the click isn't the container nor a descendant of the container
         if (!changelocationtext.is(e.target) && changelocationtext.has(e.target).length === 0)
         {
-            locationDropdownMainDiv.hide();
+            locationDropdownMainDiv.show();
         }
     });
 
@@ -535,6 +535,17 @@
     function createElement(tag){
         return document.createElement(tag);
     }
+</script>
+
+<script>
+      window.onload= function(){
+          var hide_div = document.getElementsById('locationDropdownMainDiv');
+          document.onclick = function(div){
+              if(div.target.id !=='locationDropdownMainDiv'){
+                  hide_div.style.display="none";
+              }
+          }
+      }
 </script>
 
 <script>
