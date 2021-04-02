@@ -6677,14 +6677,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .product_info_button {
-  border-bottom: 1px solid ;
+  /* border-bottom: 1px solid ; */
   /*padding-bottom: 15px;*/
   margin-bottom: 29px;
 }
-
-.override-nav-link{
-    /*border: none ;*/
+.nav ul li{
+  border:none;
 }
+
 
 
 .nav-tabs .override-nav-link:focus, .nav-tabs .override-nav-link:hover{
@@ -6710,7 +6710,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   float: left;
   text-transform: capitalize;
   font-size: 20px;
-  color: #555;
+  color: #FFF;
   font-weight: 500;
   margin-right: 35px;
   line-height: 26px;
@@ -11052,7 +11052,6 @@ display: none;
 }
 
 .location {
-    border-bottom: 1.5px solid;
     display: block;
     width: 100%;
     padding: .25rem 1.5rem;
