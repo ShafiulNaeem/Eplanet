@@ -84,7 +84,7 @@
                             <div class="row">
                                 <form role="form" action="{{route('pages.cart')}}" enctype="multipart/form-data" method="POST">
                                     <div class="col-md-7 float-left">
-                                        <div class="product_d_right " style="border-right:1px solid #ededed;background: #85929e73">
+                                        <div class="product_d_right" style="border-right:1px solid">
                                             <div class="product_meta">
                                                 <span> <b>Condition :</b> @if($product->is_new == 1) Brand New @else Old @endif </span>
                                             </div>
@@ -178,7 +178,7 @@
 
                                     </div>
                                     <div class="col-md-5 float-left">
-                                    <div class="product_d_right"  style="border-right:1px solid #ededed;background: #85929e73">
+                                    <div class="product_d_right"  style="border-right:1px solid">
                                         <h4> Name: {{$product->product_name}}</h4>
 
                                             <div class="price_box ">
@@ -363,8 +363,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-md-9">
-                <div class="product_d_inner" style=" #ededed;background: #85929e73">
-                    <div class="product_info_button" style="background:#bdb9a0">
+                <div class="product_d_inner">
+                    <div class="product_info_button">
                         <ul class="nav nav-tabs" role="tablist">
                             <li>
                                  <a data-toggle="tab" class="active  show nav-link override-nav-link" id="click_change" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false" >Specification</a>
@@ -489,13 +489,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 no-gutter">
-                        <h4 class="text-center" style="background:#D6D6D6;padding:5px 0">Related Product</h4>
+                        <h4 class="text-center" style="background:#bdb9a042;padding:5px 0">Related Product</h4>
                     </div>
                 </div>
                 <div class="row">
                         @foreach($results->products as $product)
                         @if( $product->id != $proid )
-                            <div class="related_pro" style=" #ededed;background: #85929e73">
+                            <div class="related_pro">
                             <div class="col-md-4">
                                 <div class="product_img">
                                     <a href="{{ route('pages.show', $product->product_slug) }}">
