@@ -14,6 +14,7 @@ use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\SubCategory;
+use App\Models\SubCity;
 use App\Models\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,7 @@ class WelcomeController extends Controller
     public function changeLocation($region, $id){
         if ( $region == "division" ) return District::where('division_id', $id)->get();
         elseif ($region == "district") return City::where('district_id', $id)->get();
+        elseif ($region == "city") return SubCity::where('city_id', $id)->get();
         return Division::all();
     }
 
