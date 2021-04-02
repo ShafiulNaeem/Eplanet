@@ -23,9 +23,6 @@ class DivisionFactory extends Factory
     public function definition()
     {
         return [
-            'admin_id' => function(){
-                return Admin::all()->random();
-            },
             'division_name' => $this->faker->country,
             'price' => $this->faker->numberBetween(2, 100)
         ];

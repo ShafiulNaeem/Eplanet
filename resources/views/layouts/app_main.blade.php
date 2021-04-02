@@ -97,71 +97,8 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-6 col-sm-12 float-left"></div>
-
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Information</h3>--}}
-{{--                        <div class="footer_menu">--}}
-
-{{--                            <ul>--}}
-{{--                                <li><a href="about.html">About Us</a></li>--}}
-{{--                                <li><a href="#">Delivery Information</a></li>--}}
-{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
-{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
-{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
-{{--                                <li><a href="#"> Site Map</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Information</h3>--}}
-{{--                        <div class="footer_menu">--}}
-
-{{--                            <ul>--}}
-{{--                                <li><a href="about.html">About Us</a></li>--}}
-{{--                                <li><a href="#">Delivery Information</a></li>--}}
-{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
-{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
-{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
-{{--                                <li><a href="#"> Site Map</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Extras</h3>--}}
-{{--                        <div class="footer_menu">--}}
-{{--                            <ul>--}}
-{{--                                <li><a href="#">Brands</a></li>--}}
-{{--                                <li><a href="#">  Gift Certificates</a></li>--}}
-{{--                                <li><a href="#">Affiliate</a></li>--}}
-{{--                                <li><a href="#">Specials</a></li>--}}
-{{--                                <li><a href="#">Returns</a></li>--}}
-{{--                                <li><a href="#"> Order History</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Information</h3>--}}
-{{--                        <div class="footer_menu">--}}
-
-{{--                            <ul>--}}
-{{--                                <li><a href="about.html">About Us</a></li>--}}
-{{--                                <li><a href="#">Delivery Information</a></li>--}}
-{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
-{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
-{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
-{{--                                <li><a href="#"> Site Map</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
 
             </div>
         </div>
@@ -444,9 +381,12 @@
     changelocationtext.on('click', function (){
         locationDropdownMainDiv.toggle();
 
-        if ( currentLocationType == 'division' ){
+        if ( $(this).attr('data-location-current') == 'division' ){
             let url = window.origin + '/changelocation/null/null';
             apiget(url, null);
+        }else {
+            // let url = window.origin + '/changelocation/' + $(this).attr('data-location-current') +'/'+data_location_id;
+            // apiget();
         }
     });
 
@@ -463,10 +403,14 @@
     function changeLocation(param) {
         param.style.display= 'block';
         let data_location_current = param.getAttribute('data-location-current');
-        if ( data_location_current == 'division' ) trackLocationChange[0] = param.innerText;
+        if ( data_location_current == 'division' ) {
+            trackLocationChange = [];
+            trackLocationChange[0] = param.innerText;
+        }
         if ( data_location_current == 'district' ) trackLocationChange[1] = param.innerText;
-        if ( data_location_current == 'city' ) {
-            trackLocationChange[2] = param.innerText;
+        if ( data_location_current == 'city' ) trackLocationChange[2] = param.innerText;
+        if ( data_location_current == 'secondCity' ) {
+            trackLocationChange[3] = param.innerText;
             locationDropdownMainDiv.hide();
         }
 
@@ -513,19 +457,26 @@
             para.setAttribute('class', 'bg-gradient-dark location');
             para.setAttribute('onclick', 'changeLocation(this)');
             para.setAttribute('data-location-id', value.id);
-            (currentLocationType != null) ?
-            para.setAttribute('data-location-current',
-                (currentLocationType == 'division') ? 'district' : 'city'
-            ) : para.setAttribute('data-location-current',
-                'division'
-            );
 
-            (currentLocationType != null) ?
-                para.append(
-                    (currentLocationType == 'division') ? value.district_name : value.city_name
-                ) : para.append(
-                    value.division_name
-                );
+            if(currentLocationType != null){
+                if ( 'division' == currentLocationType ){
+                    para.setAttribute('data-location-current', 'district');
+                    para.append(value.district_name);
+                } else if ( 'district' == currentLocationType ) {
+                    para.setAttribute('data-location-current', 'city');
+                    para.append(value.city_name);
+                } else if( 'secondCity' == currentLocationType ) {
+                    para.setAttribute('data-location-current', 'division');
+                    para.append(value.division_name);
+                } else {
+                    para.setAttribute('data-location-current', 'secondCity');
+                    para.append(value.sub_city_name);
+                }
+            } else {
+                para.setAttribute('data-location-current', 'division');
+                para.append(value.division_name);
+            }
+
             let li = createElement('li');
             li.append(para);
             mainLocationUl.append(li);

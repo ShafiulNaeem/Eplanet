@@ -10,6 +10,20 @@ use App\Models\SubCategory;
 
 class ProductAPIController extends Controller
 {
+
+    /**
+     * @param $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function searchProduct($data): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(
+            Product::where('product_name', 'LIKE','%'.$data.'%')
+                ->GetActive()
+                ->get()
+        );
+    }
+
     /**
      * @param $slug
      * @return \Illuminate\Http\JsonResponse

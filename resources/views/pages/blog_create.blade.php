@@ -41,8 +41,8 @@
                                 <textarea name="post" id="" cols="20" style="border: 1px solid #495057" class="form-control" rows="5"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="blog_image">Blog Image</label>
-                                <input name="blog_image" type="file" class="form-control-file">
+                                <label for="blog_image">Blog Video</label>
+                                <input name="blog_video" type="text" class="form-control-file">
                             </div>
                             <div class="create_submit">
                                 <button type="submit">Post</button>

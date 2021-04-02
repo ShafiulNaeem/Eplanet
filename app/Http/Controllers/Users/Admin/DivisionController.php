@@ -17,7 +17,7 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
         return view('admin.division.manage',compact('divisions'));
     }
 
@@ -27,7 +27,7 @@ class DivisionController extends Controller
      */
     public function allDivision()
     {
-        $divisions = Division::orderBy('division_name','asc')->WithoutAdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
         return view('admin.division.manage',compact('divisions'));
     }
 
@@ -53,8 +53,6 @@ class DivisionController extends Controller
             'division_name' => 'required',
             'price' => 'sometimes'
         ]);
-
-        $validate['admin_id'] = Auth::guard('admin')->id();
 
         if( Division::create($validate) ) return redirect(route('division.index'))->with('success', 'Division created');
         return redirect()->back()->with('error', 'Something went wrong, please try again');

@@ -54,7 +54,7 @@ class BlogController extends Controller
     {
         $this->validate($request, array(
             'post' => ['required', 'string'],
-            'blog_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'blog_video' => 'required',
         ));
 
 
@@ -64,15 +64,10 @@ class BlogController extends Controller
         $blog->post = $request->post;
         $blog->title = $request->title;
         $blog->blog_slug = $this->createSlug(Blog::class, $request->title, 'blog_slug');
-
-        if($request->hasFile('blog_image')){
-            $image = request()->file('blog_image');
-            $blog->blog_image= $this->uploadImage($image, 'images');;
-            $blog->save();
-        };
+        $blog->blog_video = $request->blog_video;
 
         if($blog->save()){
-            return redirect()->route('blog.allBog')->with('success','Post Created Successfully');
+            return redirect()->route('blog.allBog')->with('success','Vlog Created Successfully');
         } else {
             return redirect()->back()->with('success','Something went wrong');
         }
