@@ -18,7 +18,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::orderBy('city_name','asc')->with(['division','district'])->AdminCity()->get();
+        $cities = City::orderBy('city_name','asc')->with(['division','district'])->get();
         //dd($cities);
         return view('admin.city.manage',compact('cities'));
     }
@@ -37,7 +37,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
         return view('admin.city.create',compact('divisions'));
     }
 
@@ -54,8 +54,6 @@ class CityController extends Controller
             'city_name' => 'required',
             'division_id' => 'required'
         ]);
-
-        $validate['admin_id'] = Auth::guard('admin')->id();
 
         if( City::create($validate) ) return redirect(route('city.index'))->with('success', 'Delivery Area City created');
         return redirect()->back()->with('error', 'Something went wrong, please try again');
@@ -80,8 +78,8 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
-        $districts = District::with('division')->where('division_id',$city->division_id)->AdminDistrict()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
+        $districts = District::with('division')->where('division_id',$city->division_id)->get();
         //dd($districts);
         return view('admin.city.edit',compact('city','divisions','districts'));
     }

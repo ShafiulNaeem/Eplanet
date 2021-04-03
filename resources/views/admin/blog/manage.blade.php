@@ -37,7 +37,8 @@
                             <td>{{$blog->user->fname}} {{$blog->user->lname}}</td>
                             <td>{{$blog->title}} </td>
                             <td>
-                                <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->post}}" class="img-rounded" width="80" />
+                                {!! $blog->blog_video !!}
+{{--                                <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->post}}" class="img-rounded" width="80" />--}}
                             </td>
                             <td>{!! $blog->post !!}</td>
                             <td>

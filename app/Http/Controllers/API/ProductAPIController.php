@@ -7,11 +7,23 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\SecondarySubCategory;
 use App\Models\SubCategory;
-use http\Env\Response;
-use Illuminate\Http\Request;
 
 class ProductAPIController extends Controller
 {
+
+    /**
+     * @param $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function searchProduct($data): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(
+            Product::where('product_name', 'LIKE','%'.$data.'%')
+                ->GetActive()
+                ->get()
+        );
+    }
+
     /**
      * @param $slug
      * @return \Illuminate\Http\JsonResponse
@@ -105,5 +117,21 @@ class ProductAPIController extends Controller
     public function allSecondarySubCategory(): \Illuminate\Http\JsonResponse
     {
         return response()->json(SecondarySubCategory::GetActive()->get(), 200);
+    }
+
+
+    /**
+     * @param $slug
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function productBySubCategory($slug): \Illuminate\Http\JsonResponse
+    {
+        $subCat = SubCategory::where('subcategory_slug', $slug)->GetActive()->first();
+
+        if ($subCat){
+            $pro = Product::where('sub_categories_id', $subCat->id)->GetActive()->get();
+            return ($pro) ? response()->json($pro, 200) : response()->json([], 404);
+        }
+        return response()->json([], 404);
     }
 }
