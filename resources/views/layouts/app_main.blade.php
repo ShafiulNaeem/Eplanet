@@ -401,7 +401,8 @@
     });
 
     function changeLocation(param) {
-        param.style.display= 'block';
+        locationDropdownMainDiv.show();
+        console.log(param.style.display);
         let data_location_current = param.getAttribute('data-location-current');
         if ( data_location_current == 'division' ) {
             trackLocationChange = [];
