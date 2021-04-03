@@ -62,6 +62,15 @@ class UserInfoAPIController extends Controller
     }
 
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function allUser(): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(User::GetActive()->get(), 200);
+    }
+
+
 
     private function validateData(Request $request){
         if (

@@ -14,6 +14,7 @@ use App\Models\ExpressWish;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\SubCategory;
+use App\Models\SubCity;
 use App\Models\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,7 @@ class WelcomeController extends Controller
     public function changeLocation($region, $id){
         if ( $region == "division" ) return District::where('division_id', $id)->get();
         elseif ($region == "district") return City::where('district_id', $id)->get();
+        elseif ($region == "city") return SubCity::where('city_id', $id)->get();
         return Division::all();
     }
 
@@ -71,7 +73,10 @@ class WelcomeController extends Controller
         $data['product_id'] = $id;
         $data['user_id'] = Auth::user()->id;
 
-        $check = WishList::where('product_id', $id)->first();
+        $check = WishList::where([
+            'product_id'=> $id,
+            'user_id'=> $data['user_id']
+        ])->first();
 
         if( empty($check) ){
             return ( WishList::create($data) ) ? response([
@@ -126,25 +131,27 @@ class WelcomeController extends Controller
     public function promotion(){
 
         $count_date = date('Y-m-d H:i:s', time()+6*3600);
-        $event = Event::where( 'start_date','>=', $count_date)->GetActive()->first();
-        //dd($events->event_name);
+        $event = Event::where( 'start_date','>=', $count_date)->orderby('start_date','asc')->GetActive()->first();
+//        dd($event);
         $eventProducts = [];
         $eventPro = Event::with('eventProducts')
             ->where( 'start_date','<=', $count_date)
             ->where( 'end_date','>', $count_date)
             ->GetActive()
             ->get();
-       // dd($eventPro);
+         //dd($eventPro);
 
 
         if (count($eventPro) > 0){
 
-                $eventProducts =EventProduct::with('category')
-                    ->where([
-                        'event_id' => $eventPro[0]->id
-                    ])
-                    ->select('category_id','event_id')->distinct()->get();
+            $eventProducts =EventProduct::with('category')
+                ->where([
+                    'event_id' => $eventPro[0]->id
+                ])
+                ->select('category_id','event_id')->distinct()->paginate(20);
         }
+
+        //dd($eventProducts);
         return view('pages.promotion',compact('event','eventProducts'));
 
     }

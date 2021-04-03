@@ -18,14 +18,14 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $districts = District::orderBy('district_name','asc')->with('division')->AdminDistrict()->get();
+        $districts = District::orderBy('district_name','asc')->with('division')->get();
         //dd($districts);
         return view('admin.district.manage',compact('districts'));
     }
 
     public function allDistrict()
     {
-        $districts = District::orderBy('district_name','asc')->with('division')->WithoutAdminDistrict()->get();
+        $districts = District::orderBy('district_name','asc')->with('division')->get();
         //dd($districts);
         return view('admin.district.manage',compact('districts'));
     }
@@ -37,7 +37,7 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
         return view('admin.district.create',compact('divisions'));
     }
 
@@ -53,8 +53,6 @@ class DistrictController extends Controller
             'district_name' => 'required',
             'division_id' => 'required',
         ]);
-
-        $validate['admin_id'] = Auth::guard('admin')->id();
 
         if( District::create($validate) ) return redirect(route('district.index'))->with('success', 'District created');
         return redirect()->back()->with('error', 'Something went wrong, please try again');
@@ -79,7 +77,7 @@ class DistrictController extends Controller
      */
     public function edit(District $district)
     {
-        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
         return view('admin.district.edit',compact('district','divisions'));
     }
 
@@ -117,7 +115,6 @@ class DistrictController extends Controller
 
     public function cityByDistrict(District $district)
     {
-        //dd(City::where('district_id', $district->id)->AdminCity()->get());
         return City::where('district_id', $district->id)->AdminCity()->get();
     }
 }

@@ -97,71 +97,8 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-lg-6 col-sm-12 float-left"></div>
-
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Information</h3>--}}
-{{--                        <div class="footer_menu">--}}
-
-{{--                            <ul>--}}
-{{--                                <li><a href="about.html">About Us</a></li>--}}
-{{--                                <li><a href="#">Delivery Information</a></li>--}}
-{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
-{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
-{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
-{{--                                <li><a href="#"> Site Map</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Information</h3>--}}
-{{--                        <div class="footer_menu">--}}
-
-{{--                            <ul>--}}
-{{--                                <li><a href="about.html">About Us</a></li>--}}
-{{--                                <li><a href="#">Delivery Information</a></li>--}}
-{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
-{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
-{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
-{{--                                <li><a href="#"> Site Map</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Extras</h3>--}}
-{{--                        <div class="footer_menu">--}}
-{{--                            <ul>--}}
-{{--                                <li><a href="#">Brands</a></li>--}}
-{{--                                <li><a href="#">  Gift Certificates</a></li>--}}
-{{--                                <li><a href="#">Affiliate</a></li>--}}
-{{--                                <li><a href="#">Specials</a></li>--}}
-{{--                                <li><a href="#">Returns</a></li>--}}
-{{--                                <li><a href="#"> Order History</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-3 col-sm-3">--}}
-{{--                    <div class="widgets_container widget_menu">--}}
-{{--                        <h3>Information</h3>--}}
-{{--                        <div class="footer_menu">--}}
-
-{{--                            <ul>--}}
-{{--                                <li><a href="about.html">About Us</a></li>--}}
-{{--                                <li><a href="#">Delivery Information</a></li>--}}
-{{--                                <li><a href="#"> Privacy Policy</a></li>--}}
-{{--                                <li><a href="#"> Terms & Conditions</a></li>--}}
-{{--                                <li><a href="contact.html"> Contact Us</a></li>--}}
-{{--                                <li><a href="#"> Site Map</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
 
             </div>
         </div>
@@ -371,18 +308,18 @@
    $(document).ready(function(){
         $('#click_change').click(function(){
             $('#click_change').css('color','blue');
-            $('#click_change2').css('color','white');
+            $('#click_change2').css('color','black');
         });
 
         $('#click_change2').click(function(){
             $('#click_change2').css('color','blue');
-            $('#click_change').css('color','white');
+            $('#click_change').css('color','black');
 
         });
 
         $('#click_change3').click(function(){
             $('#click_change').css('color','blue');
-            $('#click_change2').css('color','white');
+            $('#click_change2').css('color','black');
         });
 
         $('#top').click(function(){
@@ -431,15 +368,19 @@
 <script>
     var locationDropdownMainDiv = $('#locationDropdownMainDiv');
     var changelocationtext = $('#changelocationtext');
+
     var currentlocationselected = $('#currentlocationselected');
     var mainLocationLi = $('#mainLocationLi');
     var mainLocationUl = $('#mainLocationUl');
     var mainLocationP = $('#mainLocationP');
     var delivery_location = $('input[name="delivery_location"]');
     var trackLocationChange = [];
+
     locationDropdownMainDiv.hide();
+
     changelocationtext.on('click', function (){
         locationDropdownMainDiv.toggle();
+
         if ( $(this).attr('data-location-current') == 'division' ){
             let url = window.origin + '/changelocation/null/null';
             apiget(url, null);
@@ -448,14 +389,17 @@
             // apiget();
         }
     });
+
     $(document).mouseup(function(e)
     {
+
         // if the target of the click isn't the container nor a descendant of the container
         if (!changelocationtext.is(e.target) && changelocationtext.has(e.target).length === 0)
         {
             locationDropdownMainDiv.hide();
         }
     });
+
     function changeLocation(param) {
         param.style.display= 'block';
         let data_location_current = param.getAttribute('data-location-current');
@@ -469,14 +413,20 @@
             trackLocationChange[3] = param.innerText;
             locationDropdownMainDiv.hide();
         }
+
         currentlocationselected.empty();
         currentlocationselected.append( trackLocationChange.join(" > ") );
+
         let data_location_id = param.getAttribute('data-location-id');
+
         let url = window.origin + '/changelocation/' + data_location_current+'/'+data_location_id;
+
         apiget(url ,data_location_current)
         delivery_location.val(trackLocationChange[trackLocationChange.length-1]);
         console.log(trackLocationChange[trackLocationChange.length]);
     }
+
+
     function apiget(url, data_location_current) {
         $.ajax({
             headers: {
@@ -484,6 +434,8 @@
             },
             url: url,
             method: 'get',
+
+
             success: function (response) {
                 console.log(response);
                 if ( response.length > 0 ){
@@ -498,12 +450,14 @@
             }
         });
     }
+
     function makeList(response, currentLocationType){
         response.forEach((value, index) => {
             let para = createElement('p');
             para.setAttribute('class', 'bg-gradient-dark location');
             para.setAttribute('onclick', 'changeLocation(this)');
             para.setAttribute('data-location-id', value.id);
+
             if(currentLocationType != null){
                 if ( 'division' == currentLocationType ){
                     para.setAttribute('data-location-current', 'district');
@@ -522,25 +476,16 @@
                 para.setAttribute('data-location-current', 'division');
                 para.append(value.division_name);
             }
+
             let li = createElement('li');
             li.append(para);
             mainLocationUl.append(li);
         });
     }
+
     function createElement(tag){
         return document.createElement(tag);
     }
-</script>
-
-<script>
-      window.onload= function(){
-          var hide_div = document.getElementsById('locationDropdownMainDiv');
-          document.onclick = function(div){
-              if(div.target.id !=='locationDropdownMainDiv'){
-                  hide_div.style.display="none";
-              }
-          }
-      }
 </script>
 
 <script>

@@ -24,9 +24,6 @@ class DistrictFactory extends Factory
     public function definition()
     {
         return [
-            'admin_id' => function(){
-                return Admin::all()->random();
-            },
             'division_id' => function(){
                 return Division::all()->random();
             },

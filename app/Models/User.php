@@ -105,4 +105,13 @@ class User extends Authenticatable
     {
         return $query->where('is_verified', 1);
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function wishLists(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(WishList::class);
+    }
 }

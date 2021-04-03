@@ -19,14 +19,14 @@ class SubCityController extends Controller
      */
     public function index()
     {
-        $subCities = SubCity::orderBy('sub_city_name','asc')->with(['division','district','city'])->AdminSubCity()->get();
+        $subCities = SubCity::orderBy('sub_city_name','asc')->with(['division','district','city'])->get();
 //        dd($subCities[0]->city->city_name);
         return view('admin.subCity.manage',compact('subCities'));
     }
 
     public function allSubCity()
     {
-        $subCities = SubCity::orderBy('sub_city_name','asc')->with(['division','district','city'])->WithoutAdminSubCity()->get();
+        $subCities = SubCity::orderBy('sub_city_name','asc')->with(['division','district','city'])->get();
 //        dd($subCities[0]->city->city_name);
         return view('admin.subCity.manage',compact('subCities'));
     }
@@ -38,7 +38,7 @@ class SubCityController extends Controller
      */
     public function create()
     {
-        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
         return view('admin.subCity.create',compact('divisions'));
     }
 
@@ -58,8 +58,6 @@ class SubCityController extends Controller
 
         ]);
 
-        $validate['admin_id'] = Auth::guard('admin')->id();
-
         if( SubCity::create($validate) ) return redirect(route('subCity.index'))->with('success', 'Delivery Area Sub City created');
         return redirect()->back()->with('error', 'Something went wrong, please try again');
     }
@@ -78,14 +76,14 @@ class SubCityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param SubCity $subCity
      * @return \Illuminate\Http\Response
      */
     public function edit(SubCity $subCity)
     {
-        $divisions = Division::orderBy('division_name','asc')->AdminDivision()->get();
-        $districts = District::with('division')->where('division_id',$subCity->division_id)->AdminDistrict()->get();
-        $cities = City::with('district')->where('district_id',$subCity->district_id)->AdminCity()->get();
+        $divisions = Division::orderBy('division_name','asc')->get();
+        $districts = District::with('division')->where('division_id',$subCity->division_id)->get();
+        $cities = City::with('district')->where('district_id',$subCity->district_id)->get();
         //dd($cities);
 
         return view('admin.subCity.edit',compact('subCity','divisions','districts','cities'));
@@ -94,8 +92,8 @@ class SubCityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param SubCity $subCity
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SubCity $subCity)
