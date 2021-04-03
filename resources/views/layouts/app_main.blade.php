@@ -431,58 +431,52 @@
 <script>
     var locationDropdownMainDiv = $('#locationDropdownMainDiv');
     var changelocationtext = $('#changelocationtext');
-
     var currentlocationselected = $('#currentlocationselected');
     var mainLocationLi = $('#mainLocationLi');
     var mainLocationUl = $('#mainLocationUl');
     var mainLocationP = $('#mainLocationP');
     var delivery_location = $('input[name="delivery_location"]');
     var trackLocationChange = [];
-
     locationDropdownMainDiv.hide();
-
     changelocationtext.on('click', function (){
         locationDropdownMainDiv.toggle();
-
-        if ( currentLocationType == 'division' ){
+        if ( $(this).attr('data-location-current') == 'division' ){
             let url = window.origin + '/changelocation/null/null';
             apiget(url, null);
+        }else {
+            // let url = window.origin + '/changelocation/' + $(this).attr('data-location-current') +'/'+data_location_id;
+            // apiget();
         }
     });
-
     $(document).mouseup(function(e)
     {
-
         // if the target of the click isn't the container nor a descendant of the container
         if (!changelocationtext.is(e.target) && changelocationtext.has(e.target).length === 0)
         {
-            locationDropdownMainDiv.show();
+            locationDropdownMainDiv.hide();
         }
     });
-
     function changeLocation(param) {
         param.style.display= 'block';
         let data_location_current = param.getAttribute('data-location-current');
-        if ( data_location_current == 'division' ) trackLocationChange[0] = param.innerText;
+        if ( data_location_current == 'division' ) {
+            trackLocationChange = [];
+            trackLocationChange[0] = param.innerText;
+        }
         if ( data_location_current == 'district' ) trackLocationChange[1] = param.innerText;
-        if ( data_location_current == 'city' ) {
-            trackLocationChange[2] = param.innerText;
+        if ( data_location_current == 'city' ) trackLocationChange[2] = param.innerText;
+        if ( data_location_current == 'secondCity' ) {
+            trackLocationChange[3] = param.innerText;
             locationDropdownMainDiv.hide();
         }
-
         currentlocationselected.empty();
         currentlocationselected.append( trackLocationChange.join(" > ") );
-
         let data_location_id = param.getAttribute('data-location-id');
-
         let url = window.origin + '/changelocation/' + data_location_current+'/'+data_location_id;
-
         apiget(url ,data_location_current)
         delivery_location.val(trackLocationChange[trackLocationChange.length-1]);
         console.log(trackLocationChange[trackLocationChange.length]);
     }
-
-
     function apiget(url, data_location_current) {
         $.ajax({
             headers: {
@@ -490,8 +484,6 @@
             },
             url: url,
             method: 'get',
-
-
             success: function (response) {
                 console.log(response);
                 if ( response.length > 0 ){
@@ -506,32 +498,35 @@
             }
         });
     }
-
     function makeList(response, currentLocationType){
         response.forEach((value, index) => {
             let para = createElement('p');
             para.setAttribute('class', 'bg-gradient-dark location');
             para.setAttribute('onclick', 'changeLocation(this)');
             para.setAttribute('data-location-id', value.id);
-            (currentLocationType != null) ?
-            para.setAttribute('data-location-current',
-                (currentLocationType == 'division') ? 'district' : 'city'
-            ) : para.setAttribute('data-location-current',
-                'division'
-            );
-
-            (currentLocationType != null) ?
-                para.append(
-                    (currentLocationType == 'division') ? value.district_name : value.city_name
-                ) : para.append(
-                    value.division_name
-                );
+            if(currentLocationType != null){
+                if ( 'division' == currentLocationType ){
+                    para.setAttribute('data-location-current', 'district');
+                    para.append(value.district_name);
+                } else if ( 'district' == currentLocationType ) {
+                    para.setAttribute('data-location-current', 'city');
+                    para.append(value.city_name);
+                } else if( 'secondCity' == currentLocationType ) {
+                    para.setAttribute('data-location-current', 'division');
+                    para.append(value.division_name);
+                } else {
+                    para.setAttribute('data-location-current', 'secondCity');
+                    para.append(value.sub_city_name);
+                }
+            } else {
+                para.setAttribute('data-location-current', 'division');
+                para.append(value.division_name);
+            }
             let li = createElement('li');
             li.append(para);
             mainLocationUl.append(li);
         });
     }
-
     function createElement(tag){
         return document.createElement(tag);
     }
