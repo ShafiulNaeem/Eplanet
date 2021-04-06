@@ -32,7 +32,7 @@
                         <tbody>
 
                         @foreach($districts as $index => $district)
-
+                            @if( isset($district->division->division_name) )
                             <tr>
                                 <td style="width: 19%">{{$district->division->division_name}}</td>
                                 <td style="width: 19%">{{$district->district_name}}</td>
@@ -69,7 +69,7 @@
                                     </div>
                                 </td>
                             </tr>
-
+                            @endif
                         @endforeach
                         </tbody>
                         <tfoot>
