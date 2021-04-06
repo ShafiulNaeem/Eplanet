@@ -37,15 +37,11 @@
 
                                    <div class="col-lg-6 mb-20">
                                        <label>First Name <span>*</span></label>
-                                       <input type="text" name="fname" @if($shipping != null) value="{{ $shipping['fname'] }}"  @endif />
+                                       <input type="text" name="fname"  value="{{ \Illuminate\Support\Facades\Auth::guard('web')->user()->fname }}"   />
                                    </div>
                                    <div class="col-lg-6 mb-20">
                                        <label>Last Name  <span>*</span></label>
-                                       <input type="text" name="lname" @if($shipping != null) value="{{ $shipping['lname'] }}"  @endif />
-                                   </div>
-                                   <div class="col-12 mb-20">
-                                       <label>Company Name</label>
-                                       <input type="text" name="company" @if($shipping != null) value="{{ $shipping['company'] }}"  @endif />
+                                       <input type="text" name="lname" value="{{ \Illuminate\Support\Facades\Auth::guard('web')->user()->lname }}"  />
                                    </div>
                                    <div class="col-12 mb-20">
                                        <label for="country">country <span>*</span></label>
@@ -301,19 +297,12 @@
                                    </div>
 
                                    <div class="col-12 mb-20">
-                                       <label>Street address  <span>*</span></label>
-                                       <input name="address_1" @if($shipping != null) value="{{ $shipping['address_1'] }}"  @endif placeholder="House number and street name" type="text">
-                                   </div>
-                                   <div class="col-12 mb-20">
-                                       <input name="address_2" @if($shipping != null) value="{{ $shipping['address_2'] }}"  @endif placeholder="Apartment, suite, unit etc. (optional)" type="text">
+                                       <label> Address  </label>
+                                       <textarea name="address" class="form-control" cols="15">{{ \Illuminate\Support\Facades\Auth::guard('web')->user()->address }}</textarea>
                                    </div>
                                    <div class="col-12 mb-20">
                                        <label>Town / City <span>*</span></label>
-                                       <input name="city" type="text" @if($shipping != null) value="{{ $shipping['city'] }}"  @endif />
-                                   </div>
-                                   <div class="col-12 mb-20">
-                                       <label>State  <span>*</span></label>
-                                       <input type="text" name="state" @if($shipping != null) value="{{ $shipping['state'] }}"  @endif />
+                                       <input name="city" type="text"  value="{{ \Illuminate\Support\Facades\Auth::guard('web')->user()->city }}" />
                                    </div>
                                    <div class="col-12 mb-20">
                                        <div id="collapseOne" class="collapse one" data-parent="#accordion">
@@ -329,31 +318,28 @@
                                             <label for="">SHIP TO ANOTHER?</label> <input type="checkbox" name="others" id="checkitem">
                                             <div class="col-md-12">
                                                <div class="hidesection" id="hidesection">
-                                                
+
                                                 <div class="form-group">
                                                     <label for="" class="info-title control-label">Name</label>
                                                     <input type="text" name="s_name"  class="form-control ">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="" class="info-title control-label">Address</label>
-                                                    <input type="text" name="s_address_3"  class="form-control" placeholder="apartment, suite, unit etc">
+                                                    <textarea name="s_address" id="" cols="10" class="form-control" ></textarea>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="s_address_4"  class="form-control " placeholder="street address">
-                                                </div>
-                                               
+
                                                 <div class="form-group">
                                                     <label for="" class="info-title control-label">Phone</label>
-                                                    <input type="number" name="s_phone"   class="form-control ">
+                                                    <input type="text" name="s_phone"   class="form-control ">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="" class="info-title control-label">Email</label>
                                                     <input type="email" name="s_email"   class="form-control ">
                                                 </div>
-                                                
+
                                                </div>
                                             </div>
-                                       
+
                                        </div>
                                     </div>
                                     </div>
@@ -361,7 +347,7 @@
                                        <div class="order-notes">
                                            <label for="order_note">Order Notes</label>
                                            <textarea id="order_note" name="note" placeholder="Notes about your order, e.g. special notes for delivery.">
-                                               @if($shipping != null) {{ $shipping['note'] }}  @endif
+
                                            </textarea>
                                        </div>
                                    </div>
