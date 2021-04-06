@@ -28,6 +28,7 @@
                @csrf
                <div class="checkout_form">
                    <div class="row">
+
                        <div class="col-lg-6 col-md-6">
 
                                <h3>Billing Details</h3>
@@ -322,6 +323,40 @@
                                            </div>
                                        </div>
                                    </div>
+                                   <div class="col-12 mb-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="">SHIP TO ANOTHER?</label> <input type="checkbox" name="others" id="checkitem">
+                                            <div class="col-md-12">
+                                               <div class="hidesection" id="hidesection">
+                                                
+                                                <div class="form-group">
+                                                    <label for="" class="info-title control-label">Name</label>
+                                                    <input type="text" name="s_name"  class="form-control ">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="" class="info-title control-label">Address</label>
+                                                    <input type="text" name="s_address_3"  class="form-control" placeholder="apartment, suite, unit etc">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="s_address_4"  class="form-control " placeholder="street address">
+                                                </div>
+                                               
+                                                <div class="form-group">
+                                                    <label for="" class="info-title control-label">Phone</label>
+                                                    <input type="number" name="s_phone"   class="form-control ">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="" class="info-title control-label">Email</label>
+                                                    <input type="email" name="s_email"   class="form-control ">
+                                                </div>
+                                                
+                                               </div>
+                                            </div>
+                                       
+                                       </div>
+                                    </div>
+                                    </div>
                                    <div class="col-12">
                                        <div class="order-notes">
                                            <label for="order_note">Order Notes</label>
@@ -332,6 +367,7 @@
                                    </div>
                                </div>
                        </div>
+
                        <div class="col-lg-6 col-md-6">
                            {{--                        <form action="#">--}}
                            <h3>Your order</h3>
