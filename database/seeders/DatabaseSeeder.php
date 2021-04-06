@@ -33,24 +33,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        Admin::factory(3)->create();
-//        Brand::factory(10)->create();
-//        Category::factory(7)->create();
-//        Coupon::factory(5)->create();
-//        SubCategory::factory(15)->create();
-//        SecondarySubCategory::factory(28)->create();
-//        Product::factory(40)->create();
-//        User::factory(10)->create();
-//        ProductImage::factory(50)->create();
-//        Blog::factory(10)->create();
-//        Comment::factory(15)->create();
-//        Reply::factory(15)->create();
-//        Emi::factory(10)->create();
+        Admin::factory(3)->create();
+        Brand::factory(10)->create();
+        Category::factory(7)->create();
+        Coupon::factory(5)->create();
+        SubCategory::factory(15)->create();
+        SecondarySubCategory::factory(28)->create();
+        Product::factory(40)->create();
+        User::factory(10)->create();
+        ProductImage::factory(50)->create();
+        Blog::factory(10)->create();
+        Comment::factory(15)->create();
+        Reply::factory(15)->create();
+        Emi::factory(10)->create();
         Division::factory(5)->create();
-        District::factory(40)->create();
-        City::factory(150)->create();
-        SubCity::factory(200)->create();
-//        Event::factory(3)->create();
-//        EventProduct::factory(10)->create();
+        District::factory(20)->create();
+        City::factory(50)->create();
+        SubCity::factory(70)->create();
+        Event::factory(3)->create();
+        EventProduct::factory(10)->create();
     }
 }

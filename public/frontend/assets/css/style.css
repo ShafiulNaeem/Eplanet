@@ -9374,7 +9374,7 @@ display: none;
   }
 }
 .blog_wrapper .blog_thumb iframe {
-  height: 550px;
+  /*height: 550px;*/
   width: 100%;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

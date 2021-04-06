@@ -490,9 +490,9 @@
 </script>
 
 <script>
-    tinymce.init({
-        selector: '[name="post"]',
-    });
+    // tinymce.init({
+    //     selector: '[name="post"]',
+    // });
 </script>
 
 </body>

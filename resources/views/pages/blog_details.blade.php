@@ -39,8 +39,7 @@
                                     </div>
                                     <div class="blog_thumb">
                                         <a href="#">
-                                            {!! $blog->blog_video !!}
-{{--                                            <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}">--}}
+                                            <iframe width="315" height="600" src="{{ $blog->blog_video }}"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </a>
                                     </div>
                                     <figcaption class="blog_content">

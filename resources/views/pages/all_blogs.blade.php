@@ -35,8 +35,7 @@
                                         <figure>
                                             <div class="blog_thumb">
                                                 <a href="{{route('blog.show',$blog->blog_slug)}}">
-                                                    {!! $blog->blog_video !!}
-{{--                                                    <img src="{{assetImageAndVideo('images').$blog->blog_image}}" alt="{{$blog->title}}" />--}}
+                                                    <iframe width="315" height="315" src="{{ $blog->blog_video }}"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 </a>
                                             </div>
                                             <figcaption class="blog_content">
