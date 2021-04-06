@@ -28,21 +28,21 @@
                 <div class="col-md-12">
                     <div class="account_form register">
                         <h2>Create Blog</h2>
-                        <form action="{{route('blog.store')}}" enctype="multipart/form-data" method="POST">
-                            @csrf
+                        <form action="{{route('blog.store')}}" method="get">
+{{--                            @csrf--}}
 
                             <div class="form-group">
-                                <label for="">Title</label>
-                                <input name="title" id="" type="text" style="border: 1px solid #495057" class="form-control" />
+                                <label for="title">Title</label>
+                                <input name="title" id="title" type="text" style="border: 1px solid #495057" class="form-control" />
                             </div>
 
                             <div class="form-group">
-                                <label for="">Description</label>
-                                <textarea name="post" id="" cols="20" style="border: 1px solid #495057" class="form-control" rows="5"></textarea>
+                                <label for="post">Description</label>
+                                <textarea name="post" id="post" cols="20" style="border: 1px solid #495057" class="form-control" rows="5"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="blog_image">Blog Video</label>
-                                <input name="blog_video" type="text" class="form-control-file">
+                                <input name="blog_video" type="text" style="border: 1px solid #495057" class="form-control-file">
                             </div>
                             <div class="create_submit">
                                 <button type="submit">Post</button>

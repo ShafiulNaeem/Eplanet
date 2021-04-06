@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTableBlogsChangeBlogImage extends Migration
+class AddStockQuantityToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterTableBlogsChangeBlogImage extends Migration
      */
     public function up()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->renameColumn('blog_image', 'blog_video');
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('stock_quantity', 20)->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AlterTableBlogsChangeBlogImage extends Migration
      */
     public function down()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->dropColumn('blog_video');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('stock_quantity');
         });
     }
 }

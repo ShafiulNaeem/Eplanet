@@ -477,9 +477,9 @@
 </script>
 
 <script>
-    tinymce.init({
-        selector: '[name="post"]',
-    });
+    // tinymce.init({
+    //     selector: '[name="post"]',
+    // });
 </script>
 <script>
     $(document).ready(function () {
