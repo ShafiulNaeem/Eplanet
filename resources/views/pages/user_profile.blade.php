@@ -4,7 +4,6 @@
 
 
 <!--  User information start  -->
-    @foreach($users as $user)
     <section class="user_info">
         <div class="container">
             <div class="row">
@@ -15,7 +14,7 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><h4>Your Information</h4></li>
-                            <li><a href="{{route('profile.edit',$user->id)}}">Update Your Information</a></li>
+                            <li><a href="{{route('profile.edit',\Illuminate\Support\Facades\Auth::guard('web')->id())}}">Update Your Information</a></li>
                         </ul>
                     </div>
                 </div>
@@ -25,20 +24,31 @@
                     <div class="user_info_inner">
 
                         <div class="user_name">
-                            <h4>Name: {{$user->fname." ".$user->lname}}</h4>
+                            <h4>Name: {{\Illuminate\Support\Facades\Auth::guard('web')->user()->fname." ".\Illuminate\Support\Facades\Auth::guard('web')->user()->lname}}</h4>
                         </div>
                         <div class="user_name">
-                            <p>Number: {{$user->phone}}</p>
+                            <p>Number: {{\Illuminate\Support\Facades\Auth::guard('web')->user()->phone}}</p>
                         </div>
                         <div class="user_name">
-                            <p>Email: {{$user->email}}</p>
+                            <p>Email: {{\Illuminate\Support\Facades\Auth::guard('web')->user()->email}}</p>
+                        </div>
+
+                        <div class="user_name">
+                            <p>Country: {{\Illuminate\Support\Facades\Auth::guard('web')->user()->country}}</p>
+                        </div>
+
+                        <div class="user_name">
+                            <p>City: {{\Illuminate\Support\Facades\Auth::guard('web')->user()->city}}</p>
+                        </div>
+
+                        <div class="user_name">
+                            <p>Address: {{\Illuminate\Support\Facades\Auth::guard('web')->user()->address}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    @endforeach
 
 <!--  User information end  -->
 

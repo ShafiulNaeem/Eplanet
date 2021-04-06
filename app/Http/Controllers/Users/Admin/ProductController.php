@@ -90,6 +90,8 @@ class ProductController extends Controller
         $products->is_new = $request->is_new;
         $products->secondary_sub_categories_id = $request->secondary_sub_categories_id;
         $products->status = $request->status;
+        $products->stock_quantity = $request->stock_quantity;
+        $products->emergency_price = $request->emergency_price;
         if( ! empty($request->emi_id) )
             $products->emi_id = implode(',', $request->emi_id);
 
@@ -152,11 +154,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //dd($request->all());
-        //$this->validation($request);
-
-        //$products = Product::find($id);
-
         $product->product_name = $request->product_name;
 //        $product->specification = $request->product_specification;
         $product->product_description = $request->product_description;
@@ -173,18 +170,19 @@ class ProductController extends Controller
         $product->manufactured_by = $request->manufactured_by;
         $product->is_new = $request->is_new;
         $product->status = $request->status;
+        $product->stock_quantity = $request->stock_quantity;
+        $product->emergency_price = $request->emergency_price;
 
         if( ! empty($product->emi_id) )
             $product->emi_id = implode(',', $request->emi_id);
-        //if( isset($request->secondary_sub_categories_id) )
+
         $product->secondary_sub_categories_id = $request->secondary_sub_categories_id;
 
-        static::deleteFile(storage_path().'/app/public/images/' . $product->feature_image);
 
         if($request->hasFile('feature_image')){
             $image = request()->file('feature_image');
             $product->feature_image= $this->uploadImage($image, 'images');
-
+            static::deleteFile(storage_path().'/app/public/images/' . $product->feature_image);
             if ( $product->save() ) return redirect()->route('product.index')->with('success','Product Updated Successfully');
         } else {
             if ( $product->save() ) return redirect()->route('product.index')->with('success','Product Updated Successfully');

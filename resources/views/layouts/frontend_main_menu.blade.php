@@ -285,9 +285,9 @@
                                                     <div class="mini_cart_footer">
                                                        <div class="cart_button">
                                                             <button>
-                                                                <span class="order">Order Now</span>
+                                                                <span onclick="window.location='{{ route('checkout.final') }}' " class="order">Order Now</span>
                                                                 <span class="total">BDT {{$total}}</span>
-                                                                
+
                                                             </button>
                                                         </div>
 
@@ -295,7 +295,7 @@
                                                 </div>
                                                 <!--mini cart end-->
                                            </div>
-                                        
+
                                         @endif
                                     </div>
                                 </div>
@@ -426,7 +426,7 @@
 </section>
 
     @else
- 
+
 </section>
 @endif
 

@@ -62,7 +62,8 @@ class ProductFactory extends Factory
             'manufactured_by' => $this->faker->name,
             'color' => implode(', ', [$this->faker->colorName, $this->faker->colorName, $this->faker->colorName, $this->faker->colorName, $this->faker->colorName, $this->faker->colorName]),
             'sold' => $this->faker->numberBetween(2, 30),
-            'is_new' => $this->faker->numberBetween(1, 2)
+            'is_new' => $this->faker->numberBetween(1, 2),
+            'stock_quantity' => $this->faker->randomElement(['kg', 'lb', 'pics'])
         ];
     }
 }

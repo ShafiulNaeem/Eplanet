@@ -27,7 +27,7 @@
 
                                     <div class="card-body">
 
-                                        <div class="row">
+                                        <div class="form-row">
                                             <div class="form-group col-md-6 float-left">
                                                 <label for="productIs">Product Status</label>
                                                 <select name="is_new" class="form-control select2 select2-primary" data-dropdown-css-class="select2-primary" style="width: 100%;" >
@@ -132,10 +132,6 @@
                                                 </select>
                                             </div>
 
-                                            <div class="form-group float-left col-md-6">
-                                                <label for="exampleInputPassword1">Product Stock</label>
-                                                <input type="text" name="product_stock" class="form-control" id="exampleInputPassword1" value="{{$product->stock}}">
-                                            </div>
 
                                             <div class="form-group float-left col-md-6">
                                                 <label for="exampleInputPassword1">Product Size</label>
@@ -193,15 +189,30 @@
                                                 <input type="text" value="{{$product->return_policy}}" name="return_policy" id="return_policy" placeholder="Exm: 12 days return" class="form-control" />
                                             </div>
 
+                                            <div class="form-group col-md-6 float-left">
+                                                <label for="emergency_price">Emergency price</label>
+                                                <input type="text" name="emergency_price" value="{{ $product->emergency_price }}" required autocomplete="off" class="form-control" id="emergency_price" placeholder="Emergency Price">
+                                                @error('emergency_price')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                            </div>
 
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group float-left col-md-6">
+                                                <label for="exampleInputPassword1">Product Stock</label>
+                                                <input type="text" name="product_stock" class="form-control" id="exampleInputPassword1" value="{{$product->stock}}">
+                                            </div>
+
+                                            <div class="form-group float-left col-md-6">
+                                                <label for="stock_quantity">Stock Quantity</label>
+                                                <input type="text" name="stock_quantity" class="form-control" id="stock_quantity" value="{{$product->stock_quantity}}" />
+                                            </div>
                                         </div>
 
 
                                         <div class="row">
-{{--                                            <div class="form-group col-md-12">--}}
-{{--                                                <label>Product Specification</label>--}}
-{{--                                                <textarea class="form-control" name="product_specification"   rows="3">{{ $product->specification }}</textarea>--}}
-{{--                                            </div>--}}
 
                                             <div class="form-group col-md-12">
                                                 <label for="exampleFormControlTextarea1">Product Description</label>

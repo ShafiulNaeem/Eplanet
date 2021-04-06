@@ -72,10 +72,7 @@ class SubCategoryController extends Controller
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
-//            $filename = time() . '.' . $image->getClientOriginalExtension();
-//            request()->sub_category_image->move(public_path('images'), $filename);
             $SubCategory->sub_category_image = $this->uploadImage($image, 'images');
-            $SubCategory->save();
         };
 
         if($SubCategory->save()){
@@ -128,13 +125,10 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_name;
         $subcategory->status = $request->status;
 
-        self::deleteFile( storage_path().'/app/public/images/'  . $subcategory->sub_category_image);
-//            return redirect()->back()->with('error','Something went wrong');
 
         if($request->hasFile('sub_category_image')){
             $image = request()->file('sub_category_image');
-//            $filename = time() . '.' . $image->getClientOriginalExtension();
-//            request()->sub_category_image->move(public_path('images'), $filename);
+            self::deleteFile( storage_path().'/app/public/images/'  . $subcategory->sub_category_image);
             $subcategory->sub_category_image= $this->uploadImage($image, 'images');
             $subcategory->save();
         };
