@@ -1262,6 +1262,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*mini cart css here*/
 .mini_cart_wrapper {
   position: relative;
+  
 }
 
 .cart_close {
@@ -1291,8 +1292,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   min-width: 355px;
   height: 100%;
   padding: 18px 28px 33px;
-  background: #fff;
-  z-index: 999;
+  background: #E6E6E6;
+  z-index:22;
   right: 0;
   top: 0;
   transition: .5s;
@@ -1311,7 +1312,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .cart_img {
-  width: 90px;
+  width: 59px;
   margin-right: 10px;
   border: 1px solid transparent;
 }
@@ -1371,8 +1372,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .cart_item {
   overflow: hidden;
-  padding: 20px 0;
-  border-bottom: 1px solid #ededed;
+  padding: 10px 0;
+  border-bottom: 2px solid #ccc;
   display: flex;
   justify-content: space-between;
 }
@@ -6575,9 +6576,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_variant.quantity button:hover {
   background: #3E444A;
 }
-.product_variant.color {
-  /*margin-bottom: 26px;*/
-}
+
 @media only screen and (max-width: 767px) {
   .product_variant.color {
     margin-bottom: 18px;
@@ -6657,9 +6656,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #40A944;
 }
 
-.product_meta {
-  /*margin-bottom: 24px;*/
-}
+
 @media only screen and (max-width: 767px) {
   .product_meta {
     margin-bottom: 20px;
@@ -6677,8 +6674,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .product_info_button {
-  /* border-bottom: 1px solid ; */
-  /*padding-bottom: 15px;*/
   margin-bottom: 29px;
 }
 .nav ul li{
@@ -6837,13 +6832,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /* padding: 0 20px; */
 }
 .product_review_form textarea {
-border: 1px solid #ddd;
-background: none;
-height: 120px;
-resize: none;
-width: 100%;
-margin-bottom: 14px;
-padding: 0 20px;
+	border: 1px solid #ddd;
+	background: #fff;
+	height: 120px;
+	resize: none;
+	width: 100%;
+	margin-bottom: 14px;
+	padding: 0 20px;
 }
 .product_review_form p {
 margin-bottom: 7px;

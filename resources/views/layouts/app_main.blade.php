@@ -307,20 +307,7 @@
 
    $(document).ready(function(){
         $('#click_change').click(function(){
-            $('#click_change').css('color','blue');
-            $('#click_change2').css('color','black');
-        });
-
-        $('#click_change2').click(function(){
-            $('#click_change2').css('color','blue');
-            $('#click_change').css('color','black');
-
-        });
-
-        $('#click_change3').click(function(){
-            $('#click_change').css('color','blue');
-            $('#click_change2').css('color','black');
-        });
+      
 
         $('#top').click(function(){
             $(this).addClass("nav-link active");
@@ -492,6 +479,15 @@
 <script>
     tinymce.init({
         selector: '[name="post"]',
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#hidesection').hide();
+        $('#checkitem').click(function () { 
+            $('#hidesection').toggle(1000); 
+            
+        });
     });
 </script>
 
