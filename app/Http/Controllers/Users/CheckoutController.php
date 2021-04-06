@@ -18,13 +18,13 @@ class CheckoutController extends Controller
     public function index()
     {
         if( empty(Session::get('cart')) ) return redirect()->route('home');
-        $shipping_data = ['shipping' => ShippingAddress::where(['user_id' => Auth::user()->id])->first()];
-        return view('pages.checkout', $shipping_data);
+        return view('pages.checkout');
     }
 
 
     public function checkout(Request $request)
     {
+        dd($request->all());
         $request->request->remove('_token');
         $request->request->add(['user_id' => Auth::user()->id]);
         $previous = ShippingAddress::where(['user_id' => Auth::user()->id])->first();
@@ -39,7 +39,7 @@ class CheckoutController extends Controller
             $order->product_id = $cart['id'];
             $order->user_id = Auth::user()->id;
             $order->admin_id = self::getAdminByProduct($cart['id']);;
-            $order->unique_id = '#OR' . Str::random(2) . time() . Str::random(2) .'#';
+            $order->unique_id = '#' . Str::random(2) . time() . Str::random(2) ;
             $order->quantity = $cart['quantity'];
             $order->save();
 
