@@ -104,13 +104,13 @@ class CategorySliderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param CategorySlider $categorySlider
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, CategorySlider $categorySlider)
     {
-        if( self::changeStatus($request->status, 'App\Models\CategorySlider', $request->id) )
+        if( self::changeStatus($request->status, CategorySlider::class, $request->id) )
             return redirect()->back()->with('success', 'Status Changed');
         return  redirect()->back()->with('error', 'Something went wrong');
     }

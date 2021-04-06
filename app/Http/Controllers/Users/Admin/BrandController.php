@@ -114,8 +114,6 @@ class BrandController extends Controller
             'brand_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        static::deleteFile(storage_path().'/app/public/images/' . $brand->brand_image);
-
         $admin_id = Auth::guard('admin')->user()->id;
         $val['admin_id'] = $admin_id;
         $val['brand_name'] = $request->brand_name;
@@ -124,6 +122,7 @@ class BrandController extends Controller
 
         if($request->hasFile('brand_image')){
             $image = $request->file('brand_image');
+            static::deleteFile(storage_path().'/app/public/images/' . $brand->brand_image);
             $val['brand_image'] = $this->uploadImage($image, 'images');
         };
 

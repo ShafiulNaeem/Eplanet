@@ -170,7 +170,7 @@
                                                     @if (!empty($product->emi_id))
                                                         @php
                                                             $ids = explode(',', $product->emi_id);
-                                                            
+
                                                         @endphp
                                                         <li>
                                                             <select name="emi_choose" id="" class="form-control">
@@ -429,7 +429,7 @@
                             <div class="reviews_wrapper">
                                 <div class="reviews_comment_box">
                                     <div class="comment_thmb">
-                                        <img src="assets/img/blog/comment2.jpg" alt="">
+                                        <img src="{{ asset('assets/img/blog/comment2.jpg') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="comment_title">
@@ -550,9 +550,8 @@
                                                                     </h4>
                                                                     <div class="price_box">
                                                                         <span class="current_price">$
-                                                                            {{ $mainRe['category']['products'][$index]['product_price'] }}</span>
-
-
+                                                                            {{ $mainRe['category']['products'][$index]['product_price'] }}
+                                                                        </span>
                                                                     </div>
                                                                 </figcaption>
                                                             </figure>

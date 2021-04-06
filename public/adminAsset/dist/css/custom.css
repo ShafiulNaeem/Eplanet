@@ -2,3 +2,13 @@
     padding: .3rem 1rem !important;
     margin-bottom: 0rem !important;
 }
+
+.os-scrollbar-track {
+    pointer-events: auto;
+    position: relative;
+    height: 100%;
+    width: 10px !important;
+    padding: 0!important;
+    border: 0!important;
+    left: -3px;
+}

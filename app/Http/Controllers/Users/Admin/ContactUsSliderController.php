@@ -108,7 +108,7 @@ class ContactUsSliderController extends Controller
      */
     public function update(Request $request, ContactUsSlider $contactusslider)
     {
-        if( self::changeStatus($request->status, 'App\Models\ContactUsSlider', $request->id) )
+        if( self::changeStatus($request->status, ContactUsSlider::class, $request->id) )
         return redirect()->back()->with('success', 'Status Changed');
         return  redirect()->back()->with('error', 'Something went wrong');
     }
