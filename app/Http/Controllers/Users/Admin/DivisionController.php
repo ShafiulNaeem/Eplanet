@@ -115,6 +115,6 @@ class DivisionController extends Controller
 
     public function DistrictByDivision(Division $division)
     {
-        return District::where('division_id', $division->id)->AdminDistrict()->get();
+        return District::where('division_id', $division->id)->get();
     }
 }
