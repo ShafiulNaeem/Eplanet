@@ -93,14 +93,11 @@ class NavbarController extends Controller
     }
 
     public  function profile(){
-
-        //dd(Auth::user()->id);
-        $users = User::where('id',Auth::user()->id)->get();
         $orders = Order::with('products')->where(['user_id' => Auth::user()->id])->get();
         $userPBlogs = Blog::where('user_id', Auth::user()->id) ->get();
 
         //dd($orders);
-        return view('pages.user_profile',compact('users','orders','userPBlogs'));
+        return view('pages.user_profile',compact('orders','userPBlogs'));
     }
 
     public function profileEdit(User $user)
@@ -115,9 +112,21 @@ class NavbarController extends Controller
             'fname'=> 'sometimes',
             'lname' => 'sometimes',
             'phone' => 'sometimes',
-            'email' => 'sometimes',
+            'city' => 'sometimes',
+            'country' => 'sometimes',
+            'address' => 'sometimes'
         ]);
-        return ( $user->update($validate) )?
+
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->city = $request->city;
+        $user->country = $request->country;
+        $user->address = $request->address;
+
+//        dd($validate);
+        return ( $user->save() )?
             redirect()->route('profile.show')->with('success', 'Your Information Updated Successfully'):
             redirect()->route('profile.edit')->with('error', 'Something went wrong') ;
     }

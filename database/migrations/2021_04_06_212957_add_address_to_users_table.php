@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProviderColumn extends Migration
+class AddAddressToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddProviderColumn extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('provider')->nullable();
+            $table->string('city', 40)->nullable();
+            $table->string('country', 40)->nullable();
+            $table->string('address')->nullable();
         });
     }
 
@@ -26,7 +28,9 @@ class AddProviderColumn extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('provider');
+            $table->dropColumn('city');
+            $table->dropColumn('country');
+            $table->dropColumn('address');
         });
     }
 }

@@ -67,10 +67,7 @@ class EmployeeController extends Controller
 
         if($request->hasFile('employee_image')){
             $image = request()->file('employee_image');
-//            $filename = time() . '.' . $image->getClientOriginalExtension();
-//            request()->employee_image->move(public_path('images'), $filename);
             $employee->employee_image= $this->uploadImage($image, 'images');
-            $employee->save();
         }
 
         if($employee->save()){

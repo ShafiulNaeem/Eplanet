@@ -50,15 +50,16 @@ class BlogController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request, Blog $blog)
+    public function store(Request $request)
     {
         $this->validate($request, array(
-            'post' => ['required', 'string'],
+            'post' => 'required',
             'blog_video' => 'required',
         ));
 
+        $blog = new Blog();
 
-        $user_id = Auth::user()->id;
+        $user_id = Auth::guard('web')->id();
         //dd($user_id);
         $blog->user_id = $user_id;
         $blog->post = $request->post;

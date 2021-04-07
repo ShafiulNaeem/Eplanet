@@ -34,7 +34,7 @@
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Category Name</label>
                                             <select name="category_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                                <option selected>Select Category</option>
+                                                <option selected value="">Select Category</option>
                                                 @foreach($categories as $category)
                                                     <option
 
@@ -50,7 +50,7 @@
                                         <div class="form-group col-md-6 float-left">
                                             <label for="exampleInputPassword1">Sub Category Name</label>
                                             <select name="sub_category_id" id="" class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                                <option selected>Select Category</option>
+                                                <option selected value="">Select Category</option>
                                                 @foreach($sub_categories as $category)
                                                     <option value="{{$category->id}}"
                                                             @if( $category->id == $subcategory->category_id )

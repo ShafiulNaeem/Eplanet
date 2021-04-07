@@ -111,21 +111,8 @@ class ProductVideoController extends Controller
             'product_video' => 'required',
         ));
 
-//        $productVideos = ProductVideo::find($id);
         $productVideo->product_id = $request->product_name;
         $productVideo->product_video = $request->product_video;
-
-//        self::deleteFile(storage_path().'/app/public/videos/' . $productVideos->product_video);
-
-//        if($request->hasFile('product_video')){
-//            $image = request()->file('product_video');
-////            $filename = time() . '.' . $image->getClientOriginalExtension();
-////            request()->product_video->move(public_path('videos'), $filename);
-//            $productVideos->product_video = $this->uploadImage($image, 'videos');
-//            $productVideos->product_video_type= $image->getClientOriginalExtension();
-//            $productVideos->save();
-//        }
-
 
         if($productVideo->save()){
             return redirect()->route('productVideo.index')->with('success','Product Video Updated Successfully');
@@ -142,9 +129,6 @@ class ProductVideoController extends Controller
      */
     public function destroy(ProductVideo $productVideo)
     {
-//        self::deleteFile(storage_path().'/app/public/videos/' . $productVideo->product_video);
-        //return redirect()->back()->with('error','Something went wrong');
-
         $productVideo->delete();
         return redirect()->back()->with('info','Deleted Successfully');
     }

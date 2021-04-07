@@ -120,12 +120,10 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->featured = $request->featured;
 
-         self::deleteFile( storage_path().'/app/public/images/' . $category->category_image ) ;
-
         if($request->hasFile('category_image')){
             $image = request()->file('category_image');
+            self::deleteFile( storage_path().'/app/public/images/' . $category->category_image ) ;
             $category->category_image= $this->uploadImage($image, 'images');
-            $category->save();
         };
 
         if($category->save()){
