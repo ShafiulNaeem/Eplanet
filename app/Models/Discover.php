@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Discover extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    public function admin()
+    {
+        return $this->belongsTo('App\Models\Admin');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users\Vendor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\FactoryView;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ class FactoryViewController extends Controller
      */
     public function create()
     {
+        $admins = Admin::where('')->get();
         return view('admin.vendor.factoryView.create');
     }
 
@@ -51,12 +53,11 @@ class FactoryViewController extends Controller
         $factoryView->admin_id = $admin_id;
         $factoryView->description = $request->description;
 
-
         if($request->hasFile('image')){
             $image = request()->file('image');
             $factoryView->image= $this->uploadImage($image, 'images');
             $factoryView->save();
-        };
+        }
 
         if($factoryView->save()){
             Session::flash('success','Data Inserted Successfully');
@@ -116,7 +117,7 @@ class FactoryViewController extends Controller
         };
 
         if($factoryView->save()){
-            Session::flash('success','Data Inserted Successfully');
+            Session::flash('success','Data Updated Successfully');
             return redirect()->route('factoryView.index');
         } else {
             Session::flash('success','Something went wrong');

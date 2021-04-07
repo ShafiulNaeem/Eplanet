@@ -5,7 +5,7 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
         @include('layouts.admin_blade_title', [
-                'title' => 'Edit Factory View'
+                'title' => 'Edit Discover'
             ])
 
         <!-- Main content -->
@@ -17,30 +17,45 @@
                             <!-- general form elements -->
                             <div class="card card-dark">
                                 <div class="card-header">
-                                    <h3 class="card-title">Edit Factory View</h3>
+                                    <h3 class="card-title">Edit Discover</h3>
                                 </div>
                                 <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{route('factoryView.update',$factoryView->id)}}" enctype="multipart/form-data" method="POST">
+                        <form role="form" action="{{route('discover.update',$discover->id)}}" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
                         <div class="card-body">
 
+                            <div class="form-group col-md-6 float-left">
+                                <label for="exampleInputPassword1">Vendor</label>
+                                <select name="admin_id" id="" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
+                                    @foreach($admins as $admin)
+                                        <option
+
+                                            @if( $admin->id == $discover->admin_id )
+                                            selected
+                                            @endif
+
+                                            value="{{$admin->id}}">{{$admin->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="form-group col-md-6 float-left ">
-                                <label for="exampleFormControlTextarea1">Factory View Description</label>
-                                <textarea class="form-control" name="description" require ="require" id="exampleFormControlTextarea1" rows="3">{{$factoryView->description}}</textarea>
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <input type="text" name="description" value="{{$discover->description}}" required autocomplete="off" class="form-control" id="exampleInputPassword1">
 
                             </div>
 
                             <div class="form-group col-md-6 float-left">
-                                <label for="exampleInputFile">Factory View Image</label>
+                                <label for="exampleInputFile">Image</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
-                                <span><img src="{{assetImageAndVideo('images').$factoryView->image}}" alt="{{$factoryView->description}}" width="80"></span>
+                                <span><img src="{{assetImageAndVideo('images').$discover->image}}" alt="{{$discover->description}}" width="80"></span>
                             </div>
 
                             </div><!-- /.box-body -->

@@ -95,4 +95,9 @@ class Admin extends Authenticatable
     {
         return $query->where('status', 1);
     }
+
+    public function discovers()
+    {
+        return $this->hasMany('App\Models\Discover');
+    }
 }

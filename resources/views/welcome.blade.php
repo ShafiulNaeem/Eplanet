@@ -32,79 +32,19 @@
            <div class="row">
                <div class=" col-lg-12 col-md-12 col-sm-12 col-12">
                    <div class=" discover-carasul diecover_div owl-carousel">
-                        <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover1.png')}}" alt=""></a>
+                        @foreach($discovers as $discover)
+                           <div class="item">
+                                <div class="single_banner">
+                                    <div class="banner_thumb">
+                                        <a href="{{route('topSale.show',$discover->admin_id)}}">
+                                            <img src="{{assetImageAndVideo('images') . $discover->image}}" alt="{{$discover->description}}">
+                                        </a>
+                                    </div>
+                                  <p>{{$discover->description}}</p>
                                 </div>
-                              <p>Shop in 7 language</p>
                             </div>
+                        @endforeach
 
-                        </div>
-                          <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover3.png')}}" alt=""></a>
-                                </div>
-                              <p>Shop in 60 countries</p>
-                            </div>
-
-                        </div>
-                       <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover2.png')}}" alt=""></a>
-                                </div>
-                              <p>Deals and promotions</p>
-                            </div>
-
-                        </div>
-
-                       <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover4.png')}}" alt=""></a>
-                                </div>
-                              <p>secure payment</p>
-                            </div>
-
-                        </div>
-                       <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover5.png')}}" alt=""></a>
-                                </div>
-                              <p>Estimated import fees</p>
-                            </div>
-
-                        </div>
-                       <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover6.png')}}" alt=""></a>
-                                </div>
-                              <p>Estimated import fees</p>
-                            </div>
-
-                        </div>
-                       <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover7.png')}}" alt=""></a>
-                                </div>
-                              <p>Track your package</p>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <div class="single_banner">
-                                <div class="banner_thumb">
-                                    <a href="shop.html"><img src="{{asset('frontend/assets/img/icon/discover8.png')}}" alt=""></a>
-                                </div>
-                              <p>Estimated import fees</p>
-                            </div>
-
-                        </div>
                     </div>
                </div>
            </div>

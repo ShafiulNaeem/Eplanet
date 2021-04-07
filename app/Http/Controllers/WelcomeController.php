@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\CategorySlider;
 use App\Models\City;
 use App\Models\ContactUsSlider;
+use App\Models\Discover;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\Event;
@@ -35,8 +36,17 @@ class WelcomeController extends Controller
 
         $sliders = ContactUsSlider::GetActive()->where('for', 1)->get();
 
+        //Discover
+        $discover = Discover::with('admin')->orderBy('created_at','asc')->get();
 
-        return view('welcome',['results' => $mainRes,'categories' => $category, 'products' =>$product, 'sliders' => $sliders ]);
+
+        return view('welcome',[
+            'results' => $mainRes,
+            'categories' => $category,
+            'products' =>$product,
+            'sliders' => $sliders,
+            'discovers' => $discover,
+        ]);
     }
 
     public function show($slug)

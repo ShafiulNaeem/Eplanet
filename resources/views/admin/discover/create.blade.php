@@ -29,9 +29,9 @@
                                     <label for="exampleInputPassword1"> Vendor </label>
                                     <select name="admin_id" id="admin_id" class="form-control select2 select2-success" data-dropdown-css-class="select2-success" style="width: 100%;">
                                         <option selected>Select Vendor</option>
-{{--                                        @foreach($admins as $admin)--}}
-{{--                                            <option value="{{$admin->id}}">{{$admin->name}}</option>--}}
-{{--                                        @endforeach--}}
+                                        @foreach($admins as $admin)
+                                            <option value="{{$admin->id}}">{{$admin->name}}</option>
+                                        @endforeach
                                     </select>
                                     @error('admin_id')
                                     <span class="text-danger">{{$message}}</span>

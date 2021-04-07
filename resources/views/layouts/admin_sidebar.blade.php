@@ -115,6 +115,41 @@
                     </li>
                 @endif
 
+                @if( \Illuminate\Support\Facades\Auth::guard('admin')->user()->role == 1 )
+                    <li class="nav-item @if(
+                                    url()->current() == route('discover.create') ||
+                                    url()->current() == route('discover.index')
+    ) menu-is-opening menu-open @endif">
+                        <a href="#" class="admin_sidebar_nav_link nav-link @if(
+                                    url()->current() == route('discover.create') ||
+                                    url()->current() == route('discover.index')
+    ) active @endif ">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                Discover
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" @if(
+                                    url()->current() == route('discover.create') ||
+                                    url()->current() == route('discover.index')
+    ) style="display: block" @endif >
+                            <li class="nav-item">
+                                <a href="{{ route('discover.create') }}" class="admin_sidebar_nav_link nav-link @if( url()->current() == route('discover.create' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create Discover</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('discover.index') }}" class="admin_sidebar_nav_link nav-link @if( url()->current() == route('discover.index' ) )active @endif ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Manage Discover</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
 
                 <li class="nav-item @if(
                                     url()->current() == route('brand.create') ||
