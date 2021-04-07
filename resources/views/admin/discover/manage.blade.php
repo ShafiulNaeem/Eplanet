@@ -5,9 +5,9 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
     @include('layouts.admin_blade_title', [
-                'title' => 'Manage Factory View',
-                'link' => route('factoryView.create'),
-                'text' => 'Create Factory View'
+                'title' => 'Manage Discover',
+                'link' => route('discover.create'),
+                'text' => 'Create Discover'
             ])
 
     <!-- Main content -->
@@ -23,6 +23,7 @@
                                     <thead >
                                         <tr class="text-center">
                                             <th>Image</th>
+                                            <th>Vendor</th>
                                             <th>Description</th>
                                             <th>Create Date</th>
                                             <th>Action</th>
@@ -31,24 +32,25 @@
                                     </thead>
                                     <tbody>
 
-                        @foreach($factoryViews as $index => $factoryView)
+                        @foreach($discovers as $index => $discover)
                         <tr>
                             <td>
-                                <img src="{{assetImageAndVideo('images').$factoryView->image}}" alt="{{$factoryView->description}}" class="img-rounded" width="80" />
+                                <img src="{{assetImageAndVideo('images').$discover->image}}" alt="{{$discover->description}}" class="img-rounded" width="80" />
                             </td>
-                            <td>{{$factoryView->description}}</td>
+                            <td>{{$discover->admin->name}}</td>
+                            <td>{{$discover->description}}</td>
 
-                            <td>{{\Carbon\Carbon::parse($factoryView->created_at)->format('M d Y')}}</td>
+                            <td>{{\Carbon\Carbon::parse($discover->created_at)->format('M d Y')}}</td>
                             <td>
-                                <a href="{{route('factoryView.edit',$factoryView->id)}}" class="btn text-warning btn-app float-left">
+                                <a href="{{route('discover.edit',$discover->id)}}" class="btn text-warning btn-app float-left">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
-                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$factoryView->id}}">
+                                <a href="" class="btn btn-app text-danger" data-toggle="modal" data-target="#exampleModal{{$discover->id}}">
                                     <i class="fa fa-trash fa-2x"></i> DELETE
                                 </a>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal{{$factoryView->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal{{$discover->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -58,7 +60,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{route('factoryView.destroy',$factoryView->id)}}" method="post">
+                                                <form action="{{route('discover.destroy',$discover->id)}}" method="post">
                                                     @csrf
                                                     @method("DELETE")
                                                     <button class="btn btn-danger">Confirm</button>
@@ -72,14 +74,15 @@
                         </tr>
                         @endforeach
                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Description</th>
-                                        <th>Create Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </tfoot>
+                        <tfoot>
+                            <tr>
+                                <th>Image</th>
+                                <th>Vendor</th>
+                                <th>Description</th>
+                                <th>Create Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
 
                 </table>
                             </div>
