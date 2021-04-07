@@ -334,6 +334,7 @@ Route::prefix('admin')->middleware('auth:admin')->namespace('Users\Admin')->grou
     Route::resource('city', 'CityController');
     Route::resource('subCity', 'SubCityController');
     Route::resource('categorySlider', 'CategorySliderController');
+    Route::resource('discover', 'DiscoverController');
 
 
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
