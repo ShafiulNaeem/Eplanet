@@ -115,6 +115,6 @@ class DistrictController extends Controller
 
     public function cityByDistrict(District $district)
     {
-        return City::where('district_id', $district->id)->AdminCity()->get();
+        return City::where('district_id', $district->id)->get();
     }
 }
