@@ -24,13 +24,13 @@ class ProductImageFactory extends Factory
     public function definition()
     {
         return [
-            "product_id" => function(){
+            "product_id" => function () {
                 return Product::GetActive()->get()->random();
             },
-            "admin_id" => function(){
+            "admin_id" => function () {
                 return Admin::GetActive()->get()->random();
             },
-            "product_image" => $this->faker->image(storage_path('app\public\images'), 840, 680,null, false)
+            "product_image" => app('ImageGenerator')->generate(),
         ];
     }
 }

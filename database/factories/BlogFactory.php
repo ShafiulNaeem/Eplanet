@@ -25,11 +25,11 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => function(){
+            'user_id' => function () {
                 return User::GetActive()->get()->random();
             },
             'post' => $this->faker->text(200),
-            'blog_image' => $this->faker->image(storage_path('app\public\images'), 640, 480,null, false),
+            'blog_video' => 'https://www.youtube.com/watch?v=' . $this->faker->regexify('[A-Za-z0-9]{11}'),
             'title' => $this->faker->name,
             'blog_slug' => $this->createSlug($this->model, $this->faker->name, 'blog_slug')
         ];

@@ -8,20 +8,30 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-Route::get('link', function (){
+
+Route::get('link', function () {
     Artisan::call('storage:link');
 });
 
-Route::get('clear', function (){
+Route::get('clear', function () {
     Artisan::call('cache:clear');
 });
-Route::get('/createslug', function (){
+Route::get('/image', function () {
+    $imagePath = Faker\Factory::create()->image(storage_path('app/public/images'), 640, 480, null, false);
+
+    if ($imagePath) {
+        return response()->json(['message' => 'Image generated successfully!', 'image_path' => $imagePath]);
+    }
+
+    return response()->json(['message' => 'Image generation failed']);
+});
+Route::get('/createslug', function () {
     $categories = \App\Models\Brand::all();
 
-    foreach ($categories as $category){
+    foreach ($categories as $category) {
         $count = \App\Models\Brand::where('brand_slug',  strtolower(str_replace(" ", "", $category->brand_name)))->count();
 
-        if( $count == 0 ) $counter = 0;
+        if ($count == 0) $counter = 0;
         else    $counter = (int)$count + 1;
 
         $slug = strtolower(str_replace(" ", "", $category->brand_name));
@@ -35,23 +45,25 @@ Route::get('/createslug', function (){
     }
 });
 
-Route::get('test', function (){
+Route::get('test', function () {
     $pro = Product::where('admin_id', 1)->orderBy('sold', 'desc')->limit(5)->get();
 
     $from = date('Y') . '-01-01';
     $to = date('Y') . '-12-31';
-dd($from, $to
-);
+    dd(
+        $from,
+        $to
+    );
     $monthlySell = [];
 
-    foreach ($pro as $prIndex => $product){
-        $res= \App\Models\OrderProduct::with('order')
+    foreach ($pro as $prIndex => $product) {
+        $res = \App\Models\OrderProduct::with('order')
             ->where('product_id', $product->id)
             ->whereBetween('created_at', [$from, $to])
             ->get()
-            ->groupBy(function($val) {
+            ->groupBy(function ($val) {
                 return Carbon::parse($val->created_at)->format('m');
-        });
+            });
 
         $monthlySell[$prIndex]['label'] = $product->product_name;
         $monthlySell[$prIndex]['backgroundColor'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
@@ -63,74 +75,73 @@ dd($from, $to
         $monthlySell[$prIndex]['pointHighlightStroke'] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
 
 
-        if( ! count($res) ){
-            for ($i = 1; $i <= 12; ++$i){
+        if (! count($res)) {
+            for ($i = 1; $i <= 12; ++$i) {
                 $monthlySell[$prIndex]['data'][] = 0;
             }
-        }
-        else {
-            foreach ($res as $index => $value){
+        } else {
+            foreach ($res as $index => $value) {
                 $monthlySell[$prIndex]['data'][] = $value[0]->order->quantity;
             }
 
-            $len = count($res) ;
+            $len = count($res);
 
-            if( $len < 12 ){
-                for ($i = $len+1; $i <= 12; ++$i){
+            if ($len < 12) {
+                for ($i = $len + 1; $i <= 12; ++$i) {
                     $monthlySell[$prIndex]['data'][] = 0;
                 }
             }
         }
     }
-dd($monthlySell);
+    dd($monthlySell);
     return json_encode($monthlySell, true);
 });
 
-Route::get('/privacy',function(){
+Route::get('/privacy', function () {
     return view('pages.privacy');
 })->name('privacy');
 
-Route::get('/affilate', function (){
+Route::get('/affilate', function () {
     return view('pages.affiliate');
 })->name('affilate');
 
 
-Route::get('/article', function (){
+Route::get('/article', function () {
     return view('pages.artical');
 })->name('article');
 
 
-Route::get('/delivery', function (){
+Route::get('/delivery', function () {
     return view('pages.delivery');
 })->name('delivery');
 
 
-Route::get('/return', function (){
+Route::get('/return', function () {
     return view('pages.return');
 })->name('return');
 
 
-Route::get('/terms', function (){
+Route::get('/terms', function () {
     return view('pages.terms_and_con');
 })->name('terms');
 
 
-Route::get('/gift', function (){
+Route::get('/gift', function () {
     return view('pages.gift');
 })->name('gift');
 
 
-Route::get('/special', function (){
+Route::get('/special', function () {
     return view('pages.special');
 })->name('special');
 
 
-Route::get('/about', function (){
+Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
 
 
-Route::get('/faq',function(){
+Route::get('/faq', function () {
     return view('pages.faq');
 })->name('faq');
 
@@ -181,7 +192,7 @@ Route::get('changelocation/{region}/{id}', 'WelcomeController@changeLocation');
 Route::post('coupon', 'Users\CartController@getCoupon')->name('coupon.code');
 Route::resource('review', 'Users\ReviewController')->middleware(['auth']);
 
-Route::prefix('pages')->group(function(){
+Route::prefix('pages')->group(function () {
     Route::get('/{slug}', 'WelcomeController@show')->name('pages.show');
     Route::post('/', 'Users\CartController@store')->middleware(['auth'])->name('pages.cart');
     Route::get('/', 'Users\CartController@create')->middleware(['auth'])->name('cart.create');
@@ -197,13 +208,13 @@ Route::prefix('pages')->group(function(){
 //User Auth
 Auth::routes();
 
-Route::prefix('callback')->group(function (){
+Route::prefix('callback')->group(function () {
     Route::get('{provider}', 'Users\SocialLoginController@socialCallback');
     Route::get('{provider}/handle', 'Users\SocialLoginController@googleHandel');
 });
 
 
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->group(function () {
     Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -226,7 +237,7 @@ Route::get('verify', 'Auth\RegisterController@verify')->name('verify.mail');
 
 
 // Admin Auth routes
-Route::prefix('admin')->middleware('auth:admin')->group(function(){
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('allOrders/{id}', 'Users\Admin\OrderController@allOrders')->name('orders.allOrders');
     Route::get('allevent/{id}', 'Users\Admin\EventProductController@allEventProducts')->name('event.allEvents');
     Route::get('sellreport', 'Users\Admin\AdminController@adminMonthlySell')->name('sell.report');
@@ -235,7 +246,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     // vendor routes
     Route::get('allVendor', 'Users\Admin\AdminController@allVendor')->name('vendor.allVendor');
 
-    Route::namespace('Users\Admin')->group(function (){
+    Route::namespace('Users\Admin')->group(function () {
         Route::post('change', 'BrandController@change')->name('brand.change.status');
         Route::post('levelChange', 'BrandController@levelChange')->name('brand.change.level');
         Route::post('categoryChange', 'CategoryController@change')->name('category.change.status');
@@ -259,7 +270,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
         // District by City
         Route::post('cityByDistrict/{district}', 'DistrictController@cityByDistrict')->name('city.by.district');
 
-        Route::name('admin.all.')->prefix('allvendor')->group(function (){
+        Route::name('admin.all.')->prefix('allvendor')->group(function () {
             Route::get('product', 'ProductController@allProduct')->name('product');
             Route::get('brand', 'BrandController@allBrand')->name('brand');
             Route::get('coupon', 'CouponController@allCoupon')->name('coupon');
@@ -286,9 +297,9 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
 
 });
 
-Route::prefix('admin')->namespace('Users\Vendor')->middleware('auth:admin')->group(function (){
+Route::prefix('admin')->namespace('Users\Vendor')->middleware('auth:admin')->group(function () {
 
-    Route::prefix('vendor')->group(function(){
+    Route::prefix('vendor')->group(function () {
         Route::resource('productCapacity', 'ProductCapacityController');
         Route::resource('productCertification', 'ProductCertificationController');
         Route::resource('productQuality', 'ProductQualityController');
@@ -301,7 +312,7 @@ Route::prefix('admin')->namespace('Users\Vendor')->middleware('auth:admin')->gro
     });
 });
 
-Route::prefix('admin')->middleware('auth:admin')->group(function (){
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('users', 'Users\Admin\UserController@index')->name('admin.all.users');
     Route::get('change/{user}/{currentStatus}', 'Users\Admin\UserController@changeStatus')->name('admin.all.users.change.status');
 
@@ -310,7 +321,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function (){
     Route::delete('blog/{blog}', 'Users\BlogController@destroy')->name('blog.destroy');
 });
 
-Route::prefix('admin')->middleware('auth:admin')->namespace('Users\Admin')->group(function(){
+Route::prefix('admin')->middleware('auth:admin')->namespace('Users\Admin')->group(function () {
     Route::resource('category', 'CategoryController');
     Route::resource('subcategory', 'SubCategoryController');
     Route::resource('brand', 'BrandController');
@@ -340,4 +351,3 @@ Route::prefix('admin')->middleware('auth:admin')->namespace('Users\Admin')->grou
     Route::get('expresswish', 'AdminController@expressWish')->name('admin.express.wish');
     Route::delete('expressWish/{expressWish}', 'AdminController@destroy')->name('expressWish.destroy');
 });
-

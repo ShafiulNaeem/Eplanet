@@ -23,13 +23,13 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            'admin_id' => function(){
+            'admin_id' => function () {
                 return Admin::GetActive()->get()->random();
             },
             'event_name' => $this->faker->name,
             'start_date' => $this->faker->dateTimeBetween('+1 day', '+10 days'),
             'end_date' => $this->faker->dateTimeBetween('+10 day', '+30 days'),
-            'event_image' => $this->faker->image(storage_path('app\public\images'), 640, 480,null, false),
+            'event_image' => app('ImageGenerator')->generate(),
             'status' => 1
         ];
     }
