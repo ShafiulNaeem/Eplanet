@@ -6,6 +6,7 @@
 /.idea
 /public/images
 /public/videos
+.env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
